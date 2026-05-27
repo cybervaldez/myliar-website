@@ -6,6 +6,11 @@ import Link from "next/link";
 // regens via /worldbuilding, paste-update this constant to match. The
 // website is a marketing surface so the duplication is deliberate —
 // no fs read, no build coupling, no runtime fetch.
+// v0.0.24.2 regen: per-character tile-swap (`,` grass for Hana, `:`
+// commercial tile for Mei, `.` neutral for Sam + Kenji); two new
+// direct character-to-character continuity bridges ([recipe*] Hana↔Mei,
+// [clip*] Kenji↔Hana); [sticky-wall*] renamed to [notes*] with the
+// paired-pins rule. Mirror of assets/realm-maps/phone-realm.txt.
 const PHONE_REALM_MAP = String.raw`╔════════════════════════════════════════════════════════════╗
 ║              THE COURTYARD — phone realm                   ║
 ║                                                            ║
@@ -20,9 +25,9 @@ const PHONE_REALM_MAP = String.raw`╔══════════════
 ║   ┌─── HANA's track ────┘    └──── KENJI's office ───┐     ║
 ║   │ , , , , , , , , , ,│    │. . . . . . . . . . . . │     ║
 ║   │ , H . . . . . . . t│    │. K . . . . . . . . . . │     ║
-║   │ , . . [bleachers]  │    │. . [desk]    [ledger*] │     ║
-║   │ , . . . . . . . . p│    │. . . . . . . . . . . . │     ║
-║   │ , . [pic*] . . . . │    │. . . . . . [drawer]  . │     ║
+║   │ , . . [bleachers]  │    │. . [desk][clip*] . . . │     ║
+║   │ , . . . . . p . . .│    │. . . . . . . [ledger*] │     ║
+║   │ , . [pic*][recipe*]│    │. . . . . . [drawer]  . │     ║
 ║   └──────────────│─────┘    └───────│─────────────────┘    ║
 ║                  │                  │                       ║
 ║              ┌───┴──[noticeboard]───┴───┐                  ║
@@ -31,9 +36,9 @@ const PHONE_REALM_MAP = String.raw`╔══════════════
 ║              └───┬──────────────────┬───┘                  ║
 ║                  │                  │                       ║
 ║   ┌─── MEI's kitchen ───┐  ┌── SAM's desk ──┐              ║
-║   │ [prep] [line s]  . .│  │ . . . . . . .  │              ║
-║   │ [bell*]   .      . .│  │ . S . d        │              ║
-║   │ [mise]    [dish pit]│  │ [sticky-wall*] │              ║
+║   │ [prep]:[line s]: : :│  │ . . . . . . .  │              ║
+║   │ [bell*]: : :    : : │  │ . S . d        │              ║
+║   │ [mise]: :[dish pit] │  │ [notes*]       │              ║
 ║   └─────────────────────┘  └────────────────┘              ║
 ║                                                            ║
 ╚════════════════════════════════════════════════════════════╝`;
@@ -133,7 +138,11 @@ export default function MapPage() {
         </div>
 
         {/* Continuity-objects callout — the textural detail that makes
-            the map feel inhabited rather than diagrammatic. */}
+            the map feel inhabited rather than diagrammatic. Synced to
+            the v0.0.24.2 phone-realm regen: two new direct character-
+            to-character bridges ([recipe*], [clip*]) added on top of
+            the existing [ledger*] / [bell*] / [notes*] (renamed from
+            [sticky-wall*]). */}
         <div className="mt-6 border-[1.5px] border-margin-ink/50 bg-paper p-5">
           <div className="font-display tracking-[0.16em] text-[11px] text-margin-ink mb-2">
             ▸ CONTINUITY OBJECTS
@@ -144,16 +153,24 @@ export default function MapPage() {
             more than one space — they link the characters to each other.{" "}
             <span className="font-mono text-ink">[pic*]</span> is Hana&apos;s
             pinned race photo (Day 14 callback).{" "}
+            <span className="font-mono text-ink">[recipe*]</span> is Mei&apos;s
+            recipe scrap tucked under Hana&apos;s foam-roller ({" "}
+            <em>recovery snack: cold rice</em>) — the Hana↔Mei bridge.{" "}
+            <span className="font-mono text-ink">[clip*]</span> on
+            Kenji&apos;s desk is Hana&apos;s training log with weekly
+            green/red ink — the Kenji↔Hana bridge.{" "}
             <span className="font-mono text-ink">[ledger*]</span> on
-            Kenji&apos;s desk reads &ldquo;MEI&apos;S SPENDING.&rdquo;{" "}
+            Kenji&apos;s desk reads &ldquo;MEI&apos;S SPENDING&rdquo; — the
+            Kenji↔Mei bridge.{" "}
             <span className="font-mono text-ink">[bell*]</span> rings in
             Mei&apos;s kitchen — the sound carries to every space except
             Kenji&apos;s office (he hung a blanket).{" "}
-            <span className="font-mono text-ink">[sticky-wall*]</span> on
-            Sam&apos;s desk: every squad member has pinned to it, sometimes
-            on the same nail. The{" "}
-            <span className="font-mono text-ink">[noticeboard]</span> in the
-            courtyard center is public.
+            <span className="font-mono text-ink">[notes*]</span> on
+            Sam&apos;s desk: every squad member has pinned to it, often on
+            the same nail (Hana&apos;s run cards beside Mei&apos;s
+            nutrition cards). The{" "}
+            <span className="font-mono text-ink">[noticeboard]</span> in
+            the courtyard center is public.
           </p>
         </div>
 
