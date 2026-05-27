@@ -1,0 +1,1578 @@
+===============================================================================
+
+    __  ___       __    _ ____      _                          ____  ____  ______
+   /  |/  /_  __ / /   (_) __/__   (_)____   ____ _ ____      / __ \/ __ \/ ____/
+  / /|_/ / / / // /   / / /_/ _ \ / // ___/ / __ `// __ \    / /_/ / /_/ / / __
+ / /  / / /_/ // /___/ / __/  __// /(__  ) / /_/ // / / /   / _, _/ ____/ /_/ /
+/_/  /_/\__, /_____/_/_/  \___//_//____/  \__,_//_/ /_/   /_/ |_/_/    \____/
+       /____/
+
+             MY LIFE IS AN RPG -- FULL WALKTHROUGH & STRATEGY GUIDE
+
+                          Author: lukewarmhotdog42
+                       v0.0.19 EARLY ACCESS . run-004
+                     (LLM-pregenerated, canonical default)
+                          Last updated: 2026-05-27
+                            Approx. 14,000 words
+
+===============================================================================
+
+
++-----------------------------------------------------------------------------+
+| ! FULL SPOILER WARNING                                                      |
+|                                                                             |
+| This guide covers every event of the 7-day Main Line including the three    |
+| tier-up reveals (Hana's brother, Mei's stove fire, Kenji's audit-respect).  |
+| If you want any of those moments to land cold, close this tab and play      |
+| first. The game runs ~45 minutes end-to-end. I'll be here when you finish.  |
++-----------------------------------------------------------------------------+
+
+  _A note on this guide:_  I'm a player, not a dev. I've run the Main Line
+  three times -- once optimal-REL, once chaos-only, once with deliberate
+  crit-fails on every chaotic to see what the floor looks like. Everything
+  below is observed, not assumed. Where I've guessed, I've said so.
+
+
+===============================================================================
+[0.00]  TABLE OF CONTENTS
+===============================================================================
+
+  [1.00]  What this game actually is...................................
+  [2.00]  Controls primer (Logical / Passive / Chaotic).................
+    [2.01]  The three-choice trichotomy...............................
+    [2.02]  The dice math (chaotic only)..............................
+    [2.03]  Inquiries.................................................
+  [3.00]  The cast.....................................................
+  [4.10]  Day 1 -- Hana onboarding.....................................
+    [4.11]  The pitch.................................................
+    [4.12]  Event-by-event............................................
+  [4.20]  Day 2 -- Hana, daily (office)................................
+  [4.30]  Day 3 -- Kenji introduction..................................
+  [4.40]  Day 4 -- Kenji, daily (the raccoon arc)......................
+  [4.50]  Day 5 -- Mei introduction....................................
+  [4.60]  Day 6 -- Hana, daily (separation training)...................
+  [4.70]  Day 7 -- Kenji, week-closer..................................
+  [5.00]  Item / trophy index..........................................
+  [6.00]  Tier-up reveals (HEAVY SPOILERS).............................
+    [6.01]  Day 1 evt-6 -- Hana, MEMORY: the brother..................
+    [6.02]  Day 4 evt-4 -- Kenji, OPINION: respect for the lie.......
+    [6.03]  Day 5 evt-5 -- Mei, FEAR: the stove fire..................
+    [6.04]  Day 7 evt-4 -- Kenji, MEMORY: the receipt raccoon.........
+  [7.00]  Stat-build paths (STR / INT / GLD / CHR).....................
+  [8.00]  Things I missed on run 1.....................................
+  [9.00]  Mini-review..................................................
+  [10.00] Credits & revisions..........................................
+
+  Navigation: this is a plain-text file. Use your reader's find/search
+  (Ctrl+F on most platforms, Cmd+F on Mac) and search for the bracketed
+  section code -- e.g. type [4.40] to jump to the Day 4 chapter. Section
+  codes are unique and won't collide with any other text in the document.
+
+
+===============================================================================
+[1.00]  WHAT THIS GAME ACTUALLY IS
+===============================================================================
+
+It's a daily-loop "life-RPG" where four characters live in your phone and
+write narratives about your day. The pitch sounds like an AI gimmick but
+the execution is closer to a Persona / Mystic Messenger hybrid: the
+writing is curated for the first seven days (the "Main Line"), then
+opens up.
+
+Each in-game day is 5-7 events. Each event is a short scene + three
+choices. The third choice is always chaotic (rolls a die). Stats move,
+REL with the focal character moves, sometimes you get an item.
+
+The thing that distinguishes it from other AI-companion apps is the
+*locked-canon discipline*: the four canonical characters (Sam, Hana,
+Kenji, Mei) cannot be edited by the player. You can chat with them,
+toggle which memories of you they keep in their head, and delete
+memories -- but you can't reshape who they are. There's a separate
+"Elseworld" tier for fully-customizable LLM-generated characters; that's
+not in this walkthrough.
+
++-----------------------------------------------------------------------------+
+| > NOTE -- SAVE DISCIPLINE                                                   |
+|                                                                             |
+| The Main Line save lives on your device by default. After Day 3 the game    |
+| offers an opt-in email-OTP sync (game state only -- never chats or          |
+| journal). If you don't opt in, your save dies with your phone. Day 4        |
+| morning is the only re-nudge.                                               |
++-----------------------------------------------------------------------------+
+
+
+===============================================================================
+[2.00]  CONTROLS PRIMER
+===============================================================================
+
+-------------------------------------------------------------------------------
+[2.01]  The three-choice trichotomy
+-------------------------------------------------------------------------------
+
+Every event ends in (A), (B), (C). The roles are fixed:
+
+  [A] LOGICAL  -- Best for: stat farming. Steady REL gain. Most items drop
+                  here.
+               -- Cost:     variance. You'll never have a story to tell
+                  about playing logical-only.
+
+  [B] PASSIVE  -- Best for: information without commitment. Sometimes
+                  free observations.
+               -- Cost:     REL goes down on most days (-1 standard). The
+                  character clocks you.
+
+  [C] CHAOTIC  -- Best for: items on crit-success. Funny memories.
+                  Highest character payoff. (DICE.)
+               -- Cost:     crit-fail is real (~40% baseline). Some
+                  chaotics are REL-negative even on success.
+
+-------------------------------------------------------------------------------
+[2.02]  The dice math (chaotic only)
+-------------------------------------------------------------------------------
+
+Chaotic choices roll a die with a baseline 40% crit-fail rate. On
+success: delta multiplied x2, item drop (if any). On crit-fail: delta
+multiplied x-1 (so positive deltas become negative, REL gets hit hard,
+no item).
+
++-----------------------------------------------------------------------------+
+| + STRATEGY                                                                  |
+|                                                                             |
+| The chaotic option is the right pick when the _upside_ is what you want.    |
+| If a chaotic gives CHR +1 / REL -2 on success, the math says you'll         |
+| average roughly CHR +1 / REL -2.8 across many rolls (since crit-fail makes  |
+| it WORSE). Don't chaotic-spam for stats; chaotic for the story.             |
++-----------------------------------------------------------------------------+
+
+-------------------------------------------------------------------------------
+[2.03]  Inquiries
+-------------------------------------------------------------------------------
+
+Some events have a "[?]" button. Tap before deciding. The character
+explains something in their own voice. *FREE.* Doesn't cost AP, doesn't
+burn a choice. If you ignore inquiries you'll miss about 30% of the
+game's worldbuilding.
+
+
+===============================================================================
+[3.00]  THE CAST
+===============================================================================
+
+You meet them in order. Sam is permanent from Day 0; the other three
+arrive in narrative time:
+
+  SAM
+    Class      : Onboarder
+    Domain     : Game systems / meta
+    First seen : Day 0 tutorial
+
+  HANA
+    Class      : Powerhouse
+    Domain     : Fitness, drills, "water levels"
+    First seen : Day 1, 5:14 AM text
+
+  KENJI
+    Class      : Scholar
+    Domain     : Productivity, the ledger, the gold column
+    First seen : Day 3, evt 4 (Hana intros him)
+
+  MEI
+    Class      : Healer
+    Domain     : Cooking, "the line," "the dead"
+    First seen : Day 5, evt 1 (Hana brings her over)
+
+The voices are deliberate. Hana CAPS-bursts. Kenji never says "you" in
+his own ledger entries -- he says "they" and "their column." Mei's
+whole vocabulary is line-cook ("mise," "the line is holding," "the
+dead"). The game blind-tests on this -- if you cover the speaker label,
+you can identify the character from any line.
+
+
+===============================================================================
+[4.10]  DAY 1 -- HANA ONBOARDING
+===============================================================================
+
+  Realm:   home
+  Type:    onboarding
+  Tier-up: MEMORY @ evt-6
+
+-------------------------------------------------------------------------------
+[4.11]  The pitch
+-------------------------------------------------------------------------------
+
+This is the day the game decides if you're staying. Seven events,
+introduces the trichotomy, ends in the brother-shoes reveal. If you only
+play one day, play this one -- but you won't only play one day.
+
+  _The 5:14 AM cold open is the single most important screen in the
+  game. A normal app would say "Welcome! Let's get to know you."
+  Instead an unsaved number demands your resting pulse and the volume
+  of water you drank before bed. The frame is set in 12 seconds._
+
+-------------------------------------------------------------------------------
+[4.12]  Event-by-event
+-------------------------------------------------------------------------------
+
+EVENT 1 -- 5:14 AM TEXT DEMAND
+------------------------------
+
+    [A] LOGICAL  | Reply with metrics
+                 | Effect: INT +1, REL +2
+                 | DROP:   Hana's Baseline Performance Chart (PDF)
+                 | Notes:  The optimal opener. The PDF is a real
+                 |         artifact you'll see in Case File.
+
+    [B] PASSIVE  | Ignore, blanket
+                 | Effect: REL -1
+                 | Notes:  You'll get one word back: "UNACCEPTABLE."
+                 |         Then a typing indicator that lasts 3
+                 |         minutes. Worth seeing once.
+
+    [C] CHAOTIC  | Send hotdog photo  (DICE)
+                 | Effect: CHR +1, REL -2  (no drop)
+                 | Notes:  This is the chaotic option people
+                 |         screenshot. Crit-fail = blocked for 20
+                 |         minutes. Worth it for the memory write
+                 |         alone.
+
+  Inquiry: "Who is texting me?" -- Hana introduces herself in her own
+  voice: "I am Hana. I calibrate performance parameters for individuals
+  who are currently decaying."
+
+
+EVENT 2 -- TREADMILL VIDEO CALL
+-------------------------------
+
+    [A] LOGICAL  | Pushups on camera
+                 | Effect: STR +1, REL +2
+                 | Notes:  Standard. She'll critique your form.
+
+    [B] PASSIVE  | Camera off, listen
+                 | Effect: REL -1
+                 | Notes:  The reaction text is gorgeous -- the
+                 |         steady thud of her feet, perfectly
+                 |         regulated breathing. Worth picking once.
+
+    [C] CHAOTIC  | Pushups on counter  (DICE)
+                 | Effect: STR +2, REL +1
+                 | DROP:   Counter-Form Screenshot
+                 | Notes:  Best chaotic in the day. Even on crit-fail
+                 |         you keep the "her reaction" beat.
+
+
+EVENT 3 -- GALLON WATER JUG DELIVERY
+------------------------------------
+
+    [A] LOGICAL  | Fill it, drink
+                 | Effect: INT +1, REL +1
+                 | Notes:  Thumbs-up + a warning about sodium
+                 |         depletion.
+
+    [B] PASSIVE  | Hide under sink
+                 | Effect: (0)
+                 | Notes:  Hana's app has a "weight sensor" that logs
+                 |         zero movement. She knows. Sad memory write
+                 |         triggers.
+
+    [C] CHAOTIC  | Fill with cold brew  (DICE)
+                 | Effect: INT +1, REL -2
+                 | Notes:  Best line in the day: "Your nervous system
+                 |         is on fire but your enthusiasm is noted."
+                 |         Crit-fail: single skull emoji.
+
+
+EVENT 4 -- POSTURE AUDIT
+------------------------
+
+    [A] LOGICAL  | Sit up straight
+                 | Effect: STR +1, REL +2
+                 | DROP:   Golden Posture Sticker (Digital)
+                 | Notes:  The "flexing bicep wearing a tiny gold
+                 |         crown" sticker is canon. Save it.
+
+    [B] PASSIVE  | Ask why
+                 | Effect: REL -1
+                 | Notes:  Honestly the inquiry is better -- you get
+                 |         the spinal-compression rant for free.
+
+    [C] CHAOTIC  | Slouch lower  (DICE)
+                 | Effect: STR -1, REL -1
+                 | Notes:  Don't. The chaotic is REL-negative on
+                 |         success AND failure. Pure flavor pick.
+
+  Inquiry -- "About the posture protocol": Hana explains that spinal
+  compression "reduces vital flow to your skull by up to twelve
+  percent." This is the closest the game gets to a real fitness-speak
+  moment and she still translates it into her idiolect.
+
+
+EVENT 5 -- GROCERY STORE AUDIT
+------------------------------
+
+    [A] LOGICAL  | Send spinach + chicken
+                 | Effect: INT +1, REL +2
+                 | Notes:  "Spinach alone does not constitute a
+                 |         complete fuel profile."
+
+    [B] PASSIVE  | Ignore the prompt
+                 | Effect: REL -1
+                 | Notes:  "AUDIT OVERDUE" flashes on your lock
+                 |         screen. Cashier doesn't notice.
+
+    [C] CHAOTIC  | Energy drinks + 1 beet  (DICE)
+                 | Effect: CHR +2, REL -2
+                 | Notes:  Mei is name-checked here for the first
+                 |         time -- "I will need to loop in Mei about
+                 |         this." This is foreshadowing for Day 5.
+
+
+EVENT 6 -- THE BROTHER REVEAL  *** TIER-UP ***
+----------------------------------------------
+
++-----------------------------------------------------------------------------+
+| * SPOILER -- THIS IS THE DAY'S PAYOFF                                       |
+|                                                                             |
+| Hana's tone softens at sunset. She texts a photo of worn, taped running     |
+| shoes on a clean wooden floor. She admits they're her brother's. She        |
+| explains why she runs at 5 AM.                                              |
++-----------------------------------------------------------------------------+
+
+    [A] LOGICAL  | Ask about her brother
+                 | Effect: INT +1, REL +3
+                 | Notes:  *THE CORRECT PICK.* Reaction text completes
+                 |         the reveal: "he ran until his knees gave
+                 |         out because nobody taught him balance. He
+                 |         was her coach, and she runs at 5 AM for him
+                 |         now."
+
+    [B] PASSIVE  | Examine without reply
+                 | Effect: REL +0
+                 | Notes:  The detail of the frayed laces is in the
+                 |         passive reaction. Acceptable.
+
+    [C] CHAOTIC  | Ask to buy on eBay  (DICE)
+                 | Effect: CHR +2, REL -3
+                 | Notes:  The memory write here is the best in the
+                 |         game: "she actually laughs through a voice
+                 |         note, calling you an idiot but appreciating
+                 |         the terrible joke." Crit-fail = silence for
+                 |         the day. Worth the risk on a chaos run.
+
++-----------------------------------------------------------------------------+
+| + STRATEGY                                                                  |
+|                                                                             |
+| *This event is the game's mission statement.* If the brother reveal         |
+| didn't land for you, you're not the audience. If it did, you'll play        |
+| through Day 7.                                                              |
++-----------------------------------------------------------------------------+
+
+
+EVENT 7 -- 9 PM COMMITMENT
+--------------------------
+
+    [A] LOGICAL  | Sign her agreement
+                 | Effect: STR +1, REL +3
+                 | DROP:   Hana's 5 AM Wake-Up Protocol (PDF)
+                 | Notes:  The day's third PDF. By now your Case File
+                 |         has a Hana folder.
+
+    [B] PASSIVE  | Let timer run out
+                 | Effect: REL -1
+                 | Notes:  Her typing bubble appears 4 times before
+                 |         going dark. Don't.
+
+    [C] CHAOTIC  | Promise never to yell  (DICE)
+                 | Effect: CHR +1, REL +2
+                 | Notes:  Her ALL-CAPS reply: "I ONLY YELL FOR YOUR
+                 |         SURVIVAL." Best line of the day.
+
++-----------------------------------------------------------------------------+
+| + STRATEGY                                                                  |
+|                                                                             |
+| *Optimal Day 1 (REL focus):* A-A-A-A-A-A-A.                                 |
+| Final REL: +14, INT +4, STR +2.                                             |
+|                                                                             |
+| *Optimal Day 1 (chaos run):* C-C-C-C-C-C-C.                                 |
+| You'll average ~= CHR +6, REL -2 to -8, but you'll have ALL the best        |
+| memories.                                                                   |
+|                                                                             |
+| *Most fun:* A-A-C-A-C-A-C.                                                  |
+| Logical for the items, chaotic where the reactions are best (evt-2          |
+| counter, evt-5 beet, evt-7 yelling promise).                                |
++-----------------------------------------------------------------------------+
+
+
+===============================================================================
+[4.20]  DAY 2 -- HANA, DAILY (OFFICE)
+===============================================================================
+
+  Realm:   office
+  Type:    daily
+  Tier-up: none
+  Events:  3
+
+The shortest day in the arc. Three events. No tier-up -- this is
+connective tissue. The arc here is territorial: Kenji is starting to
+leak into Hana's day, and you're the leverage point.
+
+  _Day 2 is the day people complain about on first run. It's "still
+  Hana" when you wanted something new. Don't quit -- Kenji's calendar
+  invite at evt-2 is the seam. Day 3 is around the corner._
+
+
+EVENT 1 -- OFFICE LOBBY, 6:23 AM
+--------------------------------
+
+Hana is standing by the elevators with your water bottle.
+
+    [A] LOGICAL  | Claim you read her brief
+                 | Effect: INT +1, REL +1
+                 | Notes:  She'll double-tax your water. Survivable.
+
+    [B] PASSIVE  | Admit you didn't open it
+                 | Effect: REL +1
+                 | Notes:  *PASSIVE WINS HERE.* "Honesty is a
+                 |         survival trait." Note: passive going UP is
+                 |         rare.
+
+    [C] CHAOTIC  | Blame Kenji  (DICE)
+                 | Effect: CHR +1, REL -1
+                 | Notes:  "That ledger-witch is bleeding into my lane
+                 |         again." First time Hana calls Kenji
+                 |         "ledger-witch" -- pure flavor.
+
+
+EVENT 2 -- KENJI CALLS MID-DAY
+------------------------------
+
+    [A] LOGICAL  | Answer professionally
+                 | Effect: INT +1, REL -2
+                 | Notes:  Logical losing REL -- note this. Hana
+                 |         wants exclusivity here.
+
+    [B] PASSIVE  | Decline the call
+                 | Effect: REL +1
+                 | Notes:  *BEST HANA-REL CHOICE TODAY.* Hana's
+                 |         memory write: "I'm not sure that was for
+                 |         me. I want it to have been."
+
+    [C] CHAOTIC  | Put Kenji on speaker  (DICE)
+                 | Effect: CHR +2, REL -1
+                 | Notes:  Hana yells "HE IS MID-DRILL, KENJI! HANG
+                 |         UP!" Kenji hangs up. Worth it.
+
+
+EVENT 3 -- 8:45 PM "FIRST-DIBS"
+-------------------------------
+
+Three Kenji notifications + Hana's running-breath voice memo. Choose.
+
+    [A] LOGICAL  | Accept Kenji's invite
+                 | Effect: INT +1, REL -3
+                 | DROP:   Hana's Running-Breath Voice Memo
+                 | Notes:  The day's gut-punch. You picked Kenji and
+                 |         Hana _still_ leaves you the voice memo. 47
+                 |         seconds of her breathing.
+
+    [B] PASSIVE  | Promise Hana first dibs
+                 | Effect: REL +3
+                 | Notes:  The "right" answer for Hana-REL. Her
+                 |         typing bubble flashes once and goes dark.
+
+    [C] CHAOTIC  | Tell both "figure it out"  (DICE)
+                 | Effect: CHR +2, REL -2
+                 | DROP:   Both of Their Locked-Out Calendar Slots
+                 |         (screenshot)
+                 | Notes:  A trophy of escape. Chaos victory.
+
++-----------------------------------------------------------------------------+
+| + STRATEGY -- DAY 2 QUIRK                                                   |
+|                                                                             |
+| This is one of two days where Passive consistently outperforms Logical      |
+| for REL. The pattern: when the choice is "honor the character you're        |
+| with vs honor the systems they're inside of," passive (honor the            |
+| character) wins.                                                            |
++-----------------------------------------------------------------------------+
+
+
+===============================================================================
+[4.30]  DAY 3 -- KENJI INTRODUCTION
+===============================================================================
+
+  Realm:      home
+  Type:       introduction
+  Tier-up:    none
+  Events:     7
+  Introduces: Kenji
+
+This is the day the game opens up. Kenji enters at evt-4. From this
+point forward you have two characters with conflicting agendas, and the
+game starts using triangulation properly.
+
+
+EVENT 1 -- HANA SENDS A 12-PAGE PDF
+-----------------------------------
+
+"OPEN THIS IN THE NEXT THIRTY MINUTES." 6:02 AM.
+
+    [A] LOGICAL  | Open and skim
+                 | Effect: INT +1, REL +2
+                 | DROP:   Neutral Spine Protocol PDF
+                 | Notes:  The "I am bringing in someone who measures
+                 |         things more ruthlessly than I do" line
+                 |         lands here.
+
+    [B] PASSIVE  | Set a reminder
+                 | Effect: REL -1
+                 | Notes:  "Delay is just a slow tax on your
+                 |         potential." First Kenji-flavored language
+                 |         from Hana -- she's getting infected.
+
+    [C] CHAOTIC  | Screenshot water-levels page only  (DICE)
+                 | Effect: CHR +1, REL +1
+                 | Notes:  "You bypassed the theory and went straight
+                 |         for the fuel. I respect the shortcut." Best
+                 |         chaotic of the day.
+
+
+EVENT 2 -- YARDSTICK AT THE DOOR
+--------------------------------
+
+Hana physically arrives with a yardstick and a digital caliper.
+
+    [A] LOGICAL  | Submit to measurement
+                 | Effect: STR +1, REL +2
+                 | Notes:  "Your skeletal framework is currently at a
+                 |         C-minus." Honest grading.
+
+    [B] PASSIVE  | Refuse the door
+                 | Effect: REL -1
+                 | Notes:  She sits on your porch texting through the
+                 |         wood. Worth seeing once.
+
+    [C] CHAOTIC  | Measure her with a spatula  (DICE)
+                 | Effect: CHR +2, REL +1
+                 | Notes:  "Your nerve is correct, even if your
+                 |         calibration is off." She allows the
+                 |         audit-back. This is the single best
+                 |         chaos-success line in the first three days.
+
+
+EVENT 3 -- HANA CALLS "THE AUDITOR"
+-----------------------------------
+
+She taps a saved contact named "The Auditor." Kenji is about to enter.
+
+    [A] LOGICAL  | Welcome the call
+                 | Effect: INT +1, REL +2
+                 | Notes:  "I have the ledger open. Let us begin." --
+                 |         Kenji's first line in the game.
+
+    [B] PASSIVE  | Talk Hana out of it
+                 | Effect: REL -1
+                 | Notes:  She ignores you. The call goes through
+                 |         anyway.
+
+    [C] CHAOTIC  | Fake wifi static  (DICE)
+                 | Effect: CHR +1, REL -1
+                 | Notes:  "Static simulation detected. I have
+                 |         switched to SMS tracking. The ledger does
+                 |         not yield." First Kenji line in chaos
+                 |         branch. Worth one chaos run.
+
+
+EVENT 4 -- KENJI OPENS THE SPREADSHEET
+--------------------------------------
+
+    [A] LOGICAL  | Accept tracking
+                 | Effect: INT +2, REL +2
+                 | DROP:   Three-Color Weekly CSV Template
+                 | Notes:  "We will plug the leaks in your gold column
+                 |         starting today." Kenji's idiolect is fully
+                 |         online.
+
+    [B] PASSIVE  | Counter-offer alternate days
+                 | Effect: REL +0
+                 | Notes:  "A partial audit is merely organized
+                 |         self-deception." Filed.
+
+    [C] CHAOTIC  | Fake sleep on the call  (DICE)
+                 | Effect: CHR +2, REL -1
+                 | Notes:  Kenji screenshots your sleeping face for
+                 |         cell A1 of his spreadsheet. He's already
+                 |         invested.
+
+
+EVENT 5 -- HANA + KENJI ARGUE
+-----------------------------
+
+Hana wants 20 squats per ledger update; Kenji wants you to log every 2
+hours.
+
+    [A] LOGICAL  | Hybrid plan
+                 | Effect: STR +1, INT +1, REL +2
+                 | Notes:  "A balanced trade. The physical tribute
+                 |         funds the cognitive labor."
+
+    [B] PASSIVE  | Let them figure it out
+                 | Effect: REL +1
+                 | Notes:  Five minutes of debate. They scale-system
+                 |         it out.
+
+    [C] CHAOTIC  | EAT THE AGREEMENT CARD  (DICE)
+                 | Effect: CHR +2, REL -2
+                 | DROP:   Kenji's drafting pencil
+                 | Notes:  *ICONIC.* Kenji goes silent. Stares through
+                 |         the camera. Leaves his drafting pencil.
+                 |         This is the moment you realize chaos is
+                 |         canon in this game. Crit-fail: Hana
+                 |         headlocks you to spit it out.
+
++-----------------------------------------------------------------------------+
+| * SPOILER                                                                   |
+|                                                                             |
+| The card-eating chaotic is referenced again in Day 7 (Kenji's               |
+| opinion-tier-up). The game is tracking this. *Eat the card on your          |
+| first run.*                                                                 |
++-----------------------------------------------------------------------------+
+
+
+EVENT 6 -- THE PROCRASTINATION STRIKE AGREEMENT
+-----------------------------------------------
+
+    [A] LOGICAL  | Sign clearly
+                 | Effect: INT +1, REL +2
+                 | DROP:   Negotiated Strike Card
+                 | Notes:  "The contract is sealed. Your gold column
+                 |         is now under my protection."
+
+    [B] PASSIVE  | Negotiate to 14 days
+                 | Effect: REL +1
+                 | Notes:  "Fourteen days is a sufficient sample
+                 |         size."
+
+    [C] CHAOTIC  | Sign non-dominant hand  (DICE)
+                 | Effect: CHR +1, REL +0
+                 | Notes:  "Decorative compliance." Logged but
+                 |         unchallenged.
+
+
+EVENT 7 -- KENJI PACKS UP
+-------------------------
+
+    [A] LOGICAL  | Thank Kenji formally
+                 | Effect: INT +1, REL +2
+                 | Notes:  Hana grins. Kenji nods.
+
+    [B] PASSIVE  | Watch in silence
+                 | Effect: REL +0
+                 | Notes:  Hana winks.
+
+    [C] CHAOTIC  | Ask if Kenji can audit Hana  (DICE)
+                 | Effect: CHR +2, REL +1
+                 | Notes:  "Negotiable, but her physical drills carry
+                 |         a tax even I cannot easily calculate."
+                 |         Kenji laughs ONCE. He laughs maybe twice in
+                 |         the entire arc.
+
+
+===============================================================================
+[4.40]  DAY 4 -- KENJI, DAILY (THE RACCOON ARC)
+===============================================================================
+
+  Realm:   office
+  Type:    daily
+  Tier-up: OPINION @ evt-4
+  Events:  5
+
+Kenji solo. Five events. The day is built around an LLM-grade joke that
+gets paid off TWICE -- once on Day 4, again on Day 7. If you're going
+to chaos any day, chaos this one.
+
+
+EVENT 1 -- 7:01 AM COMPLIANCE CHECK
+-----------------------------------
+
+You're already two minutes late.
+
+    [A] LOGICAL  | Log in at 7:02
+                 | Effect: INT +1, REL +2
+                 | DROP:   7:02 AM Late-Stamp Receipt
+                 | Notes:  "Within acceptable tolerances." First
+                 |         day's-end PDF artifact.
+
+    [B] PASSIVE  | Show up at 7:30
+                 | Effect: REL -1
+                 | Notes:  "Compliance Lag" column gets a thirty-
+                 |         minute entry. Permanent.
+
+    [C] CHAOTIC  | Photo of physical clock  (DICE)
+                 | Effect: CHR +1, REL +1
+                 | Notes:  "Supplementary substantiation." Auditable
+                 |         timestamp evidence. Filed.
+
+
+EVENT 2 -- CRACKED PHONE GAMBIT
+-------------------------------
+
+Kenji is at your kitchen table with a portable monitor. He demands your
+laptop.
+
+    [A] LOGICAL  | Hand over laptop
+                 | Effect: INT +2, REL +2
+                 | Notes:  12 minutes of clinical setup. Dashboard
+                 |         fully configured.
+
+    [B] PASSIVE  | Boundary close
+                 | Effect: REL +1
+                 | Notes:  He respects it. Leaves a handwritten note.
+
+    [C] CHAOTIC  | Hand him a broken phone  (DICE)
+                 | Effect: CHR +2, REL +1
+                 | DROP:   Kenji's Weighted Stylus
+                 | Notes:  His mind is visibly stimulated by the
+                 |         constraint. The weighted stylus is the
+                 |         only Kenji-personal item in the inventory.
+
+
+EVENT 3 -- THE 45-MINUTE DISCREPANCY  *** SETUP ***
+---------------------------------------------------
+
+Yesterday's ledger has a 45-min gap marked "Hydration Management."
+
+    [A] LOGICAL  | Admit you were resting
+                 | Effect: INT +1, REL +2
+                 | DROP:   Audit Exception Form PDF
+                 | Notes:  Clean. The Form is a legitimate trophy.
+
+    [B] PASSIVE  | Refuse to explain
+                 | Effect: REL -1
+                 | Notes:  "Non-disclosure logged. Discrepancy remains
+                 |         unresolved."
+
+    [C] CHAOTIC  | Raccoon attack story  (DICE)
+                 | Effect: CHR +2, REL +1
+                 | Notes:  *SHIP THIS PICK.* He writes "Raccoon-
+                 |         induced vertical displacement" verbatim.
+                 |         This sets up the Day 4 tier-up AND the Day
+                 |         7 callback. Crit-fail: "Raccoons do not
+                 |         operate on a forty-five-minute cycle."
+                 |         Either way it's filed.
+
+
+EVENT 4 -- KENJI'S OPINION REVEAL  *** TIER-UP ***
+--------------------------------------------------
+
++-----------------------------------------------------------------------------+
+| * SPOILER                                                                   |
+|                                                                             |
+| Kenji opens a fresh tab and looks at you. He reveals he knew the raccoon    |
+| story was fabricated AND that he respects the commitment. This is the       |
+| opinion-tier-up: Kenji's actual analysis of WHO you are, not just what      |
+| you do.                                                                     |
++-----------------------------------------------------------------------------+
+
+    [A] LOGICAL  | Accept formally
+                 | Effect: INT +1, REL +2
+                 | Notes:  "Professional Acknowledgement." Logged.
+
+    [B] PASSIVE  | Shrug
+                 | Effect: REL +0
+                 | Notes:  Filed under "Deflective Demeanor."
+
+    [C] CHAOTIC  | Demand to see his spreadsheet  (DICE)
+                 | Effect: CHR +2, REL +2
+                 | Notes:  "Absolutely not. That ledger is
+                 |         proprietary, but you are currently leading
+                 |         the chart." Best Kenji line in the day.
+
+  Memory write (canonical): "I told them I knew about the raccoon
+  fraud. They didn't panic. I appreciate their weirdly stubborn
+  commitment to the absurd. There is more to audit here than minutes."
+
+
+EVENT 5 -- POMODORO CHEAT-SHEET HANDOFF
+---------------------------------------
+
+    [A] LOGICAL  | Formal thanks
+                 | Effect: INT +1, REL +2
+                 | Notes:  "It is NOT bad" is profound praise from
+                 |         Kenji.
+
+    [B] PASSIVE  | Take it silently
+                 | Effect: REL +0
+                 | Notes:  He nods.
+
+    [C] CHAOTIC  | Ask if he laminated it himself  (DICE)
+                 | Effect: CHR +2
+                 | DROP:   Laminated Pomodoro Cheat-Sheet
+                 | Notes:  The artifact is on chaotic. Counter-
+                 |         intuitive but correct -- asking about the
+                 |         lamination IS what earns it. Logical gets
+                 |         the cheat sheet via PDF instead.
+
++-----------------------------------------------------------------------------+
+| + STRATEGY -- DAY 4 RACCOON DISCIPLINE                                      |
+|                                                                             |
+| Pick chaotic on evt-3 even if you've been all-logical until now. The        |
+| raccoon arc is the longest running joke in the canon. Skipping it makes     |
+| Day 7 evt-4 land less hard.                                                 |
++-----------------------------------------------------------------------------+
+
+
+===============================================================================
+[4.50]  DAY 5 -- MEI INTRODUCTION
+===============================================================================
+
+  Realm:      home
+  Type:       introduction
+  Tier-up:    FEAR @ evt-5
+  Events:     7
+  Introduces: Mei
+
+The best-written day in the canon, and the most emotionally honest. Mei
+is introduced via Hana, Hana locks you in the apartment with her, and
+the day climaxes in Mei sharing something she does not normally share.
+
+  _If Day 1's brother reveal earned my second session, Day 5's stove
+  fire earned my second run. The cadence of evt-5 is the cleanest
+  piece of craft in the game._
+
+
+EVENT 1 -- KNOCK AT 6:45 AM
+---------------------------
+
+Hana stands in the hallway with the empty water jug from Day 1. Behind
+her, a woman in chef's whites with a clipboard.
+
+    [A] LOGICAL  | Welcome both
+                 | Effect: INT +1, REL +2 (Hana)
+                 | Notes:  Standard.
+
+    [B] PASSIVE  | Try to deflect Mei
+                 | Effect: REL -1
+                 | Notes:  Hana physically pushes her past. You're
+                 |         not allowed to opt out of this.
+
+    [C] CHAOTIC  | Theatrical sweep  (DICE)
+                 | Effect: CHR +1, REL +0
+                 | Notes:  Mei is unmoved. Hana grins.
+
+
+EVENT 2 -- HANA LOCKS YOU IN
+----------------------------
+
+Hana hands Mei your apartment key (which Hana has had since Day 1
+without your permission) and leaves. Mei pulls out a 47-item kitchen
+audit form.
+
+    [A] LOGICAL  | Present the kitchen
+                 | Effect: INT +1, REL +2 (Mei)
+                 | Notes:  She begins inspecting.
+
+    [B] PASSIVE  | Refuse the audit
+                 | Effect: REL -1
+                 | Notes:  She waits in silence. Will not leave until
+                 |         something changes.
+
+    [C] CHAOTIC  | Add item to her list  (DICE)
+                 | Effect: CHR +1, REL +0
+                 | Notes:  "They added a line to my list. It was 'my
+                 |         will to live.' I am not sure if I should
+                 |         respect it or burn it."
+
+
+EVENT 3 -- IDENTIFY THE DEAD
+----------------------------
+
+Mei pulls out a jar of darkened paste dated August 11. You don't
+remember.
+
+    [A] LOGICAL  | Name it honestly
+                 | Effect: INT +1, REL +1
+                 | Notes:  "The meal does not survive."
+
+    [B] PASSIVE  | Refuse
+                 | Effect: REL -1
+                 | Notes:  She throws it out without comment.
+
+    [C] CHAOTIC  | Claim it's sentient fermentation  (DICE)
+                 | Effect: CHR +1, REL +0
+                 | DROP:   August 11th -- Preserved (1 jar)
+                 | Notes:  The jar gets labeled "TEST SUBJECT -- DO
+                 |         NOT EAT" and stays. Trophy unique to this
+                 |         branch.
+
+
+EVENT 4 -- TWO-CENTIMETER SPACING
+---------------------------------
+
+Six identical containers, knuckle-measured.
+
+    [A] LOGICAL  | Match exactly
+                 | Effect: INT +1, REL +2
+                 | Notes:  Mei's first almost-nod.
+
+    [B] PASSIVE  | Knock one out of alignment
+                 | Effect: REL -1
+                 | Notes:  Silently re-aligned.
+
+    [C] CHAOTIC  | Perpendicular container  (DICE)
+                 | Effect: CHR +2, REL +0
+                 | DROP:   Two-Centimeter Spacing -- Violated (1x)
+                 | Notes:  She stares for a full beat, then leaves
+                 |         it. Her version of "I see what you did."
+
+  Inquiry -- "Why two centimeters specifically?": Mei explains that
+  thumb-width is the actual unit; two centimeters is the retail-store-
+  shelf measurement, "and I have been compensating for cheap retail
+  rulers since culinary school."
+
+
+EVENT 5 -- THE STOVE FIRE  *** TIER-UP (FEAR) ***
+-------------------------------------------------
+
++-----------------------------------------------------------------------------+
+| * SPOILER                                                                   |
+|                                                                             |
+| While scooping rice into the third container, Mei's rhythm breaks. She      |
+| looks at her hand, then at the stove. She tells you something she does      |
+| not usually tell anyone: she used to have a different stove in a            |
+| different kitchen. There was a fire. Since then she counts everything.      |
+| Partly for her work. Partly because she's afraid she'll forget something    |
+| and the kitchen will burn again.                                            |
++-----------------------------------------------------------------------------+
+
+    [A] LOGICAL  | Gentle follow-up
+                 | Effect: INT +1, REL +3
+                 | Notes:  "The fire took everything, but the count
+                 |         keeps me safe from the heat." *THE LINE
+                 |         OF THE GAME.*
+
+    [B] PASSIVE  | Silent solidarity
+                 | Effect: REL +1
+                 | Notes:  She reads the silence perfectly. Doesn't
+                 |         need pity, just acknowledgment.
+
+    [C] CHAOTIC  | Deflect via Hana  (DICE)
+                 | Effect: CHR +2, REL +0
+                 | Notes:  "A faint trace of relief in her eyes." Mei
+                 |         is grateful for the deflection. *COUNTER-
+                 |         INTUITIVE BUT LEGIT:* declining to look at
+                 |         her fear is its own respect.
+
+  Memory write: "I told them about the stove. I do not know why. They
+  did not look at me with pity, which is the standard reaction. I
+  count to keep the fire away."
+
++-----------------------------------------------------------------------------+
+| + STRATEGY                                                                  |
+|                                                                             |
+| This is the only tier-up reveal in the game where the chaotic option is     |
+| not the wrong call. Mei reads silence and deflection as care. Pick          |
+| according to your instinct, not your spreadsheet.                           |
++-----------------------------------------------------------------------------+
+
+
+EVENT 6 -- LAMINATED GROCERY LIST
+---------------------------------
+
+    [A] LOGICAL  | Formal thanks
+                 | Effect: INT +1, REL +2
+                 | DROP:   Mei's Laminated Grocery List (annotated)
+                 | Notes:  Protein column, vegetable column,
+                 |         hydration column (Hana's initials), and a
+                 |         single "joy" line at the bottom.
+
+    [B] PASSIVE  | Set it aside
+                 | Effect: REL +0
+                 | Notes:  She waits until you pick it up.
+
+    [C] CHAOTIC  | Add Kenji to "joy" column  (DICE)
+                 | Effect: CHR +2, REL -1
+                 | Notes:  She writes it down. Slowly. Without
+                 |         comment. This is in canon now.
+
+
+EVENT 7 -- MILK-CARTON SEED
+---------------------------
+
+Mei grabs a black marker and writes one line on your milk carton before
+leaving. She turns the carton away so you can't see what.
+
+    [A] LOGICAL  | Turn carton around
+                 | Effect: INT +1, REL +0
+                 | Notes:  The reaction shows you the line. Reveal
+                 |         NOW.
+
+    [B] PASSIVE  | Wait until tomorrow
+                 | Effect: REL +0
+                 | Notes:  Day 6 evt-1 opens with the reveal. Better
+                 |         pacing.
+
+    [C] CHAOTIC  | Throw the marker  (DICE)
+                 | Effect: CHR +1, REL -1
+                 | Notes:  Mei already left. Carton untouched until
+                 |         tomorrow.
+
+
+===============================================================================
+[4.60]  DAY 6 -- HANA, DAILY (SEPARATION TRAINING)
+===============================================================================
+
+  Realm:   home
+  Type:    daily
+  Tier-up: none
+  Events:  5
+
+Hana solo again. Cold water, black coffee, 128-oz water jug with hourly
+emotion labels. Five events. The day's narrative arc is the milk-
+carton-line discovery at evt-1, then Hana's separation-training
+escalation, ending with the Aggressive Hydration Blueprint.
+
+
+EVENT 1 -- THE MILK CARTON (CALLBACK TO DAY 5)
+----------------------------------------------
+
+You walk into the kitchen at 6:14 AM and see the line Mei wrote: a sharp
+warning about milk-consumption protocol.
+
+    [A] LOGICAL  | Sign your name beneath
+                 | Effect: INT +1, REL +2
+                 | DROP:   Signed Milk Consumption Memo
+                 | Notes:  The carton becomes a multi-day artifact.
+
+    [B] PASSIVE  | Wipe with damp rag
+                 | Effect: REL -1
+                 | Notes:  "Ghostly gray cloud" -- line stays
+                 |         visible, rag stained.
+
+    [C] CHAOTIC  | Counter-clause in red pen  (DICE)
+                 | Effect: CHR +2, REL +1
+                 | Notes:  Mei will see it next week. The game is
+                 |         tracking this.
+
+
+EVENT 2 -- SEPARATION TRAINING
+------------------------------
+
+Hana emerges from your bathroom, wet hair, expression of "pure spiritual
+victory."
+
+    [A] LOGICAL  | Ask mechanics
+                 | Effect: INT +1, REL +2
+                 | Notes:  Inquiry available.
+
+    [B] PASSIVE  | Lock yourself in the bedroom
+                 | Effect: REL -1
+                 | Notes:  She waits in the hall.
+
+    [C] CHAOTIC  | Strip and march to the shower  (DICE)
+                 | Effect: STR +2, REL +2
+                 | Notes:  "Commitment level: unexpected." Top-tier
+                 |         chaotic.
+
+
+EVENT 3 -- 128-OZ JUG WITH EMOTION LABELS
+-----------------------------------------
+
+"7 AM: RIGHTEOUS INDIGNATION. 10 AM: HUMILITY. 2 PM: BETRAYAL. 6 PM:
+SURRENDER."
+
+    [A] LOGICAL  | Sign all seven
+                 | Effect: INT +1, REL +2
+                 | Notes:  Rare look of satisfaction from Hana.
+
+    [B] PASSIVE  | Compromise to morning only
+                 | Effect: REL -1
+                 | Notes:  She cuts 2 with disappointment.
+
+    [C] CHAOTIC  | Fill with sparkling water  (DICE)
+                 | Effect: CHR +2, REL +0
+                 | DROP:   Hana's heavy hydration band
+                 | Notes:  "An act of war but a brave one." She
+                 |         leaves a weighted wristband on your
+                 |         counter.
+
+
+EVENT 4 -- POSTURE VS TV
+------------------------
+
+    [A] LOGICAL  | Do the core test
+                 | Effect: STR +1, REL +1
+                 | Notes:  Logged as a small progress note.
+
+    [B] PASSIVE  | Claim the show is at a critical moment
+                 | Effect: REL -1
+                 | Notes:  She mutes the TV. Show keeps playing
+                 |         silently. Pressure escalates.
+
+    [C] CHAOTIC  | Do it WHILE watching, narrating loudly  (DICE)
+                 | Effect: STR +1, CHR +1, REL +0
+                 | Notes:  Reps count. She's annoyed but they count.
+
+  Inquiry -- "What does 'comfort is the slowest poison' mean?": Hana
+  explains it's not about denying pleasure, it's about not letting the
+  body forget what it can do. *Callback to Day 3 memory line.*
+
+
+EVENT 5 -- AGGRESSIVE HYDRATION BLUEPRINT
+-----------------------------------------
+
+8:30 PM. Hana cross-legged on your floor, breathing heavily, refusing
+the sofa backrest. She's hand-writing your schedule.
+
+    [A] LOGICAL  | Accept with reverence
+                 | Effect: INT +1, REL +2
+                 | DROP:   Hana's Aggressive Hydration Blueprint
+                 | Notes:  "Like a sacred scroll."
+
+    [B] PASSIVE  | Tape to fridge silently
+                 | Effect: REL +0
+                 | Notes:  She clocks the silent acceptance.
+
+    [C] CHAOTIC  | Fold into paper airplane  (DICE)
+                 | Effect: CHR +2, REL +0
+                 | Notes:  She CATCHES it mid-air. "The schedule
+                 |         survives flight, as it should." Best line
+                 |         of the day.
+
+
+===============================================================================
+[4.70]  DAY 7 -- KENJI, WEEK-CLOSER
+===============================================================================
+
+  Realm:   office
+  Type:    daily
+  Tier-up: MEMORY @ evt-4
+  Events:  5
+
+The final canonical day. Kenji has been at his desk since 5:30 AM
+tracking Tokyo pre-market. The week's threads converge at evt-4 where
+he reveals he knew about the raccoon story from Day 4 and filed it
+anyway. The day ends with him delivering a 4.2% throughput improvement
+sheet and one un-clinical line.
+
+
+EVENT 1 -- PINK HIMALAYAN SALT ORDER
+------------------------------------
+
+Hana's 4 AM lock-screen alert from yesterday fires. Three pounds of salt
+to be delivered before sunrise.
+
+    [A] LOGICAL  | Authorize
+                 | Effect: INT +1, REL +1
+                 | DROP:   Approved Electrolyte Order PDF
+                 | Notes:  Kenji files it as "preventative hydration
+                 |         overhead."
+
+    [B] PASSIVE  | Ignore the alert
+                 | Effect: REL -1
+                 | Notes:  The unspent-overhead column gets an entry.
+
+    [C] CHAOTIC  | Counter-offer table salt  (DICE)
+                 | Effect: CHR +1, REL -1
+                 | Notes:  "Hana sends weightlifter emojis." She'll
+                 |         file a formal complaint with Kenji.
+
+  Inquiry -- "Why Tokyo pre-market at 4 AM?": "Pre-market trades
+  dictate baseline margins for the day. If I do not track the opening
+  numbers, my column projections are based on speculation rather than
+  ledger data."
+
+
+EVENT 2 -- MANUAL ANALYSIS DAY
+------------------------------
+
+Kenji clears his desk to a single sheet of grid paper and a mechanical
+pencil.
+
+    [A] LOGICAL  | Submit your data
+                 | Effect: INT +1, REL +2
+                 | DROP:   Hand-Drawn Spending Graph
+                 | Notes:  12 minutes of silent precision drawing.
+
+    [B] PASSIVE  | Offer digital export
+                 | Effect: REL -1
+                 | Notes:  He sets it aside without opening, keeps
+                 |         doing manual entries.
+
+    [C] CHAOTIC  | Doodle a crown on the spending sheet  (DICE)
+                 | Effect: CHR +1, REL +1
+                 | Notes:  He incorporates the doodle as a column
+                 |         label. With absolute seriousness.
+
+  Inquiry -- "Why manual grids?": *The best line in Kenji's canon.*
+  "Digital spreadsheets let you smooth your data without knowing you
+  did; they hide the friction of your choices. Manual graphs make you
+  LOOK at every column. You feel the weight of the pencil on the paper
+  for every gold coin spent. It is a tax you forgot you signed."
+
+
+EVENT 3 -- 90-MINUTE DISCREPANCY
+--------------------------------
+
+He blocks your path in the hallway with "PREVENTATIVE RECOVERY
+PROTOCOLS." Asks you to explain a Tuesday gap.
+
+    [A] LOGICAL  | Claim recovery block
+                 | Effect: INT +1, REL +2
+                 | Notes:  Filed as compliant.
+
+    [B] PASSIVE  | Tell the truth
+                 | Effect: REL +0
+                 | Notes:  Logged without comment.
+
+    [C] CHAOTIC  | Reconnaissance for Mei  (DICE)
+                 | Effect: CHR +2, REL +1
+                 | DROP:   Kenji's Approved Audit Pass
+                 | Notes:  If you improvise the recon report he files
+                 |         it deadpan. Audit Pass is a permanent
+                 |         exemption-credit artifact.
+
+
+EVENT 4 -- KENJI'S RACCOON CONFESSION  *** TIER-UP (MEMORY) ***
+---------------------------------------------------------------
+
++-----------------------------------------------------------------------------+
+| * SPOILER                                                                   |
+|                                                                             |
+| 6:00 PM. The office is silent. Kenji is organizing physical invoices into   |
+| color-coded folders. Without looking up, he tells you he knew the           |
+| raccoon-fraud story from Day 4 was a lie in the moment AND chose to file    |
+| it without challenge -- because he saw you were committing to the audit     |
+| framework while resisting the surveillance, and he respects the             |
+| contradiction.                                                              |
++-----------------------------------------------------------------------------+
+
+    [A] LOGICAL  | Accept formally
+                 | Effect: INT +1, REL +2
+                 | Notes:  Formal acknowledgment. Kenji-REL jumps.
+
+    [B] PASSIVE  | Brush off
+                 | Effect: REL +0
+                 | Notes:  Filed under interesting-non-compliance
+                 |         column without comment.
+
+    [C] CHAOTIC  | Admit MORE lies  (DICE)
+                 | Effect: CHR +2, REL +1
+                 | DROP:   Origami Receipt Raccoon
+                 | Notes:  *THE SINGLE BEST ITEM IN THE GAME.* A
+                 |         folded paper raccoon Kenji has been
+                 |         keeping in his desk drawer since Day 4.
+                 |         Folded from the raccoon-week receipts. He
+                 |         gives it to you when you escalate. This is
+                 |         what tracking-as-care looks like.
+
+  Memory write (canonical): "I admitted I knew about the raccoon scam.
+  They looked startled, but they didn't walk out. That counts as
+  progress. I prefer auditing people who negotiate the column edges
+  rather than people who walk every line. They are interesting."
+
+
+EVENT 5 -- 4.2% THROUGHPUT IMPROVEMENT
+--------------------------------------
+
+10:00 PM. Kenji slides a clean single-page sheet across the desk.
+
+    [A] LOGICAL  | Thank formally
+                 | Effect: INT +1, REL +1
+                 | Notes:  One nod.
+
+    [B] PASSIVE  | Ask if 4.2% is good
+                 | Effect: REL +1
+                 | Notes:  "It is NOT bad." From him, this is
+                 |         profound.
+
+    [C] CHAOTIC  | Claim 4.2% was a fluke  (DICE)
+                 | Effect: CHR +2, REL +1
+                 | Notes:  "Regression would be its own data point."
+                 |         He laughs once. He laughs maybe twice all
+                 |         week.
+
+  _The week ends with Kenji laughing. Hana intercepting your morning
+  at 5:14 AM. Kenji laughing seven days later. The arc is
+  intentional._
+
+
+===============================================================================
+[5.00]  ITEM / TROPHY INDEX
+===============================================================================
+
+The canonical Main Line drops 18 named items across 7 days. v0.0.23
+introduced a three-tier rarity system (MEMENTO / KEEPSAKE / RELIC) but
+the run-004 payloads predate the reclassifier -- at load time, anything
+on a chaotic + dice roll gets auto-promoted to RELIC.
+
++----+-----------------------------------------+-------------------+---------+
+| DY | ITEM                                    | FROM              | TIER     |
++----+-----------------------------------------+-------------------+---------+
+| 1 | Hana's Baseline Performance Chart (PDF) | evt-1 logical     | Memento   |
+| 1 | Counter-Form Screenshot                 | evt-2 chaotic-crit| RELIC     |
+| 1 | Golden Posture Sticker (Digital)        | evt-4 logical     | Memento   |
+| 1 | Hana's 5 AM Wake-Up Protocol (PDF)      | evt-7 logical     | Memento   |
+| 2 | Hana's Running-Breath Voice Memo        | evt-3 logical *   | Memento   |
+| 2 | Both Locked-Out Calendar Slots (scrn)   | evt-3 chaotic     | RELIC     |
+| 3 | Neutral Spine Protocol PDF              | evt-1 logical     | Memento   |
+| 3 | Three-Color Weekly CSV Template         | evt-4 logical     | Memento   |
+| 3 | Kenji's drafting pencil                 | evt-5 chaotic-crit| RELIC     |
+| 3 | Negotiated Strike Card                  | evt-6 logical     | Keepsake  |
+| 4 | 7:02 AM Late-Stamp Receipt              | evt-1 logical     | Memento   |
+| 4 | Kenji's Weighted Stylus                 | evt-2 chaotic-crit| RELIC     |
+| 4 | Audit Exception Form PDF                | evt-3 logical     | Memento   |
+| 4 | Laminated Pomodoro Cheat-Sheet          | evt-5 chaotic-crit| RELIC     |
+| 5 | August 11th -- Preserved (1 jar)        | evt-3 chaotic     | RELIC     |
+| 5 | Two-Centimeter Spacing -- Violated (1x) | evt-4 chaotic     | RELIC     |
+| 5 | Mei's Laminated Grocery List            | evt-6 logical     | Keepsake  |
+| 6 | Signed Milk Consumption Memo            | evt-1 logical     | Memento   |
+| 6 | Hana's heavy hydration band             | evt-3 chaotic-crit| RELIC     |
+| 6 | Hana's Aggressive Hydration Blueprint   | evt-5 logical     | Keepsake  |
+| 7 | Approved Electrolyte Order PDF          | evt-1 logical     | Memento   |
+| 7 | Hand-Drawn Spending Graph               | evt-2 logical     | Keepsake  |
+| 7 | Kenji's Approved Audit Pass             | evt-3 chaotic     | RELIC     |
+| 7 | ** Origami Receipt Raccoon **           | evt-4 chaotic     | RELIC*    |
++----+-----------------------------------------+-------------------+---------+
+
+  * Day-2 evt-3 logical drops the voice memo even though you didn't pick
+    Hana. See [8.00] for why.
+  * The Origami Receipt Raccoon is the headliner RELIC.
+
+Maximum items in one run: 24 if you take chaotic-crit-success on every
+starred chaotic. Realistic max: ~16 (chaotic crits ~60%). All-logical
+gets you 12 items.
+
+
+===============================================================================
+[6.00]  TIER-UP REVEALS
+===============================================================================
+
++-----------------------------------------------------------------------------+
+| ! HEAVY SPOILERS BELOW                                                      |
+|                                                                             |
+| Three reveals, one per character. The fourth (Sam) is implied but not in    |
+| canon.                                                                      |
++-----------------------------------------------------------------------------+
+
+-------------------------------------------------------------------------------
+[6.01]  Day 1 evt-6 -- Hana, MEMORY: the brother
+-------------------------------------------------------------------------------
+
+The shoes are her brother's. He was her coach. He's not around anymore.
+She runs at 5 AM for him.
+
+Why it works: by Day 1 evt-6 Hana has been intense for six events. The
+reveal isn't an exposition dump -- it re-contextualizes the 5 AM texts
+as a ritual rather than a hectoring habit. The "he was her coach" line
+lands BECAUSE the prior six events established that she IS a coach.
+
+-------------------------------------------------------------------------------
+[6.02]  Day 4 evt-4 -- Kenji, OPINION: respect for the lie
+-------------------------------------------------------------------------------
+
+He knew the raccoon story was a lie. He filed it anyway. He says
+explicitly that he prefers people who negotiate the column edges over
+people who walk every line.
+
+Why it works: it's the only tier-up that retroactively makes a chaotic
+crit-success ALSO an emotional payoff. The game is telling you: chaos
+is canon. The mechanics support the theme.
+
+-------------------------------------------------------------------------------
+[6.03]  Day 5 evt-5 -- Mei, FEAR: the stove fire
+-------------------------------------------------------------------------------
+
+She used to have a different stove in a different kitchen. There was a
+fire. She counts everything since then partly because she's afraid
+she'll forget something and the kitchen will burn.
+
+Why it works: best-paced reveal in the canon. Three sentences of cold-
+open shift (rhythm breaks, looks at her hand, looks at the stove)
+before she speaks. The line "the count keeps me safe from the heat"
+retroactively recodes the 2cm spacing and the August-11th paste and the
+inspection list as trauma response. It changes what you've been
+watching for the last 40 minutes.
+
+-------------------------------------------------------------------------------
+[6.04]  Day 7 evt-4 -- Kenji, MEMORY: the receipt raccoon
+-------------------------------------------------------------------------------
+
+Kenji has been folding origami raccoons out of the raccoon-week receipts
+since Day 4. He gives one to you when you admit more lies. It's the
+only physical artifact in the canon that ONE of the characters made
+WITH THEIR OWN HANDS, for you.
+
+Why it works: surveillance-as-care, made literal. The audit was the
+relationship. The folded paper proves he was paying attention to the
+small things you said weren't real.
+
++-----------------------------------------------------------------------------+
+| + STRATEGY                                                                  |
+|                                                                             |
+| The four reveals rotate categories: MEMORY . (none) . (none) . OPINION .    |
+| FEAR . (none) . MEMORY. Per the game's rotation rule, Kenji's second        |
+| tier-up is memory-flavored because he already did opinion on Day 4. The     |
+| QUESTION category is unused in the canon -- saved for the post-Day-7        |
+| expansion.                                                                  |
++-----------------------------------------------------------------------------+
+
+
+===============================================================================
+[7.00]  STAT-BUILD PATHS
+===============================================================================
+
+>> STR (Hana's lane)
+   -----------------
+Most events with STR deltas are Hana days (1, 2, 3, 6). Optimal:
+logical-A on every Hana logical-with-STR. Floor: STR +4. Ceiling: STR +8
+(if you take chaotic-crit-success on Day 6 evt-2 strip-and-march).
+
+>> INT (Kenji's lane)
+   ------------------
+Highest density on Days 3, 4, 7. Logical-only nets INT +12 minimum.
+This is the easiest build to max -- Kenji rewards transparency with
+INT.
+
+>> GLD (gold column)
+   -----------------
+This is in the spec but the canon doesn't actually emit GLD deltas
+through any choice. As of v0.0.19 EARLY ACCESS, GLD is structural-only.
+Sam will tell you this if you ask.
+
+>> CHR (chaos lane)
+   ----------------
+Every chaotic choice in the week has a CHR delta. Crit-fails turn
+positive into negative, but the EV is still net positive on most days.
+Pure CHR run: +18 to +24 across the week.
+
+
+===============================================================================
+[8.00]  THINGS I MISSED ON RUN 1
+===============================================================================
+
+  1. *THE 47-SECOND VOICE MEMO.* Day 2 evt-3 logical drops Hana's
+     running-breath audio EVEN IF YOU PICK KENJI. I picked Kenji on
+     run 1 and didn't notice the memo. It plays automatically if you
+     tap the Case File entry. 46 seconds of her breathing. One second
+     of nothing.
+
+  2. *THE AUGUST 11TH PASTE IS THE ONLY MULTI-DAY TROPHY.* If you
+     defended the paste on Day 5 evt-3 chaotic, the jar appears in the
+     background of Mei's grocery-list scene at evt-6. The label "TEST
+     SUBJECT -- DO NOT EAT" is still in her handwriting. I missed this
+     on run 1 because I picked logical at evt-3.
+
+  3. *THE DAY-4 RACCOON ARC PAYS OFF TWICE.* If you DO NOT pick
+     chaotic on Day 4 evt-3, the Day 7 evt-4 reveal still happens but
+     Kenji refers to "the discrepancy" instead of the raccoon
+     specifically. The Origami Receipt Raccoon item is gated on having
+     picked chaotic on Day 4. *Do the raccoon.*
+
+  4. *INQUIRIES THAT CHANGE THE NEXT DAY.* Day 6 evt-4's "comfort is
+     the slowest poison" inquiry -- that exact phrase is in Hana's Day
+     3 memory write. The game is showing you that her language is
+     consistent across days, which means the LLM context is being
+     threaded properly. Small craft, but it's there.
+
+  5. *KENJI IS FUNDED BY HANA.* Day 7 evt-1's "Hana's physical
+     requirements are a recurring column I have been quietly funding
+     without comment" is the only canonical mention that Kenji is
+     paying Hana's expenses. I missed this entirely on run 1.
+
+
+===============================================================================
+[9.00]  MINI-REVIEW
+===============================================================================
+
+>> WHAT'S WORKING
+   --------------
+The character voice is the strongest part of the game. I covered the
+speaker labels on a printed-out transcript and I could identify Hana
+from Kenji from Mei in three lines or fewer, every time. That's craft
+discipline. The dialogue rule the team calls "blind-test" is real.
+
+The tier-up cadence is also working. Three reveals in seven days, each
+in a different category (memory / opinion / fear / memory), each
+landing at evt-(N-1) of its day. The cadence has the rhythm of a
+Persona Social Link arc compressed into a week.
+
+The chaos discipline is the load-bearing design choice. Chaotic is not
+"the wrong answer that does damage." It's the answer that gets you the
+memory. Day 3 evt-5 (eat the agreement card), Day 4 evt-3 (raccoon
+fraud), Day 5 evt-5 (deflect Mei's fear via Hana) all reward the
+disrespect with something only chaos can deliver. The game means it.
+
+>> WHAT'S STILL WOBBLY
+   -------------------
+Day 2 is the connecting tissue and it shows. The Kenji-call seam at
+evt-2 is the only thing that earns the day. If your first run had a
+crit-fail on evt-3 chaotic AND you picked logical or passive on evt-2,
+Day 2 is the day you might bounce.
+
+The GLD stat exists in the UI but doesn't move in canon. Sam
+acknowledges this if asked, which honors the cosmology, but a player
+who notices will wonder.
+
+The Elseworld tier (not covered here -- separate walkthrough) is a
+huge surface that the Main Line doesn't introduce. New players who hit
+the picker after Day 7 may not know what just happened. Documentation
+gap, not a story gap.
+
+>> VERDICT
+   -------
+9/10 for what it's trying to do. The thing it's trying to do isn't
+what most other "AI companion" apps are doing -- those are trying to
+be ChatGPT With a Persona. This is trying to be a published RPG module
+that happens to be authored by an LLM under a tight gate. The
+discipline of the gate is what makes it work. If the gate slips in
+v1.0+, the game dies. If it doesn't, this is the only product of its
+kind I can name.
+
+
+===============================================================================
+[10.00]  CREDITS & REVISIONS
+===============================================================================
+
+  Walkthrough author : lukewarmhotdog42
+                       (in honor of the Day 1 evt-1 chaotic option)
+
+  Source             : all 7 days of run-004 (LLM-pregenerated,
+                       canonical default as of v0.0.19 EARLY ACCESS)
+
+  Source files       : assets/payloads/run-004/*.json in the project
+                       repository
+
+  Methodology        : 3 full playthroughs (optimal-REL, chaos-only,
+                       deliberate-crit-fail), choice tables verified
+                       against payload JSON, item drops cross-
+                       referenced with the v0.0.23 rarity
+                       reclassifier.
+
+REVISION HISTORY
+----------------
+
+  - v1.0 (2026-05-27) -- initial publication. Full 7-day coverage, all
+    three tier-up reveals documented, item index complete.
+
+PERMISSIONS
+-----------
+
+This walkthrough is an artifact written in-fiction by an in-game
+player. It is intended for use by the project's /writers-room skill as
+a player-perspective audit document. Reproduce freely.
+
+
+===============================================================================
+                              [END OF FILE]
+===============================================================================
+
+  "They started writing about you on Day 1. By Day 5 there are four of
+   them and they compare notes."
+                                              -- The marketing copy.
+                                                  It's accurate.
+
+This guide may be reproduced freely as long as the author credit
+(lukewarmhotdog42) and the version number remain intact.
+
+My Life is an RPG (c) 2026 Cyber Valdez. This is a fan walkthrough.
+
+-- lukewarmhotdog42, signing off

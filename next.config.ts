@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       { source: "/manual", destination: "/manual.html" },
-      { source: "/walkthrough", destination: "/walkthrough.html" },
+      { source: "/walkthrough", destination: "/walkthrough.txt" },
       { source: "/campaign-editor", destination: "/campaign-editor.html" },
     ];
   },
