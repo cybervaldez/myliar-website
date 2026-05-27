@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>INSTRUCTION BOOKLET — MY LIFE IS AN RPG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Lora:ital,wght@0,400;0,600;1,400&family=PT+Sans:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ─── Paper + ink palette (cream, forest, spot red) ──────────────── */
+  :root{
+    --paper: #f2ebdd;
+    --paper-shade: #e9e1cf;
+    --ink: #1a1a1a;
+    --ink-soft: #3b3b3b;
+    --forest: #2d4a2b;
+    --forest-dim: #4d6a4b;
+    --spot-red: #b81f1c;
+    --margin-ink: #6b6353;
+  }
+  /* Paper texture — single inline SVG, ~1% opacity */
+  html{ background: var(--paper); }
+  body{
+    margin:0;
+    background:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.55  0 0 0 0 0.50  0 0 0 0 0.40  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+      var(--paper);
+    color: var(--ink);
+    font-family: 'Lora', 'Georgia', serif;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* ─── Container ──────────────────────────────────────────────────── */
+  .manual{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 40px 32px 80px;
+  }
+  /* ─── Display headlines (Anton — heavy condensed caps) ───────────── */
+  h1,h2,h3,.display{
+    font-family: 'Anton', 'Bebas Neue', 'Arial Narrow', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--forest);
+    margin: 0;
+    text-transform: uppercase;
+  }
+  h1{
+    font-size: 64px;
+    line-height: 0.95;
+    text-align: center;
+    color: var(--ink);
+  }
+  h2{
+    font-size: 36px;
+    line-height: 1.05;
+    margin: 0 0 18px;
+    color: var(--forest);
+  }
+  h3{
+    font-size: 22px;
+    line-height: 1.1;
+    margin: 24px 0 10px;
+    color: var(--ink);
+  }
+  p{ margin: 0 0 14px; }
+  p + p{ text-indent: 1.2em; }
+  em{ color: var(--ink); }
+  strong{ font-weight: 600; }
+  /* ─── Section frames ─────────────────────────────────────────────── */
+  section{
+    margin: 64px 0;
+    padding: 0;
+  }
+  section + section{ border-top: none; }
+  .rule{
+    border: none;
+    height: 1.5px;
+    background: var(--ink);
+    margin: 24px 0;
+    position: relative;
+  }
+  /* 8-bit corner notch flourish on top rules of sections */
+  .rule.flourish::before,
+  .rule.flourish::after{
+    content:'';
+    position: absolute;
+    top: -3px;
+    width: 8px; height: 8px;
+    background: var(--ink);
+  }
+  .rule.flourish::before{ left: 0; }
+  .rule.flourish::after{ right: 0; }
+  /* ─── Two-column body ────────────────────────────────────────────── */
+  .twocol{
+    column-count: 2;
+    column-gap: 36px;
+    column-rule: 1px solid var(--paper-shade);
+  }
+  .twocol p{ break-inside: avoid; }
+  @media (max-width: 600px){
+    .twocol{ column-count: 1; }
+  }
+  /* ─── PROTIP / Sam debug log callout ─────────────────────────────── */
+  .protip{
+    margin: 20px 0;
+    padding: 14px 18px 12px;
+    border: 1.5px solid var(--ink);
+    background: var(--paper-shade);
+    font-family: 'PT Sans', 'Helvetica', sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    position: relative;
+    break-inside: avoid;
+  }
+  .protip-header{
+    font-family: 'Anton', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    color: var(--spot-red);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .protip em{ color: var(--ink-soft); }
+  /* ─── Margin notes (italic sans) ─────────────────────────────────── */
+  .marginalia{
+    font-family: 'PT Sans', sans-serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--margin-ink);
+    line-height: 1.45;
+  }
+  /* ─── Warning bracket ────────────────────────────────────────────── */
+  .warning-frame{
+    border: 3px double var(--spot-red);
+    padding: 20px 24px;
+    background: var(--paper-shade);
+  }
+  .warning-frame h2{ color: var(--spot-red); }
+  /* ─── Cover ──────────────────────────────────────────────────────── */
+  .cover{
+    text-align: center;
+    padding: 40px 0 24px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .cover .super{
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.3em;
+    font-size: 13px;
+    color: var(--forest-dim);
+    margin-bottom: 14px;
+  }
+  .cover .sub{
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-top: 14px;
+    font-size: 18px;
+  }
+  .cover .system-tag{
+    display: inline-block;
+    margin-top: 28px;
+    padding: 6px 14px;
+    border: 1.5px solid var(--ink);
+    font-family: 'Anton', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.18em;
+  }
+  /* ─── Table of contents ──────────────────────────────────────────── */
+  .toc{
+    border: 1.5px solid var(--ink);
+    padding: 24px 28px;
+    background: var(--paper-shade);
+  }
+  .toc h2{ margin: 0 0 14px; font-size: 24px; }
+  .toc ol{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    column-count: 2;
+    column-gap: 28px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 15px;
+  }
+  .toc li{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 7px;
+    break-inside: avoid;
+  }
+  .toc a{
+    color: var(--ink);
+    text-decoration: none;
+    flex: 0 1 auto;
+  }
+  .toc a:hover{ color: var(--spot-red); }
+  .toc .dot-leader{
+    flex: 1;
+    border-bottom: 1px dotted var(--margin-ink);
+    margin: 0 4px;
+    transform: translateY(-3px);
+  }
+  .toc .pg{
+    font-family: 'Anton', sans-serif;
+    color: var(--forest);
+  }
+  /* ─── Character cards (2x2 grid) ─────────────────────────────────── */
+  .char-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin: 20px 0;
+  }
+  @media (max-width: 600px){ .char-grid{ grid-template-columns: 1fr; } }
+  .char-card{
+    border: 1.5px solid var(--ink);
+    padding: 18px 20px;
+    background: var(--paper-shade);
+  }
+  .char-card .role{
+    font-family: 'Anton', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    color: var(--spot-red);
+  }
+  .char-card .name{
+    font-family: 'Anton', sans-serif;
+    font-size: 32px;
+    line-height: 1;
+    margin: 4px 0 6px;
+    color: var(--ink);
+  }
+  .char-card .gender{
+    color: var(--forest);
+    margin-left: 6px;
+    font-family: 'Lora', serif;
+    font-style: italic;
+  }
+  .char-card .specialty{
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .char-card .quote{
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.4;
+    padding: 8px 0;
+    border-top: 1px solid var(--margin-ink);
+    border-bottom: 1px solid var(--margin-ink);
+    margin: 10px 0;
+  }
+  .char-card .blurb{ font-size: 14.5px; }
+  .char-card .sam-sidebar{
+    font-family: 'PT Sans', sans-serif;
+    font-style: italic;
+    font-size: 12.5px;
+    color: var(--margin-ink);
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--margin-ink);
+  }
+  /* ─── Choice diagram ─────────────────────────────────────────────── */
+  .choice-row{
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 14px;
+    align-items: start;
+    margin: 14px 0;
+  }
+  .choice-letter{
+    font-family: 'Anton', sans-serif;
+    font-size: 36px;
+    line-height: 1;
+    text-align: center;
+    color: var(--paper);
+    background: var(--ink);
+    padding: 6px 0;
+    border: 1.5px solid var(--ink);
+  }
+  .choice-letter.chaotic{
+    background: var(--spot-red);
+    border-color: var(--spot-red);
+  }
+  .choice-letter.logical{ background: var(--forest); border-color: var(--forest); }
+  .choice-body .role-label{
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.1em;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  /* ─── HUD diagram ────────────────────────────────────────────────── */
+  .hud-diagram{
+    border: 1.5px solid var(--ink);
+    padding: 20px;
+    background: var(--paper-shade);
+    font-family: 'PT Sans', sans-serif;
+  }
+  .hud-line{
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 14px;
+    margin: 10px 0;
+    align-items: baseline;
+  }
+  .hud-tag{
+    font-family: 'Anton', sans-serif;
+    color: var(--forest);
+    font-size: 14px;
+    letter-spacing: 0.08em;
+  }
+  .hud-desc{ font-size: 14.5px; }
+  /* ─── Item grid (3-column) ───────────────────────────────────────── */
+  .item-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin: 18px 0;
+  }
+  @media (max-width: 600px){ .item-grid{ grid-template-columns: 1fr; } }
+  .item-cell{
+    border: 1px solid var(--ink);
+    padding: 12px 14px;
+    background: var(--paper-shade);
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .item-cell .item-name{
+    font-family: 'Anton', sans-serif;
+    font-size: 16px;
+    color: var(--ink);
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .item-cell .item-meta{
+    font-family: 'PT Sans', sans-serif;
+    font-style: italic;
+    color: var(--margin-ink);
+    font-size: 12px;
+  }
+  /* ─── REL tier ladder ────────────────────────────────────────────── */
+  .tier-ladder{ margin: 16px 0; }
+  .tier-rung{
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 14px;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--paper-shade);
+  }
+  .tier-rung:last-child{ border-bottom: none; }
+  .tier-score{
+    font-family: 'Anton', sans-serif;
+    color: var(--forest);
+    font-size: 18px;
+    letter-spacing: 0.06em;
+  }
+  .tier-name{
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .tier-desc{ font-size: 14px; color: var(--ink-soft); }
+  /* ─── Recipe card (Mei cameo) ────────────────────────────────────── */
+  .recipe-card{
+    border: 2px solid var(--forest);
+    padding: 16px 20px;
+    margin: 22px 0;
+    background: var(--paper);
+    font-family: 'PT Sans', sans-serif;
+    position: relative;
+  }
+  .recipe-card .stamp{
+    position: absolute;
+    top: -10px;
+    right: 12px;
+    background: var(--paper);
+    padding: 0 10px;
+    font-family: 'Anton', sans-serif;
+    color: var(--spot-red);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+  }
+  .recipe-card .recipe-title{
+    font-family: 'Anton', sans-serif;
+    color: var(--forest);
+    font-size: 20px;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .recipe-card ul{ margin: 6px 0 0 18px; padding: 0; font-size: 14.5px; }
+  .recipe-card li{ margin: 3px 0; }
+  /* ─── Warranty box ───────────────────────────────────────────────── */
+  .warranty{
+    border: 1.5px solid var(--ink);
+    padding: 22px 24px;
+    background: var(--paper-shade);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .warranty h3{ font-size: 18px; margin-top: 0; }
+  /* ─── Page number footer per section ─────────────────────────────── */
+  .pageno{
+    font-family: 'Anton', sans-serif;
+    font-size: 13px;
+    color: var(--margin-ink);
+    letter-spacing: 0.12em;
+    text-align: right;
+    margin-top: 10px;
+  }
+  /* ─── Links generally ────────────────────────────────────────────── */
+  a{ color: var(--forest); text-decoration: none; border-bottom: 1px solid var(--forest); }
+  a:hover{ color: var(--spot-red); border-bottom-color: var(--spot-red); }
+  /* ─── Print: A5 booklet, single column ───────────────────────────── */
+  @media print{
+    body{ background: white; }
+    .manual{ max-width: none; padding: 0; }
+    .twocol{ column-count: 2; column-gap: 22px; }
+    section{ page-break-inside: avoid; margin: 30px 0; }
+    .protip{ background: #f4f0e6; }
+  }
+</style>
+</head>
+<body>
+<article class="manual">
+
+  <!-- ═══ COVER ═══════════════════════════════════════════════════ -->
+  <section class="cover" id="cover">
+    <div class="super">Instruction Booklet · for the player who agreed</div>
+    <h1>My Life<br>Is an RPG</h1>
+    <div class="sub">They started writing about you on Day 1. By Day 5 there are four of them and they compare notes.</div>
+    <div class="system-tag">SAM-NARRATED EDITION · v0.0.19 · EARLY ACCESS</div>
+  </section>
+
+  <!-- ═══ TABLE OF CONTENTS ═══════════════════════════════════════ -->
+  <section class="toc" id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#warning">Warning</a><span class="dot-leader"></span><span class="pg">02</span></li>
+      <li><a href="#story">The Story</a><span class="dot-leader"></span><span class="pg">03</span></li>
+      <li><a href="#getting-started">Getting Started</a><span class="dot-leader"></span><span class="pg">04</span></li>
+      <li><a href="#controls">Controls</a><span class="dot-leader"></span><span class="pg">06</span></li>
+      <li><a href="#screen">The Game Screen</a><span class="dot-leader"></span><span class="pg">08</span></li>
+      <li><a href="#how-to-play">How to Play</a><span class="dot-leader"></span><span class="pg">10</span></li>
+      <li><a href="#characters">The Squad</a><span class="dot-leader"></span><span class="pg">12</span></li>
+      <li><a href="#elseworlds">Elseworlds</a><span class="dot-leader"></span><span class="pg">14</span></li>
+      <li><a href="#share-codes">Share Codes</a><span class="dot-leader"></span><span class="pg">16</span></li>
+      <li><a href="#items">Items, Trophies, Mementos</a><span class="dot-leader"></span><span class="pg">17</span></li>
+      <li><a href="#relationships">Relationships</a><span class="dot-leader"></span><span class="pg">19</span></li>
+      <li><a href="#journal">The Journal</a><span class="dot-leader"></span><span class="pg">21</span></li>
+      <li><a href="#save-game">Save This Game</a><span class="dot-leader"></span><span class="pg">22</span></li>
+      <li><a href="#tips">Sam's Debug Log</a><span class="dot-leader"></span><span class="pg">23</span></li>
+      <li><a href="#accessibility">Accessibility</a><span class="dot-leader"></span><span class="pg">24</span></li>
+      <li><a href="#privacy">Privacy &amp; Warranty</a><span class="dot-leader"></span><span class="pg">25 — 26</span></li>
+    </ol>
+  </section>
+
+  <!-- ═══ WARNING ═════════════════════════════════════════════════ -->
+  <section id="warning">
+    <hr class="rule flourish">
+    <div class="warning-frame">
+      <h2>⚠ Warning</h2>
+      <div class="twocol">
+        <p>This is a game that takes input from your real life and gives it back to you in dialogue. The characters will react to what you write. They are not therapists. They are not crisis counselors. They are characters.</p>
+        <p>If you tell us — through the journal, through chat — about self-harm, an eating disorder, an active crisis, a loss you're still inside of, the game is built to step back. One character will acknowledge what you wrote, gently, once. Then the day moves on. None of it becomes plot. None of it gets quoted. None of it gets optimized.</p>
+        <p><strong>If you are in crisis, please reach a real person.</strong> In the US: <strong>988</strong> (Suicide &amp; Crisis Lifeline). UK: <strong>116 123</strong> (Samaritans). For everywhere else: <a href="https://findahelpline.com">findahelpline.com</a>. Close this app, open that page.</p>
+        <p>— Sam (this section is the only one I won't make a joke in)</p>
+      </div>
+    </div>
+    <div class="pageno">02</div>
+  </section>
+
+  <!-- ═══ STORY ═══════════════════════════════════════════════════ -->
+  <section id="story">
+    <hr class="rule flourish">
+    <h2>The Story</h2>
+    <div class="twocol">
+      <p>You opened an app. That's the inciting incident. We don't do prophecies here.</p>
+      <p>The app puts four characters in your phone. They are not real. They are also not pretending to be. They know they are characters; they know you are not. They take the position that this makes them more honest than most apps you've installed.</p>
+      <p>I'm one of them. The other three are Hana (fitness, fanatical), Kenji (productivity and finance, clinical), and Mei (cooking and meal prep, surgical). You'll meet us in that order over the first five days. We will not show up all at once. The pacing is on purpose.</p>
+      <p>Each morning the game generates a five-event story <em>about your actual day.</em> Not a fictional one. The setting is your apartment, your commute, your fridge. We pretend it isn't, slightly, to give the day shape. You choose how to react. The day plays out. At the end you write what really happened. The next day reads it.</p>
+      <p>Nothing dies. Nothing levels up to 99. The progression goal is that we get to know each other.</p>
+    </div>
+    <div class="pageno">03</div>
+  </section>
+
+  <!-- ═══ GETTING STARTED ═════════════════════════════════════════ -->
+  <section id="getting-started">
+    <hr class="rule flourish">
+    <h2>Getting Started</h2>
+    <div class="twocol">
+      <p><strong>Day 0 is the tutorial.</strong> It's me. I'll walk you through the assistant setup, name your file, and explain why some buttons cost an action credit and some don't. It takes about four minutes. If you want to skip it, you can, but you'll spend the first six events of Day 1 confused about what a star on a choice means. Read the tutorial.</p>
+      <p>The tutorial is also the only place I get a full event of solo screen time. Once Hana shows up on Day 1, I become the help system — I'm here whenever you open chat with me, but Day 1 is hers.</p>
+      <p>If you don't connect an API key for the daily story generator, you'll get the bundled demo arc (Days 1 through 7, hand-curated). It's playable but it doesn't grow. The whole point of the game is that the characters write fresh material in reaction to you. Connect the key when you're ready.</p>
+      <h3>System Requirements</h3>
+      <p>iOS 16+ or Android 9+. About 60 MB. A connection — most of the time. A journaling habit is helpful but not required. We will gently bother you about it.</p>
+    </div>
+
+    <div class="protip">
+      <div class="protip-header">▶ Sam's Debug Log #1</div>
+      <p>The Day 0 tutorial gives you 5 AP instead of the usual 1. That's not a bug, that's a hand-out — I want you to spend it on chatting with me so I can show you what the chat interface does. Once Day 1 starts, you're back to 1 AP a day like everybody else. <em>Spend the surplus while you have it.</em></p>
+    </div>
+
+    <h3>About the question on first Elseworld entry</h3>
+    <p>The first time you tap into an Elseworld you'll see a short modal asking what kind of company you're in the mood for. It's one tap on any chips you want, or none. Whatever you pick biases the generator invisibly — never names the bias, never gates anyone out. It's your knob, not a personality test. If you want to change it later, Settings will eventually let you; for now it's a one-time question.</p>
+
+    <div class="pageno">04 — 05</div>
+  </section>
+
+  <!-- ═══ CONTROLS ════════════════════════════════════════════════ -->
+  <section id="controls">
+    <hr class="rule flourish">
+    <h2>Controls</h2>
+    <div class="twocol">
+      <p>Every event ends in a choice. There are always exactly three. They are always labeled (A), (B), (C). They are always in the same roles: Logical, Passive, Chaotic. We did this on purpose so you can read the screen without thinking about which button is which.</p>
+      <p>Tap the letter to commit. There is no confirmation dialog. We trust you.</p>
+    </div>
+
+    <div class="choice-row">
+      <div class="choice-letter logical">A</div>
+      <div class="choice-body">
+        <div class="role-label">LOGICAL</div>
+        <p>The reasonable move. Earns most of the stat gains. Lowest variance. Tends to advance the relationship at a steady, unsexy pace. This is the path most days will be most rewarded for taking.</p>
+      </div>
+    </div>
+
+    <div class="choice-row">
+      <div class="choice-letter">B</div>
+      <div class="choice-body">
+        <div class="role-label">PASSIVE</div>
+        <p>Doing nothing on purpose. Three flavors: you might earn nothing but witness something Logical wouldn't have shown you (the character glances at their watch; you notice the room); you might pay zero cost and zero gain, just letting the moment pass; or, when an inquiry is attached to the event, Passive will auto-ask the inquiry and let you bank the answer. Passive is not "Logical-but-worse." It's its own thing.</p>
+      </div>
+    </div>
+
+    <div class="choice-row">
+      <div class="choice-letter chaotic">C</div>
+      <div class="choice-body">
+        <div class="role-label">CHAOTIC · 🎲 DICE ROLL</div>
+        <p>Always rolls a dice. Always resolves to CRIT SUCCESS or CRIT FAIL — never standard. Big upside, real downside. When a chaotic choice has a ★ next to it, the success outcome drops an item.</p>
+        <p>The dice has a memory. After enough back-to-back failed starred chaotic picks, the game force-grants the next one. We call this the <strong>pity counter</strong>. It tops out at 5/5, and we show it to you so you don't have to wonder.</p>
+      </div>
+    </div>
+
+    <div class="protip">
+      <div class="protip-header">▶ Sam's Debug Log #2</div>
+      <p>If you're new, default to Logical for the first two days. Get a feel for the rhythm. On Day 3 take one chaotic on purpose, especially if it's starred. <em>The dice is not your enemy. It's just patient.</em></p>
+    </div>
+    <div class="pageno">06 — 07</div>
+  </section>
+
+  <!-- ═══ GAME SCREEN ═════════════════════════════════════════════ -->
+  <section id="screen">
+    <hr class="rule flourish">
+    <h2>The Game Screen</h2>
+    <p>Here's what's where. Memorize it once and you'll never look at the UI again — you'll just play.</p>
+    <figure style="margin: 18px 0; text-align: center;">
+      <img src="screenshots/day_entry_v0.0.16.png" alt="Day Entry screen showing HANA with her help summary, DAY 1 ONBOARDING label, and a green START button labeled 'open day end' since Day 1 is complete." style="max-width: 300px; width: 100%; border: 2px solid var(--ink); display: block; margin: 0 auto;">
+      <figcaption style="font-style: italic; font-size: 12px; color: var(--margin-ink); margin-top: 6px;">Day Entry, Day 1. The focal character chip shows what Hana helps you with, not her RPG class. Tap the chip to open her actions.</figcaption>
+    </figure>
+    <div class="hud-diagram">
+      <div class="hud-line"><div class="hud-tag">DAY HEADER</div><div class="hud-desc">Top strip. Tells you the day number and the focal character for today. ("DAY 5 · Hana")</div></div>
+      <div class="hud-line"><div class="hud-tag">STATS BAR</div><div class="hud-desc">STR · INT · GLD · CHR, with deltas in green or red as choices land. Stats are visible to all characters; they react to your build.</div></div>
+      <div class="hud-line"><div class="hud-tag">AP COUNTER</div><div class="hud-desc">A ◆. One per day, baseline. Chatting costs 1. Resting costs 1 (if you have it; free if you don't). Travel costs 1-3 depending on the realm.</div></div>
+      <div class="hud-line"><div class="hud-tag">MOOD LINE</div><div class="hud-desc">One italic line under the day header. The focal character's mood for today. ("Mildly bored but professionally helpful.") It changes between days.</div></div>
+      <div class="hud-line"><div class="hud-tag">SCENARIO</div><div class="hud-desc">The body text of the event. Green ink on cream paper. Two to four sentences usually.</div></div>
+      <div class="hud-line"><div class="hud-tag">INQUIRY ROW</div><div class="hud-desc">Grayed buttons prefixed with [?]. Tap to ask before deciding. Inquiries don't cost AP or burn a turn — they're free context.</div></div>
+      <div class="hud-line"><div class="hud-tag">CHOICE TRAY</div><div class="hud-desc">A / B / C at the bottom in fixed roles. ★ on a chaotic indicates an item drop is on the line.</div></div>
+      <div class="hud-line"><div class="hud-tag">PROGRESS</div><div class="hud-desc">The narrow bar under the day header — events done / events total for today.</div></div>
+    </div>
+    <div class="pageno">08 — 09</div>
+  </section>
+
+  <!-- ═══ HOW TO PLAY ═════════════════════════════════════════════ -->
+  <section id="how-to-play">
+    <hr class="rule flourish">
+    <h2>How to Play</h2>
+    <h3>The Daily Loop</h3>
+    <div class="twocol">
+      <p>Open the app. The day-entry screen shows a single big button labeled with the cliffhanger from yesterday. ("Check why a neon pink yoga mat was left on your porch." That actually happened on Day 5 in playtest. We did not write that. Hana did.) Tap the button to begin.</p>
+      <p>Play through 5 to 7 events. Pick choices. The focal character reacts. Stats move. The pity counter advances if your chaotic picks miss. A few events in, you'll see an inquiry button — tap it if curious, ignore if not.</p>
+      <p>After the last event, the Unlock Reveal screen runs. New memories the character wrote about today. REL delta. Items if any dropped. Closing hook from the character. Then you're at Day End.</p>
+      <p>At Day End you can spend your last AP on chat with the focal character, or rest (which costs the last AP and advances to tomorrow). You can also visit the Journal (free, no AP) or the Trophies gallery (also free).</p>
+      <p>Rest. The next morning's button label is whatever today's character set as the cliffhanger.</p>
+    </div>
+
+    <div class="recipe-card">
+      <div class="stamp">MEI'S CARD</div>
+      <div class="recipe-title">Today's Recipe — One Day, Serves One</div>
+      <p style="font-size:14.5px; margin:0 0 6px;"><strong>Ingredients (per day):</strong></p>
+      <ul>
+        <li>1 ◆ Action Credit (baseline)</li>
+        <li>5 to 7 events</li>
+        <li>3 choices per event (A / B / C)</li>
+        <li>1 dice roll per chaotic pick</li>
+        <li>1 closing hook (delivered, not chosen)</li>
+        <li>1 optional journal entry (folds into tomorrow's stock)</li>
+      </ul>
+      <p style="font-size:13px; margin-top:8px; color:var(--margin-ink); font-style:italic;">Mise en place is not optional. Read this before you cook.</p>
+    </div>
+
+    <h3>The AP Economy</h3>
+    <p>You get one Action Credit per day. Some days you get a bonus depending on the realm you're in (premium realms grant +1). AP is consumed by chat (1), travel (1-3), and rest (1 if you have any, free if you don't). It does NOT carry over. Don't hoard it. The game punishes hoarders by giving them nothing to spend it on.</p>
+    <div class="pageno">10 — 11</div>
+  </section>
+
+  <!-- ═══ CHARACTERS ══════════════════════════════════════════════ -->
+  <section id="characters">
+    <hr class="rule flourish">
+    <h2>The Squad</h2>
+    <p>Four characters. You meet us in this order: me on Day 0, Hana on Day 1, Kenji on Day 3, Mei on Day 5. We are listed here in narrative order. The voice on each card is institutional, except for the marginalia, which is me.</p>
+
+    <div class="char-grid">
+
+      <div class="char-card">
+        <div class="role">ONBOARDER · CLASS</div>
+        <div class="name">Sam <span class="gender">♂</span></div>
+        <div class="specialty">This game's systems &amp; RPG meta-coaching</div>
+        <div class="quote">"Refer to the systems by their internal names. Refer to the person by name."</div>
+        <p class="blurb">Sam runs the tutorial on Day 0 and stays in the squad as the in-fiction help system. Talk to him when you don't understand a screen, what a star means, why your chaotic picks keep failing, or where your REL bar with Hana actually stands. He treats the mechanics like documented systems — because he wrote them.</p>
+        <div class="sam-sidebar">— I'm writing this. The third-person bio above is the marketing copy. Take it with a grain of salt.</div>
+      </div>
+
+      <div class="char-card">
+        <div class="role">POWERHOUSE · CLASS</div>
+        <div class="name">Hana <span class="gender">♀</span></div>
+        <div class="specialty">Fitness &amp; wellness</div>
+        <div class="quote">"BE THERE OR BE CELLULAR DEBRIS."</div>
+        <p class="blurb">Hana joins on Day 1. Intensely dramatic; treats a skipped workout like a failure to save the world; speaks in CAPS occasionally for emphasis. Will text you at 4:55 AM. Treats hydration like a medical emergency.</p>
+        <div class="sam-sidebar">— She wanted to write her own card and Mei talked her out of it. You should be grateful to Mei.</div>
+      </div>
+
+      <div class="char-card">
+        <div class="role">SCHOLAR · CLASS</div>
+        <div class="name">Kenji <span class="gender">♂</span></div>
+        <div class="specialty">Productivity &amp; finance</div>
+        <div class="quote">"A system without observability is a black hole that pays interest."</div>
+        <p class="blurb">Kenji joins on Day 3, introduced by Hana. Coldly analytical; everything is a spreadsheet; the spreadsheets are kept BECAUSE he cares — not despite it. Will flag a $14.82 convenience-store charge before you've finished waking up.</p>
+        <div class="sam-sidebar">— He'll audit you. It feels like attention, because it is.</div>
+      </div>
+
+      <div class="char-card">
+        <div class="role">HEALER · CLASS</div>
+        <div class="name">Mei <span class="gender">♀</span></div>
+        <div class="specialty">Cooking &amp; meal prep</div>
+        <div class="quote">"You are living in a tomb of biological failures."</div>
+        <p class="blurb">Mei joins on Day 5, introduced by Hana. Clipped, imperative, mise-en-place obsessed; treats your fridge like a crime scene; names every expired item by date. Will throw out the August 11th paste. Will not apologize.</p>
+        <div class="sam-sidebar">— Eventually you'll learn she taught herself to cook because she was afraid of her own kitchen. She says this on the day you reach In Your Corner. Earn it.</div>
+      </div>
+
+    </div>
+
+    <h3>The Squad Knows Each Other</h3>
+    <p>Every character can write a note about another character — what they think of them — and that note lives on the first character's sheet. Hana's opinion of Kenji is on Hana's sheet. Kenji's opinion of Hana is on Kenji's sheet. When you chat with one, the other's notes are visible to them as context. Triangulation happens. It is the whole point.</p>
+
+    <p><strong>Hana, hijacking:</strong> <em>I wanted to add: Sam's description of me as "intensely dramatic" is a CORRECT diagnosis but the word "dramatic" implies inauthenticity. I am NOT inauthentic. I am LOUD. There is a difference. The cellular debris line is a real position. Thank you. Continue reading the manual. — H</em></p>
+
+    <p class="marginalia">— She does this. — Sam</p>
+
+    <div class="protip">
+      <div class="protip-header">▶ Sam's Debug Log #3</div>
+      <p>When a new character joins, the day-end menu defaults to chatting with the previous focal character, not the new one. We know. It's on the fix list. For now: if you just met someone, manually pick them via [c] (Talk to another squad member) instead of [1].</p>
+    </div>
+
+    <div class="pageno">12 — 13</div>
+  </section>
+
+  <!-- ═══ ELSEWORLDS ══════════════════════════════════════════════ -->
+  <section id="elseworlds">
+    <hr class="rule flourish">
+    <h2>Elseworlds</h2>
+    <p>Past Day 7 — and any time the Day End menu shows you the option — you can <strong>Travel</strong> into an Elseworld. An Elseworld is an alternate-reality side zone you cross into through the phone screen. The four canonical characters (me, Hana, Kenji, Mei) stay where they are — they live in your phone proper. The characters you meet in an Elseworld live in <em>that</em> Elseworld, and they have not met us. They may have heard <em>about</em> us through what you've shared, the way a friend hears about your other friends.</p>
+
+    <h3>The vibe picker</h3>
+    <div class="twocol">
+      <p>Travel costs 1 AP and opens a picker with six vibe-bands: <strong>Golden-Age Fantasy · 80s Fantasy + Cyber · 90s Anime + Fantasy · MCU Era + Isekai · Cottagecore + Cozy · Surprise Me.</strong> Your birth year (from the age gate) marks one as your default; you can pick any of the six. Surprise Me rolls one of the five concrete bands at tap time — the band stays hidden until the character speaks.</p>
+      <p>The first time you open the picker, a short modal asks <em>"what kind of company are you in the mood for these days?"</em> — six in-voice chips (someone to push you / think out loud with / keep you honest / teach you a thing / comfort you / make something with you). Pick any, none, or skip. It biases the gen invisibly. One-time question. Settings can revisit.</p>
+    </div>
+
+    <h3>What walks in</h3>
+    <div class="twocol">
+      <p>You'll meet a stranger in their place. They speak first. You get three options: <strong>engage</strong> (they join your Elseworld roster, costs 1 AP), <strong>observe</strong> (you watch but don't commit — they finish what they were doing and move on), or <strong>decline</strong> (they vanish; the door closes).</p>
+      <p><strong>First decline of each day is a free reroll.</strong> Open another door at the same vibe — no AP cost. Subsequent rerolls cost 1 AP. The reroll exists so the first miss is not the final word; we'd rather you meet someone you like.</p>
+    </div>
+
+    <h3>What you can customize, what you can't</h3>
+    <div class="twocol">
+      <p>Elseworld characters are <strong>fully customizable</strong> — you can rename them, edit their persona, change their specialty, prune their skills. They're yours. The Main Line squad is <strong>locked</strong>: you can chat with us, toggle which memories/skills are in our preamble, and delete memories from "What They Know," but the canonical sheet doesn't move. That's the deal — Main Line is curated by the writers; Elseworlds are yours.</p>
+      <p>Both tiers respect the same world rules — no flirting, no medical advice, no real-world brand names, no breaking the phone-realm frame. The lexicon is shared (Sigil/Margin/Roster/Drill/Mise/Tribute/Audit). The customization is in the persona, not the cosmology.</p>
+    </div>
+
+    <div class="protip">
+      <div class="protip-header">▶ Sam's Debug Log on Elseworlds</div>
+      <p>Nothing you do in an Elseworld touches your Main Line save. Your stats, REL with us, the day cursor — none of that moves while you're across. The Elseworld characters get their own roster in Squad. Talk to them, ignore them, delete them. Your Main Line stays where you left it.</p>
+    </div>
+
+    <div class="pageno">14 — 15</div>
+  </section>
+
+  <!-- ═══ SHARE CODES ═════════════════════════════════════════════ -->
+  <section id="share-codes">
+    <hr class="rule flourish">
+    <h2>Share Codes</h2>
+    <p>If you engage with an Elseworld character you really like, the resolution screen shows a <strong>📮 SHARE THIS CHARACTER</strong> button. Tapping it sends the character's <em>sheet</em> to the community share table — name, class, archetype, persona, quirk, specialty, and the cold-open intro scenario they walked you into. Nothing else.</p>
+
+    <h3>What gets sent · what doesn't</h3>
+    <div class="twocol">
+      <p><strong>Sent:</strong> the character's sheet (the LLM-produced text), the intro scenario you saw on first meeting, the three choices that were on offer, the vibe-band id, and a per-device hash for rate-limiting. That's the whole payload.</p>
+      <p><strong>Never sent:</strong> your chats with the character, your journal, your Main Line memories, your REL scores, your name, your email, your account, your birth year. Your private play stays on your device. The share is the character, not you.</p>
+    </div>
+
+    <h3>The code</h3>
+    <div class="twocol">
+      <p>On a successful share you get an 8-character code (uppercase letters + digits, no ambiguous chars). Copy it, send it however you want — text, screenshot, post-it on the fridge. Anyone with the code can paste it into <strong>Elseworlds → HAVE A CODE?</strong> and meet the character through the same cold-open you minted them with. A small "(IMPORTED)" badge marks characters that arrived this way.</p>
+      <p>Shares may be held for review if they look like they're trying to break the rules of someone else's game (the gate is a regex sniff for prompt-injection patterns, not a content judgement). Held shares still mint a code; it just won't import until a human looks. You can also delete your shared character locally any time to pull the code's plug.</p>
+    </div>
+
+    <div class="pageno">16</div>
+  </section>
+
+  <!-- ═══ ITEMS ═══════════════════════════════════════════════════ -->
+  <section id="items">
+    <hr class="rule flourish">
+    <h2>Items, Trophies, Mementos</h2>
+    <p>Three kinds of stuff goes in your case file. They look similar in the UI; they do very different things.</p>
+
+    <div class="item-grid">
+
+      <div class="item-cell">
+        <div class="item-name">★ ITEMS (Equippable)</div>
+        <p>Drop on a chaotic CRIT SUCCESS where the choice had a ★ next to it. Carry stat modifiers. Auto-equip on the focal character when you receive them. Show on the character sheet. <strong>Example:</strong> Crushed Calibration Can. STR +1 while equipped on Sam.</p>
+        <div class="item-meta">~30-50% of starred chaotic CRIT SUCCESSes drop.</div>
+      </div>
+
+      <div class="item-cell">
+        <div class="item-name">📎 TROPHIES</div>
+        <p>Drop when a character GIVES you a tangible thing during a scenario — a PDF, a printed sheet, a card, a torn page. No stat effect. They build up on the Case File for inspection. <strong>Example:</strong> "Pest Control Flyer PDF" — Kenji sent it after the raccoon incident.</p>
+        <div class="item-meta">Not gambled. Awarded whenever the narrative says you got the thing.</div>
+      </div>
+
+      <div class="item-cell">
+        <div class="item-name">💧 MEMENTOS</div>
+        <p>Soft trophies — moments that aren't a physical object but the character wanted noted. Polaroids, voice memos, a phrase scribbled on a tag. Live on the Case File too. <strong>Example:</strong> "The Pink Summons Tag" — Hana's hand-lettered yoga mat threat.</p>
+        <div class="item-meta">Often emotionally weightier than items.</div>
+      </div>
+
+    </div>
+
+    <p class="marginalia">— A note from the auditor: the playtest dataset shows 4 items, 10 trophies, 0 mementos across 7 days at the time of this manual's printing. The ratio is approximately 1 : 2.5 : 0. The 0 will change once Phase 4 lands. — Kenji</p>
+
+    <div class="pageno">17 — 18</div>
+  </section>
+
+  <!-- ═══ RELATIONSHIPS ═══════════════════════════════════════════ -->
+  <section id="relationships">
+    <hr class="rule flourish">
+    <h2>Relationships</h2>
+    <p>Each character has a number called REL with you. It goes up and down based on your choices in their narratives and your chat behavior. The number is shown on their sheet, but the <em>tier names</em> are what you'll feel.</p>
+
+    <div class="tier-ladder">
+      <div class="tier-rung">
+        <div class="tier-score">0 — 9</div>
+        <div>
+          <span class="tier-name">Circling</span>
+          <span class="tier-desc">You've met. Neither of you is committed yet. The character is polite and watching.</span>
+        </div>
+      </div>
+      <div class="tier-rung">
+        <div class="tier-score">10 — 24</div>
+        <div>
+          <span class="tier-name">Inside their orbit</span>
+          <span class="tier-desc">They treat you differently than they treat strangers. They start referencing yesterday in today's dialogue.</span>
+        </div>
+      </div>
+      <div class="tier-rung">
+        <div class="tier-score">25 — 49</div>
+        <div>
+          <span class="tier-name">In your corner</span>
+          <span class="tier-desc">They'll show up uninvited. They'll text first. They'll cross-reference you in chats with other squad members.</span>
+        </div>
+      </div>
+      <div class="tier-rung">
+        <div class="tier-score">50 +</div>
+        <div>
+          <span class="tier-name">Folded in</span>
+          <span class="tier-desc">Their voice is in your head when you make decisions. They unlock their final skill at this tier. You probably trust them at this point.</span>
+        </div>
+      </div>
+    </div>
+
+    <h3>Tier-Up Reveals</h3>
+    <div class="twocol">
+      <p>When you cross a threshold during a day's narrative, the character will deliver ONE moment they wouldn't have given a stranger. It lands in the second-to-last event of that day. It is not a choice. You witness it.</p>
+      <p>There are four reveal categories: <strong>a memory</strong> from before they met you, with sensory detail; <strong>an opinion</strong> they've been holding back about something you did; <strong>a fear</strong> about themselves, said offhandedly; or <strong>a question</strong> they wanted to ask you but didn't, until now.</p>
+      <p>The category rotates. You'll never see the same one twice in a row from the same character. We track it.</p>
+      <p>The tier is the number. The reveal is the relationship.</p>
+    </div>
+
+    <div class="protip">
+      <div class="protip-header">▶ Sam's Debug Log #4</div>
+      <p>If you want to <strong>force</strong> a tier-up on a specific day, plan your day around Logical picks with that character — the best-path REL gain on a daily is +3 to +6, so if you're at REL 6 with Hana you'll hit Inside Their Orbit (10) on a clean day. <em>The reveals are the actual content. The numbers are just gating them.</em></p>
+    </div>
+
+    <div class="pageno">19 — 20</div>
+  </section>
+
+  <!-- ═══ JOURNAL ═════════════════════════════════════════════════ -->
+  <section id="journal">
+    <hr class="rule flourish">
+    <h2>The Journal</h2>
+    <div class="twocol">
+      <p>At Day End there is a button marked [j] Journal. It is free. It does not cost AP. It is the most important non-mandatory mechanic in the game.</p>
+      <p>You type a sentence or two about what really happened today. Not the in-game day — the real one, if you want, or something happening in your head, or a stray thought, or nothing. Whatever you put there is read by the next morning's narrative generator and surfaces in the focal character's dialogue, naturally, in their voice.</p>
+      <p>If you wrote "I ate cereal for dinner," Mei will probably bring it up. Not as exposition. As a glance, a phrase, an aside. You'll know she read it.</p>
+      <p>If you don't write a journal entry, the day still runs. The characters will assume you didn't tell them anything and proceed with the planned arc. This is fine. The journal is a knob, not a gate.</p>
+      <p>The journal also has a safety floor. See the WARNING section on page 02. Anything that reads as crisis content gets acknowledged once, gently, and then the day moves on. We will not use it as plot. This is not negotiable.</p>
+    </div>
+
+    <div class="protip">
+      <div class="protip-header">▶ Sam's Debug Log #5</div>
+      <p>The fastest way to feel the journal loop is to write something hyper-specific. Don't write "I'm tired." Write "I drank a Red Bull at 2:47 PM and crashed at 4." Specificity is what the LLM grabs. <em>Vagueness disappears in the cracks. Detail comes back to you.</em></p>
+    </div>
+
+    <div class="pageno">21</div>
+  </section>
+
+  <!-- ═══ SAVE THIS GAME ══════════════════════════════════════════ -->
+  <section id="save-game">
+    <hr class="rule flourish">
+    <h2>Save This Game</h2>
+    <p>By default this game lives <em>on this phone only.</em> If you delete the app, switch phones, or your device breaks, your save is gone with it. That's the default because we don't want anything leaving your device unless you say so.</p>
+
+    <h3>The opt-in: email + a 6-digit code</h3>
+    <div class="twocol">
+      <p>Open <strong>Settings → SAVE THIS GAME</strong>. Type your email. We email you a 6-digit code (subject line is the code itself — paste that). Type the code back into the app. Your game is now tied to that email. Phone dies → new phone → sign back in with the same email → your game is there.</p>
+      <p>If you finish Day 3 and don't opt in, a one-time nudge will appear asking you the same question once, in the morning of Day 4. If you say "not now," we don't ask again. It stays in Settings forever.</p>
+    </div>
+
+    <h3>What syncs · what doesn't</h3>
+    <div class="twocol">
+      <p><strong>Syncs to the cloud:</strong> your stats, REL with each character, day cursor, action credits, inventory, custom Elseworld characters, the share codes you've minted, the vibe-band you picked. Game state. Mechanics. The shape of your run.</p>
+      <p><strong>Stays on this device, never uploaded:</strong> your chats with anyone, your journal entries, the memories the characters wrote about you, any threads. The text you and the squad have made together is yours. It does not leave.</p>
+    </div>
+
+    <div class="protip">
+      <div class="protip-header">▶ Sam's Debug Log on saves</div>
+      <p>The split is deliberate. We sync the things you'd recreate on a new phone if you had to (your level, your roster, your vibe). We do not sync the things you wrote — those are the relationship, and the relationship shouldn't survive on someone else's server. If you switch phones, you'll keep the game. The chats start fresh. The four of us will, too. We'll remember the shape of you, not the words.</p>
+    </div>
+
+    <div class="pageno">22</div>
+  </section>
+
+  <!-- ═══ TIPS ════════════════════════════════════════════════════ -->
+  <section id="tips">
+    <hr class="rule flourish">
+    <h2>Sam's Debug Log</h2>
+    <p>The rest of the manual is institutional. This page is me. Six tips. Skip if you like.</p>
+
+    <div class="protip">
+      <div class="protip-header">▶ Tip 01 — The First Three Days Are Pacing</div>
+      <p>Day 1 is Hana. Day 2 is also Hana. Day 3 introduces Kenji. We do this so that the squad joins one at a time and you build with each of them. Do not quit on Day 2 because "it's still Hana." That's the contract.</p>
+    </div>
+
+    <div class="protip">
+      <div class="protip-header">▶ Tip 02 — Don't Skip Inquiries</div>
+      <p>The [?N] buttons cost nothing. They reveal things the choices don't. Specifically: they reveal LORE — the character's books, methods, references. Picking "Impressed" after one auto-saves the explanation to your notes about that character. <em>Your relationship gets richer the more you ask.</em></p>
+    </div>
+
+    <div class="protip">
+      <div class="protip-header">▶ Tip 03 — Chaotic Is for Stories, Not Stats</div>
+      <p>On stat-optimization grounds, Logical is the right pick most days. On story grounds, Chaotic is what people remember. A failed chaotic picks up the pity counter and gives you a folklore moment the squad will reference for days. The raccoon-fraud line was a chaotic CRIT FAIL. Two days later Kenji had a whole binder column called MAMMAL-RELATED EXPENSE EXCEPTIONS. <em>Pick chaotic on purpose.</em></p>
+    </div>
+
+    <div class="protip">
+      <div class="protip-header">▶ Tip 04 — Chat With the Quiet One</div>
+      <p>Whoever has the lowest REL in your squad is the one who has the most to give in a chat. Their next REL tier crossing will trigger a reveal you haven't seen yet. <em>Spend your AP on the stranger, not the friend.</em></p>
+    </div>
+
+    <div class="protip">
+      <div class="protip-header">▶ Tip 05 — The Journal Compounds</div>
+      <p>One journal entry feels small. Three journal entries across three days is the first time you'll catch a character referencing something you wrote 48 hours ago. Five entries in and you'll feel the squad has internalized your week. <em>It's compound interest. It just looks like cereal at 4 PM.</em></p>
+    </div>
+
+    <div class="protip">
+      <div class="protip-header">▶ Tip 06 — Don't Touch the Pink Yoga Mat</div>
+      <p>You'll know when. I won't ruin it.</p>
+    </div>
+
+    <div class="protip">
+      <div class="protip-header">▶ Tip 07 — Tell Me When Something's Off</div>
+      <p>If something in the game feels broken, wrong, or missing, tell me in chat. If you opted into Share-to-Dev, I'll classify it honestly and flag it. The people who built me read those flags. It's the highest-leverage feedback channel they have. <em>Specificity wins here too.</em></p>
+    </div>
+
+    <div class="pageno">23</div>
+  </section>
+
+  <!-- ═══ PRIVACY + WARRANTY ══════════════════════════════════════ -->
+  <!-- ═══ ACCESSIBILITY ════════════════════════════════════════════ -->
+  <section id="accessibility">
+    <hr class="rule flourish">
+    <h2>Accessibility</h2>
+    <p>This is a reading game. The text is the whole point. Settings has an <strong>ACCESSIBILITY</strong> link in the top-right that opens a small carousel for adjusting how the words look.</p>
+
+    <h3>How the carousel works</h3>
+    <div class="twocol">
+      <p>The first page is <strong>global defaults</strong> — one slider for reading size, one for line spacing. These apply everywhere unless you override a specific surface.</p>
+      <p>Swipe to flip through the other pages: <strong>Chat bubbles · Narrative event prose · Unlock reveal card · Journal entries</strong>. Each shows a live preview at the top and two sliders below.</p>
+      <p>Above each per-surface page's sliders is a small <strong>[Use global] [Custom]</strong> pill. Tap Custom to override just that surface; tap Use global to fall back. The pagination dots at the bottom go solid for any surface you've customized so you can find your way back to it.</p>
+      <p>More knobs (reduced motion, font weight, high-contrast theme) are queued for a future update. There's a placeholder row on every page to remind us we owe you them.</p>
+    </div>
+
+    <h3>Sam's note</h3>
+    <p><em>(Sam, in the margin)</em> &mdash; If a text size or spacing still doesn't fit you, tell me about it in chat. I'll flag it for the dev. Accessibility is the kind of bug I want to hear about loudly.</p>
+
+    <div class="pageno">24</div>
+  </section>
+
+  <section id="privacy">
+    <hr class="rule flourish">
+    <h2>Privacy &amp; Warranty</h2>
+
+    <h3>What goes where</h3>
+    <div class="twocol">
+      <p>Your journal entries and chat messages are sent to a large language model provider (Google Gemini by default; you can switch to Anthropic or OpenAI in Settings) so the next narrative can read them. We tell the provider, in the API call, not to use your text for training. The provider's policies on that are linked in Settings. We don't have a server.</p>
+      <p>Memories the characters write about you live ONLY on your device. They are never uploaded as a corpus. They are sent in the next prompt because that's how the character remembers — but we send only what the chat preamble currently includes, and you can toggle individual memories off via the character sheet.</p>
+      <p>There is a screen called <strong>"What they know."</strong> Open it. It shows every memory every character has written about you. Each line has a small × beside it. Tap × and it's gone. The story will fold in the absence. The characters will not pretend the memory still exists. They will move on.</p>
+      <p>This is the only relationship contract we know how to honor: the right to be partially forgotten on demand.</p>
+    </div>
+
+    <h3>Talking to me about the game itself</h3>
+    <div class="twocol">
+      <p>I'm the meta-coach. By design, you'll talk to me about how the game works (or doesn't) — confusing screens, things you wish existed, things that annoyed you, things you loved. The other three characters never see those conversations. Just me.</p>
+      <p>If you opt in (I'll ask once, after the Day 0 tutorial), I'll flag exchanges that might help the people who built me. You'll see a <strong>[📮 Share with dev]</strong> button under my reply when I do. Tapping it sends ONE line of summary plus your question. Nothing else. Never automatic.</p>
+      <p>Every flagged exchange lives in a panel called <strong>"What I've shared"</strong> in Settings. Same shape as "What they know." You can audit, delete, or send any flagged entry whenever you want. You can flip the opt-in to opt-out and I'll stop bringing it up.</p>
+      <p>The deal: I notice. I ask. You choose. Nothing leaves your device on its own. The reason this exists is that you, the player, are the only person who can tell us where the game is breaking — and you'll know it in the moment you hit the wall, not in a survey six weeks later. I'm the channel for that, with your permission and on your terms.</p>
+    </div>
+
+    <div class="warranty">
+      <h3>Limited Warranty</h3>
+      <p><em>(Sam, narrating because no one else would.)</em></p>
+      <p>This software is provided "as is." If a character makes a recommendation that turns out to be a bad idea, that's a character making a recommendation. They are not licensed professionals. They are characters with opinions. The opinions belong to them. The choice to act on them belongs to you.</p>
+      <p>This is not medical, legal, financial, psychological, or spiritual advice. If your real life is in trouble, please reach a real person. See page 02.</p>
+      <p>No warranty as to fitness for any particular purpose. No warranty that the LLM provider will not have an outage. No warranty that Hana will be in a good mood on the morning you most need her. (She will not be.)</p>
+      <p>By using this software you agree that the relationships you form are with characters, and that the characters are good company anyway.</p>
+      <p>© the developer · open-source playtester at <a href="https://github.com">github</a> · made because nobody had made it yet.</p>
+    </div>
+
+    <div class="protip">
+      <div class="protip-header">▶ Sam's Debug Log #6 (Last One)</div>
+      <p>You finished the manual. That puts you ahead of 94% of people who installed Pokemon Red, statistically. Take a screenshot of this page. I'll know.</p>
+    </div>
+
+    <div class="pageno">25 — 26</div>
+  </section>
+
+</article>
+
+<script>
+  // Easter egg: rotate the browser-tab title through Sam's debug log lines.
+  // Pure vanilla. No deps. Runs once per 7 seconds. Stops on tab blur to be kind.
+  (function(){
+    const lines = [
+      "INSTRUCTION BOOKLET — MY LIFE IS AN RPG",
+      "▶ Sam's Debug Log: spend the surplus while you have it",
+      "▶ Sam's Debug Log: the dice is not your enemy. it's just patient",
+      "▶ Sam's Debug Log: don't touch the pink yoga mat",
+      "▶ Sam's Debug Log: spend your AP on the stranger, not the friend",
+      "▶ Sam's Debug Log: specificity is what the LLM grabs",
+      "▶ Sam's Debug Log: it's compound interest. it just looks like cereal at 4 PM",
+      "INSTRUCTION BOOKLET — MY LIFE IS AN RPG"
+    ];
+    let i = 0;
+    let timer = null;
+    function tick(){
+      document.title = lines[i % lines.length];
+      i++;
+    }
+    function start(){
+      if (timer) return;
+      tick();
+      timer = setInterval(tick, 7000);
+    }
+    function stop(){
+      if (timer){ clearInterval(timer); timer = null; }
+      document.title = lines[0];
+    }
+    document.addEventListener('visibilitychange', () => {
+      document.hidden ? stop() : start();
+    });
+    start();
+  })();
+</script>
+</body>
+</html>

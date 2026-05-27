@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* ── Palette + tokens (mirrors docs/manual.html) ──────────────────── */
+:root {
+  --paper: #f2ebdd;
+  --paper-shade: #e9e1cf;
+  --ink: #1a1a1a;
+  --ink-soft: #3b3b3b;
+  --forest: #2d4a2b;
+  --forest-dim: #4d6a4b;
+  --spot-red: #b81f1c;
+  --margin-ink: #6b6353;
+}
+
+/* Tailwind v4 design-token bridge — exposes the palette + fonts as
+   utility classes (e.g. bg-paper, text-forest, font-display). The
+   --font-* vars are populated by next/font in layout.tsx. */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-shade: var(--paper-shade);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-forest: var(--forest);
+  --color-forest-dim: var(--forest-dim);
+  --color-spot-red: var(--spot-red);
+  --color-margin-ink: var(--margin-ink);
+
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+
+  --font-display: var(--font-anton);
+  --font-body: var(--font-lora);
+  --font-sans: var(--font-pt-sans);
+}
+
+/* Paper texture — 1px SVG noise overlay, ~6% alpha. Same trick the
+   manual.html uses; keeps the cream from feeling flat. */
+html {
+  background: var(--paper);
+}
+body {
+  margin: 0;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.55  0 0 0 0 0.50  0 0 0 0 0.40  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+    var(--paper);
+  color: var(--ink);
+  font-family: var(--font-lora), 'Lora', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Display headlines use Anton — heavy condensed caps. */
+h1, h2, h3, .display {
+  font-family: var(--font-anton), 'Anton', 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--forest);
+  margin: 0;
+}
+
+a {
+  color: var(--forest);
+  text-decoration: none;
+  border-bottom: 1px solid var(--forest);
+}
+a:hover {
+  color: var(--spot-red);
+  border-bottom-color: var(--spot-red);
+}
+
+/* 8-bit corner-notch flourish on section rules — replicates the
+   chunky-frame feel from the manual. */
+.rule-flourish {
+  border: none;
+  height: 1.5px;
+  background: var(--ink);
+  position: relative;
+}
+.rule-flourish::before,
+.rule-flourish::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  background: var(--ink);
+}
+.rule-flourish::before { left: 0; }
+.rule-flourish::after { right: 0; }
