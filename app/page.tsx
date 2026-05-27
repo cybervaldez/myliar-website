@@ -22,7 +22,7 @@ const SQUAD = [
     role: "POWERHOUSE · CLASS",
     name: "Hana",
     gender: "♀",
-    specialty: "Fitness & wellness",
+    specialty: "Fitness & body",
     quote: '"BE THERE OR BE CELLULAR DEBRIS."',
     blurb:
       "Joins on Day 1. Intensely dramatic; treats a skipped workout like a failure to save the world. Will text you at 4:55 AM.",
@@ -174,7 +174,7 @@ export default function Home() {
           <TierCard
             tag="ELSEWORLD"
             title="Cross over"
-            body="Travel into an alternate-reality side zone. Meet strangers spun up at your chosen vibe (Tolkien, 80s cyber, cottagecore, six bands). These characters are yours — fully customizable. Share the great ones via 8-char code."
+            body="Travel into an alternate-reality side zone. Meet strangers spun up at your chosen vibe — golden-age fantasy, 80s + cyber, 90s anime, isekai + party RPG, cottagecore, or surprise me. These characters are yours, fully customizable. Share the great ones via 8-char code."
           />
         </div>
       </section>
@@ -196,20 +196,36 @@ export default function Home() {
           Specificity is what the LLM grabs. The vaguer you are, the more you
           disappear in the cracks. The more specific, the more they remember.
         </p>
-        <div className="flex flex-col sm:flex-row gap-3 max-w-[560px] mx-auto">
-          <Link
-            href="https://github.com/cybervaldez/myliar"
-            className="flex-1 font-display tracking-[0.16em] text-white bg-forest py-4 px-6 border-2 border-ink !no-underline hover:bg-[#1f3a1d] transition"
-          >
-            EARLY ACCESS · GITHUB
-          </Link>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-[680px] mx-auto">
           <Link
             href="/manual"
-            className="flex-1 font-display tracking-[0.16em] text-ink bg-paper py-4 px-6 border-2 border-ink !no-underline hover:bg-paper-shade transition"
+            className="font-display tracking-[0.14em] text-[13px] text-ink bg-paper py-4 px-5 border-2 border-ink !no-underline hover:bg-paper-shade transition text-center"
           >
-            READ THE FULL MANUAL
+            INSTRUCTION
+            <br />
+            BOOKLET
+          </Link>
+          <Link
+            href="/walkthrough"
+            className="font-display tracking-[0.14em] text-[13px] text-ink bg-paper py-4 px-5 border-2 border-ink !no-underline hover:bg-paper-shade transition text-center"
+          >
+            PLAYER
+            <br />
+            WALKTHROUGH
+          </Link>
+          <Link
+            href="/campaign-editor"
+            className="font-display tracking-[0.14em] text-[13px] text-ink bg-paper py-4 px-5 border-2 border-ink !no-underline hover:bg-paper-shade transition text-center"
+          >
+            DM&apos;S
+            <br />
+            HANDBOOK
           </Link>
         </div>
+        <p className="text-margin-ink italic mt-4 text-[12px]">
+          three booklets · the player&apos;s manual, the full-spoiler
+          walkthrough, the campaign editor&apos;s sourcebook.
+        </p>
         <p className="font-sans italic text-margin-ink mt-10 text-[13px] leading-[1.55]">
           — Sam (this site is the only place I get to do marketing copy.
           Don&apos;t tell Mei.)

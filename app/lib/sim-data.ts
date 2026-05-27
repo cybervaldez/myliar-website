@@ -197,9 +197,19 @@ export const INITIAL_STATS: RunningStats = {
   REL: 0,
 };
 
+// Mirrors lib/game_state.dart kRelTierThresholds / kRelTierNames (v0.0.22+).
+// A 3-event demo will only ever touch the first 1-2 rungs, but the whole
+// ladder lives here so the wrap-up copy can speak truthfully about where
+// the player landed.
 export function relTierName(rel: number): string {
-  if (rel < 10) return "Circling";
-  if (rel < 25) return "Inside their orbit";
-  if (rel < 50) return "In your corner";
-  return "Folded in";
+  if (rel < 15) return "Circling";
+  if (rel < 40) return "On your radar";
+  if (rel < 80) return "Inside their orbit";
+  if (rel < 140) return "Trading favors";
+  if (rel < 220) return "In your corner";
+  if (rel < 320) return "Saved a seat for you";
+  if (rel < 450) return "Knows where you keep things";
+  if (rel < 630) return "Folded in";
+  if (rel < 850) return "Named in the will";
+  return "Unspoken";
 }

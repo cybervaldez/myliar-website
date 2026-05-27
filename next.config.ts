@@ -9,16 +9,15 @@ const nextConfig: NextConfig = {
     root: path.join(__dirname),
   },
 
-  // /manual serves the existing self-contained instruction booklet
-  // (public/manual.html). It's already styled to spec; an iframe-free
-  // rewrite is the cleanest way to preserve the cream-paper layout
-  // without re-implementing it in React.
+  // Booklet routes — each serves a self-contained HTML artifact from
+  // public/ via clean URL. All three were authored as stand-alone
+  // HTML (cream-paper aesthetic, no React deps) and copied from the
+  // parent myliar repo at sync time.
   async rewrites() {
     return [
-      {
-        source: "/manual",
-        destination: "/manual.html",
-      },
+      { source: "/manual", destination: "/manual.html" },
+      { source: "/walkthrough", destination: "/walkthrough.html" },
+      { source: "/campaign-editor", destination: "/campaign-editor.html" },
     ];
   },
 };

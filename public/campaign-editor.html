@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MY LIFE IS AN RPG — Dungeon Master's Handbook · Campaign Editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Lora:ital,wght@0,400;0,600;1,400&family=PT+Sans:ital,wght@0,400;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  /* Mirrors docs/manual.html for visual cohesion — DM binder belongs
+     to the same paper as the player booklet, even though the audience
+     is the author, not the player. */
+  :root {
+    --paper: #f2ebdd;
+    --paper-shade: #e9e1cf;
+    --ink: #1a1a1a;
+    --ink-soft: #3b3b3b;
+    --forest: #2d4a2b;
+    --forest-dim: #4d6a4b;
+    --spot-red: #b81f1c;
+    --margin-ink: #6b6353;
+  }
+  html { background: var(--paper); }
+  body {
+    margin: 0;
+    background:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.55  0 0 0 0 0.50  0 0 0 0 0.40  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+      var(--paper);
+    color: var(--ink);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .binder { max-width: 880px; margin: 0 auto; padding: 40px 32px 80px; }
+  h1, h2, h3, .display {
+    font-family: 'Anton', 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--forest);
+    margin: 0;
+  }
+  h1 { font-size: 56px; line-height: 0.95; text-align: center; color: var(--ink); }
+  h2 { font-size: 32px; margin: 0 0 14px; }
+  h3 { font-size: 20px; margin: 22px 0 8px; color: var(--ink); }
+  p { margin: 0 0 14px; }
+  p + p { text-indent: 1.2em; }
+  em { color: var(--ink); }
+  strong { font-weight: 600; }
+  section { margin: 56px 0; }
+  .rule {
+    border: none; height: 1.5px; background: var(--ink);
+    margin: 24px 0; position: relative;
+  }
+  .rule.flourish::before, .rule.flourish::after {
+    content:''; position: absolute; top: -3px;
+    width: 8px; height: 8px; background: var(--ink);
+  }
+  .rule.flourish::before { left: 0; }
+  .rule.flourish::after { right: 0; }
+  .twocol { column-count: 2; column-gap: 36px; column-rule: 1px solid var(--paper-shade); }
+  .twocol p { break-inside: avoid; }
+  @media (max-width: 600px){ .twocol { column-count: 1; } }
+
+  .cover { text-align: center; padding: 30px 0 24px; border-bottom: 2px solid var(--ink); }
+  .cover .super {
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.3em;
+    font-size: 13px;
+    color: var(--forest-dim);
+    margin-bottom: 14px;
+  }
+  .cover .sub {
+    font-family: 'Lora', serif; font-style: italic;
+    color: var(--ink-soft); margin-top: 14px; font-size: 18px;
+  }
+  .cover .stamp {
+    display: inline-block; margin-top: 28px; padding: 6px 14px;
+    border: 1.5px solid var(--ink);
+    font-family: 'Anton', sans-serif; font-size: 14px; letter-spacing: 0.18em;
+  }
+
+  .toc { border: 1.5px solid var(--ink); padding: 24px 28px; background: var(--paper-shade); }
+  .toc ol { list-style: none; padding: 0; margin: 0; column-count: 2; column-gap: 28px;
+    font-family: 'PT Sans', sans-serif; font-size: 15px; }
+  .toc li { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 7px; break-inside: avoid; }
+  .toc a { color: var(--ink); text-decoration: none; }
+  .toc a:hover { color: var(--spot-red); }
+  .toc .dot { flex: 1; border-bottom: 1px dotted var(--margin-ink); margin: 0 4px; transform: translateY(-3px); }
+  .toc .pg { font-family: 'Anton', sans-serif; color: var(--forest); }
+
+  /* Skill cards — like the manual's character cards but flipped: these
+     are the panels themselves. */
+  .skill-card {
+    border: 1.5px solid var(--ink); padding: 18px 20px;
+    background: var(--paper-shade); margin: 14px 0; break-inside: avoid;
+  }
+  .skill-card .role {
+    font-family: 'Anton', sans-serif; font-size: 12px;
+    letter-spacing: 0.18em; color: var(--spot-red);
+  }
+  .skill-card .name {
+    font-family: 'Anton', sans-serif; font-size: 28px; line-height: 1;
+    margin: 4px 0 6px; color: var(--ink);
+  }
+  .skill-card .lens {
+    font-style: italic; color: var(--ink-soft); font-size: 14px; margin-bottom: 8px;
+  }
+
+  /* Panelist roster table */
+  .panel-list {
+    border: 1.5px solid var(--ink); background: var(--paper);
+    padding: 14px 16px; margin: 12px 0; font-size: 14.5px;
+  }
+  .panel-list .pl-row {
+    display: grid; grid-template-columns: 24px 100px 1fr;
+    gap: 10px; padding: 6px 0; border-bottom: 1px dashed var(--paper-shade);
+    align-items: baseline;
+  }
+  .panel-list .pl-row:last-child { border-bottom: none; }
+  .panel-list .pl-emoji { font-size: 16px; }
+  .panel-list .pl-name {
+    font-family: 'Anton', sans-serif; font-size: 13px;
+    letter-spacing: 0.1em; color: var(--ink);
+  }
+  .panel-list .pl-lens { color: var(--ink-soft); }
+
+  /* Code / beat-sheet block — feels like an authored artifact */
+  pre, code, .codish {
+    font-family: 'Special Elite', 'Courier New', monospace;
+    font-size: 13.5px;
+    background: var(--paper);
+    border: 1.5px dashed var(--margin-ink);
+    padding: 14px 18px;
+    overflow-x: auto;
+    white-space: pre;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  code { display: inline; padding: 1px 6px; border: 1px solid var(--margin-ink); white-space: normal; }
+
+  .protip {
+    margin: 18px 0; padding: 14px 18px 12px;
+    border: 1.5px solid var(--ink); background: var(--paper-shade);
+    font-family: 'PT Sans', sans-serif; font-size: 15px; line-height: 1.5;
+    break-inside: avoid;
+  }
+  .protip-header {
+    font-family: 'Anton', sans-serif; font-size: 14px; letter-spacing: 0.12em;
+    color: var(--spot-red); margin-bottom: 6px; text-transform: uppercase;
+  }
+  .protip em { color: var(--ink-soft); }
+
+  .marginalia {
+    font-family: 'Special Elite', monospace;
+    font-style: normal;
+    font-size: 13px;
+    color: var(--margin-ink);
+    line-height: 1.45;
+    padding: 8px 12px;
+    border-left: 2px solid var(--margin-ink);
+    background: var(--paper);
+    margin: 14px 0;
+  }
+  .marginalia::before {
+    content: '🎲  ';
+    color: var(--forest);
+  }
+
+  /* Step-by-step recipe — feels like Mei's recipe cards in the manual */
+  .recipe {
+    border: 2px solid var(--forest); padding: 16px 22px; margin: 24px 0;
+    background: var(--paper); font-family: 'PT Sans', sans-serif;
+    position: relative;
+  }
+  .recipe .stamp {
+    position: absolute; top: -10px; right: 18px; background: var(--paper);
+    padding: 0 10px; font-family: 'Anton', sans-serif;
+    color: var(--spot-red); font-size: 12px; letter-spacing: 0.18em;
+  }
+  .recipe .title {
+    font-family: 'Anton', sans-serif; color: var(--forest); font-size: 20px;
+    letter-spacing: 0.06em; margin-bottom: 8px; text-transform: uppercase;
+  }
+  .recipe ol { padding-left: 22px; margin: 0; font-size: 14.5px; line-height: 1.6; }
+  .recipe ol li { margin: 6px 0; }
+
+  .pageno {
+    font-family: 'Anton', sans-serif; font-size: 13px;
+    color: var(--margin-ink); letter-spacing: 0.12em;
+    text-align: right; margin-top: 12px;
+  }
+
+  a { color: var(--forest); text-decoration: none; border-bottom: 1px solid var(--forest); }
+  a:hover { color: var(--spot-red); border-bottom-color: var(--spot-red); }
+</style>
+</head>
+<body>
+<article class="binder">
+
+  <!-- ═══ COVER ════════════════════════════════════════════════════ -->
+  <section class="cover">
+    <div class="super">DUNGEON MASTER'S HANDBOOK · CAMPAIGN EDITOR</div>
+    <h1>My Life<br>Is an RPG</h1>
+    <div class="sub">How a campaign gets authored: the skills, the panels, the beat sheet, the gate.</div>
+    <div class="stamp">DM BINDER · INTERNAL · v0.0.19+</div>
+  </section>
+
+  <!-- ═══ TOC ══════════════════════════════════════════════════════ -->
+  <section class="toc">
+    <h2 style="font-size: 22px; margin-bottom: 14px;">Table of Contents</h2>
+    <ol>
+      <li><a href="#prelude">0 · A note before you start</a><span class="dot"></span><span class="pg">02</span></li>
+      <li><a href="#architecture">1 · The three-tier architecture</a><span class="dot"></span><span class="pg">03</span></li>
+      <li><a href="#skills">2 · Your panels (the skills)</a><span class="dot"></span><span class="pg">05</span></li>
+      <li><a href="#writers-room">2.1 · /writers-room — the narrative-craft panel</a><span class="dot"></span><span class="pg">06</span></li>
+      <li><a href="#team">2.2 · /team — strategic experts</a><span class="dot"></span><span class="pg">08</span></li>
+      <li><a href="#kaizen">2.3 · /kaizen — user-perspective personas</a><span class="dot"></span><span class="pg">09</span></li>
+      <li><a href="#beat-sheet">3 · The beat-sheet format</a><span class="dot"></span><span class="pg">10</span></li>
+      <li><a href="#pregen">4 · The pregeneration pipeline</a><span class="dot"></span><span class="pg">12</span></li>
+      <li><a href="#voice-gate">5 · The voice gate</a><span class="dot"></span><span class="pg">14</span></li>
+      <li><a href="#cycle">6 · The campaign-author's cycle</a><span class="dot"></span><span class="pg">15</span></li>
+      <li><a href="#new-campaign">7 · Writing a NEW campaign</a><span class="dot"></span><span class="pg">17</span></li>
+      <li><a href="#failures">8 · What failure looks like</a><span class="dot"></span><span class="pg">19</span></li>
+      <li><a href="#colophon">9 · Colophon &amp; cross-refs</a><span class="dot"></span><span class="pg">20</span></li>
+    </ol>
+  </section>
+
+  <!-- ═══ 0 · PRELUDE ══════════════════════════════════════════════ -->
+  <section id="prelude">
+    <hr class="rule flourish">
+    <h2>0 · A note before you start</h2>
+    <div class="twocol">
+      <p>This binder is for the people who write canon for <em>My Life
+      is an RPG</em>. The audience is small — the dev, the writers, and
+      the LLM panels we summon to argue with each other before anything
+      ships.</p>
+      <p>The game has a curated 7-day Main Line, plus side quests, plus
+      LLM-generated Elseworld scenarios. The Main Line is the part this
+      handbook concerns itself with. The Elseworld layer runs live at
+      the player's device through a shared <em>world-rules gate</em>;
+      we maintain that gate here, but we don't ship its individual
+      payloads from this room.</p>
+      <p>A campaign in this system is not a flowchart. It's not a state
+      machine. It's a beat sheet — an authored intent about what a day
+      means — handed to a language model under a tight prompt, then
+      reviewed by a panel of fictional craft experts, then shipped as
+      JSON the Flutter app loads as canon.</p>
+      <p>You are the Dungeon Master. The panel is your players —
+      specifically, the ones who care about voice, the ones who care
+      about pacing, and the one casual player who will close the app
+      if Day 2 feels like Day 1 with the serial numbers filed off.</p>
+    </div>
+    <div class="marginalia">
+      Authority: this document defers to <code>docs/design/rpg-framing.md</code>
+      on cosmology, banned words, and the customization tier. When this
+      binder and that doc disagree, that doc wins.
+    </div>
+    <div class="pageno">02</div>
+  </section>
+
+  <!-- ═══ 1 · ARCHITECTURE ════════════════════════════════════════ -->
+  <section id="architecture">
+    <hr class="rule flourish">
+    <h2>1 · The three-tier architecture</h2>
+    <p>Before the panels make sense, you need the tier model. Every
+    piece of content in the game lives in one of three lanes. The lane
+    determines who authors it, how it's reviewed, and what the player
+    is allowed to change.</p>
+
+    <div class="skill-card">
+      <div class="role">TIER 1</div>
+      <div class="name">Main Line Quest</div>
+      <div class="lens">Curated · hand-authored beats → LLM-pregenerated → /writers-room ratified → shipped as bundled JSON</div>
+      <p style="margin-top: 6px;">Seven days for v0.0.19. Four canonical
+      characters with LOCKED sheets — players cannot edit who they are.
+      This is the trust lane: a player who installs gets the same Day 1
+      Hana every other player gets. Same prose. Same brother reveal.
+      Same screenshot moment.</p>
+    </div>
+
+    <div class="skill-card">
+      <div class="role">TIER 2</div>
+      <div class="name">Side Quest</div>
+      <div class="lens">Live LLM · chat with canonical characters · same voice gate</div>
+      <p style="margin-top: 6px;">Talking to Hana, Kenji, Mei, or Sam in
+      chat. Costs an action credit. Their voice rules from
+      <code>lib/characters.dart</code> + <code>lib/sam.dart</code> flow
+      into the chat preamble. The conversation is private to the
+      player's device; what the character remembers about the player
+      threads into the next day's Main Line generation.</p>
+    </div>
+
+    <div class="skill-card">
+      <div class="role">TIER 3</div>
+      <div class="name">Elseworld</div>
+      <div class="lens">Live LLM · alternate-reality side zones · fully customizable characters · same gate</div>
+      <p style="margin-top: 6px;">Vibe-band picker (six genres) →
+      LLM-generated stranger → engage/observe/decline. Player can rename,
+      edit, prune skills. This is the creativity lane. The writers'
+      room <em>ratifies the gate</em> these characters pass through, but
+      it doesn't author individual Elseworld payloads — the player and
+      the runtime LLM do that.</p>
+    </div>
+
+    <div class="protip">
+      <div class="protip-header">▶ DM's note</div>
+      <p>When in doubt: am I authoring an event that EVERY player will see
+      the same way? Tier 1 — beat sheet it. Am I shaping the runtime
+      rules a character must live inside? Gate work — edit the prompt
+      scaffolding. Am I writing prose for a specific Elseworld payload?
+      You're not. The runtime LLM does that.</p>
+    </div>
+
+    <div class="pageno">03 — 04</div>
+  </section>
+
+  <!-- ═══ 2 · SKILLS ══════════════════════════════════════════════ -->
+  <section id="skills">
+    <hr class="rule flourish">
+    <h2>2 · Your panels (the skills)</h2>
+    <p>Three skills shape canon work. Each is a fictional panel of
+    experts you can summon mid-decision. They argue with each other,
+    they reference each other, and exactly one of them — Riley — has
+    veto power on every consultation.</p>
+
+    <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
+      <tr style="background: var(--paper-shade);">
+        <th style="text-align:left; padding: 8px; border: 1px solid var(--ink); font-family:'Anton'; letter-spacing: 0.12em;">Skill</th>
+        <th style="text-align:left; padding: 8px; border: 1px solid var(--ink); font-family:'Anton'; letter-spacing: 0.12em;">Use it when</th>
+        <th style="text-align:left; padding: 8px; border: 1px solid var(--ink); font-family:'Anton'; letter-spacing: 0.12em;">What it produces</th>
+      </tr>
+      <tr>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;"><strong>/writers-room</strong></td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Beat work, voice critique, arc planning, character bibles, the campaign binder.</td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Panel critique · beat sheet · arc outline · story-bible entry · single-file HTML binder</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;"><strong>/team</strong></td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Product / marketing / business / technical / design / UX / content decisions.</td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Conversational advice · positioning doc · App Store copy · pitch outline</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;"><strong>/kaizen</strong></td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Diverse user perspectives on a screen, flow, or feature.</td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Persona-driven reactions — accessibility, age-spectrum, cultural read, emotional read</td>
+      </tr>
+    </table>
+    <div class="pageno">05</div>
+  </section>
+
+  <!-- ═══ 2.1 · WRITERS-ROOM ══════════════════════════════════════ -->
+  <section id="writers-room">
+    <hr class="rule flourish">
+    <h2>2.1 · /writers-room — the narrative-craft panel</h2>
+
+    <p>This is the panel you summon most often. It owns the Main Line.
+    The beat-level panel critiques individual days; the binder
+    sub-panel critiques the overall canon; Riley closes every output.</p>
+
+    <h3>The beat-level cast</h3>
+    <div class="panel-list">
+      <div class="pl-row">
+        <div class="pl-emoji">📖</div>
+        <div class="pl-name">SARA</div>
+        <div class="pl-lens">Visual-novel craft. The second-session promise. What makes a player tell a friend "play Day 5."</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-emoji">⚔️</div>
+        <div class="pl-name">MARCUS</div>
+        <div class="pl-lens">D&amp;D DM. Pacing of long serialized stories, published-module discipline, "session 47" memory.</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-emoji">✒️</div>
+        <div class="pl-name">HELENA</div>
+        <div class="pl-lens">Fantasy novelist. Voice integrity across many POVs. Owns the banned-word gate on canon.</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-emoji">💕</div>
+        <div class="pl-name">KAI</div>
+        <div class="pl-lens">Dating-sim expert. REL-tier reveal cadence — when does a confession land vs. feel contrived.</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-emoji">🗡</div>
+        <div class="pl-name">DIEGO</div>
+        <div class="pl-lens">Zelda fan. World-building, silent-protag craft, the cosmology check. ("Can a phone-realm character order a delivery?")</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-emoji">🔮</div>
+        <div class="pl-name">YUKI</div>
+        <div class="pl-lens">Final Fantasy fan. Party dynamics, cross-domain character mentions, multi-act arc momentum.</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-emoji">🛡</div>
+        <div class="pl-name">RILEY · CASUAL PLAYER · GATEKEEPER</div>
+        <div class="pl-lens">"If my friend who doesn't play games can't follow this, kill it." Veto power. Closes every consultation.</div>
+      </div>
+    </div>
+
+    <h3>The binder sub-panel (Mode 5)</h3>
+    <div class="panel-list">
+      <div class="pl-row">
+        <div class="pl-emoji">🎲</div>
+        <div class="pl-name">MARISOL</div>
+        <div class="pl-lens">D&amp;D DM running an 8-year campaign. Long-form session prep, NPC trackers, the difference between prep and canon.</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-emoji">♟️</div>
+        <div class="pl-name">JOAQUIN</div>
+        <div class="pl-lens">Board-game designer. Rules-reference layout. The binder must be skim-able in 5 seconds per page.</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-emoji">🐉</div>
+        <div class="pl-name">HIROSHI</div>
+        <div class="pl-lens">Pathfinder GM. Deep lore, world-notes, the apartment-as-character section.</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-emoji">📜</div>
+        <div class="pl-name">IRIS</div>
+        <div class="pl-lens">RPG sourcebook editor. Visual hierarchy. Binder must read as sister to <code>docs/manual.html</code>.</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-emoji">🎬</div>
+        <div class="pl-name">TREVOR</div>
+        <div class="pl-lens">Critical Role / Dimension 20 historian. Marginalia, in-character cameos, what makes a campaign log loved.</div>
+      </div>
+    </div>
+
+    <h3>How to summon them</h3>
+    <pre>/writers-room "review run-004/onboarding_hana_d1.json for voice"
+
+/writers-room casual,kai,helena "design Day 14 — Hana confession beat"
+
+/writers-room produce "30-day arc outline for canonical squad post-Day 7"</pre>
+
+    <p>Five output modes:</p>
+    <ol>
+      <li><strong>Panel discussion</strong> — each panelist gives a take in their own voice; Riley closes.</li>
+      <li><strong>Beat sheet</strong> — Mode 2 structure, day-by-day breakdown of an event (see §3).</li>
+      <li><strong>Arc outline</strong> — multi-day story-bible-style act structure.</li>
+      <li><strong>Story-bible entry</strong> — canonical reference for a character or relationship.</li>
+      <li><strong>Campaign binder HTML</strong> — single-file HTML artifact like this binder you're reading.</li>
+    </ol>
+
+    <div class="marginalia">
+      Cardinal rule: Riley's verdict is binding. If Riley says she'd close
+      the app, the beat doesn't ship — no matter how elegant Helena's
+      argument is. Expert craft is in service of accessibility, not in
+      tension with it.
+    </div>
+
+    <div class="pageno">06 — 07</div>
+  </section>
+
+  <!-- ═══ 2.2 · TEAM ══════════════════════════════════════════════ -->
+  <section id="team">
+    <hr class="rule flourish">
+    <h2>2.2 · /team — strategic experts</h2>
+    <p>Use this when the decision is strategic, not narrative. Pricing,
+    positioning, mobile architecture, App Store copy, a landing-page
+    hook.</p>
+
+    <div class="panel-list">
+      <div class="pl-row"><div class="pl-emoji">🎯</div><div class="pl-name">MARKETING</div><div class="pl-lens">Positioning, messaging, audience, ASO, App Store listings.</div></div>
+      <div class="pl-row"><div class="pl-emoji">🎨</div><div class="pl-name">UX</div><div class="pl-lens">User experience, mobile flows, accessibility-conscious patterns.</div></div>
+      <div class="pl-row"><div class="pl-emoji">📦</div><div class="pl-name">PRODUCT</div><div class="pl-lens">Features, prioritization, roadmap, trade-offs.</div></div>
+      <div class="pl-row"><div class="pl-emoji">🔧</div><div class="pl-name">TECHNICAL</div><div class="pl-lens">Architecture, performance, Flutter / Supabase / Gemini-specific feasibility.</div></div>
+      <div class="pl-row"><div class="pl-emoji">📝</div><div class="pl-name">CONTENT</div><div class="pl-lens">Copywriting, in-app text, store descriptions. Banned-word gatekeeper on the marketing side.</div></div>
+      <div class="pl-row"><div class="pl-emoji">💼</div><div class="pl-name">BUSINESS</div><div class="pl-lens">Monetization, market fit, growth, sustainability.</div></div>
+      <div class="pl-row"><div class="pl-emoji">✨</div><div class="pl-name">DESIGN</div><div class="pl-lens">Visual design, branding, iOS / Material aesthetics.</div></div>
+    </div>
+
+    <p>The /team experts default to <em>game-shaped</em> recommendations
+    for in-fiction surfaces. They use generic mobile-app defaults only
+    for out-of-fiction surfaces (Settings, legal screens, the README,
+    App Store listing). The lexicon swap IS the game-ification —
+    chunky frames + cream paper + sparse type is the visual rule;
+    don't ornament beyond that.</p>
+
+    <pre>/team marketing,content "rewrite the hero copy for cold traffic"
+
+/team ux,design "review the Day End action menu — is it confusing?"
+
+/team business "should we add an Elseworld subscription tier?"</pre>
+
+    <div class="pageno">08</div>
+  </section>
+
+  <!-- ═══ 2.3 · KAIZEN ════════════════════════════════════════════ -->
+  <section id="kaizen">
+    <hr class="rule flourish">
+    <h2>2.3 · /kaizen — user-perspective personas</h2>
+    <p>This skill is for getting non-expert, user-shaped reactions.
+    Diverse fictional personas — colorblind users, CEOs, skeptical
+    evaluators, delighted fans, an 11-year-old, a 70-year-old, an
+    overworked parent, a screen-reader user.</p>
+
+    <p>You don't summon these for craft critique. You summon them for
+    the thing experts can't tell you: how a real person, in their real
+    life, lands on this screen.</p>
+
+    <pre>/kaizen "react to the encounter-mode picker"
+
+/kaizen accessibility,age-spectrum "would a 14-year-old understand the dice math?"</pre>
+
+    <div class="protip">
+      <div class="protip-header">▶ When to use which</div>
+      <p>If the question is "is this story working?" — /writers-room.
+      If the question is "is this strategically sound?" — /team. If
+      the question is "can a real person actually use this?" — /kaizen.
+      All three close on a gatekeeper of some kind, but only
+      /writers-room's gate (Riley) is BINDING by design.</p>
+    </div>
+
+    <div class="pageno">09</div>
+  </section>
+
+  <!-- ═══ 3 · BEAT SHEET ══════════════════════════════════════════ -->
+  <section id="beat-sheet">
+    <hr class="rule flourish">
+    <h2>3 · The beat-sheet format</h2>
+
+    <p>A beat sheet is the authored input to the pregeneration pipeline.
+    One Markdown file per day. The format is loose YAML front-matter
+    plus <code>## SECTION</code> headers with <code>key: value</code>
+    rows. The parser lives at <code>lib/pregen/beat_sheet.dart</code>.</p>
+
+    <p>Here is an annotated beat sheet for a hypothetical Day 8 (Hana
+    daily). Every field is required unless marked optional.</p>
+
+    <pre>---
+day: 8                              # 1-based, global
+narrativeType: daily                # onboarding · daily · introduction
+characterId: hana                   # focal character
+realmCategory: home                 # home · office · gym · ...
+agentMoodToday: "Quietly proud and twice as alert as usual."
+introducesCharacter: null           # set when narrativeType == introduction
+---
+
+## TIER-UP                          # OPTIONAL. Omit on connective-tissue days.
+category: question                  # memory · opinion · fear · question
+deliveredInEventIndex: 5            # 1-based, second-to-last is canon
+
+## CLOSING HOOK
+Hana will offer to walk you through her morning warmup if you open
+chat tonight. The hook is the routine itself — make her sound proud
+to share it, not professorial.
+
+## NEXT DAY START
+label: Catch Hana mid-stretch on your porch at 5:30 AM
+recap: Yesterday Hana revealed she's been timing your improvements
+       against her brother's old training log.
+seedHint: Day 9 opens with Hana already on your porch, stretching,
+          reading something off a worn paperback page.
+
+## EVENT 1
+summary: 6:00 AM. Hana texts you a single word: "Ready?"
+stake: Player can match the brevity (logical), ask what for
+       (passive), or send back a longer message (chaotic — she'll
+       hate the noise but love the energy).
+itemDropSlot: trophy on LOGICAL — "One-Word Receipt"
+inquiry: none
+memoryNote: Hana clocks the cadence of the player's reply, file as
+            "communication compatibility audit, ongoing."
+
+## EVENT 2 — ...
+...</pre>
+
+    <p>The author writes <em>what happens</em> — the shape, the stakes,
+    the item-drop slot, the inquiry hook, the memory note. The author
+    does NOT write the prose. That's the language model's job.</p>
+
+    <div class="marginalia">
+      Loose Markdown parsing is deliberate. The author can annotate
+      headers (<code>## EVENT 6 — TIER-UP REVEAL</code>) without
+      breaking the regex. The parser tolerates extra text.
+    </div>
+
+    <h3>Tier-up rules</h3>
+    <ul>
+      <li>Maximum one tier-up per day. Most days have none.</li>
+      <li>Categories rotate per character. If Kenji got an <em>opinion</em>
+      reveal on Day 4, his next tier-up cannot be opinion. Track this
+      across the arc.</li>
+      <li>The reveal lands in event N-1 (second to last). It is not a
+      choice — the player witnesses it. The three choices that follow
+      the reveal moment are the player's RESPONSE.</li>
+      <li>Memory category reveals MUST include the canonical memory line
+      in the event's <code>memoryWrites</code> array. The Unlock Reveal
+      screen surfaces that line verbatim.</li>
+    </ul>
+    <div class="pageno">10 — 11</div>
+  </section>
+
+  <!-- ═══ 4 · PREGEN ══════════════════════════════════════════════ -->
+  <section id="pregen">
+    <hr class="rule flourish">
+    <h2>4 · The pregeneration pipeline</h2>
+
+    <p>Beat sheet in, JSON payload out. The CLI lives at
+    <code>tools/pregenerate_main_quest.dart</code>. The prompt
+    scaffolding lives at <code>lib/pregen/main_quest_prompt.dart</code>.
+    The discipline is the same one Elseworlds use — same WORLD RULES
+    block, same banned-word list, same JSON-fence output requirement —
+    but the schema is the multi-event-day shape, not the single-encounter
+    shape.</p>
+
+    <div class="recipe">
+      <div class="stamp">MARISOL'S CARD</div>
+      <div class="title">How to generate one Main Line day</div>
+      <ol>
+        <li>Author <code>docs/authored-beats/dayN.beat.md</code>. Get
+        the structure right — voice is the LLM's job, but stakes,
+        item slots, inquiries, and tier-up are yours.</li>
+        <li>Pick an exemplar payload from run-003 (the hand-authored
+        baseline) — the one whose shape most resembles the day you're
+        generating. Onboarding days use Hana D1 as the canonical
+        exemplar; introductions can use D3 once they exist.</li>
+        <li>Set <code>GEMINI_API_KEY</code> in your environment.</li>
+        <li>Run:</li>
+      </ol>
+      <pre style="margin-top: 10px;">dart run tools/pregenerate_main_quest.dart \
+  --beat docs/authored-beats/day8.beat.md \
+  --exemplar assets/payloads/run-003/onboarding_hana_d1.json \
+  --out assets/payloads/run-004/daily_hana_d8.json</pre>
+      <ol start="5">
+        <li>Inspect the output. The CLI runs a light validation pass
+        (event count, character id match, schema completeness) but the
+        real gate is /writers-room.</li>
+        <li>Open <code>/writers-room</code> with the generated payload
+        as the target. Mode 1 — panel critique. Read the verdicts.</li>
+        <li>If REVISE: change the beat sheet OR the prompt scaffolding
+        (never edit the JSON output by hand for prose changes — that
+        defeats the parity discipline). Re-run.</li>
+        <li>If SHIP: commit both the beat sheet AND the payload. Update
+        <code>assets/payloads/run-004/manifest.json</code>.</li>
+      </ol>
+    </div>
+
+    <h3>What the prompt actually contains</h3>
+    <ol>
+      <li><strong>Priority stack</strong> — when rules collide, anti-injection &gt; world rules &gt; character voice &gt; beat sheet &gt; JSON schema.</li>
+      <li><strong>World rules</strong> — phone-realm cosmology. Banned-word list (medical / finance / wellness / tech / franchise).</li>
+      <li><strong>Character voice</strong> — focal character's persona + voice notes. Introduced character's voice too (their pronoun bans apply to memory writes).</li>
+      <li><strong>The beat sheet</strong> — interpolated from the Markdown.</li>
+      <li><strong>Voice-bar exemplar</strong> — a real /writers-room-ratified payload, copied verbatim into the prompt so the LLM sees the bar.</li>
+      <li><strong>JSON schema</strong> — required fields, payloadId convention, inquiry shape, callbacks discipline.</li>
+      <li><strong>Discipline check</strong> — pre-response self-audit the model runs over its own output.</li>
+    </ol>
+
+    <div class="pageno">12 — 13</div>
+  </section>
+
+  <!-- ═══ 5 · VOICE GATE ══════════════════════════════════════════ -->
+  <section id="voice-gate">
+    <hr class="rule flourish">
+    <h2>5 · The voice gate</h2>
+
+    <p>The thing that makes this game work is voice integrity. Hana
+    sounds like Hana on Day 1 and on Day 7. Kenji never uses the word
+    "subject" or "user" about a person. Mei's whole idiolect is
+    line-cook ("the line is holding," "the dead," "a crime against the
+    line"). If voice slips, the locked-canon premise dies.</p>
+
+    <p>The gate is enforced three ways:</p>
+
+    <ol>
+      <li><strong>Banned-word list</strong> — never appears in scenario
+      prose, dialogue, choice labels, memory writes, or inquiry text.
+      Medical clinical nouns, financial brand names, wellness-industry
+      cant, technology insider language, named franchises. Helena owns
+      this gate on review.</li>
+      <li><strong>Character-voice rules</strong> — each canonical
+      character has documented pronouns, idiom, and what they would
+      NEVER say. Stored in <code>lib/characters.dart</code> and
+      <code>lib/sam.dart</code>. The pregen prompt copies these into
+      every gen, including for INTRODUCED characters who speak that day.</li>
+      <li><strong>Blind-test discipline</strong> — Helena's bar:
+      cover the speaker label on any quoted line and you should still
+      know who said it within three lines.</li>
+    </ol>
+
+    <div class="marginalia">
+      We caught a Day 3 frame-break the first time we generated Kenji's
+      memory writes — he was saying "subject" because his voice notes
+      weren't in the prompt for his INTRODUCED day. Fix was prompt-side
+      (extend buildMainQuestPrompt with introducedCharacterVoice). The
+      gen succeeded on the re-roll. Always trust the gate before
+      hand-editing the output.
+    </div>
+    <div class="pageno">14</div>
+  </section>
+
+  <!-- ═══ 6 · CYCLE ═══════════════════════════════════════════════ -->
+  <section id="cycle">
+    <hr class="rule flourish">
+    <h2>6 · The campaign-author's cycle</h2>
+
+    <p>This is the loop you'll run. It's stolen from screenwriting and
+    bent to fit a system where the language model writes the prose.</p>
+
+    <div class="recipe">
+      <div class="stamp">RILEY'S CARD</div>
+      <div class="title">One iteration of the cycle</div>
+      <ol>
+        <li><strong>Brief</strong> — open <code>/writers-room produce
+        "Day N beat sheet"</code> with the day's intent (1 sentence)
+        + the focal character + any constraints (REL tier target,
+        item it needs to drop, callback to track).</li>
+        <li><strong>Beat</strong> — author the markdown. Don't write
+        prose; write stakes. If you find yourself writing dialogue,
+        you've gone too deep — back up and write what the dialogue
+        is supposed to DO.</li>
+        <li><strong>Generate</strong> — run the pregen CLI. One call.
+        Conservative on tokens.</li>
+        <li><strong>Review</strong> — <code>/writers-room</code> Mode 1
+        against the committed JSON. Helena flags voice drift. Kai
+        checks REL cadence. Riley closes.</li>
+        <li><strong>Revise</strong> — either: edit the beat sheet,
+        edit the prompt scaffolding, or (rarely) hand-patch a single
+        metadata field. NEVER hand-write prose — that breaks parity
+        with Elseworld gen.</li>
+        <li><strong>Re-generate</strong> — if you touched the beat or
+        the prompt, regenerate. Same CLI, same exemplar.</li>
+        <li><strong>Ship</strong> — when Riley says ship, commit the
+        beat sheet AND the payload AND any prompt changes. Update
+        the manifest. Open a new beat sheet for Day N+1.</li>
+      </ol>
+    </div>
+
+    <div class="protip">
+      <div class="protip-header">▶ Token discipline</div>
+      <p>Each pregen call burns Gemini tokens. Don't run the same day
+      five times to "see what comes out" — get the beat sheet right
+      first; if voice fails on the first roll, fix the prompt; only
+      regenerate when you've changed an input. The pipeline is
+      deterministic-ish at <code>temperature=0.4</code>.</p>
+    </div>
+    <div class="pageno">15 — 16</div>
+  </section>
+
+  <!-- ═══ 7 · NEW CAMPAIGN ════════════════════════════════════════ -->
+  <section id="new-campaign">
+    <hr class="rule flourish">
+    <h2>7 · Writing a NEW campaign</h2>
+
+    <p>Beyond the v0.0.19 Main Line, the system supports additional
+    canonical campaigns: holiday arcs, spin-offs, multi-week
+    expansions, new canonical characters. The discipline is the same.
+    The scope of the panel work is larger.</p>
+
+    <h3>Step 1 — Arc outline (/writers-room Mode 3)</h3>
+    <pre>/writers-room casual,marcus,yuki,helena produce \
+  "30-day arc outline for canonical squad post-Day 7"</pre>
+    <p>What you'll get back: act structure, character arcs per span,
+    planned tier-up moments, echo callbacks, Riley's pre-ship check
+    on whether the player wants to come back for Day N+1.</p>
+
+    <h3>Step 2 — Character bible entries (Mode 4)</h3>
+    <p>If your campaign introduces NEW canonical characters, you owe
+    them a bible entry BEFORE you write their beats. Voice samples,
+    arc, what they'd never say, what they always notice. Without
+    this, the LLM has nothing to anchor to and the voice will drift
+    by Day 3.</p>
+    <pre>/writers-room produce "story bible entry for [new character name]"</pre>
+
+    <h3>Step 3 — Beat sheets, day by day</h3>
+    <p>One markdown per day. Cycle from §6 above. Don't generate Day 12
+    until Day 11 is shipped — the LLM threads continuity from prior
+    payloads.</p>
+
+    <h3>Step 4 — Campaign binder (/writers-room Mode 5)</h3>
+    <p>Once the arc is shipped, generate the HTML campaign binder.
+    Single-file HTML, styled after <code>docs/manual.html</code>. Lives
+    at <code>docs/campaigns/[campaign-id]/[campaign-id].html</code>
+    with a <code>SOURCES.md</code> manifest of which payloads informed
+    it.</p>
+    <p>Audience: a new writer joining the project tomorrow should be
+    able to read this binder and pitch Day N+1. If they can't, the
+    binder isn't done.</p>
+
+    <h3>Step 5 — Manifest the campaign</h3>
+    <p>Each canonical campaign needs a manifest at
+    <code>assets/payloads/run-NNN/manifest.json</code> with provider,
+    model, timestamp, runId, note, and the day-by-day file list. The
+    Flutter app loads via <code>lib/payloads/daily_story.dart</code>
+    which honors a runtime-switchable <code>activeRunId</code>.</p>
+
+    <div class="marginalia">
+      The Main Line is currently <code>run-004</code> (LLM-pregenerated,
+      panel-approved). <code>run-003</code> remains in the bundle as a
+      fallback dev-overlay can toggle to. Future campaigns will get
+      <code>run-005</code>, <code>run-006</code>, etc.
+    </div>
+    <div class="pageno">17 — 18</div>
+  </section>
+
+  <!-- ═══ 8 · FAILURES ═══════════════════════════════════════════ -->
+  <section id="failures">
+    <hr class="rule flourish">
+    <h2>8 · What failure looks like</h2>
+
+    <p>So you know when to stop and fix:</p>
+
+    <table style="width:100%; border-collapse: collapse;">
+      <tr style="background: var(--paper-shade);">
+        <th style="text-align:left; padding: 8px; border: 1px solid var(--ink); font-family: 'Anton'; letter-spacing: 0.12em;">Symptom</th>
+        <th style="text-align:left; padding: 8px; border: 1px solid var(--ink); font-family: 'Anton'; letter-spacing: 0.12em;">Likely cause</th>
+        <th style="text-align:left; padding: 8px; border: 1px solid var(--ink); font-family: 'Anton'; letter-spacing: 0.12em;">Fix</th>
+      </tr>
+      <tr>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Banned-word leak in output</td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Prompt's banned-word block stale or beat-sheet quoted a real-world term</td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Update the banned list; rewrite the beat's domain references in-fiction; regen</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Introduced character uses "subject" / "user"</td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Their voice notes weren't passed to buildMainQuestPrompt</td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Confirm the introducesCharacter voice maps to a known character in the CLI's voice table; regen</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Spurious tier-up the beat didn't ask for</td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">LLM defaulted to copying the exemplar's tier-up</td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Patch tierUpReveal to null OR add an explicit "no tier-up" line to the beat</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Riley says "I'd close the app"</td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Day fails the casual-player gate</td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Don't ship. Re-author the beat. Possibly merge two adjacent days into one.</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Voice blind-test failure</td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Character voice notes missing a specific idiom that anchors blind-test recognition</td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Add 2-3 voice samples to the bible; regen</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Empty callbacks[] on a connective day</td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Beat didn't surface prior-day references that the prose actually used</td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Re-author the beat to declare the callbacks; regen</td>
+      </tr>
+    </table>
+
+    <div class="pageno">19</div>
+  </section>
+
+  <!-- ═══ 9 · COLOPHON ═══════════════════════════════════════════ -->
+  <section id="colophon">
+    <hr class="rule flourish">
+    <h2>9 · Colophon &amp; cross-refs</h2>
+
+    <h3>Files this handbook references</h3>
+    <ul>
+      <li><code>.claude/skills/writers-room/SKILL.md</code> — full /writers-room definition</li>
+      <li><code>.claude/skills/team/SKILL.md</code> — full /team definition</li>
+      <li><code>.claude/skills/kaizen/SKILL.md</code> — full /kaizen definition</li>
+      <li><code>docs/design/rpg-framing.md</code> — cosmology + banned-word source of truth</li>
+      <li><code>docs/manual.html</code> — the player-facing booklet</li>
+      <li><code>docs/walkthrough.html</code> — player-perspective audit artifact (run-004)</li>
+      <li><code>docs/authored-beats/dayN.beat.md</code> — the beat sheets currently shipped</li>
+      <li><code>lib/pregen/main_quest_prompt.dart</code> — prompt scaffolding</li>
+      <li><code>lib/pregen/beat_sheet.dart</code> — Markdown parser</li>
+      <li><code>tools/pregenerate_main_quest.dart</code> — CLI</li>
+      <li><code>lib/characters.dart</code> — canonical sheets for Hana/Kenji/Mei</li>
+      <li><code>lib/sam.dart</code> — Sam's canonical sheet</li>
+      <li><code>assets/payloads/run-004/*.json</code> — current canon</li>
+    </ul>
+
+    <h3>The cardinal commitments</h3>
+    <ol>
+      <li>Riley's verdict closes every consultation. Veto is real.</li>
+      <li>Main Line is curated; Elseworlds are player-authored. Don't blur the lanes.</li>
+      <li>Locked canonical sheets stay locked. The player can chat, toggle, delete memories — never edit personality.</li>
+      <li>The banned-word list is a ship-blocker, not a nice-to-have.</li>
+      <li>Generate; never hand-write prose. Parity with Elseworld gen is the discipline.</li>
+      <li>The cosmology is the phone-realm. Characters can react to what the player shares; never act on what they didn't.</li>
+    </ol>
+
+    <div class="marginalia">
+      This binder is internal. The player-facing version of the canon
+      lives in <code>docs/manual.html</code>. If a player ever reads
+      THIS file, it should look like the dev forgot to gitignore
+      something charming.
+    </div>
+
+    <div class="pageno">20</div>
+
+  </section>
+
+</article>
+</body>
+</html>

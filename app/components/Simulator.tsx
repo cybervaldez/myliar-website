@@ -149,8 +149,8 @@ export function Simulator() {
             HANA · {relTierName(finalRel).toUpperCase()}
           </div>
           <p className="text-ink-soft italic text-[15px] leading-relaxed">
-            {finalRel >= 6
-              ? "She's noting you. Tomorrow's text arrives at 5:14 AM regardless."
+            {finalRel >= 4
+              ? "You're on her radar. Tomorrow's text arrives at 5:14 AM regardless."
               : finalRel >= 0
               ? "She's circling. The treadmill is still running in the background."
               : "She is reconsidering you. Tomorrow's text will be sharper."}
