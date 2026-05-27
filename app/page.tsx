@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Simulator } from "./components/Simulator";
+import { PannableAscii } from "./components/PannableAscii";
 
 // ── Landing page — single index. Sections (top → bottom):
 //   1. Hero       — Sam-voice subtitle + the bait
@@ -414,7 +415,7 @@ function CourtyardMap() {
   // chunky border, and the "you are here" character glyph (H) shown
   // in forest green for parity with the in-game viewer.
   return (
-    <div className="border-[2px] border-ink bg-paper-shade p-4 sm:p-5 overflow-x-auto">
+    <div className="border-[2px] border-ink bg-paper-shade p-4 sm:p-5">
       <div className="flex items-center justify-between mb-3">
         <span className="font-display tracking-[0.16em] text-[10px] text-spot-red">
           THE COURTYARD · phone-realm · navigable
@@ -423,7 +424,12 @@ function CourtyardMap() {
           excerpt — full map in-game
         </span>
       </div>
-      <pre className="font-mono text-[10px] sm:text-[11px] leading-[1.25] text-ink whitespace-pre">
+      {/* v0.0.25.1 — PannableAscii preserves 58-col tabular layout
+          on narrow viewports (native swipe on touch, click-drag on
+          desktop). Excerpt content also updated for the v0.0.24.2
+          regen: [sticky-wall*] → [notes*]. */}
+      <PannableAscii ariaLabel="phone-realm courtyard excerpt">
+        <pre className="font-mono text-[11px] sm:text-[12px] leading-[1.25] text-ink whitespace-pre m-0">
 {`╔══════════════════════════════════════════════════════════╗
 ║              THE COURTYARD — phone realm                 ║
 ║                                                          ║
@@ -447,10 +453,11 @@ function CourtyardMap() {
 ║              │                 │                         ║
 ║   ┌─ MEI's kitchen ─┐  ┌─ SAM's desk ─┐                  ║
 ║   │ [prep] [line s] │  │  . S . d .   │                  ║
-║   │ [bell*] [mise]  │  │ [sticky-wall*]│                 ║
+║   │ [bell*] [mise]  │  │ [notes*]     │                  ║
 ║   └─────────────────┘  └──────────────┘                  ║
 ╚══════════════════════════════════════════════════════════╝`}
-      </pre>
+        </pre>
+      </PannableAscii>
       <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-ink-soft font-sans">
         <div>
           <span className="font-display tracking-[0.1em] text-spot-red mr-2">LEGEND</span>

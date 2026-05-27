@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PannableAscii } from "../components/PannableAscii";
 
 // THE COURTYARD — phone-realm map. The ASCII below is a 1:1 mirror of
 // assets/realm-maps/phone-realm.txt (the runtime asset rendered by the
@@ -66,12 +67,17 @@ export default function MapPage() {
         </p>
 
         {/* The map — chunky-bordered cream surface, monospace ASCII.
-            overflow-x-auto handles the rare narrow viewport gracefully
-            without forcing horizontal-scroll on phone-default widths. */}
-        <div className="mt-10 border-2 border-ink bg-paper-shade p-3 sm:p-5 overflow-x-auto shadow-[6px_6px_0_0_rgba(26,26,26,0.12)]">
-          <pre className="font-mono text-[10px] sm:text-[13px] leading-[1.25] text-ink whitespace-pre m-0">
+            Wrapped in PannableAscii so phone viewports keep the native
+            horizontal-swipe behavior AND desktop users can click-drag
+            to pan the map block. v0.0.25.1 fix per the user report
+            that the courtyard ASCII was wrapping at narrow widths
+            instead of holding its 58-col layout. */}
+        <div className="mt-10 border-2 border-ink bg-paper-shade p-3 sm:p-5 shadow-[6px_6px_0_0_rgba(26,26,26,0.12)]">
+          <PannableAscii ariaLabel="phone-realm courtyard map">
+            <pre className="font-mono text-[11px] sm:text-[13px] leading-[1.25] text-ink whitespace-pre m-0">
 {PHONE_REALM_MAP}
-          </pre>
+            </pre>
+          </PannableAscii>
         </div>
 
         <p className="text-center font-display tracking-[0.16em] text-[11px] text-margin-ink mt-3">
