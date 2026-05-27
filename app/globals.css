@@ -70,6 +70,20 @@ a:hover {
   border-bottom-color: var(--spot-red);
 }
 
+/* Hero phone-artifact die-glyph pulse — subtle "tap to start" cue.
+   One soft scale per ~3s, respects prefers-reduced-motion. */
+@keyframes die-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.15); }
+}
+.die-pulse {
+  display: inline-block;
+  animation: die-pulse 3s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .die-pulse { animation: none; opacity: 0.9; }
+}
+
 /* 8-bit corner-notch flourish on section rules — replicates the
    chunky-frame feel from the manual. */
 .rule-flourish {

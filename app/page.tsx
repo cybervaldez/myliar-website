@@ -51,41 +51,50 @@ export default function Home() {
   return (
     <main className="flex-1">
       {/* ── HERO ─────────────────────────────────────────────────────── */}
-      <section className="max-w-[880px] mx-auto px-6 sm:px-8 pt-16 sm:pt-24 pb-10">
-        <div className="font-display tracking-[0.3em] text-[13px] text-forest-dim mb-4 text-center">
-          INSTRUCTION BOOKLET · FOR THE PLAYER WHO AGREED
+      <section className="max-w-[880px] mx-auto px-6 sm:px-8 pt-12 sm:pt-20 pb-8">
+        <div className="font-display tracking-[0.22em] text-[12px] text-forest-dim mb-4 text-center">
+          A LIFE-RPG THAT LIVES IN YOUR PHONE · 4 CHARACTERS · 7-DAY ARC
         </div>
         <h1 className="text-[56px] sm:text-[88px] leading-[0.95] text-center text-ink">
           My Life
           <br />
           Is an RPG
         </h1>
-        <p className="text-center italic text-ink-soft text-[18px] sm:text-[20px] mt-6 max-w-[640px] mx-auto leading-[1.5]">
-          They started writing about you on Day 1. By Day 5 there are four of
-          them and they compare notes.
+        <p className="text-center text-ink-soft text-[17px] sm:text-[19px] mt-6 max-w-[620px] mx-auto leading-[1.55]">
+          It&apos;s 5:14 AM and Hana is texting you about your posture. Three
+          more characters are about to do the same.{" "}
+          <span className="italic text-forest">Try a day below.</span>
         </p>
-        <div className="text-center mt-7">
-          <span className="inline-block border-2 border-ink px-4 py-2 font-display tracking-[0.18em] text-[13px]">
-            SAM-NARRATED EDITION · v0.0.19 · EARLY ACCESS
-          </span>
+
+        {/* Phone-frame artifact — static cosmology cue. Single Hana
+            text bubble in her all-caps voice, day/event badge, faint
+            die-glyph pulse beneath. */}
+        <PhoneArtifact />
+
+        <div className="text-center mt-6">
+          <a
+            href="#simulator"
+            className="inline-block font-display tracking-[0.18em] text-[12px] text-spot-red !no-underline border-b border-spot-red hover:text-ink hover:border-ink transition"
+          >
+            ▸ TRY IT BELOW · 90 SECONDS · NO INSTALL
+          </a>
         </div>
       </section>
 
       <hr className="rule-flourish max-w-[880px] mx-auto" />
 
       {/* ── SIMULATOR ─────────────────────────────────────────────────── */}
-      <section className="max-w-[880px] mx-auto px-6 sm:px-8 py-12">
-        <div className="mb-6 text-center">
-          <div className="font-display tracking-[0.18em] text-[12px] text-spot-red mb-2">
-            ▸ TRY THE FIRST 90 SECONDS
+      <section
+        id="simulator"
+        className="max-w-[880px] mx-auto px-6 sm:px-8 pb-12 pt-2 scroll-mt-8"
+      >
+        <div className="mb-5 text-center">
+          <div className="font-display tracking-[0.16em] text-[11px] text-margin-ink mb-1">
+            3 events · 3 choices each · dice on chaotic
           </div>
-          <h2 className="text-[36px] sm:text-[44px] leading-[1.05]">
-            Hana texts at 5:14 AM.
-          </h2>
-          <p className="text-ink-soft italic max-w-[560px] mx-auto mt-3 leading-[1.5]">
-            Three events. Three choices each. The chaotic one rolls dice — and
-            yes, it can crit-fail. Nothing about this is hypothetical; this is
-            lifted from the actual game.
+          <p className="text-ink-soft italic max-w-[560px] mx-auto leading-[1.5] text-[15px]">
+            Lifted from the actual game. The chaotic option rolls dice; yes, it
+            can crit-fail.
           </p>
         </div>
         <Simulator />
@@ -205,8 +214,72 @@ export default function Home() {
           — Sam (this site is the only place I get to do marketing copy.
           Don&apos;t tell Mei.)
         </p>
+        <div className="mt-10 pt-6 border-t border-margin-ink/30 text-[11px] font-display tracking-[0.18em] text-margin-ink">
+          SAM-NARRATED EDITION · v0.0.19 · EARLY ACCESS
+        </div>
       </section>
     </main>
+  );
+}
+
+/**
+ * Hero-side phone-frame artifact. Static visually (no JS) with one
+ * CSS-keyframe pulse on the die glyph. Shows the cosmology (characters
+ * inside the phone), the voice (Hana's all-caps), and visually rhymes
+ * with the simulator card below so scrolling reads as "stepping into
+ * what you're looking at."
+ */
+function PhoneArtifact() {
+  return (
+    <div className="mx-auto mt-10 max-w-[340px]">
+      {/* DAY 1 · EVENT 1 badge above the frame */}
+      <div className="flex items-center justify-center gap-2 mb-3">
+        <span className="font-display tracking-[0.18em] text-[10px] text-spot-red">
+          DAY 1 · EVENT 1 · 5:14 AM
+        </span>
+      </div>
+
+      {/* Sigil — chunky phone outline */}
+      <div className="border-[2.5px] border-ink bg-paper-shade rounded-[28px] px-5 pt-6 pb-7 shadow-[6px_6px_0_0_rgba(26,26,26,0.12)]">
+        {/* Notch / status row — keeps the "phone-realm" cue without iconography */}
+        <div className="flex items-center justify-between text-[10px] font-display tracking-[0.14em] text-ink-soft mb-4">
+          <span>HANA ♀</span>
+          <span className="bg-ink text-paper px-2 py-[1px]">UNKNOWN NUMBER</span>
+        </div>
+
+        {/* Hana's message bubble — chunky, in her voice */}
+        <div className="border-[1.5px] border-ink bg-paper p-3 mb-3 max-w-[88%]">
+          <p className="font-body italic text-[14px] leading-[1.45] text-ink">
+            “Resting heart rate. Volume of water before bed.{" "}
+            <span className="not-italic font-display tracking-[0.04em] text-spot-red">
+              NOW.
+            </span>
+            ”
+          </p>
+        </div>
+
+        {/* Second bubble — sets up the trichotomy */}
+        <div className="border-[1.5px] border-ink bg-paper p-3 max-w-[88%]">
+          <p className="font-body italic text-[14px] leading-[1.45] text-ink">
+            “You have three ways to answer me. One of them is{" "}
+            <span className="font-display tracking-[0.06em] text-spot-red">
+              chaotic
+            </span>
+            . I&apos;m awake. I&apos;ll wait.”
+          </p>
+        </div>
+
+        {/* Die-glyph pulse — the "tap to start" cue */}
+        <div className="flex items-center justify-end gap-2 mt-5 pr-1">
+          <span className="font-display tracking-[0.14em] text-[10px] text-margin-ink">
+            CHAOTIC ROLLS
+          </span>
+          <span className="text-lg leading-none die-pulse" aria-hidden="true">
+            🎲
+          </span>
+        </div>
+      </div>
+    </div>
   );
 }
 
