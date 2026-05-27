@@ -181,6 +181,82 @@ export default function Home() {
 
       <hr className="rule-flourish max-w-[880px] mx-auto" />
 
+      {/* ── REALMS + MAPS ─────────────────────────────────────────── */}
+      <section
+        id="realms"
+        className="max-w-[880px] mx-auto px-6 sm:px-8 py-12 sm:py-16"
+      >
+        <div className="mb-6">
+          <div className="font-display tracking-[0.18em] text-[12px] text-spot-red mb-2">
+            ▸ NEW IN v0.0.24 · REALMS HAVE MAPS NOW
+          </div>
+          <h2 className="text-[36px] sm:text-[44px]">
+            The courtyard + the portal gate.
+          </h2>
+          <p className="text-ink-soft mt-3 max-w-[680px] leading-[1.55]">
+            The four characters live somewhere. As of v0.0.24, that
+            somewhere has a map. Hana&apos;s space stops being
+            &quot;her gym&quot; and becomes{" "}
+            <em>the track + the bleachers + the foam-roller corner</em>
+            , drawn the same way every time, referenced the same way by
+            every scenario. Open it any time from the{" "}
+            <span className="font-display tracking-[0.08em] text-spot-red">
+              MAP ›
+            </span>{" "}
+            link in any chat header.
+          </p>
+        </div>
+
+        <CourtyardMap />
+
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="border-[1.5px] border-ink bg-paper-shade p-5">
+            <div className="font-display tracking-[0.16em] text-[11px] text-spot-red">
+              THE PHONE-REALM · navigable
+            </div>
+            <h3 className="text-[20px] mt-2 mb-2 text-ink">
+              A village green with five doors out
+            </h3>
+            <p className="text-[14.5px] leading-[1.5]">
+              Four character spaces around the edge, a noticeboard in
+              the courtyard center, the portal gate across the top.
+              Continuity objects bridge spaces — Hana&apos;s pinned
+              race photo is visible from the hallway; Kenji&apos;s open
+              ledger has a flagged line readable from his doorway. The
+              world is connected because the people in it live with
+              each other.
+            </p>
+          </div>
+          <div className="border-[1.5px] border-ink bg-paper-shade p-5">
+            <div className="font-display tracking-[0.16em] text-[11px] text-spot-red">
+              FIVE ELSEWORLDS · contextual
+            </div>
+            <h3 className="text-[20px] mt-2 mb-2 text-ink">
+              Each vibe gets its own geography
+            </h3>
+            <p className="text-[14.5px] leading-[1.5]">
+              The slow cottagecore village, the 80s strip-mall arcology,
+              the small anime town with one school and one shrine, the
+              Tavern Between Worlds, the dispersed medieval villages.
+              Each Elseworld map highlights the encounter location and
+              shows the surrounding geography — so the LLM (and you)
+              can place the stranger you just met in a real spot.
+              Queued, one panel-ratified per turn.
+            </p>
+          </div>
+        </div>
+
+        <p className="italic text-margin-ink mt-6 text-[13px] max-w-[680px] leading-[1.55]">
+          The map is a glance surface, not a navigation surface — you
+          don&apos;t walk an avatar around. What it does is ground the
+          person you&apos;re talking to in a place. When Hana mentions
+          the bleachers, you can picture them. When Kenji says
+          &quot;the drawer,&quot; you know which drawer.
+        </p>
+      </section>
+
+      <hr className="rule-flourish max-w-[880px] mx-auto" />
+
       {/* ── DOWNLOAD / FOOTER ────────────────────────────────────────── */}
       <section
         id="download"
@@ -231,7 +307,7 @@ export default function Home() {
           Don&apos;t tell Mei.)
         </p>
         <div className="mt-10 pt-6 border-t border-margin-ink/30 text-[11px] font-display tracking-[0.18em] text-margin-ink">
-          SAM-NARRATED EDITION · v0.0.19 · EARLY ACCESS
+          SAM-NARRATED EDITION · v0.0.24 · EARLY ACCESS
         </div>
       </section>
     </main>
@@ -315,6 +391,76 @@ function TierCard({
       </div>
       <h3 className="text-[22px] mt-2 mb-3 text-ink">{title}</h3>
       <p className="text-[14.5px] leading-[1.55]">{body}</p>
+    </div>
+  );
+}
+
+/**
+ * Compact ASCII rendering of the phone-realm courtyard — a website-
+ * friendly excerpt of `assets/realm-maps/phone-realm.txt`. Two zones
+ * shown (Hana + Kenji + portal gate + courtyard center) so the player
+ * sees the *shape* without having to scroll a 58-col map on phone.
+ * The full map is rendered in-game and in the docs.
+ */
+function CourtyardMap() {
+  // Build with raw strings so the tabular layout is preserved. The
+  // pre/code wrapper renders in Courier with the cream-paper background,
+  // chunky border, and the "you are here" character glyph (H) shown
+  // in forest green for parity with the in-game viewer.
+  return (
+    <div className="border-[2px] border-ink bg-paper-shade p-4 sm:p-5 overflow-x-auto">
+      <div className="flex items-center justify-between mb-3">
+        <span className="font-display tracking-[0.16em] text-[10px] text-spot-red">
+          THE COURTYARD · phone-realm · navigable
+        </span>
+        <span className="font-sans italic text-[11px] text-margin-ink">
+          excerpt — full map in-game
+        </span>
+      </div>
+      <pre className="font-mono text-[10px] sm:text-[11px] leading-[1.25] text-ink whitespace-pre">
+{`╔══════════════════════════════════════════════════════════╗
+║              THE COURTYARD — phone realm                 ║
+║                                                          ║
+║   ╔══════════════ THE PORTAL GATE ══════════════════╗    ║
+║   ║   %         %         %        %        %      ║    ║
+║   ║  the      the mall  the small the     the      ║    ║
+║   ║ witch's    (80)      town    tavern  cottage   ║    ║
+║   ║  path                (90)   (isekai)  (cozy)   ║    ║
+║   ╚══════════════════│════════════════════════════╝     ║
+║                       │                                  ║
+║   ┌── HANA's track ──┘   └── KENJI's office ──┐         ║
+║   │ , , , , , , , , ,│   │. . . . . . . . . . │         ║
+`}<span className="text-forest font-bold">{`║   │ , H . . . . . . t│`}</span>{`   │. K . . . . . . . . │         ║
+║   │ , . . [bleachers]│   │. . [desk] [ledger*]│         ║
+║   │ , . [pic*] . . . │   │. . . . . [drawer]  │         ║
+║   └──────────│───────┘   └──────│──────────────┘        ║
+║              │                  │                        ║
+║          ┌───┴──[noticeboard]──┴───┐                     ║
+║          │  the courtyard center   │                     ║
+║          └───┬─────────────────┬───┘                     ║
+║              │                 │                         ║
+║   ┌─ MEI's kitchen ─┐  ┌─ SAM's desk ─┐                  ║
+║   │ [prep] [line s] │  │  . S . d .   │                  ║
+║   │ [bell*] [mise]  │  │ [sticky-wall*]│                 ║
+║   └─────────────────┘  └──────────────┘                  ║
+╚══════════════════════════════════════════════════════════╝`}
+      </pre>
+      <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-ink-soft font-sans">
+        <div>
+          <span className="font-display tracking-[0.1em] text-spot-red mr-2">LEGEND</span>
+          S H K M = Sam / Hana / Kenji / Mei
+        </div>
+        <div>
+          <code className="text-forest font-bold">H</code> in green = the
+          character you&apos;re currently with
+        </div>
+        <div>
+          <code>[name*]</code> = continuity object — bridges two spaces
+        </div>
+        <div>
+          <code>%</code> = portal — one per Elseworld vibe
+        </div>
+      </div>
     </div>
   );
 }
