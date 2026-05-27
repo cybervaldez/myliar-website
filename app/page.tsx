@@ -116,7 +116,13 @@ export default function Home() {
             Four characters. You meet them in order: Sam on Day 0, Hana on
             Day 1, Kenji on Day 3, Mei on Day 5. They live inside your phone.
             They know each other. They write notes about you and each other,
-            and the notes leak into the next day&apos;s dialogue.
+            and the notes leak into the next day&apos;s dialogue.{" "}
+            <Link
+              href="/map"
+              className="font-display tracking-[0.14em] text-[12px] text-spot-red whitespace-nowrap"
+            >
+              ▸ SEE THE COURTYARD
+            </Link>
           </p>
         </div>
 
