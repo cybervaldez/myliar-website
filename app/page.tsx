@@ -199,7 +199,7 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row gap-3 max-w-[560px] mx-auto">
           <Link
             href="https://github.com/cybervaldez/myliar"
-            className="flex-1 font-display tracking-[0.16em] text-paper bg-forest py-4 px-6 border-2 border-ink !no-underline hover:bg-[#1f3a1d] transition"
+            className="flex-1 font-display tracking-[0.16em] text-white bg-forest py-4 px-6 border-2 border-ink !no-underline hover:bg-[#1f3a1d] transition"
           >
             EARLY ACCESS · GITHUB
           </Link>

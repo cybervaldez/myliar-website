@@ -160,7 +160,7 @@ export function Simulator() {
         <div className="flex flex-col sm:flex-row gap-3">
           <a
             href="#download"
-            className="flex-1 text-center font-display tracking-[0.14em] text-paper bg-forest py-3 px-5 border-2 border-ink !no-underline hover:bg-[#1f3a1d] transition"
+            className="flex-1 text-center font-display tracking-[0.14em] text-white bg-forest py-3 px-5 border-2 border-ink !no-underline hover:bg-[#1f3a1d] transition"
           >
             DOWNLOAD THE FULL GAME →
           </a>
@@ -231,9 +231,9 @@ function ChoiceButton({
   onPick: () => void;
 }) {
   const accent: Record<ChoiceRole, string> = {
-    logical: "bg-forest text-paper",
-    passive: "bg-ink text-paper",
-    chaotic: "bg-spot-red text-paper",
+    logical: "bg-forest text-white",
+    passive: "bg-ink text-white",
+    chaotic: "bg-spot-red text-white",
   };
   const labels: Record<ChoiceRole, string> = {
     logical: "LOGICAL",
@@ -347,7 +347,7 @@ function ReactionPanel({
       <button
         type="button"
         onClick={onAdvance}
-        className="w-full text-center font-display tracking-[0.14em] text-paper bg-forest py-3 px-5 border-2 border-ink hover:bg-[#1f3a1d] transition cursor-pointer"
+        className="w-full text-center font-display tracking-[0.14em] text-white bg-forest py-3 px-5 border-2 border-ink hover:bg-[#1f3a1d] transition cursor-pointer"
       >
         {isLast ? "FINISH THE DEMO →" : "NEXT EVENT →"}
       </button>
