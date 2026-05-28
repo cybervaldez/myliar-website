@@ -66,6 +66,17 @@ export default function MapPage() {
           Here it&apos;s the cartographer&apos;s draft.
         </p>
 
+        {/* v0.0.30.6 — the in-game version pans and zooms now. Mobile
+            ASCII used to wrap mid-line on narrow screens; the
+            IntrinsicWidth + TextOverflow.visible fix means the map
+            renders at its natural width and the viewport just clips
+            (you pan to see the rest). Quiet callout under the intro. */}
+        <p className="text-center text-margin-ink mt-3 max-w-[560px] mx-auto leading-[1.5] text-[13px] italic">
+          The in-game version pans and zooms — drag with one finger to
+          explore; pinch to scale. The focal character&apos;s glyph
+          auto-centers on open.
+        </p>
+
         {/* The map — chunky-bordered cream surface, monospace ASCII.
             Wrapped in PannableAscii so phone viewports keep the native
             horizontal-swipe behavior AND desktop users can click-drag
@@ -177,6 +188,32 @@ export default function MapPage() {
             nutrition cards). The{" "}
             <span className="font-mono text-ink">[noticeboard]</span> in
             the courtyard center is public.
+          </p>
+        </div>
+
+        <hr className="rule-flourish max-w-[880px] mx-auto my-10" />
+
+        {/* v0.0.28+ realm-editor callout — the picker now hosts custom
+            realms alongside the courtyard. Player builds them by
+            chatting with Sam; they render through the same pan/zoom
+            viewer and persist locally. Pointer back to the homepage
+            section. */}
+        <div className="border-2 border-ink bg-paper-shade p-5 sm:p-6">
+          <div className="font-display tracking-[0.18em] text-[12px] text-forest-dim mb-2">
+            ▸ YOUR REALMS GO HERE TOO
+          </div>
+          <p className="text-[14.5px] leading-[1.65] text-ink-soft">
+            The realm picker hosts both the courtyard and any places
+            you&apos;ve sketched yourself. Sam helps you draft them in
+            chat — one sentence about what the realm is FOR, a few
+            taps, and a thing to come back to. They render through
+            this same map viewer and persist across sessions, next
+            to the canonical map.{" "}
+            <Link href="/" className="!border-b-0">
+              <span className="font-display tracking-[0.14em] text-[12px] text-forest">
+                ← see how it works
+              </span>
+            </Link>
           </p>
         </div>
 

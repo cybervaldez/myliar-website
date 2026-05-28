@@ -103,6 +103,101 @@ export default function Home() {
 
       <hr className="rule-flourish max-w-[880px] mx-auto" />
 
+      {/* ── SKETCH YOUR OWN PLACES (v0.0.28+) ───────────────────────── */}
+      {/* /team panel ratified this section between Simulator and Squad:
+          the Simulator shows curated content; this section shows the
+          part the player authors. Sam-coded copy quotes the actual
+          in-app first message to keep the marketing promise == the
+          in-app reality. */}
+      <section
+        id="build"
+        className="max-w-[880px] mx-auto px-6 sm:px-8 py-12 sm:py-16"
+      >
+        <div className="mb-6">
+          <div className="font-display tracking-[0.18em] text-[12px] text-spot-red mb-2">
+            ▸ NEW IN v0.0.28+ · YOUR REALMS, SKETCHED
+          </div>
+          <h2 className="text-[36px] sm:text-[44px]">
+            Sketch your own places.
+          </h2>
+          <p className="text-ink-soft mt-3 max-w-[680px] leading-[1.55]">
+            Sam helps you draft them. They live in your phone next to
+            the canonical ones. Open the realm picker from any chat
+            header, tap{" "}
+            <span className="font-display tracking-[0.08em] text-spot-red">
+              + BUILD A REALM
+            </span>
+            , and you&apos;re in a sketching session. Or just type{" "}
+            <em>let&apos;s build</em> in Sam&apos;s chat — he&apos;ll
+            handle the rest.
+          </p>
+        </div>
+
+        {/* Sam's actual first build-mode message — straight from
+            lib/realm_editor/build_mode_chips.dart so the homepage
+            promise matches the in-app first turn exactly. */}
+        <div className="border-2 border-ink bg-paper-shade p-5 sm:p-6 mb-6">
+          <div className="font-display tracking-[0.16em] text-[11px] text-forest-dim mb-3">
+            ▸ SAM · BUILDING
+          </div>
+          <p className="text-[15px] leading-[1.6] text-ink font-body">
+            okay. you want to build a realm. one sentence: what&apos;s
+            this realm FOR. or just have me make one.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <span className="border-2 border-ink bg-paper px-3 py-2 text-[13px] font-body">
+              i have a brief
+            </span>
+            <span className="border-2 border-ink bg-paper px-3 py-2 text-[13px] font-body">
+              ⚂ just make one
+            </span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="border-[1.5px] border-ink bg-paper-shade p-5">
+            <div className="font-display tracking-[0.16em] text-[11px] text-spot-red mb-2">
+              ▸ JUST MAKE ONE
+            </div>
+            <p className="text-[14.5px] leading-[1.55]">
+              Tap the surprise-me chip and Sam picks sensible defaults
+              — small size, doorway portal, an atmospheric brief — and
+              generates the realm in about three seconds. Comes back
+              with a working title like{" "}
+              <em>the small calm one</em>, an ASCII fragment, and a
+              tappable preview card. Ship it or revise it.
+            </p>
+          </div>
+          <div className="border-[1.5px] border-ink bg-paper-shade p-5">
+            <div className="font-display tracking-[0.16em] text-[11px] text-spot-red mb-2">
+              ▸ OR ANSWER FOUR QUESTIONS
+            </div>
+            <p className="text-[14.5px] leading-[1.55]">
+              Brief, purpose, occupants, weird-thing, portal. Chip-tap
+              the whole way; type only when you want to. Sam reacts
+              to each answer and emits a draft when there&apos;s
+              enough to go on. Rename it on ship. It shows up in your
+              picker.
+            </p>
+          </div>
+        </div>
+
+        <p className="italic text-margin-ink mt-6 text-[13px] max-w-[680px] leading-[1.55]">
+          v1 ships these as <em>viewable artifacts</em> — places to
+          look at, sketches that persist next to the canonical map.
+          Chat integration with the squad (so Hana knows she&apos;s
+          in <em>the small calm one</em>) is on the roadmap.
+        </p>
+
+        <div className="mt-5 text-[14px]">
+          <Link href="/map" className="font-display tracking-[0.14em] text-[12px] text-spot-red">
+            ▸ SEE WHERE THEY LIVE
+          </Link>
+        </div>
+      </section>
+
+      <hr className="rule-flourish max-w-[880px] mx-auto" />
+
       {/* ── SQUAD ────────────────────────────────────────────────────── */}
       <section
         id="squad"
@@ -180,8 +275,8 @@ export default function Home() {
           />
           <TierCard
             tag="ELSEWORLD"
-            title="Cross over"
-            body="Travel into an alternate-reality side zone. Meet strangers spun up at your chosen vibe — golden-age fantasy, 80s + cyber, 90s anime, isekai + party RPG, cottagecore, or surprise me. These characters are yours, fully customizable. Share the great ones via 8-char code."
+            title="Cross over · build your own"
+            body="Travel into an alternate-reality side zone. Meet strangers spun up at your chosen vibe — golden-age fantasy, 80s + cyber, 90s anime, isekai + party RPG, cottagecore, or surprise me. These characters are yours, fully customizable. Share the great ones via 8-char code. And as of v0.0.28, Sam helps you sketch the realms themselves."
           />
         </div>
       </section>
