@@ -32,6 +32,7 @@
 // runtime needed (importing lib/theme.dart would drag in the engine).
 
 import { readFileSync, writeFileSync, existsSync, readdirSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { dirname, join, resolve } from "node:path";
 
@@ -510,6 +511,15 @@ function build() {
     mainline: extractMainline(),
   };
   assertFrameClean(data);
+  // Deterministic data-snapshot version. Hash everything BUT the version
+  // field (so re-hashing is stable), then stamp { runId, contentHash }.
+  // Every community note records this so /writers-room knows which data
+  // snapshot a note was written against — if the game changed since, the
+  // note may reference content the wiki hasn't re-synced yet. NO
+  // timestamp (would break determinism / parity:check); the hash IS the
+  // version, and it changes exactly when the canon content changes.
+  const contentHash = createHash("sha256").update(serialize(data)).digest("hex").slice(0, 12);
+  data.version = { runId: data.mainline.runId, contentHash };
   return data;
 }
 
@@ -588,7 +598,7 @@ if (isCheck) {
 } else {
   writeFileSync(OUT, next);
   console.log(`  ✓ parity: wrote ${OUT.replace(APP + "/", "")}`);
-  console.log(`      tokens=${Object.keys(data.tokens).length}  relTiers=${data.relTiers.names.length}  vibeBands=${data.vibeBands.length}  squad=${data.squad.length}  elseworldSamples=${data.elseworldSamples.length}  simEvents=${data.simScenario.events.length}  mainlineDays=${data.mainline.days.length}`);
+  console.log(`      snapshot=${data.version.runId}·${data.version.contentHash}  tokens=${Object.keys(data.tokens).length}  relTiers=${data.relTiers.names.length}  vibeBands=${data.vibeBands.length}  squad=${data.squad.length}  elseworldSamples=${data.elseworldSamples.length}  simEvents=${data.simScenario.events.length}  mainlineDays=${data.mainline.days.length}`);
   if (cssDrift.length) {
     console.warn("\n  ⚠ parity: globals.css palette drifted — fix these by hand:");
     for (const d of cssDrift) console.warn(`      - ${d}`);

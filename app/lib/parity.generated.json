@@ -295,7 +295,7 @@
     "events": [
       {
         "id": "evt-1",
-        "scenario": "5:14 AM. Your phone bypasses silent. An UNKNOWN NUMBER, wall of text in all caps demanding your numbers before you collapsed last night: \"RESTING HEART RATE. VOLUME OF WATER BEFORE BED. NOW.\" Below the text, a pinned location — Hana, already at the [track], small figure on the outdoor grass beside her [bench]. The portal frame is the [bleachers] behind her. She's been awake long enough to be impatient.",
+        "scenario": "5:14 AM. Your phone bypasses silent. An UNKNOWN NUMBER, wall of text in all caps demanding your numbers before you collapsed last night: \"THE NUMBERS YOUR BODY LOGGED WHILE YOU SLEPT. WATER LEVELS BEFORE LIGHTS-OUT. NOW.\" Below the text, a pinned location — Hana, already at the [track], small figure on the outdoor grass beside her [bench]. The portal frame is the [bleachers] behind her. She's been awake long enough to be impatient.",
         "choices": [
           {
             "id": "a",
@@ -472,14 +472,11 @@
           "deliveredInEventId": "evt-4"
         },
         "callbacks": [],
-        "frameFlags": [
-          "evt-1.scenario: \"heart rate\"",
-          "evt-4.scenario: \"heart rate\""
-        ],
+        "frameFlags": [],
         "events": [
           {
             "id": "evt-1",
-            "scenario": "5:14 AM. Your phone bypasses silent. An UNKNOWN NUMBER, wall of text in all caps demanding your numbers before you collapsed last night: \"RESTING HEART RATE. VOLUME OF WATER BEFORE BED. NOW.\" Below the text, a pinned location — Hana, already at the [track], small figure on the outdoor grass beside her [bench]. The portal frame is the [bleachers] behind her. She's been awake long enough to be impatient.",
+            "scenario": "5:14 AM. Your phone bypasses silent. An UNKNOWN NUMBER, wall of text in all caps demanding your numbers before you collapsed last night: \"THE NUMBERS YOUR BODY LOGGED WHILE YOU SLEPT. WATER LEVELS BEFORE LIGHTS-OUT. NOW.\" Below the text, a pinned location — Hana, already at the [track], small figure on the outdoor grass beside her [bench]. The portal frame is the [bleachers] behind her. She's been awake long enough to be impatient.",
             "choices": [
               {
                 "id": "a",
@@ -656,7 +653,7 @@
           },
           {
             "id": "evt-4",
-            "scenario": "8:02 AM. You walk back through the [courtyard center]. The [noticeboard] in the middle of the green has a new pin in Hana's handwriting: a printout of your resting heart rate from 5:14 AM, one line under it — \"this number is going to change. you'll see.\" The pin is also visible from Sam's [notes*] wall — paired-pin format, with one of Sam's audit margins beside it. Hana appears beside you. She's not looking at the [noticeboard]. She's looking at the path back to the [track]. She says the thing she's been holding all morning.",
+            "scenario": "8:02 AM. You walk back through the [courtyard center]. The [noticeboard] in the middle of the green has a new pin in Hana's handwriting: a printout of the numbers your body logged at 5:14 AM, one line under it — \"this number is going to change. you'll see.\" The pin is also visible from Sam's [notes*] wall — paired-pin format, with one of Sam's audit margins beside it. Hana appears beside you. She's not looking at the [noticeboard]. She's looking at the path back to the [track]. She says the thing she's been holding all morning.",
             "choices": [
               {
                 "id": "a",
@@ -976,7 +973,7 @@
           },
           {
             "id": "evt-4",
-            "scenario": "9:30 PM. The calibration call. If you forwarded the invite, Hana's on the line — muted, listening from her [bleachers]. Otherwise it's you and Kenji. His voice for the first time: clipped, lowercase, lawyerly. From his [desk] — you can hear the [ledger*] page turn in the background. He doesn't open with hostility. He opens with one line: \"Hana's recovery spend on the player is 47% over what the model predicts. I'd like the player to explain why.\" He's already decided the spend is justified. This is theater. He wants to hear you articulate it.",
+            "scenario": "9:30 PM. The calibration call. If you forwarded the invite, Hana's on the line — muted, listening from her [bleachers]. Otherwise it's you and Kenji. His voice for the first time: clipped, lowercase, lawyerly. From his [desk] — you can hear the [ledger*] page turn in the background. He doesn't open with hostility. He opens with one line: \"Hana's recovery spend on the player is 47% over what the ledger budgeted. I'd like the player to explain why.\" He's already decided the spend is justified. This is theater. He wants to hear you articulate it.",
             "choices": [
               {
                 "id": "a",
@@ -2779,5 +2776,9 @@
         ]
       }
     ]
+  },
+  "version": {
+    "runId": "run-005",
+    "contentHash": "20e4a911ecef"
   }
 }

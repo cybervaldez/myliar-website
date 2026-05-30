@@ -13,8 +13,17 @@
 // env vars aren't set, every function degrades to a no-op so the wiki
 // still builds + deploys without credentials.
 
+import parity from "../lib/parity.generated.json";
+
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_ANON = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+// The data snapshot the wiki is currently showing. Stamped onto every
+// note so triage can tell whether a note refers to current canon or an
+// older snapshot the game has since moved past.
+const DATA_RUN = (parity as { version: { runId: string; contentHash: string } }).version.runId;
+const DATA_VERSION = (parity as { version: { runId: string; contentHash: string } }).version.contentHash;
+export const currentSnapshot = { run: DATA_RUN, version: DATA_VERSION };
 
 export function notesConfigured(): boolean {
   return Boolean(SUPABASE_URL && SUPABASE_ANON);
@@ -34,6 +43,8 @@ export interface Note {
   status: NoteStatus;
   resolution: string | null;
   resolved_at: string | null;
+  data_run: string | null;
+  data_version: string | null;
 }
 
 export const NOTE_KINDS: { kind: NoteKind; label: string; hint: string }[] = [
@@ -96,6 +107,9 @@ export async function insertNote(n: NewNote): Promise<{ ok: boolean; error?: str
         kind: n.kind,
         body,
         author: (n.author?.trim() || "anon").slice(0, 60),
+        // Stamp the data snapshot this note was written against.
+        data_run: DATA_RUN,
+        data_version: DATA_VERSION,
       }),
     });
     if (!res.ok) {

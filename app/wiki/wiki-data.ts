@@ -79,7 +79,13 @@ export interface MainlineDay {
   events: MainlineEvent[];
 }
 
+export interface DataVersion {
+  runId: string;
+  contentHash: string;
+}
+
 export interface ParityData {
+  version: DataVersion;
   tokens: Record<string, string>;
   relTiers: { thresholds: number[]; names: string[] };
   itemRarities: string[];
@@ -104,6 +110,12 @@ export const elseworldSampleByBand = (bandId: string): ElseworldSample | undefin
   parity.elseworldSamples.find((s) => s.bandId === bandId);
 export const phoneRealmMap = (): string => parity.phoneRealmMap;
 export const tokens = () => parity.tokens;
+
+// The data snapshot this wiki was generated from. Every note records it
+// so triage knows which canon version a note refers to.
+export const dataVersion = (): DataVersion => parity.version;
+export const snapshotLabel = (): string =>
+  `${parity.version.runId} · ${parity.version.contentHash}`;
 
 // ── Mainline accessors ───────────────────────────────────────────────
 export const mainline = () => parity.mainline;

@@ -11,6 +11,7 @@ import {
   fetchNotes,
   insertNote,
   notesConfigured,
+  currentSnapshot,
   NOTE_KINDS,
   type Note,
   type NoteKind,
@@ -121,6 +122,14 @@ export function NotesThread({
                     >
                       {STATUS_LABEL[n.status]}
                     </span>
+                    {n.data_version && n.data_version !== currentSnapshot.version && (
+                      <span
+                        className="font-display tracking-[0.1em] text-[8.5px] px-1.5 py-0.5 border border-margin-ink text-margin-ink"
+                        title={`Written against snapshot ${n.data_run} · ${n.data_version}; current is ${currentSnapshot.run} · ${currentSnapshot.version}. The canon may have changed since.`}
+                      >
+                        ↺ EARLIER SNAPSHOT
+                      </span>
+                    )}
                     <span className="font-body italic text-[11px] text-margin-ink ml-auto">
                       {n.author}
                     </span>
@@ -190,6 +199,9 @@ export function NotesThread({
             {msg && (
               <p className="text-[12.5px] italic text-forest mt-2">{msg}</p>
             )}
+            <p className="text-[10px] font-display tracking-[0.12em] text-margin-ink mt-2">
+              ON SNAPSHOT {currentSnapshot.run.toUpperCase()} · {currentSnapshot.version}
+            </p>
           </div>
         </>
       )}

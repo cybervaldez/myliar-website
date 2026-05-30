@@ -42,6 +42,9 @@ const NOTE_SCHEMA = {
           kind: { type: "string" },
           body: { type: "string" },
           author: { type: "string" },
+          data_run: { type: "string" },
+          data_version: { type: "string" },
+          staleSnapshot: { type: "boolean" },
         },
         required: ["id", "anchor", "kind", "body"],
       },
@@ -69,10 +72,15 @@ const VERDICT_SCHEMA = {
 phase("Fetch");
 const fetched = await agent(
   `Fetch all OPEN community notes from Supabase. Run this exact request with Bash:
-     curl -s "$SUPABASE_URL/rest/v1/wiki_notes?status=eq.open&order=created_at.asc&select=id,anchor,anchor_label,kind,body,author" \\
+     curl -s "$SUPABASE_URL/rest/v1/wiki_notes?status=eq.open&order=created_at.asc&select=id,anchor,anchor_label,kind,body,author,data_run,data_version" \\
        -H "apikey: $SUPABASE_SERVICE_KEY" -H "Authorization: Bearer $SUPABASE_SERVICE_KEY"
-   Parse the JSON array and return it as { notes: [...] }. If the env vars are unset or the
-   request fails, return { notes: [] } and say so.`,
+   ALSO read the CURRENT data snapshot from website/app/lib/parity.generated.json (the
+   .version.contentHash field). For each note, compare its data_version to the current
+   contentHash: if they differ, the note was written against an OLDER snapshot and the
+   canon may have changed since — note this in the staleSnapshot field so adjudication can
+   verify the issue still applies. Return { notes: [...] } with each note carrying
+   data_run, data_version, and staleSnapshot (boolean).
+   If the env vars are unset or the request fails, return { notes: [] } and say so.`,
   { schema: NOTE_SCHEMA, label: "fetch:open-notes", phase: "Fetch" },
 );
 
@@ -101,6 +109,10 @@ const results = await pipeline(
              atlas:courtyard -> assets/realm-maps/phone-realm.txt
        The note (${n.kind}) from ${n.author || "anon"} says:
          """${n.body}"""
+       ${n.staleSnapshot ? `IMPORTANT: this note was written against an OLDER data snapshot
+       (${n.data_run} · ${n.data_version}) than the current wiki. Verify the issue still
+       exists in the CURRENT canon — if the content has already changed/been fixed, decline
+       with a short note that it's been superseded.` : ""}
        Decide: apply (it improves the canon and passes frame + blend), decline (wrong / off-frame /
        breaks a gate — say which), or discuss (worth a human conversation, not auto-decidable).
        Write a short, kind reply to the contributor. If apply, draft the exact payload edit
