@@ -31,7 +31,7 @@
 // Extraction is text/regex over stable `const` declarations — no Flutter
 // runtime needed (importing lib/theme.dart would drag in the engine).
 
-import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join, resolve } from "node:path";
 
@@ -134,20 +134,105 @@ function extractVibeBands() {
 function extractSquad() {
   const src = read("lib/sam.dart") + "\n" + read("lib/characters.dart");
   const blocks = [...src.matchAll(/Character\(([\s\S]*?)\n\);/g)].map((x) => x[1]);
+  const joinsDay = deriveJoinDays();
   const squad = [];
   for (const b of blocks) {
     if (!/isCanonical:\s*true/.test(b)) continue;
+    const id = dartField(b, "id");
     squad.push({
-      id: dartField(b, "id"),
+      id,
       name: dartField(b, "name"),
       classLabel: dartField(b, "classLabel"),
       specialty: dartField(b, "specialty"),
       helpSummary: dartField(b, "helpSummary"),
+      archetype: dartField(b, "archetype"),
+      personaDescription: dartField(b, "personaDescription"),
+      quirk: dartField(b, "quirk"),
+      starterPrompts: dartStringList(b, "starterPrompts"),
       gender: dartField(b, "gender"),
+      // Sam is the Day-0 onboarder (not introduced via a payload); the
+      // rest derive from the run payloads. Default 0 for anyone absent.
+      joinsDay: id === "sam" ? 0 : (joinsDay[id] ?? null),
     });
   }
   if (squad.length === 0) fail("extracted zero canonical characters");
   return squad;
+}
+
+// Derive each character's join day from the run payloads: the minimum
+// globalDayIndex at which they appear as the focal `characterId` OR are
+// named in `introducesCharacter`. Game-sourced — no hardcoded calendar.
+function deriveJoinDays() {
+  const dir = join(APP, "assets", "payloads", RUN_DIR);
+  const out = {};
+  let files;
+  try {
+    files = readdirSync(dir);
+  } catch {
+    return out;
+  }
+  for (const f of files) {
+    // base payloads only — skip .b1./.gemini. model-variant captures
+    if (!f.endsWith(".json") || f.includes(".b1.") || f.includes(".gemini.")) continue;
+    let p;
+    try {
+      p = JSON.parse(readFileSync(join(dir, f), "utf8"));
+    } catch {
+      continue;
+    }
+    const day = p.globalDayIndex;
+    if (typeof day !== "number") continue;
+    const mark = (cid) => {
+      if (!cid) return;
+      if (out[cid] === undefined || day < out[cid]) out[cid] = day;
+    };
+    mark(p.characterId);
+    if (p.introducesCharacter && p.introducesCharacter.id) {
+      mark(p.introducesCharacter.id);
+    }
+  }
+  return out;
+}
+
+// ── 5b. Elseworld sample encounter characters ────────────────────────
+// Each ElseworldVibe carries a hand-authored EncounterSample — a full
+// character sheet + cold-open + first voice line + 3 options. These
+// become the Bestiary/Elseworld wiki pages. One sample per band.
+function extractElseworldSamples() {
+  const src = read("lib/elseworld_vibes.dart");
+  // Split into per-vibe chunks at the `const _xxx = ElseworldVibe(`
+  // boundaries so each chunk holds exactly one character + sample.
+  const parts = src.split(/const\s+_\w+\s*=\s*ElseworldVibe\(/).slice(1);
+  const samples = [];
+  for (const chunk of parts) {
+    const bandId = (chunk.match(/^\s*id:\s*'([a-z0-9-]+)'/m) || [])[1] || null;
+    const encId = (chunk.match(/id:\s*'(enc-[^']+)'/) || [])[1] || null;
+    const opt = (name) => {
+      const m = chunk.match(
+        new RegExp(`${name}:\\s*\\(label:\\s*'((?:[^'\\\\]|\\\\.)*)',\\s*roleHint:\\s*'([^']+)'\\)`),
+      );
+      return m ? { label: m[1].replace(/\\'/g, "'"), roleHint: m[2] } : null;
+    };
+    samples.push({
+      bandId,
+      encounterId: encId,
+      name: dartField(chunk, "name"),
+      classLabel: dartField(chunk, "classLabel"),
+      archetype: dartField(chunk, "archetype"),
+      personaDescription: dartField(chunk, "personaDescription"),
+      quirk: dartField(chunk, "quirk"),
+      specialty: dartField(chunk, "specialty"),
+      helpSummary: dartField(chunk, "helpSummary"),
+      gender: dartField(chunk, "gender"),
+      coldOpen: dartField(chunk, "coldOpen"),
+      firstVoice: dartField(chunk, "firstVoice"),
+      engageOption: opt("engageOption"),
+      observeOption: opt("observeOption"),
+      declineOption: opt("declineOption"),
+    });
+  }
+  if (samples.length === 0) fail("extracted zero elseworld samples");
+  return samples;
 }
 
 // Extract a string-valued Dart field, quote-agnostic, joining adjacent
@@ -166,6 +251,17 @@ function dartField(block, name) {
     .join("")
     .replace(/\\'/g, "'")
     .replace(/\\"/g, '"');
+}
+
+// Extract a Dart list-of-strings field: `name: [ 'a', 'b', 'c' ]`.
+// Returns [] if absent. Single-element strings only (no adjacent-concat
+// inside list items, which the source doesn't use for these fields).
+function dartStringList(block, name) {
+  const m = block.match(new RegExp(`${name}:\\s*\\[([\\s\\S]*?)\\]`, "m"));
+  if (!m) return [];
+  return [...m[1].matchAll(/'((?:[^'\\]|\\.)*)'/g)].map((x) =>
+    x[1].replace(/\\'/g, "'"),
+  );
 }
 
 // ── 6. Phone-realm map — the courtyard box (frontmatter + legend stripped)
@@ -225,6 +321,7 @@ function build() {
     itemRarities: extractItemRarities(),
     vibeBands: extractVibeBands(),
     squad: extractSquad(),
+    elseworldSamples: extractElseworldSamples(),
     phoneRealmMap: extractPhoneRealmMap(),
     simScenario: extractSimScenario(),
   };
@@ -294,7 +391,7 @@ if (isCheck) {
 } else {
   writeFileSync(OUT, next);
   console.log(`  ✓ parity: wrote ${OUT.replace(APP + "/", "")}`);
-  console.log(`      tokens=${Object.keys(data.tokens).length}  relTiers=${data.relTiers.names.length}  vibeBands=${data.vibeBands.length}  squad=${data.squad.length}  simEvents=${data.simScenario.events.length}`);
+  console.log(`      tokens=${Object.keys(data.tokens).length}  relTiers=${data.relTiers.names.length}  vibeBands=${data.vibeBands.length}  squad=${data.squad.length}  elseworldSamples=${data.elseworldSamples.length}  simEvents=${data.simScenario.events.length}`);
   if (cssDrift.length) {
     console.warn("\n  ⚠ parity: globals.css palette drifted — fix these by hand:");
     for (const d of cssDrift) console.warn(`      - ${d}`);

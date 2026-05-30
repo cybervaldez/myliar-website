@@ -404,6 +404,17 @@ export default function Home() {
           three booklets · the player&apos;s manual, the full-spoiler
           walkthrough, the campaign editor&apos;s sourcebook.
         </p>
+        <p className="mt-6 text-[12px]">
+          <Link
+            href="/wiki"
+            className="font-display tracking-[0.16em] text-[12px] text-spot-red !border-b-0"
+          >
+            ▸ OR BROWSE THE CODEX
+          </Link>
+          <span className="text-margin-ink italic ml-2">
+            — the full wiki: characters, realms, mechanics.
+          </span>
+        </p>
         <p className="font-sans italic text-margin-ink mt-10 text-[13px] leading-[1.55]">
           — Sam (this site is the only place I get to do marketing copy.
           Don&apos;t tell Mei.)
