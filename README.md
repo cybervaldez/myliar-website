@@ -175,24 +175,24 @@ workflow adjudicates each through /writers-room and replies → for an
 parity` re-syncs → the wiki re-renders. The website never writes to the
 app; one-way holds.
 
-### Going live
+### Going live — status
 
-1. **Create the table:** run `supabase/wiki_notes.sql` against the project
-   (SQL editor or `supabase db push`). It sets RLS: anon insert (open
-   only), public read (non-declined); triage updates use the service role.
-2. **Set client env** (anon key is public, protected by RLS — but use the
-   **JWT-format** anon key `eyJ…`, not the short `sb_publishable_…` one):
-   ```
-   NEXT_PUBLIC_SUPABASE_URL=https://<project>.supabase.co
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
-   ```
-   Locally in `.env.local` (gitignored); in production via the Vercel
-   dashboard. **Until these are set the notes UI degrades to a quiet
-   "coming soon" card** — the site builds + deploys fine without them.
-3. **Triage** (when notes exist): set `SUPABASE_URL` + `SUPABASE_SERVICE_KEY`
-   (service role — server-side only, never committed, never the anon key),
-   then run the workflow `scripts/triage-notes.workflow.mjs`. It reads open
-   notes, adjudicates, writes replies back, and hands you a digest of
+1. **Table:** ✅ **provisioned.** Applied to the `myliar` Supabase project
+   as the app-repo migration `supabase/migrations/0005_wiki_notes.sql`
+   (RLS verified: anon insert open-only → 201; anon self-approve → 401;
+   public read of non-declined). The standalone `supabase/wiki_notes.sql`
+   here is a reference copy of the same schema.
+2. **Local env:** ✅ **set.** `website/.env.local` (gitignored) holds
+   `NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_ANON_KEY` (the
+   JWT-format `eyJ…` anon key). `npm run dev` shows live notes.
+   **⚠ Production still needs these two vars set in the Vercel dashboard**
+   — until then the prod notes UI shows the quiet "coming soon" card (the
+   site builds/deploys fine without them).
+3. **Triage** (one seed note already exists): set `SUPABASE_URL` +
+   `SUPABASE_SERVICE_KEY` (service role — server-side only, never
+   committed, never the anon key), then run the workflow
+   `scripts/triage-notes.workflow.mjs`. It reads open notes, adjudicates
+   via /writers-room, writes replies back, and hands you a digest of
    recommended applies with draft edits. It **never** commits canon —
    /writers-room + you are final.
 
