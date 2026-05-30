@@ -70,6 +70,30 @@ a:hover {
   border-bottom-color: var(--spot-red);
 }
 
+/* Old-wiki link style — scoped to the wiki article body. Spot-red links,
+   no underline by default, underline on hover (classic MediaWiki feel). */
+.wiki-prose a {
+  color: var(--spot-red);
+  border-bottom: none;
+  text-decoration: none;
+}
+.wiki-prose a:hover {
+  color: var(--spot-red);
+  border-bottom: none;
+  text-decoration: underline;
+}
+/* Denser, encyclopedic body inside the wiki article. */
+.wiki-prose {
+  font-size: 15px;
+  line-height: 1.55;
+}
+.wiki-prose h1,
+.wiki-prose h2,
+.wiki-prose h3 {
+  color: var(--ink);
+  text-transform: none;
+}
+
 /* Hero phone-artifact die-glyph pulse — subtle "tap to start" cue.
    One soft scale per ~3s, respects prefers-reduced-motion. */
 @keyframes die-pulse {

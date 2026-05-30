@@ -1,67 +1,101 @@
-// Shared wiki presentation chrome: page frame (article + infobox aside),
-// infobox, navbox, breadcrumb, cross-link, spoiler tag. Server components
-// (no client state) except where noted — keeps these prerenderable.
+// Shared wiki chrome — "old-wiki" hybrid: encyclopedic structure (page
+// header + rule, table of contents, right-rail infobox, ruled section
+// headings, spot-red links) on the game's cream palette. Props are kept
+// stable so every page restyles at once; per-page copy is converted to
+// neutral encyclopedic prose separately.
 
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { resolveWikiLink } from "../wiki-data";
 
-// ── WikiPage — the 3rd column. Article (center) + Infobox (right). ────
-// The left nav lives in layout.tsx; this lays out the remaining two
-// columns. Infobox stacks ABOVE the article on mobile (it's the at-a-
-// glance summary), beside it on lg.
+// ── WikiPage — article shell: title + rule + "from the wiki" line, an
+// optional table of contents, the body, and a right-rail infobox. ──────
 export function WikiPage({
   title,
   kicker,
   breadcrumb,
   infobox,
+  toc,
+  discussHref,
   children,
   navbox,
 }: {
   title: string;
-  kicker?: string;
+  kicker?: string; // legacy category line; rendered small until pages drop it
   breadcrumb?: { label: string; href: string }[];
   infobox?: ReactNode;
+  toc?: { id: string; label: string }[];
+  discussHref?: string;
   children: ReactNode;
   navbox?: ReactNode;
 }) {
   return (
-    <div>
+    <div className="wiki-prose">
       {breadcrumb && breadcrumb.length > 0 && (
-        <div className="font-display tracking-[0.14em] text-[10px] text-margin-ink mb-3">
+        <div className="text-[11px] text-margin-ink mb-2">
           {breadcrumb.map((b, i) => (
             <span key={b.href}>
-              <Link href={b.href} className="!border-b-0 hover:text-forest">
-                {b.label}
-              </Link>
+              <Link href={b.href}>{b.label}</Link>
               {i < breadcrumb.length - 1 && <span className="px-1.5">›</span>}
             </span>
           ))}
         </div>
       )}
-      {kicker && (
-        <div className="font-display tracking-[0.18em] text-[11px] text-spot-red mb-2">
-          {kicker}
-        </div>
-      )}
-      <h1 className="text-[34px] sm:text-[46px] leading-[1.04] mb-5">{title}</h1>
 
-      <div className="grid lg:grid-cols-[1fr_280px] gap-6 lg:gap-8 items-start">
-        {/* Infobox first in source so it stacks on top on mobile; on lg
-            it's placed in the right column via order. */}
+      {/* Page title + rule + "from the wiki" line, with a [discuss] link. */}
+      <div className="flex items-baseline justify-between gap-4 border-b-2 border-ink pb-1">
+        <h1 className="font-display text-[28px] sm:text-[34px] leading-tight text-ink !m-0">
+          {title}
+        </h1>
+        <Link
+          href={discussHref ?? "#community-notes"}
+          className="text-[12px] shrink-0 whitespace-nowrap"
+        >
+          [discuss]
+        </Link>
+      </div>
+      <p className="italic text-[12px] text-margin-ink mt-1 mb-4">
+        From The Codex, the <em>My Life is an RPG</em> wiki.
+        {kicker && <span className="not-italic"> · {kicker.replace(/^▸\s*/, "")}</span>}
+      </p>
+
+      <div className="grid lg:grid-cols-[1fr_300px] gap-6 lg:gap-7 items-start">
         {infobox && (
           <aside className="lg:order-2 lg:col-start-2">{infobox}</aside>
         )}
         <article className="lg:order-1 lg:col-start-1 min-w-0">
+          {toc && toc.length > 0 && <TableOfContents items={toc} />}
           {children}
-          {navbox && <div className="mt-10">{navbox}</div>}
+          {navbox && <div className="mt-8">{navbox}</div>}
         </article>
       </div>
     </div>
   );
 }
 
-// ── Infobox — the MMORPG stat sidebar ────────────────────────────────
+// ── Table of Contents — boxed, numbered, like a classic wiki. ──────────
+export function TableOfContents({
+  items,
+}: {
+  items: { id: string; label: string }[];
+}) {
+  return (
+    <nav className="border border-ink bg-paper-shade inline-block px-4 py-3 mb-5 max-w-full">
+      <div className="font-display tracking-[0.12em] text-[10px] text-margin-ink mb-1.5">
+        CONTENTS
+      </div>
+      <ol className="list-decimal list-inside m-0 p-0 space-y-0.5">
+        {items.map((it) => (
+          <li key={it.id} className="text-[13px] text-ink">
+            <a href={`#${it.id}`}>{it.label}</a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+
+// ── Infobox — old-wiki right-rail box: title bar + label/value table. ──
 export function Infobox({
   title,
   subtitle,
@@ -74,31 +108,29 @@ export function Infobox({
   footer?: ReactNode;
 }) {
   return (
-    <div className="border-2 border-ink bg-paper-shade">
-      <div className="bg-forest px-4 py-3">
-        <div className="font-display tracking-[0.1em] text-[18px] text-white leading-none">
-          {title}
-        </div>
-        {subtitle && (
-          <div className="font-body italic text-[12px] text-paper/85 mt-1">
-            {subtitle}
-          </div>
-        )}
+    <div className="border border-ink bg-paper-shade text-[13px]">
+      <div className="bg-ink text-paper text-center font-display tracking-[0.08em] text-[14px] py-1.5 px-2">
+        {title}
       </div>
-      <dl className="m-0 divide-y divide-margin-ink/25">
-        {rows.map((r, i) => (
-          <div key={i} className="px-4 py-2.5">
-            <dt className="font-display tracking-[0.14em] text-[9.5px] text-margin-ink mb-0.5">
-              {r.label}
-            </dt>
-            <dd className="m-0 font-body text-[13.5px] text-ink leading-[1.4]">
-              {r.value}
-            </dd>
-          </div>
-        ))}
-      </dl>
+      {subtitle && (
+        <div className="text-center italic text-[11px] text-margin-ink px-2 py-1 border-b border-ink/25">
+          {subtitle}
+        </div>
+      )}
+      <table className="w-full border-collapse">
+        <tbody>
+          {rows.map((r, i) => (
+            <tr key={i} className="border-t border-ink/15 align-top">
+              <th className="text-left font-display tracking-[0.04em] text-[9.5px] text-margin-ink bg-paper px-2 py-1.5 w-[38%] align-top">
+                {r.label}
+              </th>
+              <td className="px-2 py-1.5 text-ink leading-[1.4]">{r.value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       {footer && (
-        <div className="px-4 py-3 border-t border-ink/30 font-body italic text-[12px] text-margin-ink">
+        <div className="px-2 py-1.5 border-t border-ink/25 italic text-[11px] text-margin-ink leading-[1.4]">
           {footer}
         </div>
       )}
@@ -116,16 +148,12 @@ export function Navbox({
 }) {
   return (
     <div className="border border-ink bg-paper-shade">
-      <div className="font-display tracking-[0.16em] text-[10px] text-forest px-3 py-2 border-b border-ink/30 text-center">
+      <div className="font-display tracking-[0.12em] text-[10px] text-margin-ink px-3 py-1.5 border-b border-ink/25 text-center bg-paper">
         {title}
       </div>
-      <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 px-3 py-3">
+      <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 px-3 py-2.5">
         {links.map((l) => (
-          <Link
-            key={l.href}
-            href={l.href}
-            className="font-body text-[13px] text-ink-soft hover:text-spot-red !border-b-0"
-          >
+          <Link key={l.href} href={l.href} className="text-[13px]">
             {l.label}
           </Link>
         ))}
@@ -134,7 +162,7 @@ export function Navbox({
   );
 }
 
-// ── WikiLink — resolves a slug to a cross-link; "stub" if unknown ─────
+// ── WikiLink — cross-link; "stub" (red, dotted) if unknown ───────────
 export function WikiLink({
   to,
   children,
@@ -145,21 +173,18 @@ export function WikiLink({
   const resolved = resolveWikiLink(to);
   if (!resolved) {
     return (
-      <span className="text-margin-ink underline decoration-dotted" title="stub — not yet written">
+      <span
+        className="text-spot-red/70 underline decoration-dotted"
+        title="stub — page not written yet"
+      >
         {children ?? to}
       </span>
     );
   }
-  return (
-    <Link href={resolved.href} className="text-forest hover:text-spot-red">
-      {children ?? resolved.label}
-    </Link>
-  );
+  return <Link href={resolved.href}>{children ?? resolved.label}</Link>;
 }
 
-// ── SpoilerTag — for /writers-room the reveal is VISIBLE, just marked ─
-// (Audience is internal review, so we don't hide; we flag what's a
-// tier-up moment so the panel can see the reveal structure.)
+// ── SpoilerTag — visible reveal marker (writers-room audience) ────────
 export function SpoilerTag({ children }: { children: ReactNode }) {
   return (
     <span className="inline-flex items-baseline gap-2 border-l-2 border-spot-red pl-2">
@@ -176,7 +201,7 @@ export function SectionHead({ id, children }: { id?: string; children: ReactNode
   return (
     <h2
       id={id}
-      className="text-[22px] sm:text-[26px] mt-9 mb-3 pb-1 border-b border-ink/25 scroll-mt-6"
+      className="font-display tracking-[0.03em] text-[18px] sm:text-[20px] text-ink mt-7 mb-2.5 pb-1 border-b border-ink/40 scroll-mt-6"
     >
       {children}
     </h2>
@@ -185,8 +210,8 @@ export function SectionHead({ id, children }: { id?: string; children: ReactNode
 
 export function VoiceQuote({ children }: { children: ReactNode }) {
   return (
-    <p className="border-l-[3px] border-forest pl-4 my-3 font-body italic text-[15px] text-ink leading-[1.5]">
+    <blockquote className="border-l-[3px] border-margin-ink/50 pl-4 my-3 italic text-[14.5px] text-ink-soft leading-[1.55]">
       {children}
-    </p>
+    </blockquote>
   );
 }
