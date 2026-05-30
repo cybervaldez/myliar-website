@@ -26,6 +26,12 @@ monorepo); deployed to Vercel.
   forest green, spot red. Mirrors the manual's visual language.
 - `public/manual.html` — full instruction booklet served at `/manual`
   via a `next.config.ts` rewrite. Static HTML; do not duplicate as JSX.
+- `app/wiki/` — **The Codex**: a read-only wiki mirror of the game canon
+  (characters, mechanics, atlas, elseworlds, and the day-by-day **mainline
+  gateway** `/wiki/arc`), generated from `parity.generated.json`. Carries
+  the **community-notes** feedback layer (see below). Stamped with a data
+  snapshot so notes record which canon version they were written against.
+- `app/map/page.tsx` — the phone-realm courtyard map (from parity).
 
 ## Local dev
 
@@ -42,8 +48,12 @@ npm run build
 ```
 
 Vercel auto-deploys on push to `main` (or whichever branch you
-configure). No environment variables required — the simulator is fully
-canned and runs client-side.
+configure). The core site needs **no environment variables** — the
+simulator and wiki are fully static. The **community notes** feature is
+the one exception: it needs `NEXT_PUBLIC_SUPABASE_URL` +
+`NEXT_PUBLIC_SUPABASE_ANON_KEY` set in Vercel (see *Community notes*
+below). Without them the notes UI degrades to a quiet "coming soon" card
+and everything else still works.
 
 ## Why is this directory git-ignored from the parent repo?
 
@@ -168,12 +178,28 @@ specific entity (`character:hana`, `arc:day-1`, `mechanics:page`, …) and
 carries `open → applied / declined / discuss` + a writers'-room reply.
 Notes are **suggestions** — never canon. The app stays the source of truth.
 
-**The loop:** browser/you/LLM drops a note → Supabase `wiki_notes` (a
-*separate feedback store*, not the app, not the canon) → the triage
-workflow adjudicates each through /writers-room and replies → for an
-*apply*, you ratify a drafted edit to the run-005 payload → `npm run
-parity` re-syncs → the wiki re-renders. The website never writes to the
-app; one-way holds.
+**The loop — wiki → notes → /writers-room reject/approve → changes:**
+browser/you/LLM drops a note (stamped with the data snapshot
+`run-005 · <contentHash>` it was written against) → Supabase `wiki_notes`
+(a *separate feedback store*, not the app, not the canon) → the triage
+workflow runs each note through **/writers-room adjudication**:
+
+- **APPROVE** → the panel drafts the exact payload edit; you ratify it
+  into the `run-005` payload (the source of truth); `npm run parity`
+  re-syncs and the wiki re-renders. Note → `applied`.
+- **REJECT** → note → `declined` with a short reply (off-frame, breaks a
+  gate, wrong character lane, or already superseded by a newer snapshot).
+- **DISCUSS** → kept open for a human conversation.
+
+`/writers-room` is the **final say**; notes are only suggestions; the
+workflow **never auto-commits canon** — it drafts, a human ratifies. The
+website never writes to the app; one-way holds. The snapshot stamp lets
+triage flag a note written against an older canon version (with an
+"↺ EARLIER SNAPSHOT" tag in the UI) so a stale suggestion gets
+re-verified before it's acted on. Worked example already in the wild:
+the gateway surfaced "RESTING HEART RATE" in Hana's Day-1 scenario (a
+banned clinical term her sheet forbids); a note flagged it, /writers-room
+approved, and it was rewritten in her idiolect — note now `applied`.
 
 ### Going live — status
 
@@ -188,13 +214,15 @@ app; one-way holds.
    **⚠ Production still needs these two vars set in the Vercel dashboard**
    — until then the prod notes UI shows the quiet "coming soon" card (the
    site builds/deploys fine without them).
-3. **Triage** (one seed note already exists): set `SUPABASE_URL` +
+3. **Triage:** ✅ **proven end-to-end once.** Set `SUPABASE_URL` +
    `SUPABASE_SERVICE_KEY` (service role — server-side only, never
    committed, never the anon key), then run the workflow
    `scripts/triage-notes.workflow.mjs`. It reads open notes, adjudicates
    via /writers-room, writes replies back, and hands you a digest of
    recommended applies with draft edits. It **never** commits canon —
-   /writers-room + you are final.
+   /writers-room + you are final. (First run already happened: the
+   Day-1 "heart rate" note was approved, the payload was fixed, and the
+   note is now `applied`.)
 
 ## Syncing the static booklets
 
