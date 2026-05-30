@@ -13,16 +13,15 @@ export const metadata = {
 export default function ElseworldsIndex() {
   return (
     <WikiPage
-      kicker="▸ THE CREATIVITY LANE"
       title="Elseworlds"
       breadcrumb={[{ label: "Wiki", href: "/wiki" }]}
     >
       <p className="text-ink-soft leading-[1.6] mb-6">
-        Step through a portal in the <Link href="/wiki/atlas" className="text-forest hover:text-spot-red">Courtyard</Link>{" "}
-        and you land in an Elseworld — an alternate-reality side zone in one of
-        six vibe bands. The strangers you meet there are{" "}
-        <strong>yours to customize</strong>, bounded only by the world rules.
-        Each band ships with a hand-authored sample encounter.
+        Step through a door in the{" "}
+        <Link href="/wiki/atlas">Courtyard</Link> and you land in an Elseworld —
+        a little side-world in one of six flavors. The strangers you meet there
+        are <strong>yours to make your own</strong>. Each one comes with a
+        ready-made character to show you the vibe.
       </p>
 
       <div className="grid sm:grid-cols-2 gap-4">

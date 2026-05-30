@@ -26,8 +26,7 @@ export default function ArcPage() {
 
   return (
     <WikiPage
-      kicker={`▸ THE CURATED CAMPAIGN · ${runId.toUpperCase()}`}
-      title="The Main Line"
+      title="Story"
       breadcrumb={[{ label: "Wiki", href: "/wiki" }]}
     >
       <div className="border-l-[3px] border-spot-red bg-paper-shade p-4 mb-6">
@@ -40,11 +39,10 @@ export default function ArcPage() {
       </div>
 
       <p className="text-ink-soft leading-[1.6] mb-2">
-        The first seven days are a hand-tuned, bundled campaign — the spine
-        the live systems hang off. These pages are generated{" "}
-        <strong>directly from the game&apos;s {runId} payloads</strong>, so
-        what you read is exactly what ships: every event, choice, stat delta,
-        reaction, memory write, and reveal.
+        The first week of the game, told day by day — every moment, every
+        choice, every reaction. <strong>Big spoilers ahead!</strong> (Pulled
+        straight from the game, so it&apos;s always exactly what you&apos;ll
+        play.)
       </p>
 
       {flagTotal > 0 && (

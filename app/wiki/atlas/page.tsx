@@ -48,7 +48,6 @@ export default function AtlasPage() {
 
   return (
     <WikiPage
-      kicker="▸ ATLAS · PHONE REALM"
       title="The Courtyard"
       breadcrumb={[{ label: "Wiki", href: "/wiki" }]}
       infobox={infobox}
@@ -63,9 +62,9 @@ export default function AtlasPage() {
       }
     >
       <p className="text-ink-soft leading-[1.6] mb-5">
-        The four canonical characters live together inside your phone — a
-        communal green with a character space at each edge and a gate of five
-        portals leading out to the Elseworlds.
+        This is where the four friends hang out — inside your phone. Think of it
+        like a little town square: each of them has their own spot around the
+        edge, and there are five doors leading out to the other worlds.
       </p>
 
       <div className="border-2 border-ink bg-paper-shade p-3 sm:p-4 shadow-[6px_6px_0_0_rgba(26,26,26,0.12)] mb-4">

@@ -24,14 +24,13 @@ const TERMS: { term: string; gloss: string }[] = [
 export default function LexiconPage() {
   return (
     <WikiPage
-      kicker="▸ IN-WORLD VOCABULARY · WIP"
-      title="Lexicon"
+      title="Words"
       breadcrumb={[{ label: "Wiki", href: "/wiki" }]}
     >
       <p className="text-ink-soft leading-[1.6] mb-2">
-        The phone-realm has its own small vocabulary. Characters reach for these
-        words when it&apos;s natural — never forced. This page is hand-authored
-        and still being expanded.
+        The game has a few of its own words the characters like to use.
+        Here&apos;s what they mean — plus the real-world words the characters
+        will never say. Still adding to this one!
       </p>
 
       <SectionHead>The in-world words</SectionHead>

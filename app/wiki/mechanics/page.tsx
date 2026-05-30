@@ -35,46 +35,45 @@ export default function MechanicsPage() {
 
   return (
     <WikiPage
-      kicker="▸ THE DAILY LOOP"
-      title="Mechanics"
+      title="How to Play"
       breadcrumb={[{ label: "Wiki", href: "/wiki" }]}
     >
       <p className="text-ink-soft leading-[1.6] mb-2">
-        Every day is a short run of events. Each event offers three ways to
-        answer; your choices move four stats and your relationship with whoever
-        you&apos;re talking to.
+        Each day you get a short story — a few moments to react to. Every moment
+        gives you three ways to answer, and what you pick nudges your four stats
+        and how close you are to whoever you&apos;re talking to.
       </p>
 
-      <SectionHead id="trichotomy">The trichotomy</SectionHead>
+      <SectionHead id="trichotomy">🎯 Your three choices</SectionHead>
       <p className="text-[15px] leading-[1.6]">
-        Every event gives you exactly three choices, one of each kind:
+        Every moment has exactly three options, one of each type:
       </p>
       <ul className="list-none p-0 mt-3 space-y-2">
         <li className="border-l-[3px] border-forest pl-3">
-          <strong className="text-forest">Logical</strong> — the move the
-          character endorses. Steady stat gains, no roll.
+          <strong className="text-forest">Logical</strong> — the safe, smart
+          move the character would back. Steady stat gain, no dice.
         </li>
         <li className="border-l-[3px] border-ink pl-3">
-          <strong>Passive</strong> — observe, wait, say nothing. Low cost, low
-          gain; sometimes the sleeper choice.
+          <strong>Passive</strong> — hang back and watch, say nothing. Low risk,
+          low reward — but sometimes it&apos;s secretly the right call.
         </li>
         <li className="border-l-[3px] border-spot-red pl-3">
-          <strong className="text-spot-red">Chaotic</strong> — always rolls{" "}
-          <WikiLink to="dice">dice</WikiLink>. Crit-success doubles the reward
-          (and can drop a <WikiLink to="items">relic</WikiLink>); crit-fail
-          flips it against you.
+          <strong className="text-spot-red">Chaotic</strong> — always{" "}
+          <WikiLink to="dice">rolls the dice</WikiLink>. Win big (double reward,
+          maybe a rare <WikiLink to="items">item</WikiLink>) or whiff and have it
+          backfire.
         </li>
       </ul>
 
-      <SectionHead id="dice">Dice &amp; crits</SectionHead>
+      <SectionHead id="dice">🎲 Rolling the dice</SectionHead>
       <p className="text-[15px] leading-[1.6]">
-        Only the chaotic choice rolls. The roll resolves to either a
-        crit-success (the stated reward, multiplied) or a crit-fail (the reward
-        inverted, plus a sharper reaction). There is no bland middle — taking
-        the chaotic line is taking the swing.
+        Only the chaotic choice rolls. It either <strong>crits</strong> (you
+        win — reward doubled) or <strong>flops</strong> (it backfires, and the
+        character&apos;s reaction stings a little). No boring middle — going
+        chaotic means taking the swing.
       </p>
 
-      <SectionHead id="stats">The four stats</SectionHead>
+      <SectionHead id="stats">📊 Your four stats</SectionHead>
       <div className="grid sm:grid-cols-2 gap-3 mt-2">
         {STATS.map((s) => (
           <div key={s.key} className="border-[1.5px] border-ink bg-paper-shade p-3">
@@ -95,11 +94,11 @@ export default function MechanicsPage() {
         ))}
       </div>
 
-      <SectionHead id="rel">The relationship ladder (REL)</SectionHead>
+      <SectionHead id="rel">❤️ Making friends (REL)</SectionHead>
       <p className="text-[15px] leading-[1.6] mb-3">
-        Each character tracks a private REL score with you. It climbs through{" "}
-        {names.length} named tiers — the higher you go, the more they trust you
-        with, and the deeper the reveals.
+        Each character keeps a secret friendship score with you (called REL).
+        It climbs through {names.length} levels — the higher it gets, the more
+        they trust you, and the bigger the things they&apos;ll tell you.
       </p>
       <div className="border-2 border-ink bg-paper-shade overflow-hidden">
         <table className="w-full border-collapse text-[13.5px]">
@@ -126,7 +125,7 @@ export default function MechanicsPage() {
         </table>
       </div>
 
-      <SectionHead id="items">Item rarities</SectionHead>
+      <SectionHead id="items">🎁 Items</SectionHead>
       <div className="space-y-3 mt-2">
         {itemRarities().map((r) => (
           <div key={r} className="border-[1.5px] border-ink bg-paper-shade p-3">
@@ -141,12 +140,12 @@ export default function MechanicsPage() {
         ))}
       </div>
 
-      <SectionHead id="ap">Action credits (AP)</SectionHead>
+      <SectionHead id="ap">⚡ Energy (AP)</SectionHead>
       <p className="text-[15px] leading-[1.6]">
-        Talking to the squad outside the main line costs an action credit. You
-        get a baseline of one a day; spend it on a chat, a trip to an{" "}
-        <WikiLink to="golden-age-fantasy">Elseworld</WikiLink>, or save it. They
-        remember the conversation tomorrow.
+        Chatting with the squad outside the daily story costs 1 energy (AP). You
+        get one a day — spend it on a chat, a trip to an{" "}
+        <WikiLink to="golden-age-fantasy">Elseworld</WikiLink>, or save it for
+        later. Whatever you talk about, they remember it tomorrow.
       </p>
 
       <p className="mt-9 text-[12.5px] text-margin-ink italic">
