@@ -168,6 +168,7 @@ export function navTree(): NavEntry[] {
     { label: "Mechanics", href: "/wiki/mechanics" },
     { label: "The Main Line", href: "/wiki/arc", editorial: true },
     { label: "Lexicon", href: "/wiki/lexicon", editorial: true },
+    { label: "Changelog", href: "/wiki/changelog" },
   ];
 }
 

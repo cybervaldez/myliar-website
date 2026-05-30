@@ -23,12 +23,14 @@ const STATUS_STYLE: Record<NoteStatus, string> = {
   applied: "border-forest text-forest",
   declined: "border-spot-red text-spot-red",
   discuss: "border-ink text-ink",
+  superseded: "border-margin-ink text-margin-ink",
 };
 const STATUS_LABEL: Record<NoteStatus, string> = {
   open: "OPEN",
   applied: "APPLIED",
   declined: "DECLINED",
   discuss: "DISCUSSING",
+  superseded: "SUPERSEDED",
 };
 const KIND_LABEL: Record<NoteKind, string> = {
   question: "QUESTION",
@@ -134,13 +136,30 @@ export function NotesThread({
                       {n.author}
                     </span>
                   </div>
-                  <p className="text-[14px] text-ink mt-1.5 leading-[1.45] whitespace-pre-wrap">
+                  <p
+                    className={`text-[14px] mt-1.5 leading-[1.45] whitespace-pre-wrap ${
+                      n.status === "superseded"
+                        ? "text-margin-ink line-through decoration-margin-ink/60"
+                        : "text-ink"
+                    }`}
+                  >
                     {n.body}
                   </p>
                   {n.resolution && (
                     <div className="mt-2 border-l-2 border-forest pl-3">
-                      <div className="font-display tracking-[0.12em] text-[8.5px] text-forest mb-0.5">
-                        WRITERS&apos; ROOM
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <span className="font-display tracking-[0.12em] text-[8.5px] text-forest">
+                          WRITERS&apos; ROOM
+                        </span>
+                        {n.resolved_at && (
+                          <span className="font-body italic text-[10px] text-margin-ink">
+                            {new Date(n.resolved_at).toLocaleDateString(undefined, {
+                              year: "numeric",
+                              month: "short",
+                              day: "numeric",
+                            })}
+                          </span>
+                        )}
                       </div>
                       <p className="text-[13px] italic text-ink-soft leading-[1.45]">
                         {n.resolution}

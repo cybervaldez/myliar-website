@@ -30,7 +30,9 @@ export function notesConfigured(): boolean {
 }
 
 export type NoteKind = "question" | "disagree" | "suggest" | "praise";
-export type NoteStatus = "open" | "applied" | "declined" | "discuss";
+// 'superseded' = was valid but the canon already changed (stale snapshot);
+// kept visible as history, distinct from 'declined' (rejected/spam, hidden).
+export type NoteStatus = "open" | "applied" | "declined" | "discuss" | "superseded";
 
 export interface Note {
   id: string;
@@ -45,6 +47,8 @@ export interface Note {
   resolved_at: string | null;
   data_run: string | null;
   data_version: string | null;
+  source: "community" | "app";
+  private: boolean;
 }
 
 export const NOTE_KINDS: { kind: NoteKind; label: string; hint: string }[] = [
@@ -69,6 +73,30 @@ export async function fetchNotes(anchor: string): Promise<Note[]> {
     anchor: `eq.${anchor}`,
     status: "neq.declined",
     order: "created_at.asc",
+    select: "*",
+  });
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/wiki_notes?${q}`, {
+      headers: headers(),
+      cache: "no-store",
+    });
+    if (!res.ok) return [];
+    return (await res.json()) as Note[];
+  } catch {
+    return [];
+  }
+}
+
+// The decision log for /wiki/changelog — every RESOLVED note across the wiki
+// (applied = canon changed; superseded = obsoleted by a later canon change),
+// newest first. 'discuss'/'declined'/private are excluded.
+export async function fetchChangelog(limit = 100): Promise<Note[]> {
+  if (!notesConfigured()) return [];
+  const q = new URLSearchParams({
+    status: "in.(applied,superseded)",
+    resolved_at: "not.is.null",
+    order: "resolved_at.desc",
+    limit: String(limit),
     select: "*",
   });
   try {

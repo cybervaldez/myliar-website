@@ -59,7 +59,7 @@ const VERDICT_SCHEMA = {
   type: "object",
   properties: {
     noteId: { type: "string" },
-    verdict: { type: "string", enum: ["apply", "decline", "discuss"] },
+    verdict: { type: "string", enum: ["apply", "decline", "discuss", "superseded"] },
     reply: { type: "string", description: "short reply to the contributor, in plain voice" },
     rationale: { type: "string", description: "why — cites the frame/blend gate or canon" },
     draftEdit: {
@@ -113,8 +113,10 @@ const results = await pipeline(
          """${n.body}"""
        ${n.staleSnapshot ? `IMPORTANT: this note was written against an OLDER data snapshot
        (${n.data_run} · ${n.data_version}) than the current wiki. Verify the issue still
-       exists in the CURRENT canon — if the content has already changed/been fixed, decline
-       with a short note that it's been superseded.` : ""}
+       exists in the CURRENT canon — if the content has already changed/been fixed, return
+       verdict "superseded" (NOT decline) with a short note that the canon already moved past
+       it. 'superseded' keeps the note visible on the thread as history; 'decline' is for
+       wrong/off-frame/spam and hides it.` : ""}
        FIRST classify CANON vs PRODUCT:
          - CANON (story / character voice / a beat / a payload field) → adjudicate normally
            below (apply/decline/discuss against the frame + blend gates).
@@ -134,7 +136,10 @@ const results = await pipeline(
     // Write status + reply back. 'apply' stays as 'discuss' in Supabase
     // until a human ratifies — the workflow recommends, never finalizes
     // an apply. decline/discuss are written as-is.
-    const statusToWrite = verdict.verdict === "decline" ? "declined" : "discuss";
+    const statusToWrite =
+      verdict.verdict === "decline" ? "declined" :
+      verdict.verdict === "superseded" ? "superseded" :
+      "discuss"; // apply is parked as discuss pending human ratification
     const reply = (verdict.reply || "").replace(/"/g, '\\"');
     return agent(
       `Write the triage result back to Supabase for note id ${n.id}. Run with Bash
