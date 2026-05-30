@@ -365,6 +365,97 @@ function extractSimScenario() {
   };
 }
 
+// ── 8. The mainline story — all run-005 payloads, day by day ─────────
+// Surfaces the curated 7-day canon (the DailyStory payloads the app loads
+// at runtime) to the wiki as a READ-ONLY gateway. The app stays the
+// source of truth; this just makes the canon browsable from anywhere.
+//
+// Ships PLAYER-FACING display fields only. Author-craft fields
+// (missionPrompt = the LLM generation instruction, sourceTrend,
+// passivePattern, skillUnlocks) are dropped. Each day carries
+// `frameFlags`: banned-word hits in the shipped text — NOT a build error
+// (the website is mirroring content the game already ships to players;
+// the flag is a visible to-do for /writers-room to fix in the payload).
+function extractMainline() {
+  const dir = join(APP, "assets", "payloads", RUN_DIR);
+  let files;
+  try {
+    files = readdirSync(dir);
+  } catch {
+    fail(`mainline payload dir missing: ${RUN_DIR}`);
+  }
+  const days = [];
+  for (const f of files) {
+    if (!f.endsWith(".json") || f.includes(".b1.") || f.includes(".gemini.")) continue;
+    if (f === "manifest.json") continue;
+    let p;
+    try {
+      p = JSON.parse(readFileSync(join(dir, f), "utf8"));
+    } catch {
+      continue;
+    }
+    if (typeof p.globalDayIndex !== "number") continue;
+
+    const frameFlags = [];
+    const flag = (where, text) => {
+      for (const w of findBanned(text)) frameFlags.push(`${where}: "${w}"`);
+    };
+
+    const events = (p.events ?? []).map((ev) => {
+      flag(`${ev.id}.scenario`, ev.scenario);
+      const choices = (ev.choices ?? []).map((c) => {
+        flag(`${ev.id}.${c.id}.label`, c.label);
+        flag(`${ev.id}.${c.id}.reaction`, c.reactionText);
+        flag(`${ev.id}.${c.id}.critfail`, c.reactionTextOnCritFail);
+        if (c.itemDrop) {
+          flag(`${ev.id}.${c.id}.item`, c.itemDrop.name);
+          flag(`${ev.id}.${c.id}.item`, c.itemDrop.description);
+        }
+        return {
+          id: c.id,
+          role: c.role,
+          label: c.label,
+          delta: c.delta ?? {},
+          diceRoll: c.diceRoll ?? null,
+          reactionText: c.reactionText ?? "",
+          reactionTextOnCritFail: c.reactionTextOnCritFail ?? null,
+          itemDrop: c.itemDrop
+            ? { name: c.itemDrop.name, description: c.itemDrop.description ?? "", kind: c.itemDrop.kind ?? "memento" }
+            : null,
+        };
+      });
+      const memoryWrites = (ev.memoryWrites ?? []).map((m) => {
+        const text = typeof m === "string" ? m : m.text;
+        flag(`${ev.id}.memory`, text);
+        return { text, emotion: typeof m === "object" ? (m.emotion ?? null) : null };
+      });
+      return { id: ev.id, scenario: ev.scenario, choices, memoryWrites };
+    });
+
+    flag("closingHook", p.closingHook);
+    flag("agentMoodToday", p.agentMoodToday);
+
+    days.push({
+      payloadId: p.payloadId ?? f.replace(/\.json$/, ""),
+      narrativeType: p.narrativeType ?? "daily",
+      globalDayIndex: p.globalDayIndex,
+      characterId: p.characterId ?? null,
+      introducesCharacterId: p.introducesCharacter?.id ?? null,
+      agentMoodToday: p.agentMoodToday ?? null,
+      closingHook: p.closingHook ?? null,
+      tierUpReveal: p.tierUpReveal
+        ? { category: p.tierUpReveal.category, deliveredInEventId: p.tierUpReveal.deliveredInEventId }
+        : null,
+      callbacks: Array.isArray(p.callbacks) ? p.callbacks : [],
+      frameFlags,
+      events,
+    });
+  }
+  days.sort((a, b) => a.globalDayIndex - b.globalDayIndex);
+  if (days.length === 0) fail("extracted zero mainline days");
+  return { runId: RUN_DIR, days };
+}
+
 // ── Frame-gate assertion — fail the build if any banned token ships ──
 // Walks the player-facing string fields of the assembled data. Any hit
 // is a ship-blocker (a banned word would render on the public wiki).
@@ -416,9 +507,20 @@ function build() {
     elseworldSamples: extractElseworldSamples(),
     phoneRealmMap: extractPhoneRealmMap(),
     simScenario: extractSimScenario(),
+    mainline: extractMainline(),
   };
   assertFrameClean(data);
   return data;
+}
+
+// Mainline frame flags are surfaced (not blocking). Collect for the
+// console summary so a sync run reports canon issues to fix in payloads.
+function mainlineFlagReport(data) {
+  const lines = [];
+  for (const d of data.mainline.days) {
+    for (const fl of d.frameFlags) lines.push(`Day ${d.globalDayIndex} (${d.payloadId}) ${fl}`);
+  }
+  return lines;
 }
 
 // Stable stringify (sorted keys are NOT used — source order is meaningful
@@ -465,6 +567,7 @@ function checkCssTokens(tokens) {
 const data = build();
 const next = serialize(data);
 const cssDrift = checkCssTokens(data.tokens);
+const mlFlags = mainlineFlagReport(data);
 
 if (isCheck) {
   const committed = existsSync(OUT) ? readFileSync(OUT, "utf8") : "";
@@ -485,10 +588,16 @@ if (isCheck) {
 } else {
   writeFileSync(OUT, next);
   console.log(`  ✓ parity: wrote ${OUT.replace(APP + "/", "")}`);
-  console.log(`      tokens=${Object.keys(data.tokens).length}  relTiers=${data.relTiers.names.length}  vibeBands=${data.vibeBands.length}  squad=${data.squad.length}  elseworldSamples=${data.elseworldSamples.length}  simEvents=${data.simScenario.events.length}`);
+  console.log(`      tokens=${Object.keys(data.tokens).length}  relTiers=${data.relTiers.names.length}  vibeBands=${data.vibeBands.length}  squad=${data.squad.length}  elseworldSamples=${data.elseworldSamples.length}  simEvents=${data.simScenario.events.length}  mainlineDays=${data.mainline.days.length}`);
   if (cssDrift.length) {
     console.warn("\n  ⚠ parity: globals.css palette drifted — fix these by hand:");
     for (const d of cssDrift) console.warn(`      - ${d}`);
+    console.warn("");
+  }
+  if (mlFlags.length) {
+    console.warn(`\n  ⚠ parity: ${mlFlags.length} mainline frame-flag(s) — banned words in shipped`);
+    console.warn("    canon (surfaced on the wiki, NOT blocking). Fix in the run-005 payloads:");
+    for (const f of mlFlags) console.warn(`      - ${f}`);
     console.warn("");
   }
 }

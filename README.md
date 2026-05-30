@@ -132,6 +132,18 @@ still said 4" drift).
 | Squad facts | `lib/characters.dart` + `lib/sam.dart` | `app/page.tsx` SQUAD array |
 | Phone-realm map | `assets/realm-maps/phone-realm.txt` | `app/map/page.tsx` |
 | Sim scenario | `assets/payloads/run-005/onboarding_hana_d1.json` | `app/lib/sim-data.ts` (simplified) |
+| **Mainline story** | all `assets/payloads/run-005/*.json` | `app/wiki/arc` (read-only gateway, day-by-day) |
+
+The **mainline gateway** (`/wiki/arc`) surfaces the full curated 7-day arc
+— every event, choice, delta, reaction, memory write, reveal — read-only
+from the run-005 payloads, so the canon is browsable from anywhere without
+being in the repo. The app stays the source of truth; this is a *gateway*,
+not a second canon. Player-facing display fields only (author-craft fields
+like `missionPrompt` are dropped). Banned-word hits in the shipped payload
+text are **surfaced as visible frame-flags** (per day, and in the sync
+console) rather than blocked — the website mirrors what the game already
+ships to players, so a hit is a to-do for the writers' room to fix in the
+payload, not a website bug.
 
 **Facts vs presentation.** Parity governs the *facts and tokens*, not the
 marketing prose or layout — those stay hand-authored. The simulator

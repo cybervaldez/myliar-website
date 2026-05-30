@@ -1,89 +1,137 @@
-// The Main Line — the curated 7-day arc. Day skeleton derives from the
-// parity export (who joins when); the per-day beats are hand-authored and
-// still being filled in. Full-spoiler walkthrough lives at /walkthrough.
+// The Main Line — the curated 7-day arc, now sourced LIVE from the game's
+// run-005 payloads via the parity export (read-only gateway). Each day
+// links to a full day page. This is the writers-room reference surface:
+// complete, spoilers visible, frame-flags surfaced.
 
 import Link from "next/link";
 import { WikiPage, SectionHead, SpoilerTag } from "../_components/WikiChrome";
-import { squad } from "../wiki-data";
+import { mainline, mainlineFlagCount, characterById } from "../wiki-data";
 
 export const metadata = {
   title: "The Main Line — The Codex",
-  description: "The curated seven-day arc of My Life is an RPG (work in progress).",
+  description: "The curated seven-day arc of My Life is an RPG, day by day.",
 };
 
-// Days with a known introduction, derived from the squad join days.
-function joinNotes(): Record<number, string> {
-  const out: Record<number, string> = {};
-  for (const c of squad()) {
-    if (c.joinsDay == null) continue;
-    out[c.joinsDay] =
-      c.joinsDay === 0
-        ? `${c.name} runs the tutorial.`
-        : `${c.name} joins (${c.classLabel}).`;
-  }
-  return out;
-}
+const TYPE_LABEL: Record<string, string> = {
+  onboarding: "ONBOARDING",
+  introduction: "INTRODUCTION",
+  daily: "DAILY",
+};
 
 export default function ArcPage() {
-  const notes = joinNotes();
-  const days = [0, 1, 2, 3, 4, 5, 6, 7];
+  const { runId, days } = mainline();
+  const flagTotal = mainlineFlagCount();
 
   return (
     <WikiPage
-      kicker="▸ THE CURATED CAMPAIGN · WIP"
+      kicker={`▸ THE CURATED CAMPAIGN · ${runId.toUpperCase()}`}
       title="The Main Line"
       breadcrumb={[{ label: "The Codex", href: "/wiki" }]}
     >
       <div className="border-l-[3px] border-spot-red bg-paper-shade p-4 mb-6">
         <SpoilerTag>
           <span className="text-[14px]">
-            This namespace covers tier-up reveals. It is written for the
-            writers&apos; room — nothing is hidden.
+            Full canon, spoilers visible — written for the writers&apos; room.
+            Tier-up reveals are marked but not hidden.
           </span>
         </SpoilerTag>
       </div>
 
       <p className="text-ink-soft leading-[1.6] mb-2">
-        The first seven days are a hand-tuned, bundled campaign — the spine the
-        live systems hang off. The day skeleton below (who arrives when) is
-        generated from the game; the beat-by-beat narrative is being authored
-        here from the campaign binder.
+        The first seven days are a hand-tuned, bundled campaign — the spine
+        the live systems hang off. These pages are generated{" "}
+        <strong>directly from the game&apos;s {runId} payloads</strong>, so
+        what you read is exactly what ships: every event, choice, stat delta,
+        reaction, memory write, and reveal.
       </p>
 
-      <SectionHead>Day skeleton</SectionHead>
-      <div className="border-2 border-ink bg-paper-shade overflow-hidden">
-        <table className="w-full border-collapse text-[14px]">
-          <thead>
-            <tr className="bg-forest text-white font-display tracking-[0.1em] text-[10px]">
-              <th className="text-left px-3 py-2 w-16">DAY</th>
-              <th className="text-left px-3 py-2">WHAT HAPPENS</th>
-            </tr>
-          </thead>
-          <tbody>
-            {days.map((d) => (
-              <tr key={d} className="border-t border-margin-ink/25">
-                <td className="px-3 py-2 font-display text-forest text-[12px]">
-                  {d === 0 ? "DAY 0" : `DAY ${d}`}
-                </td>
-                <td className="px-3 py-2 text-ink">
-                  {notes[d] ?? (
-                    <span className="text-margin-ink italic">
-                      daily beat — narrative pending
+      {flagTotal > 0 && (
+        <div className="border-2 border-spot-red bg-paper p-4 my-5">
+          <div className="font-display tracking-[0.14em] text-[11px] text-spot-red mb-1">
+            ⚠ {flagTotal} FRAME FLAG{flagTotal === 1 ? "" : "S"} IN SHIPPED CANON
+          </div>
+          <p className="text-[13.5px] leading-[1.5] text-ink">
+            Banned real-world words appear in shipped payload text (e.g. a
+            character saying a clinical term their own sheet forbids). Flagged
+            per-day below — these are to-dos for the writers&apos; room to fix
+            in the payloads, surfaced here precisely because the gateway makes
+            the canon visible.
+          </p>
+        </div>
+      )}
+
+      <SectionHead>The seven days</SectionHead>
+      <div className="space-y-3">
+        {days.map((d) => {
+          const focal = d.characterId ? characterById(d.characterId) : null;
+          const introduces = d.introducesCharacterId
+            ? characterById(d.introducesCharacterId)
+            : null;
+          return (
+            <Link
+              key={d.globalDayIndex}
+              href={`/wiki/arc/${d.globalDayIndex}`}
+              className="block border-[1.5px] border-ink bg-paper-shade p-4 hover:bg-paper transition !border-b-[1.5px] group"
+            >
+              <div className="flex items-baseline justify-between gap-3">
+                <div className="font-display text-[22px] leading-none group-hover:text-spot-red transition">
+                  Day {d.globalDayIndex}
+                  {focal && (
+                    <span className="text-forest font-body italic text-base ml-2">
+                      {focal.name}
                     </span>
                   )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  {d.frameFlags.length > 0 && (
+                    <span className="font-display tracking-[0.1em] text-[9px] text-spot-red border border-spot-red px-1.5 py-0.5">
+                      ⚠ {d.frameFlags.length}
+                    </span>
+                  )}
+                  <span className="font-display tracking-[0.12em] text-[10px] text-margin-ink">
+                    {TYPE_LABEL[d.narrativeType] ?? d.narrativeType.toUpperCase()}
+                  </span>
+                </div>
+              </div>
+              <div className="text-[13.5px] text-ink-soft mt-2 leading-[1.45]">
+                {d.events.length} events
+                {introduces && (
+                  <>
+                    {" · "}
+                    <span className="text-forest">introduces {introduces.name}</span>
+                  </>
+                )}
+                {d.tierUpReveal && (
+                  <>
+                    {" · "}
+                    <span className="text-spot-red">
+                      tier-up reveal ({d.tierUpReveal.category})
+                    </span>
+                  </>
+                )}
+              </div>
+              {d.closingHook && (
+                <p className="text-[13px] italic text-margin-ink mt-2 leading-[1.4]">
+                  → {d.closingHook}
+                </p>
+              )}
+            </Link>
+          );
+        })}
       </div>
 
       <p className="text-[14px] leading-[1.6] mt-6">
-        For the complete, fully-spoiled play-by-play right now, see the{" "}
+        For the prose-style full-spoiler play-by-play, the{" "}
         <Link href="/walkthrough" className="text-forest hover:text-spot-red">
           player walkthrough
         </Link>{" "}
-        — the per-day beat pages here are still being written.
+        reads it as a story; these pages are the structured canon.
+      </p>
+
+      <p className="mt-8 text-[12.5px] text-margin-ink italic">
+        Generated read-only from the game&apos;s {runId} payloads. The app
+        remains the source of truth — this is a browsable gateway, not a
+        second canon.
       </p>
     </WikiPage>
   );

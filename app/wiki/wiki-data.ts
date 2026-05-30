@@ -47,6 +47,38 @@ export interface VibeBand {
   label: string;
 }
 
+export interface MainlineChoice {
+  id: string;
+  role: string;
+  label: string;
+  delta: Record<string, number>;
+  diceRoll: { critSuccessMultiplier: number; critFailMultiplier: number; critChance: number } | null;
+  reactionText: string;
+  reactionTextOnCritFail: string | null;
+  itemDrop: { name: string; description: string; kind: string } | null;
+}
+
+export interface MainlineEvent {
+  id: string;
+  scenario: string;
+  choices: MainlineChoice[];
+  memoryWrites: { text: string; emotion: string | null }[];
+}
+
+export interface MainlineDay {
+  payloadId: string;
+  narrativeType: string;
+  globalDayIndex: number;
+  characterId: string | null;
+  introducesCharacterId: string | null;
+  agentMoodToday: string | null;
+  closingHook: string | null;
+  tierUpReveal: { category: string; deliveredInEventId: string } | null;
+  callbacks: unknown[];
+  frameFlags: string[];
+  events: MainlineEvent[];
+}
+
 export interface ParityData {
   tokens: Record<string, string>;
   relTiers: { thresholds: number[]; names: string[] };
@@ -56,6 +88,7 @@ export interface ParityData {
   elseworldSamples: ElseworldSample[];
   phoneRealmMap: string;
   simScenario: unknown;
+  mainline: { runId: string; days: MainlineDay[] };
 }
 
 const parity = parityRaw as unknown as ParityData;
@@ -71,6 +104,14 @@ export const elseworldSampleByBand = (bandId: string): ElseworldSample | undefin
   parity.elseworldSamples.find((s) => s.bandId === bandId);
 export const phoneRealmMap = (): string => parity.phoneRealmMap;
 export const tokens = () => parity.tokens;
+
+// ── Mainline accessors ───────────────────────────────────────────────
+export const mainline = () => parity.mainline;
+export const mainlineDays = (): MainlineDay[] => parity.mainline.days;
+export const mainlineDay = (day: number): MainlineDay | undefined =>
+  parity.mainline.days.find((d) => d.globalDayIndex === day);
+export const mainlineFlagCount = (): number =>
+  parity.mainline.days.reduce((n, d) => n + d.frameFlags.length, 0);
 
 // ── REL tier helper ──────────────────────────────────────────────────
 // Returns the inclusive REL range string for tier i, e.g. "15–39".

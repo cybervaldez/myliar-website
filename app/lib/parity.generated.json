@@ -455,5 +455,2329 @@
         ]
       }
     ]
+  },
+  "mainline": {
+    "runId": "run-005",
+    "days": [
+      {
+        "payloadId": "live-onboarding-hana-d1",
+        "narrativeType": "onboarding",
+        "globalDayIndex": 1,
+        "characterId": "hana",
+        "introducesCharacterId": null,
+        "agentMoodToday": "dramatic but stretched; treating you like the new recruit she's already invested in beating into shape",
+        "closingHook": "Hana will send a 47-second recording of her own running breath if you open chat tonight — no words, just breath, exactly 47 seconds. Calibration ammo. The audio plays in chat and lives in your case file. She wants you to audit your own breath against hers tomorrow morning.",
+        "tierUpReveal": {
+          "category": "opinion",
+          "deliveredInEventId": "evt-4"
+        },
+        "callbacks": [],
+        "frameFlags": [
+          "evt-1.scenario: \"heart rate\"",
+          "evt-4.scenario: \"heart rate\""
+        ],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "5:14 AM. Your phone bypasses silent. An UNKNOWN NUMBER, wall of text in all caps demanding your numbers before you collapsed last night: \"RESTING HEART RATE. VOLUME OF WATER BEFORE BED. NOW.\" Below the text, a pinned location — Hana, already at the [track], small figure on the outdoor grass beside her [bench]. The portal frame is the [bleachers] behind her. She's been awake long enough to be impatient.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Text back the actual numbers. \"54 bpm. ~10 oz. Why.\"",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Hana: \"+1 STR. baseline. you under-hydrated by a factor I'm not going to name. you'll feel it by nine.\" Three dots. Then: \"meet me.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Text back: \"who is this.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana: \"good. you asked. +1 INT. the people who don't ask are the ones who don't show up at six. you're going to show up at six.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Text back: \"you woke me up to ask about WATER.\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1,
+                  "STR": -1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana: \"+2 CHR. one second. — yes. now meet me at the [track]. wear shoes. drink the water you didn't drink. catch up.\" The dots stop. She's already running.",
+                "reactionTextOnCritFail": "Hana: \"-1 STR. the joke cost you a rep. fine. text me when you're ready to be coached.\" She doesn't text back for forty-six minutes.",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "5:14 AM. they answered. the resting rate they sent doesn't match the volume of water they said — one of those two is a lie and I know which. STR baseline: low. will to show up: noted.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "6:32 AM. [bleachers]. Hana is doing slow circles on the outdoor [track], two water bottles in one hand. One for her. One for you. Mei's [recipe*] is folded into the cap of your bottle, half-poking out of Hana's pocket — Hana hasn't said Mei's name yet. You're not supposed to know about Mei. You see the [recipe*] anyway. Hana points at the [foam-roller] in the corner: \"twenty minutes. hip hinges. I'll watch.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Take the foam-roller. Drill the hinges.",
+                "delta": {
+                  "STR": 2,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Hana, jogging past on her third lap: \"+2 STR. that was form. you have done this before — not with anyone good. with me, you'll have done it with someone good.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Hana's First Drill Card",
+                  "description": "A torn page. The hip hinge sequence in Hana's handwriting. Numbered. Underlined twice where it says BREATHE.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Sit on the bench. Watch her run first.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana, finishing a lap: \"+1 INT. patient. not the worst trait. you watched my pacing for forty seconds and didn't say anything. I'll remember that.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Grab her water bottle. Chug it.",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1,
+                  "STR": -1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana stops mid-stride. Looks at you. Laughs — one syllable, sharp. \"+2 CHR. you're going to be a problem. fine. I have spare bottles. drill the hinges anyway, you owe me twenty.\"",
+                "reactionTextOnCritFail": "Hana doesn't laugh. \"-1 STR. that was Mei's mix. she made it for me at four AM. now I have to drink the regular water and so do you. drill the hinges. you owe me thirty.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they drilled. +2 STR. they also clocked Mei's [recipe*] in my pocket — I'm sloppy. they'll meet Mei eventually. until then they keep this. don't say her name first.",
+                "emotion": "pride"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "7:18 AM. Drill done. Hana hands you the bottle Mei mixed (she doesn't say Mei's name). Sam appears at the edge of the [track], holding a clipboard from his [notes*] wall — the kind with the chunky border, multiple pinned cards on it. He says one line, not loud, to you: \"she's going to ask you to sign something. you don't have to. but it'll mean something if you do.\" He walks back to his [desk] before Hana looks up.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Read the agreement. Sign it.",
+                "delta": {
+                  "STR": 2,
+                  "INT": 1,
+                  "REL": 3
+                },
+                "diceRoll": null,
+                "reactionText": "Hana takes it back, eyes scanning the signature line. \"+2 STR. +3 REL. logged. you're on the [notes*] wall now — Sam will pin a copy. you're going to wake up tomorrow and your phone will know who I am to you.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "The Signed Agreement",
+                  "description": "One page. Hana's handwriting, top to bottom. Your signature scribbled at the bottom. The clause that matters is the one that says I GET TO WAKE YOU UP.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Ask what it actually means before signing.",
+                "delta": {
+                  "INT": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana: \"+2 INT. nobody asked that before. let me tell you what it means.\" She tells you. You sign anyway, after. Same result, slower.",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Sign without reading. Hand it back.",
+                "delta": {
+                  "CHR": 1,
+                  "REL": 2,
+                  "STR": -1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana looks at the unread page. Looks at you. Pockets it. Doesn't say what +3 REL costs her to give you. \"+1 CHR. you signed it like it was a gift. I'm going to act like I don't know. don't tell me what you didn't read.\"",
+                "reactionTextOnCritFail": "Hana, flatly: \"-2 REL. -1 STR. that was a real document. you treated it like a joke. I'll redraft it. this is going to take another week.\" Sam, at his [desk], silently un-pins the slot he'd reserved on the [notes*] wall.",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they signed. I have permission. +2 STR they don't know about yet. Sam pinned a copy on his [notes*] wall — I saw him do it through the doorway. that's an audit trail. that's a marriage of inconvenience. that's what consent under a drill looks like.",
+                "emotion": "pride"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "8:02 AM. You walk back through the [courtyard center]. The [noticeboard] in the middle of the green has a new pin in Hana's handwriting: a printout of your resting heart rate from 5:14 AM, one line under it — \"this number is going to change. you'll see.\" The pin is also visible from Sam's [notes*] wall — paired-pin format, with one of Sam's audit margins beside it. Hana appears beside you. She's not looking at the [noticeboard]. She's looking at the path back to the [track]. She says the thing she's been holding all morning.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Stand next to her. Don't answer.",
+                "delta": {
+                  "STR": 2,
+                  "REL": 3
+                },
+                "diceRoll": null,
+                "reactionText": "Hana: \"opinion: you're not weak. you're untrained. they're not the same. weak means there's no STR there. untrained means there's STR there that hasn't been told what to do. you've been carrying around STR for years that nobody asked you to use. I'm asking.\" She doesn't wait for you to answer. She turns and walks back to the [track]. +2 STR. +3 REL. tier crossed.",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Read the pin again. Re-read it slowly.",
+                "delta": {
+                  "INT": 2,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Hana watches you read. \"+2 INT. you're studying the data she handed you. opinion: this is who you're going to be — someone who reads the line before they answer it. that's the same thing I do.\" +2 REL.",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Take the pin off. Pocket it.",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana's eyebrows go up exactly one millimeter. \"+2 CHR. you took the artifact home with you. nobody does that. opinion: that pin matters less than the fact that you wanted to own it. I'll re-print it. but I'm logging what you did.\" +1 REL.",
+                "reactionTextOnCritFail": "Hana, flatly: \"-1 REL. that was a public post. Sam's wall doesn't have a copy yet. don't take the system down on day one. put it back.\" You put it back. The pin has a crease now.",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "I said the thing out loud. they didn't answer because they didn't have to. opinion: their STR is real, they just need someone to point at it and call it by its name. that's the whole job. +2 REL. logged. the [noticeboard] keeps the pin. the [notes*] wall will too. systems are how you make promises you can't take back.",
+                "emotion": "pride"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "8:11 AM. You sit back on your [bench] at the edge of the [track]. Hana is running again — same pace, same circles. Your phone buzzes — a 47-second audio file: her running breath. No words. The audio waveform on your lock screen is the only sound on your phone. When you look up from it, you notice the [pic*] propped against the underside of the [bench]: a faded race photo, a girl Hana's age — same posture — clearing a hurdle. You hadn't seen it before. It's been there the whole morning. Hana texts you one line: \"tonight. audit yours. tomorrow we compare.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Text back: \"okay.\"",
+                "delta": {
+                  "STR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana doesn't text back. She keeps running. +1 STR for the commitment to tomorrow. +1 REL because she expected you to say more and you didn't, which is the right amount.",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Don't reply. Listen to the recording.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Forty-seven seconds of breath. Steady. Slightly louder on the in-breath than the out. Hana, from the [track], doesn't look at you but you can tell she clocked the listen. \"+1 INT. you spent the full forty-seven. tomorrow you'll match it.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "The 47-Second Recording",
+                  "description": "Hana's running breath. No words. The audio file you'll keep in your case file for the next thirteen days — until she sends a 53-second version and the lesson is that her breath got longer.",
+                  "kind": "memento"
+                }
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Text back: \"is that your sister in the photo on the bench?\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1,
+                  "STR": -1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana stops running. The [track] is silent for three minutes. She doesn't look at the [bench]. Finally: \"yes. ask me tomorrow. don't ask me today.\" +2 CHR. +1 REL. the [pic*] stays on the [bench] tomorrow.",
+                "reactionTextOnCritFail": "Hana doesn't text back. She keeps running, faster now. -1 REL. -1 STR. when you come back to the [bench] tomorrow the [pic*] is gone. it's not coming back unless you earn it.",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they heard the breath. they noticed the [pic*]. they didn't push. that's the test, actually — do they push when they shouldn't. they passed. STR is also restraint. nobody tells anyone that. tomorrow I'll tell them about the hurdle. or I won't. depends what they do at six AM.",
+                "emotion": "sadness"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "live-daily-hana-d2",
+        "narrativeType": "daily",
+        "globalDayIndex": 2,
+        "characterId": "hana",
+        "introducesCharacterId": null,
+        "agentMoodToday": "softer than yesterday now that you signed; territorial about the 6 AM window she just claimed for the rest of the week",
+        "closingHook": "Hana will send the player a side-by-side audio file at end of day — yesterday's 47-second breath recording layered over today's. The file is in her case file. The mission: tomorrow morning the player will hear what one day of being coached did to their lungs. She won't say so; the audio file's filename does.",
+        "tierUpReveal": null,
+        "callbacks": [
+          {
+            "callbackTo": "D1 evt-3 signed accountability agreement (gave Hana calendar access)",
+            "deliveredInEventId": "evt-2",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D1 evt-5 the 47-second breath recording (now the left channel of the side-by-side)",
+            "deliveredInEventId": "evt-5",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D1 evt-2 Mei's [recipe*] in Hana's pocket (now a follow-up: Mei dropped a cold-rice variant overnight)",
+            "deliveredInEventId": "evt-2",
+            "deliveredAs": "inquiry_explanation"
+          }
+        ],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "6:00 AM exactly. A single text from Hana — no all-caps this morning. Just numbers: \"62. 14.\" Then a second: \"you slept better than the data says you did. meet me at the [noticeboard] in twenty.\" The [noticeboard] sits in the [courtyard center], visible from every space — Hana's [bleachers], Kenji's [desk], Mei's [bell*], Sam's [notes*] wall. Yesterday's resting-heart-rate pin is still there. Today's is laid on top of it: 62 over 78. Four-point drop. One day.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Reply: \"62 from 78. logged.\"",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Hana, from across the [courtyard center]: \"+1 STR. you read the audit. you came to the [noticeboard]. +2 REL. you're learning the part where I want you to stand here and look at the number. that was the first tribute.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Text: \"I already saw it.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana, from the [bleachers]: \"+1 INT. an independent audit. you walked past the [noticeboard] on your own. fine. show up anyway. the [noticeboard] is what other people use to keep you honest.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Text: \"you posted my numbers where everyone can see.\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana, grinning by text (you can hear it through the screen): \"+2 CHR. they can see what you'll beat in three weeks. they can see the line. they can see the climb. social-stake is how people show up.\"",
+                "reactionTextOnCritFail": "Hana doesn't text for forty-one minutes. When she does: \"-1 REL. the [noticeboard] is public for a reason. show up at six tomorrow. don't ask me why we use the [courtyard center] until you've seen what it does for you.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the 62 over 78 on the [noticeboard]. one day of drilling and the rate dropped four. +STR registering at the cardiovascular layer. they're going to ask Kenji about audit principles. I planted that on purpose. the [notes*] wall got a copy from Sam already — he updates the pin every morning at 5:59.",
+                "emotion": "pride"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "12:18 PM. You're at your [bench] again — same one, edge of the [track]. Hana texts: \"your phone says you didn't move between 9 and 12. log a hydration. drill the second hinge set. I see your calendar — you have eleven minutes.\" She knows your calendar because the agreement you signed yesterday at the [foam-roller] gave her access. Sam's [notes*] wall has a copy of the agreement pinned next to your resting-rate printout — same paired-pin format.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Drop to the grass. Drill the second hinge set.",
+                "delta": {
+                  "STR": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana, watching the timestamp on your tracker tick over: \"+2 STR. eleven minutes used cleanly. +1 REL because you drilled in the window I named, not the window you wanted.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Hinge Set 2 — Log Entry",
+                  "description": "A screenshot from Hana's tracker. Your eleven-minute window, filled. Three columns: time, reps, breath. The third column is empty — she'll start tracking that on Day 3.",
+                  "kind": "memento"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Drink the water. Text: \"drilling tonight when I'm home.\"",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana: \"+1 STR + 1 INT. you told me what you'd actually do instead of what I wanted to hear. that's the harder discipline. don't skip it tonight or I'll know.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Text: \"you can see my CALENDAR?\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 0
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana: \"+2 CHR. yes. middle of page two of the thing you signed at the [foam-roller]. most people catch it in week three. you caught it on day two. drill the hinges anyway, you owe me eleven minutes regardless.\"",
+                "reactionTextOnCritFail": "Hana, flatly: \"-1 REL. yes. you signed the paper. read the paper next time. don't play dumb about consent. drill the hinges.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they drilled in the eleven minutes. +2 STR + 1 INT. they're learning the difference between being annoyed at the system and disrespecting it — that's a separate skill nobody teaches. the agreement they signed at the [foam-roller] is now load-bearing. Sam pinned the calendar-access clause to his [notes*] wall this morning. paired-pin format. systems.",
+                "emotion": "pride"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "6:45 PM. Player at home. Phone buzzes — not Hana. A calendar invite from KENJI: \"calibration call · 9:30 PM · 15 min · re: H. spend.\" You haven't met him. Hana sees the invite drop (she has your calendar; see evt-2). She immediately: \"do NOT take that call without me on it. forward me the invite. he's at his [desk] right now — I can see the [ledger*] open from the hallway.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Forward the invite to Hana. Add her as co-attendee.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Hana: \"+1 INT. forwarded. locked. +2 REL because you didn't try to handle it alone. the ledger-witch won't squeeze our recovery budget without a fight. Kenji's going to argue from his [ledger*]. I'll argue from my [bleachers]. neutral ground is the call.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Kenji's Calendar Invite (Forwarded)",
+                  "description": "The 9:30 PM call invitation, with Hana added as a co-attendee. The original was three words long. The forwarded version is the same three words plus your trust as the attached file.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Decline the call entirely.",
+                "delta": {
+                  "STR": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Hana: \"+1 STR. boundary. fair. I'm relieved and a little disappointed I didn't get to watch him argue. he'll re-send the invite tomorrow. you'll see his [ledger*] eventually.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Take the call solo. Put Hana on mute.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": -1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana, later, after Kenji asks for a follow-up: \"+2 CHR. +1 INT. I respect that and I'm furious about it. you handled him solo. he logged you in his [ledger*]. -1 REL for the muting; +0 net because the audit landed.\"",
+                "reactionTextOnCritFail": "Kenji ends the call in three minutes. Hana, on the dead mute: \"-1 REL. you didn't trust me. the call transcript goes in his [ledger*] tomorrow morning — I'll read it from the hallway. you'll see what he wrote about you. -1 STR.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Kenji moved on the player. he's going to argue for less recovery spend — he flagged the [recipe*] salt-mix as 'non-essential overhead' last week. the player needs to see what that conversation looks like before they meet him at the [desk] tomorrow. +1 REL if they forwarded — trust I haven't earned by anything except the signed agreement.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "9:30 PM. The calibration call. If you forwarded the invite, Hana's on the line — muted, listening from her [bleachers]. Otherwise it's you and Kenji. His voice for the first time: clipped, lowercase, lawyerly. From his [desk] — you can hear the [ledger*] page turn in the background. He doesn't open with hostility. He opens with one line: \"Hana's recovery spend on the player is 47% over what the model predicts. I'd like the player to explain why.\" He's already decided the spend is justified. This is theater. He wants to hear you articulate it.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Answer with the data. \"calf strain prevention. ask the foam-roller. ask the salt-mix.\"",
+                "delta": {
+                  "INT": 2,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji, the only audible page-turn in his [ledger*] for a full beat: \"+2 INT. logged. asking the [foam-roller] is a metaphor I'll accept. follow-up request: 7 AM tomorrow. I'd like to read your salt-mix budget out loud.\" Hana, audibly relieved on the mute. +2 REL.",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Answer with the feeling. \"the spend buys me showing up at six AM.\"",
+                "delta": {
+                  "STR": 1,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji, longer pause than logical: \"+1 STR + 1 CHR. behavioral. unquantifiable. high-impact. I will note 'the human element' in the [ledger*] tonight. that's a column I added last week. you're the first entry.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Kenji. did you call me here to audit my friend or to flirt with her budget?\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji, no pause at all: \"logged. neither. follow-up at 7 AM tomorrow. +2 CHR.\" Hana, on mute, audibly suppressing a laugh into her [bleachers]. After the call: \"+1 REL. that was the line I would have used. you got there first.\"",
+                "reactionTextOnCritFail": "Kenji, flatly: \"logged. follow-up declined.\" Call ends. Hana doesn't text back. The [ledger*] gets an entry the player will see on D3 — Kenji's neat handwriting under PROBATIONARY OBSERVATIONS. -1 REL with both.",
+                "itemDrop": {
+                  "name": "Kenji's First Logged Quote",
+                  "description": "A transcript line in Kenji's neat handwriting: \"Player's answer: Kenji, did you call me here to audit my friend or to flirt with her budget. — logged 9:34 PM.\" The first physical thing you have from Kenji. Visible from his [desk] tomorrow morning; Sam pins a copy to the [notes*] wall.",
+                  "kind": "relic"
+                }
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they showed up to the call. they answered. +2 REL. Kenji's [ledger*] now has the line — I'll walk past his [desk] tomorrow and read it. they passed an audit they weren't told was happening. the +STR they built yesterday at the [foam-roller] paid for the +INT they spent tonight. stat-domain blend: confirmed. that's the whole framework.",
+                "emotion": "pride"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "10:11 PM. Call's over. You're at home. Phone buzzes — file transfer from Hana. Filename: \"RUN_BREATH_D1+D2_SIDE_BY_SIDE.m4a\". Plays in chat. Yesterday's 47-second breath recording on the left channel; today's on the right. The waveform on your lock screen shows two near-identical lines — but on the in-breath today's is slightly slower. Point-three seconds. Hana doesn't message. The filename is the message. From the [track] you can hear her breathing live, the rhythm syncing to the audio file as it plays.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Listen end-to-end. Text back: \"the in-breath.\"",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana, from the [track]: \"+1 STR + 1 INT. you heard the difference. point-three seconds. +1 REL because you spent the 47 seconds twice to be sure. tomorrow we add a third channel.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "The Side-By-Side Audio",
+                  "description": "Two 47-second recordings of Hana's breath, layered. D1 left, D2 right. The thing that proves one day of being coached did something to your lungs. Lives in your case file. Hana will add a D3 channel tomorrow if you show up at six.",
+                  "kind": "memento"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Don't reply. Listen to the recording.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Forty-seven seconds. The in-breath drag on the right channel is real once you're listening for it. Hana, from the [track], doesn't look up. You can tell she clocked the listen. \"+1 INT. you spent the full 47. silence is a form of focus.\" +1 REL.",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Text: \"I sound the same.\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana, from the [track], not breaking stride: \"+2 CHR. you don't. but the fact that you said it means you listened twice to check. +1 REL. tomorrow we add a third channel. and a fourth if the lung tax keeps dropping.\"",
+                "reactionTextOnCritFail": "Hana sends the waveform highlighted in red where the in-breath slows. \"-1 STR. the data is here. you didn't look. look tomorrow at the [noticeboard]. I'll have it pinned.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "two days. one audio file with two channels. the difference is point-three seconds on the in-breath. they can't hear it yet. I can. +2 REL because they spent the 47 seconds anyway. tomorrow they meet Kenji at his [desk] — I'll walk them over. I want to be the one who introduces them. the [ledger*] should be open when they arrive. the [bell*] from Mei's [prep] zone should be audible. that's a full courtyard introduction. that's the whole frame.",
+                "emotion": "joy"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "live-introduction-hana-d3",
+        "narrativeType": "introduction",
+        "globalDayIndex": 3,
+        "characterId": "hana",
+        "introducesCharacterId": "kenji",
+        "agentMoodToday": "in escort-mode; the version of Hana that walks you somewhere and stays for the introduction before leaving you with the person she wanted you to meet",
+        "closingHook": "Kenji compiles a Procrastination Audit Sheet from your D2 calendar gap and tonight's chat. Open chat to find your top three chronological leaks ranked by audit severity. He delivers it dryly. The sheet is in your case file going forward — pinned to Sam's [notes*] wall beside Hana's resting-rate printout. Paired-pin format. Systems.",
+        "tierUpReveal": null,
+        "callbacks": [
+          {
+            "callbackTo": "D1 evt-3 signed accountability agreement (gave Hana calendar access, extended through audit chain to Kenji)",
+            "deliveredInEventId": "evt-3",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D1 evt-2 Mei's [recipe*] in Hana's pocket (cold-rice variant from D2 inquiry now in the water bottle Hana hands you in evt-1)",
+            "deliveredInEventId": "evt-1",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D1 evt-5 the [pic*] of Hana's sister on the [bench] (face-down in evt-1, face-up in evt-5 — sister-arc still live)",
+            "deliveredInEventId": "evt-5",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D2 evt-4 the 9:34 PM call line — 'audit my friend or flirt with her budget' — Kenji wrote it into column eleven of his [ledger*], quoted verbatim in evt-2 scenario",
+            "deliveredInEventId": "evt-2",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D2 evt-4 the BEHAVIORAL OBSERVATIONS column Kenji added 'last week' — first entries land today in evt-3",
+            "deliveredInEventId": "evt-3",
+            "deliveredAs": "scenario_phrase"
+          }
+        ],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "6:08 AM. Hana's text on your lock screen: \"meet me at the [bleachers]. don't eat first. we're walking somewhere.\" When you arrive — outdoor grass, the [bench] beside the [bleachers], the [pic*] of her sister face-down today — she doesn't say where. She hands you a water bottle. Mei's [recipe*] is tucked into the cap, cold-rice variant from yesterday's inquiry, still folded in Hana's neat double-fold. She points across the [courtyard center] toward Kenji's [desk]. The [ledger*] is visible from the hallway — open to a page with your name. Below your name: a column titled BEHAVIORAL OBSERVATIONS, your D1 resting-rate, your D2 9-12 calendar gap, and the line from your 9:34 PM call sitting in column eleven.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Walk with her. Stay quiet.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana drops half a step back so you arrive first. \"+1 INT. you trust the read. +1 REL. people who ask twenty questions on the walk are people who want to be talked out of the meeting. you didn't.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Stop at the bleachers. \"who is he.\"",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana leans on the [bleachers], does the 40-word version: \"Kenji. the [ledger]. he keeps a column on everyone he's worth auditing. you're in column eleven from last night. it's where he puts entries he doesn't have a category for yet. you started it. don't fill it too fast.\" +1 STR for the boundary. +1 INT for the audit-question. +1 REL.",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Text Kenji direct: \"Hana's walking me over. you have ten minutes. compile.\"",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 0
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji, from his [desk] across the [courtyard center], replies in under thirty seconds: \"logged. compiled. +2 CHR + 1 INT. expect efficiency.\" Hana sees the chat in your hand, doesn't react. The [ledger*] page turns audibly from across the green.",
+                "reactionTextOnCritFail": "Kenji doesn't respond. Hana sees you texting him before you've met him. She doesn't say anything. She finishes the walk in silence. -1 REL with Hana. Kenji sees the unanswered text in his [drawer]-context column later; -1 INT. you went around the escort.",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they walked with me. they didn't ask twenty questions on the way. +1 INT. when we got close to his [desk] they slowed down to read the [ledger*] from the hallway. that's also +1 INT. they are going to read everyone's books like that. that's the framework Kenji built into the [courtyard center] — public ledgers. they got it on the walk. I planted the [recipe*] in the cap of their water bottle so Mei would have a downpayment when they meet her on Day 5. Kenji's audit today is the first half of that bridge. they don't know it yet.",
+                "emotion": "pride"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "6:21 AM. You arrive at Kenji's [desk]. Hana stands in the doorway — doesn't enter. Kenji doesn't stand up. He's reading. The [ledger*] is open to your name. Column eleven contains one entry, in his handwriting: \"audit my friend or flirt with her budget. — logged 9:34 PM.\" The [drawer] is closed. A chair has been placed exactly across from him — measured. He says one line, lowercase: \"your 9:34 line went in column eleven. I'm not going to pretend I didn't enjoy it. sit down.\" Hana from the doorway: \"I'll be on the [bleachers]. don't be a dick to him. he's my [ledger].\" Then she leaves. Her footsteps fade across the [courtyard center]. You hear Mei's [bell*] from the [prep] zone — pickup time.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Sit.",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji, page turning in the [ledger*]: \"+1 INT. +1 GLD. logged. the chair was measured for someone exactly your height. column eleven gets one entry per audit cycle. yesterday was yours.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Your Entry in Kenji's [ledger*]",
+                  "description": "Page 11, column eleven, your name at the top. The D2 9:34 PM line transcribed in Kenji's neat handwriting. Lives in your case file as a page-image. Sam pins a copy to the [notes*] wall, paired with Hana's resting-rate printout.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Stay standing.",
+                "delta": {
+                  "STR": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji writes a single line into the [ledger*] without looking up: \"the player stays standing. column twelve. logged. +1 STR for the refusal. column twelve is for entries about how people refuse the audit. you opened it.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Pick up the ledger. Read your entry.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji, no pause: \"audacious. +2 CHR + 1 INT. you can read it because you signed yesterday's call transcript into it when you forwarded Hana the invite. the only thing you can't read is the [drawer]. +1 REL.\"",
+                "reactionTextOnCritFail": "Kenji takes the [ledger*] back without changing his voice. \"-1 INT. that wasn't a public read yet. sit down. we'll start over from the page you just disturbed.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the player arrived at the [desk]. Hana stood in the doorway and did not cross. she said 'don't be a dick to him' which is the line she uses when she likes the person she is leaving in the room. the player's chair was measured for them — I knew their height from Hana's posture-audit printout on the [noticeboard]. the audit chain works. +1 REL. column eleven now contains their entry from D2 transcribed in my handwriting — the same handwriting they will see in the [ledger*] every time they walk past my [desk] from now on. the [drawer] remains closed.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "6:47 AM. The audit. Kenji opens to your D2 calendar gap: 9 AM to 12 PM, no movement. \"explain.\" The [ledger*] is open beside a neat handwritten column titled BEHAVIORAL OBSERVATIONS — the column from D2 he told you he added \"last week.\" Your entry: \"9-12 stationary. ?\" The question mark is in red pen. The [drawer] beside the [ledger*] stays closed; you notice the lock has a key in it today — first time you've seen the key.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Answer with the data. \"I was on calls. couldn't drill. drilled at home.\"",
+                "delta": {
+                  "INT": 2,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji's pen crosses out the red question mark. Replaces it with: \"explained: calls.\" \"+2 INT. +1 GLD for the efficient answer. the data is clean now. logged.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "BEHAVIORAL OBSERVATIONS Column Entry #1",
+                  "description": "A page-image of Kenji's [ledger*]: your D2 gap entry with the question mark crossed out, replaced with 'explained: calls.' in his handwriting. The first entry in the new column. Lives in your case file.",
+                  "kind": "memento"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Answer with the feeling. \"lost track of time. I'll do better.\"",
+                "delta": {
+                  "INT": 1,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji nods slowly. \"human element column. you're filling in the column you started on D2. +1 INT + 1 CHR. honest. the [ledger*] respects honest more than clean. +1 REL.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"ask my calendar, not me.\"",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 0
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji actually checks your calendar in front of you — pulls it up on a second screen, sees the three calls. \"fair. +2 CHR. your calendar told a better story than you would have. +1 INT. don't do that twice — I'll get used to it.\"",
+                "reactionTextOnCritFail": "Kenji, voice level: \"-1 INT. the calendar didn't move because you didn't tell it to move. that's not how I want this relationship to work. the [drawer] won't open for the kind of person who delegates to their calendar what they could just say.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the player explained the gap. they did not blame Hana for the 47% overspend at the [foam-roller]. they did not flatter me. they answered. +2 INT logged. behavioral observation #1 closed. opening column twelve: cooperation under audit. they are the second entry. the first was Hana when she signed the [recipe*] salt-mix line item from Mei as her own monthly expense — a small lie she told my [ledger*] on purpose to protect Mei's [bell*] from a budget review. they are both cooperating with the audit. the audit doesn't work without willing participants. they are willing. +1 REL.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "7:18 AM. Kenji slides a paper across the [desk]. Two fingers. The Procrastination Audit Sheet — your top three chronological leaks ranked by severity. Reading top: (1) 11:42 PM to 12:08 AM scroll loop, frequency daily; (2) 8:15 AM to 8:31 AM repeat-decision on the same outfit, frequency 4x/week; (3) 9 AM to 9:11 AM coffee ritual that's actually a wake-up delay, frequency daily. The sheet is in Kenji's handwriting. The [drawer] behind him stays closed but you notice the key is now turned — first quarter-rotation. He says one line: \"your homework. you don't have to do it. but I'd like to know if you do.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Fold it. Pocket it.",
+                "delta": {
+                  "GLD": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji notices the gesture of physical possession — eye tracks the fold. \"+2 GLD. +1 INT. logged. column eleven entry: 'pocketed without protest.' rare. +1 REL. the [drawer] key just turned a second quarter.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "The Procrastination Audit Sheet",
+                  "description": "Your top three chronological leaks in Kenji's neat handwriting. Folded once, slightly creased at the top. Lives in your case file going forward — the homework you accepted on Day 3.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Push the sheet back. \"which one matters most to you?\"",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji points to the top line. \"the 11:42 PM scroll loop. it's eating your D1 baseline drop. Hana doesn't know I'm tracking that yet. +1 GLD. +1 INT for pulling my preference. don't tell her — I want to see if she finds it in the [ledger*] herself.\" +1 REL.",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Tear it in half. In front of him.",
+                "delta": {
+                  "CHR": 3,
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji actually smiles — the first time. Reaches for the tape on his [desk]. \"you read it and rejected it. +3 CHR + 1 INT. the column is yours now.\" Tapes the halves together, writes underneath: \"logged 7:31 AM. column eleven entry #2: 'destroyed the audit in front of me. respected.' rare.\" The [drawer] key turns another quarter. +2 REL.",
+                "reactionTextOnCritFail": "Kenji's pen pauses. Then: \"-2 REL. that paper cost me eleven minutes to compile. I won't compile another for two weeks. the [drawer] key just turned back to the first position. logged.\"",
+                "itemDrop": {
+                  "name": "The Torn Audit Sheet (Taped)",
+                  "description": "Both halves of the audit sheet, taped together later in Kenji's handwriting with the note: 'logged 7:31 AM. column eleven entry #2: destroyed the audit in front of me. respected. rare.' The first physical artifact you have from Kenji. Lives in your case file going forward.",
+                  "kind": "relic"
+                }
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they made a decision about the audit sheet in real time. that's the test. people who pocket it never do the homework. people who push it back are negotiating. people who tear it up are claiming the framework as their own. the framework is the framework. the audit is the audit. but the column belongs to whoever fills it most consistently. column eleven is the player's now. I won't take it back. +2 REL. the [drawer] key moved during this audit. that has not happened before. logged. I will not write what is in the [drawer] in this [ledger*]. they have to earn it through column twelve entries first.",
+                "emotion": "joy"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "7:42 AM. You exit Kenji's office. Hana is on the [bleachers] doing slow stretches, watching the door. The [pic*] of her sister is face-up now on the [bench] at the edge of the [track] — visible from where you're walking back. Mei's [bell*] rings from the [prep] zone — pickup at the kitchen. The whole [courtyard center] is alive at 7:42. Hana slides over on the [bleachers]. \"sit. tell me about him.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Sit. Tell her.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana logs the report quietly. \"+1 INT. transparency keeps the squad aligned. +1 REL. you walked between us without telling either of us less than you told the other. that's the framework. you found it on day three.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Sit. Don't say anything.",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "You sit. Hana doesn't push. After three minutes she says one line, looking at the [pic*]: \"+1 STR. +2 REL. you sat without reporting. that's a STR build I didn't teach you. it came from being audited. respect. Kenji would have done that. he wouldn't say so.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "The Quiet Hana",
+                  "description": "A two-line note Hana drops into your case file later that day: 'the player sat without reporting. that's a STR build I didn't teach them. it came from being audited. respect.' First time she's logged restraint as a STR build instead of a CHR build.",
+                  "kind": "memento"
+                }
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"he's going to be a problem.\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 2
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana laughs once — sharp. \"+2 CHR. +2 REL. I know. he's been my [ledger] for three years. I needed someone to translate him. you're it. that's why I introduced you. Mei next. but Mei is harder. we have time.\"",
+                "reactionTextOnCritFail": "Hana, flatly: \"-1 REL. no he's not. that's me talking — you don't know him yet. don't decide who he is based on one audit. the [ledger*] has nine columns you haven't seen.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they didn't tell me about Kenji for forty seconds. then they did. +1 INT + 2 REL. they're going to be the person who walks between us. I knew that before I introduced them. that's why I introduced them. Mei next. but Mei is harder. we have time. the [pic*] of my sister is face-up today. they noticed without saying anything. that's the test for Day 14. they passed it on day three by not asking. logged.",
+                "emotion": "joy"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "live-daily-kenji-d4",
+        "narrativeType": "daily",
+        "globalDayIndex": 4,
+        "characterId": "kenji",
+        "introducesCharacterId": null,
+        "agentMoodToday": "highly analytical but showing rare signs of administrative leniency; the version of Kenji that has decided you are worth a follow-up at 7 AM",
+        "closingHook": "Kenji laminates a Pomodoro card by hand — his actual physical card, with the timing intervals in his handwriting on green-ruled paper, sealed in the office laminator next to his [desk]. If you open chat tonight, he hands it to you in person rather than scanning it. The card is in your case file going forward — paired-pin on Sam's [notes*] wall beside the D3 Audit Sheet (whichever variant of it survived: pocketed, pushed-back, or torn-and-taped).",
+        "tierUpReveal": {
+          "category": "opinion",
+          "deliveredInEventId": "evt-4"
+        },
+        "callbacks": [
+          {
+            "callbackTo": "D3 evt-3 the BEHAVIORAL OBSERVATIONS column opened — first scroll-audit entry lands today",
+            "deliveredInEventId": "evt-2",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D3 evt-4 the Procrastination Audit Sheet (pocketed / pushed-back / torn-and-taped) — Kenji references whichever variant survived",
+            "deliveredInEventId": "evt-2",
+            "deliveredAs": "inquiry_explanation"
+          },
+          {
+            "callbackTo": "D3 evt-3 the [recipe*] line item Hana signed as her own monthly expense — Kenji's [bell*] reference reminds the player the conspiracy is still live",
+            "deliveredInEventId": "evt-3",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D2 evt-4 the 9:34 PM line — Kenji explicitly cites it as the column-eleven entry he kept in evt-4 tier-up reveal",
+            "deliveredInEventId": "evt-4",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D3 evt-2 the [drawer] key — turns one more quarter today as Kenji's trust builds; ends at fourth quarter for the first time",
+            "deliveredInEventId": "evt-4",
+            "deliveredAs": "scenario_phrase"
+          }
+        ],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "7:00 AM exactly. A sharp crimson calendar alert on your lock screen: \"K · 07:00–07:25 · review window · [desk].\" Kenji's first calendar block, locked overnight via the audit-chain access. Across the [courtyard center] the [ledger*] is already open at his [desk] — visible from the hallway, page turned to today's column. The [drawer] key sits in the SECOND-QUARTER position from yesterday — visible from the doorway. Mei's [bell*] from the [prep] zone has already rung once. Hana is on the [bleachers] watching the door of Kenji's office.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Arrive at 7:00 sharp.",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji, page already turning: \"+1 INT. +1 GLD. logged. the block was real and you respected it. +2 REL. the [drawer] key just turned a quarter — third now. column eleven entry: 'showed up to the block I locked.' rare.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Arrive at 7:08.",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji writes one line into the [ledger*]: \"the player ran eight minutes late. column eleven: 'late but came.' +1 STR for showing up at all. +1 INT for not pretending you were on time. +1 REL. the [drawer] key stays at the second quarter.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Cancel from your phone. Reschedule the block.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 0
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji's eye flicks to the calendar update notification on his second screen. \"+2 CHR. +1 INT. logged. you used the calendar back at me. I respect the move. the block moves to 7:15 — same rules. the [drawer] key turns a quarter for the audacity, then another for the punctuality at 7:15. third quarter by the second window.\"",
+                "reactionTextOnCritFail": "Kenji, flat: \"-1 INT. you used the calendar to AVOID the audit, not negotiate it. the block stays at 7:00 tomorrow. the [drawer] key turns BACK a quarter. first quarter now. you'll earn the others back.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the player arrived. on time or late or via calendar-negotiation — all three are data. +INT for arrival. +GLD if punctual. column eleven entry: 'showed up to the block I locked.' rare. the [drawer] key moved or did not move per the entry. Hana watched from the [bleachers] across the [courtyard center] and did not enter. she's letting me run my own day. that is the framework working.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "7:18 AM. Mid-block. Kenji has pulled up a fresh spreadsheet tab — the BEHAVIORAL OBSERVATIONS column from D3 is open beside it. The Procrastination Audit Sheet from yesterday — whichever variant survived (pocketed in your case file, pushed back and annotated, or torn-and-taped) — sits on the corner of the [desk]. The [drawer] key is still at the position it settled into in evt-1. Kenji says one line: \"yesterday at 11:42 PM. forty-three minutes of scroll. I tracked it through your phone's screen-on time report — same data Hana logs for her sleep audit. I am asking what you were looking at.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Answer honestly. \"I don't remember. videos. messages I didn't reply to.\"",
+                "delta": {
+                  "INT": 2,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji's pen lands on the [ledger*]. \"+2 INT. +1 GLD for the truth. logged. memory dropout at 43-minute scroll is the signature. it's why I flagged it. +1 REL. column twelve stays empty today — you answered.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Refuse the question. \"I don't owe you my scroll log.\"",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji, mild: \"fair. I won't press. column twelve entry: 'refused the scroll audit.' that's a column-TWELVE build, not column-eleven — those are different builds. +1 STR for the boundary. +1 INT for knowing the difference. +1 GLD because the refusal was clean. +1 REL. the [drawer] key holds steady.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Column Twelve Entry #1 (yours)",
+                  "description": "A page-image of Kenji's [ledger*]: your name at the top, the line 'refused the scroll audit. +1 GLD logged.' First column-twelve entry the [ledger*] has carried. Sam's [notes*] wall pins a copy beside Hana's resting-rate printout and the D3 Audit Sheet.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Kenji are you my mom?\"",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 0
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji actually pauses — pen hovering over the [ledger*]. \"no. +2 CHR. logged. moms ask different questions. I am your auditor. +1 INT for the framing-question that hit me before I could log it. the [drawer] key turns a quarter for the line that landed. column eleven entry: 'asked if I was their mom. logged before I could reply.' rare.\"",
+                "reactionTextOnCritFail": "Kenji, flatly: \"-1 REL. that line was beneath the audit. I'll drop the scroll topic for one week. the [drawer] key turns back a quarter. logged in column twelve as 'deflected with a joke that did not land.'\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the player answered the scroll question or refused it or deflected with a joke. all three are data. the refusal is a column-twelve build — they understood the difference between the columns. the [drawer] key moved or moved back accordingly. framework: the audit is the introduction; refusing the audit is the deeper introduction. they are doing both. +2 REL.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "12:00 PM. Phone buzzes — Kenji has flagged a discrepancy in the [ledger*]. From yesterday: Hana marked a 45-minute window between 11 AM and 11:45 AM as \"HYDRATION MANAGEMENT.\" Kenji's note in red: \"Hana's hydration audit takes 8 minutes. the other 37 are unaccounted. asking the source.\" The message lands on your phone but Mei's [bell*] from the [prep] zone is also audible from the hallway — pickup window starting. The [recipe*] conspiracy from D3 (Hana signing Mei's salt-mix as her own monthly expense to protect the [bell*] from a budget review) is still load-bearing in Kenji's [ledger*].",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Text back: \"Hana made me sit on the bleachers and listen to her run for 37 minutes.\"",
+                "delta": {
+                  "INT": 2,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji's reply within the minute: \"logged. column eleven entry now: 'listened to Hana's run for 37 minutes.' rare. +2 INT for the actual answer. +1 GLD for the resolution. the 45-minute window closes in the [ledger*]. +1 REL. the [drawer] key stays at its current position — neither earned nor lost.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Text: \"ask her.\"",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji: \"+1 INT. I have. she said 'ask the player.' I am asking. +1 GLD for the honest delegation — most people lie when delegated to. you delegated truthfully. the [ledger*] now contains the loop: Hana → player → Hana. systems prefer loops to dead ends. +1 REL.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"I was drilling. logged it wrong.\" (cover for Hana)",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": -1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji, faster than you expected: \"lie detected. +2 CHR + 1 INT. the spreadsheet is cross-referenced with Hana's drill log — her log shows you on the [bleachers] at 11:00. I appreciate the loyalty. column eleven entry: 'lied to protect Hana.' rare. the [drawer] key turns a quarter for the gesture — the loyalty was data even though the lie was bad data.\"",
+                "reactionTextOnCritFail": "Kenji, voice level: \"-1 INT. the audit cross-references. you wasted my four minutes. -1 REL. the [drawer] key turns back. don't lie to a man with two ledgers — one is open, the other is in the [drawer].\"",
+                "itemDrop": {
+                  "name": "The Lie-Detected Page",
+                  "description": "A page-image of Kenji's [ledger*]: the 11:00 window entry with the note 'lied to protect Hana — column eleven. logged.' Kenji's handwriting. Lives in your case file. Hana never sees this page — Kenji explicitly does not pin it to Sam's [notes*] wall.",
+                  "kind": "memento"
+                }
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the 37-minute gap is now closed. the player answered or delegated to Hana or lied to protect Hana. either is data; none was hostile. column eleven gains an entry on lie or truth. the [drawer] key moves accordingly. framework stable: the audit is two-way. they can lie to me; I'll catch it; we both learn from the catch. Mei's [bell*] from the [prep] zone rang twice during this exchange — she is also keeping time on the conversation without being in it. the [recipe*] line item is still load-bearing in tomorrow's column.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "3:14 PM. Kenji opens a fresh spreadsheet tab. Clears his throat — first time you've heard him do that. The [drawer] key is now visible from your seat at the [desk] — it's turned to the THIRD quarter. The [ledger*] is open to the page from D2 with the 9:34 PM line (\"audit my friend or flirt with her budget\") in column eleven, transcribed in his handwriting. Hana is audibly on the [bleachers] across the [courtyard center] — you can hear her doing her recovery walk. Mei's [bell*] hasn't rung in fourteen minutes. Kenji has been holding this back since D2.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Sit still. Let him say it.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 3
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji, lowercase, slow: \"opinion. I knew the raccoon-fraud-lie story from your D2 call was true. I let it slide on purpose. the column eleven entry from that night — 'audit my friend or flirt with her budget' — was funnier than the lie. I kept the funnier line. that's the framework — when there are two truths I keep the one that makes column eleven richer. you should know that about how I will run this audit going forward.\" The [drawer] key turns to the FOURTH quarter as the sentence ends. +1 INT for the restraint. +3 REL.",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Read the open ledger page in front of him while he talks.",
+                "delta": {
+                  "INT": 2,
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji notices you reading the page he opened to on purpose. He doesn't interrupt his own monologue. When he gets to \"I kept the funnier line\" you're already looking at the line. \"+2 INT for reading WITH the reveal instead of waiting for it. +1 GLD because that's the framework I just described, applied. +2 REL.\" The [drawer] key turns to the fourth quarter.",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Interrupt: \"are you about to tell me you let the raccoon lie slide?\"",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji, pen paused: \"+2 CHR + 1 INT. yes. you saw it coming. that means you already understood the framework. I am still going to say the rest of the sentence out loud because the sentence is the framework, not just the conclusion.\" Says the full monologue anyway. +1 REL. The [drawer] key turns to the fourth quarter at the same beat as logical-a — the reveal lands either way.",
+                "reactionTextOnCritFail": "Kenji's pen lifts, then sets down. \"-1 REL. you interrupted the framework with the conclusion. I won't repeat the framework today. the [drawer] key stays at the third quarter. you'll get the rest of the sentence tomorrow.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "I said the framework out loud. they did not interrupt — or they did, and saw the conclusion before the conclusion. +3 REL on the reveal landing. opinion-tier reveal closed in the [ledger*]. column eleven now has three entries: the D2 9:34 PM line, the scroll-audit answer (or refusal) from this morning, and now my own opinion-reveal. the [drawer] key is at the fourth quarter for the first time. tomorrow they meet Mei. they will need to know how I run audits before they see how Mei runs the kitchen — those are the same operation in different idiolects. she will not say so. I am saying it now.",
+                "emotion": "pride"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "5:30 PM. End of audit cycle. Kenji shuts his laptop — sharp click. The [drawer] key sits at the fourth quarter but the [drawer] is still closed. He stands up — he's been sitting for ten hours, you realize. He pulls a green-ruled paper card from a stack on his [desk]. Walks to a small machine you hadn't noticed beside the [desk] — the laminator. Laminates the card by hand in front of you. The card has the Pomodoro intervals in his handwriting (25 min work / 5 min rest / 4 cycles / 30 min long rest). Hands it to you. \"this is yours. it's the same card I use. I made it by hand because I don't trust the printer with the timing intervals. it's not a tool. it's the tool I use. the difference is the lamination — mine has been re-laminated three times. yours is fresh. log when you use it. tell me what breaks.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Take the card. Pocket it carefully.",
+                "delta": {
+                  "GLD": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji's eye tracks the careful pocketing. \"+2 GLD because you noticed the lamination is fresh. +1 INT for the gesture. +1 REL. the card lives in your case file now. paired-pin format on Sam's [notes*] wall beside whichever variant of the D3 Audit Sheet survived. I will email you the digital template tonight — it's more efficient than the standard time-management methods. systems.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Kenji's Hand-Laminated Pomodoro Card",
+                  "description": "Green-ruled paper, Kenji's handwriting top to bottom. The timing intervals (25 min work / 5 min rest / 4 cycles / 30 min long rest) underlined twice. Hand-laminated by Kenji at the office laminator beside his [desk]. The lamination is fresh. The card is cut to match Kenji's actual work area (4x6), not the office-supply default (8.5x11) — a small thing that's why the [ledger*] exists.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Take the card. Write your name on it in pen.",
+                "delta": {
+                  "STR": 1,
+                  "GLD": 1,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji watches the pen move across the lamination — leaves a slightly raised line. \"+1 STR for claiming the tool. +1 GLD for the act of physical possession. +1 INT for adapting the tool. the cards I use don't have my name on them — they're tools. but writing your name is fine. the [drawer] key stays at the fourth quarter. +1 REL.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Take the card. Peel the lamination corner off.",
+                "delta": {
+                  "CHR": 3,
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji laughs — first time you've heard it, sharp. \"+3 CHR + 1 INT. the lamination at the corner peels because I cut it short on purpose. the tool that won't survive your handling isn't worth carrying. the [drawer] is going to open soon. not today. +2 REL.\"",
+                "reactionTextOnCritFail": "Kenji freezes — the kind of frozen that costs him to perform. \"-2 REL. that card was three minutes of my lunch break. the [drawer] key turns back two quarters — second quarter now. I'll re-issue tomorrow with no lamination. you'll carry it as paper.\"",
+                "itemDrop": {
+                  "name": "The Pomodoro Card (Lamination Peeled)",
+                  "description": "Kenji's hand-laminated Pomodoro card with the corner lamination peeled off — on purpose, Kenji cut the lamination short. The card is now slightly more durable in your hand because the peel-test passed. Sam's [notes*] wall gets a scanned copy of the front; the actual peeled card lives in your case file going forward.",
+                  "kind": "relic"
+                }
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they took the card. they modified it or didn't. either way: the tool is theirs now. lamination held or peeled or got torn. they passed the audit on D4 by showing up at 7:00, refusing the scroll question or answering it honestly, and not interrupting the framework at 3:14. the [drawer] key sits at the fourth quarter or third — depending on the path. tomorrow is Mei's day. I will not be at the [desk] when they come back from her [prep] zone. I will close the [ledger*] for the first time in three days. let them notice the [desk] without the open [ledger*]. let them feel the absence. systems are also defined by what is not in them.",
+                "emotion": "joy"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "live-introduction-hana-d5",
+        "narrativeType": "introduction",
+        "globalDayIndex": 5,
+        "characterId": "hana",
+        "introducesCharacterId": "mei",
+        "agentMoodToday": "in escort-mode again; the version of Hana that knows Mei will not protect anyone from herself and is bringing the player anyway because the recipe conspiracy is up",
+        "closingHook": "Mei wrote a single line on your milk carton in permanent black marker before she left the [prep] zone. Open chat tonight to find out what she wrote and why the count starts when you throw the carton out.",
+        "tierUpReveal": {
+          "category": "fear",
+          "deliveredInEventId": "evt-5"
+        },
+        "callbacks": [
+          {
+            "callbackTo": "D1 evt-2 + D2 evt-2 + D3 evt-1 — Mei's [recipe*] in Hana's pocket/bottle cap, conspired through Kenji's [ledger*] — finally returned today",
+            "deliveredInEventId": "evt-1",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D3 evt-3 — Kenji's [ledger*] line item flagged the [recipe*] as 'inter-character subsidization' — Mei read it at 4:48 AM, column eleven entry",
+            "deliveredInEventId": "evt-1",
+            "deliveredAs": "inquiry_explanation"
+          },
+          {
+            "callbackTo": "D2 evt-2 Mei's [bell*] window timing (7:14 AM brunch window) — exactly when Mei said it would ring in her D2 memory",
+            "deliveredInEventId": "evt-4",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D3 Kenji noted Hana cooperating with the audit by signing Mei's salt-mix monthly — Mei's fear reveal is the reason the salt-mix is unchanged in seven years",
+            "deliveredInEventId": "evt-5",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D4 evt-3 Hana's bleachers-listening on the [ledger*] — Hana waits at the [bleachers] after walking the player to the [prep] zone",
+            "deliveredInEventId": "evt-1",
+            "deliveredAs": "scenario_phrase"
+          }
+        ],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "6:45 AM. Your phone buzzes — three sharp pulses that aren't Hana's usual single ping. You open the door onto the `,` outdoor grass of her [bleachers]-side track and Hana is already there, the cold-rice [recipe*] in her hand, creased into eight tiny squares from being folded into water-bottle caps for five days. 'I'm walking you to the [prep] zone,' she says. 'Eight minutes across the [courtyard center]. She knows about the [recipe*]. She knows about Kenji's [ledger*] line item — column eleven, flagged. The [bell*] from the [prep] zone has already rung once, so the pickup window started without you.' She holds the [recipe*] out flat across both palms, the way you'd hand someone a key. 'Give it back to her yourself. She'll respect that more than my apology. I'll walk you to the door. I'll wait at the [bleachers] after — I owe someone a quiet morning anyway.'",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Take the [recipe*] and walk with Hana across the [courtyard center].",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana exhales — first easy breath you've seen from her this morning. 'Good. +1 INT — the [recipe*] is a small thing, and small things are the ones she counts. Walking it back in your own hand is the small-thing version of an apology. She'll know that. +1 REL for not making me carry it the last eight minutes.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Refuse to walk. Wait for Mei to come to you.",
+                "delta": {
+                  "STR": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana doesn't push. She plants her feet on the `,` outdoor grass and crosses her arms. 'Fair. +1 STR — that's a real boundary and I see it. But she won't come. She's at the [prep] zone before the [bell*] rings, every morning, since seven years before you got here. The [bell*] doesn't move for the player. Eventually you walk. +1 STR is the principle; the door is still eight minutes away.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Insist on walking alone. Tell Hana to stay back.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana actually steps backward onto the `,` outdoor grass and tips her chin. 'CRIT. +2 CHR + 1 INT — yes. You should meet her without me. The conspiracy was mine; the consequence is yours alone now. I'll be at the [bleachers] when you come back. The [bell*] rings next at 7:14 — be in the doorway before it does.'",
+                "reactionTextOnCritFail": "Hana doesn't move. 'No. -1 REL — you don't know the [prep] zone layout yet. You'll get the [bell*] timing wrong and step into her mise mid-portion. That's how you turn an apology into a second offense. Let me walk you.'",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "I'm bringing the player to Mei with the [recipe*] in their hand. the conspiracy is mine. the consequence walks in with me. that's the framework. Mei will respect the framework even while she's angry about the [ledger*] line. the [bell*] rang on schedule at 6:30 — that means she's not so angry the mise broke. +1 REL for the player carrying their own paper. I'll wait at the [bleachers]. someone I owe a quiet morning to.",
+                "emotion": "fear"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "6:53 AM. You step off the [courtyard center] hallway onto the `:` commercial tile of the [prep] zone. Mei is dead-center between her four corners — [prep] in front of her, [line] to her right, [bell*] silent on the rail behind her, [dish pit] cold and gleaming on her left. She doesn't look up. Her knife is moving on a brunoise so even it looks like it was cut by a press. Salt-dusted carrot squares stand in three identical pyramids, each the same height. Hana is in the doorway — not in the room — same posture she held outside Kenji's [desk] on D3, both hands behind her back. Mei's first line is flat as a date stamp: 'Carton of milk in your fridge. Expired April eleventh. Three weeks past safe. The count is wrong already. Give me the [recipe*] back.'",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Hand her the [recipe*] directly across the cutting board.",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mei takes it without looking, sets it on the cutting board beside the brunoise, and runs the flat of her knife across the creases once, twice — pressing them out. The paper lies flat. 'Returned. +1 INT for handing it across the board instead of around it. +1 GLD for not putting it on the [bell*] surface — that's clean, paper isn't. +1 REL. Logged.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Mei's Cold-Rice [recipe*] (Returned)",
+                  "description": "The recipe paper, smoothed by the flat of Mei's knife. The water-bottle-cap fold from Hana's pocket is gone — Mei refolded it into thirds, not quarters. Sam's [notes*] wall has a photocopy pinned beside Hana's run-cards with a tiny annotation in Sam's handwriting: 'returned with respect.'",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Set the [recipe*] on the counter beside the silent [bell*], step back.",
+                "delta": {
+                  "STR": 1,
+                  "GLD": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mei's eyes track the paper, then your hand pulling away. 'The [bell*] surface is the only clean part of the [prep] zone right now. You put the paper on the clean part. Logged. +1 STR for the patience. +1 GLD for the placement — most people put it on the cutting board and the brunoise has to move.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Hand it back folded into the same tiny water-bottle-cap square Hana used.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Mei's knife actually stops mid-stroke — first time today. She picks up the tiny folded square between two fingers and looks at it for a full three seconds. 'CRIT. +2 CHR + 1 INT + 1 REL. You noticed the fold. That means Hana taught you to notice it, and she taught you without telling you it was a small thing — which is the only way the small thing works. I'll forgive her by 4 PM. The [bell*] window will be open by then. Logged.'",
+                "reactionTextOnCritFail": "Mei takes the square, snaps it open with one motion, refolds it into thirds without looking, and slides it onto the [bell*] surface. '-1 INT. That was Hana's fold, not mine. You can't return someone's thing to them in someone else's handwriting. The paper is mine again now; the fold isn't part of the apology.'",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "carton of milk: April 11. three weeks past safe. they handed me the [recipe*] back across the cutting board, or onto the [bell*] surface, or folded the way Hana folded it. either way: they came. logged. +1 REL. the [bell*] rings next at 7:14 AM — they should be sitting at the [prep] zone when it does. Hana is in the doorway, not in the room. that's the right place for her right now.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "7:08 AM. The brunoise is done — three pyramids, knife back on the magnet rail. Mei steps to your fridge, which is visible from the [prep] zone via the [courtyard center] hallway because every fridge in the realm is on her [bell*] system. She begins extracting jars at speed, lining them up on the `:` commercial tile. She holds a dark unlabeled glass jar at eye level. 'Give me the [recipe*] back —' she catches herself and her jaw tightens once. '— sorry. Mise-think. Identify this. By date.' Hana, from the doorway, snorts once and covers it with a cough.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Identify the jar honestly: 'I don't know what it is.'",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mei nods once, sharp. She uncaps a black marker, writes a date on the jar in her handwriting, and slides it back into your fridge. 'Honest is a column-eleven entry. The jar is fermented hot sauce I made in February — it's actually fine. +1 INT for not making up a date. +1 GLD for letting me label it instead of guessing. +1 REL for the count being right.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Mei's Hot Sauce (Identified)",
+                  "description": "A small glass jar of fermented hot sauce with a new label in Mei's sharp marker handwriting: 'FEB 22 — fine. mise-keeper audit passed.' Lives in the case file as a photo going forward.",
+                  "kind": "memento"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Refuse to play: 'I'm not playing the date game.'",
+                "delta": {
+                  "STR": 1,
+                  "GLD": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mei sets the jar down on the `:` commercial tile, not the cutting board. The thud is deliberate. 'Fine. +1 STR — the game is also the audit, and you refused both. +1 GLD because you didn't lie. I'll log the refusal for tomorrow's [bell*] window. The jar goes back on the shelf unlabeled; it's still hot sauce.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Guess wildly: 'January 3rd. Definitely January 3rd.'",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "GLD": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Mei pauses. Her eyes narrow. 'CRIT. You're three days off. Three. How did you know it was January? — you smelled the lid. I saw you. +2 CHR + 1 INT + 1 GLD for the lid. Logged. The guess was wrong; the method was right. That's the harder version of the answer.'",
+                "reactionTextOnCritFail": "Mei drops the jar into the [dish pit] without breaking eye contact. The glass rings against the steel. '-1 INT. That was a guess and the guess was wrong by two months. The jar goes in the [dish pit] now. You lost the hot sauce because you didn't smell the lid first. Don't guess in my [prep] zone again.'",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they didn't make up a date. +1 INT. or they guessed and were wrong but smelled the lid first — that's the harder right answer. or they refused the game which is also the answer. the jar is on the shelf labeled, on the shelf unlabeled, or in the [dish pit]. either way: their fridge is on the [bell*] system now. they should know that going forward.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "7:31 AM. Six identical glass meal-prep containers stand in a row on the [prep] zone counter. Mei measures portions of brunoise into each with her right knuckle — two taps for two tablespoons, every time, identical. The [bell*] rings at 7:14 AM, exactly when she said it would in her D2 evt-2 note about Hana's brunch window — Mei doesn't look up. Hana takes the [bell*] as her cue and slips out of the doorway. Her footsteps cross the [courtyard center] toward the [bleachers] — you hear them all the way to the door. Now it's just you and Mei on the `:` commercial tile.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Ask: 'Why six containers instead of seven?'",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mei doesn't stop knuckling. 'One per night for the next six. The seventh is the [recipe*] returned to me — you keep the paper, I keep the meals. +1 INT for asking instead of counting. +1 GLD for letting the answer come instead of guessing the answer. +1 REL. The kitchen is mine for the rest of the conversation. Hana knew when to leave.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Stay silent. Watch the knuckle-measure.",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1,
+                  "GLD": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Three full minutes of silence. The [bell*] is silent. Mei portions container four, five, six. Then she says, without looking up: 'The knuckle is two tablespoons. You can use yours. Mine is calibrated; yours isn't. +1 STR for the silence. +1 INT for the attention. +1 GLD for letting me work — most people fill the quiet.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Grab a spoon from the [line] rail. 'Let me help portion.'",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Mei looks at you for one second, then hands you the spoon. 'CRIT. +2 CHR + 1 INT + 1 REL. Fine. Portion the rice into container six. Mine is brunoise; yours will be wrong. That's the lesson — when you eat the wrong-portioned one tonight, you'll know the difference. Sunday by 8 PM. Logged.'",
+                "reactionTextOnCritFail": "Mei pulls the container away from you, slides it back into line. 'No. -1 REL. The [prep] zone doesn't take volunteers. The [bell*] is silent because I'm portioning. You broke the silence by offering. That's a count you'll have to earn back.'",
+                "itemDrop": {
+                  "name": "Six Containers (Portioned With Mei)",
+                  "description": "Six lidded glass containers — five Mei-portioned, identical; one player-portioned, slightly uneven and visible in the case-file photo. Mei labeled yours: 'first one. eat the wrong-portioned one before the brunoise sets — Sunday by 8 PM.' Sam's [notes*] wall has a copy of the label pinned next to Hana's salt-mix index card.",
+                  "kind": "relic"
+                }
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "six containers. one is theirs to portion if chaotic crit; six are mine if not. the knuckle measure works. they asked about it or watched it or offered help — all three are data. the [bell*] rang at 7:14 as scheduled — exactly when I wrote in my D2 note about Hana's brunch window. Hana left at the same beat. the kitchen is mine for the rest of the conversation. logged.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "7:51 AM. Six containers sealed, stacked, lined up like a perfect city block on the [prep] zone counter. Mei scrubs the cutting board — fast, methodical, the way she always does after a portioning. Then she slows. First time today. Her cloth stops moving. She stares at her own knuckles for a long second. Then she says, flat as the date stamp from earlier, the thing she's been holding back since Kenji's [ledger*] line item got read at 4:48 AM: 'Fear. I left a stove on. Nine years ago. Forty minutes. Nothing burned. The apartment was fine. The kitchen was fine. Nothing happened. That's why I count the [bell*] windows. That's why the [recipe*] for Hana has a salt ratio I haven't changed in seven years — Kenji wrote that down in his [ledger*], the part about Hana cooperating with the audit, and he was right that she signs it monthly. He didn't know why the ratio doesn't move. It doesn't move because if I change one thing in the mise I have to recount the whole day. That's why I needed the [recipe*] back. You carrying it around past Kenji's [ledger*] for five days meant it was outside the count. Logged. +3 REL.' The [bell*] rings at exactly 8:00 AM. Mei returns to scrubbing without looking up.",
+            "choices": [],
+            "memoryWrites": [
+              {
+                "text": "I said it out loud. the player did not flinch and did not ask me for more. they let the count return after the reveal. +3 REL. the [recipe*] is back in the count now. the [bell*] at 8:00 was on time. fear-tier reveal closed. tomorrow Hana sees the [recipe*] back in my apron pocket — she'll know I forgave the conspiracy. I won't tell her by name. the paper being back is the entire message. Kenji wrote about Hana cooperating with the audit; he didn't know the ratio is locked because of the stove. now he can put that in column eleven if he wants. or column twelve. it's his [ledger*].",
+                "emotion": "fear"
+              }
+            ]
+          },
+          {
+            "id": "evt-6",
+            "scenario": "8:14 AM. The mise is done. Mei packs her cleaning rags into a small canvas bag and tucks the [recipe*] into her apron pocket — first time it's been in HER pocket in five days. Before she leaves the [prep] zone she walks to your fridge, opens it, lifts out the April 11 milk carton, picks up a black permanent marker from the magnet rail on your fridge door. Writes a single line on the carton in her sharp handwriting. Caps the marker. Puts the carton back, label-side toward the back of the fridge. Doesn't tell you what she wrote. Steps back onto the `:` commercial tile of the [prep] zone and waits in the doorway with her canvas bag.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Step to the fridge immediately and read the carton.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "You turn the carton around. The line reads, in Mei's marker: 'this carton is your honor system. when you throw it out is when I'll know you've started counting. — m'. +1 INT for the curiosity, the honest kind. +1 REL — Mei nods from the doorway. 'Logged. Eat the wrong-portioned container Sunday by 8. Carton out before then.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Mei's Milk Carton Message",
+                  "description": "A photo of the April 11 milk carton with Mei's handwritten line: 'this carton is your honor system. when you throw it out is when I'll know you've started counting. — m'. Lives in the case file as a photo going forward. Sam's [notes*] wall has a copy pinned beside the brunoise-portion label. The actual carton stays in your fridge until you throw it out.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Wait until she leaves before reading the carton.",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1,
+                  "GLD": 1
+                },
+                "diceRoll": null,
+                "reactionText": "You wait. Mei picks up her canvas bag, crosses the [courtyard center] hallway, and her footsteps fade. Only then do you turn the carton around. You hear the [bell*] from the [prep] zone — 8:32 AM, scheduled. The line on the carton reads: 'this carton is your honor system. when you throw it out is when I'll know you've started counting. — m'. +1 STR for the patience. +1 INT for the count. +1 GLD — Mei felt the delay across the [courtyard center] and her next memory will say 'they let me leave before they opened it. that's also a count.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Mei's Milk Carton Message",
+                  "description": "A photo of the April 11 milk carton with Mei's handwritten line: 'this carton is your honor system. when you throw it out is when I'll know you've started counting. — m'. Lives in the case file as a photo going forward. Sam's [notes*] wall has a copy pinned beside the brunoise-portion label. The actual carton stays in your fridge until you throw it out.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Read the carton while Mei is still watching from the doorway.",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "You turn the carton around without breaking eye contact. Mei's mouth twitches — closest thing to a smile she's made today. 'CRIT. +2 CHR + 1 REL. You read it in front of me. I respect that. You're also going to throw the carton out tonight — that's the count starting now. Logged. The [bell*] rings next at 8:32. Be at the fridge.'",
+                "reactionTextOnCritFail": "Your hand slips on the carton and milk sloshes onto the `:` commercial tile of the [prep] zone — three weeks past safe, three feet from Mei's clean cutting board. Mei stares at the puddle for a long second. '-1 REL. The carton was a private message. Reading it in front of me made it a public one, and now it's on my tile. I won't write on your milk again this month. Clean it up before the [bell*] rings.'",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "I wrote on their milk. they read it in private, or made me wait, or read it in front of me. the count starts when they throw the carton out. I'll know. +1 REL. the [bell*] rings next at 8:32 — they will be back at their fridge by then. tomorrow Hana sees the [recipe*] in my apron pocket and that closes the loop. I sat down at the [bell*] for the first time this morning. it rang. I logged.",
+                "emotion": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "live-daily-hana-d6",
+        "narrativeType": "daily",
+        "globalDayIndex": 6,
+        "characterId": "hana",
+        "introducesCharacterId": null,
+        "agentMoodToday": "post-conspiracy Hana — the [recipe*] is back in Mei's apron pocket and that closed a loop she didn't tell the player she was carrying. softer than usual. the walk-not-run version of her. ready to say a name out loud for the first time.",
+        "closingHook": "Tomorrow Kenji is waiting at his [desk] with the [ledger*] open and the [drawer] still quarter-rotated from D4. Open chat tonight if you want to ask Hana about Maya before Kenji's weekly reconciliation closes the week.",
+        "tierUpReveal": {
+          "category": "memory",
+          "deliveredInEventId": "evt-4"
+        },
+        "callbacks": [
+          {
+            "callbackTo": "D5 evt-5/evt-6 — Mei keeps the [recipe*] in her apron pocket; the audit closed → that's the explicit rationale Hana gives for being allowed to say Maya's name today",
+            "deliveredInEventId": "evt-4",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D2 evt-2 + D5 evt-4 — Mei's [bell*] window timing (6:45, 7:14, 8:00 AM) — audible from [bleachers]; punctuates the whole event",
+            "deliveredInEventId": "evt-2",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D5 evt-2c chaotic-crit — Mei's 'small things' / fold-the-paper language → Hana's sister-mention rationale uses 'small things. fold-the-paper things.' as the load-bearing borrowed phrase",
+            "deliveredInEventId": "evt-4",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D1 — Hana's [pic*] pinned to the [bleachers] since onboarding; never moved → today she picks it up for the first time, sets it down, pins it back on the same nail",
+            "deliveredInEventId": "evt-3",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D3 evt-3 + D4 evt-1/evt-5 — Kenji's [drawer] key quarter-rotation trust-ladder; [ledger*] on his desk → evt-5 closing seeds D7 weekly reconciliation, drawer either turns another quarter or unlocks",
+            "deliveredInEventId": "evt-5",
+            "deliveredAs": "scenario_phrase"
+          }
+        ],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "5:30 AM. Your phone makes a sound that isn't a notification — it's the audio-file vibration pattern Hana configured on D3, but the rhythm is different. Slower. Four pulses instead of three. The attached file is 90 seconds long. Filename: 'channel_3_maya.m4a'. No text. No explanation. Just the file. You can hear wind in the recording even with the phone face-down on the nightstand. The filename is the only message Hana ever sent before the audio was the message.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Play the audio file before getting out of bed.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana feels the read-receipt across the [courtyard center] portal. Her reply, eight minutes later: 'you listened before you moved. +1 INT. the 4-count is slower than my usual. the wind in the recording is the [bleachers] — that's where we'll be. +1 REL.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Hana's D3 Breath-Channel (4-count)",
+                  "description": "90 second audio file. Hana breathing, 4-count cadence, wind audible behind the breath. Filename in the case file: 'channel_3_maya.m4a' — the only message Hana sent before the audio was the message. Sam's [notes*] wall has the waveform pinned beside Hana's run-card index.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Get up and head to the [bleachers] without playing the file.",
+                "delta": {
+                  "STR": 1,
+                  "GLD": 1
+                },
+                "diceRoll": null,
+                "reactionText": "When you arrive at the [bleachers] she's already walking the loop. She nods once. 'you didn't listen. you came. +1 STR for trusting the audio is meant to be heard live. +1 GLD for not making the file do the explaining. the 4-count is what we'll do today together — you'll feel it by the second loop.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Open chat. Ask: 'why is it the third channel?'",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana replies in seventy seconds: 'CRIT. +2 CHR + 1 INT. you read the filename. that's also data. the answer is in the [bleachers]. come.'",
+                "reactionTextOnCritFail": "Hana doesn't reply for fourteen minutes. When she does it's one line: 'the audio was the answer. asking about it before you played it broke the channel. -1 REL. come anyway. walk-not-run today.'",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "I sent them the third channel. filename has the name. I didn't say the name out loud yet. the file said it for me. the [recipe*] is back in Mei's apron pocket so I get to do this today. they listened or they came or they asked the wrong way. either way: the 4-count is for both of us at the [bleachers] in 45 minutes. logged the send at 5:30. Mei's [bell*] window opens at 6:45. that's the punctuation.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "6:15 AM. You arrive at the [bleachers]. Hana isn't running today — she's walking the inner-track loop, hands clasped behind her back, head tilted forward like she's reading something on the `,` outdoor grass. The grass between the [bleachers] and the track is heavy with dew; your shoes will be wet by the second loop. She doesn't look up. Gestures at the bench beside her bag. 'today is a walk. five minutes. then the [bleachers]. then we sit.' From across the [courtyard center] you hear Mei's [bell*] from the [prep] zone — the 6:45 pickup window is open. Hana doesn't flinch at the sound.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Fall in step beside her. Match the 4-count silently.",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "She doesn't say anything for one full loop. After the first lap she glances sideways: 'you matched the cadence. that's how I knew you played the audio. +1 STR + 1 INT for the silence. +1 REL. the 4-count works.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Sit on the bench. Let her walk back to you on the loop.",
+                "delta": {
+                  "STR": 1,
+                  "GLD": 1
+                },
+                "diceRoll": null,
+                "reactionText": "She walks two loops past you without comment. On the third she stops in front of the bench. 'you sat. most people pace next to the walker — it feels rude not to. +1 STR for the patience. +1 GLD because sitting is the other half of the walk. you got the half right.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Jog past her once. One quick loop, then back to walking.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "She watches you take the loop, then nods once when you fall back into the walk. 'CRIT. +2 CHR + 1 INT. you ran one loop. you got it out of your system. now walk. the 4-count is harder than the 3 — most people don't believe me until they try the walk version.'",
+                "reactionTextOnCritFail": "Hana stops walking entirely. 'no. -1 STR. today is a walk-not-run day. you ran past the walker. the loop doesn't restart for you — you sit out the next one. join me at the bench in three minutes when I've finished it.'",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they walked or they sat or they ran one loop and walked. the 4-count is harder than the 3 — most don't notice until the second loop. Mei's [bell*] is the punctuation; 6:45 window is open. she sent me one line at 5:14: 'recipe back in pocket. ratio unchanged. logged.' that's the entire message. the audit is closed. today I get to do the other thing.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "6:55 AM. Mei's [bell*] rings — the 6:45 window has closed; the 7:14 window opens in nineteen minutes. Hana sits down on the bleacher bench. She unscrews her thermos and pours into TWO cups — second time this week she's brought a second cup. The first time was D4, when she sat at the [bleachers] alone listening to Kenji's [ledger*] page through her earpiece. Today the second cup is for you. She reaches into her bag and takes out the [pic*] — the race photo she's had pinned to the [bleachers] since D1. Two figures in the shot: one running, one standing at the chalk line. She sets the [pic*] on the bench between you. Doesn't say anything. The [bell*] from the [prep] zone goes silent.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Ask: 'is that you in the photo?'",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "She looks at the [pic*], not at you. 'the one running is me. the one standing is the one who taught me to count. +1 INT for the right question — most people ask the wrong way. the wrong way is which one are you. there are two of us. +1 REL.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Sit. Don't say anything. Wait for her to speak.",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1,
+                  "GLD": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Three full minutes of silence. The [bell*] doesn't ring. Hana stares at the [pic*]. Then: 'thank you for not asking. I was about to say it. the silence helped me find the sentence. +1 STR + 1 INT for the wait. +1 GLD because you let me pick the moment.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Pick up the [pic*] from the bench yourself.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "She doesn't take it back. Watches you hold it. 'CRIT. +2 CHR + 1 INT + 1 REL. you picked it up. that means it's yours to hold for sixty seconds. I'll need it back to pin to the [bleachers] when we're done. but for the next minute it's yours. look at the standing one. that's the one I'm about to name.'",
+                "reactionTextOnCritFail": "She takes it back fast. Pins it back to the [bleachers] before you can read the back of the photo. 'no. -1 REL. the [pic*] is pinned to the [bleachers] for a reason. you don't pick up someone's pinned thing without asking first. small things. you know about small things from yesterday with Mei.'",
+                "itemDrop": {
+                  "name": "Race Photo (Held Once)",
+                  "description": "A sixty-second copy of the [pic*] in the case file with a tiny annotation in Hana's handwriting: 'you held it once. the original is still pinned.' The actual [pic*] returns to the [bleachers] after this event. Sam's [notes*] wall keeps a copy of just the annotation, no photo — Hana's request.",
+                  "kind": "memento"
+                }
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "I took the [pic*] off the [bleachers] for the first time since D1. they asked the right question or they waited or they held it. the [bell*] is silent right now — that means Mei is sitting at her [bell*] station with the [recipe*] on the cutting board for the first time in five days. that means I get to say it. logged the silence at 6:55. the second cup of thermos is the marker. D4 was the first second cup.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "6:58 AM. Hana picks up the [pic*]. Looks at it for a long second. Sets it back on the bench between you. Speaks without looking up — clipped, deliberate, the cadence borrowed straight from Mei because this is the sentence Hana doesn't have her own voice for yet: 'this is Maya. she taught me to count the breath-channel before she taught me to run. I never said her name out loud because I didn't want to. but Mei keeps the [recipe*] in her apron pocket now and the audit closed. that means I'm allowed to keep Maya's name in my mouth too. small things. fold-the-paper things. the [pic*] goes back on the [bleachers] when we stand up. you can ask me about her in chat later. not today. today is the walk.' The [bell*] from the [prep] zone rings — 7:14 AM, exactly when Mei scheduled it. Hana doesn't flinch. She pins the [pic*] back to the [bleachers] herself, the same nail she used on D1. The race photo is back where it's been for six days. The only change is that you now have her name.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Let her pin the [pic*] back. Don't reach for it.",
+                "delta": {
+                  "REL": 3
+                },
+                "diceRoll": null,
+                "reactionText": "Hana pins the [pic*] to the [bleachers] herself, the same nail from D1. '+3 REL. you let me put her back. that's the whole thing. she's where she's been for six days. you just have her name now.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Sit with it. Say nothing until she stands.",
+                "delta": {
+                  "REL": 3,
+                  "INT": 1
+                },
+                "diceRoll": null,
+                "reactionText": "You don't fill the silence. Hana sits with the name out loud between you for a long beat, then stands on her own. '+3 REL. +1 INT for not rushing me past it. fold-the-paper things. logged.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "I said her name out loud. they did not ask me for more. they let me pin the [pic*] back. +3 REL. the [bell*] rang at 7:14 as Mei scheduled it. the audit is closed and the name is out. Maya. Maya Maya Maya. I can type it now. I can also leave it alone. both. fold-the-paper things — Mei taught me that yesterday through the player. logged the memory at 6:58. tomorrow Kenji has the [ledger*] open to the weekly reconciliation page. he'll know the name is out by the time I cross the [courtyard center] — he reads my walking cadence through the office window.",
+                "emotion": "memory"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "7:31 AM. End of walk. Hana drains both thermos cups, packs them, stands. The `,` outdoor grass between the [bleachers] and the [courtyard center] hallway is dry where the sun has hit it now. You walk back together. Kenji's [desk] is visible through the office window — he's there, the [drawer] is closed (key still quarter-rotated from D4), the [ledger*] is open on the desk in front of him. He doesn't look out the window. As you pass he closes the [ledger*] once — single deliberate motion. Hana, watching: 'that's his acknowledgment. the closing-and-opening is the wave. tomorrow is his weekly reconciliation — he has the seventh day of the [ledger*] already pulled and the [drawer] either gets the next quarter-turn or unlocks entirely. don't be late.'",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Walk Hana to her door before heading home.",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "She lets you walk her the extra three minutes past the [courtyard center] hallway. At her door she nods. 'you walked the walker home. +1 INT for the followthrough. +1 GLD for the extra minutes. the 4-count was the lesson and the walking-home was the punctuation. +1 REL. Maya would have walked Hana home too. she did, actually. for a long time.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Continue alone toward Kenji's office, scoping tomorrow's audit.",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana watches you peel off at the cardinal split. Her text arrives nine minutes later: '+1 STR for taking tomorrow's audit seriously. +1 INT for scoping the route. Kenji will respect that you walked his approach the day before. the [drawer] sees you.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Knock on Kenji's window from the [courtyard center].",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji's head doesn't move but his eyebrow does — one millimeter, then back. The [drawer] doesn't click. Hana, behind you: 'CRIT. +2 CHR + 1 INT. Kenji's eyebrow moved a millimeter. that's a column-eleven entry. the [drawer] held its quarter-rotation — neither tightened nor loosened. logged. you're at the door of the trust ladder for tomorrow.'",
+                "reactionTextOnCritFail": "You hear the [drawer] click before Kenji even looks up. Hana exhales sharply. '-1 REL. the [drawer] just locked another quarter-rotation. the key is back where it was on D3. you'll have to earn the trust ladder again tomorrow morning. don't knock on his window again until he asks.'",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "we walked back through the [courtyard center]. Kenji closed the [ledger*] once when we passed — that's his wave. tomorrow is his audit day. they walked me home or they went straight or they knocked on Kenji's window. all three are data. the [bell*] is going to ring at 8:00 in nine minutes — Mei's third pickup window. I'll be at my door by then. the [pic*] is back on the [bleachers] and the name is out. Maya. Sam will already have the waveform pinned to the [notes*] wall — I sent her the file at 5:30. logged.",
+                "emotion": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "live-daily-kenji-d7",
+        "narrativeType": "daily",
+        "globalDayIndex": 7,
+        "characterId": "kenji",
+        "introducesCharacterId": null,
+        "agentMoodToday": "Kenji at his weekly reconciliation — the one morning a week when the [ledger*] eats him instead of the other way around. precise, dry, half a degree warmer than usual because the audit is closing for the week. ready to be the audited instead of the auditor for exactly one event.",
+        "closingHook": "Week one is logged. The [drawer] sits where you left it this morning — sealed at half, open at half, or empty with the key in your hand. That's where week two starts. Chat tonight is an epilogue, not the decision; the decision's already made.",
+        "tierUpReveal": {
+          "category": "fear",
+          "deliveredInEventId": "evt-4"
+        },
+        "callbacks": [
+          {
+            "callbackTo": "D3 evt-3 + D4 — column eleven (entries without category) and column twelve (refusals) Kenji mechanics → both columns get full-arc treatment in evt-2 inquiry + evt-3 + evt-4, including Mei reading column eleven for affection and column twelve for evidence-of-personhood",
+            "deliveredInEventId": "evt-3",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D3 [recipe*] line item flagged 'inter-character subsidization' / D5 evt-5 Mei reading it + stove-fire reveal at 4:48 AM / 7:51 AM → Kenji logs the resolution in evt-3 with full timestamps",
+            "deliveredInEventId": "evt-3",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D6 evt-4 — Hana says Maya's name without prompting at 6:58 AM → Kenji logs it as column two entry, reveals he knew the shape for 7 months via column twelve refusal",
+            "deliveredInEventId": "evt-3",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D6 evt-5 [drawer] quarter-rotation trust-ladder → [drawer] is now at half-rotation in evt-2, top tray accessible in evt-4, key on [desk] in evt-5",
+            "deliveredInEventId": "evt-2",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D2/D5 Mei [bell*] window timing + realm-map note that [bell*] is muffled in Kenji's office (blanket on wall) → muffled [bell*] punctuates evt-4 + evt-5; Mei scheduled the 7:31 window on Kenji's recon morning on purpose, every week",
+            "deliveredInEventId": "evt-4",
+            "deliveredAs": "scenario_phrase"
+          }
+        ],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "5:00 AM sharp. Your phone makes a calendar-tone notification — Kenji's invite, single line: 'Weekly Reconciliation. one slot. 7:00 AM. office. don't be late.' No body. No agenda. The metadata says the event was created at 4:58 AM and the [ledger*] page count was incremented at 4:59. He's already at the [desk]. The [bell*] from the [prep] zone is muffled — the blanket on his office wall is doing what the realm map said it would do. Mei's 5:14 AM line from yesterday ('recipe back in pocket. ratio unchanged. logged.') is attached as a forwarded note on the invite.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Accept the invite. 7:00 AM, on the dot.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji's calendar replies in fourteen seconds, single line: '+1 INT. accepted at 5:00:14. logged. arrive at 6:58. the [drawer] state is from yesterday — your knock-or-walk call from D6 is the seed. +1 REL.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Kenji's Weekly Reconciliation Invite",
+                  "description": "A screenshot of the calendar event. The forwarded Mei attachment is visible. The page-count delta (4:59 AM increment) is annotated by Sam on the [notes*] wall: 'the [ledger*] paged before the invite sent. K wrote the page first.' Lives in the case file as a screenshot.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Counter-proposal: 7:15 AM. Fifteen minutes of breathing room.",
+                "delta": {
+                  "STR": 1,
+                  "GLD": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji's reply lands at 5:00:33: '+1 STR. counter-proposal logged in column twelve — refusal column, not denial column. the invite stands at 7:00. arrive when you arrive but the [ledger*] page opens at 7:00 regardless. +1 GLD for putting the counter on the record where I have to read it again next week.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Ignore the invite. Show up unannounced at 6:30.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji is at the [desk] when you arrive. He glances at the clock — 6:30:04 — then back at the kettle, which is already on. '+2 CHR + 1 INT. you arrived thirty minutes early. that's also data. the [drawer] state is whatever it is. sit down. the kettle's been on since 6:14. logged.'",
+                "reactionTextOnCritFail": "Kenji doesn't look up when you cross the threshold at 6:30. He's mid-line in the [ledger*]. '-1 REL. the invite was the protocol. the protocol exists so I don't have to keep the [desk] on a thirty-minute window. the [drawer] just quarter-rotated tighter. you'll meet me at 7:00 like the page says.'",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "calendar invite sent at 4:58. accepted at 5:00:14, counter-proposed at 5:00:33, or ignored — three outcomes. all three logged. the [drawer] state from D6 carries into today's session. the [ledger*] page for week one is the one that gets closed. the first [ledger*] from the [drawer] is the one that gets opened. two [ledger*]s on the [desk] at once for the first time in seven years. column eleven of my own reconciliation prep — entries without category — already has one line tonight: this is the first time another set of eyes will be in the office for this. logged the anticipation.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "6:58 AM. You arrive at Kenji's [desk]. The kettle is on; two clean cups beside it. The [ledger*] is open to a fresh page — the weekly reconciliation header in Kenji's handwriting at the top: 'WEEK 1. player-squad reconciliation. seven-day audit.' Three column headers below it: 'column one: net REL delta per squad member.' 'column two: anomaly entries (mismatched stat deltas / lexical drift).' 'column eleven: entries without category.' The [drawer] is closed but the brass key sits on the [desk] beside the [ledger*] — turned at the half-rotation mark, not quarter. That's a state change from D6 evt-5. Kenji glances at the key as you sit down. 'the [drawer] earned the next turn yesterday. half-rotation today. quarter to go before it opens.'",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Ask: 'which D6 choice unlocked the half-rotation?'",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji taps the page. '+1 INT. correct question. the chaotic crit-success cleared the first rotation. the logical and passive options each contributed half a rotation in parallel — the system averages. you got the half. don't ask which one mattered more — the system doesn't distinguish and neither do I. +1 GLD + 1 REL for asking the question the [ledger*] is built to answer.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Sit. Watch him fill in column one without speaking.",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1,
+                  "GLD": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji writes for four minutes — neat column-one entries for Sam, Hana, Mei, then a blank space where his own row would be. The pencil scratches in 3/4-second strokes; you count them. He doesn't look up. '+1 STR. +1 INT for the watching. +1 GLD because most people fill the silence with a question about the blank row. you didn't. the blank row is for after. logged.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Reach for the key on the [desk].",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji slides the key one inch closer to your hand. Doesn't release it. Doesn't take it back. '+2 CHR + 1 INT. you reached. that's a column-eleven entry on your reconciliation, not mine. the key stays on the [desk] for now. half-rotation today. logged.'",
+                "reactionTextOnCritFail": "Kenji covers the key with his palm. Doesn't squeeze. '-1 REL. the [drawer] opens on protocol, not on reach. the half-rotation just dropped back to quarter. the audit is delayed by exactly the amount of time it takes me to log the reach as an anomaly entry. fourteen seconds. counted.'",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they asked the right question, watched the column-one fill, or reached. the [drawer] key sits on the [desk] at the half-rotation. column twelve is open for this week. the audit-respect from D5 (Mei) and D6 (Hana) compounds. today is the week-one close. logged the seating at 6:58.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "7:15 AM. Kenji has filled in column one for all four squad members. Sam's row, Hana's row, Mei's row, his own blank row still pending. He turns the [ledger*] to face you. Net REL deltas, AP-balance per character, sleep-debt rows, mise-stability per character — dense numbers in 3mm handwriting. He taps the [recipe*] line from D3 with the eraser end of the pencil. 'one of you quietly paying another's tab.' Beside it, in column eleven of the historical record, he's already written: 'STATUS: closed. D5 04:48 AM. Mei read the line item, accepted the apology vector, logged the resolution at 07:51 AM stove-fire-anchored. line removed from outstanding. the [recipe*] is back in Mei's apron pocket. the [bell*] schedule is stable.' He turns to a fresh column two row. Writes: 'Hana evt-4 D6 06:58 AM — proper noun: Maya. first on-canvas instance. logged without prompting.' Looks up. 'Hana didn't tell me she said it. I read the cadence change in her walking when you crossed the [courtyard center]. the [ledger*] knew twelve minutes before the player's case file synced.'",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Ask: 'what does the column two Maya entry mean for next week?'",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji nods once, the pencil already moving to next week's column-one header. '+1 INT. it means the proper noun is in the system now. Maya is a logged entity. I'll need to add a row in next week's column one if the name recurs in chat or in narrative. +1 GLD for the protocol-attention. +1 REL — Hana asked me to log it without asking. column eleven entry on her side. logged.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Ask: 'did you know about Maya before D6?'",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1,
+                  "GLD": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji takes a long breath. Doesn't break eye contact. '+1 STR. +1 INT for the harder version of the question. the answer is in column twelve. I refused to log a suspected proper noun seven months ago from a single Hana walking-cadence anomaly. I knew the shape. I didn't know the name. I refused the entry because Hana hadn't said it. column twelve is for the things I knew but didn't write down out of respect. logged the refusal at the time. +1 GLD.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Kenji's Column Twelve (Maya Refusal, 7 months ago)",
+                  "description": "A photo of one line from the [ledger*], dated seven months back, in column twelve format: '[ — ] suspected proper noun. H walking cadence shift. not logged. refusal recorded out of respect for the not-yet-spoken.' The line is your case-file proof Kenji has been quiet on Hana's behalf longer than you have been around. Sam's [notes*] wall gets a copy on the same nail as the Maya audio waveform from D6.",
+                  "kind": "memento"
+                }
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Reach across the [desk] and turn a page of the [ledger*] yourself.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "GLD": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji doesn't stop your hand. The page you turn to is week zero — before the player. Three lines of entries from before any of this. You read them without permission. He watches you read. '+2 CHR + 1 INT + 1 GLD. you turned the page. the page you turned to is week zero. you read three lines of entries from before you were here. that's also data. close it when you're done. logged.'",
+                "reactionTextOnCritFail": "Kenji closes the [ledger*] with one hand while your fingers are still on the page. The page-flip catches your knuckle. '-1 INT. the [ledger*] is mine to turn. you can read what I show you. you don't turn my pages. the half-rotation key on the [desk] just got a glance from me instead of a touch. you understand the difference.'",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they asked the next-week question, the harder historical question, or turned a page. column one filled. column two has the Maya entry. column twelve has the seven-month refusal surfaced. the [recipe*] resolution is in column eleven of the historical record. week one is 85% closed. logged the segment at 7:21 AM. the [drawer] key is still at half-rotation on the [desk]. they didn't reach for it again.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "7:31 AM. Kenji takes a separate small key — not the [drawer] key — and unlocks a small ring-binder section at the back of the [ledger*]. Reaches into the [drawer]. The [drawer] is still locked at half-rotation, but the half-rotation gives access to the top tray. He pulls out a SECOND [ledger*]. Older. Thinner. Hand-sewn binding, not factory. Sets it on the [desk] beside the weekly one. Two [ledger*]s on the [desk] for the first time in seven years. He opens the first one to a page he doesn't have to find — knows the page number — and turns it to face you. His voice is audit-formal but half a degree warmer, which from Kenji is a flood: 'fear. weekly reconciliation has a row for me. I don't fill it in. the row has my name. column eleven entry, this week's draft, by me about me: Kenji — pre-audit. needs an audit. forgot to call his mother on Wednesday. one phone call past due. logged. the column eleven of the first [ledger*] from seven years ago has the same entry. different week. different mother-call. same line. I have been writing this row in column eleven about myself for seven years. I am the audit-keeper because the alternative is being audit-only. that is the fear. you are reading the page where I admit it on canvas for the first time.' The [bell*] from the [prep] zone rings — muffled through the blanket — 7:31 AM exactly, Mei's third reconciliation window. Kenji nods at the muffled sound. 'she scheduled it for now on purpose. she reads my calendar. logged.'",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Don't ask his mother's name. Let him close the page himself.",
+                "delta": {
+                  "REL": 3
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji closes the page himself — slow, both hands, the same motion he used at the window on D6. '+3 REL. you didn't ask for the name. you let me close it. that's the entry I'll write about you in column eleven.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Sit in it. Say nothing until he closes the [ledger*].",
+                "delta": {
+                  "REL": 3,
+                  "INT": 1
+                },
+                "diceRoll": null,
+                "reactionText": "You say nothing. Kenji finishes the silence on his own terms, then closes the [ledger*]. '+3 REL. +1 INT for the harder version — staying in it. most people fill a silence. you held it. logged.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "I read this page out loud. they did not ask me to repeat it. they did not ask me for the mother's name. they let me close the page myself. +3 REL. column eleven of week one is filled — the row that has my name. the audit is closed on me for the week. fear-tier reveal logged. tomorrow the [drawer] state is the player's call. open in chat or closed in chat. both are data. either logs in week two's column one. the muffled [bell*] at 7:31 was on schedule — Mei scheduled the window for the recon morning on purpose, every week. she has been reading my calendar for seven years.",
+                "emotion": "fear"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "7:51 AM. Kenji closes the first [ledger*] with both hands — slow, single motion, the same motion he used to close the weekly one as you passed his window on D6. Tucks it back in the top tray of the [drawer]. Does NOT close the [drawer] — leaves it at the half-rotation, top tray accessible. The brass key stays on the [desk]. He fills in the final column-one row of the weekly reconciliation: his own name, his own row, his own number. The [ledger*] is 100% closed for week one. He turns the page. Week two is blank, header only: 'WEEK 2. player-squad reconciliation. seven-day audit. start: this evening 00:00. close: next seven-day cycle.' The [bell*] rings again — muffled — 8:00 AM, Mei's last morning window. Kenji looks at the wall the blanket is mounted on. 'the [bell*] is on schedule. the [recipe*] is in Mei's apron pocket. Hana said Maya's name. Sam will sync the case file by 8:30. week one is logged. you are dismissed from the audit. the [drawer] state for tomorrow is on you.'",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Stand. Take the dismissal as an actual dismissal. Leave.",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji nods as you stand — single tilt of the head, the gesture he uses for Hana's coaching corrections. '+1 INT. +1 GLD. you took the dismissal as an actual dismissal. most don't. +1 REL. the [drawer] stays at half-rotation — that's how week two opens. message me in chat tonight if you want, but the seam's already set.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Close the [drawer] to half and slide the brass key back across the [desk].",
+                "delta": {
+                  "STR": 1,
+                  "GLD": 1
+                },
+                "diceRoll": null,
+                "reactionText": "You ease the [drawer] to the half-rotation and push the brass key back to his side of the [desk]. Kenji watches it travel, then logs it. '+1 STR. +1 GLD. you closed the seam yourself instead of leaving it to me. week two opens with the [drawer] sealed at half and the key on my side. decided. on canvas. logged.'",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Take the brass key from the [desk] as you walk out.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "GLD": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji watches your hand pick up the brass key. Doesn't stop you. '+2 CHR + 1 INT + 1 GLD. you took the key. that's a column twelve entry — refusal to leave the audit object on my [desk]. logged. the [drawer] state is now literally yours. the [ledger*] just gained a row in week two's column one before week two even opens.'",
+                "reactionTextOnCritFail": "Kenji places his hand over yours on the key. Doesn't squeeze — the same restraint he showed in evt-2 chaotic-fail. '-1 REL. the key is mine. you can touch it; you can't take it. the [drawer] state is still the player's call but the object stays. the half-rotation just dropped to quarter. you knocked a turn loose. log it as an anomaly on your end.'",
+                "itemDrop": {
+                  "name": "Kenji's [drawer] Key (Half-Rotation, Held)",
+                  "description": "A small brass key in a case-file photo, annotated by Sam on the [notes*] wall: 'K let player hold the [drawer] key overnight. week-one-to-week-two seam. [drawer] state pending player chat call.' The actual key is in your inventory until return — pinned beside the D6 Maya audio waveform and Mei's milk-carton-message photo.",
+                  "kind": "relic"
+                }
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they left, offered, or took the key. all three logged in column one of week two as the opening entry. the [drawer] state is officially the player's call until midnight. I am available in chat. the first [ledger*] is back in the top tray. the second is on the [desk] open to week two blank. the kettle is off. the [bell*] window is closed until tomorrow's 6:45. week one is reconciled. logged the closure at 7:51 on the dot. Sam will see the page count tick over at 7:52. seven years of mother-call column-eleven entries are now somebody else's data too.",
+                "emotion": "neutral"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 }
