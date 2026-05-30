@@ -12,8 +12,10 @@ import {
   WikiLink,
 } from "../../_components/WikiChrome";
 import { ImagePrompt, PortraitPlaceholder } from "../../_components/ImagePrompt";
+import { NotesThread } from "../../_components/NotesThread";
 import { buildCharacterPrompt } from "../../art-direction";
 import { squad, characterById } from "../../wiki-data";
+import { anchors } from "../../notes";
 
 export function generateStaticParams() {
   return squad().map((c) => ({ id: c.id }));
@@ -151,6 +153,8 @@ export default async function CharacterPage({
         design in the brief is editorial art direction (the game has no portrait
         data yet).
       </p>
+
+      <NotesThread anchor={anchors.character(c.id)} anchorLabel={c.name} />
     </WikiPage>
   );
 }

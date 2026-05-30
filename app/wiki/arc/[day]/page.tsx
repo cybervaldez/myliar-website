@@ -11,12 +11,14 @@ import {
   SectionHead,
   SpoilerTag,
 } from "../../_components/WikiChrome";
+import { NotesThread } from "../../_components/NotesThread";
 import {
   mainlineDays,
   mainlineDay,
   characterById,
   type MainlineChoice,
 } from "../../wiki-data";
+import { anchors } from "../../notes";
 
 export function generateStaticParams() {
   return mainlineDays().map((d) => ({ day: String(d.globalDayIndex) }));
@@ -235,6 +237,11 @@ export default async function DayPage({
         Generated read-only from the {d.payloadId} payload — exactly what the
         game ships. The app remains the source of truth.
       </p>
+
+      <NotesThread
+        anchor={anchors.arcDay(d.globalDayIndex)}
+        anchorLabel={`Day ${d.globalDayIndex}${focal ? ` — ${focal.name}` : ""}`}
+      />
     </WikiPage>
   );
 }

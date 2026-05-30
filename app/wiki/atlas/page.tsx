@@ -6,8 +6,10 @@ import Link from "next/link";
 import { PannableAscii } from "../../components/PannableAscii";
 import { WikiPage, Infobox, Navbox, SectionHead } from "../_components/WikiChrome";
 import { ImagePrompt } from "../_components/ImagePrompt";
+import { NotesThread } from "../_components/NotesThread";
 import { buildCourtyardPrompt } from "../art-direction";
 import { phoneRealmMap, vibeBands } from "../wiki-data";
+import { anchors } from "../notes";
 
 export const metadata = {
   title: "Atlas — The Codex",
@@ -93,6 +95,8 @@ export default function AtlasPage() {
         This map is generated from the game&apos;s runtime asset — it is the
         same courtyard the in-game viewer renders.
       </p>
+
+      <NotesThread anchor={anchors.atlas()} anchorLabel="The Courtyard" />
     </WikiPage>
   );
 }

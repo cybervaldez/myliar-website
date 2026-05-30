@@ -5,7 +5,9 @@
 
 import Link from "next/link";
 import { WikiPage, SectionHead, SpoilerTag } from "../_components/WikiChrome";
+import { NotesThread } from "../_components/NotesThread";
 import { mainline, mainlineFlagCount, characterById } from "../wiki-data";
+import { anchors } from "../notes";
 
 export const metadata = {
   title: "The Main Line — The Codex",
@@ -133,6 +135,8 @@ export default function ArcPage() {
         remains the source of truth — this is a browsable gateway, not a
         second canon.
       </p>
+
+      <NotesThread anchor={anchors.arcIndex()} anchorLabel="The Main Line (arc overview)" />
     </WikiPage>
   );
 }

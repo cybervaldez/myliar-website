@@ -160,6 +160,42 @@ JSON. Character `specialty` is carried raw from the app; some values
 displayed via the cleaned label, not the raw field — the homepage already
 does this.
 
+## Community notes (the feedback loop)
+
+The wiki carries an **anchored notes** layer (`/wiki/*` pages, bottom of
+each): comment-feel submission, ticket-spine backend. A note attaches to a
+specific entity (`character:hana`, `arc:day-1`, `mechanics:page`, …) and
+carries `open → applied / declined / discuss` + a writers'-room reply.
+Notes are **suggestions** — never canon. The app stays the source of truth.
+
+**The loop:** browser/you/LLM drops a note → Supabase `wiki_notes` (a
+*separate feedback store*, not the app, not the canon) → the triage
+workflow adjudicates each through /writers-room and replies → for an
+*apply*, you ratify a drafted edit to the run-005 payload → `npm run
+parity` re-syncs → the wiki re-renders. The website never writes to the
+app; one-way holds.
+
+### Going live
+
+1. **Create the table:** run `supabase/wiki_notes.sql` against the project
+   (SQL editor or `supabase db push`). It sets RLS: anon insert (open
+   only), public read (non-declined); triage updates use the service role.
+2. **Set client env** (anon key is public, protected by RLS — but use the
+   **JWT-format** anon key `eyJ…`, not the short `sb_publishable_…` one):
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=https://<project>.supabase.co
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
+   ```
+   Locally in `.env.local` (gitignored); in production via the Vercel
+   dashboard. **Until these are set the notes UI degrades to a quiet
+   "coming soon" card** — the site builds + deploys fine without them.
+3. **Triage** (when notes exist): set `SUPABASE_URL` + `SUPABASE_SERVICE_KEY`
+   (service role — server-side only, never committed, never the anon key),
+   then run the workflow `scripts/triage-notes.workflow.mjs`. It reads open
+   notes, adjudicates, writes replies back, and hands you a digest of
+   recommended applies with draft edits. It **never** commits canon —
+   /writers-room + you are final.
+
 ## Syncing the static booklets
 
 The HTML booklets served via `next.config.ts` rewrites are still a plain

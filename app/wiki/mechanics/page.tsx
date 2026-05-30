@@ -4,7 +4,9 @@
 // each stat lane).
 
 import { WikiPage, SectionHead, WikiLink } from "../_components/WikiChrome";
+import { NotesThread } from "../_components/NotesThread";
 import { relTiers, itemRarities, relRange } from "../wiki-data";
+import { anchors } from "../notes";
 
 export const metadata = {
   title: "Mechanics — The Codex",
@@ -151,6 +153,8 @@ export default function MechanicsPage() {
         The REL ladder and item rarities are generated from the game; the stat
         and loop descriptions are hand-authored game facts.
       </p>
+
+      <NotesThread anchor={anchors.mechanics()} anchorLabel="Mechanics" />
     </WikiPage>
   );
 }
