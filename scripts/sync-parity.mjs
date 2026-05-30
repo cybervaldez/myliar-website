@@ -48,6 +48,56 @@ const ONBOARDING_PAYLOAD = "onboarding_hana_d1.json";
 
 const isCheck = process.argv.includes("--check");
 
+// ── Banned-word frame gate (Rule S, docs/design/rpg-framing.md) ──────
+// These must never reach a player-facing surface. The wiki renders these
+// fields publicly, so /writers-room flagged that raw author-craft fields
+// leaked banned words onto mylifeisanrpg.com. We (a) don't ship the
+// author-craft fields, (b) substitute the one canon-documented exception,
+// and (c) assert NO banned token survives into the JSON — turning the
+// leak into a build error forever.
+//
+// CI = case-insensitive word-boundary (generic domain terms).
+// CS = case-sensitive word-boundary (acronyms / brand names — avoids
+// false-positives like the herb "mint" vs the app "Mint").
+const BANNED_CI = [
+  "dialysis", "kidney function", "cholesterol", "lipid panel", "blood pressure",
+  "microbiome", "cortisol", "glycemic", "insulin", "intermittent fasting",
+  "heart rate", "calories", "mortgage refinance", "credit score",
+  "high-yield savings", "compound interest", "mindfulness", "meditation",
+  "gratitude practice", "self-care", "wellness", "biohack", "deep work",
+  "flow state", "macros", "clean eating", "training data",
+];
+const BANNED_CS = [
+  "BMI", "401k", "401(k)", "Roth", "ETF", "APR", "FICO", "NerdWallet",
+  "YNAB", "Vanguard", "LLM", "API",
+];
+
+// Canon substitutions the GAME itself documents (e.g. characters.dart:
+// "wellness was on the banned list; replaced with 'body & drills'"). A
+// faithful presentation transform of game data, not an invention.
+const CANON_SUBSTITUTIONS = [[/\bwellness\b/gi, "body"]];
+
+function applySubstitutions(text) {
+  if (!text) return text;
+  let out = text;
+  for (const [re, rep] of CANON_SUBSTITUTIONS) out = out.replace(re, rep);
+  return out;
+}
+
+function findBanned(text) {
+  if (!text) return [];
+  const hits = [];
+  for (const w of BANNED_CI) {
+    const re = new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i");
+    if (re.test(text)) hits.push(w);
+  }
+  for (const w of BANNED_CS) {
+    const re = new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`);
+    if (re.test(text)) hits.push(w);
+  }
+  return hits;
+}
+
 function read(rel) {
   const p = join(APP, rel);
   if (!existsSync(p)) {
@@ -139,15 +189,21 @@ function extractSquad() {
   for (const b of blocks) {
     if (!/isCanonical:\s*true/.test(b)) continue;
     const id = dartField(b, "id");
+    // NOTE: personaDescription + quirk are deliberately NOT shipped. They
+    // are author-craft fields written FOR the LLM — they carry IDIOLECT
+    // directives and NEVER-clauses listing banned words (heart rate, 401k,
+    // …). Rendering them on the public wiki leaked those words (the
+    // /writers-room frame-check ship-blocker). The player-facing voice
+    // lives in helpSummary (clean, voiced) + archetype.
     squad.push({
       id,
       name: dartField(b, "name"),
       classLabel: dartField(b, "classLabel"),
-      specialty: dartField(b, "specialty"),
+      // specialty carries the one canon-documented banned word ("fitness &
+      // wellness"); substitute it the way the game's own comment prescribes.
+      specialty: applySubstitutions(dartField(b, "specialty")),
       helpSummary: dartField(b, "helpSummary"),
       archetype: dartField(b, "archetype"),
-      personaDescription: dartField(b, "personaDescription"),
-      quirk: dartField(b, "quirk"),
       starterPrompts: dartStringList(b, "starterPrompts"),
       gender: dartField(b, "gender"),
       // Sam is the Day-0 onboarder (not introduced via a payload); the
@@ -309,9 +365,45 @@ function extractSimScenario() {
   };
 }
 
+// ── Frame-gate assertion — fail the build if any banned token ships ──
+// Walks the player-facing string fields of the assembled data. Any hit
+// is a ship-blocker (a banned word would render on the public wiki).
+function assertFrameClean(data) {
+  const violations = [];
+  const scan = (label, text) => {
+    for (const w of findBanned(text)) {
+      violations.push(`${label}: "${w}"  in  ${JSON.stringify(text).slice(0, 80)}`);
+    }
+  };
+  for (const c of data.squad) {
+    for (const f of ["name", "classLabel", "specialty", "helpSummary", "archetype"]) {
+      scan(`squad.${c.id}.${f}`, c[f]);
+    }
+    (c.starterPrompts || []).forEach((p, i) => scan(`squad.${c.id}.starterPrompts[${i}]`, p));
+  }
+  for (const s of data.elseworldSamples) {
+    for (const f of [
+      "name", "classLabel", "archetype", "personaDescription", "quirk",
+      "specialty", "helpSummary", "coldOpen", "firstVoice",
+    ]) {
+      scan(`elseworld.${s.bandId}.${f}`, s[f]);
+    }
+    for (const o of ["engageOption", "observeOption", "declineOption"]) {
+      if (s[o]) scan(`elseworld.${s.bandId}.${o}`, s[o].label);
+    }
+  }
+  if (violations.length) {
+    console.error("\n  ✗ parity FRAME-CHECK FAILED — banned word(s) would ship to the public wiki:");
+    for (const v of violations) console.error(`      - ${v}`);
+    console.error("\n    Fix the source field, add a CANON_SUBSTITUTIONS entry, or stop");
+    console.error("    shipping that field. Banned-word list: docs/design/rpg-framing.md Rule S.\n");
+    process.exit(2);
+  }
+}
+
 // ── Assemble ─────────────────────────────────────────────────────────
 function build() {
-  return {
+  const data = {
     // Provenance banner — makes it obvious in the committed file that
     // hand-editing is pointless (the next sync overwrites it).
     _generated: "DO NOT EDIT BY HAND — produced by website/scripts/sync-parity.mjs",
@@ -325,6 +417,8 @@ function build() {
     phoneRealmMap: extractPhoneRealmMap(),
     simScenario: extractSimScenario(),
   };
+  assertFrameClean(data);
+  return data;
 }
 
 // Stable stringify (sorted keys are NOT used — source order is meaningful

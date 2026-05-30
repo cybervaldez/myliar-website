@@ -12,11 +12,14 @@ export const metadata = {
     "The daily loop of My Life is an RPG: the trichotomy, dice, stats, REL tiers, item rarities.",
 };
 
+// Stat ownership per the JRPG-party table (docs/design/rpg-framing.md):
+// Hana=STR, Kenji=INT+GLD, Mei=GLD-CHR, player=CHR (chaotic crits),
+// Sam=INT-adjacent meta. The /writers-room blend gate flags drift here.
 const STATS = [
-  { key: "STR", name: "Strength", blurb: "Body and follow-through.", owner: "hana" },
-  { key: "INT", name: "Intellect", blurb: "Systems, attention, knowing the plan.", owner: "mei" },
-  { key: "GLD", name: "Gold", blurb: "Resources and what you owe.", owner: "kenji" },
-  { key: "CHR", name: "Charisma", blurb: "Nerve, presence, the chaotic swing.", owner: null },
+  { key: "STR", name: "Strength", blurb: "Body and follow-through.", owner: "hana", ownerNote: "" },
+  { key: "INT", name: "Intellect", blurb: "Systems, attention, knowing the plan.", owner: "kenji", ownerNote: " (Sam meta-adjacent)" },
+  { key: "GLD", name: "Gold", blurb: "Resources and what you owe.", owner: "kenji", ownerNote: " and Mei" },
+  { key: "CHR", name: "Charisma", blurb: "Nerve, presence, the chaotic swing — earned from chaotic crit-successes.", owner: "mei", ownerNote: " and you" },
 ];
 
 const RARITY_BLURB: Record<string, string> = {
@@ -81,7 +84,8 @@ export default function MechanicsPage() {
               {s.owner && (
                 <>
                   {" "}
-                  Lane carried by <WikiLink to={s.owner} />.
+                  Lane carried by <WikiLink to={s.owner} />
+                  {s.ownerNote}.
                 </>
               )}
             </p>

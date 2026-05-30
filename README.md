@@ -101,6 +101,16 @@ npm run parity         # regenerate parity.generated.json from the game
 npm run parity:check   # diff vs committed; non-zero exit on drift (CI-able)
 ```
 
+The exporter also enforces a **banned-word frame gate** (Rule S,
+`docs/design/rpg-framing.md`): it refuses to ship any banned real-world
+term (`wellness`, `401k`, `BMI`, `cortisol`, …) to a player-facing field.
+Author-craft fields that legitimately contain those words for the LLM
+(`personaDescription`, `quirk`) are **not** shipped to the wiki; the
+one canon-documented exception (`fitness & wellness` → `fitness & body`)
+is substituted. If a banned token ever reaches a shipped field, `npm run
+parity` / `parity:check` **fails the build** with the offending field —
+so the leak the /writers-room panel caught can't recur.
+
 Run `npm run parity` after any game change that touches the sources
 above, then commit the updated `app/lib/parity.generated.json`. Run
 `npm run parity:check` before a deploy to catch a stale website (this is

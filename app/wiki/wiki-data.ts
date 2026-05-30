@@ -14,8 +14,11 @@ export interface SquadMember {
   specialty: string;
   helpSummary: string | null;
   archetype: string | null;
-  personaDescription: string | null;
-  quirk: string | null;
+  // NOTE: personaDescription + quirk are intentionally NOT carried for the
+  // canonical squad — they're author-craft fields (IDIOLECT directives +
+  // NEVER-clauses listing banned words) and would leak those words onto
+  // the public wiki. The player-facing voice is helpSummary + archetype.
+  // (Elseworld samples DO carry them — those sheets are written clean.)
   starterPrompts: string[];
   gender: string | null;
   joinsDay: number | null;

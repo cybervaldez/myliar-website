@@ -31,11 +31,14 @@ export async function generateMetadata({
   };
 }
 
+// Per the JRPG-party table in docs/design/rpg-framing.md §"the four
+// characters are a JRPG party". Kept canon-accurate (the /writers-room
+// blend gate flags mismatches here).
 const STAT_LANE: Record<string, string> = {
   hana: "STR",
-  kenji: "GLD",
-  mei: "INT",
-  sam: "—",
+  kenji: "INT + GLD",
+  mei: "GLD–CHR",
+  sam: "INT-adjacent (meta)",
 };
 
 export default async function CharacterPage({
@@ -110,22 +113,6 @@ export default async function CharacterPage({
         <>
           <SectionHead>How they help</SectionHead>
           <VoiceQuote>{c.helpSummary}</VoiceQuote>
-        </>
-      )}
-
-      {c.personaDescription && (
-        <>
-          <SectionHead>Voice &amp; idiolect</SectionHead>
-          <p className="text-[15px] leading-[1.6] text-ink">
-            {c.personaDescription}
-          </p>
-        </>
-      )}
-
-      {c.quirk && (
-        <>
-          <SectionHead>Quirk</SectionHead>
-          <p className="text-[15px] leading-[1.6] text-ink">{c.quirk}</p>
         </>
       )}
 
