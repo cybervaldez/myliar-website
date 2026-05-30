@@ -1,6 +1,16 @@
 @import "tailwindcss";
 
-/* ── Palette + tokens (mirrors docs/manual.html) ──────────────────── */
+/* ── Theme fonts (self-hosted; see docs/design/theme-system.md) ───── */
+@font-face{font-family:'Maplestory';src:url('/fonts/Maplestory-Light.woff2') format('woff2');font-weight:300;font-display:swap;}
+@font-face{font-family:'Maplestory';src:url('/fonts/Maplestory-Bold.woff2') format('woff2');font-weight:700;font-display:swap;}
+@font-face{font-family:'Jua';src:url('/fonts/Jua-400.woff2') format('woff2');font-weight:400;font-display:swap;}
+@font-face{font-family:'Gaegu';src:url('/fonts/Gaegu-400.woff2') format('woff2');font-weight:400;font-display:swap;}
+@font-face{font-family:'Gaegu';src:url('/fonts/Gaegu-700.woff2') format('woff2');font-weight:700;font-display:swap;}
+
+/* ── Theme system — 3 packs × light/dark drive the semantic palette ──
+   The whole site re-skins because components use semantic tokens
+   (bg-paper / text-ink / text-forest …) that resolve to these vars.
+   :root = Parchment & Ink · light (the default). */
 :root {
   --paper: #f2ebdd;
   --paper-shade: #e9e1cf;
@@ -10,7 +20,50 @@
   --forest-dim: #4d6a4b;
   --spot-red: #b81f1c;
   --margin-ink: #6b6353;
+  /* type + chrome (themeable) */
+  --theme-display: var(--font-anton), 'Anton', 'Bebas Neue', sans-serif;
+  --theme-body: var(--font-lora), 'Lora', Georgia, serif;
+  --panel-radius: 0px;
+  --panel-shadow: 6px 6px 0 rgba(26,26,26,0.12);
 }
+
+/* Parchment & Ink · dark (candlelit) */
+:root[data-pack="parchment"][data-mode="dark"]{
+  --paper:#241d10; --paper-shade:#2e2614; --ink:#ece0c4; --ink-soft:#c3b48f;
+  --forest:#9ab87a; --forest-dim:#7d9a60; --spot-red:#e0594f; --margin-ink:#b3a684;
+}
+/* Vibrant Realm · light (sky / MapleStory) */
+:root[data-pack="vibrant"][data-mode="light"]{
+  --paper:#f6e9c9; --paper-shade:#ecdcb4; --ink:#4a3a22; --ink-soft:#6f5a38;
+  --forest:#2d6a8f; --forest-dim:#4ea3d8; --spot-red:#e8632a; --margin-ink:#8a7550;
+  --theme-display:'Maplestory',sans-serif; --theme-body:'Maplestory',sans-serif;
+  --panel-radius:12px; --panel-shadow:inset 0 3px 0 rgba(255,255,255,.45), 0 5px 0 rgba(0,0,0,.18);
+}
+/* Vibrant Realm · dark (night wood) */
+:root[data-pack="vibrant"][data-mode="dark"]{
+  --paper:#3c2f1e; --paper-shade:#4d3e28; --ink:#f0e3c6; --ink-soft:#c2b189;
+  --forest:#7cc7ee; --forest-dim:#9bd3f0; --spot-red:#f5b942; --margin-ink:#b8a984;
+  --theme-display:'Maplestory',sans-serif; --theme-body:'Maplestory',sans-serif;
+  --panel-radius:12px; --panel-shadow:inset 0 3px 0 rgba(255,255,255,.14), 0 5px 0 rgba(0,0,0,.45);
+}
+/* DOS-era · light (green CRT) */
+:root[data-pack="dos"][data-mode="light"]{
+  --paper:#00140a; --paper-shade:#021a0c; --ink:#43ff8d; --ink-soft:#2aa860;
+  --forest:#6dffa3; --forest-dim:#3fcf7d; --spot-red:#b6ff5a; --margin-ink:#2aa860;
+  --theme-display:'Courier New',ui-monospace,monospace; --theme-body:'Courier New',ui-monospace,monospace;
+  --panel-radius:0px; --panel-shadow:0 0 14px rgba(80,255,140,.18);
+}
+/* DOS-era · dark (amber CRT) */
+:root[data-pack="dos"][data-mode="dark"]{
+  --paper:#160d00; --paper-shade:#1a1000; --ink:#ffc24d; --ink-soft:#c98a1f;
+  --forest:#ffce5e; --forest-dim:#e0a93a; --spot-red:#ffe08a; --margin-ink:#c98a1f;
+  --theme-display:'Courier New',ui-monospace,monospace; --theme-body:'Courier New',ui-monospace,monospace;
+  --panel-radius:0px; --panel-shadow:0 0 14px rgba(255,176,0,.18);
+}
+/* Optional font override (Vibrant/Parchment only; DOS forces mono) */
+:root:not([data-pack="dos"])[data-font="maple"]{--theme-display:'Maplestory',sans-serif;--theme-body:'Maplestory',sans-serif;}
+:root:not([data-pack="dos"])[data-font="jua"]  {--theme-display:'Jua',sans-serif;--theme-body:'Jua',sans-serif;}
+:root:not([data-pack="dos"])[data-font="gaegu"]{--theme-display:'Gaegu',cursive;--theme-body:'Gaegu',cursive;}
 
 /* Tailwind v4 design-token bridge — exposes the palette + fonts as
    utility classes (e.g. bg-paper, text-forest, font-display). The
@@ -40,19 +93,30 @@ html {
 }
 body {
   margin: 0;
-  background:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.55  0 0 0 0 0.50  0 0 0 0 0.40  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
-    var(--paper);
+  background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-lora), 'Lora', Georgia, serif;
+  font-family: var(--theme-body);
   font-size: 17px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  transition: background-color .2s ease, color .2s ease;
+}
+/* Paper-grain only on Parchment · light (cream); other packs stay flat. */
+:root:not([data-pack]) body,
+:root[data-pack="parchment"][data-mode="light"] body {
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.55  0 0 0 0 0.50  0 0 0 0 0.40  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+    var(--paper);
+}
+/* DOS scanlines */
+:root[data-pack="dos"] body::after{
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:50;
+  background:repeating-linear-gradient(rgba(0,0,0,0) 0 2px, rgba(0,0,0,.18) 2px 3px);
 }
 
-/* Display headlines use Anton — heavy condensed caps. */
+/* Display headlines — themeable face. */
 h1, h2, h3, .display {
-  font-family: var(--font-anton), 'Anton', 'Bebas Neue', sans-serif;
+  font-family: var(--theme-display);
   font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;

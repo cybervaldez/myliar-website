@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Anton, Lora, PT_Sans } from "next/font/google";
 import "./globals.css";
+import ThemePicker from "./_components/ThemePicker";
+
+// No-FOUC theme bootstrap — sets data-pack/mode/font on <html> from the
+// saved Display Theme before first paint. Default = Parchment & Ink ·
+// light (the current brand look). See docs/design/theme-system.md.
+const THEME_BOOTSTRAP = `(function(){try{var s=JSON.parse(localStorage.getItem('codex-skin')||'{}');var r=document.documentElement;r.dataset.pack=s.pack||'parchment';r.dataset.mode=s.mode||'light';if(s.font)r.dataset.font=s.font;}catch(e){var r=document.documentElement;r.dataset.pack='parchment';r.dataset.mode='light';}})();`;
 
 // ── Typography mirror of docs/manual.html ──────────────────────────
 // Anton — display caps (h1/h2/h3, AP COUNTER, etc.)
@@ -50,9 +56,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-pack="parchment"
+      data-mode="light"
       className={`${anton.variable} ${lora.variable} ${ptSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP }} />
+      </head>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <ThemePicker />
+      </body>
     </html>
   );
 }

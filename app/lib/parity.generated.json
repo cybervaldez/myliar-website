@@ -798,7 +798,7 @@
         "events": [
           {
             "id": "evt-1",
-            "scenario": "6:00 AM exactly. A single text from Hana — no all-caps this morning. Just numbers: \"62. 14.\" Then a second: \"you slept better than the data says you did. meet me at the [noticeboard] in twenty.\" The [noticeboard] sits in the [courtyard center], visible from every space — Hana's [bleachers], Kenji's [desk], Mei's [bell*], Sam's [notes*] wall. Yesterday's resting-heart-rate pin is still there. Today's is laid on top of it: 62 over 78. Four-point drop. One day.",
+            "scenario": "6:00 AM exactly. A single text from Hana — no all-caps this morning. Just numbers: \"62. 14.\" Then a second: \"you slept better than the data says you did. meet me at the [noticeboard] in twenty.\" The [noticeboard] sits in the [courtyard center], visible from every space — Hana's [bleachers], Kenji's [desk], Mei's [bell*], Sam's [notes*] wall. Yesterday's overnight-number pin is still there. Today's is laid on top of it: 78 yesterday, 74 today. Four-point drop. One day.",
             "choices": [
               {
                 "id": "a",
@@ -846,14 +846,14 @@
             ],
             "memoryWrites": [
               {
-                "text": "the 62 over 78 on the [noticeboard]. one day of drilling and the rate dropped four. +STR registering at the cardiovascular layer. they're going to ask Kenji about audit principles. I planted that on purpose. the [notes*] wall got a copy from Sam already — he updates the pin every morning at 5:59.",
+                "text": "the overnight number on the [noticeboard]. one day of drilling and the number dropped four. +STR registering at the layer the body keeps to itself. they're going to ask Kenji about audit principles. I planted that on purpose. the [notes*] wall got a copy from Sam already — he updates the pin every morning at 5:59.",
                 "emotion": "pride"
               }
             ]
           },
           {
             "id": "evt-2",
-            "scenario": "12:18 PM. You're at your [bench] again — same one, edge of the [track]. Hana texts: \"your phone says you didn't move between 9 and 12. log a hydration. drill the second hinge set. I see your calendar — you have eleven minutes.\" She knows your calendar because the agreement you signed yesterday at the [foam-roller] gave her access. Sam's [notes*] wall has a copy of the agreement pinned next to your resting-rate printout — same paired-pin format.",
+            "scenario": "12:18 PM. You're at your [bench] again — same one, edge of the [track]. Hana texts: \"your phone says you didn't move between 9 and 12. log a hydration. drill the second hinge set. I see your calendar — you have eleven minutes.\" She knows your calendar because the agreement you signed yesterday at the [foam-roller] gave her access. Sam's [notes*] wall has a copy of the agreement pinned next to your overnight-number printout — same paired-pin format.",
             "choices": [
               {
                 "id": "a",
@@ -1100,7 +1100,7 @@
         "characterId": "hana",
         "introducesCharacterId": "kenji",
         "agentMoodToday": "in escort-mode; the version of Hana that walks you somewhere and stays for the introduction before leaving you with the person she wanted you to meet",
-        "closingHook": "Kenji compiles a Procrastination Audit Sheet from your D2 calendar gap and tonight's chat. Open chat to find your top three chronological leaks ranked by audit severity. He delivers it dryly. The sheet is in your case file going forward — pinned to Sam's [notes*] wall beside Hana's resting-rate printout. Paired-pin format. Systems.",
+        "closingHook": "Kenji compiles a Procrastination Audit Sheet from your D2 calendar gap and tonight's chat. Open chat to find your top three chronological leaks ranked by audit severity. He delivers it dryly. The sheet is in your case file going forward — pinned to Sam's [notes*] wall beside Hana's overnight-number printout. Paired-pin format. Systems.",
         "tierUpReveal": null,
         "callbacks": [
           {
@@ -1133,7 +1133,7 @@
         "events": [
           {
             "id": "evt-1",
-            "scenario": "6:08 AM. Hana's text on your lock screen: \"meet me at the [bleachers]. don't eat first. we're walking somewhere.\" When you arrive — outdoor grass, the [bench] beside the [bleachers], the [pic*] of her sister face-down today — she doesn't say where. She hands you a water bottle. Mei's [recipe*] is tucked into the cap, cold-rice variant from yesterday's inquiry, still folded in Hana's neat double-fold. She points across the [courtyard center] toward Kenji's [desk]. The [ledger*] is visible from the hallway — open to a page with your name. Below your name: a column titled BEHAVIORAL OBSERVATIONS, your D1 resting-rate, your D2 9-12 calendar gap, and the line from your 9:34 PM call sitting in column eleven.",
+            "scenario": "6:08 AM. Hana's text on your lock screen: \"meet me at the [bleachers]. don't eat first. we're walking somewhere.\" When you arrive — outdoor grass, the [bench] beside the [bleachers], the [pic*] of her sister face-down today — she doesn't say where. She hands you a water bottle. Mei's [recipe*] is tucked into the cap, cold-rice variant from yesterday's inquiry, still folded in Hana's neat double-fold. She points across the [courtyard center] toward Kenji's [desk]. The [ledger*] is visible from the hallway — open to a page with your name. Below your name: a column titled BEHAVIORAL OBSERVATIONS, your D1 overnight number, your D2 9-12 calendar gap, and the line from your 9:34 PM call sitting in column eleven.",
             "choices": [
               {
                 "id": "a",
@@ -1206,7 +1206,7 @@
                 "reactionTextOnCritFail": "",
                 "itemDrop": {
                   "name": "Your Entry in Kenji's [ledger*]",
-                  "description": "Page 11, column eleven, your name at the top. The D2 9:34 PM line transcribed in Kenji's neat handwriting. Lives in your case file as a page-image. Sam pins a copy to the [notes*] wall, paired with Hana's resting-rate printout.",
+                  "description": "Page 11, column eleven, your name at the top. The D2 9:34 PM line transcribed in Kenji's neat handwriting. Lives in your case file as a page-image. Sam pins a copy to the [notes*] wall, paired with Hana's overnight-number printout.",
                   "kind": "keepsake"
                 }
               },
@@ -1570,7 +1570,7 @@
                 "reactionTextOnCritFail": "",
                 "itemDrop": {
                   "name": "Column Twelve Entry #1 (yours)",
-                  "description": "A page-image of Kenji's [ledger*]: your name at the top, the line 'refused the scroll audit. +1 GLD logged.' First column-twelve entry the [ledger*] has carried. Sam's [notes*] wall pins a copy beside Hana's resting-rate printout and the D3 Audit Sheet.",
+                  "description": "A page-image of Kenji's [ledger*]: your name at the top, the line 'refused the scroll audit. +1 GLD logged.' First column-twelve entry the [ledger*] has carried. Sam's [notes*] wall pins a copy beside Hana's overnight-number printout and the D3 Audit Sheet.",
                   "kind": "keepsake"
                 }
               },
@@ -2779,6 +2779,6 @@
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "20e4a911ecef"
+    "contentHash": "0eb4e89f859a"
   }
 }

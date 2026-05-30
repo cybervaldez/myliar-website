@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" data-pack="vibrant" data-mode="light" data-font="maple" data-chrome="bevel">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Codex Theme Switcher — My Life is an RPG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  @font-face{font-family:'Maplestory';src:url('fonts/Maplestory-Light.woff2') format('woff2');font-weight:300;font-display:swap;}
+  @font-face{font-family:'Maplestory';src:url('fonts/Maplestory-Bold.woff2') format('woff2');font-weight:700;font-display:swap;}
+
+  /* ════════ THEME TOKENS — 3 packs × light/dark (see docs/design/theme-system.md) ════════ */
+
+  /* ── PARCHMENT & INK (default pack) ── */
+  :root[data-pack="parchment"][data-mode="light"]{       /* cream / D&D */
+    --page-bg:#d8d0bd; --win-bg:#f2ebdd; --head-bg:#2d4a2b; --head-fg:#f2ebdd;
+    --frame:#1a1a1a; --frame-2:#bcae90; --text:#1a1a1a; --text-soft:#5a5346;
+    --accent:#b81f1c; --accent-2:#2d4a2b; --slot-bg:#fffdf5;
+    --btn-bg:#2d4a2b; --btn-fg:#f2ebdd; --btn-edge:#1a1a1a;
+    --shadow-drop:6px 6px 0 rgba(26,26,26,.16); --bevel-hi:rgba(255,255,255,.5); --bevel-lo:rgba(26,26,26,.18);
+  }
+  :root[data-pack="parchment"][data-mode="dark"]{        /* candlelit */
+    --page-bg:#171309; --win-bg:#241d10; --head-bg:#3a2f18; --head-fg:#efe2c2;
+    --frame:#0d0a05; --frame-2:#5a4a2a; --text:#ece0c4; --text-soft:#b3a684;
+    --accent:#e0594f; --accent-2:#9ab87a; --slot-bg:#2e2614;
+    --btn-bg:#3a4a2c; --btn-fg:#efe7d0; --btn-edge:#0d0a05;
+    --shadow-drop:6px 6px 0 rgba(0,0,0,.4); --bevel-hi:rgba(255,255,255,.1); --bevel-lo:rgba(0,0,0,.45);
+  }
+
+  /* ── VIBRANT REALM ── */
+  :root[data-pack="vibrant"][data-mode="light"]{         /* sky / MapleStory */
+    --page-bg:#bfe3f5; --win-bg:#f6e9c9; --head-bg:linear-gradient(#7cc7ee,#4ea3d8); --head-fg:#fff;
+    --frame:#6b4a26; --frame-2:#caa56a; --text:#4a3a22; --text-soft:#6f5a38;
+    --accent:#e8632a; --accent-2:#2d6a8f; --slot-bg:#fffaf0;
+    --btn-bg:linear-gradient(#ffd24d,#f5a623); --btn-fg:#5a3a10; --btn-edge:#6b4a26;
+    --shadow-drop:0 5px 0 rgba(0,0,0,.20); --bevel-hi:rgba(255,255,255,.6); --bevel-lo:rgba(0,0,0,.18);
+  }
+  :root[data-pack="vibrant"][data-mode="dark"]{          /* night wood */
+    --page-bg:#1d160d; --win-bg:#3c2f1e; --head-bg:linear-gradient(#6b4f2a,#4a3618); --head-fg:#f3e2bf;
+    --frame:#120c06; --frame-2:#6b4f2a; --text:#f0e3c6; --text-soft:#b8a984;
+    --accent:#f5b942; --accent-2:#7cc7ee; --slot-bg:#4d3e28;
+    --btn-bg:linear-gradient(#f0a83a,#c9781f); --btn-fg:#2a1a06; --btn-edge:#120c06;
+    --shadow-drop:0 5px 0 rgba(0,0,0,.45); --bevel-hi:rgba(255,255,255,.14); --bevel-lo:rgba(0,0,0,.45);
+  }
+
+  /* ── DOS-ERA (light = phosphor green, dark = amber) ── */
+  :root[data-pack="dos"][data-mode="light"]{             /* green CRT */
+    --page-bg:#050805; --win-bg:#00140a; --head-bg:#00351c; --head-fg:#6dffa3;
+    --frame:#2bd673; --frame-2:#157a44; --text:#43ff8d; --text-soft:#2aa860;
+    --accent:#b6ff5a; --accent-2:#6dffa3; --slot-bg:#021a0c;
+    --btn-bg:#043a1f; --btn-fg:#8dffb5; --btn-edge:#2bd673;
+    --shadow-drop:0 0 14px rgba(80,255,140,.18); --bevel-hi:rgba(120,255,160,.14); --bevel-lo:rgba(0,0,0,.55);
+  }
+  :root[data-pack="dos"][data-mode="dark"]{              /* amber CRT */
+    --page-bg:#0a0600; --win-bg:#160d00; --head-bg:#3a2400; --head-fg:#ffce5e;
+    --frame:#ffb000; --frame-2:#a06f00; --text:#ffc24d; --text-soft:#c98a1f;
+    --accent:#ffe08a; --accent-2:#ffb000; --slot-bg:#1a1000;
+    --btn-bg:#3a2600; --btn-fg:#ffd98a; --btn-edge:#ffb000;
+    --shadow-drop:0 0 14px rgba(255,176,0,.18); --bevel-hi:rgba(255,210,120,.14); --bevel-lo:rgba(0,0,0,.55);
+  }
+  /* DOS overrides: terminal type + square corners + CRT scanlines (ignores font/chrome) */
+  :root[data-pack="dos"]{--font-ui:'Courier New',ui-monospace,monospace;}
+  :root[data-pack="dos"] .win{border-radius:0 !important;}
+  :root[data-pack="dos"] .win .hd{letter-spacing:2px;}
+  :root[data-pack="dos"] body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:50;
+    background:repeating-linear-gradient(rgba(0,0,0,0) 0 2px, rgba(0,0,0,.18) 2px 3px);}
+
+  /* ════════ FONT PICKER (overridden by DOS pack) ════════ */
+  :root[data-font="maple"]{--font-ui:'Maplestory';}
+  :root[data-font="jua"]  {--font-ui:'Jua';}
+  :root[data-font="gaegu"]{--font-ui:'Gaegu';}
+
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--page-bg); color:var(--text);
+    font-family:var(--font-ui),system-ui,sans-serif; font-size:17px; line-height:1.55;
+    transition:background .2s; padding-bottom:90px;}
+  .wrap{max-width:860px; margin:0 auto; padding:24px 18px;}
+  h1,h2,h3{font-family:var(--font-ui); font-weight:700; margin:0;}
+
+  /* ════════ CONTROL BAR (the picker) ════════ */
+  .controls{position:sticky; top:0; z-index:20; background:rgba(0,0,0,.82); color:#fff;
+    padding:10px 14px; display:flex; flex-wrap:wrap; gap:14px 22px; align-items:center;
+    font-family:'Jua',sans-serif; font-size:13px; backdrop-filter:blur(4px);}
+  .controls .grp{display:flex; align-items:center; gap:6px;}
+  .controls .grp b{opacity:.6; font-size:11px; letter-spacing:.5px; text-transform:uppercase; margin-right:2px;}
+  .controls button{font-family:'Jua',sans-serif; font-size:12px; border:1px solid #555; background:#2a2a2a;
+    color:#ccc; padding:5px 10px; border-radius:6px; cursor:pointer;}
+  .controls button[aria-pressed="true"]{background:#f5a623; color:#3a2406; border-color:#f5a623; font-weight:700;}
+
+  /* ════════ WINDOW (chrome-driven) ════════ */
+  .win{background:var(--win-bg); margin:0 0 20px; color:var(--text);}
+  .win .hd{font-family:var(--font-ui); font-weight:700; font-size:15px; letter-spacing:.5px;
+    padding:9px 13px; background:var(--head-bg); color:var(--head-fg);
+    display:flex; align-items:center; justify-content:space-between;}
+  .win .hd .x{width:13px;height:13px;border-radius:50%;background:rgba(255,255,255,.45);}
+  .win .bd{padding:16px;}
+
+  /* chrome: BEVEL (WIN-1, default) */
+  :root[data-chrome="bevel"] .win{border:3px solid var(--frame); border-radius:12px;
+    box-shadow:inset 0 3px 0 var(--bevel-hi), inset 0 -3px 0 var(--bevel-lo), var(--shadow-drop);}
+  :root[data-chrome="bevel"] .win .hd{border-radius:9px 9px 0 0;}
+  /* chrome: CHUNKY (WIN-2) */
+  :root[data-chrome="chunky"] .win{border:2px solid var(--frame); border-radius:0;
+    box-shadow:6px 6px 0 var(--bevel-lo);}
+
+  /* ════════ CONTENT BITS ════════ */
+  .charcard{display:flex; gap:14px; align-items:center;}
+  .portrait{width:60px;height:82px;flex:none;border:2px solid var(--accent);border-radius:5px;
+    background:var(--head-bg);position:relative;overflow:hidden;}
+  .portrait .ini{position:absolute;top:50%;left:0;right:0;transform:translateY(-65%);text-align:center;
+    font-family:var(--font-ui);font-weight:700;font-size:14px;color:var(--head-fg);}
+  .portrait .lane{position:absolute;bottom:0;left:0;right:0;text-align:center;background:var(--accent);
+    color:#fff;font-family:'Press Start 2P',monospace;font-size:7px;padding:3px 0;}
+  .charcard .name{font-family:var(--font-ui);font-weight:700;font-size:24px;line-height:1;}
+  .charcard .title{color:var(--accent);font-family:var(--font-ui);font-weight:700;font-size:13px;}
+  .charcard .rel{font-size:13px;color:var(--text-soft);margin-top:4px;}
+
+  .slots{display:flex;gap:9px;flex-wrap:wrap;}
+  .slot{width:70px;height:70px;background:var(--slot-bg);border:2px solid var(--frame);border-radius:4px;
+    padding:6px;display:flex;flex-direction:column;color:var(--text);}
+  .slot .rt{font-family:'Press Start 2P',monospace;font-size:6px;margin-bottom:4px;}
+  .slot .nm{font-family:var(--font-ui);font-size:10px;line-height:1.15;}
+  .slot.relic{border-color:var(--accent);} .slot.relic .rt{color:var(--accent);}
+  .slot.keepsake .rt{color:var(--accent-2);}
+
+  .btn{display:inline-block;font-family:var(--font-ui);font-weight:700;font-size:15px;
+    background:var(--btn-bg);color:var(--btn-fg);padding:11px 22px;border:2px solid var(--btn-edge);
+    border-radius:10px;cursor:pointer;box-shadow:inset 0 2px 0 var(--bevel-hi),0 4px 0 var(--bevel-lo);}
+
+  .prose{font-size:16px;line-height:1.7;color:var(--text);}
+  .prose em{color:var(--accent);font-style:normal;}
+  .crumb{font-size:12px;color:var(--text-soft);margin-bottom:14px;font-family:'Jua',sans-serif;}
+</style>
+</head>
+<body>
+  <div class="controls">
+    <div class="grp"><b>Pack</b>
+      <button data-set="pack" data-val="parchment">Parchment &amp; Ink</button>
+      <button data-set="pack" data-val="vibrant" aria-pressed="true">Vibrant Realm</button>
+      <button data-set="pack" data-val="dos">DOS-era</button>
+    </div>
+    <div class="grp"><b>Mode</b>
+      <button data-set="mode" data-val="light" aria-pressed="true">☀ Light</button>
+      <button data-set="mode" data-val="dark">🌙 Dark</button>
+    </div>
+    <div class="grp"><b>Font</b>
+      <button data-set="font" data-val="maple" aria-pressed="true">Maplestory</button>
+      <button data-set="font" data-val="jua">Jua</button>
+      <button data-set="font" data-val="gaegu">Gaegu</button>
+    </div>
+    <div class="grp"><b>Window</b>
+      <button data-set="chrome" data-val="bevel" aria-pressed="true">Bevel ★</button>
+      <button data-set="chrome" data-val="chunky">Chunky</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="crumb">Wiki ▸ The Codex ▸ Dramatis Personae</div>
+    <h1 style="font-size:30px;margin-bottom:4px;">🍄 THE CODEX</h1>
+    <p class="prose" style="margin:0 0 22px;">Pick a <em>Pack</em>, <em>Mode</em>, <em>Font</em>, and <em>Window</em> up top — every panel re-skins live. Three packs: <em>Parchment &amp; Ink</em> (the current cream/D&amp;D look), <em>Vibrant Realm</em> (MapleStory), <em>DOS-era</em> (terminal — Light = green, Dark = amber; it forces its own mono font + scanlines). Buttons are BTN-A.</p>
+
+    <div class="win">
+      <div class="hd"><span>▸ DRAMATIS PERSONAE</span><span class="x"></span></div>
+      <div class="bd">
+        <div class="charcard">
+          <div class="portrait"><span class="ini">HAN</span><span class="lane">STR</span></div>
+          <div>
+            <div class="name">HANA</div>
+            <div class="title">the Iron Monk</div>
+            <div class="rel">Circling · REL 3 · fitness &amp; body</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="win">
+      <div class="hd"><span>▸ BAG</span><span class="x"></span></div>
+      <div class="bd">
+        <div class="slots">
+          <div class="slot relic"><span class="rt">RELIC</span><span class="nm">Golden Posture Sticker</span></div>
+          <div class="slot keepsake"><span class="rt">KEPT</span><span class="nm">Baseline Chart (PDF)</span></div>
+          <div class="slot"><span class="rt">DROP</span><span class="nm">Pink Yoga Mat</span></div>
+          <div class="slot"><span class="rt">DROP</span><span class="nm">Water Levels Log</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="win">
+      <div class="hd"><span>▸ STORY · DAY 2</span><span class="x"></span></div>
+      <div class="bd">
+        <p class="prose" style="margin:0 0 14px;">6:00 AM exactly. A single text from Hana — no all-caps this morning. Just numbers: “62. 14.” Yesterday's <em>overnight-number</em> pin is still there. Today's is laid on top of it: 78 yesterday, 74 today. Four-point drop. One day.</p>
+        <span class="btn">▸ STEP THROUGH</span>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const root=document.documentElement;
+  const KEY='codex-skin';
+  function save(){localStorage.setItem(KEY,JSON.stringify({
+    pack:root.dataset.pack,mode:root.dataset.mode,font:root.dataset.font,chrome:root.dataset.chrome}));}
+  function syncButtons(){
+    document.querySelectorAll('.controls button').forEach(b=>{
+      const dim=b.dataset.set, val=b.dataset.val;
+      b.setAttribute('aria-pressed', root.dataset[dim]===val ? 'true':'false');
+    });
+  }
+  try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');
+    if(s.pack)root.dataset.pack=s.pack; if(s.mode)root.dataset.mode=s.mode;
+    if(s.font)root.dataset.font=s.font; if(s.chrome)root.dataset.chrome=s.chrome;}catch(e){}
+  syncButtons();
+  document.querySelectorAll('.controls button').forEach(b=>{
+    b.addEventListener('click',()=>{root.dataset[b.dataset.set]=b.dataset.val; syncButtons(); save();});
+  });
+</script>
+</body>
+</html>
