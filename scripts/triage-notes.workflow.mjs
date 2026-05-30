@@ -42,6 +42,8 @@ const NOTE_SCHEMA = {
           kind: { type: "string" },
           body: { type: "string" },
           author: { type: "string" },
+          source: { type: "string" },
+          private: { type: "boolean" },
           data_run: { type: "string" },
           data_version: { type: "string" },
           staleSnapshot: { type: "boolean" },
@@ -72,7 +74,7 @@ const VERDICT_SCHEMA = {
 phase("Fetch");
 const fetched = await agent(
   `Fetch all OPEN community notes from Supabase. Run this exact request with Bash:
-     curl -s "$SUPABASE_URL/rest/v1/wiki_notes?status=eq.open&order=created_at.asc&select=id,anchor,anchor_label,kind,body,author,data_run,data_version" \\
+     curl -s "$SUPABASE_URL/rest/v1/wiki_notes?status=eq.open&order=created_at.asc&select=id,anchor,anchor_label,kind,body,author,source,private,data_run,data_version" \\
        -H "apikey: $SUPABASE_SERVICE_KEY" -H "Authorization: Bearer $SUPABASE_SERVICE_KEY"
    ALSO read the CURRENT data snapshot from website/app/lib/parity.generated.json (the
    .version.contentHash field). For each note, compare its data_version to the current
@@ -107,14 +109,22 @@ const results = await pipeline(
              mechanics:page  -> lib/game_state.dart (REL), lib/payloads/daily_story.dart (rarities)
              elseworld:<band>-> lib/elseworld_vibes.dart
              atlas:courtyard -> assets/realm-maps/phone-realm.txt
-       The note (${n.kind}) from ${n.author || "anon"} says:
+       The note (${n.kind}${n.source === "app" ? ", from the in-app Share-to-Dev channel — Sam-flagged" : ""}) from ${n.author || "anon"} says:
          """${n.body}"""
        ${n.staleSnapshot ? `IMPORTANT: this note was written against an OLDER data snapshot
        (${n.data_run} · ${n.data_version}) than the current wiki. Verify the issue still
        exists in the CURRENT canon — if the content has already changed/been fixed, decline
        with a short note that it's been superseded.` : ""}
-       Decide: apply (it improves the canon and passes frame + blend), decline (wrong / off-frame /
-       breaks a gate — say which), or discuss (worth a human conversation, not auto-decidable).
+       FIRST classify CANON vs PRODUCT:
+         - CANON (story / character voice / a beat / a payload field) → adjudicate normally
+           below (apply/decline/discuss against the frame + blend gates).
+         - PRODUCT (a feature request, UX complaint, app behavior — common from source='app')
+           → /writers-room is NOT the right adjudicator. Return verdict "discuss" with a reply
+           noting it's logged for the PRODUCT backlog (out of canon scope), and set
+           rationale to "product-feedback". Do not draft a payload edit.
+       For CANON notes, decide: apply (it improves the canon and passes frame + blend),
+       decline (wrong / off-frame / breaks a gate — say which), or discuss (worth a human
+       conversation, not auto-decidable).
        Write a short, kind reply to the contributor. If apply, draft the exact payload edit
        (file + field + before→after). Do NOT edit any files — only describe the edit.`,
       { schema: VERDICT_SCHEMA, label: `judge:${n.anchor}`, phase: "Adjudicate" },
