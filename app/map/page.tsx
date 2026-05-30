@@ -1,48 +1,14 @@
 import Link from "next/link";
 import { PannableAscii } from "../components/PannableAscii";
+import parity from "../lib/parity.generated.json";
 
-// THE COURTYARD — phone-realm map. The ASCII below is a 1:1 mirror of
-// assets/realm-maps/phone-realm.txt (the runtime asset rendered by the
-// in-game viewer at lib/realm_map_screen.dart). When the source asset
-// regens via /worldbuilding, paste-update this constant to match. The
-// website is a marketing surface so the duplication is deliberate —
-// no fs read, no build coupling, no runtime fetch.
-// v0.0.24.2 regen: per-character tile-swap (`,` grass for Hana, `:`
-// commercial tile for Mei, `.` neutral for Sam + Kenji); two new
-// direct character-to-character continuity bridges ([recipe*] Hana↔Mei,
-// [clip*] Kenji↔Hana); [sticky-wall*] renamed to [notes*] with the
-// paired-pins rule. Mirror of assets/realm-maps/phone-realm.txt.
-const PHONE_REALM_MAP = String.raw`╔════════════════════════════════════════════════════════════╗
-║              THE COURTYARD — phone realm                   ║
-║                                                            ║
-║   ╔═══════════════ THE PORTAL GATE ═══════════════════╗    ║
-║   ║   .   %         %         %        %        %     ║    ║
-║   ║      the      the mall  the small the     the     ║    ║
-║   ║   witch's       (80)     town    tavern  cottage  ║    ║
-║   ║    path                  (90)    (isekai) (cozy)  ║    ║
-║   ║    (GA)                                            ║    ║
-║   ╚═════════════════════│══════════════════════════════╝    ║
-║                          │                                  ║
-║   ┌─── HANA's track ────┘    └──── KENJI's office ───┐     ║
-║   │ , , , , , , , , , ,│    │. . . . . . . . . . . . │     ║
-║   │ , H . . . . . . . t│    │. K . . . . . . . . . . │     ║
-║   │ , . . [bleachers]  │    │. . [desk][clip*] . . . │     ║
-║   │ , . . . . . p . . .│    │. . . . . . . [ledger*] │     ║
-║   │ , . [pic*][recipe*]│    │. . . . . . [drawer]  . │     ║
-║   └──────────────│─────┘    └───────│─────────────────┘    ║
-║                  │                  │                       ║
-║              ┌───┴──[noticeboard]───┴───┐                  ║
-║              │   the courtyard center   │                  ║
-║              │   . . . . . . . . . . .  │                  ║
-║              └───┬──────────────────┬───┘                  ║
-║                  │                  │                       ║
-║   ┌─── MEI's kitchen ───┐  ┌── SAM's desk ──┐              ║
-║   │ [prep]:[line s]: : :│  │ . . . . . . .  │              ║
-║   │ [bell*]: : :    : : │  │ . S . d        │              ║
-║   │ [mise]: :[dish pit] │  │ [notes*]       │              ║
-║   └─────────────────────┘  └────────────────┘              ║
-║                                                            ║
-╚════════════════════════════════════════════════════════════╝`;
+// THE COURTYARD — phone-realm map. Sourced from parity.generated.json
+// (field `phoneRealmMap`), which the parity exporter pulls verbatim from
+// the game's runtime asset assets/realm-maps/phone-realm.txt. The game
+// is the source of truth; never hand-edit the map here — run
+// `npm run parity` after the asset regens via /worldbuilding and this
+// updates automatically. See website/scripts/sync-parity.mjs.
+const PHONE_REALM_MAP = parity.phoneRealmMap;
 
 export const metadata = {
   title: "The Courtyard · Atlas — My Life is an RPG",

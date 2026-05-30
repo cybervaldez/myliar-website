@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "parity": "node scripts/sync-parity.mjs",
+    "parity:check": "node scripts/sync-parity.mjs --check"
   },
   "dependencies": {
     "next": "16.2.6",

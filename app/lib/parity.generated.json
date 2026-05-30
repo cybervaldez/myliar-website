@@ -1,0 +1,272 @@
+{
+  "_generated": "DO NOT EDIT BY HAND — produced by website/scripts/sync-parity.mjs",
+  "_sourceOfTruth": "the Flutter app (../lib, ../assets). Run sync-parity after game changes.",
+  "tokens": {
+    "paper": "#F2EBDD",
+    "paperShade": "#E9E1CF",
+    "ink": "#1A1A1A",
+    "inkSoft": "#3B3B3B",
+    "forest": "#2D4A2B",
+    "forestDim": "#4D6A4B",
+    "spotRed": "#B81F1C",
+    "marginInk": "#6B6353"
+  },
+  "relTiers": {
+    "thresholds": [
+      15,
+      40,
+      80,
+      140,
+      220,
+      320,
+      450,
+      630,
+      850
+    ],
+    "names": [
+      "Circling",
+      "On your radar",
+      "Inside their orbit",
+      "Trading favors",
+      "In your corner",
+      "Saved a seat for you",
+      "Knows where you keep things",
+      "Folded in",
+      "Named in the will",
+      "Unspoken"
+    ]
+  },
+  "itemRarities": [
+    "memento",
+    "keepsake",
+    "relic"
+  ],
+  "vibeBands": [
+    {
+      "id": "golden-age-fantasy",
+      "label": "Golden-age fantasy"
+    },
+    {
+      "id": "80s-fantasy-and-cyber",
+      "label": "80s fantasy + cyber"
+    },
+    {
+      "id": "90s-anime-and-fantasy",
+      "label": "90s anime + fantasy"
+    },
+    {
+      "id": "isekai-and-party-rpg",
+      "label": "Isekai + party RPG"
+    },
+    {
+      "id": "cottagecore-and-cozy",
+      "label": "Cottagecore + cozy"
+    },
+    {
+      "id": "surprise-me",
+      "label": "Surprise me"
+    }
+  ],
+  "squad": [
+    {
+      "id": "sam",
+      "name": "Sam",
+      "classLabel": "Onboarder",
+      "specialty": "this game's systems & RPG meta-coaching",
+      "helpSummary": null,
+      "gender": "male"
+    },
+    {
+      "id": "hana",
+      "name": "Hana",
+      "classLabel": "Powerhouse",
+      "specialty": "fitness & wellness",
+      "helpSummary": "Show up for the version of you that wanted to skip today — drills, tributes, the small reps that count (body & drills).",
+      "gender": "female"
+    },
+    {
+      "id": "kenji",
+      "name": "Kenji",
+      "classLabel": "Scholar",
+      "specialty": "productivity & finance",
+      "helpSummary": "The line item you keep pretending you didn't see — let's audit it before your brain has opinions (ledger & spend).",
+      "gender": "male"
+    },
+    {
+      "id": "mei",
+      "name": "Mei",
+      "classLabel": "Healer",
+      "specialty": "cooking & meal prep",
+      "helpSummary": "Here to help you eat like an actual person — what to cook, what to throw out, what to stop ordering (cooking & mise).",
+      "gender": "female"
+    }
+  ],
+  "phoneRealmMap": "╔════════════════════════════════════════════════════════════╗\n║              THE COURTYARD — phone realm                   ║\n║                                                            ║\n║   ╔═══════════════ THE PORTAL GATE ═══════════════════╗    ║\n║   ║   .   %         %         %        %        %     ║    ║\n║   ║      the      the mall  the small the     the     ║    ║\n║   ║   witch's       (80)     town    tavern  cottage  ║    ║\n║   ║    path                  (90)    (isekai) (cozy)  ║    ║\n║   ║    (GA)                                            ║    ║\n║   ╚═════════════════════│══════════════════════════════╝    ║\n║                          │                                  ║\n║   ┌─── HANA's track ────┘    └──── KENJI's office ───┐     ║\n║   │ , , , , , , , , , ,│    │. . . . . . . . . . . . │     ║\n║   │ , H . . . . . . . t│    │. K . . . . . . . . . . │     ║\n║   │ , . . [bleachers]  │    │. . [desk][clip*] . . . │     ║\n║   │ , . . . . . p . . .│    │. . . . . . . [ledger*] │     ║\n║   │ , . [pic*][recipe*]│    │. . . . . . [drawer]  . │     ║\n║   └──────────────│─────┘    └───────│─────────────────┘    ║\n║                  │                  │                       ║\n║              ┌───┴──[noticeboard]───┴───┐                  ║\n║              │   the courtyard center   │                  ║\n║              │   . . . . . . . . . . .  │                  ║\n║              └───┬──────────────────┬───┘                  ║\n║                  │                  │                       ║\n║   ┌─── MEI's kitchen ───┐  ┌── SAM's desk ──┐              ║\n║   │ [prep]:[line s]: : :│  │ . . . . . . .  │              ║\n║   │ [bell*]: : :    : : │  │ . S . d        │              ║\n║   │ [mise]: :[dish pit] │  │ [notes*]       │              ║\n║   └─────────────────────┘  └────────────────┘              ║\n║                                                            ║\n╚════════════════════════════════════════════════════════════╝",
+  "simScenario": {
+    "source": "run-005/onboarding_hana_d1.json",
+    "characterId": "hana",
+    "events": [
+      {
+        "id": "evt-1",
+        "scenario": "5:14 AM. Your phone bypasses silent. An UNKNOWN NUMBER, wall of text in all caps demanding your numbers before you collapsed last night: \"RESTING HEART RATE. VOLUME OF WATER BEFORE BED. NOW.\" Below the text, a pinned location — Hana, already at the [track], small figure on the outdoor grass beside her [bench]. The portal frame is the [bleachers] behind her. She's been awake long enough to be impatient.",
+        "choices": [
+          {
+            "id": "a",
+            "role": "logical",
+            "label": "Text back the actual numbers. \"54 bpm. ~10 oz. Why.\"",
+            "delta": {
+              "STR": 1,
+              "REL": 2
+            },
+            "reactionText": "Hana: \"+1 STR. baseline. you under-hydrated by a factor I'm not going to name. you'll feel it by nine.\" Three dots. Then: \"meet me.\"",
+            "reactionTextOnCritFail": "",
+            "diceRoll": null,
+            "itemDrop": null
+          },
+          {
+            "id": "b",
+            "role": "passive",
+            "label": "Text back: \"who is this.\"",
+            "delta": {
+              "INT": 1,
+              "REL": 1
+            },
+            "reactionText": "Hana: \"good. you asked. +1 INT. the people who don't ask are the ones who don't show up at six. you're going to show up at six.\"",
+            "reactionTextOnCritFail": "",
+            "diceRoll": null,
+            "itemDrop": null
+          },
+          {
+            "id": "c",
+            "role": "chaotic",
+            "label": "Text back: \"you woke me up to ask about WATER.\"",
+            "delta": {
+              "CHR": 2,
+              "REL": 1,
+              "STR": -1
+            },
+            "reactionText": "Hana: \"+2 CHR. one second. — yes. now meet me at the [track]. wear shoes. drink the water you didn't drink. catch up.\" The dots stop. She's already running.",
+            "reactionTextOnCritFail": "Hana: \"-1 STR. the joke cost you a rep. fine. text me when you're ready to be coached.\" She doesn't text back for forty-six minutes.",
+            "diceRoll": {
+              "critSuccessMultiplier": 2,
+              "critFailMultiplier": -1,
+              "critChance": 0.4
+            },
+            "itemDrop": null
+          }
+        ]
+      },
+      {
+        "id": "evt-2",
+        "scenario": "6:32 AM. [bleachers]. Hana is doing slow circles on the outdoor [track], two water bottles in one hand. One for her. One for you. Mei's [recipe*] is folded into the cap of your bottle, half-poking out of Hana's pocket — Hana hasn't said Mei's name yet. You're not supposed to know about Mei. You see the [recipe*] anyway. Hana points at the [foam-roller] in the corner: \"twenty minutes. hip hinges. I'll watch.\"",
+        "choices": [
+          {
+            "id": "a",
+            "role": "logical",
+            "label": "Take the foam-roller. Drill the hinges.",
+            "delta": {
+              "STR": 2,
+              "REL": 2
+            },
+            "reactionText": "Hana, jogging past on her third lap: \"+2 STR. that was form. you have done this before — not with anyone good. with me, you'll have done it with someone good.\"",
+            "reactionTextOnCritFail": "",
+            "diceRoll": null,
+            "itemDrop": {
+              "id": "drill-card-d1",
+              "name": "Hana's First Drill Card",
+              "description": "A torn page. The hip hinge sequence in Hana's handwriting. Numbered. Underlined twice where it says BREATHE.",
+              "kind": "keepsake"
+            }
+          },
+          {
+            "id": "b",
+            "role": "passive",
+            "label": "Sit on the bench. Watch her run first.",
+            "delta": {
+              "INT": 1,
+              "REL": 1
+            },
+            "reactionText": "Hana, finishing a lap: \"+1 INT. patient. not the worst trait. you watched my pacing for forty seconds and didn't say anything. I'll remember that.\"",
+            "reactionTextOnCritFail": "",
+            "diceRoll": null,
+            "itemDrop": null
+          },
+          {
+            "id": "c",
+            "role": "chaotic",
+            "label": "Grab her water bottle. Chug it.",
+            "delta": {
+              "CHR": 2,
+              "REL": 1,
+              "STR": -1
+            },
+            "reactionText": "Hana stops mid-stride. Looks at you. Laughs — one syllable, sharp. \"+2 CHR. you're going to be a problem. fine. I have spare bottles. drill the hinges anyway, you owe me twenty.\"",
+            "reactionTextOnCritFail": "Hana doesn't laugh. \"-1 STR. that was Mei's mix. she made it for me at four AM. now I have to drink the regular water and so do you. drill the hinges. you owe me thirty.\"",
+            "diceRoll": {
+              "critSuccessMultiplier": 2,
+              "critFailMultiplier": -1,
+              "critChance": 0.4
+            },
+            "itemDrop": null
+          }
+        ]
+      },
+      {
+        "id": "evt-3",
+        "scenario": "7:18 AM. Drill done. Hana hands you the bottle Mei mixed (she doesn't say Mei's name). Sam appears at the edge of the [track], holding a clipboard from his [notes*] wall — the kind with the chunky border, multiple pinned cards on it. He says one line, not loud, to you: \"she's going to ask you to sign something. you don't have to. but it'll mean something if you do.\" He walks back to his [desk] before Hana looks up.",
+        "choices": [
+          {
+            "id": "a",
+            "role": "logical",
+            "label": "Read the agreement. Sign it.",
+            "delta": {
+              "STR": 2,
+              "INT": 1,
+              "REL": 3
+            },
+            "reactionText": "Hana takes it back, eyes scanning the signature line. \"+2 STR. +3 REL. logged. you're on the [notes*] wall now — Sam will pin a copy. you're going to wake up tomorrow and your phone will know who I am to you.\"",
+            "reactionTextOnCritFail": "",
+            "diceRoll": null,
+            "itemDrop": {
+              "id": "signed-agreement-d1",
+              "name": "The Signed Agreement",
+              "description": "One page. Hana's handwriting, top to bottom. Your signature scribbled at the bottom. The clause that matters is the one that says I GET TO WAKE YOU UP.",
+              "kind": "keepsake"
+            }
+          },
+          {
+            "id": "b",
+            "role": "passive",
+            "label": "Ask what it actually means before signing.",
+            "delta": {
+              "INT": 2,
+              "REL": 1
+            },
+            "reactionText": "Hana: \"+2 INT. nobody asked that before. let me tell you what it means.\" She tells you. You sign anyway, after. Same result, slower.",
+            "reactionTextOnCritFail": "",
+            "diceRoll": null,
+            "itemDrop": null
+          },
+          {
+            "id": "c",
+            "role": "chaotic",
+            "label": "Sign without reading. Hand it back.",
+            "delta": {
+              "CHR": 1,
+              "REL": 2,
+              "STR": -1
+            },
+            "reactionText": "Hana looks at the unread page. Looks at you. Pockets it. Doesn't say what +3 REL costs her to give you. \"+1 CHR. you signed it like it was a gift. I'm going to act like I don't know. don't tell me what you didn't read.\"",
+            "reactionTextOnCritFail": "Hana, flatly: \"-2 REL. -1 STR. that was a real document. you treated it like a joke. I'll redraft it. this is going to take another week.\" Sam, at his [desk], silently un-pins the slot he'd reserved on the [notes*] wall.",
+            "diceRoll": {
+              "critSuccessMultiplier": 2,
+              "critFailMultiplier": -1,
+              "critChance": 0.4
+            },
+            "itemDrop": null
+          }
+        ]
+      }
+    ]
+  }
+}

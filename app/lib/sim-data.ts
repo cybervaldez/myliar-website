@@ -1,14 +1,21 @@
 // Canned demo scenario for the landing-page simulator.
 //
-// Lifted from assets/payloads/run-003/onboarding_hana_d1.json (events 1
-// and 2) with light edits to keep self-contained — no Kenji introduction
-// references that would require unseen context, no PDF artifacts, all
-// stat deltas preserved.
+// This is a SIMPLIFIED, self-contained version of the curated onboarding
+// day — light edits keep it cold-visitor-friendly (no map-glyph brackets,
+// no cross-character references that would need unseen context, no PDF
+// artifacts). The full canonical payload it tracks lives in
+// parity.generated.json (field `simScenario`, pulled by the parity
+// exporter from assets/payloads/run-005/onboarding_hana_d1.json). When
+// that payload regens, run `npm run parity` and re-simplify against the
+// updated source. The REL tier names below are NOT hand-maintained —
+// see relTierName(), which reads the live tier ladder from parity.
 //
 // The simulator runs entirely client-side. No LLM call, no API key, no
 // cost per visitor. The visitor experiences the trichotomy (logical /
 // passive / chaotic), the dice roll on chaotic, the stats + REL moving,
 // and Hana's voice — the actual feel of the daily loop.
+
+import parity from "./parity.generated.json";
 
 export type ChoiceRole = "logical" | "passive" | "chaotic";
 
@@ -197,19 +204,15 @@ export const INITIAL_STATS: RunningStats = {
   REL: 0,
 };
 
-// Mirrors lib/game_state.dart kRelTierThresholds / kRelTierNames (v0.0.22+).
-// A 3-event demo will only ever touch the first 1-2 rungs, but the whole
-// ladder lives here so the wrap-up copy can speak truthfully about where
-// the player landed.
+// REL tier resolution — driven by the parity export, NOT hand-maintained.
+// parity.relTiers mirrors lib/game_state.dart kRelTierThresholds/Names.
+// names.length === thresholds.length + 1; the last name is the top rung
+// (REL >= last threshold). Run `npm run parity` if the game's ladder
+// changes and this updates automatically.
 export function relTierName(rel: number): string {
-  if (rel < 15) return "Circling";
-  if (rel < 40) return "On your radar";
-  if (rel < 80) return "Inside their orbit";
-  if (rel < 140) return "Trading favors";
-  if (rel < 220) return "In your corner";
-  if (rel < 320) return "Saved a seat for you";
-  if (rel < 450) return "Knows where you keep things";
-  if (rel < 630) return "Folded in";
-  if (rel < 850) return "Named in the will";
-  return "Unspoken";
+  const { thresholds, names } = parity.relTiers;
+  for (let i = 0; i < thresholds.length; i++) {
+    if (rel < thresholds[i]) return names[i];
+  }
+  return names[names.length - 1];
 }
