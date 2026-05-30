@@ -8,7 +8,7 @@ import { ChangelogList } from "../_components/ChangelogList";
 import { snapshotLabel } from "../wiki-data";
 
 export const metadata = {
-  title: "Changelog — The Codex",
+  title: "Changelog — Wiki",
   description: "The decision history of My Life is an RPG's canon — resolved suggestions over time.",
 };
 
@@ -17,7 +17,7 @@ export default function ChangelogPage() {
     <WikiPage
       kicker="▸ DECISION HISTORY"
       title="Changelog"
-      breadcrumb={[{ label: "The Codex", href: "/wiki" }]}
+      breadcrumb={[{ label: "Wiki", href: "/wiki" }]}
     >
       <p className="text-ink-soft leading-[1.55] mb-3">
         Every suggestion that reached a verdict, newest first.{" "}

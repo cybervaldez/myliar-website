@@ -5,7 +5,7 @@
 import { WikiPage, SectionHead } from "../_components/WikiChrome";
 
 export const metadata = {
-  title: "Lexicon — The Codex",
+  title: "Lexicon — Wiki",
   description: "The in-world vocabulary of My Life is an RPG, and the words it refuses to say.",
 };
 
@@ -26,7 +26,7 @@ export default function LexiconPage() {
     <WikiPage
       kicker="▸ IN-WORLD VOCABULARY · WIP"
       title="Lexicon"
-      breadcrumb={[{ label: "The Codex", href: "/wiki" }]}
+      breadcrumb={[{ label: "Wiki", href: "/wiki" }]}
     >
       <p className="text-ink-soft leading-[1.6] mb-2">
         The phone-realm has its own small vocabulary. Characters reach for these

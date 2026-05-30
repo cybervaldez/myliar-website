@@ -31,7 +31,7 @@ export async function generateMetadata({
 }) {
   const { day } = await params;
   const d = mainlineDay(Number(day));
-  if (!d) return { title: "Unknown Day — The Codex" };
+  if (!d) return { title: "Unknown Day — Wiki" };
   const focal = d.characterId ? characterById(d.characterId) : null;
   return {
     title: `Day ${d.globalDayIndex}${focal ? ` · ${focal.name}` : ""} — The Main Line`,
@@ -159,7 +159,7 @@ export default async function DayPage({
       kicker={`${d.narrativeType.toUpperCase()} · ${d.payloadId}`}
       title={`Day ${d.globalDayIndex}${focal ? ` — ${focal.name}` : ""}`}
       breadcrumb={[
-        { label: "The Codex", href: "/wiki" },
+        { label: "Wiki", href: "/wiki" },
         { label: "The Main Line", href: "/wiki/arc" },
       ]}
       infobox={infobox}

@@ -10,7 +10,7 @@ import { mainline, mainlineFlagCount, characterById } from "../wiki-data";
 import { anchors } from "../notes";
 
 export const metadata = {
-  title: "The Main Line — The Codex",
+  title: "The Main Line — Wiki",
   description: "The curated seven-day arc of My Life is an RPG, day by day.",
 };
 
@@ -28,7 +28,7 @@ export default function ArcPage() {
     <WikiPage
       kicker={`▸ THE CURATED CAMPAIGN · ${runId.toUpperCase()}`}
       title="The Main Line"
-      breadcrumb={[{ label: "The Codex", href: "/wiki" }]}
+      breadcrumb={[{ label: "Wiki", href: "/wiki" }]}
     >
       <div className="border-l-[3px] border-spot-red bg-paper-shade p-4 mb-6">
         <SpoilerTag>

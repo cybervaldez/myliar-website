@@ -26,9 +26,9 @@ export async function generateMetadata({
 }) {
   const { band } = await params;
   const b = vibeBands().find((x) => x.id === band);
-  if (!b) return { title: "Unknown — The Codex" };
+  if (!b) return { title: "Unknown — Wiki" };
   return {
-    title: `${b.label} — Elseworlds — The Codex`,
+    title: `${b.label} — Elseworlds — Wiki`,
     description: `The ${b.label} vibe band and its sample encounter.`,
   };
 }
@@ -107,7 +107,7 @@ export default async function BandPage({
       kicker="▸ ELSEWORLD · CREATIVITY LANE"
       title={b.label}
       breadcrumb={[
-        { label: "The Codex", href: "/wiki" },
+        { label: "Wiki", href: "/wiki" },
         { label: "Elseworlds", href: "/wiki/elseworlds" },
       ]}
       infobox={infobox}

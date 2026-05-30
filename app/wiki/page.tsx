@@ -1,4 +1,4 @@
-// The Codex — wiki portal. Category tiles into each namespace. Facts
+// Wiki — wiki portal. Category tiles into each namespace. Facts
 // (counts) come from the parity export so the portal can't overstate
 // coverage.
 
@@ -6,7 +6,7 @@ import Link from "next/link";
 import { squad, vibeBands, relTiers, itemRarities } from "./wiki-data";
 
 export const metadata = {
-  title: "The Codex — My Life is an RPG Wiki",
+  title: "Wiki — My Life is an RPG Wiki",
   description:
     "The compendium of My Life is an RPG: characters, mechanics, realms, and the main line.",
 };
@@ -23,45 +23,44 @@ export default function WikiPortal() {
   const tiles: Tile[] = [
     {
       href: "/wiki/characters",
-      title: "Dramatis Personae",
+      title: "👥 Characters",
       blurb:
-        "The locked canonical squad. Voice, archetype, what they'd never say, what they always notice.",
+        "Meet the four friends who live in your phone — Sam, Hana, Kenji, and Mei.",
       meta: `${squad().length} characters`,
     },
     {
       href: "/wiki/elseworlds",
-      title: "Elseworlds",
+      title: "✦ Elseworlds",
       blurb:
-        "The six vibe bands and the stranger waiting at the door of each. Player-customizable side realms.",
-      meta: `${vibeBands().length} bands`,
+        "Other worlds you can visit. Each one has a stranger waiting — and you can make them your own.",
+      meta: `${vibeBands().length} worlds`,
     },
     {
       href: "/wiki/atlas",
-      title: "Atlas",
+      title: "🗺 Maps",
       blurb:
-        "The Courtyard — where the squad lives inside your phone. Five portals to the Elseworlds.",
-      meta: "phone-realm map",
+        "Where everyone hangs out: the Courtyard inside your phone, plus the doors to the other worlds.",
+      meta: "phone map",
     },
     {
       href: "/wiki/mechanics",
-      title: "Mechanics",
+      title: "🎮 How to Play",
       blurb:
-        "The daily loop: the trichotomy, dice and crits, the four stats, the relationship ladder, item rarities.",
-      meta: `${relTiers().names.length} REL tiers · ${itemRarities().length} rarities`,
+        "The basics — making choices, rolling dice, your four stats, and getting closer to the squad.",
+      meta: `${relTiers().names.length} friendship levels · ${itemRarities().length} item types`,
     },
     {
       href: "/wiki/arc",
-      title: "The Main Line",
-      blurb:
-        "The curated seven-day arc, day by day. Tier-up reveals tagged. Heavy spoilers.",
-      meta: "7-day campaign",
+      title: "📖 Story",
+      blurb: "The first week, day by day. Big spoilers ahead!",
+      meta: "7 days",
       editorial: true,
     },
     {
       href: "/wiki/lexicon",
-      title: "Lexicon",
+      title: "💬 Words",
       blurb:
-        "The in-world vocabulary — Sigil, Margin, Roster, Audit, Drill, Mise — and the words the game refuses to say.",
+        "Game words explained — plus the stuff the characters will never say.",
       meta: "glossary",
       editorial: true,
     },
@@ -69,17 +68,18 @@ export default function WikiPortal() {
 
   return (
     <div>
-      <div className="font-display tracking-[0.2em] text-[11px] text-spot-red mb-2">
-        ▸ THE COMPENDIUM
-      </div>
-      <h1 className="text-[40px] sm:text-[60px] leading-[1.0] mb-3">
-        The Codex
-      </h1>
-      <p className="text-ink-soft max-w-[680px] leading-[1.55] mb-8">
-        Everything known about <em>My Life is an RPG</em> — the canonical
-        squad, the realms, the rules of the daily loop. The factual pages are
-        generated from the game itself, so what you read here is what the game
-        actually ships.
+      <h1 className="text-[40px] sm:text-[60px] leading-[1.0] mb-3">Wiki</h1>
+      <p className="text-ink-soft max-w-[680px] leading-[1.55] mb-2">
+        Everything about <em>My Life is an RPG</em>, in one place. New here?
+        Start with{" "}
+        <Link href="/wiki/mechanics" className="text-spot-red">
+          How to Play
+        </Link>
+        .
+      </p>
+      <p className="text-[13px] text-margin-ink mb-8">
+        The fact pages come straight from the game, so they&apos;re always up to
+        date.
       </p>
 
       <div className="grid sm:grid-cols-2 gap-5">
@@ -110,8 +110,8 @@ export default function WikiPortal() {
       </div>
 
       <p className="font-sans italic text-margin-ink mt-10 text-[12.5px] leading-[1.55]">
-        — the factual pages mirror the game via the parity export; the main
-        line and lexicon are hand-authored and still being filled in.
+        The fact pages update themselves from the game. Story and Words are
+        still being written.
       </p>
     </div>
   );

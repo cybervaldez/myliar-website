@@ -5,7 +5,7 @@ import { WikiPage } from "../_components/WikiChrome";
 import { squad } from "../wiki-data";
 
 export const metadata = {
-  title: "Dramatis Personae — The Codex",
+  title: "Dramatis Personae — Wiki",
   description: "The canonical squad of My Life is an RPG.",
 };
 
@@ -14,7 +14,7 @@ export default function CharactersIndex() {
     <WikiPage
       kicker="▸ THE LOCKED CANON"
       title="Dramatis Personae"
-      breadcrumb={[{ label: "The Codex", href: "/wiki" }]}
+      breadcrumb={[{ label: "Wiki", href: "/wiki" }]}
     >
       <p className="text-ink-soft leading-[1.6] mb-6">
         Four characters live inside the phone. They are{" "}

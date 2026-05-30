@@ -9,7 +9,7 @@ import { relTiers, itemRarities, relRange } from "../wiki-data";
 import { anchors } from "../notes";
 
 export const metadata = {
-  title: "Mechanics — The Codex",
+  title: "Mechanics — Wiki",
   description:
     "The daily loop of My Life is an RPG: the trichotomy, dice, stats, REL tiers, item rarities.",
 };
@@ -37,7 +37,7 @@ export default function MechanicsPage() {
     <WikiPage
       kicker="▸ THE DAILY LOOP"
       title="Mechanics"
-      breadcrumb={[{ label: "The Codex", href: "/wiki" }]}
+      breadcrumb={[{ label: "Wiki", href: "/wiki" }]}
     >
       <p className="text-ink-soft leading-[1.6] mb-2">
         Every day is a short run of events. Each event offers three ways to

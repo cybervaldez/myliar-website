@@ -147,9 +147,9 @@ export interface NavEntry {
 
 export function navTree(): NavEntry[] {
   return [
-    { label: "The Codex", href: "/wiki" },
+    { label: "🏠 Home", href: "/wiki" },
     {
-      label: "Dramatis Personae",
+      label: "👥 Characters",
       href: "/wiki/characters",
       children: squad().map((c) => ({
         label: c.name,
@@ -157,18 +157,18 @@ export function navTree(): NavEntry[] {
       })),
     },
     {
-      label: "Elseworlds",
+      label: "✦ Elseworlds",
       href: "/wiki/elseworlds",
       children: vibeBands().map((b) => ({
         label: b.label,
         href: `/wiki/elseworlds/${b.id}`,
       })),
     },
-    { label: "Atlas", href: "/wiki/atlas" },
-    { label: "Mechanics", href: "/wiki/mechanics" },
-    { label: "The Main Line", href: "/wiki/arc", editorial: true },
-    { label: "Lexicon", href: "/wiki/lexicon", editorial: true },
-    { label: "Changelog", href: "/wiki/changelog" },
+    { label: "🗺 Maps", href: "/wiki/atlas" },
+    { label: "🎮 How to Play", href: "/wiki/mechanics" },
+    { label: "📖 Story", href: "/wiki/arc", editorial: true },
+    { label: "💬 Words", href: "/wiki/lexicon", editorial: true },
+    { label: "🆕 Updates", href: "/wiki/changelog" },
   ];
 }
 

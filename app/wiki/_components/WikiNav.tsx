@@ -61,7 +61,7 @@ export function WikiNav({ tree }: { tree: NavEntry[] }) {
       {/* Mobile: collapsible */}
       <details className="lg:hidden border-2 border-ink bg-paper-shade mb-6">
         <summary className="cursor-pointer font-display tracking-[0.14em] text-[12px] text-forest px-4 py-3 list-none">
-          ▸ THE CODEX · BROWSE
+          ☰ BROWSE THE WIKI
         </summary>
         <nav className="px-4 pb-4">
           <NavList tree={tree} pathname={pathname} />
@@ -71,7 +71,7 @@ export function WikiNav({ tree }: { tree: NavEntry[] }) {
       {/* Desktop: persistent rail */}
       <nav className="hidden lg:block sticky top-6 self-start">
         <div className="font-display tracking-[0.16em] text-[11px] text-margin-ink mb-3 border-b border-ink/30 pb-2">
-          THE CODEX
+          WIKI
         </div>
         <NavList tree={tree} pathname={pathname} />
       </nav>

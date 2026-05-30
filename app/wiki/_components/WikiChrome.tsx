@@ -51,12 +51,11 @@ export function WikiPage({
           href={discussHref ?? "#community-notes"}
           className="text-[12px] shrink-0 whitespace-nowrap"
         >
-          [discuss]
+          [talk]
         </Link>
       </div>
       <p className="italic text-[12px] text-margin-ink mt-1 mb-4">
-        From The Codex, the <em>My Life is an RPG</em> wiki.
-        {kicker && <span className="not-italic"> · {kicker.replace(/^▸\s*/, "")}</span>}
+        From the <em>My Life is an RPG</em> wiki.
       </p>
 
       <div className="grid lg:grid-cols-[1fr_300px] gap-6 lg:gap-7 items-start">

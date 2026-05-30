@@ -28,9 +28,9 @@ export async function generateMetadata({
 }) {
   const { id } = await params;
   const c = characterById(id);
-  if (!c) return { title: "Unknown — The Codex" };
+  if (!c) return { title: "Unknown — Wiki" };
   return {
-    title: `${c.name} — The Codex`,
+    title: `${c.name} — Wiki`,
     description: `${c.name}, a ${c.classLabel}-class character in My Life is an RPG.`,
   };
 }
@@ -59,10 +59,6 @@ export default async function CharacterPage({
 
   const p = PRONOUN[c.gender ?? "female"] ?? PRONOUN.female;
   const prompt = buildCharacterPrompt(c);
-  const joinClause =
-    c.joinsDay === 0
-      ? "introduced on Day 0, where he runs the tutorial"
-      : `introduced on Day ${c.joinsDay}`;
 
   const infobox = (
     <>
@@ -104,60 +100,60 @@ export default async function CharacterPage({
     <WikiPage
       title={c.name}
       breadcrumb={[
-        { label: "The Codex", href: "/wiki" },
+        { label: "Wiki", href: "/wiki" },
         { label: "Characters", href: "/wiki/characters" },
       ]}
       infobox={infobox}
       toc={[
-        { id: "role", label: "Role" },
-        { id: "voice", label: "Voice" },
-        ...(c.starterPrompts.length ? [{ id: "openers", label: "Sample openers" }] : []),
+        { id: "who", label: `Who ${c.name} is` },
+        { id: "help", label: `What ${p.subj} helps with` },
+        ...(c.starterPrompts.length ? [{ id: "openers", label: "Stuff to open with" }] : []),
         { id: "art", label: "Art" },
-        { id: "community-notes", label: "Discussion" },
+        { id: "community-notes", label: "Talk" },
       ]}
       navbox={navbox}
     >
-      {/* Lead paragraph — encyclopedic. */}
+      {/* Lead — casual. */}
       <p className="text-[15px] leading-[1.6] mb-1">
-        <strong>{c.name}</strong> is a {c.classLabel}-class character in{" "}
-        <em>My Life is an RPG</em> and one of the four canonical members of the
-        squad. {p.Subj} is {joinClause} and holds the{" "}
-        <WikiLink to={c.id}>{STAT_LANE[c.id] ?? "—"}</WikiLink> stat lane; {p.poss.toLowerCase()}{" "}
-        domain is {c.specialty}.
-        {c.archetype && ` ${p.Subj} is characterised as a ${c.archetype.toLowerCase()}.`}
+        <strong>{c.name}</strong> is the squad&apos;s {c.classLabel}.{" "}
+        {p.poss} whole thing is {c.specialty}
+        {c.archetype ? ` — ${c.archetype.toLowerCase()}` : ""}.{" "}
+        {c.joinsDay === 0
+          ? `You meet ${c.name} on Day 0 — ${p.subj} runs the tutorial.`
+          : `You first meet ${c.name} on Day ${c.joinsDay}.`}{" "}
+        {p.Subj} covers the{" "}
+        <WikiLink to={c.id}>{STAT_LANE[c.id] ?? "—"}</WikiLink> stat.
       </p>
 
-      <SectionHead id="role">Role</SectionHead>
+      <SectionHead id="who">👤 Who {c.name} is</SectionHead>
       <p className="text-[15px] leading-[1.6]">
-        {c.name} is a <strong>locked canonical sheet</strong>: the player can
-        talk with {p.subj}, toggle which memories and skills {p.subj} carries
-        into a reply, and delete notes, but cannot edit {p.poss.toLowerCase()}{" "}
-        personality. {p.Subj} occupies the {STAT_LANE[c.id] ?? "—"} stat lane —
-        actions in {p.poss.toLowerCase()} domain ({c.specialty}) move that stat.
-        See <WikiLink to="trichotomy">the daily loop</WikiLink> for how choices
-        earn stats.
+        {c.name} is a <strong>set character</strong> — you can&apos;t change{" "}
+        {p.poss.toLowerCase()} personality. But you do talk to {p.subj}, and you
+        control what {p.subj} remembers about you: toggle any note or skill on
+        or off, or delete it. Doing things in {p.poss.toLowerCase()} area (
+        {c.specialty}) bumps your {STAT_LANE[c.id] ?? "—"} stat. See{" "}
+        <WikiLink to="trichotomy">How to Play</WikiLink> for how choices earn
+        stats.
       </p>
 
-      <SectionHead id="voice">Voice</SectionHead>
+      <SectionHead id="help">🤝 What {p.subj} helps with</SectionHead>
       {c.helpSummary ? (
         <>
-          <p className="text-[15px] leading-[1.6] mb-1">
-            In {p.poss.toLowerCase()} own words, on what {p.subj} offers the
-            player:
-          </p>
+          <p className="text-[15px] leading-[1.6] mb-1">Here&apos;s how {p.subj} puts it:</p>
           <VoiceQuote>{c.helpSummary}</VoiceQuote>
         </>
       ) : (
         <p className="text-[15px] leading-[1.6] text-margin-ink italic">
-          (No player-help line on this sheet.)
+          ({p.Subj} doesn&apos;t do player coaching — {p.subj}&apos;s the one who
+          explains the game.)
         </p>
       )}
 
       {c.starterPrompts.length > 0 && (
         <>
-          <SectionHead id="openers">Sample openers</SectionHead>
+          <SectionHead id="openers">💬 Stuff to open with</SectionHead>
           <p className="text-[15px] leading-[1.6] mb-1.5">
-            Lines the empty chat suggests the player might open with:
+            Lines the chat suggests when you don&apos;t know where to start:
           </p>
           <ul className="list-disc list-inside m-0 p-0 space-y-1">
             {c.starterPrompts.map((s, i) => (
@@ -169,10 +165,11 @@ export default async function CharacterPage({
         </>
       )}
 
-      <SectionHead id="art">Art</SectionHead>
+      <SectionHead id="art">🎨 Art</SectionHead>
       <p className="text-[14px] leading-[1.55] text-ink-soft mb-3">
-        No portrait has been produced yet. The brief below builds the subject
-        from {c.name}&apos;s canonical sheet and adds the house art direction.
+        No picture yet! Here&apos;s a ready-to-paste prompt that builds {c.name}{" "}
+        from {p.poss.toLowerCase()} character sheet plus the game&apos;s art
+        style — drop it into an image generator.
       </p>
       <ImagePrompt bundle={prompt} kind="portrait" />
 

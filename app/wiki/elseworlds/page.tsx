@@ -6,7 +6,7 @@ import { WikiPage } from "../_components/WikiChrome";
 import { vibeBands, elseworldSampleByBand } from "../wiki-data";
 
 export const metadata = {
-  title: "Elseworlds — The Codex",
+  title: "Elseworlds — Wiki",
   description: "The six vibe bands of My Life is an RPG and their sample encounters.",
 };
 
@@ -15,7 +15,7 @@ export default function ElseworldsIndex() {
     <WikiPage
       kicker="▸ THE CREATIVITY LANE"
       title="Elseworlds"
-      breadcrumb={[{ label: "The Codex", href: "/wiki" }]}
+      breadcrumb={[{ label: "Wiki", href: "/wiki" }]}
     >
       <p className="text-ink-soft leading-[1.6] mb-6">
         Step through a portal in the <Link href="/wiki/atlas" className="text-forest hover:text-spot-red">Courtyard</Link>{" "}

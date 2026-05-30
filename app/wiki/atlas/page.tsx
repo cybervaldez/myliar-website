@@ -12,7 +12,7 @@ import { phoneRealmMap, vibeBands } from "../wiki-data";
 import { anchors } from "../notes";
 
 export const metadata = {
-  title: "Atlas — The Codex",
+  title: "Atlas — Wiki",
   description: "The Courtyard — the phone-realm map of My Life is an RPG.",
 };
 
@@ -50,7 +50,7 @@ export default function AtlasPage() {
     <WikiPage
       kicker="▸ ATLAS · PHONE REALM"
       title="The Courtyard"
-      breadcrumb={[{ label: "The Codex", href: "/wiki" }]}
+      breadcrumb={[{ label: "Wiki", href: "/wiki" }]}
       infobox={infobox}
       navbox={
         <Navbox
