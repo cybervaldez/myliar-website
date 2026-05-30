@@ -9,6 +9,8 @@ import {
   SectionHead,
   VoiceQuote,
 } from "../../_components/WikiChrome";
+import { ImagePrompt, PortraitPlaceholder } from "../../_components/ImagePrompt";
+import { buildSamplePrompt } from "../../art-direction";
 import { vibeBands, elseworldSampleByBand } from "../../wiki-data";
 
 export function generateStaticParams() {
@@ -54,8 +56,12 @@ export default async function BandPage({
       ].filter((o) => o.opt)
     : [];
 
+  const samplePrompt = s && !rolledLive ? buildSamplePrompt(s, b) : null;
+
   const infobox =
     s && !rolledLive ? (
+      <>
+      <PortraitPlaceholder caption={`${s.name!.toUpperCase()} · ${b.label.toUpperCase()}`} />
       <Infobox
         title={s.name!}
         subtitle={`${s.classLabel ?? ""} · sample encounter`}
@@ -71,6 +77,7 @@ export default async function BandPage({
         ]}
         footer="Elseworld characters are fully customizable, bounded by the world rules."
       />
+      </>
     ) : (
       <Infobox
         title={b.label}
@@ -171,6 +178,17 @@ export default async function BandPage({
               </div>
             </>
           )}
+        </>
+      )}
+
+      {samplePrompt && (
+        <>
+          <SectionHead>Art · portrait brief</SectionHead>
+          <p className="text-[14px] leading-[1.55] text-ink-soft mb-3">
+            A paste-ready prompt for {s!.name}, built from the sample sheet and
+            the {b.label} vibe.
+          </p>
+          <ImagePrompt bundle={samplePrompt} kind="portrait" />
         </>
       )}
 

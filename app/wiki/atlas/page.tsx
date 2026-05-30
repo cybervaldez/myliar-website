@@ -4,7 +4,9 @@
 
 import Link from "next/link";
 import { PannableAscii } from "../../components/PannableAscii";
-import { WikiPage, Infobox, Navbox } from "../_components/WikiChrome";
+import { WikiPage, Infobox, Navbox, SectionHead } from "../_components/WikiChrome";
+import { ImagePrompt } from "../_components/ImagePrompt";
+import { buildCourtyardPrompt } from "../art-direction";
 import { phoneRealmMap, vibeBands } from "../wiki-data";
 
 export const metadata = {
@@ -80,7 +82,14 @@ export default function AtlasPage() {
         . The Elseworld realm maps are still on the cartographer&apos;s queue.
       </p>
 
-      <p className="text-[12.5px] text-margin-ink italic">
+      <SectionHead>Art · key-art brief</SectionHead>
+      <p className="text-[14px] leading-[1.55] text-ink-soft mb-3">
+        No rendered key art yet — here&apos;s a paste-ready scene prompt for the
+        Courtyard.
+      </p>
+      <ImagePrompt bundle={buildCourtyardPrompt()} kind="scene" />
+
+      <p className="text-[12.5px] text-margin-ink italic mt-9">
         This map is generated from the game&apos;s runtime asset — it is the
         same courtyard the in-game viewer renders.
       </p>

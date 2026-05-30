@@ -11,6 +11,8 @@ import {
   VoiceQuote,
   WikiLink,
 } from "../../_components/WikiChrome";
+import { ImagePrompt, PortraitPlaceholder } from "../../_components/ImagePrompt";
+import { buildCharacterPrompt } from "../../art-direction";
 import { squad, characterById } from "../../wiki-data";
 
 export function generateStaticParams() {
@@ -51,9 +53,12 @@ export default async function CharacterPage({
   if (!c) notFound();
 
   const gender = c.gender === "female" ? "♀ she/her" : "♂ he/him";
+  const prompt = buildCharacterPrompt(c);
 
   const infobox = (
-    <Infobox
+    <>
+      <PortraitPlaceholder caption={`${c.name.toUpperCase()} · ${c.classLabel.toUpperCase()}`} />
+      <Infobox
       title={c.name}
       subtitle={`${c.classLabel} · ${c.specialty}`}
       rows={[
@@ -79,7 +84,8 @@ export default async function CharacterPage({
         { label: "CUSTOMIZABLE", value: "No — locked canon" },
       ]}
       footer="Locked canonical sheet. Chat yes, toggle context yes, edit no."
-    />
+      />
+    </>
   );
 
   const navbox = (
@@ -132,9 +138,18 @@ export default async function CharacterPage({
         </>
       )}
 
+      <SectionHead>Art · portrait brief</SectionHead>
+      <p className="text-[14px] leading-[1.55] text-ink-soft mb-3">
+        No portrait yet — here&apos;s a paste-ready prompt instead. The subject
+        is built from {c.name}&apos;s canonical sheet; the visual style is the
+        house art direction so the whole roster renders as one set.
+      </p>
+      <ImagePrompt bundle={prompt} kind="portrait" />
+
       <p className="mt-9 text-[12.5px] text-margin-ink italic">
-        Facts on this page are generated from the game&apos;s own character
-        sheet — they always match what ships.
+        Character facts are generated from the game&apos;s own sheet; the visual
+        design in the brief is editorial art direction (the game has no portrait
+        data yet).
       </p>
     </WikiPage>
   );
