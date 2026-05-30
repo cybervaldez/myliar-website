@@ -218,7 +218,9 @@
       <li><a href="#writers-room">2.1 · /writers-room — the narrative-craft panel</a><span class="dot"></span><span class="pg">06</span></li>
       <li><a href="#team">2.2 · /team — strategic experts</a><span class="dot"></span><span class="pg">08</span></li>
       <li><a href="#kaizen">2.3 · /kaizen — user-perspective personas</a><span class="dot"></span><span class="pg">09</span></li>
-      <li><a href="#beat-sheet">3 · The beat-sheet format</a><span class="dot"></span><span class="pg">10</span></li>
+      <li><a href="#asset-generation">2.4 · /asset-generation — ASCII-first asset prototyping</a><span class="dot"></span><span class="pg">10</span></li>
+      <li><a href="#worldbuilding">2.5 · /worldbuilding — realm maps + the atlas</a><span class="dot"></span><span class="pg">11</span></li>
+      <li><a href="#beat-sheet">3 · The beat-sheet format</a><span class="dot"></span><span class="pg">12</span></li>
       <li><a href="#pregen">4 · The pregeneration pipeline</a><span class="dot"></span><span class="pg">12</span></li>
       <li><a href="#voice-gate">5 · The voice gate</a><span class="dot"></span><span class="pg">14</span></li>
       <li><a href="#cycle">6 · The campaign-author's cycle</a><span class="dot"></span><span class="pg">15</span></li>
@@ -321,10 +323,14 @@
   <section id="skills">
     <hr class="rule flourish">
     <h2>2 · Your panels (the skills)</h2>
-    <p>Three skills shape canon work. Each is a fictional panel of
-    experts you can summon mid-decision. They argue with each other,
+    <p>Five skills shape canon work. Three are fictional panels of
+    experts you can summon mid-decision (they argue with each other,
     they reference each other, and exactly one of them — Riley — has
-    veto power on every consultation.</p>
+    veto power on every consultation). The other two are workflows:
+    <code>/asset-generation</code> for image assets, and
+    <code>/worldbuilding</code> for the realm maps that ground every
+    encounter and every chat in a place. Both workflows route their
+    output through the writers-room panel for ratification.</p>
 
     <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
       <tr style="background: var(--paper-shade);">
@@ -346,6 +352,16 @@
         <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;"><strong>/kaizen</strong></td>
         <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Diverse user perspectives on a screen, flow, or feature.</td>
         <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Persona-driven reactions — accessibility, age-spectrum, cultural read, emotional read</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;"><strong>/asset-generation</strong></td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Image assets — portraits, items, vibe covers, key art, badges.</td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">ASCII sketch (cheap, iterable) → polished image-gen prompt locked to the cream-paper/forest/spot-red palette</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;"><strong>/worldbuilding</strong></td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">Realm maps — the canonical phone-realm + each Elseworld band. Adding a new canonical character, expanding a character's space behind a REL gate, or shipping a new wing.</td>
+        <td style="padding: 8px; border: 1px solid var(--ink); vertical-align: top;">ASCII map (panel-ratified by Diego/Hiroshi/Riley) → author doc at docs/design/realm-maps/&lt;id&gt;.md → runtime asset at assets/realm-maps/&lt;id&gt;.txt → in-game viewer renders it</td>
       </tr>
     </table>
     <div class="pageno">05</div>
@@ -429,7 +445,7 @@
     </div>
 
     <h3>How to summon them</h3>
-    <pre>/writers-room "review run-004/onboarding_hana_d1.json for voice"
+    <pre>/writers-room "review run-005/onboarding_hana_d1.json for voice"
 
 /writers-room casual,kai,helena "design Day 14 — Hana confession beat"
 
@@ -515,6 +531,178 @@
     </div>
 
     <div class="pageno">09</div>
+  </section>
+
+  <!-- ═══ 2.4 · ASSET-GENERATION ═════════════════════════════════ -->
+  <section id="asset-generation">
+    <hr class="rule flourish">
+    <h2>2.4 · /asset-generation — ASCII-first asset prototyping</h2>
+
+    <p>This one is not a panel. It's a two-stage workflow for image
+    assets — character portraits, item-card illustrations, vibe-band
+    covers, key art, achievement badges. Stage 1 is an ASCII sketch
+    (cheap, iterable in chat). Stage 2 — only once you've approved
+    the composition — is a polished image-gen prompt that locks the
+    palette, register, and negative-space discipline.</p>
+
+    <p>Why this exists: a bad image-gen prompt produces a bad image,
+    and the cost of regenerating is ~30 s + a credit + the temptation
+    to "make it work" instead of fix the brief. The composition
+    (subject placement, framing, focal hierarchy, palette choice) is
+    decidable WITHOUT pixels. The ASCII step makes that loop free.</p>
+
+    <h3>The five modes</h3>
+    <ul>
+      <li><strong>SKETCH</strong> (default) — ASCII mockup with framing,
+      pose, palette swatches, style annotations. Iterate cheaply.</li>
+      <li><strong>PROMPT</strong> — engine-agnostic prompt with
+      per-engine tweaks (Imagen / Midjourney / DALL-E / SDXL).</li>
+      <li><strong>CATALOG</strong> — walks <code>assets/images/</code> and
+      tabulates present vs missing assets per type.</li>
+      <li><strong>STYLE-GUIDE</strong> — loads <code>references/style-guide.md</code>
+      (the visual language: palette, type, outline weight, register).</li>
+      <li><strong>RE-SPEC</strong> — given a generated image that
+      didn't land, produces a critique + revised ASCII + updated prompt.</li>
+    </ul>
+
+    <pre>/asset-generation Hana portrait for the squad tile, runner, brisk
+
+/asset-generation ship it
+# (after approving the ASCII)
+
+/asset-generation catalog
+# (lists present/missing assets)</pre>
+
+    <div class="protip">
+      <div class="protip-header">▶ Image gen NOT integrated (v1)</div>
+      <p>The skill emits prompts; you run them in your tool of choice
+      (Midjourney via Discord, Imagen via Gemini, DALL-E via ChatGPT,
+      SDXL locally). v2 may integrate Gemini Imagen if we add the
+      dependency. Output destination convention is
+      <code>assets/images/{portraits,items/{relics,keepsakes,mementos},
+      elseworld-vibes,keyart,badges}/</code>; create subfolders only
+      when the first asset of that type ships.</p>
+    </div>
+
+    <div class="marginalia">
+      Cultural pop-reference register: RPG / fantasy / tabletop / JRPG
+      / isekai / cottagecore. Never superhero / MCU / capeshit. The
+      style guide hex-locks the palette so the AI doesn't drift off
+      cream paper into stock-art beige.
+    </div>
+    <div class="pageno">10</div>
+  </section>
+
+  <!-- ═══ 2.5 · WORLDBUILDING ════════════════════════════════════ -->
+  <section id="worldbuilding">
+    <hr class="rule flourish">
+    <h2>2.5 · /worldbuilding — realm maps + the atlas</h2>
+
+    <p>Same two-stage philosophy as <code>/asset-generation</code>:
+    an ASCII draft (cheap, iterable in chat) precedes any shipped
+    artifact. The output is a realm map — chunky-frame ASCII tile
+    art, anchor letters for characters, a mandatory legend block —
+    that ships both as an author doc and a runtime asset the
+    in-game viewer reads with a monospace font.</p>
+
+    <p>The game has strong character voice. What it didn't have until
+    v0.0.24 was a persistent geography both the player and the LLM
+    can point at. Maps fix that: Hana's space stops being "her gym"
+    and becomes <em>the track + the bleachers + the foam-roller
+    corner</em>, drawn the same way every time, referenced the same
+    way by every scenario.</p>
+
+    <h3>The parity rule (load-bearing)</h3>
+    <p>Same grammar, dual render mode:</p>
+    <ul>
+      <li><strong><code>navigable</code></strong> — phone-realm
+      only. Anchors are TAPPABLE in the viewer (v0.0.25+: tap
+      Hana's <code>H</code> → opens her chat). <code>H!</code>
+      suffix appears when the character has new content since the
+      player's last visit (state-tracking ships v0.0.25; renderer
+      supports it now).</li>
+      <li><strong><code>contextual</code></strong> — every
+      Elseworld band. Map renders the realm's geography with the
+      ACTIVE ENCOUNTER LOCATION highlighted; other locations
+      visible but not interactive (v3 may unlock spatial
+      Elseworld navigation; v1 doesn't commit).</li>
+    </ul>
+
+    <h3>The five modes</h3>
+    <ul>
+      <li><strong>SKETCH</strong> (default) — ASCII map draft for
+      a realm. Auto-panel reviewers (Diego/Hiroshi/Riley) close
+      the output.</li>
+      <li><strong>CONNECT</strong> — authors the transition
+      between two realm maps (portal, stair, door). Updates the
+      realm graph.</li>
+      <li><strong>EXPAND</strong> — accommodates a new element:
+      a new canonical character, a REL-gated annex cell (Hana's
+      weights room), a new wing or district.</li>
+      <li><strong>AUDIT</strong> — cross-checks a map against the
+      band's worldCue, whitelistArchetypes, grammar rules,
+      continuity-object rule.</li>
+      <li><strong>META</strong> — refreshes the meta-map (the
+      hub-and-portals overview of all realms).</li>
+    </ul>
+
+    <h3>Expansion baked in from v1</h3>
+    <p>Two schema fields the v1 phone-realm map doesn't yet use,
+    but that future growth depends on:</p>
+    <ul>
+      <li><strong><code>gate</code></strong> per cell or anchor.
+      Empty = always visible. Populated = visible only when
+      condition holds (e.g., <code>hana.rel &gt;= 80</code>). Lets
+      Hana's weights room ship in a future commit by adding one
+      cell with a gate, not by rewriting the renderer.</li>
+      <li><strong><code>topology</code></strong> graph (lives in
+      <code>_topology.md</code>). Lists every map + which other
+      maps it connects to + via what threshold (<code>%</code>
+      portal, <code>&lt;&gt;</code> stair, <code>+</code> door).
+      Lets future wings (rooftop, basement, side-quest district)
+      plug in without renderer changes.</li>
+    </ul>
+
+    <h3>The standing panel</h3>
+    <p>Every map ships through /writers-room with three reviewers
+    auto-included:</p>
+    <ul>
+      <li><strong>🗡 Diego (Zelda fan)</strong> — dungeon-promise
+      lens. Catches symmetric office-floor-plan layouts; pushes
+      for silhouettes that commit to a vibe.</li>
+      <li><strong>🐉 Hiroshi (Pathfinder GM)</strong> — texture
+      lens. Enforces the 3-5-named-objects-per-space rule + the
+      continuity-objects-bridge-spaces rule.</li>
+      <li><strong>🛡 Riley (casual player)</strong> — 5-second
+      legibility gate. Ships or kills the map.</li>
+    </ul>
+
+    <pre>/worldbuilding sketch cottagecore-and-cozy
+
+/worldbuilding expand phone-realm with new-character: Vera, locksmith
+
+/worldbuilding audit isekai-and-party-rpg
+# (checks Tavern Between Worlds against its sub-portal cross-realm rule)</pre>
+
+    <div class="protip">
+      <div class="protip-header">▶ Author docs vs runtime assets</div>
+      <p>The source of truth for a realm is
+      <code>docs/design/realm-maps/&lt;id&gt;.md</code> — has
+      revision history, continuity-object notes, gate documentation,
+      panel ratification record. The runtime asset is
+      <code>assets/realm-maps/&lt;id&gt;.txt</code> — stripped to
+      front-matter + map block + legend block, no markdown chrome.
+      <code>/worldbuilding</code> generates both; you commit both.</p>
+    </div>
+
+    <div class="marginalia">
+      Phone-realm metaphor is "village green," not "four-corner
+      courtyard." Scales to 7+ canonical characters; the quadrilateral
+      breaks at 5. When the squad grows past 7, switch to "campus"
+      or "neighborhood." Panel decides; the metaphor field is in
+      the asset front-matter for everyone to see.
+    </div>
+    <div class="pageno">11</div>
   </section>
 
   <!-- ═══ 3 · BEAT SHEET ══════════════════════════════════════════ -->
@@ -611,20 +799,19 @@ memoryNote: Hana clocks the cadence of the player's reply, file as
       <div class="stamp">MARISOL'S CARD</div>
       <div class="title">How to generate one Main Line day</div>
       <ol>
-        <li>Author <code>docs/authored-beats/dayN.beat.md</code>. Get
-        the structure right — voice is the LLM's job, but stakes,
+        <li>Author <code>docs/authored-beats/run-005/dN.beat.md</code>.
+        Get the structure right — voice is the LLM's job, but stakes,
         item slots, inquiries, and tier-up are yours.</li>
-        <li>Pick an exemplar payload from run-003 (the hand-authored
-        baseline) — the one whose shape most resembles the day you're
-        generating. Onboarding days use Hana D1 as the canonical
-        exemplar; introductions can use D3 once they exist.</li>
+        <li>Pick an exemplar payload from <code>assets/payloads/run-005/</code>
+        — the one whose shape most resembles the day you're generating.
+        Onboarding days use Hana D1 as the canonical exemplar.</li>
         <li>Set <code>GEMINI_API_KEY</code> in your environment.</li>
         <li>Run:</li>
       </ol>
       <pre style="margin-top: 10px;">dart run tools/pregenerate_main_quest.dart \
   --beat docs/authored-beats/day8.beat.md \
-  --exemplar assets/payloads/run-003/onboarding_hana_d1.json \
-  --out assets/payloads/run-004/daily_hana_d8.json</pre>
+  --exemplar assets/payloads/run-005/onboarding_hana_d1.json \
+  --out assets/payloads/run-005/daily_hana_d8.json</pre>
       <ol start="5">
         <li>Inspect the output. The CLI runs a light validation pass
         (event count, character id match, schema completeness) but the
@@ -635,7 +822,7 @@ memoryNote: Hana clocks the cadence of the player's reply, file as
         (never edit the JSON output by hand for prose changes — that
         defeats the parity discipline). Re-run.</li>
         <li>If SHIP: commit both the beat sheet AND the payload. Update
-        <code>assets/payloads/run-004/manifest.json</code>.</li>
+        <code>assets/payloads/run-005/manifest.json</code>.</li>
       </ol>
     </div>
 
@@ -690,7 +877,62 @@ memoryNote: Hana clocks the cadence of the player's reply, file as
       gen succeeded on the re-roll. Always trust the gate before
       hand-editing the output.
     </div>
-    <div class="pageno">14</div>
+
+    <h3>5.1 · The Elseworld archetype gate (v0.0.23.12)</h3>
+
+    <p>The voice gate above protects Main Line canonical characters
+    (Hana / Kenji / Mei / Sam — locked sheets we hand-author). Elseworld
+    encounters are a different beast: the LLM invents the character live
+    at the player's device. /writers-room can't ratify each one
+    individually. So we ship a different gate — three-layer, enforced
+    in code at <code>lib/encounter_gen.dart</code>.</p>
+
+    <ol>
+      <li><strong>Per-band WHITELIST</strong> (positive examples). Each
+      vibe in <code>lib/elseworld_vibes.dart</code> carries 7–9 named
+      archetype shapes. The prompt instructs the LLM to PICK FROM the
+      list, not invent. Positive lists beat negative ones — generative
+      models are bad at "do not" and good at "pick from this menu."</li>
+      <li><strong>Per-band + cross-band BLACKLIST</strong> (negative bans).
+      Per-band catches identity breaks (no "high-stakes saving the
+      kingdom" in cottagecore; no "office worker" in isekai-party-rpg).
+      Cross-band catches universal: superheroes, hard sci-fi, space-opera,
+      military-shooter, contemporary drama, detective-noir, photoreal
+      horror, romance leads (love interest / coy / tsundere / yandere /
+      flirtatious mentor / "meaningful eye contact"), meta-fiction /
+      fourth-wall break, real political figures, "AI assistant" self-id.</li>
+      <li><strong>Post-validate + retry</strong>. After generation,
+      <code>validateEncounter()</code> substring-scans the archetype +
+      persona + first-voice for blacklist hits AND verifies the archetype
+      matches a whitelisted shape. On reject → ONE silent retry → on
+      second reject → fall back to the band's hand-authored sample
+      (which the writers-room ratified). Cheap (no second LLM call).</li>
+    </ol>
+
+    <p>Each ElseworldVibe also carries three structural fields that
+    tighten generation quality:</p>
+
+    <ul>
+      <li><strong><code>posture</code></strong> (Helena) — one-sentence
+      stance every character in this band inherits.</li>
+      <li><strong><code>worldCue</code></strong> (Diego) — the shared
+      setting all archetypes commit to (without it, "library-cafe ghost"
+      + "beekeeper-druid" land in two different worlds).</li>
+      <li><strong><code>helperTendencyCoverage</code></strong> (Marcus) —
+      explicit map of which archetype fulfills which helper-tendency tag
+      (<code>push / reflect / accountability / mentor / comfort / create</code>).
+      Every band MUST cover all six or the bias system lies.</li>
+    </ul>
+
+    <p>To add or revise a whitelist shape: route through
+    <code>/writers-room</code> with Helena (voice), Marcus (coverage),
+    Sara (cold-open viability), Riley (legibility). To add or remove a
+    cross-band ban: panel must include Kai (romance-floor risk) and
+    Yuki (genre-purity). Full schema + per-band content in
+    <code>lib/elseworld_vibes.dart</code>; full gate model in
+    <code>docs/design/rpg-framing.md</code>.</p>
+
+    <div class="pageno">15</div>
   </section>
 
   <!-- ═══ 6 · CYCLE ═══════════════════════════════════════════════ -->
@@ -698,17 +940,27 @@ memoryNote: Hana clocks the cadence of the player's reply, file as
     <hr class="rule flourish">
     <h2>6 · The campaign-author's cycle</h2>
 
-    <p>This is the loop you'll run. It's stolen from screenwriting and
-    bent to fit a system where the language model writes the prose.</p>
+    <p>This is the <strong>drafting engine</strong> — the loop you run once a
+    change has been <em>approved</em>. As of v0.0.30 every story change (a
+    revision OR a new day / character / arc) enters through ONE front door:
+    a <strong>note</strong> on the wiki ("The Codex"), adjudicated by
+    <code>/writers-room</code> in the triage loop. APPROVE → you run the
+    cycle below to draft the edit and a human ratifies it; REJECT → it's
+    declined with a reply; the note is the audit trail. The cycle itself is
+    stolen from screenwriting and bent to fit a system where the language
+    model writes the prose. See <code>docs/V2_TODO.md</code> item 7b and the
+    <code>/writers-room</code> skill's "community-notes feedback loop"
+    section for the full funnel.</p>
 
     <div class="recipe">
       <div class="stamp">RILEY'S CARD</div>
       <div class="title">One iteration of the cycle</div>
       <ol>
-        <li><strong>Brief</strong> — open <code>/writers-room produce
-        "Day N beat sheet"</code> with the day's intent (1 sentence)
-        + the focal character + any constraints (REL tier target,
-        item it needs to drop, callback to track).</li>
+        <li><strong>Brief</strong> — an APPROVED expansion note becomes
+        the brief. Open <code>/writers-room produce "Day N beat sheet"</code>
+        with the note's intent (1 sentence) + the focal character + any
+        constraints (REL tier target, item it needs to drop, callback to
+        track).</li>
         <li><strong>Beat</strong> — author the markdown. Don't write
         prose; write stakes. If you find yourself writing dialogue,
         you've gone too deep — back up and write what the dialogue
@@ -724,9 +976,11 @@ memoryNote: Hana clocks the cadence of the player's reply, file as
         with Elseworld gen.</li>
         <li><strong>Re-generate</strong> — if you touched the beat or
         the prompt, regenerate. Same CLI, same exemplar.</li>
-        <li><strong>Ship</strong> — when Riley says ship, commit the
-        beat sheet AND the payload AND any prompt changes. Update
-        the manifest. Open a new beat sheet for Day N+1.</li>
+        <li><strong>Ship</strong> — when Riley says ship, the human
+        ratifies: commit the beat sheet AND the payload AND any prompt
+        changes, flip the originating note to <code>applied</code>, and run
+        <code>npm run parity</code> so the wiki re-syncs to the new canon.
+        Open a new beat sheet for Day N+1.</li>
       </ol>
     </div>
 
@@ -789,10 +1043,10 @@ memoryNote: Hana clocks the cadence of the player's reply, file as
     which honors a runtime-switchable <code>activeRunId</code>.</p>
 
     <div class="marginalia">
-      The Main Line is currently <code>run-004</code> (LLM-pregenerated,
-      panel-approved). <code>run-003</code> remains in the bundle as a
-      fallback dev-overlay can toggle to. Future campaigns will get
-      <code>run-005</code>, <code>run-006</code>, etc.
+      The Main Line is currently <code>run-005</code> (realm-map era:
+      authored-beat pipeline + dual-path B1/B2 panel review + RPG-MOTIF
+      BLEND gate). Pre-realm-map runs (003/004) were deleted in v0.0.27.
+      Future campaigns will get <code>run-006</code>, etc.
     </div>
     <div class="pageno">17 — 18</div>
   </section>
@@ -845,6 +1099,54 @@ memoryNote: Hana clocks the cadence of the player's reply, file as
     <div class="pageno">19</div>
   </section>
 
+  <!-- ═══ 8.5 · PLAYER-AUTHORED REALMS ════════════════════════════ -->
+  <!-- v0.0.30.10 — new section per /team panel. Campaign creators
+       need to know what their PLAYERS can author when Sam-as-
+       editor runs in their games. Architectural details live in
+       docs/design/realm-editor-spec.md; this section explains the
+       in-fiction flow + the campaign-author's relationship to it. -->
+  <section id="player-realms">
+    <hr class="rule flourish">
+    <h2>8.5 · Player-authored realms (the Sam-as-editor flow)</h2>
+
+    <p>As of v0.0.28 there's a parallel content lane: players can sketch their own realms via Sam-as-editor. As a campaign author, you don't write these (your players do), but you should know what your players can build and how it relates to the canonical content you authored.</p>
+
+    <h3>What players can build</h3>
+    <p>Custom realms are <em>viewable artifacts</em> in v1 &mdash; ASCII map spaces with named anchors, a portal connection back to the courtyard, a "weird thing" sentence, and optional canonical-squad occupants. They render through the same pan/zoom viewer as your canonical realm maps and persist locally on the player's device. Up to 20 per player (soft cap).</p>
+
+    <h3>How the build flow runs</h3>
+    <p>Sam runs a chip-driven Q&amp;A in a dedicated chat surface (title bar reads <strong>SAM &middot; BUILDING</strong>). Five turns max:</p>
+    <ol>
+      <li><strong>Brief</strong> &mdash; "what's this realm FOR." One sentence. The casual player can also tap <em>just make one</em> at any point to skip the rest.</li>
+      <li><strong>Purpose</strong> &mdash; destination or atmosphere or both.</li>
+      <li><strong>Occupants</strong> &mdash; canonical squad members, someone new, or just the player.</li>
+      <li><strong>Weird thing</strong> &mdash; one sentence that doesn't have to make sense. Sam offers 3 example chips (<em>"the lights flicker on a 7-second cycle"</em>, etc.) plus a type-in option.</li>
+      <li><strong>Portal look</strong> &mdash; doorway, path, tear in the air.</li>
+    </ol>
+    <p>Then Sam generates a structured RealmSpec via a session-aware LLM call. A Dart-side <code>RealmRenderer</code> composes the ASCII body and LEGEND from the spec; the LLM never writes ASCII art directly. The artifact appears as a tappable chunky-frame card in chat with the working title and a 6-line fragment preview.</p>
+
+    <h3>Voice constraints (the gate)</h3>
+    <p>Sam's build-mode preamble enforces the same canonical voice constraints as the rest of his chat surface, with one addition: an explicit banned-phrase list that includes the fourth-wall words <em>algorithm</em>, <em>the model</em>, <em>I'm an AI</em>, <em>LLM</em>, <em>generated</em>, <em>output</em>, <em>prompt</em>, plus the standard enthusiasm leaks (<em>great</em>, <em>awesome</em>, <em>perfect</em>) and apology leaks (<em>sorry</em>, <em>apologize</em>). The banned list was codified after a v0.0.27.6 live-Gemini stress test caught Sam drifting into <em>"my algorithm for 'calm' is apparently just irritating"</em> at the reset stage.</p>
+
+    <h3>Marcus's blend gate, verbally honored</h3>
+    <p>Custom realms still have to pass Marcus's RPG-MOTIF BLEND check: at least one anchor must carry a <code>statLane</code> (STR / INT / GLD / CHR). The code-side validator enforces this before any realm ships. The verbal side &mdash; Sam's <strong>describe</strong> chip narration &mdash; names the stat lane on each anchor (<em>"the [bench] is INT-coded &mdash; this is where you'd sit when you need to think hard"</em>) when no canonical occupant is placed, or names the squad member (<em>"Hana would sit there"</em>) when one is. Both honor the blend without quoting the +STAT diction.</p>
+
+    <h3>Your relationship as campaign author</h3>
+    <p>You don't review or curate player-authored realms. The world-rules gate (banned words, Marcus's blend gate, the renderer's tile-palette discipline) is the safety net. If a player builds something that violates the canon, the gate catches it; you don't get pinged. This is intentional &mdash; the Trust lane (canonical content you authored) and the Creativity lane (player-authored realms) share the same world rules but ship independently.</p>
+
+    <h3>v2 deferred</h3>
+    <p>What players can NOT do in v1:</p>
+    <ul>
+      <li>Make the squad characters chat <em>as if they're in</em> the custom realm. Hana's chat preamble doesn't yet know she's been placed in <em>the small calm one</em>. This is the v2 roadmap commitment, held as exploratory until v0.0.28 players signal demand.</li>
+      <li>Run canonical narrative events inside a custom realm. The Side Quest scenario surface remains gated on canonical realm context.</li>
+      <li>Share custom realms with other players. v1 storage is local-only.</li>
+      <li>Edit a shipped realm. Build-then-ship is the only flow; revising a shipped realm means starting fresh.</li>
+    </ul>
+    <p>If you want to dig into the architecture, the authoritative spec is at <code>docs/design/realm-editor-spec.md</code> (~968 lines, six panel ratifications, live Gemini validation report). It covers the renderer-split design, the chip envelope contract, the failure-mode table, and the kill-switch metrics tracked in dev-overlay analytics.</p>
+
+    <div class="pageno">20</div>
+  </section>
+
   <!-- ═══ 9 · COLOPHON ═══════════════════════════════════════════ -->
   <section id="colophon">
     <hr class="rule flourish">
@@ -856,15 +1158,16 @@ memoryNote: Hana clocks the cadence of the player's reply, file as
       <li><code>.claude/skills/team/SKILL.md</code> — full /team definition</li>
       <li><code>.claude/skills/kaizen/SKILL.md</code> — full /kaizen definition</li>
       <li><code>docs/design/rpg-framing.md</code> — cosmology + banned-word source of truth</li>
+      <li><code>docs/design/realm-editor-spec.md</code> — Sam-as-editor architecture spec (v0.0.28+)</li>
       <li><code>docs/manual.html</code> — the player-facing booklet</li>
-      <li><code>docs/walkthrough.html</code> — player-perspective audit artifact (run-004)</li>
-      <li><code>docs/authored-beats/dayN.beat.md</code> — the beat sheets currently shipped</li>
+      <li><code>docs/walkthrough.html</code> — player-perspective audit artifact</li>
+      <li><code>docs/authored-beats/run-005/dN.beat.md</code> — the beat sheets currently shipped</li>
       <li><code>lib/pregen/main_quest_prompt.dart</code> — prompt scaffolding</li>
       <li><code>lib/pregen/beat_sheet.dart</code> — Markdown parser</li>
       <li><code>tools/pregenerate_main_quest.dart</code> — CLI</li>
       <li><code>lib/characters.dart</code> — canonical sheets for Hana/Kenji/Mei</li>
       <li><code>lib/sam.dart</code> — Sam's canonical sheet</li>
-      <li><code>assets/payloads/run-004/*.json</code> — current canon</li>
+      <li><code>assets/payloads/run-005/*.json</code> — current canon</li>
     </ul>
 
     <h3>The cardinal commitments</h3>
