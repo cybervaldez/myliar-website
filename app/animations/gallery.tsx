@@ -68,37 +68,48 @@ function Typewriter({ text }: { text: string }) {
   );
 }
 
-// Vibrant: words pop in one at a time, each shaking as it lands (dating-sim
-// dialogue energy).
-function ShakyReveal({ text }: { text: string }) {
+// Vibrant — dialog emotion drives the motion. The line carries an emphasis
+// tag (say / shout / whisper); the theme maps each to a different reveal.
+
+// SAY (normal): words pop in one at a time, properly spaced. CSS stagger via
+// per-word animation-delay, so a Demo replay (remount) restarts it cleanly.
+function WordPop({ text }: { text: string }) {
   const words = text.split(" ");
-  const [n, setN] = useState(0);
-  useEffect(() => {
-    if (prefersReduced()) { setN(words.length); return; }
-    let i = 0;
-    const id = setInterval(() => {
-      i += 1;
-      setN(i);
-      if (i >= words.length) clearInterval(id);
-    }, 130);
-    return () => clearInterval(id);
-  }, [text, words.length]);
   return (
-    <span className="adk-shaky-wrap">
-      {words.map((w, idx) => (
-        <span
-          key={idx}
-          className="adk-shaky-word"
-          style={{ visibility: idx < n ? "visible" : "hidden" }}
-        >
-          {w}{" "}
-        </span>
+    <span className="adk-vibrant">
+      {words.map((w, i) => (
+        <span key={i} className="adk-popword" style={{ animationDelay: `${i * 0.08}s` }}>{w}</span>
       ))}
     </span>
   );
 }
 
-const SAMPLE = "Hana drops the clipboard on the bench. “Same drill. Show me.”";
+// SHOUT: letter-by-letter — each glyph jitters continuously (a character
+// raising their voice). Spaces preserved so words don't stick.
+function ShoutText({ text }: { text: string }) {
+  const chars = [...text];
+  return (
+    <span className="adk-shout">
+      {chars.map((ch, i) =>
+        ch === " "
+          ? <span key={i} className="adk-sp">&nbsp;</span>
+          : <span key={i} className="adk-shoutchar" style={{ animationDelay: `${(i % 6) * 0.04}s` }}>{ch}</span>
+      )}
+    </span>
+  );
+}
+
+// WHISPER: words drift in softly, slow + faded + italic (an aside).
+function Whisper({ text }: { text: string }) {
+  const words = text.split(" ");
+  return (
+    <span className="adk-whisper">
+      {words.map((w, i) => (
+        <span key={i} className="adk-whisperword" style={{ animationDelay: `${i * 0.11}s` }}>{w}</span>
+      ))}
+    </span>
+  );
+}
 
 export default function AnimationGallery() {
   return (
@@ -107,30 +118,48 @@ export default function AnimationGallery() {
 
       <Section
         title="Text &amp; narration — themed"
-        note="Text reveal is part of a theme's personality. The theme pack carries a reveal mode; the narration widget reads it. Same line, three voices."
+        note="Text reveal is part of a theme's personality, and a line's EMPHASIS (say / shout / whisper) drives it. The theme maps emphasis its own way: DOS types everything; Parchment & Ink stays still and leans on bold/italic; Vibrant Realm animates by emotion."
       >
         <Demo
           title="DOS-era — typewriter + cursor"
-          spec="type char-by-char ~40ms/char, blinking ▌ cursor trails; the boot/terminal world"
+          spec="type char-by-char ~40ms/char, blinking ▌ cursor trails; the boot/terminal world (emphasis = caps)"
           flutter="ThemePack.textReveal = typewriter → AnimatedText types via Timer + _Cursor"
         >
-          <div className="adk-textstage adk-dos-stage"><Typewriter text="> YOU ARE STANDING IN FRONT OF A HOUSE." /></div>
+          <div className="adk-textstage adk-dos-stage"><Typewriter text="> DROP AND GIVE ME TWENTY." /></div>
         </Demo>
 
         <Demo
-          title="Parchment &amp; Ink — instant"
-          spec="NO animation — text appears at once. The serious/default world; reveal motion would cheapen it"
-          flutter="ThemePack.textReveal = instant → plain Text, no controller"
+          title="Parchment &amp; Ink — instant, bold/italic"
+          spec="NO motion — serious world. Emphasis is typographic: shout → bold, aside → italic. Appears at once"
+          flutter="ThemePack.textReveal = instant → plain Text; emphasis maps to FontWeight.bold / FontStyle.italic"
         >
-          <div className="adk-textstage"><span className="adk-ink-text">{SAMPLE}</span></div>
+          <div className="adk-textstage">
+            <span className="adk-ink-text">She didn’t raise her voice. <b>Sit down.</b> <i>(she’d only say it once.)</i></span>
+          </div>
         </Demo>
 
         <Demo
-          title="Vibrant Realm — shaky words"
-          spec="words pop in one at a time (~130ms), each shakes as it lands (dating-sim dialogue energy)"
-          flutter="ThemePack.textReveal = shaky → per-word AnimationController, shake-in tween"
+          title="Vibrant Realm — SAY (word pop)"
+          spec="words pop in one at a time, spaced (no sticking); bouncy easeOutBack ~340ms, ~80ms stagger"
+          flutter="emphasis=say → per-word AnimationController, pop-in (translateY+scale)"
         >
-          <div className="adk-textstage"><ShakyReveal text={SAMPLE} /></div>
+          <div className="adk-textstage"><WordPop text="Same drill. Show me what you’ve got." /></div>
+        </Demo>
+
+        <Demo
+          title="Vibrant Realm — SHOUT (letter shake)"
+          spec="letter-by-letter — each glyph jitters continuously; bold + spot-red. A character raising their voice"
+          flutter="emphasis=shout → per-glyph shake (continuous), bold weight, accent color"
+        >
+          <div className="adk-textstage"><ShoutText text="DROP AND GIVE ME TWENTY!" /></div>
+        </Demo>
+
+        <Demo
+          title="Vibrant Realm — WHISPER (soft drift)"
+          spec="words drift in slow + faded + italic; an aside under the breath"
+          flutter="emphasis=whisper → per-word slow fade, italic, ink-soft color"
+        >
+          <div className="adk-textstage"><Whisper text="(you actually did it.)" /></div>
         </Demo>
       </Section>
 
@@ -363,11 +392,26 @@ const CSS = `
 /* Themed text reveals */
 .adk-textstage{width:100%;font-size:14px;line-height:1.5;color:var(--ink);}
 .adk-ink-text{font-family:var(--theme-body);}
+.adk-ink-text b{font-weight:800;}
+.adk-ink-text i{color:var(--ink-soft);}
 .adk-tw{font-family:ui-monospace,monospace;font-size:12px;color:#43ff8d;}
 .adk-dos-stage{background:#00140a;padding:10px;margin:-14px;}
-@keyframes adk-shakein{0%{opacity:0;transform:translateY(3px) rotate(-3deg);}60%{opacity:1;transform:translateY(0) rotate(2deg);}100%{transform:rotate(0);}}
-.adk-shaky-wrap{font-family:var(--theme-body);font-weight:600;}
-.adk-shaky-word{display:inline-block;animation:adk-shakein .26s cubic-bezier(.34,1.56,.64,1) both;}
+
+/* Vibrant — SAY: word pop, properly spaced (margin-right, not a swallowed space) */
+.adk-vibrant{font-family:var(--theme-body);font-weight:600;}
+.adk-popword{display:inline-block;margin-right:.28em;animation:adk-pop .34s cubic-bezier(.34,1.56,.64,1) both;}
+@keyframes adk-pop{0%{opacity:0;transform:translateY(6px) scale(.8);}100%{opacity:1;transform:none;}}
+
+/* Vibrant — SHOUT: per-letter continuous jitter, bold + accent */
+.adk-shout{font-family:var(--theme-body);font-weight:800;font-size:17px;letter-spacing:.01em;color:var(--spot-red);}
+.adk-shoutchar{display:inline-block;animation:adk-letshake .26s ease-in-out infinite;}
+.adk-sp{display:inline-block;width:.3em;}
+@keyframes adk-letshake{0%,100%{transform:translate(0,0) rotate(0);}25%{transform:translate(.6px,-1.2px) rotate(-4deg);}50%{transform:translate(-.6px,1px) rotate(3deg);}75%{transform:translate(1px,.2px) rotate(1deg);}}
+
+/* Vibrant — WHISPER: soft slow drift, italic, faded */
+.adk-whisper{font-family:var(--theme-body);font-style:italic;font-size:13px;color:var(--ink-soft);}
+.adk-whisperword{display:inline-block;margin-right:.26em;animation:adk-soft .6s ease both;}
+@keyframes adk-soft{0%{opacity:0;transform:translateY(-2px);}100%{opacity:.75;transform:none;}}
 
 /* Reward stamp — scale overshoot + fade */
 @keyframes adk-stampin{0%{opacity:0;transform:scale(.85);}60%{opacity:1;transform:scale(1.06);}100%{transform:scale(1);}}
@@ -492,8 +536,8 @@ const CSS = `
 .adk-instant{font-family:var(--theme-body);font-size:12px;color:var(--ink-soft);text-align:center;}
 
 @media (prefers-reduced-motion: reduce){
-  .adk-stamp,.adk-toast,.adk-bar-fill,.adk-bloom,.adk-float,.adk-drop,.adk-relfill,.adk-shaky-word,
+  .adk-stamp,.adk-toast,.adk-bar-fill,.adk-bloom,.adk-float,.adk-drop,.adk-relfill,.adk-popword,.adk-whisperword,
   .adk-bb-fill,.adk-tbar,.adk-tlayer-rel,.adk-tlayer-battle,.adk-tbar-fill{animation-duration:.001s;}
-  .adk-cursor{animation:none;}
+  .adk-cursor,.adk-shoutchar{animation:none;}
 }
 `;
