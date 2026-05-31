@@ -56,19 +56,17 @@ export async function currentDisplayName(): Promise<string | null> {
   );
 }
 
-/** Sign in with Google. If currently an anonymous guest, LINK Google to the same
- *  uid (upgrade-in-place — keeps their comments/likes). Requires "Manual linking"
- *  enabled in Supabase Auth settings for the anonymous→OAuth path. */
+/** Sign in with Google — a plain OAuth sign-in (single redirect), back to the
+ *  current page. Works for new and returning accounts alike. We deliberately do
+ *  NOT linkIdentity-from-anonymous here: it fails with identity_already_exists
+ *  for any returning user, forcing a link→fail→signin double redirect. Guest-data
+ *  carryover ("claim your worlds") is a separate, deliberate flow (auth-model.md
+ *  Phase 3), not something to tax every sign-in with. */
 export async function signInWithGoogle(): Promise<void> {
   const c = supabase();
   if (!c) return;
   const redirectTo = typeof window !== "undefined" ? window.location.href : undefined;
-  const { data } = await c.auth.getUser();
-  if (data.user?.is_anonymous) {
-    await c.auth.linkIdentity({ provider: "google", options: { redirectTo } });
-  } else {
-    await c.auth.signInWithOAuth({ provider: "google", options: { redirectTo } });
-  }
+  await c.auth.signInWithOAuth({ provider: "google", options: { redirectTo } });
 }
 
 export async function signOut(): Promise<void> {
