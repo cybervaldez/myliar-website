@@ -171,6 +171,42 @@ export default function AnimationGallery() {
       </Section>
 
       <Section
+        title="Battle minigame  ★NEW"
+        note="A chance-based (chaotic 🎲) action can enter a themed battle — a mini version of the option-based story. The bottom bar becomes the battle HUD: the ENEMY's HP is the progress bar; the protagonist is just a name + HP number (no bar). Protagonist/enemy are whatever fits the event — here, REPS vs A PUSHUP."
+      >
+        <Demo
+          title="Battle HUD — bottom bar"
+          spec="enemy HP = the bar (spot-red, depletes on hit, easeOutCubic 500ms); protagonist = name + HP number, no bar"
+          flutter="global_activity_bar.dart — battle mode: _EnemyHpBar + hero HP label (gameState.battle)"
+        >
+          <div className="adk-battlebar">
+            <div className="adk-bb-row">
+              <span className="adk-bb-hero">REPS · <b>HP 30</b></span>
+              <span className="adk-bb-enemy">A PUSHUP</span>
+            </div>
+            <div className="adk-bar adk-bb-track"><div className="adk-bb-fill" /></div>
+            <div className="adk-bb-hp">ENEMY · HP 12 / 40</div>
+          </div>
+        </Demo>
+
+        <Demo
+          title="Battle round (mini narrative)"
+          spec="a compact option round; win drains enemy HP, lose chips the hero. Outcome maps to the chaotic crit-success/fail it replaced"
+          flutter="BattleScreen — reuses _ChoiceButton + reaction loop, shorter; themed text reveal applies"
+        >
+          <div className="adk-battle">
+            <div className="adk-battle-head">BATTLE · REPS <span>vs</span> A PUSHUP</div>
+            <div className="adk-battle-prose">“Drop and give me twenty.” The floor is cold and unimpressed.</div>
+            <div className="adk-battle-opts">
+              <div className="adk-battle-opt">PUSH — steady form <span className="adk-battle-tag">+STR</span></div>
+              <div className="adk-battle-opt">FIND A RHYTHM <span className="adk-battle-tag">pace</span></div>
+              <div className="adk-battle-opt adk-battle-chaos">EXPLODE UP <span className="adk-battle-tag">🎲 38%</span></div>
+            </div>
+          </div>
+        </Demo>
+      </Section>
+
+      <Section
         title="Post-action result — narrative screen"
         note="What the reaction card shows after a choice resolves."
       >
@@ -334,6 +370,28 @@ const CSS = `
   white-space:nowrap;animation:adk-rise 1s ease-out both;}
 .adk-float-b{animation-delay:.18s;}
 @keyframes adk-rise{0%{opacity:0;transform:translate(-50%,2px);}15%{opacity:1;}100%{opacity:0;transform:translate(-50%,-22px);}}
+
+/* Battle minigame — HUD bar (enemy HP) + battle round card */
+.adk-battlebar{width:100%;border:2px solid var(--spot-red);background:color-mix(in srgb,var(--spot-red) 4%,transparent);padding:8px 12px;}
+.adk-bb-row{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--theme-display);font-size:11px;
+  letter-spacing:.06em;color:var(--ink);text-transform:uppercase;margin-bottom:5px;}
+.adk-bb-hero b{color:var(--forest);}
+.adk-bb-enemy{color:var(--spot-red);font-weight:700;}
+.adk-bb-track{border-color:var(--spot-red);}
+.adk-bb-fill{height:100%;background:var(--spot-red);animation:adk-enemyhp .5s cubic-bezier(.22,1,.36,1) both;}
+@keyframes adk-enemyhp{0%{width:80%;}100%{width:30%;}}
+.adk-bb-hp{font-family:var(--theme-display);font-size:8px;letter-spacing:.12em;color:var(--spot-red);text-align:right;margin-top:4px;}
+
+.adk-battle{width:100%;}
+.adk-battle-head{font-family:var(--theme-display);font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--spot-red);text-transform:uppercase;margin-bottom:8px;}
+.adk-battle-head span{color:var(--margin-ink);font-size:9px;margin:0 4px;}
+.adk-battle-prose{font-family:var(--theme-body);font-size:13px;line-height:1.45;color:var(--ink);margin-bottom:10px;}
+.adk-battle-opts{display:flex;flex-direction:column;gap:6px;}
+.adk-battle-opt{font-family:var(--theme-body);font-size:12px;color:var(--ink);border:1.5px solid var(--ink);background:var(--paper);
+  padding:7px 10px;display:flex;justify-content:space-between;align-items:center;}
+.adk-battle-chaos{border-color:var(--spot-red);}
+.adk-battle-tag{font-family:var(--theme-display);font-size:9px;letter-spacing:.08em;color:var(--forest);}
+.adk-battle-chaos .adk-battle-tag{color:var(--spot-red);}
 
 /* DROPS — horizontal-scroll of reward cards (~2.5 visible, peek) */
 .adk-drops{width:100%;}
