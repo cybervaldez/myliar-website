@@ -159,10 +159,13 @@ export function navTree(): NavEntry[] {
     {
       label: "✦ Elseworlds",
       href: "/wiki/elseworlds",
-      children: vibeBands().map((b) => ({
-        label: b.label,
-        href: `/wiki/elseworlds/${b.id}`,
-      })),
+      children: [
+        { label: "🌍 Community Worlds", href: "/wiki/elseworlds/community" },
+        ...vibeBands().map((b) => ({
+          label: b.label,
+          href: `/wiki/elseworlds/${b.id}`,
+        })),
+      ],
     },
     { label: "🗺 Maps", href: "/wiki/atlas" },
     { label: "🎮 How to Play", href: "/wiki/mechanics" },
