@@ -121,11 +121,16 @@ export default function AnimationGallery() {
         note="Text reveal is part of a theme's personality, and a line's EMPHASIS (say / shout / whisper) drives it. The theme maps emphasis its own way: DOS types everything; Parchment & Ink stays still and leans on bold/italic; Vibrant Realm animates by emotion."
       >
         <Demo
-          title="DOS-era — typewriter + cursor"
-          spec="type char-by-char ~40ms/char, blinking ▌ cursor trails; the boot/terminal world (emphasis = caps)"
-          flutter="ThemePack.textReveal = typewriter → AnimatedText types via Timer + _Cursor"
+          title="DOS-era — monospace, instant + ASCII"
+          spec="NO motion — a terminal prints at once. Monospace; personality comes from ASCII art (frames/banners), not animation"
+          flutter="ThemePack.textReveal = instant + monospace; lean on ASCII art blocks for character"
         >
-          <div className="adk-textstage adk-dos-stage"><Typewriter text="> DROP AND GIVE ME TWENTY." /></div>
+          <div className="adk-textstage adk-dos-stage">
+            <pre className="adk-ascii">{`+----------------------------+
+|  > DROP AND GIVE ME 20.    |
+|    [ Y / N ] _             |
++----------------------------+`}</pre>
+          </div>
         </Demo>
 
         <Demo
@@ -160,6 +165,44 @@ export default function AnimationGallery() {
           flutter="emphasis=whisper → per-word slow fade, italic, ink-soft color"
         >
           <div className="adk-textstage"><Whisper text="(you actually did it.)" /></div>
+        </Demo>
+      </Section>
+
+      <Section
+        title="Modals &amp; popups — themed  ★NEW"
+        note="How a popup/modal enters is part of the theme's motion personality: Parchment & Ink fades (calm, no movement), Vibrant Realm slides (kinetic), DOS-era appears instantly inside an ASCII frame."
+      >
+        <Demo
+          title="Parchment &amp; Ink — fade"
+          spec="opacity 0→1 (+ a hair of scale) · 240ms ease; no positional movement — calm dissolve"
+          flutter="themed modal route: FadeTransition when active.id == parchment"
+        >
+          <div className="adk-modal adk-modal-fade">
+            <div className="adk-modal-eye">FIELD NOTES</div>
+            <div className="adk-modal-body">A bent brass key, warm from a pocket.</div>
+          </div>
+        </Demo>
+
+        <Demo
+          title="Vibrant Realm — slide"
+          spec="translateY 16px→0 + fade · easeOutBack 300ms; enters with movement"
+          flutter="themed modal route: SlideTransition when active.id == vibrant"
+        >
+          <div className="adk-modal adk-modal-slide">
+            <div className="adk-modal-eye">FIELD NOTES</div>
+            <div className="adk-modal-body">A bent brass key, warm from a pocket.</div>
+          </div>
+        </Demo>
+
+        <Demo
+          title="DOS-era — instant, ASCII frame"
+          spec="NO motion — prints at once inside a box-drawing frame; monospace"
+          flutter="themed modal route: no transition; ASCII box border"
+        >
+          <pre className="adk-ascii adk-modal-dos">{`+--------------------------+
+| FIELD NOTES              |
+| a bent brass key, warm.  |
++--------------------------+`}</pre>
         </Demo>
       </Section>
 
@@ -331,8 +374,16 @@ export default function AnimationGallery() {
 
       <Section
         title="Onboarding — DOS / Day 0"
-        note="The text-adventure boot that blooms into the home theme."
+        note="The text-adventure boot that blooms into the home theme. NOTE: the typewriter + cursor live ONLY here (boot flavor) — the DOS theme's everyday text reveal is instant monospace (see above)."
       >
+        <Demo
+          title="DOS boot — typewriter (boot only)"
+          spec="type char-by-char ~40ms/char + blinking ▌ cursor; the one-time boot sequence, NOT the per-line reveal"
+          flutter="day0_screen.dart — boot types; afterward DOS text is instant"
+        >
+          <div className="adk-textstage adk-dos-stage"><Typewriter text="> YOU ARE STANDING IN FRONT OF A HOUSE." /></div>
+        </Demo>
+
         <Demo
           title="DOS bloom (theme flip)"
           spec="bg + ink green→cream · 450ms ease"
@@ -395,7 +446,18 @@ const CSS = `
 .adk-ink-text b{font-weight:800;}
 .adk-ink-text i{color:var(--ink-soft);}
 .adk-tw{font-family:ui-monospace,monospace;font-size:12px;color:#43ff8d;}
-.adk-dos-stage{background:#00140a;padding:10px;margin:-14px;}
+.adk-dos-stage{background:#00140a;padding:10px;margin:-14px;width:auto;}
+.adk-ascii{font-family:ui-monospace,monospace;font-size:11px;line-height:1.25;color:#43ff8d;margin:0;white-space:pre;}
+
+/* Themed modals — fade (Parchment) / slide (Vibrant) / instant ASCII (DOS) */
+.adk-modal{border:2px solid var(--ink);background:var(--paper);padding:11px 14px;min-width:220px;}
+.adk-modal-eye{font-family:var(--theme-display);font-size:9px;letter-spacing:.18em;color:var(--spot-red);margin-bottom:5px;}
+.adk-modal-body{font-family:var(--theme-body);font-size:13px;color:var(--ink);line-height:1.4;}
+.adk-modal-fade{animation:adk-modalfade .24s ease both;}
+@keyframes adk-modalfade{0%{opacity:0;transform:scale(.98);}100%{opacity:1;transform:scale(1);}}
+.adk-modal-slide{animation:adk-modalslide .3s cubic-bezier(.34,1.56,.64,1) both;}
+@keyframes adk-modalslide{0%{opacity:0;transform:translateY(16px);}100%{opacity:1;transform:translateY(0);}}
+.adk-modal-dos{background:#00140a;padding:10px;border:0;color:#43ff8d;}
 
 /* Vibrant — SAY: word pop, properly spaced (margin-right, not a swallowed space) */
 .adk-vibrant{font-family:var(--theme-body);font-weight:600;}
@@ -537,7 +599,7 @@ const CSS = `
 
 @media (prefers-reduced-motion: reduce){
   .adk-stamp,.adk-toast,.adk-bar-fill,.adk-bloom,.adk-float,.adk-drop,.adk-relfill,.adk-popword,.adk-whisperword,
-  .adk-bb-fill,.adk-tbar,.adk-tlayer-rel,.adk-tlayer-battle,.adk-tbar-fill{animation-duration:.001s;}
+  .adk-bb-fill,.adk-tbar,.adk-tlayer-rel,.adk-tlayer-battle,.adk-tbar-fill,.adk-modal-fade,.adk-modal-slide{animation-duration:.001s;}
   .adk-cursor,.adk-shoutchar{animation:none;}
 }
 `;
