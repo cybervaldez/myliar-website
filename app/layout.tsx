@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Anton, Lora, PT_Sans } from "next/font/google";
 import "./globals.css";
 import ThemePicker from "./_components/ThemePicker";
+import AuthLinkFallback from "./AuthLinkFallback";
 
 // No-FOUC theme bootstrap — sets data-pack/mode/font on <html> from the
 // saved Display Theme before first paint. Default = Parchment & Ink ·
@@ -64,6 +65,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP }} />
       </head>
       <body className="min-h-full flex flex-col">
+        <AuthLinkFallback />
         {children}
         <ThemePicker />
       </body>
