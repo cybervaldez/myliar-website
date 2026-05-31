@@ -104,6 +104,11 @@ function ChoiceBlock({ c, day, eventId }: { c: MainlineChoice; day: number; even
           {c.itemDrop.description && (
             <div className="font-body italic text-[12px] text-ink-soft">{c.itemDrop.description}</div>
           )}
+          <DiscussionThread
+            anchor={anchors.item(c.itemDrop.name)}
+            anchorLabel={`Item · ${c.itemDrop.name}`}
+            currentHash={contentHash(`${c.itemDrop.name}${c.itemDrop.description ?? ""}`)}
+          />
         </div>
       )}
       <DiscussionThread
@@ -216,12 +221,19 @@ export default async function DayPage({
                   MEMORY WRITE{ev.memoryWrites.length > 1 ? "S" : ""}
                 </div>
                 {ev.memoryWrites.map((m, i) => (
-                  <p key={i} className="font-body italic text-[13px] text-ink-soft leading-[1.45] mb-1">
-                    {m.text}
-                    {m.emotion && (
-                      <span className="not-italic text-margin-ink"> · {m.emotion}</span>
-                    )}
-                  </p>
+                  <div key={i} className="mb-1.5">
+                    <p className="font-body italic text-[13px] text-ink-soft leading-[1.45]">
+                      {m.text}
+                      {m.emotion && (
+                        <span className="not-italic text-margin-ink"> · {m.emotion}</span>
+                      )}
+                    </p>
+                    <DiscussionThread
+                      anchor={anchors.arcMemory(d.globalDayIndex, ev.id, i)}
+                      anchorLabel={`Day ${d.globalDayIndex} · ${ev.id} · memory ${i + 1}`}
+                      currentHash={contentHash(m.text)}
+                    />
+                  </div>
                 ))}
               </div>
             )}

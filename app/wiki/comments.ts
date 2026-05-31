@@ -295,7 +295,15 @@ export const setNoteStatus = (id: string, status: NoteStatus) => ownerPatch(id, 
 export const hideComment = (id: string) => ownerPatch(id, { hidden: true });
 
 // ── Anchor scheme ──────────────────────────────────────────────────────────
-// Granular: events and replies, plus page-entity catch-alls.
+// As granular as the content gets — events, replies, memory lines, items,
+// achievements — plus page-entity catch-alls. Anchors stay STABLE (so a thread
+// survives small edits); the content_hash carries staleness instead (a moved
+// anchor would orphan the discussion). Items/achievements anchor by a stable
+// slug/id so discussion AGGREGATES wherever that entity appears.
+export function slugify(s: string): string {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60);
+}
+
 export const anchors = {
   character: (id: string) => `character:${id}`,
   mechanics: () => `mechanics:page`,
@@ -306,4 +314,8 @@ export const anchors = {
   arcEvent: (day: number, eventId: string) => `arc:day-${day}:event:${eventId}`,
   arcReply: (day: number, eventId: string, choiceId: string) =>
     `arc:day-${day}:event:${eventId}:reply:${choiceId}`,
+  arcMemory: (day: number, eventId: string, idx: number) =>
+    `arc:day-${day}:event:${eventId}:memory:${idx}`,
+  item: (nameOrId: string) => `item:${slugify(nameOrId)}`,
+  achievement: (id: string) => `achievement:${id}`,
 };
