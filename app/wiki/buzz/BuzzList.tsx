@@ -17,6 +17,7 @@ import {
   ensureSession,
   amIOwner,
   signInWithGoogle,
+  signInWithApple,
   signOut,
   currentDisplayName,
 } from "../supabaseClient";
@@ -122,14 +123,13 @@ function OwnerBar() {
       ) : (
         <>
           <span className="font-display tracking-[0.1em]">GUEST</span>
-          <button
-            type="button"
-            className="cursor-pointer underline hover:text-ink"
-            onClick={() => signInWithGoogle()}
-          >
-            sign in with Google
+          <button type="button" className="cursor-pointer underline hover:text-ink" onClick={() => signInWithGoogle()}>
+            Google
           </button>
-          <span className="italic">— claim your comments &amp; worlds</span>
+          <button type="button" className="cursor-pointer underline hover:text-ink" onClick={() => signInWithApple()}>
+            Apple
+          </button>
+          <span className="italic">— sign in to claim your comments &amp; worlds</span>
         </>
       )}
       {(owner || name) && (

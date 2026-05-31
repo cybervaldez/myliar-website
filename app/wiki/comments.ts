@@ -133,6 +133,7 @@ export async function postComment(n: NewComment): Promise<{ ok: boolean; error?:
     is_note: owner,
     note_status: owner ? "open" : null,
     owner_id: owner ? uid : null,
+    user_id: uid, // attribute every comment to its author (for the profile)
     content_hash: n.contentHash ?? null,
     data_run: DATA_RUN,
     data_version: DATA_VERSION,

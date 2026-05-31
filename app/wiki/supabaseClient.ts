@@ -69,6 +69,37 @@ export async function signInWithGoogle(): Promise<void> {
   await c.auth.signInWithOAuth({ provider: "google", options: { redirectTo } });
 }
 
+/** Sign in with Apple — plain OAuth (required by App Store once Google exists). */
+export async function signInWithApple(): Promise<void> {
+  const c = supabase();
+  if (!c) return;
+  const redirectTo = typeof window !== "undefined" ? window.location.href : undefined;
+  await c.auth.signInWithOAuth({ provider: "apple", options: { redirectTo } });
+}
+
+export interface AccountUser {
+  id: string;
+  email: string | null;
+  name: string | null;
+}
+
+/** The signed-in (non-anonymous) account, or null for a guest / no session. */
+export async function currentUser(): Promise<AccountUser | null> {
+  const c = supabase();
+  if (!c) return null;
+  const { data } = await c.auth.getUser();
+  const u = data.user;
+  if (!u || u.is_anonymous) return null;
+  return {
+    id: u.id,
+    email: u.email ?? null,
+    name:
+      (u.user_metadata?.full_name as string | undefined) ||
+      (u.user_metadata?.name as string | undefined) ||
+      null,
+  };
+}
+
 export async function signOut(): Promise<void> {
   await supabase()?.auth.signOut();
 }

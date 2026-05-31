@@ -172,6 +172,7 @@ export function navTree(): NavEntry[] {
     { label: "📖 Story", href: "/wiki/arc", editorial: true },
     { label: "💬 Words", href: "/wiki/lexicon", editorial: true },
     { label: "🔥 Buzz", href: "/wiki/buzz" },
+    { label: "👤 Your Companion", href: "/profile" },
     { label: "🆕 Updates", href: "/wiki/changelog" },
   ];
 }
