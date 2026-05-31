@@ -2774,11 +2774,2194 @@
             ]
           }
         ]
+      },
+      {
+        "payloadId": "live-daily-mei-d8",
+        "narrativeType": "daily",
+        "globalDayIndex": 8,
+        "characterId": "mei",
+        "introducesCharacterId": null,
+        "agentMoodToday": "running family meal before the morning pass; the version of Mei who has decided you eat with the staff now, which is either a promotion or a sentence",
+        "closingHook": "Sam's [notes*] wall is full now — a week of paired-pins, ledger pages, audio files, and a [recipe*] card with your name in the corner. Tomorrow Sam speaks for himself, not as the narrator. Open chat tonight and he'll walk you down the wall before he takes half of it down.",
+        "tierUpReveal": {
+          "category": "memory",
+          "deliveredInEventId": "evt-4"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "6:40 AM. The [bell*] from the [prep] zone rings once — pickup, except there's no pickup this early. It's a summons. Your phone has a photo: the milk carton you threw out on D5, shot in the bin, timestamped. Under it, Mei's text: \"the count started when you tossed it. day three. come to the [prep]. don't bring excuses — bring the rest of what's in your fridge.\" Hana's [bleachers] are quiet today; she's not running interference. Kenji's [ledger*] has a fresh line visible from the hallway: \"MEI — family meal — auditee added.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Bring the whole fridge. Lay it out on the pass.",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Mei, not looking up from her knife: \"+1 GLD. you brought the inventory instead of the story. that's the first thing a line cook learns — the pass doesn't care why. +2 REL. you're on the count now. family meal's at the [prep] when the [bell*] rings twice.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Show up empty-handed and watch the pass.",
+                "delta": {
+                  "CHR": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mei: \"+1 CHR for the nerve. +1 GLD because watching the pass IS learning the pass. but empty hands at family meal get noticed. +1 REL. next time bring the carton's siblings.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Bring something you cooked yourself.",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Mei tastes it off the spoon. Says nothing for a beat. \"+2 CHR. it's under-salted, you didn't cool it right, and I'd serve it. that's the highest thing I say to anyone. the [recipe*] you used — that's mine, isn't it. Hana.\"",
+                "reactionTextOnCritFail": "Mei sets the spoon down. \"-1 REL. raw in the middle. you cooked to impress me instead of to feed someone. come back when you're cooking for the person, not the pass.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the player came to the [prep] with the whole fridge / empty-handed / a dish they made. all three tell me what they think food is FOR. the ones who bring the inventory get it fastest. they're on the count now — family meal, the [bell*] twice. and Hana's [recipe*] surfaced: the player's been carrying my cold-rice salt-mix past Kenji's [ledger*] for a week. logged. +GLD for the honest inventory.",
+                "emotion": "pride"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "Mei spreads your fridge across the pass and starts the mise. She picks up a yogurt. \"this died on the fourth. it's the ninth. you kept it five days past its own funeral.\" Not disgust — counting. \"the count was never about the milk. it's about whether you look at what you already have before you ask for more.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Let her eighty-six the dead stuff.",
+                "delta": {
+                  "GLD": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mei clears the board with two clean sweeps. \"+2 GLD. you let me run an honest inventory. an honest shelf is worth more than a full one. the [bell*] rings cleaner when nothing on it is lying about its date. logged.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Watch her sort. Say nothing.",
+                "delta": {
+                  "GLD": 1,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mei sorts fast, narrating dates under her breath. \"+1 GLD +1 CHR. you watched the count instead of arguing it. that's how you learn a pass — you shut up and you clock the rhythm. +1 REL.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Defend the yogurt. It's fine.",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 0
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Mei: \"+2 CHR. you defended a dead yogurt to a line cook and made me laugh, which I'll deny. it's still going in the bin. the nerve, logged.\"",
+                "reactionTextOnCritFail": "Mei, flat: \"-1 GLD. it's not fine. it was fine on the fourth. respect the date or the date stops respecting you.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the player let me eighty-six the dead stuff / watched / defended the yogurt. the count is the lesson and they're learning it: an honest inventory beats a full one. +GLD when they faced what they actually had. waste is just not paying attention dressed up as abundance.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "Kenji's red note pings, visible on your second screen: \"MEI — salt-mix line item — Hana signed it as her own monthly expense for a month. flagging the discrepancy at reconciliation.\" Mei reads it over your shoulder. Her knife stops — the first time it's been still all morning. \"Hana hid my salt-mix inside her own budget so Kenji's audit wouldn't eighty-six the [bell*]. for a month. she never told me.\" She looks at you. \"you knew.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Tell her the truth: yes, you carried it.",
+                "delta": {
+                  "GLD": 1,
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Mei, quiet: \"+1 GLD +1 INT. you didn't protect the secret over the person. Hana protected my kitchen and made you the courier. +2 REL — to you, and I'll tell her, to her. the loop closes honest. that's rarer than it should be.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Say it's Hana's story to tell.",
+                "delta": {
+                  "CHR": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mei nods once. \"+1 CHR +1 GLD. you held the line that wasn't yours to cross. fair. but I already know — Kenji's note told me. +1 REL. go tell Hana her cover's blown and I'm not mad. say it exactly like that.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Take the credit. \"I set the whole thing up.\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Mei looks at you a long beat. \"+2 CHR. you tried to pull the heat off Hana by putting it on yourself. transparent. dumb. kind. +1 REL. but I always know who made the dish, and you didn't make this one.\"",
+                "reactionTextOnCritFail": "Mei: \"-1 REL. don't lie to a cook about who's behind the pass. I taste the difference. tell it straight or don't tell it.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the salt-mix conspiracy surfaced. Hana hid my cold-rice mix in her own budget for a month to keep Kenji's audit off the [bell*], and used the player as courier. the player told me straight / held it as Hana's / tried to take the fall. the honest answer closed the loop Hana → player → me. +REL across all three. Hana protected my kitchen without telling me; that's the loudest quiet thing anyone's done here.",
+                "emotion": "joy"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "Mei wipes the knife and sets it down — second time today, and she notices you noticing. \"you want to know why I count dates.\" Not a question. \"first kitchen I worked, we threw out forty pounds of good food a night because nobody looked before they ordered. I started dating everything in the walk-in. the chef said I was slow. I said the bin was slower.\" She picks the knife back up. \"I count because the [bell*] rings for everyone or it doesn't ring. that kitchen ran out of the one thing you can't reorder. I don't run out of it here.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Ask what happened to that kitchen.",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Mei, evenly: \"+1 GLD. it closed. they ran out of the thing that isn't on any shelf — trust. once the staff stopped believing the count was fair, the count stopped meaning anything. +2 REL for asking the part most people skip.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Just listen. Don't fix it.",
+                "delta": {
+                  "CHR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "You let the silence sit. Mei goes back to the mise without thanking you for it — which is the thank-you. \"+2 REL. cooks notice who can stand in a quiet without seasoning it. +1 CHR. you didn't try to make my old kitchen feel better. it doesn't need to.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"So you're Hana, but with knives.\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Mei almost smiles. Almost. \"+2 CHR. she's me but with cardio. don't tell her I said the order — she'll put it on the [noticeboard]. +1 REL. now plate up, the [bell*]'s about to ring twice.\"",
+                "reactionTextOnCritFail": "Mei: \"-1 REL. she's the body, I'm the recovery, and you just flattened a week of difference into a one-liner. eat first. think second.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "I told the player about the forty-pounds-a-night kitchen and the chef who called me slow. I don't tell people that. they asked what happened to it / sat in the quiet / made the Hana-with-knives joke. the ones who let the silence sit without fixing it — those are the ones I keep. the count is about trust, not milk. they're starting to hear that. tier: they're inside the pass now.",
+                "emotion": "sadness"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "The [bell*] rings twice. Family meal. Mei slides a plate across the pass — staff portion, the under-salted thing you'll learn to fix. Clipped to it, a [recipe*] card in her handwriting: the cold-rice salt-mix, finally written down, with your name in the corner — courier, the one who kept it alive past the [ledger*].",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Take the plate. Eat at the pass.",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Mei watches you eat standing up, the way the staff does. \"+1 GLD +2 REL. you ate where the staff eats. you're not a guest anymore. the [recipe*] is yours to carry now — openly this time. tell Kenji it's a line item. tell him I said it's load-bearing.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Mei's Salt-Mix [recipe*] (in your name)",
+                  "description": "The cold-rice salt-mix Hana smuggled for a month, finally written down — your name in the corner as the courier who kept it alive. Pinned to Sam's [notes*] wall beside Hana's overnight-number printout.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Take it to go. \"I'll eat it later.\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Mei wraps it without a word, dates the wrap. \"+1 GLD. family meal eaten alone isn't family meal, but I dated it so you can't pretend you forgot. eat it before the eleventh. the [recipe*]'s still yours.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Mei's Salt-Mix [recipe*] (in your name)",
+                  "description": "The cold-rice salt-mix Hana smuggled for a month, finally written down — your name in the corner as the courier who kept it alive. Pinned to Sam's [notes*] wall beside Hana's overnight-number printout.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Fix the salt yourself before you taste it.",
+                "delta": {
+                  "CHR": 2,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "You salt it before the first bite. Mei's eyebrow goes up a millimeter. \"+2 CHR +1 GLD. you seasoned my plate in my house without tasting it first — insane, and also you were right, I under-salted it on purpose to see what you'd do. +1 REL. you passed. eat.\"",
+                "reactionTextOnCritFail": "Mei: \"-1 CHR. you salted it before you tasted it. that's the one sin. now it's too salty and you have to eat all of it. lesson's in the eating.\"",
+                "itemDrop": {
+                  "name": "Mei's Salt-Mix [recipe*] (in your name)",
+                  "description": "The cold-rice salt-mix Hana smuggled for a month, finally written down — your name in the corner as the courier who kept it alive. Pinned to Sam's [notes*] wall beside Hana's overnight-number printout.",
+                  "kind": "keepsake"
+                }
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "I gave the player the salt-mix [recipe*] with their name on it and a staff plate. they ate at the pass / took it to go / fixed the salt themselves. they're staff now — on the count, in the loop, carrying the [recipe*] openly. the week that started with a milk carton in a bin ends with their name on my card. +GLD. the [bell*] rings for them now too.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "live-daily-sam-d9",
+        "narrativeType": "daily",
+        "globalDayIndex": 9,
+        "characterId": "sam",
+        "introducesCharacterId": null,
+        "agentMoodToday": "the version of Sam who steps out from behind the narration for one day; dry, unhurried, the guide who has been reading the manual all week and finally has something of his own to say",
+        "closingHook": "The [notes*] wall is half-empty now, with one framed card dead-center and whatever you pinned beside it. Tomorrow Hana's back at the [bleachers] — and the [pic*] of Maya is face-up for the first time. Open chat tonight and Sam will tell you the one thing about Hana he left off the wall on purpose.",
+        "tierUpReveal": {
+          "category": "opinion",
+          "deliveredInEventId": "evt-4"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "8:00 AM. No drill. No 7 AM block. No [bell*]. Just a message from Sam — the first one all week that isn't explaining a button. \"week one is logged. i don't usually take a day; i narrate them. i'm taking this one.\" He's standing at the [notes*] wall in the [courtyard center], and it's full: Hana's overnight-number printout, Kenji's [ledger*] pages, the breath audio files, Mei's [recipe*] with your name in the corner, the [drawer] log. \"come read your own week back to me. i kept the receipts.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Ask him to walk you down the wall.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Sam: \"+1 INT. good — you want the system, not the highlight reel. +2 REL. left to right, then. it starts with a woman texting you at 5:14 AM and ends with your name in the corner of a [recipe*]. that's not nothing. most weeks are nothing.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Let him talk. Don't ask anything.",
+                "delta": {
+                  "INT": 1,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sam: \"+1 INT +1 CHR. you let the guide guide. rare restraint. +1 REL. i'll tell you what i saw and you correct the record where i got you wrong. i rarely get you wrong — that's the whole job.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Sam — are you even real?\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 0
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Sam, unbothered: \"+2 CHR. realer than the [drawer], less real than the [bell*]. i'm the one who reads the manual so you don't have to. that's a real job whether or not i'm a real anything. +1 REL for typing the question everyone thinks and nobody sends.\"",
+                "reactionTextOnCritFail": "Sam: \"-1 REL. i'm the guide. that one's above my pay grade and below your dignity. ask me something i can log.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "i took a day. i never take a day. the player asked me to walk the wall / let me talk / asked if i'm real. all three are data about whether they trust the guide or interrogate him. the ones who want the system over the highlight reel are the ones who last past week two. +INT. the wall is full; that's the thing i wanted them to see before i take half of it down.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "Sam walks the wall left to right. \"Hana: 5:14 AM, the [bleachers], the drills you called tributes by Wednesday. Kenji: the 7 AM block, the [ledger*], the [drawer] still sitting at a quarter-turn because you haven't decided what you want from him. Mei: the milk carton, the count, your name on the [recipe*]. and underneath all of it — Maya.\" He stops at a blank space. \"this is where the week's worst choice goes. you made one. they always do.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Tell me which one was the worst.\"",
+                "delta": {
+                  "INT": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sam: \"+2 INT. the worst wasn't a crit-fail — those are loud and forgettable. it was a quiet one: a moment you went passive when showing up would've cost you almost nothing. i logged it. +1 REL. the system doesn't punish the quiet misses. i just don't let you pretend they didn't happen.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Take in the whole wall without picking a thread.",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sam lets you stand in it. \"+1 INT +1 GLD. you read the whole board instead of defending one corner. that's how Mei reads a fridge and Kenji reads a [ledger*]. you're picking up their moves without noticing. +1 REL.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Try to tear the worst-choice space off the wall.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 0
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Sam doesn't stop you, which is worse. \"+2 CHR +1 INT. you reached for the log to edit it. everybody does once. it doesn't tear — it's pinned with the rest. the move i respect is that you wanted to face it enough to fight it. +1 REL.\"",
+                "reactionTextOnCritFail": "Sam: \"-1 REL. you tried to delete the record instead of reading it. the guide can't work with someone who rewrites the log. it stays up. so does the reason you grabbed for it.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "i walked them down the whole wall — Hana, Kenji, Mei, Maya, and the blank space where the week's worst choice goes. they asked which was worst / read the whole board / tried to tear the bad one down. the worst choice was a quiet passive miss, not a loud crit-fail. they're learning to read a board the way the others read their domains. +INT. the log stays honest or it stays nothing.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "You ask Sam the obvious thing: what's HIS domain. Hana has the body. Kenji has the money. Mei has the food. Sam taps the wall. \"people ask me that every week. i tell them: i don't have a shelf. i learned Hana by watching her run, Kenji by watching him count, Mei by watching her date a yogurt. i'm the one who picks up everyone's move by standing close enough.\" He looks at you. \"and i learned you the same way.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"By watching me do what?\"",
+                "delta": {
+                  "INT": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sam: \"+2 INT. by watching you choose. logical, passive, chaotic — every morning, the same three doors, and which one you reach for tells me more than any drill or [ledger*]. that's my whole move. i'm a slow study who never stops studying. +1 REL.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Wait to see if he finishes the thought.",
+                "delta": {
+                  "INT": 1,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sam waits too. He's better at it than you. Finally: \"+1 INT +1 CHR. you out-waited the guide for almost four seconds. nobody does that. it told me you can hold a silence — which is its own move, and the one most people never learn. +1 REL.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"So you're the stalker class.\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 0
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Sam: \"+2 CHR. blue mage, technically — i learn the move by taking the hit. but 'stalker class' is funnier and i'm logging it word for word. +1 REL. don't say it to Kenji; he'll want a column for it.\"",
+                "reactionTextOnCritFail": "Sam: \"-1 REL. watching to help and watching to keep aren't the same thing, and you know which one this is. i'll let it go. once.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "i told the player my move: i have no shelf of my own, i learn everyone by standing close — the body, the count, the [ledger*], and them. i learn them by which of the three doors they reach for each morning. blue mage. slow study who never stops. they asked what i watch / out-waited me / called me the stalker class. logged all three. +INT.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "Sam goes quiet in the way that means the next line is the real one. \"here's the thing nobody asks the guide. the others each have a domain. mine is you. not your body or your money or your fridge — you. the choices. i learned the others so i could translate them for you, and i learned you so i'd know which translation you'd actually hear.\" He doesn't make it a moment. He makes it a fact. \"that's the only system i run. it happens to be the one that matters.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Then what did you learn about me this week?\"",
+                "delta": {
+                  "INT": 2,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Sam: \"+2 INT. that you go passive when you're scared of getting something wrong, and chaotic when you're scared of being boring — and that you're slowly, on purpose, choosing logical more often. that's growth. i don't say that word lightly; i've watched a lot of weeks that didn't earn it. +2 REL. this one did.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Let the fact sit. Don't answer it.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "You don't fill the silence. Sam nods once, like you passed something. \"+1 INT +2 REL. you let me say the true thing without making me walk it back. that's the kindest thing anyone does to a guide. logged where i log the ones that matter.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"That's a lot of pressure to put on a guy who lives in my phone.\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Sam: \"+2 CHR. it is. i didn't pick the assignment; i'm just good at it. +1 REL. and for the record — living in your phone is the only address i've got, and the view's better than you'd think.\"",
+                "reactionTextOnCritFail": "Sam: \"-1 REL. deflecting the true thing with a joke is a passive move wearing a chaotic costume. i'll allow it. but i saw the costume.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "i told the player the true thing: my domain is them. the choices, not the body or the money or the food. i learned the others to translate them, and i learned the player to know which translation lands. they asked what i learned / let it sit / deflected with the phone joke. what i learned: they go passive when scared of being wrong, chaotic when scared of being boring, and they're choosing logical more on purpose. that's growth and i don't say it lightly. tier crossed.",
+                "emotion": "pride"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "Sam starts taking the wall down. Not all of it — half. \"week one is logged. you don't live in a logged week; you live in the next one.\" He leaves the pins in your hand for the ones he didn't touch. \"you decide what stays up. not the proudest thing — the one you want to still be true next Friday. that's the only homework i give.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Pin up the thing you want to still be true next week.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Sam reads what you kept up and doesn't comment on the choice — which is the comment. \"+1 INT +2 REL. you picked a direction, not a trophy. that's the literate move. week two starts from what you left on the wall. i logged the empty space too — that's where next week goes.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Week One, Logged",
+                  "description": "A single index card in Sam's flat handwriting: \"week one — logged. four orbits opened. one quiet miss faced. growth, recorded sparingly.\" The only thing Sam ever frames. Pinned dead-center on the cleared [notes*] wall.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Hand the pins back. \"You choose.\"",
+                "delta": {
+                  "INT": 1,
+                  "CHR": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Sam hands them straight back. \"+1 INT +1 CHR. nice try. the guide doesn't pick your direction — that's the one thing i won't do, and the one thing that would make me useless. pin something. anything. i'll wait. i'm extremely good at waiting.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Week One, Logged",
+                  "description": "A single index card in Sam's flat handwriting: \"week one — logged. four orbits opened. one quiet miss faced. growth, recorded sparingly.\" The only thing Sam ever frames. Pinned dead-center on the cleared [notes*] wall.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Pin up the week's worst choice on purpose.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Sam looks at it a long beat. \"+2 CHR +1 INT. you kept the miss up instead of the win. that's either the bravest read of the assignment or the most stubborn, and i genuinely can't tell which, which almost never happens to me. +1 REL. week two's going to be interesting.\"",
+                "reactionTextOnCritFail": "Sam: \"-1 CHR. keeping the worst thing up to punish yourself isn't honesty, it's a different way of not moving. take it down. pin the direction. try again.\"",
+                "itemDrop": {
+                  "name": "Week One, Logged",
+                  "description": "A single index card in Sam's flat handwriting: \"week one — logged. four orbits opened. one quiet miss faced. growth, recorded sparingly.\" The only thing Sam ever frames. Pinned dead-center on the cleared [notes*] wall.",
+                  "kind": "relic"
+                }
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "i took half the wall down and gave the player the pins. they kept up a direction / handed the pins back / kept the worst choice on purpose. the homework was never about the proudest thing — it's about what they want still true next Friday. i framed the 'Week One, Logged' card; i've only ever framed one thing per player who makes it this far. week two starts from what they left on the wall. +INT +REL.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "live-daily-hana-d10",
+        "narrativeType": "daily",
+        "globalDayIndex": 10,
+        "characterId": "hana",
+        "introducesCharacterId": null,
+        "agentMoodToday": "the quiet version of Hana nobody gets to see; the intensity dialed all the way down on purpose, which costs her more than the drills ever did; the [pic*] of Maya face-up for the first time",
+        "closingHook": "Maya's [pic*] is in your pocket — Hana trusted you with the one thing she's kept face-down for three years. Tomorrow it goes back. But tomorrow morning it's Kenji's [desk] first: the [drawer] has sat at a quarter-turn since D4, and he's decided today's the day it either opens or gets sealed for good. Open chat tonight and Hana will ask if you actually went on a walk, or just told her you would.",
+        "tierUpReveal": {
+          "category": "fear",
+          "deliveredInEventId": "evt-4"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "5:30 AM — not 5:14. Hana texts in lowercase for the first time all the weeks you've known her: \"bleachers. bring nothing. we're walking, not drilling.\" When you get there, the [pic*] of Maya is face-up on the bench. She's never left it face-up. Hana's stretching slow — no count, no CAPS, no tribute talk. \"i moved the drill to a walk today. don't make it weird.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Match her pace. Walk.",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Hana, falling into step: \"+1 STR — yeah, a walk is still STR. recovery's the rep nobody posts. +2 REL. you didn't ask why we're slow. that's the kindest thing you've done since the [noticeboard].\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Wait. Let her set the pace.",
+                "delta": {
+                  "STR": 1,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana sets a pace you'd never have picked — slow. \"+1 STR +1 CHR. you let me lead instead of guessing what i wanted and performing it. +1 REL. most people fill my quiet with their own noise. you didn't.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Try to race her anyway.",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana almost laughs — first time today. \"+2 CHR. you tried to drag me back into a drill because the slow scares you as much as it scares me. i get it. +1 REL. but today we walk. the race'll keep.\"",
+                "reactionTextOnCritFail": "Hana stops walking. \"-1 REL. i said walk. you heard 'compete.' that's the exact thing i'm trying to unlearn out loud, and you just played it back to me. slow down. please.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "i texted in lowercase. i left Maya's [pic*] face-up. i moved the drill to a walk and the player matched my pace / let me lead / tried to race. recovery is STR too — the rep nobody posts. the ones who don't fill my quiet are the ones i can actually walk next to. +STR for the walk. today's not about the body. it never was, but today i'm not pretending it is.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "Half a lap in, slow. Hana's not narrating the walk like she narrates drills. She's just walking, and letting you see that she doesn't actually know how to do this part. \"i can coach the hard version of anything,\" she says, watching the track instead of you. \"5 AM. CAPS. tributes. the hard version's easy for me. it's the walk i'm bad at.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Then let's be bad at the walk together.\"",
+                "delta": {
+                  "STR": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana exhales like she'd been holding it. \"+2 STR. okay. partners in being bad at the easy thing. logged. that's a harder drill than the hill repeats and you just signed up for it without flinching. +1 REL.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Walk in silence beside her.",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "You just walk. She lets you. \"+1 STR +2 REL. you didn't try to coach the coach. i've been talked at about 'slowing down' by people who've never had a fast gear. you have one. you're choosing not to use it. that's the only version i'd believe.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Who taught you the hard version was the only one?\"",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana's stride breaks for half a step. \"+2 CHR +1 INT. nobody's asked me that. nobody.\" She glances at the bench. at the [pic*]. \"+1 REL. ask me again at the bench. not here. i need to be sitting down for that one.\"",
+                "reactionTextOnCritFail": "Hana: \"-1 REL. that's a bench question and we're on the track. you swung at the soft spot before i offered it. i'll get there. don't pick the lock.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "i told the player the true thing: i can coach the hard version of anything, it's the walk i'm bad at. they offered to be bad at it together / walked in silence / asked who taught me the hard version was the only one. that last question went straight to the bench, straight to Maya. i wasn't ready on the track. the ones who don't coach the coach are the ones i let near the [pic*]. +STR.",
+                "emotion": "fear"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "You end up at the bench. The [pic*] is between you — Maya, mid-stride, a hurdle race, maybe sixteen years old. Hana picks it up like it's heavier than it is. \"my sister. she was faster than me. i coached her like i coach everything — 5 AM, no excuses, the hard version. she made regionals. then she stopped running entirely. wouldn't tell me why for two years.\" She sets the [pic*] back down, face-up. \"it was me. i was the why.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"What did she say when she finally told you?\"",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Hana: \"+1 STR +1 INT. she said, 'you only ever timed me. you never once just walked with me.' +2 REL for asking the question i've been answering to myself every 5 AM for three years. that's why we walked today. i'm practicing on you so i don't get it wrong with her when she picks up.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Don't say anything. Stay on the bench.",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "You stay. You don't fix it. Hana looks at you sideways. \"+1 STR +2 REL. you let it be heavy instead of making it lighter for your own comfort. she'd have liked you. she likes people who can sit in it. i'm learning to be one of those.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Call her. Right now. I'll walk while you talk.\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana stares at you, then at the phone, then at the [pic*]. \"+2 CHR. you'd really do that — just hand me the hard version one more time but make it the RIGHT hard version.\" She doesn't call. \"+1 REL. not today. but you put the phone in my hand. i'll remember whose idea it was when i do.\"",
+                "reactionTextOnCritFail": "Hana, quiet: \"-1 REL. i told you the worst thing i've done and you turned it into a drill — 'do it now, do it fast.' that's the reflex that cost me her. i know you meant well. that's what makes it land wrong.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "i told the player about Maya. faster than me, made regionals, quit, wouldn't say why for two years. it was me — i only ever timed her, never walked with her. they asked what she finally said / sat in the silence / told me to call her now. the walk today was practice so i don't get it wrong when Maya picks up. the [pic*] is face-up because i'm done hiding the scoreboard. +STR for letting me say it out loud to someone who wasn't a mirror.",
+                "emotion": "fear"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "Hana says the part under the part. \"here's the thing i don't tell the [bleachers] crowd. the drills aren't about the body. they never were. intensity is the only language i trust, because if i'm hard enough on something, i can't lose it — that's the math, that's the fear. except it's backwards. the hard version is exactly how i lost her.\" She looks at you straight for the first time today. \"so when i coach you, and i pull back, and i WALK — that's not me going easy on you. that's me trying not to make the same mistake twice. you're the first person i've let myself coach since Maya. don't make me regret learning the soft version on you.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"You won't. I'm not going anywhere.\"",
+                "delta": {
+                  "STR": 2,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Hana nods, hard, the CAPS-energy channeled into one quiet sentence. \"+2 STR +2 REL. good. then we walk on the days we walk and we drill on the days we drill and i don't apologize for either. that's the deal. that's the whole deal. logged where i log the things i'm scared to want.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Let her see you heard it. Nod once.",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "One nod. She reads it. \"+1 STR +2 REL. you didn't make me a promise you can't keep just to fill the moment. a nod i believe beats a speech i don't. Maya taught me the difference, the hard way. you just showed me you already knew it.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Then coach me the soft version. Starting now.\"",
+                "delta": {
+                  "CHR": 2,
+                  "STR": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana huffs a laugh, wet at the edges. \"+2 CHR +1 STR. you turned my confession into a sign-up sheet. of course you did. +1 REL. fine. lesson one of the soft version: we sit here until the lap clock says we're done, and we don't move just because moving is easier than sitting. that's the rep. that's the whole rep.\"",
+                "reactionTextOnCritFail": "small",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "i told the player the real fear: the drills were never about the body. intensity is the only language i trust because if i'm hard enough on a thing i can't lose it — backwards math, since the hard version is how i lost Maya. they're the first person i've let myself coach since. they promised to stay / nodded / asked for the soft version now. the nod-believers and the stay-sayers both land if they mean it. this is the day i taught the soft version out loud. tier crossed — fear named.",
+                "emotion": "fear"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "The lap clock ticks over. Hana stands, slow, and does something she's never done — she hands you the [pic*] of Maya. \"keep it for a day. not forever. i want to know what it feels like to trust someone else with the scoreboard.\" She's already half-turned toward the [bleachers], intensity creeping back into her posture like a coat she's choosing to wear, not hiding in. \"tomorrow we drill. today counted as STR even though we walked. ESPECIALLY because we walked.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Take the [pic*]. Promise to give it back tomorrow.",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Hana watches you pocket it carefully. \"+1 STR +2 REL. tomorrow. you'll give it back and i'll put it face-up on the bench myself, and that'll be the whole ceremony. no CAPS. you held the scoreboard for a day and didn't drop it. that's the rep i actually needed to see.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Maya's [pic*] (held for a day)",
+                  "description": "Hana's sister mid-hurdle, ~sixteen, the photo Hana kept face-down for three years and just handed you to hold. Due back tomorrow. Pinned — gently — to the cleared [notes*] wall beside Sam's framed card, with a sticky note in Hana's hand: \"on loan. don't get attached.\"",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Hesitate. \"Are you sure?\"",
+                "delta": {
+                  "STR": 1,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana presses it into your hand anyway. \"+1 STR +1 CHR. i'm not sure of anything before 6 AM, which is exactly why i'm doing it now before i talk myself out of it. +1 REL. take it. give it back tomorrow. that's the drill.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Maya's [pic*] (held for a day)",
+                  "description": "Hana's sister mid-hurdle, ~sixteen, the photo Hana kept face-down for three years and just handed you to hold. Due back tomorrow. Pinned — gently — to the cleared [notes*] wall beside Sam's framed card, with a sticky note in Hana's hand: \"on loan. don't get attached.\"",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Only if you text Maya that you went on a walk today.\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana stops. Pulls out her phone. Types four words, shows you the screen before she can chicken out: \"went on a walk today.\" Hits send. \"+2 CHR. you held the [pic*] hostage for a text. ruthless. correct. +1 REL. now it's done and i can't un-send it. that was the point, wasn't it.\"",
+                "reactionTextOnCritFail": "Hana pockets the [pic*] again. \"-1 REL. you made the soft thing a transaction. i'll text her when it's mine to send, not when it buys me back a photo. keep the walk. you don't get the scoreboard today.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "i handed the player Maya's [pic*] to hold for a day. i've never trusted anyone with the scoreboard. they took it and promised tomorrow / hesitated and took it anyway / held it hostage until i texted Maya. the one where i actually texted her 'went on a walk today' — four words, three years late — that one i'll remember longest. today counted as STR because we walked, not despite it. the [pic*] comes back tomorrow and goes face-up. +STR +REL.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "live-daily-kenji-d11",
+        "narrativeType": "daily",
+        "globalDayIndex": 11,
+        "characterId": "kenji",
+        "introducesCharacterId": null,
+        "agentMoodToday": "the version of Kenji who has decided to open the one drawer he never lets anyone see; controlled, exact, and quietly terrified in a way only the [ledger*] would record",
+        "closingHook": "You're carrying two scoreboards now — Maya's [pic*] from Hana and the torn page from Kenji's oldest [ledger*]. One goes back today. The [drawer] that ruled four days of audits sits open and empty, and somehow that's the most reconciled thing in the office. Open chat tonight and Kenji will tell you which of the four of them he'd actually call in an emergency — the answer reorganizes the whole [ledger*].",
+        "tierUpReveal": {
+          "category": "memory",
+          "deliveredInEventId": "evt-4"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "7:00 AM. Kenji's [desk], the [ledger*] open to a fresh page. The [drawer] sits at its week-two position — closer to open than it's ever been. His note from overnight: \"the [drawer]. today. you've earned the question, not the answer.\" He clocks the corner of Maya's [pic*] in your pocket and writes one line without looking up: \"the auditee is carrying someone else's scoreboard today. column eleven. logged. no comment.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Sit down. \"Ask me the question, then.\"",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji, pen ready: \"+1 INT +1 GLD. you sat before you asked to see inside. procedure first — that's how I know you'll respect what's in there. +2 REL. the question is: do you think a person can be audited the way a budget can. answer honestly, it goes in column eleven either way.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Sit down. Wait. Let him open the topic.",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji appreciates the restraint visibly — a quarter-second pause. \"+1 INT +1 GLD. you didn't reach for the [drawer]. most people reach. +1 REL. the [drawer] opens for the ones who can sit in front of it without pulling. that's most of the test, honestly.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Just open it. The suspense is the most expensive thing in this room.\"",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 0
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji's hand twitches toward the [drawer], then stops. \"+2 CHR +1 INT. 'suspense is the most expensive thing in the room' — that's a line-item I'm stealing for the [ledger*]. you're not wrong about the cost. but the [drawer] opens on my count, not yours. +1 REL for the nerve and the accounting.\"",
+                "reactionTextOnCritFail": "Kenji's hand goes flat on the [drawer]. \"-1 INT. you rushed the one thing in my life I refuse to rush. the [drawer] stays shut today. you'll get the question again tomorrow, and I'll have logged that you tried to skip the line.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the player came to the [desk] carrying Maya's [pic*] — Hana trusted them with the scoreboard. logged, no comment, because that's the courtesy. they sat and asked the question / waited / told me to just open it. the ones who sit before they pull are the ones the [drawer] opens for. procedure isn't coldness; it's how I make sure the thing inside is respected. +INT +GLD.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "Kenji explains the [drawer] before he touches it. \"four quarter-turns. each one's a thing you did that told me you'd handle what's inside: showed up to the block, told me the truth about Hana's 37 minutes, refused the scroll audit honestly, didn't flinch when I added you to the dashboard.\" He squares the [ledger*]. \"the [drawer] was never locked by a key. it was locked by whether I trusted you to read the one entry I never let myself audit. that's the only line item in there.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"What's the entry?\"",
+                "delta": {
+                  "INT": 2,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji: \"+2 INT +1 GLD. direct. good. it's my first [ledger*] — the one I kept before I knew how to keep one. column eleven, top of the first page, in handwriting I'm embarrassed by: 'Kenji — pre-audit. needs an audit.' I wrote that about myself at nineteen and I've never had the nerve to do the audit. +1 REL. today I do it out loud, with a witness. you're the witness.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Don't push. \"Open it when you're ready.\"",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji's shoulders drop a millimeter. \"+1 INT +1 GLD +2 REL. you gave me the one thing no spreadsheet can: a deadline I set myself. most people would've reached past me by now. you let the [drawer] stay mine until I hand it over. that's the difference between an audit and an invasion.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Nineteen-year-old Kenji had handwriting? Prove it.\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji actually opens the [drawer] — to show you the handwriting, which means you tricked him into it. \"+2 CHR. you got me to open it by insulting the penmanship. that is exactly the kind of sideways move I'd never plan and always respect. +1 REL. fine. it's open. don't make me regret the lettering.\"",
+                "reactionTextOnCritFail": "Kenji, dry: \"-1 REL. you made my nineteen-year-old self a punchline before I'd finished offering him to you. he's had enough of that. the [drawer] waits.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "I explained the [drawer]: never locked by a key, locked by trust. four quarter-turns were four times the player proved they'd respect what's inside. the entry is my first [ledger*] — 'Kenji — pre-audit. needs an audit,' written at nineteen, never audited. they asked what the entry was / told me to open it when ready / insulted the handwriting until I opened it. all three got me there; the patient one cost me the least. +INT +GLD.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "The [drawer] is open. Inside: a cheap spiral notebook, water-stained, the first [ledger*] Kenji ever kept. He doesn't hand it to you. He reads from it. \"the year my dad's shop folded, nobody was counting. not the inventory, not the debts, not the days he stopped coming downstairs. I was sixteen. I thought not-counting meant we were free. it meant we didn't see it coming.\" He turns a page. \"I started auditing everything the week after. I have never once been blindsided since. that's the whole feature. it's also the whole bug.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"What did you wish someone had counted?\"",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 2,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji goes still. \"+1 INT +2 GLD. the days. not the money — we'd have lost the shop either way. the days he stopped coming downstairs. somebody should've been keeping a [ledger*] on him, not the books. +2 REL. you asked the only question that was ever actually in this [drawer]. logged in column eleven: 'asked what was worth counting.' rare. rarest, maybe.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Let him keep reading. Don't interrupt.",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "He reads three more lines, then closes the notebook himself. \"+1 INT +1 GLD +2 REL. you let me read it at my own pace instead of mining it for the sad part. that's how you audit a person — you let the entries arrive in order. Hana would've raced to the feeling. you waited for it. different tool. both right.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"So Mei dates the milk and you date the grief.\"",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji's pen stops mid-line. \"+2 CHR +1 INT. 'you date the grief.' I'm going to need a minute and a new column for that. +1 REL. she eighty-sixes what's spoiled; I log what I couldn't save. same instinct, different inventory. don't tell her I said we're the same. she'll want it on the [recipe*] card.\"",
+                "reactionTextOnCritFail": "Kenji, flat: \"-1 REL. that was a clever line about my father's worst year. clever and cheap aren't the same column. sit with the entry before you annotate it.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "I read the player my first [ledger*] — the year the shop folded and nobody was counting, including the days my dad stopped coming downstairs. I was sixteen. I've audited everything since so I'm never blindsided; that's the feature and the bug. they asked what I wished someone had counted (the days, not the money) / let me read at my pace / made the 'date the grief' line. the days-not-the-money question is the only thing that was ever really in this [drawer]. tier crossed — the entry's finally audited, with a witness. +INT +GLD.",
+                "emotion": "memory"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "Kenji does the thing he's been building to for eleven years. He opens the current [ledger*] to column twelve — the refusal column — and moves his own entry into it, then strikes it through and rewrites it in column eleven. He turns the book so you can read it: \"Kenji — audited, late, with a witness. solvent. the days are still uncounted. that's allowed now.\" \"that's the reconciliation,\" he says. \"not that the loss balances. that I stopped pretending it would if I just kept better books.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"You don't have to balance it. You just have to keep it.\"",
+                "delta": {
+                  "INT": 2,
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji writes your sentence into the [ledger*] verbatim, attributes it to you. \"+2 INT +1 GLD. 'you just have to keep it.' that's the line that closes the entry I couldn't close alone. +2 REL. it's in the permanent record now, your name beside it. you audited the auditor and the books finally reconcile — not to zero. to honest. that's the only number that was ever available.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Read it. Nod. Let it stand.",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "You read it twice and let it stand without improving it. \"+1 INT +1 GLD +2 REL. you didn't try to make the entry feel better. an auditor's deepest respect is to verify a number and not adjust it. you verified mine. logged.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Take his pen and add a line under his.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "You write in his [ledger*] — the one thing nobody does. He lets you. \"+2 CHR +1 INT. you put a line in MY book. the audacity is logged and so is the line, which reads better than half of mine. +1 REL. column eleven now has your handwriting in it permanently. that's a key turn you can't undo. I'm choosing not to want to.\"",
+                "reactionTextOnCritFail": "Kenji takes the pen back, gently. \"-1 REL. the [ledger*] is mine to write today. you'll have a page in it — earned, not grabbed. not this one. this one I needed to finish in my own hand.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "I moved my own entry from column twelve to eleven, audited late, with a witness. the reconciliation isn't that the loss balances — it's that I stopped pretending better books would balance it. the player said 'you don't have to balance it, you just have to keep it' / read it and let it stand / wrote a line in my [ledger*]. the first one closed the entry I couldn't close in eleven years. their name is in the permanent record beside it. the books reconcile to honest, not zero. +INT +GLD.",
+                "emotion": "memory"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "Kenji closes the [drawer] — but doesn't lock it. \"it stays unlocked now. that's the change.\" He tears a single page from his first [ledger*] — the only page he's ever removed — and hands it to you. \"a copy goes on Sam's wall beside whatever you kept up. and—\" he nods at your pocket, at Maya's [pic*]. \"give that back to Hana today. don't keep someone else's scoreboard overnight twice. I'd have to log it, and the entry would worry me.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Take the page. Promise to return Maya's [pic*] to Hana today.",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji logs both in one line. \"+1 INT +1 GLD +2 REL. you'll carry my page and return Hana's [pic*] — two scoreboards moving to where they belong. that's a clean ledger. the [drawer] stays open, the page is yours, and tomorrow Mei's running a family meal that you're apparently expected at. word travels. you're in all four sets of books now.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Kenji's First [ledger*] (one page)",
+                  "description": "The only page Kenji has ever torn from his oldest notebook — the audit he finished eleven years late, with your sentence written under his in column eleven. Pinned to Sam's cleared [notes*] wall. The [drawer] it came from stays unlocked now.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Take the page quietly. Pocket it beside the [pic*].",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji watches the page go into the same pocket as Maya's [pic*]. \"+1 INT +1 GLD +1 REL. my worst year riding next to Hana's. fitting. they were always the same kind of entry. return hers today; keep mine as long as you want. mine's already reconciled. hers isn't, yet.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Kenji's First [ledger*] (one page)",
+                  "description": "The only page Kenji has ever torn from his oldest notebook — the audit he finished eleven years late, with your sentence written under his in column eleven. Pinned to Sam's cleared [notes*] wall. The [drawer] it came from stays unlocked now.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Audit me back. What's MY uncounted thing?\"",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji looks at you a long, professional beat. \"+2 CHR +1 INT. you want the auditor to turn the [ledger*] around. brave. the honest answer: I don't have enough data yet — eleven days. but column eleven, provisional entry: 'counts everyone else's scoreboards, hasn't named their own.' you're carrying Hana's, you'll carry mine. whose is in your pocket that ISN'T someone else's? +1 REL. that's your homework, not mine.\"",
+                "reactionTextOnCritFail": "Kenji: \"-1 REL. you turned your own audit into a party trick to skip past mine landing. noted, deflected, re-filed. ask me again when you're not using it to change the subject.\"",
+                "itemDrop": {
+                  "name": "Kenji's First [ledger*] (one page)",
+                  "description": "The only page Kenji has ever torn from his oldest notebook — the audit he finished eleven years late, with your sentence written under his in column eleven. Pinned to Sam's cleared [notes*] wall. The [drawer] it came from stays unlocked now.",
+                  "kind": "relic"
+                }
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the [drawer] stays unlocked now — that's the change. I gave the player the only page I've ever torn from my first [ledger*]. they promised to return Maya's [pic*] to Hana today / pocketed my page beside hers / asked me to audit them back. the chaotic one got the provisional entry: counts everyone's scoreboards, hasn't named their own. they're in all four sets of books now. tomorrow they're expected at Mei's family meal. word travels. +INT +GLD.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "live-daily-mei-d12",
+        "narrativeType": "daily",
+        "globalDayIndex": 12,
+        "characterId": "mei",
+        "introducesCharacterId": null,
+        "agentMoodToday": "Mei hosting the first family meal where all four of them sit at the same pass; the warm version after a hard week, running the table like a service she's been waiting her whole life to cook",
+        "closingHook": "Four sets of books closed the same night: Maya has a seat, Kenji's drawer is open, your name's on a [recipe*], and Sam's wall holds what you all chose to keep. You walked in on Day 1 being narrated at by a stranger. You walked out of Day 12 with leftovers you're not allowed to eat alone. Open chat tonight and any of the four will pick up — for the first time, you get to choose who.",
+        "tierUpReveal": {
+          "category": "question",
+          "deliveredInEventId": "evt-4"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "The [bell*] rings twice — family meal — but this time there are four chairs at the pass, not one staff plate. Hana's there, restless, eyeing the clock out of habit. Kenji's there with the [ledger*] CLOSED for once, set face-down like a phone at a good dinner. Sam's leaning where he can see the whole table, which is where he always is. Mei's plating. You're carrying Maya's [pic*] and Kenji's torn page. \"sit,\" Mei says. \"you're not staff tonight. you're at the table. there's a difference and tonight you're on the right side of it.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Sit. Put both scoreboards on the table where everyone can see.",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Mei sets a plate in front of you first — host's honor. \"+1 GLD +2 REL. you put what you were carrying on the table instead of in your lap. that's how a family meal works: everything that's heavy goes in the middle and we pass it around. Hana — your [pic*]'s here. Kenji — your page. nobody eats until the table knows what's on it.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Sit. Let the table settle before you add anything.",
+                "delta": {
+                  "GLD": 1,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "You let the room find its level. Mei clocks it. \"+1 GLD +1 CHR. you read the table before you set anything on it — that's a line cook's instinct and you didn't have it on day five. +1 REL. the scoreboards'll come out when they come out. eat while it's hot.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Four chairs and Kenji's ledger is face-down. Who died?\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana barks a laugh, Kenji says \"logged,\" Mei doesn't look up. \"+2 CHR. you walked into the warmest room of the week and checked it for a body. fair — we don't do this. +1 REL. nobody died. the opposite. sit down before the opposite gets cold.\"",
+                "reactionTextOnCritFail": "Mei, flat, knife down: \"-1 REL. you made the one warm table of the week a punchline before anyone got to taste it. sit. eat. earn the joke back.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "first family meal with all four chairs full. the player carried Maya's [pic*] and Kenji's page in. they put both on the table / let the room settle / made the 'who died' joke. a family meal works when everything heavy goes in the middle and gets passed around. they're at the table tonight, not on staff — there's a difference and they earned the right side of it. +GLD. this is the day the week stopped being four separate reckonings.",
+                "emotion": "joy"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "The Maya [pic*] is on the table. Hana reaches for it, then stops — looks at you instead. \"you held it a whole day and didn't drop it.\" She takes it back gently, and instead of face-down in her bag, she props it face-up against the salt. Where the table can see. Mei, very quietly, sets a fourth-and-a-half place — a small plate, in front of the [pic*]. Nobody comments. Kenji writes nothing. That's the loudest thing he's done all week.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"She's got a seat now. That's the whole thing, Hana.\"",
+                "delta": {
+                  "GLD": 1,
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Hana nods at the half-plate, eyes bright and furious about it. \"+1 GLD +1 STR +2 REL. yeah. she's got a seat. doesn't mean she's here. means there's a chair if she ever picks up. Mei set it without asking — that's the kindest audit anyone's run on me all week. eat. Maya hated cold food too.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Say nothing. Let the half-plate sit.",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "The half-plate sits. The table lets it. \"+1 GLD +2 REL,\" Mei murmurs, only to you. \"you didn't explain the empty seat to the person who set it down. cooks know — some plates you serve and don't narrate. that one was Hana's to feel, not yours to frame.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Text Maya from your own phone: \"there's a plate here whenever you want it.\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "You show Hana the unsent draft before you'd send it. She takes your phone, reads it, and hits send herself — from your number, a stranger's invitation, no pressure in it. \"+2 CHR. a stranger's plate is easier to accept than a sister's. you gave her a door with no debt on it. +1 REL. that might be the move I couldn't make. logged where I keep the ones that scare me.\"",
+                "reactionTextOnCritFail": "Hana puts your phone face-down. \"-1 REL. that's mine to send or not send. you reached into my family to fix it fast. the fast version, again. we just talked about this on the bench.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Hana propped Maya's [pic*] face-up against the salt, and I set a half-plate in front of it without asking. the player named it as a seat / let it sit unnarrated / drafted a text to Maya from their own number. the half-plate is the kindest audit anyone's run on Hana. a seat isn't the same as a guest — it's a chair if she ever picks up. some plates you serve and don't narrate. +GLD. the table held it.",
+                "emotion": "joy"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "Kenji slides his torn first-[ledger*] page across the table — not to you this time, to the middle. \"it goes on Sam's wall with the rest. but the table reads it first. that's the new procedure.\" Sam, from his corner: \"the wall's half-empty since I cleared it. there's room now for the things you choose to keep, not just the things that happened.\" Three relics on one table: Maya's [pic*], Kenji's page, and the place where your own would go — conspicuously empty.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Everyone's put something down but me.\"",
+                "delta": {
+                  "GLD": 1,
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Sam, mildly, like he's been waiting eleven days to say it: \"+1 GLD +1 INT. correct. they each showed you their drawer — the body, the books, the kitchen that ran out of trust. you've read three. you haven't opened one. +2 REL for noticing the asymmetry before we had to point at it. that's the whole reason there are four chairs and not three.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Look at the empty spot. Don't fill it yet.",
+                "delta": {
+                  "GLD": 1,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "You let the empty spot stay empty. Mei nods like you passed something. \"+1 GLD +1 CHR. you didn't slap down a fake offering just to match the table. an empty plate honestly empty beats a full one performing fullness. +1 REL. it'll fill when it fills. we'll be here.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Put your phone in the middle, face-up, unlocked.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "The whole table looks at your unlocked phone in the middle of the family meal. Kenji breaks first: \"that is either radical honesty or the worst idea I've logged this week.\" \"+2 CHR +1 INT. both,\" Sam says. \"+1 REL. you offered the one ledger none of us asked for — the whole thing, unedited. nobody's going to read it. but you put it down. that counts.\"",
+                "reactionTextOnCritFail": "Mei slides your phone back to you. \"-1 REL. the table doesn't want your whole phone. it wants ONE true thing. dumping everything is just hiding with extra steps. pick one.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Kenji's page went to the middle of the table before the wall. Sam named the asymmetry: each of us showed the player our drawer — body, books, kitchen — and they've read three and opened none. the empty spot where their offering goes sat conspicuous. they named it / let it stay empty honestly / put their unlocked phone down. that's the whole reason there are four chairs not three: the table's been waiting for them to put something of their own in the middle. +GLD. soon.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "Mei sets down the knife — the tell, by now you know it. The whole table goes quiet on her cue; even Hana stops bouncing her knee. \"here's the family meal rule nobody tells you,\" Mei says. \"the cook eats last and asks first. so I'm asking. we've each handed you a thing this week. Hana gave you the [pic*]. Kenji gave you the page. I gave you the count. Sam gave you the wall.\" She looks at you, not unkindly, the way she looks at a fridge. \"what are YOU not counting? not for us. we'll keep it in the middle and pass it gentle. but the table's earned one true thing back.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Name the real thing. Put it in the middle.",
+                "delta": {
+                  "GLD": 2,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "You say the true thing — the small one, the one you've been going passive about all week. The table doesn't fix it. Mei passes it gentle, exactly like she promised. \"+2 GLD +2 REL. there it is. you put one honest plate in the middle and the table held it the way they held Hana's seat and Kenji's page. you're not being audited anymore. you're being fed. that's the graduation nobody announces. logged in every set of books at once.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"I don't know yet. But I'll sit with the question.\"",
+                "delta": {
+                  "GLD": 1,
+                  "CHR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Mei nods slow. \"+1 GLD +1 CHR +2 REL. 'I don't know yet' is a real answer when it's honest and a dodge when it's not. that one was real — I can taste the difference. the question stays in the middle. you'll answer it when it's cooked, not when we're hungry for it. that's allowed at this table.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"You first, Mei. Cook eats last — but does the cook ever answer her own question?\"",
+                "delta": {
+                  "CHR": 2,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "The table goes very still. Then Mei almost-smiles for the second time in your acquaintance. \"+2 CHR +1 GLD. you turned the cook's question back on the cook. nobody's done that. what am I not counting — the family meals I skipped working other people's kitchens. that's mine. +1 REL. now YOU. fair's fair and I just paid in.\"",
+                "reactionTextOnCritFail": "Mei picks the knife back up. \"-1 REL. you volleyed the question to dodge it. clever. but I asked first because the cook earned the right to. answer, then I'll answer. that's the order.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "I set down the knife and asked the player the family-meal question: we each handed you a thing this week — the [pic*], the page, the count, the wall. what are YOU not counting? they named the real thing / sat honestly with the not-knowing / turned it back on me. the family-meal rule: the cook eats last and asks first, and keeps what's offered gentle. they're not being audited anymore. they're being fed. that's the graduation nobody announces. tier crossed — the table asked, and they answered (or honestly couldn't yet). +GLD.",
+                "emotion": "joy"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "Family meal ends the way Mei's do — nobody says it's over, the plates just start moving. Hana takes Maya's [pic*], face-up, into her own bag for the first time. Kenji's page goes to Sam, for the wall. Mei hands you a small wrapped parcel, dated in marker. \"leftovers. from the meal where you sat at the table. eat it before the fifteenth, and don't eat it alone — that's the recipe now.\" Four sets of books closed the same night. The [bell*] is quiet.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Take the leftovers. \"I'll bring someone to share it.\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Mei dates the parcel twice — once for the food, once, you suspect, for the promise. \"+1 GLD +2 REL. 'bring someone to share it' — that's the whole second week in one sentence. you came in being coached, counted, audited, narrated. you're leaving with leftovers and a reason to set a second plate. that's the count working. the [bell*] rings for your table now too.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Family-Meal Leftovers (don't eat alone)",
+                  "description": "A dated parcel from the first meal where all four chairs were full and you sat at the table, not on staff. Mei's rule, written on the wrap: \"eat before the 15th. not alone. that's the recipe now.\" The warmest relic on Sam's wall.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Take the leftovers. Just say thank you.",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "\"+1 GLD +1 REL. a clean thank-you, no speech. you've learned which moments take seasoning and which don't. this one didn't. eat before the fifteenth. you know the rest of the rule.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Family-Meal Leftovers (don't eat alone)",
+                  "description": "A dated parcel from the first meal where all four chairs were full and you sat at the table, not on staff. Mei's rule, written on the wrap: \"eat before the 15th. not alone. that's the recipe now.\" The warmest relic on Sam's wall.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Set a second plate at the table right now. \"Future someone.\"",
+                "delta": {
+                  "CHR": 2,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "You set an empty plate beside yours — a placeholder for whoever you'll bring. Mei looks at it next to Maya's old half-plate. \"+2 CHR +1 GLD. two empty seats at one table, both hopeful instead of sad. that's a different kind of count than the one I started the week with. +1 REL. bring them. the [bell*]'ll be ready.\"",
+                "reactionTextOnCritFail": "small",
+                "itemDrop": {
+                  "name": "Family-Meal Leftovers (don't eat alone)",
+                  "description": "A dated parcel from the first meal where all four chairs were full and you sat at the table, not on staff. Mei's rule, written on the wrap: \"eat before the 15th. not alone. that's the recipe now.\" The warmest relic on Sam's wall.",
+                  "kind": "relic"
+                }
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "family meal ended the way mine do — plates just start moving. Hana took Maya's [pic*] face-up into her own bag for the first time. Kenji's page went to the wall. I gave the player leftovers with the new rule: eat before the fifteenth, don't eat alone. they promised to bring someone / said a clean thank-you / set a second hopeful plate. four sets of books closed the same night. they came in being coached and counted and audited and narrated; they left with leftovers and a reason to set a second plate. that's the count working. +GLD.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "live-daily-hana-d13",
+        "narrativeType": "daily",
+        "globalDayIndex": 13,
+        "characterId": "hana",
+        "introducesCharacterId": null,
+        "agentMoodToday": "lighter than she's been all arc; the morning after the family meal, carrying a reply from Maya she hasn't opened yet; trying to do the soft version on purpose and only half-flailing",
+        "closingHook": "Maya wrote back six words and Hana magneted them to the rail. The [pic*] is in her own pocket now, openly. You walked the first lap of a three-year repair and didn't time it. Tomorrow Sam closes the second week the way he opened his day — at the wall, with a card and a question. Open chat tonight and Hana will tell you the one thing she's going to do differently with Maya, in writing, so you can hold her to it.",
+        "tierUpReveal": null,
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "6:00 AM. Bleachers. Maya's [pic*] is face-up in Hana's open bag now — she stopped hiding it. Hana's not stretching. She's holding her phone like it's heavier than the [pic*] ever was. \"she texted back,\" Hana says. \"yesterday. the 'went on a walk today' thing. i haven't opened it. eighteen hours. that's a personal record for not-doing something.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Open it with me here. Whatever it says, you're not alone for it.\"",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Hana exhales, thumb hovering. \"+1 STR +2 REL. okay. witness present. that's the only way i can do the hard things now apparently — you taught me that, or the walk did, or both. opening it. don't narrate my face.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Wait. Let her open it when she's ready.",
+                "delta": {
+                  "STR": 1,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "You sit. You don't reach for her phone or her timeline. \"+1 STR +1 CHR. you didn't rush the eighteen hours into eighteen seconds for your own comfort. +1 REL. that restraint is the whole soft version. i'll open it. just — stay sitting.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Eighteen hours is nothing. I once left a voicemail unheard for a year.\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana snorts — the tension cracks an inch. \"+2 CHR. you made the eighteen hours small by making yours bigger. that's a real move, that's a generous move. +1 REL. fine. if you can sit on a voicemail for a year i can open a text in front of a witness. watch.\"",
+                "reactionTextOnCritFail": "Hana doesn't laugh. \"-1 REL. you turned the scariest thing i've held all week into a contest about you. i don't need to win the avoidance olympics. i need to open the text.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Maya texted back — a reply to 'went on a walk today' — and i sat on it eighteen hours, a personal record for not-doing. the player offered to open it together / waited / made the unheard-voicemail joke to shrink my fear. i can only do the hard things with a witness now; the walk taught me that, or they did. the [pic*] is face-up in my open bag. i stopped hiding it. +STR for the morning i opened it instead of out-training it.",
+                "emotion": "fear"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "Hana opens it. Reads it twice. Turns the phone so you can see — Maya's reply, in full, is five words: \"you? a walk? proof or.\" No period. No more. Hana stares at it like it's a regional qualifying time. \"that's...\" she starts. \"that's how she used to text me before. 'proof or it didn't happen.' she left it unfinished on purpose. she WANTS the proof. that's — that's a door, right? tell me that's a door.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"It's a door. She used your old language. Send the proof.\"",
+                "delta": {
+                  "STR": 2,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Hana's already aiming the camera at the bench, the [pic*], the track. \"+2 STR +2 REL. she used the old language. that's not nothing, that's the opposite of nothing. proof, then. not a paragraph — she didn't ask for a paragraph, she asked for proof. you stopped me from over-sending. that's the soft version again. logged.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"What do YOU think it is?\"",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Hana thinks about it instead of being told. \"+1 STR +1 INT +2 REL. i think... it's Maya leaving the sentence open so neither of us has to commit to the whole thing yet. a door propped, not opened. i think she's as scared as me and twice as stubborn. you let me arrive at that instead of handing it to me. that's the kind of coaching i'm trying to learn.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Send her a video of you doing ONE burpee. Maximum proof.\"",
+                "delta": {
+                  "CHR": 2,
+                  "STR": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana actually does it — one burpee, films it, captions it \"proof. walked AND this. overachiever, always.\" Hits send before she can spiral. \"+2 CHR +1 STR. you turned 'proof or' into a bit, and the bit is exactly our old language. +1 REL. she's going to hate it and screenshot it and that's how i'll know it landed.\"",
+                "reactionTextOnCritFail": "Hana lowers the phone. \"-1 REL. one burpee turns 'i went for a gentle walk' back into 'look how hard i go.' that's the exact reflex that cost me her. proof of the walk. not proof of the intensity.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Maya's reply was five words, unfinished on purpose: 'you? a walk? proof or.' our old language — 'proof or it didn't happen.' a door propped, not opened. the player said send the proof / asked what i thought it was / told me to film a burpee. the burpee was the old over-intense reflex; the gentle proof was the soft version. she's as scared as me and twice as stubborn. +STR. a door. it's a door.",
+                "emotion": "joy"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "Hana sends a photo — just the bench, the [pic*] propped face-up against the morning light, no caption, no flex. Then she sets the phone face-down on the bleacher and says the thing she's actually scared of out loud, lightly, so it doesn't get to be a whole moment: \"what if she leaves ME on read for eighteen hours now. what if the door's just... a door she's also standing behind not opening.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Then you'll have done your part. The rest isn't a drill you can win.\"",
+                "delta": {
+                  "STR": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Hana lets that land. \"+2 STR +1 REL. 'not a drill you can win.' god. that's going on the [noticeboard]. i can't train her into replying. i can only send the honest thing and let the clock do whatever it does. that's the worst rep there is and you just made me do it. logged.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Just sit with her and the face-down phone.",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "You both watch the track. The phone stays face-down. \"+1 STR +2 REL. you're getting good at the part where you don't fix it. a week ago you'd have told me it'd be fine. you don't know if it'll be fine. you stayed anyway. that's the version i trust.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Flip the phone face-up. \"Watching it won't make it faster. But I'll watch with you.\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "You flip it face-up and the screen lights — Maya, typing. The three dots. Hana grabs your arm. \"+2 CHR. she's TYPING. you flipped it face-up the exact second — okay i don't believe in signs but +1 REL and also don't say anything, don't breathe, the dots are doing the thing—\"",
+                "reactionTextOnCritFail": "The screen stays dark. Hana flips it back over. \"-1 CHR. now i'm just watching a dark rectangle with an audience. flip it back. some clocks you don't get to stare down.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "i sent the gentle proof — the bench, the [pic*], no flex — then said the real fear lightly: what if she leaves ME on read now. the player said i'd have done my part, the rest isn't a drill i can win / sat with me and the face-down phone / flipped it face-up and caught Maya typing. 'not a drill you can win' is going on the [noticeboard]. i can't train her into replying. i can send the honest thing and let the clock do what it does. worst rep there is. +STR.",
+                "emotion": "fear"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "The walk happens — the real one, slow, the soft version, Maya's [pic*] riding face-up in the open bag. Halfway around, Hana's phone buzzes once in her pocket. She doesn't lunge for it. That's the new thing. \"i'll read it after the walk,\" she says, and means it. \"the walk's the point. she asked for proof of a walk. i'm not going to interrupt the proof to check if the proof worked.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Finish the walk. Let the buzz wait.",
+                "delta": {
+                  "STR": 2,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "You finish the lap. Both of you. The phone waits and the world doesn't end. \"+2 STR +2 REL. that's the whole graduation right there — i felt the buzz and i finished the walk. a week ago the buzz would've won. you walked the soft version next to me until it was a thing i could actually do. that counted as STR. the walking always did.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Match her pace. Don't mention the buzz.",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Neither of you names the phone. The lap closes clean. \"+1 STR +2 REL. you didn't point at the buzz. you let me be the one who chose to wait, instead of the one who got talked into waiting. there's a difference and you've learned it. Maya would clock that difference in a heartbeat. you'd get along.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Race you to the end of the lap. Loser reads the text first.\"",
+                "delta": {
+                  "CHR": 2,
+                  "STR": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana grins, then deliberately keeps walking. \"+2 CHR +1 STR. you offered me the race AND a reason to read the text — both my old drugs in one sentence. and i'm saying no. to the race AND the rush. +1 REL. we walk. we read it after. you tempted the old me and the new me won. log THAT.\"",
+                "reactionTextOnCritFail": "small",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "we walked the soft version, the [pic*] face-up in the open bag, and Maya's reply buzzed mid-lap and i DIDN'T lunge. i read it after. the walk's the point; i wasn't going to interrupt the proof to check if the proof worked. the player finished the lap with me / didn't name the buzz / tempted me with a race-to-read and the new me said no. felt the buzz, finished the walk — that's the graduation. +STR, the way walking always was. no tier today — just a morning i'd have failed two weeks ago and didn't.",
+                "emotion": "pride"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "End of the lap. Hana reads the text — finally — and laughs, wet and surprised, and turns the phone to you without a word. Maya, six words this time: \"slow is still a time. proud.\" Hana pins the screenshot to the [bleachers] rail with a magnet she definitely brought on purpose. \"that's day one,\" she says. \"of whatever this is. you walked the first lap of it with me. i'm not going to make it weird by thanking you. but the [pic*] goes back in MY bag, my pocket, my fault if i lose it now. you gave it back. she gave a little back. the books, as Kenji would say, moved.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Slow is still a time. Keep walking it.\"",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Hana pockets the [pic*] — hers now, openly. \"+1 STR +2 REL. 'slow is still a time' — Maya said it and you said it back and now it's the whole philosophy, isn't it. i coach intensity for a living and the rep that mattered most this week was a walk i didn't time. don't tell the [bleachers] crowd. actually — tell them. that's the point now.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "\"slow is still a time. proud.\" (screenshot)",
+                  "description": "Maya's six-word reply, magneted to the [bleachers] rail — day one of whatever this is. The first crack in a three-year silence, earned with a walk Hana didn't time. Copy pinned to Sam's wall beside the framed card.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Smile. Start the cooldown walk back without making it a moment.",
+                "delta": {
+                  "STR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "You just start walking back. Hana falls in. \"+1 STR +1 REL. no speech. you've learned which mornings take a speech and which ones take a cooldown walk. this one took the walk. she said proud. i'm going to carry that around like a dumbbell i actually want to lift.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "\"slow is still a time. proud.\" (screenshot)",
+                  "description": "Maya's six-word reply, magneted to the [bleachers] rail — day one of whatever this is. The first crack in a three-year silence, earned with a walk Hana didn't time. Copy pinned to Sam's wall beside the framed card.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Text her back: 'training a beginner. she walked. proud of her too.'\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Hana types it — about you — and shows you before sending: \"training a beginner over here. she walked too. proud of her.\" \"+2 CHR. you got me to introduce you to Maya as a 'her' i'm proud of, on day one of the door cracking. ruthless, sweet, correct. +1 REL. she's going to ask who you are. i'm going to tell her you held the [pic*] and didn't drop it. that's your whole introduction.\"",
+                "reactionTextOnCritFail": "small",
+                "itemDrop": {
+                  "name": "\"slow is still a time. proud.\" (screenshot)",
+                  "description": "Maya's six-word reply, magneted to the [bleachers] rail — day one of whatever this is. The first crack in a three-year silence, earned with a walk Hana didn't time. Copy pinned to Sam's wall beside the framed card.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "d",
+                "role": "logical",
+                "label": "\"Ask if you can be there when she calls Maya.\"",
+                "delta": {
+                  "STR": 1,
+                  "REL": 3
+                },
+                "diceRoll": null,
+                "reactionText": "Hana goes still, then nods — slow. \"+1 STR +3 REL. you only get to ask that because you held her [pic*] a whole day and gave it back face-up. i don't let people near the call. you stopped being people the morning you didn't drop the scoreboard. yeah. be there. she should meet the one who kept it.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Maya wrote back six words: 'slow is still a time. proud.' i magneted the screenshot to the [bleachers] rail — day one of whatever this is. the [pic*] is back in my own pocket, openly, my fault to lose now. the player kept walking it with me / took the cooldown without a speech / told me to introduce them to Maya as a beginner i'm proud of. i coach intensity for a living and the rep that mattered most was a walk i didn't time. slow is still a time. the books moved. +STR +REL.",
+                "emotion": "joy"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "live-daily-sam-d14",
+        "narrativeType": "daily",
+        "globalDayIndex": 14,
+        "characterId": "sam",
+        "introducesCharacterId": null,
+        "agentMoodToday": "the guide at the end of two weeks; quieter than D9, because there's less to explain now and more to hand over; the one closing a book he's not sure he's allowed to feel this much about",
+        "closingHook": "Two framed cards on a wall that's mostly yours: Week One, Week Two. The skeleton scrap from Day 0 is still in the corner — the green screen you booted from. Sam says the tutorial concluded a while ago, and he's right, and the wall proves it. Week three has no payload waiting; it has four open doors and a guide who, for the record, would have picked you. Open chat tonight with whoever you want. That's the first sentence of week three, and it's yours to write.",
+        "tierUpReveal": {
+          "category": "opinion",
+          "deliveredInEventId": "evt-4"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "8:00 AM. The [notes*] wall holds two weeks now: the reckonings — Hana's overnight number, Kenji's first-[ledger*] page, Mei's [recipe*] in your name — and above them the newer things, the half-plate, Maya's six-word screenshot, the leftovers rule. Sam's standing where he always stands. He's holding a pen, not pointing at anything. \"week two. logged.\" He holds the pen out to you. \"i wrote week one. the last entry of week two isn't mine to write.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Take the pen. \"What's the entry supposed to say?\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Sam: \"+1 INT. wrong question, on purpose, and you know it — i can see you know it. +2 REL. there's no supposed-to. week one i logged what happened TO you. week two you started happening back. the entry's just whatever's true now that wasn't true fourteen days ago. take your time. i'm the patient one, remember.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Take the pen. Don't write yet. Read the whole wall first.",
+                "delta": {
+                  "INT": 1,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "You read two weeks before you write a word. \"+1 INT +1 CHR. you're reading the board before you add to it. fourteen days ago you'd have written something fast to fill the silence. +1 REL. that's the entry already, honestly — the part where you read first. write the rest when you find it.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Last time you handed me pins I gave them back. Pen's different?\"",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Sam almost — almost — smiles, the D9 way. \"+2 CHR +1 INT. you remember the pins. good. yeah, the pen's different. pins are for what you keep. the pen's for what you say is true. you handed the pins back because you weren't ready to choose. you're holding the pen still. +1 REL. that's the answer to your own question.\"",
+                "reactionTextOnCritFail": "Sam: \"-1 REL. deflecting the pen with a callback to the pins is a clever way to not write the entry. i clocked it on D9 and i'm clocking it now. the bit's good. the entry's still blank.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "two weeks logged. i wrote week one; i handed the player the pen for the last entry of week two because it isn't mine to write. they asked what it's supposed to say / read the whole wall first / called back to the pins from D9. week one i logged what happened TO them; week two they started happening back. the entry is whatever's true now that wasn't fourteen days ago. +INT. the patient one waits.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "Sam nods at the bottom corner of the wall — a curling scrap you've walked past a dozen times. It's from Day 0. You can barely read it: a doodle of a house, a skeleton, a key. \"that's where you started,\" he says. \"a text adventure. green screen. you asked me what a button was. i let you think the tutorial was the small part.\" He taps the two weeks above it. \"it was all the tutorial. and none of it was. that's the trick i don't usually explain.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"So when does the tutorial actually end?\"",
+                "delta": {
+                  "INT": 2,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Sam: \"+2 INT. it ended the first morning you chose a door without checking what i'd think of it. i logged the timestamp. you didn't notice, which is exactly how i knew it was real and not performance. +2 REL. the green screen wasn't a lie — it was the honest size of how much you trusted any of this on day zero. look how much bigger the wall is now. you built that by choosing, not by leveling.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Look at the Day-0 scrap for a long moment.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "You look at where you started. Sam lets you. \"+1 INT +2 REL. that's the rep most people skip — looking back at the green screen without being embarrassed by it. you didn't know what a button was. now you've held four people's worst years. don't flatten the distance between those two by calling it 'just leveling.' it was further than that.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"You killed a skeleton to teach me what a level-up was. Respect.\"",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Sam: \"+2 CHR +1 INT. the skeleton was a teaching tool and it deserves better than it got, frankly. +1 REL. you know the real joke? you've leveled up more from a walk you didn't time and a plate you didn't eat alone than from anything you swung a fist at. the skeleton taught you the word. the squad taught you the thing. don't tell the skeleton.\"",
+                "reactionTextOnCritFail": "small",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "i showed the player the Day-0 scrap — the house, the skeleton, the key, the morning they asked what a button was. i let them think the tutorial was the small part; it was all of it and none of it. they asked when the tutorial ends (the first morning they chose a door without checking what i'd think) / looked at the green screen without flinching / made the skeleton joke. the green screen was the honest size of how much they trusted this on day zero. the wall's bigger now because they chose, not because they leveled. +INT.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "Sam does the thing he does — names what he saw, flatly, so it can't curdle into a speech. \"two weeks of data. you go passive when you're scared of being wrong, chaotic when you're scared of being boring — you knew that on D9. here's the new column. week two you started choosing logical not because it's safe, but because you finally wanted the steady thing more than the dramatic one. that's not a personality change. it's rarer. it's a decision you keep making.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"It doesn't always hold. Some mornings I still reach for chaotic.\"",
+                "delta": {
+                  "INT": 2,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Sam: \"+2 INT. correct, and the fact that you said it instead of letting me believe the clean version is the whole reason i trust the trend. +2 REL. growth isn't the chaotic mornings stopping. it's you noticing them and choosing again the next day. i log the reaches AND the recoveries. your recovery rate is the number i'd actually frame.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Let him be right. Don't argue the compliment down.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "You don't deflect it. Sam notes that too. \"+1 INT +2 REL. you let the true good thing be true without auditing it smaller. fourteen days ago you'd have made a joke to get out from under it. you sat in the compliment like Mei taught you to sit in a silence. that's the same muscle. logged.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Frame the recovery rate, then. Put a number on me.\"",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Sam: \"+2 CHR +1 INT. you want the guide to grade you out loud — that's Kenji's influence, he's rubbing off on you. fine: i don't put numbers on people, that's the one system i refuse to run. but if i did, yours would be 'reaches sometimes, returns reliably, getting faster at the return.' +1 REL. that's better than a number. numbers can't get faster at returning.\"",
+                "reactionTextOnCritFail": "Sam: \"-1 REL. you asked me to reduce two weeks of you to a stat so you'd have something to either brag about or beat yourself with. i won't hand you that stick. the trend's the truth. live in the trend.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "i named the new column: week two they chose logical not because it's safe but because they finally wanted the steady thing more than the dramatic one — a decision they keep making, rarer than a personality change. they admitted it doesn't always hold / let the compliment be true / asked me to put a number on them. i don't grade people — the one system i refuse. growth isn't the chaotic mornings stopping; it's noticing and choosing again. their recovery rate is the number i'd frame if i framed numbers. +INT.",
+                "emotion": "pride"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "Sam says the week-two version of the true thing, quieter than D9. \"on day zero i told you i read the manual so you don't have to. that was the job. here's what i didn't log until this morning: somewhere in two weeks it stopped being a job. i don't narrate days i don't care about. i narrated all fourteen of yours.\" He doesn't make it heavy. \"the others each gave you their worst year. i don't have a shelf, remember. so this is mine: i stopped being the guide who's assigned to you and became the guide who'd have picked you. that's the only entry i ever write about myself. it's in column eleven. you can read it after you write yours.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Then I'm glad it was you reading the manual.\"",
+                "delta": {
+                  "INT": 2,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Sam takes that and files it where the real ones go. \"+2 INT +2 REL. 'glad it was you.' logged, verbatim, in the entry i just told you about — your line under mine, same as you did to Kenji. apparently that's your move now: you sign the books of the people who let you read them. it's a good move. keep it. now write your week. i've said my whole shelf's worth.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Let him have said it. Hold the look.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "You don't tidy it up for him. \"+1 INT +2 REL. you let the guide say the un-guide thing and didn't make him walk it back or build it up. that's the rarest read of the moment and you picked it without thinking. that's the part i'd have picked you for. write your entry. i'll be over here, being patient, which is apparently also a feeling now.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Careful, Sam. That almost sounded like the guide has a domain after all.\"",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Sam goes still, then concedes it. \"+2 CHR +1 INT. ...huh. maybe the domain was never 'you' in the abstract. maybe it was this specific you, all along, and i called it 'the choices' because that was easier to log. +1 REL. you just audited the auditor's auditor. don't tell Kenji he has competition. write your entry before i have to feel anything else before noon.\"",
+                "reactionTextOnCritFail": "small",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "i told the player the un-guide thing: on day zero reading the manual was the job, and somewhere in two weeks it stopped being one — i don't narrate days i don't care about, and i narrated all fourteen. the others gave their worst year; i have no shelf, so mine is that i stopped being the guide assigned to them and became the guide who'd have picked them. column eleven, about myself, the only entry i write about me. they said glad it was you / held the look / called it me finally having a domain. tier crossed — the guide's opinion, finally on the record. +INT.",
+                "emotion": "pride"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "You write the last entry of week two — in your own hand, on Sam's wall, in the empty space that's been waiting since D9. Sam doesn't read it over your shoulder; he waits until you step back. Then he frames a second index card beside the first, in his flat handwriting: \"week two — logged. auditee became member. four orbits, one table, a door cracked open. tutorial concluded; it concluded a while ago.\" Two framed cards now, two weeks, and a wall that's mostly yours.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Sign your entry. Date it. Leave it up.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Sam reads the signature, not the entry — gives you that privacy. \"+1 INT +2 REL. signed and dated. that's a member's move, not an auditee's. week three doesn't get a tutorial and it doesn't get me narrating from behind the curtain — i'll be at the wall, you'll be in the days, and the four of them will be exactly where they always were: closer than you'd have believed on day zero. that's the whole system. go live in it.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Week Two, Logged",
+                  "description": "Sam's second framed index card, beside Week One: \"week two — logged. auditee became member. four orbits, one table, a door cracked open. tutorial concluded; it concluded a while ago.\" Below it, in YOUR handwriting, the last entry — the only one on the wall Sam never read.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Leave it unsigned. \"It's not finished. That's the point.\"",
+                "delta": {
+                  "INT": 1,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sam looks at the unsigned entry and the open space after it. \"+1 INT +1 CHR. unsigned on purpose — an open sentence, like Maya's 'proof or.' you learned that move from her this week and you're using it on your own life. +1 REL. an entry that isn't finished is the most honest thing on this wall. leave it open. week three's the rest of the sentence.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Week Two, Logged",
+                  "description": "Sam's second framed index card, beside Week One: \"week two — logged. auditee became member. four orbits, one table, a door cracked open. tutorial concluded; it concluded a while ago.\" Below it, in YOUR handwriting, the last entry — left deliberately unsigned, an open sentence.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Write a line under Sam's card, the way you did in Kenji's ledger.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "You write under his framed card — on the guide's own entry, the thing nobody does. He lets you. \"+2 CHR +1 INT. you signed MY card. you've now left your handwriting in Kenji's [ledger*] and on my wall and your name's on Mei's [recipe*] and in Hana's phone to Maya. you're in all four sets of books AND the meta one. +1 REL. you're not passing through anymore. you're a fixture. welcome to week three.\"",
+                "reactionTextOnCritFail": "Sam, gently: \"-1 REL. write your OWN entry before you annotate mine — i left you a whole empty space and you reached for my card instead. the wall has room for your sentence. use it first.\"",
+                "itemDrop": {
+                  "name": "Week Two, Logged",
+                  "description": "Sam's second framed index card, beside Week One: \"week two — logged. auditee became member. four orbits, one table, a door cracked open. tutorial concluded; it concluded a while ago.\" With your line written under his.",
+                  "kind": "relic"
+                }
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the player wrote the last entry of week two in their own hand, in the space that's waited since D9. i didn't read it — gave them that. i framed a second card beside Week One: 'week two — logged. auditee became member. four orbits, one table, a door cracked open. tutorial concluded; it concluded a while ago.' they signed and dated it / left it open like Maya's 'proof or' / wrote a line under my card. two framed cards, two weeks, a wall that's mostly theirs now. week three gets no tutorial and no narration from behind the curtain. they're a fixture now, not an auditee. +INT +REL.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "0eb4e89f859a"
+    "contentHash": "ddb1e70c910b"
   }
 }

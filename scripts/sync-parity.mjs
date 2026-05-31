@@ -112,21 +112,26 @@ function fail(msg) {
   process.exit(2);
 }
 
-// ── 1. UI tokens — GameColors hex values ─────────────────────────────
+// ── 1. UI tokens — theme colors ──────────────────────────────────────
+// v0.0.34: GameColors became theme-reactive getters (they read
+// themeController.active), so the hex literals now live on the ThemePack
+// consts in lib/theme_pack.dart. The website mirrors the BRAND DEFAULT —
+// Parchment & Ink · light (kParchmentLight) — whose named fields match the
+// GameColors getter names 1:1 (paper, paperShade, ink, …).
 function extractColors() {
-  const src = read("lib/theme.dart");
-  const block = src.match(/class GameColors\s*\{([\s\S]*?)\}/);
-  if (!block) fail("could not find GameColors in lib/theme.dart");
+  const src = read("lib/theme_pack.dart");
+  const block = src.match(/const kParchmentLight\s*=\s*ThemePack\(([\s\S]*?)\);/);
+  if (!block) fail("could not find kParchmentLight in lib/theme_pack.dart");
   const out = {};
-  // static const paper = Color(0xFFF2EBDD);
-  const re = /static const (\w+)\s*=\s*Color\(0x([0-9A-Fa-f]{8})\)/g;
+  // paper: Color(0xFFF2EBDD), paperShade: Color(0xFFE9E1CF), ...
+  const re = /(\w+):\s*Color\(0x([0-9A-Fa-f]{8})\)/g;
   let m;
   while ((m = re.exec(block[1])) !== null) {
     const argb = m[2].toUpperCase();
     // Dart is 0xAARRGGBB; web wants #RRGGBB (alpha always FF here).
     out[m[1]] = "#" + argb.slice(2);
   }
-  if (Object.keys(out).length === 0) fail("extracted zero colors from GameColors");
+  if (Object.keys(out).length === 0) fail("extracted zero colors from kParchmentLight (lib/theme_pack.dart)");
   return out;
 }
 
