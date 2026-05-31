@@ -175,6 +175,30 @@ export default function AnimationGallery() {
         note="A chance-based (chaotic 🎲) action can enter a themed battle — a mini version of the option-based story. The bottom bar becomes the battle HUD: the ENEMY's HP is the progress bar; the protagonist is just a name + HP number (no bar). Protagonist/enemy are whatever fits the event — here, REPS vs A PUSHUP."
       >
         <Demo
+          title="Entering battle — bar transition  ★NEW"
+          spec="REL-progress bar morphs into the battle HUD: forest→spot-red recolor, fill resizes to enemy HP, labels crossfade (HANA→REPS, tier→A PUSHUP), quick shake at the swap. ~1.6s"
+          flutter="global_activity_bar.dart — AnimatedSwitcher/Tween between _RelLevelBar and battle HUD on battleController.active"
+        >
+          <div className="adk-tbar">
+            <div className="adk-tbar-labels">
+              <div className="adk-tlayer adk-tlayer-rel">
+                <span>DAY 14 · <b>HANA</b></span>
+                <span className="adk-tier">INSIDE THEIR ORBIT</span>
+              </div>
+              <div className="adk-tlayer adk-tlayer-battle">
+                <span>REPS · <b className="adk-hp">HP 30</b></span>
+                <span className="adk-enemy">A PUSHUP</span>
+              </div>
+            </div>
+            <div className="adk-bar adk-tbar-track"><div className="adk-tbar-fill" /></div>
+            <div className="adk-tbar-cap">
+              <span className="adk-tlayer-rel adk-cap">NEXT · TRADING FAVORS</span>
+              <span className="adk-tlayer-battle adk-cap adk-cap-battle">ENEMY · HP 32 / 40</span>
+            </div>
+          </div>
+        </Demo>
+
+        <Demo
           title="Battle HUD — bottom bar"
           spec="enemy HP = the bar (spot-red, depletes on hit, easeOutCubic 500ms); protagonist = name + HP number, no bar"
           flutter="global_activity_bar.dart — battle mode: _EnemyHpBar + hero HP label (gameState.battle)"
@@ -371,6 +395,30 @@ const CSS = `
 .adk-float-b{animation-delay:.18s;}
 @keyframes adk-rise{0%{opacity:0;transform:translate(-50%,2px);}15%{opacity:1;}100%{opacity:0;transform:translate(-50%,-22px);}}
 
+/* Battle minigame — entering-battle transition (REL bar → battle HUD) */
+.adk-tbar{width:100%;border:2px solid var(--ink);background:var(--paper-shade);padding:8px 12px;
+  animation:adk-toborder 1.6s both,adk-tshake .34s .56s both;}
+@keyframes adk-toborder{0%,37%{border-color:var(--ink);background:var(--paper-shade);}
+  58%,100%{border-color:var(--spot-red);background:color-mix(in srgb,var(--spot-red) 4%,transparent);}}
+@keyframes adk-tshake{0%,100%{transform:translateX(0);}25%{transform:translateX(-3px);}50%{transform:translateX(3px);}75%{transform:translateX(-2px);}}
+.adk-tbar-labels{position:relative;height:14px;margin-bottom:5px;}
+.adk-tlayer{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:baseline;
+  font-family:var(--theme-display);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);}
+.adk-tlayer b{color:var(--forest);}
+.adk-tier{color:var(--forest);}
+.adk-enemy{color:var(--spot-red);font-weight:700;}
+.adk-hp{color:var(--forest);}
+.adk-tlayer-rel{animation:adk-tfadeout 1.6s both;}
+.adk-tlayer-battle{animation:adk-tfadein 1.6s both;}
+@keyframes adk-tfadeout{0%,40%{opacity:1;}55%,100%{opacity:0;}}
+@keyframes adk-tfadein{0%,45%{opacity:0;}60%,100%{opacity:1;}}
+.adk-tbar-fill{height:100%;animation:adk-tofill 1.6s cubic-bezier(.22,1,.36,1) both;}
+@keyframes adk-tofill{0%,37%{width:62%;background:var(--forest);}
+  58%{background:var(--spot-red);}100%{width:80%;background:var(--spot-red);}}
+.adk-tbar-cap{position:relative;height:10px;margin-top:4px;}
+.adk-cap{position:absolute;right:0;top:0;font-family:var(--theme-display);font-size:8px;letter-spacing:.12em;color:var(--margin-ink);}
+.adk-cap-battle{color:var(--spot-red);}
+
 /* Battle minigame — HUD bar (enemy HP) + battle round card */
 .adk-battlebar{width:100%;border:2px solid var(--spot-red);background:color-mix(in srgb,var(--spot-red) 4%,transparent);padding:8px 12px;}
 .adk-bb-row{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--theme-display);font-size:11px;
@@ -444,7 +492,8 @@ const CSS = `
 .adk-instant{font-family:var(--theme-body);font-size:12px;color:var(--ink-soft);text-align:center;}
 
 @media (prefers-reduced-motion: reduce){
-  .adk-stamp,.adk-toast,.adk-bar-fill,.adk-bloom,.adk-float,.adk-drop,.adk-relfill,.adk-shaky-word{animation-duration:.001s;}
+  .adk-stamp,.adk-toast,.adk-bar-fill,.adk-bloom,.adk-float,.adk-drop,.adk-relfill,.adk-shaky-word,
+  .adk-bb-fill,.adk-tbar,.adk-tlayer-rel,.adk-tlayer-battle,.adk-tbar-fill{animation-duration:.001s;}
   .adk-cursor{animation:none;}
 }
 `;
