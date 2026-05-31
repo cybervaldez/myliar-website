@@ -30,13 +30,29 @@ export default function AnimationGallery() {
       <style>{CSS}</style>
       <div className="adk-grid">
         <Demo
-          title="Reward Stamp"
-          spec="scale 0.85→1 (easeOutBack overshoot) + fade · 280ms"
-          flutter="lib/reward_stamp.dart — Curves.easeOutBack, 280ms"
+          title="Bottom bar — floating stat gains  ★NEW"
+          spec="float +N: translateY 0→-22px + fade · easeOut · 1000ms (staggered ~180ms)"
+          flutter="global_activity_bar.dart — TweenAnimationBuilder per stat (replaces the stat box)"
+        >
+          <div className="adk-statbar">
+            <div className="adk-statbar-left">DAY 14 · 5/5 · <b>HANA</b> · <span className="adk-title">the Iron Monk</span></div>
+            <div className="adk-statbar-stats">
+              <span className="adk-stat">STR 13<span className="adk-float">+2</span></span>
+              <span className="adk-stat">INT 8</span>
+              <span className="adk-stat">GLD 5</span>
+              <span className="adk-stat">CHR 10<span className="adk-float adk-float-b">+1</span></span>
+            </div>
+          </div>
+        </Demo>
+
+        <Demo
+          title="Item / Achievement reveal (the box)"
+          spec="scale 0.85→1 (easeOutBack overshoot) + fade · 280ms — now for items/achievements, NOT stats"
+          flutter="lib/reward_stamp.dart → repurpose for item/achievement reveal"
         >
           <div className="adk-stamp">
-            <div className="adk-stamp-eye">★ REWARD</div>
-            <div className="adk-stamp-num">+2 <span>STR</span></div>
+            <div className="adk-stamp-eye">★ ACHIEVEMENT UNLOCKED</div>
+            <div className="adk-stamp-title">The One Sam Framed</div>
           </div>
         </Demo>
 
@@ -101,6 +117,20 @@ const CSS = `
 .adk-stamp-eye{font-family:var(--theme-display);font-size:10px;letter-spacing:.14em;color:var(--spot-red);}
 .adk-stamp-num{font-family:var(--theme-display);font-size:30px;font-weight:700;color:var(--spot-red);line-height:1;}
 .adk-stamp-num span{font-size:11px;color:var(--ink);letter-spacing:.1em;}
+.adk-stamp-title{font-family:var(--theme-display);font-size:18px;font-weight:700;color:var(--ink);line-height:1.15;margin-top:4px;}
+
+/* Bottom bar — live stats + floating gains (replaces the stat box) */
+.adk-statbar{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  border:2px solid var(--ink);background:var(--paper-shade);padding:8px 12px;}
+.adk-statbar-left{font-family:var(--theme-display);font-size:11px;letter-spacing:.06em;color:var(--ink);text-transform:uppercase;}
+.adk-statbar-left b{color:var(--ink);}
+.adk-title{color:var(--spot-red);}
+.adk-statbar-stats{display:flex;gap:10px;}
+.adk-stat{position:relative;font-family:var(--theme-display);font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--forest);}
+.adk-float{position:absolute;top:-4px;left:50%;transform:translateX(-50%);color:var(--spot-red);font-weight:700;font-size:12px;
+  white-space:nowrap;animation:adk-rise 1s ease-out both;}
+.adk-float-b{animation-delay:.18s;}
+@keyframes adk-rise{0%{opacity:0;transform:translate(-50%,2px);}15%{opacity:1;}100%{opacity:0;transform:translate(-50%,-22px);}}
 
 /* Toast slide-in */
 @keyframes adk-slidein{0%{opacity:0;transform:translateY(110%);}100%{opacity:1;transform:translateY(0);}}
@@ -124,7 +154,7 @@ const CSS = `
 .adk-instant{font-family:var(--theme-body);font-size:12px;color:var(--ink-soft);text-align:center;}
 
 @media (prefers-reduced-motion: reduce){
-  .adk-stamp,.adk-toast,.adk-bar-fill,.adk-bloom{animation-duration:.001s;}
+  .adk-stamp,.adk-toast,.adk-bar-fill,.adk-bloom,.adk-float{animation-duration:.001s;}
   .adk-cursor{animation:none;}
 }
 `;
