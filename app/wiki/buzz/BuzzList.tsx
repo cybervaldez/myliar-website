@@ -10,13 +10,16 @@ import { useEffect, useState } from "react";
 import {
   fetchBuzz,
   commentsConfigured,
-  captureOwnerSession,
-  isOwner,
-  signInOwner,
-  signOutOwner,
   currentSnapshot,
   type Comment,
 } from "../comments";
+import {
+  ensureSession,
+  amIOwner,
+  signInWithGoogle,
+  signOut,
+  currentDisplayName,
+} from "../supabaseClient";
 
 function anchorHref(anchor: string): string | null {
   const [kind, ...rest] = anchor.split(":");
@@ -40,7 +43,7 @@ export function BuzzList() {
   const [loading, setLoading] = useState(configured);
 
   useEffect(() => {
-    captureOwnerSession();
+    ensureSession(); // SDK auto-captures the OAuth redirect (detectSessionInUrl)
     if (!configured) return;
     let alive = true;
     fetchBuzz().then((c) => {
@@ -101,45 +104,42 @@ export function BuzzList() {
 
 function OwnerBar() {
   const [owner, setOwner] = useState(false);
-  const [email, setEmail] = useState("");
-  const [msg, setMsg] = useState<string | null>(null);
+  const [name, setName] = useState<string | null>(null);
 
-  useEffect(() => { setOwner(isOwner()); }, []);
+  useEffect(() => {
+    ensureSession().then(() => {
+      amIOwner().then(setOwner);
+      currentDisplayName().then(setName);
+    });
+  }, []);
 
   return (
     <div className="border border-margin-ink/40 bg-paper p-2.5 mb-5 text-[11px] text-margin-ink flex items-center gap-2 flex-wrap">
       {owner ? (
-        <>
-          <span className="text-spot-red font-display tracking-[0.1em]">★ SIGNED IN AS OWNER</span>
-          <button
-            type="button"
-            className="ml-auto cursor-pointer hover:text-ink underline"
-            onClick={() => { signOutOwner(); setOwner(false); }}
-          >
-            sign out
-          </button>
-        </>
+        <span className="text-spot-red font-display tracking-[0.1em]">★ SIGNED IN AS OWNER</span>
+      ) : name ? (
+        <span className="font-display tracking-[0.1em]">SIGNED IN · {name}</span>
       ) : (
         <>
-          <span className="font-display tracking-[0.1em]">OWNER</span>
-          <input
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="owner email"
-            className="border border-margin-ink/60 bg-paper-shade px-2 py-1 text-[12px] text-ink font-body focus:outline-none focus:border-forest"
-          />
+          <span className="font-display tracking-[0.1em]">GUEST</span>
           <button
             type="button"
             className="cursor-pointer underline hover:text-ink"
-            onClick={async () => {
-              const r = await signInOwner(email);
-              setMsg(r.ok ? "Magic link sent — open it on this device." : r.error ?? "Couldn't send.");
-            }}
+            onClick={() => signInWithGoogle()}
           >
-            send magic link
+            sign in with Google
           </button>
-          {msg && <span className="italic">{msg}</span>}
+          <span className="italic">— claim your comments &amp; worlds</span>
         </>
+      )}
+      {(owner || name) && (
+        <button
+          type="button"
+          className="ml-auto cursor-pointer hover:text-ink underline"
+          onClick={async () => { await signOut(); setOwner(false); setName(null); }}
+        >
+          sign out
+        </button>
       )}
     </div>
   );

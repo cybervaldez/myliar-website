@@ -13,13 +13,13 @@ import {
   postComment,
   like,
   unlike,
-  isOwner,
   setNoteStatus,
   hideComment,
   currentSnapshot,
   type Comment,
   type NoteStatus,
 } from "../comments";
+import { ensureSession, amIOwner } from "../supabaseClient";
 
 const STATUS: NoteStatus[] = ["open", "applied", "declined", "discuss", "superseded"];
 
@@ -43,7 +43,13 @@ export function DiscussionThread({
   const [loaded, setLoaded] = useState(false);
   const [comments, setComments] = useState<Comment[]>([]);
   const [votes, setVotes] = useState<Set<string>>(new Set());
-  const owner = isOwner();
+  const [owner, setOwner] = useState(false);
+
+  useEffect(() => {
+    // Give every visitor a session (anon) so votes/attribution work, then learn
+    // whether they're an owner (server still enforces).
+    ensureSession().then(() => amIOwner().then(setOwner));
+  }, []);
 
   async function refresh() {
     const [c, v] = await Promise.all([fetchThread(anchor), fetchMyVotes()]);

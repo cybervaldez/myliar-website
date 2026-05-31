@@ -1,13 +1,13 @@
-// Community discussion + owner notes — the wiki's feedback layer.
-// docs/design/community-discussion.md. Facebook-style discussion on any
-// granular area; a comment is a NOTE only when posted by the owner (the one
-// Supabase-Auth'd account). Replaces notes.ts (clean-slate).
+// Community discussion + owner notes — the wiki's feedback layer (Phase 2).
+// docs/design/community-discussion.md + auth-model.md. Facebook-style discussion
+// on any granular area; a comment is a NOTE only when posted by an owner.
 //
-// Transport is plain fetch — PostgREST for data, GoTrue REST for owner auth
-// (no SDK). Anonymous public; owner signs in via magic link. Degrades to
-// no-ops when the env vars are unset so the wiki still builds without creds.
+// Data goes through the Supabase JS client (supabaseClient.ts), so the session
+// JWT rides every write and RLS applies by auth.uid() (votes one-per-user,
+// owner-only note edits). Reads are public. Degrades to no-ops when unconfigured.
 
 import parity from "../lib/parity.generated.json";
+import { supabase, currentUserId, ensureSession } from "./supabaseClient";
 
 const URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const ANON = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -16,6 +16,8 @@ const DATA_RUN = (parity as { version: { runId: string; contentHash: string } })
 const DATA_VERSION = (parity as { version: { runId: string; contentHash: string } }).version.contentHash;
 export const currentSnapshot = { run: DATA_RUN, version: DATA_VERSION };
 
+// Env-based (consistent server + client → no hydration mismatch). Actual calls
+// guard on supabase() being non-null (browser-only).
 export function commentsConfigured(): boolean {
   return Boolean(URL && ANON);
 }
@@ -40,9 +42,6 @@ export interface Comment {
 }
 
 // ── Stable content hash (FNV-1a 32-bit) ──────────────────────────────────
-// Computed from the area's CURRENT text wherever a thread is rendered, stamped
-// onto each new comment, and compared on read to flag stale ("earlier version")
-// comments per-area — finer than the whole-snapshot data_version.
 export function contentHash(text: string): string {
   let h = 0x811c9dc5;
   for (let i = 0; i < text.length; i++) {
@@ -52,156 +51,56 @@ export function contentHash(text: string): string {
   return (h >>> 0).toString(16).padStart(8, "0");
 }
 
-// ── Per-visitor vote token (localStorage) ─────────────────────────────────
-export function voterToken(): string {
-  if (typeof window === "undefined") return "ssr";
-  let t = localStorage.getItem("wiki_voter_token");
-  if (!t) {
-    t = crypto.randomUUID();
-    localStorage.setItem("wiki_voter_token", t);
-  }
-  return t;
-}
-
-// ── Owner session (GoTrue magic link) ─────────────────────────────────────
-// The owner requests a magic link; the redirect lands back with the access
-// token in the URL hash, which we stash. Owner-scoped calls send it as Bearer.
-function ownerToken(): string | null {
-  if (typeof window === "undefined") return null;
-  return localStorage.getItem("wiki_owner_token");
-}
-export function isOwner(): boolean {
-  return ownerToken() !== null;
-}
-
-/** Call once on load: capture a token Supabase put in the URL hash after a
- *  magic-link redirect, then clean the URL. */
-export function captureOwnerSession(): void {
-  if (typeof window === "undefined") return;
-  const hash = window.location.hash;
-  if (hash.includes("access_token=")) {
-    const p = new URLSearchParams(hash.slice(1));
-    const token = p.get("access_token");
-    if (token) {
-      localStorage.setItem("wiki_owner_token", token);
-      history.replaceState(null, "", window.location.pathname + window.location.search);
-    }
-  }
-}
-
-export async function signInOwner(email: string): Promise<{ ok: boolean; error?: string }> {
-  if (!commentsConfigured()) return { ok: false, error: "Not configured." };
-  try {
-    const res = await fetch(`${URL}/auth/v1/otp`, {
-      method: "POST",
-      headers: { apikey: ANON as string, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email,
-        options: { email_redirect_to: typeof window !== "undefined" ? window.location.href : undefined },
-      }),
-    });
-    if (!res.ok) return { ok: false, error: `Couldn't send link (${res.status}).` };
-    return { ok: true };
-  } catch {
-    return { ok: false, error: "Network error." };
-  }
-}
-
-export function signOutOwner(): void {
-  if (typeof window !== "undefined") localStorage.removeItem("wiki_owner_token");
-}
-
-function headers(owner = false) {
-  const tok = owner ? ownerToken() : null;
-  return {
-    apikey: ANON as string,
-    Authorization: `Bearer ${tok ?? ANON}`,
-    "Content-Type": "application/json",
-  };
-}
-
 // ── Reads ──────────────────────────────────────────────────────────────────
 export async function fetchThread(anchor: string): Promise<Comment[]> {
-  if (!commentsConfigured()) return [];
-  const q = new URLSearchParams({
-    anchor: `eq.${anchor}`,
-    hidden: "eq.false",
-    order: "created_at.asc",
-    select: "*",
-  });
-  try {
-    const res = await fetch(`${URL}/rest/v1/wiki_comments_scored?${q}`, {
-      headers: headers(),
-      cache: "no-store",
-    });
-    if (!res.ok) return [];
-    return (await res.json()) as Comment[];
-  } catch {
-    return [];
-  }
+  const c = supabase();
+  if (!c) return [];
+  const { data, error } = await c
+    .from("wiki_comments_scored")
+    .select("*")
+    .eq("anchor", anchor)
+    .eq("hidden", false)
+    .order("created_at", { ascending: true });
+  return error ? [] : (data as Comment[]);
 }
 
-/** Most-liked / most-discussed comments across the whole wiki (the buzz page). */
 export async function fetchBuzz(limit = 60): Promise<Comment[]> {
-  if (!commentsConfigured()) return [];
-  const q = new URLSearchParams({
-    hidden: "eq.false",
-    order: "score.desc,created_at.desc",
-    limit: String(limit),
-    select: "*",
-  });
-  try {
-    const res = await fetch(`${URL}/rest/v1/wiki_comments_scored?${q}`, {
-      headers: headers(),
-      cache: "no-store",
-    });
-    if (!res.ok) return [];
-    return (await res.json()) as Comment[];
-  } catch {
-    return [];
-  }
+  const c = supabase();
+  if (!c) return [];
+  const { data, error } = await c
+    .from("wiki_comments_scored")
+    .select("*")
+    .eq("hidden", false)
+    .order("score", { ascending: false })
+    .order("created_at", { ascending: false })
+    .limit(limit);
+  return error ? [] : (data as Comment[]);
 }
 
-/** The decision log: resolved OWNER notes, newest first (the changelog). */
 export async function fetchChangelog(limit = 100): Promise<Comment[]> {
-  if (!commentsConfigured()) return [];
-  const q = new URLSearchParams({
-    is_note: "eq.true",
-    note_status: "in.(applied,superseded)",
-    order: "created_at.desc",
-    limit: String(limit),
-    select: "*",
-  });
-  try {
-    const res = await fetch(`${URL}/rest/v1/wiki_comments_scored?${q}`, {
-      headers: headers(),
-      cache: "no-store",
-    });
-    if (!res.ok) return [];
-    return (await res.json()) as Comment[];
-  } catch {
-    return [];
-  }
+  const c = supabase();
+  if (!c) return [];
+  const { data, error } = await c
+    .from("wiki_comments_scored")
+    .select("*")
+    .eq("is_note", true)
+    .in("note_status", ["applied", "superseded"])
+    .order("created_at", { ascending: false })
+    .limit(limit);
+  return error ? [] : (data as Comment[]);
 }
 
-/** Which comment ids this visitor has already liked (so ▲ can show toggled). */
 export async function fetchMyVotes(): Promise<Set<string>> {
-  if (!commentsConfigured()) return new Set();
-  const q = new URLSearchParams({
-    voter_token: `eq.${voterToken()}`,
-    select: "comment_id",
-  });
-  try {
-    const res = await fetch(`${URL}/rest/v1/wiki_comment_votes?${q}`, {
-      headers: headers(),
-      cache: "no-store",
-    });
-    if (!res.ok) return new Set();
-    const rows = (await res.json()) as { comment_id: string }[];
-    return new Set(rows.map((r) => r.comment_id));
-  } catch {
-    return new Set();
-  }
+  const c = supabase();
+  if (!c) return new Set();
+  const uid = await currentUserId();
+  if (!uid) return new Set();
+  const { data, error } = await c
+    .from("wiki_comment_votes")
+    .select("comment_id")
+    .eq("voter_token", uid);
+  if (error) return new Set();
+  return new Set((data as { comment_id: string }[]).map((r) => r.comment_id));
 }
 
 // ── Writes ───────────────────────────────────────────────────────────────
@@ -215,91 +114,66 @@ export interface NewComment {
   asOwner?: boolean;
 }
 
-export async function postComment(c: NewComment): Promise<{ ok: boolean; error?: string }> {
-  if (!commentsConfigured()) return { ok: false, error: "Discussion isn't configured yet." };
-  const body = c.body.trim();
+export async function postComment(n: NewComment): Promise<{ ok: boolean; error?: string }> {
+  const c = supabase();
+  if (!c) return { ok: false, error: "Discussion isn't configured yet." };
+  const body = n.body.trim();
   if (!body) return { ok: false, error: "Write something first." };
   if (body.length > 4000) return { ok: false, error: "Too long (4000 char max)." };
-  const owner = Boolean(c.asOwner && isOwner());
-  try {
-    const res = await fetch(`${URL}/rest/v1/wiki_comments`, {
-      method: "POST",
-      headers: { ...headers(owner), Prefer: "return=minimal" },
-      body: JSON.stringify({
-        anchor: c.anchor,
-        anchor_label: c.anchorLabel,
-        parent_id: c.parentId ?? null,
-        body,
-        author: owner ? "owner" : (c.author?.trim() || "anon").slice(0, 60),
-        author_role: owner ? "owner" : "anon",
-        is_note: owner,
-        note_status: owner ? "open" : null,
-        content_hash: c.contentHash ?? null,
-        data_run: DATA_RUN,
-        data_version: DATA_VERSION,
-      }),
-    });
-    if (!res.ok) return { ok: false, error: `Couldn't post (${res.status}).` };
-    return { ok: true };
-  } catch {
-    return { ok: false, error: "Network error — try again." };
-  }
+  await ensureSession();
+  const uid = await currentUserId();
+  const owner = Boolean(n.asOwner);
+  const { error } = await c.from("wiki_comments").insert({
+    anchor: n.anchor,
+    anchor_label: n.anchorLabel,
+    parent_id: n.parentId ?? null,
+    body,
+    author: owner ? "owner" : (n.author?.trim() || "guest").slice(0, 60),
+    author_role: owner ? "owner" : "anon",
+    is_note: owner,
+    note_status: owner ? "open" : null,
+    owner_id: owner ? uid : null,
+    content_hash: n.contentHash ?? null,
+    data_run: DATA_RUN,
+    data_version: DATA_VERSION,
+  });
+  return error ? { ok: false, error: error.message } : { ok: true };
 }
 
 export async function like(commentId: string): Promise<boolean> {
-  if (!commentsConfigured()) return false;
-  try {
-    const res = await fetch(`${URL}/rest/v1/wiki_comment_votes`, {
-      method: "POST",
-      headers: { ...headers(), Prefer: "return=minimal" },
-      body: JSON.stringify({ comment_id: commentId, voter_token: voterToken() }),
-    });
-    return res.ok || res.status === 409; // 409 = already liked (unique)
-  } catch {
-    return false;
-  }
+  const c = supabase();
+  if (!c) return false;
+  const uid = await ensureSession();
+  if (!uid) return false;
+  const { error } = await c.from("wiki_comment_votes").insert({ comment_id: commentId, voter_token: uid });
+  return !error || error.code === "23505"; // 23505 = already liked (unique)
 }
 
 export async function unlike(commentId: string): Promise<boolean> {
-  if (!commentsConfigured()) return false;
-  const q = new URLSearchParams({
-    comment_id: `eq.${commentId}`,
-    voter_token: `eq.${voterToken()}`,
-  });
-  try {
-    const res = await fetch(`${URL}/rest/v1/wiki_comment_votes?${q}`, {
-      method: "DELETE",
-      headers: { ...headers(), Prefer: "return=minimal" },
-    });
-    return res.ok;
-  } catch {
-    return false;
-  }
+  const c = supabase();
+  if (!c) return false;
+  const uid = await currentUserId();
+  if (!uid) return false;
+  const { error } = await c
+    .from("wiki_comment_votes")
+    .delete()
+    .eq("comment_id", commentId)
+    .eq("voter_token", uid);
+  return !error;
 }
 
-// ── Owner-only edits (RLS-gated) ───────────────────────────────────────────
+// ── Owner-only edits (RLS-gated by is_wiki_owner) ──────────────────────────
 async function ownerPatch(id: string, patch: Record<string, unknown>): Promise<boolean> {
-  if (!commentsConfigured() || !isOwner()) return false;
-  try {
-    const res = await fetch(`${URL}/rest/v1/wiki_comments?id=eq.${id}`, {
-      method: "PATCH",
-      headers: { ...headers(true), Prefer: "return=minimal" },
-      body: JSON.stringify(patch),
-    });
-    return res.ok;
-  } catch {
-    return false;
-  }
+  const c = supabase();
+  if (!c) return false;
+  const { error } = await c.from("wiki_comments").update(patch).eq("id", id);
+  return !error;
 }
-export const setNoteStatus = (id: string, status: NoteStatus) => ownerPatch(id, { note_status: status, is_note: true });
+export const setNoteStatus = (id: string, status: NoteStatus) =>
+  ownerPatch(id, { note_status: status, is_note: true });
 export const hideComment = (id: string) => ownerPatch(id, { hidden: true });
 
 // ── Anchor scheme ──────────────────────────────────────────────────────────
-// As granular as the content gets — events, replies, memory lines, items,
-// achievements — plus page-entity catch-alls. Anchors stay STABLE (so a thread
-// survives small edits); the content_hash carries staleness instead (a moved
-// anchor would orphan the discussion). Items/achievements anchor by a stable
-// slug/id so discussion AGGREGATES wherever that entity appears.
 export function slugify(s: string): string {
   return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60);
 }
@@ -318,4 +192,5 @@ export const anchors = {
     `arc:day-${day}:event:${eventId}:memory:${idx}`,
   item: (nameOrId: string) => `item:${slugify(nameOrId)}`,
   achievement: (id: string) => `achievement:${id}`,
+  elseworldShare: (token: string) => `elseworld:share:${token}`,
 };
