@@ -57,6 +57,35 @@ export default function AnimationGallery() {
         </Demo>
 
         <Demo
+          title="DROPS — post-action (horizontal scroll)  ★NEW"
+          spec="label DROPS + a horizontally-scrolling row of reward cards; each snaps in staggered ~120ms (saves vertical space)"
+          flutter="narrative reaction → replace the stat box with: 'DROPS' + horizontal ListView of reward cards"
+        >
+          <div className="adk-drops">
+            <div className="adk-drops-label">DROPS</div>
+            <div className="adk-drops-row">
+              <div className="adk-drop adk-d0"><span className="adk-drop-rt rt-relic">★ RELIC</span>Week One, Logged</div>
+              <div className="adk-drop adk-d1"><span className="adk-drop-rt rt-keep">▸ KEPT</span>Salt-Mix Recipe</div>
+              <div className="adk-drop adk-d2"><span className="adk-drop-rt rt-mem">▸ DROP</span>Pink Yoga Mat</div>
+              <div className="adk-drop adk-d3"><span className="adk-drop-rt rt-mem">▸ DROP</span>Water Levels Log</div>
+            </div>
+          </div>
+        </Demo>
+
+        <Demo
+          title="Achievement rarity tiers  ★NEW"
+          spec="escalating border + color + star + glow — pick the scale/naming"
+          flutter="Achievement.rarity → catalog + achievements_screen row treatment"
+        >
+          <div className="adk-rar-col">
+            <div className="adk-rar adk-rar-common"><b>▸ COMMON</b> · The One Where You Showed Up</div>
+            <div className="adk-rar adk-rar-rare"><b>★ RARE</b> · The One Sam Framed</div>
+            <div className="adk-rar adk-rar-epic"><b>★ EPIC</b> · The One Who Witnessed the Audit</div>
+            <div className="adk-rar adk-rar-legend"><b>★ LEGENDARY</b> · The One Where the Door Opened</div>
+          </div>
+        </Demo>
+
+        <Demo
           title="Item Toast (slide-in)"
           spec="translateY 110%→0 (easeOutCubic) · 300ms"
           flutter="lib/toast_stack.dart — GameToast.slideIn 300ms"
@@ -132,6 +161,26 @@ const CSS = `
 .adk-float-b{animation-delay:.18s;}
 @keyframes adk-rise{0%{opacity:0;transform:translate(-50%,2px);}15%{opacity:1;}100%{opacity:0;transform:translate(-50%,-22px);}}
 
+/* DROPS — horizontal-scroll of reward cards (the ★ box, repurposed for drops) */
+.adk-drops{width:100%;}
+.adk-drops-label{font-family:var(--theme-display);font-size:10px;letter-spacing:.16em;color:var(--forest);margin-bottom:6px;}
+.adk-drops-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;}
+.adk-drop{flex:0 0 auto;width:108px;border:2px solid var(--ink);background:var(--paper-shade);padding:7px 9px;
+  font-family:var(--theme-body);font-size:11px;color:var(--ink);line-height:1.2;animation:adk-stampin .28s cubic-bezier(.34,1.56,.64,1) both;}
+.adk-drop-rt{display:block;font-family:var(--theme-display);font-size:7px;font-weight:700;letter-spacing:.1em;margin-bottom:4px;}
+.rt-relic{color:var(--spot-red);} .rt-keep{color:var(--forest);} .rt-mem{color:var(--margin-ink);}
+.adk-d0{animation-delay:0s;border-color:var(--spot-red);} .adk-d1{animation-delay:.12s;} .adk-d2{animation-delay:.24s;} .adk-d3{animation-delay:.36s;}
+
+/* Achievement rarity tiers — escalating border + color + glow */
+.adk-rar-col{display:flex;flex-direction:column;gap:8px;width:100%;}
+.adk-rar{font-family:var(--theme-body);font-size:12px;padding:8px 11px;border:1px solid var(--margin-ink);background:var(--paper);color:var(--ink);}
+.adk-rar b{font-family:var(--theme-display);font-size:10px;letter-spacing:.1em;}
+.adk-rar-common b{color:var(--margin-ink);}
+.adk-rar-rare{border:1.5px solid var(--forest);} .adk-rar-rare b{color:var(--forest);}
+.adk-rar-epic{border:2px solid var(--spot-red);} .adk-rar-epic b{color:var(--spot-red);}
+.adk-rar-legend{border:2.5px solid var(--spot-red);background:color-mix(in srgb,var(--spot-red) 8%,transparent);box-shadow:0 0 0 2px color-mix(in srgb,var(--spot-red) 20%,transparent);}
+.adk-rar-legend b{color:var(--spot-red);}
+
 /* Toast slide-in */
 @keyframes adk-slidein{0%{opacity:0;transform:translateY(110%);}100%{opacity:1;transform:translateY(0);}}
 .adk-toast{border:2px solid var(--ink);background:var(--paper);padding:10px 14px;font-family:var(--theme-display);font-size:11px;letter-spacing:.1em;color:var(--spot-red);animation:adk-slidein .3s cubic-bezier(.22,1,.36,1) both;}
@@ -154,7 +203,7 @@ const CSS = `
 .adk-instant{font-family:var(--theme-body);font-size:12px;color:var(--ink-soft);text-align:center;}
 
 @media (prefers-reduced-motion: reduce){
-  .adk-stamp,.adk-toast,.adk-bar-fill,.adk-bloom,.adk-float{animation-duration:.001s;}
+  .adk-stamp,.adk-toast,.adk-bar-fill,.adk-bloom,.adk-float,.adk-drop{animation-duration:.001s;}
   .adk-cursor{animation:none;}
 }
 `;
