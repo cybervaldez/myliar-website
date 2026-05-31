@@ -208,30 +208,15 @@ export default function AnimationGallery() {
 
       <Section
         title="Bottom bar"
-        note="The persistent bottom-edge surface (mid-day). Progress now tracks the relationship, not the day's event count."
+        note="The persistent bottom-edge surface (mid-day): FOCAL · the four stats, one line. No DAY (it's in the header) and no REL tier — both retired. A '+N' floats up + fades on the stat that just changed."
       >
         <Demo
-          title="REL level-up progress  ★NEW"
-          spec="fill 0→target (easeOutCubic) 600ms toward the next REL tier; tier name + NEXT hint"
-          flutter="global_activity_bar.dart — _RelLevelBar(progress: gameState.tierProgress)"
-        >
-          <div className="adk-relbar">
-            <div className="adk-relrow">
-              <span>DAY 14 · <b>HANA</b></span>
-              <span className="adk-tier">INSIDE THEIR ORBIT</span>
-            </div>
-            <div className="adk-bar"><div className="adk-bar-fill adk-relfill" /></div>
-            <div className="adk-relnext">NEXT · TRADING FAVORS</div>
-          </div>
-        </Demo>
-
-        <Demo
-          title="Floating stat gains (idea)"
-          spec="float +N: translateY 0→-22px + fade · easeOut · 1000ms (staggered ~180ms) — if stats live on the bar"
-          flutter="optional: per-stat TweenAnimationBuilder fired on a gain nonce"
+          title="FOCAL · stats + floating gains"
+          spec="float +N: translateY 0→-10px + fade-in-then-out · easeOut · 1000ms, fired once per resolved choice (keyed on a gain nonce)"
+          flutter="global_activity_bar.dart — _MidDayBar: NAME + _StatChip per stat (gameState.recentStatGain / statGainNonce)"
         >
           <div className="adk-statbar">
-            <div className="adk-statbar-left">DAY 14 · <b>HANA</b></div>
+            <div className="adk-statbar-left"><b>HANA</b></div>
             <div className="adk-statbar-stats">
               <span className="adk-stat">STR 13<span className="adk-float">+2</span></span>
               <span className="adk-stat">INT 8</span>
@@ -248,14 +233,14 @@ export default function AnimationGallery() {
       >
         <Demo
           title="Entering battle — bar transition  ★NEW"
-          spec="REL-progress bar morphs into the battle HUD: forest→spot-red recolor, fill resizes to enemy HP, labels crossfade (HANA→REPS, tier→A PUSHUP), quick shake at the swap. ~1.6s"
-          flutter="global_activity_bar.dart — AnimatedSwitcher/Tween between _RelLevelBar and battle HUD on battleController.active"
+          spec="the stats bar morphs into the battle HUD: labels crossfade (HANA+stats → REPS·HP / A PUSHUP), the enemy HP bar grows in (spot-red), quick shake at the swap. ~1.6s"
+          flutter="global_activity_bar.dart — swap _MidDayBar (stats) ↔ _BattleBar on battleController.active"
         >
           <div className="adk-tbar">
             <div className="adk-tbar-labels">
               <div className="adk-tlayer adk-tlayer-rel">
-                <span>DAY 14 · <b>HANA</b></span>
-                <span className="adk-tier">INSIDE THEIR ORBIT</span>
+                <span><b>HANA</b></span>
+                <span className="adk-tier">STR 13 · INT 8 · GLD 5 · CHR 10</span>
               </div>
               <div className="adk-tlayer adk-tlayer-battle">
                 <span>REPS · <b className="adk-hp">HP 30</b></span>
@@ -264,7 +249,6 @@ export default function AnimationGallery() {
             </div>
             <div className="adk-bar adk-tbar-track"><div className="adk-tbar-fill" /></div>
             <div className="adk-tbar-cap">
-              <span className="adk-tlayer-rel adk-cap">NEXT · TRADING FAVORS</span>
               <span className="adk-tlayer-battle adk-cap adk-cap-battle">ENEMY · HP 32 / 40</span>
             </div>
           </div>
@@ -518,9 +502,9 @@ const CSS = `
 .adk-tlayer-battle{animation:adk-tfadein 1.6s both;}
 @keyframes adk-tfadeout{0%,40%{opacity:1;}55%,100%{opacity:0;}}
 @keyframes adk-tfadein{0%,45%{opacity:0;}60%,100%{opacity:1;}}
-.adk-tbar-fill{height:100%;animation:adk-tofill 1.6s cubic-bezier(.22,1,.36,1) both;}
-@keyframes adk-tofill{0%,37%{width:62%;background:var(--forest);}
-  58%{background:var(--spot-red);}100%{width:80%;background:var(--spot-red);}}
+.adk-tbar-fill{height:100%;background:var(--spot-red);animation:adk-tofill 1.6s cubic-bezier(.22,1,.36,1) both;}
+/* stats bar has no fill; the enemy HP bar grows in only on battle entry */
+@keyframes adk-tofill{0%,52%{width:0;}100%{width:80%;}}
 .adk-tbar-cap{position:relative;height:10px;margin-top:4px;}
 .adk-cap{position:absolute;right:0;top:0;font-family:var(--theme-display);font-size:8px;letter-spacing:.12em;color:var(--margin-ink);}
 .adk-cap-battle{color:var(--spot-red);}
