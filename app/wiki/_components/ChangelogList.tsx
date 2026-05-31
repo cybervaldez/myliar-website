@@ -8,10 +8,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
   fetchChangelog,
-  notesConfigured,
-  type Note,
+  commentsConfigured,
+  type Comment,
   type NoteStatus,
-} from "../notes";
+} from "../comments";
 
 const STATUS_STYLE: Record<string, string> = {
   applied: "border-forest text-forest",
@@ -48,8 +48,8 @@ function fmtDate(s: string | null): string {
 }
 
 export function ChangelogList() {
-  const configured = notesConfigured();
-  const [notes, setNotes] = useState<Note[]>([]);
+  const configured = commentsConfigured();
+  const [notes, setNotes] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(configured);
 
   useEffect(() => {
@@ -88,14 +88,15 @@ export function ChangelogList() {
     <ol className="list-none p-0 m-0 space-y-3">
       {notes.map((n) => {
         const href = anchorHref(n.anchor);
-        const struck = (n.status as NoteStatus) === "superseded";
+        const st: NoteStatus = n.note_status ?? "open";
+        const struck = st === "superseded";
         return (
           <li key={n.id} className="border-[1.5px] border-ink bg-paper-shade p-4">
             <div className="flex items-center gap-2 flex-wrap mb-1.5">
               <span
-                className={`font-display tracking-[0.1em] text-[8.5px] px-1.5 py-0.5 border ${STATUS_STYLE[n.status] ?? "border-ink text-ink"}`}
+                className={`font-display tracking-[0.1em] text-[8.5px] px-1.5 py-0.5 border ${STATUS_STYLE[st] ?? "border-ink text-ink"}`}
               >
-                {n.status.toUpperCase()}
+                {st.toUpperCase()}
               </span>
               {href ? (
                 <Link href={href} className="font-display tracking-[0.1em] text-[11px] text-spot-red !border-b-0">
@@ -107,8 +108,7 @@ export function ChangelogList() {
                 </span>
               )}
               <span className="font-body italic text-[10px] text-margin-ink ml-auto">
-                {fmtDate(n.resolved_at)}
-                {n.source === "app" ? " · in-app" : ""}
+                {fmtDate(n.created_at)}
               </span>
             </div>
             <p
@@ -116,11 +116,6 @@ export function ChangelogList() {
             >
               {n.body}
             </p>
-            {n.resolution && (
-              <p className="text-[12.5px] italic text-ink-soft leading-[1.45] mt-1.5 border-l-2 border-forest pl-3">
-                {n.resolution}
-              </p>
-            )}
           </li>
         );
       })}

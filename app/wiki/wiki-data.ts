@@ -168,6 +168,7 @@ export function navTree(): NavEntry[] {
     { label: "🎮 How to Play", href: "/wiki/mechanics" },
     { label: "📖 Story", href: "/wiki/arc", editorial: true },
     { label: "💬 Words", href: "/wiki/lexicon", editorial: true },
+    { label: "🔥 Buzz", href: "/wiki/buzz" },
     { label: "🆕 Updates", href: "/wiki/changelog" },
   ];
 }

@@ -6,10 +6,10 @@ import Link from "next/link";
 import { PannableAscii } from "../../components/PannableAscii";
 import { WikiPage, Infobox, Navbox, SectionHead } from "../_components/WikiChrome";
 import { ImagePrompt } from "../_components/ImagePrompt";
-import { NotesThread } from "../_components/NotesThread";
+import { DiscussionThread } from "../_components/DiscussionThread";
 import { buildCourtyardPrompt } from "../art-direction";
 import { phoneRealmMap, vibeBands } from "../wiki-data";
-import { anchors } from "../notes";
+import { anchors } from "../comments";
 
 export const metadata = {
   title: "Atlas — Wiki",
@@ -95,7 +95,7 @@ export default function AtlasPage() {
         same courtyard the in-game viewer renders.
       </p>
 
-      <NotesThread anchor={anchors.atlas()} anchorLabel="The Courtyard" />
+      <DiscussionThread defaultOpen anchor={anchors.atlas()} anchorLabel="The Courtyard" />
     </WikiPage>
   );
 }

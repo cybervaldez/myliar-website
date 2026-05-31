@@ -5,9 +5,9 @@
 
 import Link from "next/link";
 import { WikiPage, SectionHead, SpoilerTag } from "../_components/WikiChrome";
-import { NotesThread } from "../_components/NotesThread";
+import { DiscussionThread } from "../_components/DiscussionThread";
 import { mainline, mainlineFlagCount, characterById } from "../wiki-data";
-import { anchors } from "../notes";
+import { anchors } from "../comments";
 
 export const metadata = {
   title: "The Main Line — Wiki",
@@ -134,7 +134,7 @@ export default function ArcPage() {
         second canon.
       </p>
 
-      <NotesThread anchor={anchors.arcIndex()} anchorLabel="The Main Line (arc overview)" />
+      <DiscussionThread defaultOpen anchor={anchors.arcIndex()} anchorLabel="The Main Line (arc overview)" />
     </WikiPage>
   );
 }

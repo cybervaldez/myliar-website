@@ -11,14 +11,14 @@ import {
   SectionHead,
   SpoilerTag,
 } from "../../_components/WikiChrome";
-import { NotesThread } from "../../_components/NotesThread";
+import { DiscussionThread } from "../../_components/DiscussionThread";
 import {
   mainlineDays,
   mainlineDay,
   characterById,
   type MainlineChoice,
 } from "../../wiki-data";
-import { anchors } from "../../notes";
+import { anchors, contentHash } from "../../comments";
 
 export function generateStaticParams() {
   return mainlineDays().map((d) => ({ day: String(d.globalDayIndex) }));
@@ -68,7 +68,7 @@ function DeltaPills({ delta }: { delta: Record<string, number> }) {
   );
 }
 
-function ChoiceBlock({ c }: { c: MainlineChoice }) {
+function ChoiceBlock({ c, day, eventId }: { c: MainlineChoice; day: number; eventId: string }) {
   return (
     <div className="border-[1.5px] border-ink bg-paper p-3">
       <div className="flex items-center gap-2">
@@ -106,6 +106,11 @@ function ChoiceBlock({ c }: { c: MainlineChoice }) {
           )}
         </div>
       )}
+      <DiscussionThread
+        anchor={anchors.arcReply(day, eventId, c.id)}
+        anchorLabel={`Day ${day} · ${eventId} · reply ${c.id.toUpperCase()}`}
+        currentHash={contentHash(c.reactionText ?? c.label)}
+      />
     </div>
   );
 }
@@ -202,7 +207,7 @@ export default async function DayPage({
             <p className="text-[15px] leading-[1.6] text-ink mb-3">{ev.scenario}</p>
             <div className="space-y-2">
               {ev.choices.map((c) => (
-                <ChoiceBlock key={c.id} c={c} />
+                <ChoiceBlock key={c.id} c={c} day={d.globalDayIndex} eventId={ev.id} />
               ))}
             </div>
             {ev.memoryWrites.length > 0 && (
@@ -220,6 +225,11 @@ export default async function DayPage({
                 ))}
               </div>
             )}
+            <DiscussionThread
+              anchor={anchors.arcEvent(d.globalDayIndex, ev.id)}
+              anchorLabel={`Day ${d.globalDayIndex} · ${ev.id}`}
+              currentHash={contentHash(ev.scenario)}
+            />
           </div>
         );
       })}
@@ -238,7 +248,8 @@ export default async function DayPage({
         game ships. The app remains the source of truth.
       </p>
 
-      <NotesThread
+      <DiscussionThread
+        defaultOpen
         anchor={anchors.arcDay(d.globalDayIndex)}
         anchorLabel={`Day ${d.globalDayIndex}${focal ? ` — ${focal.name}` : ""}`}
       />

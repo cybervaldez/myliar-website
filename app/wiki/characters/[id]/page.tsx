@@ -12,10 +12,10 @@ import {
   WikiLink,
 } from "../../_components/WikiChrome";
 import { ImagePrompt, PortraitPlaceholder } from "../../_components/ImagePrompt";
-import { NotesThread } from "../../_components/NotesThread";
+import { DiscussionThread } from "../../_components/DiscussionThread";
 import { buildCharacterPrompt } from "../../art-direction";
 import { squad, characterById } from "../../wiki-data";
-import { anchors } from "../../notes";
+import { anchors } from "../../comments";
 
 export function generateStaticParams() {
   return squad().map((c) => ({ id: c.id }));
@@ -174,7 +174,7 @@ export default async function CharacterPage({
       <ImagePrompt bundle={prompt} kind="portrait" />
 
       <div id="community-notes">
-        <NotesThread anchor={anchors.character(c.id)} anchorLabel={c.name} />
+        <DiscussionThread defaultOpen anchor={anchors.character(c.id)} anchorLabel={c.name} />
       </div>
 
       <p className="mt-8 text-[12px] text-margin-ink italic border-t border-ink/15 pt-3">

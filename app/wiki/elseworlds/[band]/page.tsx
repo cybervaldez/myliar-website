@@ -10,10 +10,10 @@ import {
   VoiceQuote,
 } from "../../_components/WikiChrome";
 import { ImagePrompt, PortraitPlaceholder } from "../../_components/ImagePrompt";
-import { NotesThread } from "../../_components/NotesThread";
+import { DiscussionThread } from "../../_components/DiscussionThread";
 import { buildSamplePrompt } from "../../art-direction";
 import { vibeBands, elseworldSampleByBand } from "../../wiki-data";
-import { anchors } from "../../notes";
+import { anchors } from "../../comments";
 
 export function generateStaticParams() {
   return vibeBands().map((b) => ({ band: b.id }));
@@ -199,7 +199,7 @@ export default async function BandPage({
         up its own character at your chosen vibe.
       </p>
 
-      <NotesThread anchor={anchors.elseworld(b.id)} anchorLabel={b.label} />
+      <DiscussionThread defaultOpen anchor={anchors.elseworld(b.id)} anchorLabel={b.label} />
     </WikiPage>
   );
 }

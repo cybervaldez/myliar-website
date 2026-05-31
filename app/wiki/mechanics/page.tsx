@@ -4,9 +4,9 @@
 // each stat lane).
 
 import { WikiPage, SectionHead, WikiLink } from "../_components/WikiChrome";
-import { NotesThread } from "../_components/NotesThread";
+import { DiscussionThread } from "../_components/DiscussionThread";
 import { relTiers, itemRarities, relRange } from "../wiki-data";
-import { anchors } from "../notes";
+import { anchors } from "../comments";
 
 export const metadata = {
   title: "Mechanics — Wiki",
@@ -153,7 +153,7 @@ export default function MechanicsPage() {
         and loop descriptions are hand-authored game facts.
       </p>
 
-      <NotesThread anchor={anchors.mechanics()} anchorLabel="Mechanics" />
+      <DiscussionThread defaultOpen anchor={anchors.mechanics()} anchorLabel="Mechanics" />
     </WikiPage>
   );
 }
