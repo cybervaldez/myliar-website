@@ -44,33 +44,27 @@ npm run dev
 ## Build + deploy
 
 ```bash
-npm run build
+npm run build      # production build (what Vercel runs — stricter than `dev`)
+npm run deploy     # ship it: sync this source → the mirror repo → Vercel deploys
 ```
 
-Vercel auto-deploys on push to `main` (or whichever branch you
-configure). The core site needs **no environment variables** — the
-simulator and wiki are fully static. The **community notes** feature is
-the one exception: it needs `NEXT_PUBLIC_SUPABASE_URL` +
-`NEXT_PUBLIC_SUPABASE_ANON_KEY` set in Vercel (see *Community notes*
-below). Without them the notes UI degrades to a quiet "coming soon" card
-and everything else still works.
+**The model.** This site lives **in the `myliar` monorepo** (so the parity
+exporter can read `../lib` + `../assets` — the website must sit alongside the
+game). But Vercel deploys from a **separate mirror repo**,
+`cybervaldez/myliar-website`. `npm run deploy` (`scripts/deploy.sh`) clones/
+refreshes that mirror, rsyncs this `website/` source over it (excluding
+`node_modules`/`.next`/`.vercel`), commits, and pushes to `main` — which is the
+Vercel trigger.
 
-## Why is this directory git-ignored from the parent repo?
+> ⚠️ The mirror repo is a **deploy artifact**. Never edit it directly — it's
+> overwritten on every deploy. Always edit here, in the monorepo, then run
+> `npm run deploy`. (Run `npm run build` first to catch errors Vercel would hit.)
 
-The marketing site lives in its own GitHub repo so Vercel can deploy it
-independently. The parent `myliar` monorepo doesn't track `website/`;
-treat this folder as a separate project. To wire it up:
-
-```bash
-cd website
-git init -b main
-git remote add origin <your-website-repo-url>
-git add .
-git commit -m "Initial scaffold"
-git push -u origin main
-```
-
-Then connect that repo to Vercel.
+The core site needs **no environment variables** — the simulator and wiki are
+fully static. The **community notes** feature is the one exception: it needs
+`NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_ANON_KEY` set in Vercel (see
+*Community notes* below). Without them the notes UI degrades to a quiet "coming
+soon" card and everything else still works.
 
 ## Parity with the game
 
