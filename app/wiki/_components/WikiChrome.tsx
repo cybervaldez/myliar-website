@@ -42,21 +42,17 @@ export function WikiPage({
         </div>
       )}
 
-      {/* Page title + rule + "from the wiki" line, with a [discuss] link. */}
-      <div className="flex items-baseline justify-between gap-4 border-b-2 border-ink pb-1">
-        <h1 className="font-display text-[28px] sm:text-[34px] leading-tight text-ink !m-0">
-          {title}
-        </h1>
-        <Link
-          href={discussHref ?? "#community-notes"}
-          className="text-[12px] shrink-0 whitespace-nowrap"
-        >
-          [talk]
-        </Link>
-      </div>
-      <p className="italic text-[12px] text-margin-ink mt-1 mb-4">
+      {/* Page title + "from the wiki" line + Fandom article tabs (Article / Talk). */}
+      <h1 className="font-display text-[28px] sm:text-[34px] leading-tight text-ink !m-0">
+        {title}
+      </h1>
+      <p className="italic text-[12px] text-margin-ink mt-1 mb-1">
         From the <em>My Life is an RPG</em> wiki.
       </p>
+      <div className="flex gap-1 text-[12px] mb-5 border-b border-[#a2b1c2]">
+        <span className="px-3 py-1.5 bg-white border border-[#a2b1c2] border-b-0 relative top-px font-bold text-ink">Article</span>
+        <Link href={discussHref ?? "#community-notes"} className="px-3 py-1.5 text-[#0645ad] hover:underline">Talk</Link>
+      </div>
 
       <div className="grid lg:grid-cols-[1fr_300px] gap-6 lg:gap-7 items-start">
         {infobox && (
@@ -68,6 +64,13 @@ export function WikiPage({
           {navbox && <div className="mt-8">{navbox}</div>}
         </article>
       </div>
+
+      {/* Fandom category footer */}
+      {kicker && (
+        <div className="mt-8 pt-2 border-t border-[#a2b1c2] text-[12px] text-[#54595d]">
+          <strong className="text-ink">Categories:</strong> {kicker}
+        </div>
+      )}
     </div>
   );
 }
@@ -212,5 +215,24 @@ export function VoiceQuote({ children }: { children: ReactNode }) {
     <blockquote className="border-l-[3px] border-margin-ink/50 pl-4 my-3 italic text-[14.5px] text-ink-soft leading-[1.55]">
       {children}
     </blockquote>
+  );
+}
+
+// ── RarityChip — chunky escalating-rarity badge (display only) ────────
+export type RarityTone = "muted" | "low" | "mid" | "high" | "legendary";
+const RARITY_TONE: Record<RarityTone, string> = {
+  muted: "border-margin-ink/50 text-margin-ink",
+  low: "border-forest-dim text-forest-dim",
+  mid: "border-forest text-forest",
+  high: "border-spot-red text-spot-red",
+  legendary: "border-2 border-spot-red text-spot-red bg-spot-red/10",
+};
+export function RarityChip({ label, tone }: { label: string; tone: RarityTone }) {
+  return (
+    <span
+      className={`inline-block font-display tracking-[0.12em] text-[9px] px-1.5 py-0.5 border uppercase ${RARITY_TONE[tone]}`}
+    >
+      {label}
+    </span>
   );
 }

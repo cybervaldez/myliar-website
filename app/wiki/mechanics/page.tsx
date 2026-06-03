@@ -6,7 +6,7 @@
 import { WikiPage, SectionHead, WikiLink } from "../_components/WikiChrome";
 import { DiscussionThread } from "../_components/DiscussionThread";
 import { relTiers, itemRarities, relRange } from "../wiki-data";
-import { anchors } from "../comments";
+import { anchors } from "../../lib/codex";
 
 export const metadata = {
   title: "Mechanics — Wiki",

@@ -9,10 +9,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
   fetchBuzz,
-  commentsConfigured,
+  codexConfigured,
   currentSnapshot,
   type Comment,
-} from "../comments";
+} from "../../lib/codex";
 import {
   ensureSession,
   amIOwner,
@@ -39,7 +39,7 @@ function anchorHref(anchor: string): string | null {
 }
 
 export function BuzzList() {
-  const configured = commentsConfigured();
+  const configured = codexConfigured();
   const [items, setItems] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(configured);
 

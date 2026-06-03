@@ -13,7 +13,7 @@ import {
   signOut,
   type AccountUser,
 } from "../wiki/supabaseClient";
-import { commentsConfigured } from "../wiki/comments";
+import { codexConfigured } from "../lib/codex";
 import {
   fetchMySave,
   fetchMyActivity,
@@ -33,7 +33,7 @@ export function ProfilePanel({
   relTiers: { thresholds: number[]; names: string[] };
   squad: { id: string; name: string }[];
 }) {
-  const configured = commentsConfigured();
+  const configured = codexConfigured();
   const [ready, setReady] = useState(false);
   const [user, setUser] = useState<AccountUser | null>(null);
   const [save, setSave] = useState<SaveSummary | null>(null);

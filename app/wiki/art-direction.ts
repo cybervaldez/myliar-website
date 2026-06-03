@@ -13,7 +13,7 @@
 // data yet. If portrait canon later lands in the app, the exporter can
 // carry it and these briefs upgrade. It does not influence the app.
 
-import type { SquadMember, ElseworldSample, VibeBand } from "./wiki-data";
+import type { ElseworldSample, VibeBand } from "./wiki-data";
 
 export interface PromptBundle {
   /// Natural-language prompt — works across Gemini/nanobanana 2, MJ v6,
@@ -52,61 +52,10 @@ function bundle(natural: string, sceneParams = false): PromptBundle {
   };
 }
 
-// ── Per-character visual design (EDITORIAL canon seed) ────────────────
-interface CharacterArt {
-  appearance: string;
-  wardrobe: string;
-  prop: string;
-  setting: string;
-  mood: string;
-}
-
-const CHARACTER_ART: Record<string, CharacterArt> = {
-  sam: {
-    appearance: "late-20s, androgynous, neat short dark hair, tired calm eyes",
-    wardrobe: "plain henley under a lanyard, sleeves pushed up",
-    prop: "a stylus and a clipboard of system notes",
-    setting: "a minimal help-desk corner, a single sticky-note wall behind",
-    mood: "deadpan, mildly bored, quietly competent",
-  },
-  hana: {
-    appearance: "athletic build, high ponytail, sharp intense eyes, pre-dawn flush",
-    wardrobe: "a worn track jacket over a training top",
-    prop: "a stopwatch on a lanyard, a taped pair of running shoes nearby",
-    setting: "an empty outdoor running track at 5 AM, bleachers behind, blue dark sky",
-    mood: "dramatic, fierce, demanding — but a flicker of care underneath",
-  },
-  kenji: {
-    appearance: "lean, precise posture, thin-framed glasses, faint knowing half-smile",
-    wardrobe: "a crisp button-up with sleeves rolled to the forearm",
-    prop: "an open ledger and a fine-tip pen, a drawer ajar behind him",
-    setting: "a spotless desk, a single green-shaded lamp, columns of neat figures",
-    mood: "coldly analytical on the surface, warm regard underneath",
-  },
-  mei: {
-    appearance: "compact, hair tied back tight, unblinking no-nonsense stare",
-    wardrobe: "a working apron over rolled sleeves",
-    prop: "a chef's knife in one hand, a fine-tip marker tucked behind one ear",
-    setting: "a clean kitchen line, a pickup bell, ingredients in geometric piles",
-    mood: "clipped, imperative, drill-sergeant focus that means she cares",
-  },
-};
-
-// Compose a character portrait prompt: game-sourced subject + editorial
-// design + house style.
-export function buildCharacterPrompt(m: SquadMember): PromptBundle {
-  const art = CHARACTER_ART[m.id];
-  const pron = m.gender === "female" ? "she" : "he";
-  const subject = `Character portrait of ${m.name}, the ${m.classLabel} (${m.specialty}) — ${m.archetype ?? ""}`.trim();
-  if (!art) {
-    return bundle(`${subject}. ${pron === "she" ? "She" : "He"} is rendered as ${HOUSE_STYLE}`);
-  }
-  return bundle(
-    `${subject}. ${art.appearance}; wearing ${art.wardrobe}; holding ${art.prop}. ` +
-      `Setting: ${art.setting}. Expression: ${art.mood}. Upper-body bust composition. ` +
-      HOUSE_STYLE,
-  );
-}
+// (Per-character portrait briefs moved off the wiki: the Character pages now
+// surface the game's own `appearance` Field Notes as the brief, and fan art is
+// community-submitted — so the editorial CHARACTER_ART seed + buildCharacterPrompt
+// were removed in the Codex rebuild. The two scene/sample builders below remain.)
 
 // Elseworld sample — derive almost entirely from the rich game data
 // (these sheets are written clean and visual). The band gives the world

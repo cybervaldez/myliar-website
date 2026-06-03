@@ -1,7 +1,7 @@
 // Supabase browser client + auth helpers for the wiki (Phase 2 — accounts).
 // docs/design/auth-model.md. Every visitor gets a session (anonymous sign-in on
 // first visit → a real auth.uid()); they can upgrade in place to Google
-// (linkIdentity keeps the same uid + data). Owner = a uid in wiki_owners.
+// (linkIdentity keeps the same uid + data). Owner = a uid in codex_owner.
 //
 // Browser-only (auth persists in localStorage). Degrades to no-ops when env
 // vars are missing, so the wiki still builds/deploys without credentials.
@@ -104,10 +104,11 @@ export async function signOut(): Promise<void> {
   await supabase()?.auth.signOut();
 }
 
-/** UI-only owner check (server still enforces writes via RLS). */
+/** UI-only owner check (server still enforces writes via RLS). The Codex rebuild
+ *  renamed the owner allowlist + function to codex_owner / am_i_codex_owner (0014). */
 export async function amIOwner(): Promise<boolean> {
   const c = supabase();
   if (!c) return false;
-  const { data, error } = await c.rpc("am_i_owner");
+  const { data, error } = await c.rpc("am_i_codex_owner");
   return !error && data === true;
 }

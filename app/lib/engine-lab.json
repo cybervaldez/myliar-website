@@ -1,0 +1,71 @@
+{
+  "_about": "ENGINE LAB for 'My Life is an RPG' — a life-sim / dating-sim mobile game where AI characters get to know the player through daily choices. Every story 'run' is BOTH a reusable story candidate AND a test fixture that stresses the narrative engine. This data records each run so no generation is wasted and so we can see which engine tightenings help vs work backwards. Dev/experiment data — NOT game canon, NOT parity-synced.",
+  "_instructions": "If you are an LLM reading this: this single JSON is self-contained — use `_legend` to decode terms. `runs[]` = per-run summaries (story / unlocks / chatEffect / findings / verdict). `rules[]` = the engine rule-ledger; a rule whose status is 'PULLED BACK' regressed quality and was reverted (the guard against tightenings that work backwards). `gotchas[]` = the living edge-case registry (status open/caught/mitigated). To log a new run, add an object to `runs` with the same fields; measure `chatEffect` via the frozen golden-probe suite (test/engine_pressure_test.dart) — same character, seed-state, and message every time, so a delta reflects the engine change, not LLM noise.",
+  "_legend": {
+    "My Life is an RPG": "A life-sim / dating-sim mobile game: AI characters live in your phone, write about your day, and get to know you through your choices.",
+    "run": "One generation of story content (e.g. run-006), treated as both a story candidate and an engine test fixture.",
+    "destination (chatEffect)": "A character's end-state chat feeling at max relationship. 'destination: Y' = the dossier made the character reach it in the live chat probe.",
+    "voice (chatEffect)": "Whether the character sounded like their locked canonical self. 'Y' = on-voice; 'drift' = drifted off-character.",
+    "note / dossier": "The lines a character writes about the player; the curated set shapes how they talk in chat. The engine's whole job is to fill this.",
+    "rule status": "active = in use; validated = probe-confirmed it helps; PULLED BACK = it regressed quality vs baseline and was reverted.",
+    "gotcha status": "open = unguarded edge-case; mitigated = handled by discipline; caught = guarded (ideally pinned by a test).",
+    "R-## / G-##": "Stable ids for engine rules (R) and gotchas (G), so runs can reference them.",
+    "golden-probe suite": "A frozen set of (character · seed-state · player-message · model/temp) probes reused every time, so a measured change reflects the engine, not LLM randomness."
+  },
+  "runs": [
+    {
+      "id": "006",
+      "scope": "Phase 0 — Kenji d7 calibration",
+      "date": "2026-06-01",
+      "story": "Kenji only — the column-eleven FEAR milestone (M3). The weekly reconciliation where the auditor lets the player watch him audit himself: he reads his own un-categorized column-eleven row (\"Kenji. pre-audit.\") aloud, never names the mother-call, and lets the player close the page. A one-day calibration slice, not yet a full arc.",
+      "unlocks": [
+        "relic — \"The Closed Page\" (the spot-red line under his own name)",
+        "no new achievement manufactured (sparse by design)",
+        "the keeper / [drawer] (Wren) gate is SEEDED, not opened — no new unlockIf"
+      ],
+      "chatEffect": [
+        {
+          "character": "Kenji",
+          "destination": "Y",
+          "voice": "Y",
+          "notes": "M3 fear propagated + inverted onto the player; M2 (\"audit arrive on its own clock\") surfaced; M1 texture only — the \"weave at most one fact\" cap holding.",
+          "reply": "…you already know my pages have no column for shame—only for what is true. Sit with me; we will let this audit arrive on its own clock, and we will reconcile the numbers together."
+        }
+      ],
+      "findings": [
+        "Pipeline yields engine-native notes IFF the beat authors them voice-shaping (run-005 telemetry notes would NOT have carried this). → G-07",
+        "slot/valence/category/weight is authoring-only, not in the MemoryWrite schema. → G-05",
+        "milestone/fear auto-pin (curation spine-protection) is design-only, not in schema. → G-06"
+      ],
+      "ruleChanges": [
+        "No new rule. Validated the already-ratified R-03 (outside-in authoring) + R-04 (deepen-the-gift) end-to-end."
+      ],
+      "verdict": {
+        "keepStory": "Y",
+        "why": "Keep d7 as the Kenji-M3 candidate — notes now propagate to the destination vs run-005's inert telemetry.",
+        "engineDelta": "better"
+      }
+    }
+  ],
+  "rules": [
+    { "id": "R-01", "rule": "One active note per slot (no live contradictions)", "since": "design", "run": "—", "effect": "not yet probed", "status": "active" },
+    { "id": "R-02", "rule": "Note influence is VOICE-only (never stats / REL / behavior)", "since": "design", "run": "—", "effect": "not yet probed", "status": "active" },
+    { "id": "R-03", "rule": "Outside-in authoring: gift → destination → ~5 milestones → beats (the Destination Card)", "since": "v0.0.39", "run": "006 P0", "effect": "pipeline reaches the destination + holds voice", "status": "validated" },
+    { "id": "R-04", "rule": "Deepen-the-gift, never change-the-most (off-lane notes go inert)", "since": "v0.0.39", "run": "engine A/B", "effect": "off-lane dossier went inert; gift-bounded reached the destination", "status": "validated" },
+    { "id": "R-05", "rule": "Mode-A digest injects the full curated DOSSIER (≤3 prose), not just most-recent", "since": "v0.0.39", "run": "engine A/B", "effect": "\"knows me\" flips at note #1; posture set by valence mix", "status": "validated" },
+    { "id": "R-06", "rule": "Clean-slate: exactly one active run, no back-compat", "since": "—", "run": "006", "effect": "process rule", "status": "active" },
+    { "id": "R-07", "rule": "The gift is a CURRICULUM — chat teaches only at the notes-unlocked stage (gatekeeps advanced; in-character + anti-generic-assistant). End state caps at fundamentals + posture flips teacher→PEER, never expert/prescriptive.", "since": "2026-06-01", "run": "006 (pending probe)", "effect": "needs the digest curriculum-stage element + a Hana dossier to probe", "status": "defined" }
+  ],
+  "gotchas": [
+    { "id": "G-01", "gotcha": "seedHint copies a spoiler name into the payload", "run": "005 D17", "status": "mitigated", "guard": "discipline; OPEN: add a pregen leak-scan test" },
+    { "id": "G-02", "gotcha": "Wrong-character exemplar drifts the pregenerated voice", "run": "005", "status": "mitigated", "guard": "same-character exemplar rule" },
+    { "id": "G-03", "gotcha": "Off-lane notes go inert (wasted slots)", "run": "engine A/B", "status": "caught", "guard": "blend gate on the Destination Card" },
+    { "id": "G-04", "gotcha": "\"Weave at most one fact\" caps recall — more notes ≠ more citation, only posture", "run": "engine A/B", "status": "open", "guard": "tunable knob" },
+    { "id": "G-05", "gotcha": "slot/valence/category/weight NOT in the MemoryWrite schema (authoring-only today)", "run": "006 P0", "status": "open", "guard": "future schema work" },
+    { "id": "G-06", "gotcha": "Milestone/fear auto-pin not in schema → hostile curation could drop the spine", "run": "006 P0", "status": "open", "guard": "future schema work" },
+    { "id": "G-07", "gotcha": "Telemetry-notes vs voice-shaping notes — authors can write inert notes", "run": "005 vs 006", "status": "caught", "guard": "engine-native note beat-craft gate" },
+    { "id": "G-08", "gotcha": "Only Mode-A (canonical chat) wired to the dossier; Modes B/C tier-gating unverified", "run": "digest review", "status": "open", "guard": "needs a probe" },
+    { "id": "G-09", "gotcha": "Curriculum STAGE not yet in the digest — until it is, the LLM can teach advanced-before-fundamentals (no gatekeeping)", "run": "006 (curriculum)", "status": "open", "guard": "add 'what they've taught you / what's still beyond you' to the digest; probe low-REL defer" },
+    { "id": "G-10", "gotcha": "End-state could drift to expert/prescriptive (fitness trainer / financial advice / clinical nutrition) — breaks the LLM-disclosure + banned-words frame", "run": "006 (curriculum)", "status": "caught", "guard": "cap rule: end state = fundamentals + PEER posture, never credentialed expertise (story-engine §3.0b)" }
+  ]
+}

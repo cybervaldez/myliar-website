@@ -8,10 +8,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
   fetchChangelog,
-  commentsConfigured,
+  codexConfigured,
   type Comment,
   type NoteStatus,
-} from "../comments";
+} from "../../lib/codex";
 
 const STATUS_STYLE: Record<string, string> = {
   applied: "border-forest text-forest",
@@ -48,7 +48,7 @@ function fmtDate(s: string | null): string {
 }
 
 export function ChangelogList() {
-  const configured = commentsConfigured();
+  const configured = codexConfigured();
   const [notes, setNotes] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(configured);
 

@@ -8,7 +8,7 @@ import { navTree, snapshotLabel } from "./wiki-data";
 
 export default function WikiLayout({ children }: { children: ReactNode }) {
   return (
-    <main className="flex-1 max-w-[1180px] mx-auto px-5 sm:px-8 py-8 sm:py-12 w-full">
+    <main className="wiki-skin flex-1 max-w-[1180px] mx-auto px-5 sm:px-8 py-8 sm:py-12 w-full">
       <div className="grid lg:grid-cols-[200px_1fr] gap-8 lg:gap-12 items-start">
         <WikiNav tree={navTree()} />
         <div className="min-w-0">

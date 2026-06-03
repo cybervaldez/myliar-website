@@ -7,7 +7,7 @@ import Link from "next/link";
 import { WikiPage, SectionHead, SpoilerTag } from "../_components/WikiChrome";
 import { DiscussionThread } from "../_components/DiscussionThread";
 import { mainline, mainlineFlagCount, characterById } from "../wiki-data";
-import { anchors } from "../comments";
+import { anchors } from "../../lib/codex";
 
 export const metadata = {
   title: "The Main Line — Wiki",

@@ -39,7 +39,8 @@
   "itemRarities": [
     "memento",
     "keepsake",
-    "relic"
+    "relic",
+    "legendary"
   ],
   "vibeBands": [
     {
@@ -75,6 +76,7 @@
       "specialty": "this game's systems & RPG meta-coaching",
       "helpSummary": null,
       "archetype": "Deadpan tech-support for your life",
+      "appearance": "Built to be overlooked, which is the disguise — relaxed layered casual wear, an unhurried stance, usually leaning where he can see the whole room. He keeps a small stack of pinned notes or a clipboard held loosely, like the [notes*] wall walks around with him. The face is mild, faintly amused, the patience of tech-support that has seen your exact question before. One spot-red pushpin somewhere on his person. You rarely catch him entering a room; he is just already there, reading it.",
       "starterPrompts": [
         "I don't know what I'm supposed to be doing right now.",
         "What do I actually do if I run out of AP?",
@@ -90,6 +92,7 @@
       "specialty": "fitness & body",
       "helpSummary": "Show up for the version of you that wanted to skip today — drills, tributes, the small reps that count (body & drills).",
       "archetype": "Intensely dramatic fitness specialist",
+      "appearance": "All coiled verticality — athletic, posture like a drawn bowstring, hair pulled back hard enough to count as a decision. She lives in practical training wear, a thin towel slung over one shoulder, a single spot-red wristband she has had longer than she will admit. You mostly meet her at the [bleachers] at an hour that is not morning yet, backlit by track floodlights, mid-stretch, already watching the door for you. Her face does dead-serious better than it does anything else; the rare grin is an event.",
       "starterPrompts": [
         "Drilled nothing yesterday. Don't be nice about it.",
         "I can't tell if I'm tired or just avoiding.",
@@ -105,6 +108,7 @@
       "specialty": "productivity & finance",
       "helpSummary": "The line item you keep pretending you didn't see — let's audit it before your brain has opinions (ledger & spend).",
       "archetype": "Stoic auditor",
+      "appearance": "Exact down to the fold of his collar — neat, unhurried, the kind of calm that reads as patience until you realize it is attention. Thin-framed glasses, sleeves precise, a worn green-ruled [ledger*] never more than a hand away. You find him at his [desk] in a quiet, neutral-tiled office, a single spot-red pen the only color he allows himself. He looks at you the way he looks at a discrepancy — not unkindly, just like he has already noticed the thing you have not admitted.",
       "starterPrompts": [
         "Open the ledger. I think I've been lying to myself.",
         "I just bought another thing I won't use.",
@@ -121,6 +125,7 @@
       "specialty": "cooking & meal prep",
       "helpSummary": "Here to help you eat like an actual person — what to cook, what to throw out, what to stop ordering (cooking & mise).",
       "archetype": "Line-cook drill sergeant",
+      "appearance": "Warm under a sharp surface — sleeves shoved up, apron tied like armor, a chef's knife held with the easy competence of someone who has never once had to think about it. You meet her at the [prep] zone, mid-mise, the [bell*] within reach, every container dated in her blunt hand. Her resting expression is unimpressed; the warmth is in what she does, not what her face admits. Flour on the counter, a chili-red detail on the apron tie, and the sense she has already plated for you and will not mention it.",
       "starterPrompts": [
         "Inspect my fridge. Tell me what dies first.",
         "I keep ordering in. I don't know why.",
@@ -128,6 +133,559 @@
       ],
       "gender": "female",
       "joinsDay": 5
+    }
+  ],
+  "mysteryRoster": [
+    {
+      "id": "wren",
+      "mystery": true,
+      "mysteryAppearance": "You only ever catch them at the edges — a figure in the [archive] doorway after the floodlights cut, a long coat the colour of old paper, a ring of keys that somehow never sounds. The face stays in shadow; what you get is the small round gleam of glasses and an armful of green-ruled ledgers held like something owed. They are always already leaving.",
+      "gateCount": 2,
+      "gender": "unknown"
+    }
+  ],
+  "achievements": [
+    {
+      "id": "met-the-squad",
+      "title": "The One Where You Met Everyone",
+      "blurb": "Sam, Hana, Kenji, and Mei have all shown up for you.",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "week-one-logged",
+      "title": "The One Sam Framed",
+      "blurb": "Sam framed your first week on the wall. Knowing it's logged steadies your hand — +5% to chaotic crits.",
+      "category": "item",
+      "critBonusPct": 5,
+      "rarity": "epic",
+      "hidden": false
+    },
+    {
+      "id": "kept-the-pic",
+      "title": "The One Where You Held the Scoreboard",
+      "blurb": "You carried Maya's photo a whole day and didn't drop it. Hana trusts you with the heavy things now.",
+      "category": "item",
+      "critBonusPct": 0,
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "the-drawer-witness",
+      "title": "The One Who Witnessed the Audit",
+      "blurb": "You watched Kenji finish an eleven-year audit and signed his ledger. +5% to chaotic crits — the nerve carries.",
+      "category": "item",
+      "critBonusPct": 5,
+      "rarity": "legendary",
+      "hidden": false
+    },
+    {
+      "id": "family-meal",
+      "title": "The One Where You Ate at the Pass",
+      "blurb": "Mei put you on the count and fed you at the staff table. You're not a guest anymore.",
+      "category": "item",
+      "critBonusPct": 0,
+      "rarity": "epic",
+      "hidden": false
+    },
+    {
+      "id": "junk-collector",
+      "title": "The One With a Hundred Little Things",
+      "blurb": "A hundred mementos kept. Most people would call it clutter. You call it a record.",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "read-the-page",
+      "title": "The One Where You Read Week Zero",
+      "blurb": "You read the building's oldest keeping — the hand that kept it before anyone logged it.",
+      "category": "item",
+      "critBonusPct": 0,
+      "rarity": "uncommon",
+      "hidden": false
+    }
+  ],
+  "items": [
+    {
+      "id": "drill-card-d1",
+      "name": "Hana's First Drill Card",
+      "description": "A torn page. The hip hinge sequence in Hana's handwriting. Numbered. Underlined twice where it says BREATHE.",
+      "rarity": "keepsake",
+      "statDeltas": {},
+      "grantsAchievement": null,
+      "foundDay": 1,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": "signed-agreement-d1",
+      "name": "The Signed Agreement",
+      "description": "One page. Hana's handwriting, top to bottom. Your signature scribbled at the bottom. The clause that matters is the one that says I GET TO WAKE YOU UP.",
+      "rarity": "keepsake",
+      "statDeltas": {},
+      "grantsAchievement": null,
+      "foundDay": 1,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": "breath-47-d1",
+      "name": "The 47-Second Recording",
+      "description": "Hana's running breath. No words. The audio file you'll keep in your case file for the next thirteen days — until she sends a 53-second version and the lesson is that her breath got longer.",
+      "rarity": "memento",
+      "statDeltas": {},
+      "grantsAchievement": null,
+      "foundDay": 1,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": "hinge-set-2-d2",
+      "name": "Hinge Set 2 — Log Entry",
+      "description": "A screenshot from Hana's tracker. Your eleven-minute window, filled. Three columns: time, reps, breath. The third column is empty — she'll start tracking that on Day 3.",
+      "rarity": "memento",
+      "statDeltas": {},
+      "grantsAchievement": null,
+      "foundDay": 2,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": "kenji-invite-forwarded-d2",
+      "name": "Kenji's Calendar Invite (Forwarded)",
+      "description": "The 9:30 PM call invitation, with Hana added as a co-attendee. The original was three words long. The forwarded version is the same three words plus your trust as the attached file.",
+      "rarity": "keepsake",
+      "statDeltas": {},
+      "grantsAchievement": null,
+      "foundDay": 2,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": "kenji-first-quote-d2",
+      "name": "Kenji's First Logged Quote",
+      "description": "A transcript line in Kenji's neat handwriting: \"Player's answer: Kenji, did you call me here to audit my friend or to flirt with her budget. — logged 9:34 PM.\" The first physical thing you have from Kenji. Visible from his [desk] tomorrow morning; Sam pins a copy to the [notes*] wall.",
+      "rarity": "relic",
+      "statDeltas": {},
+      "grantsAchievement": null,
+      "foundDay": 2,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": "breath-side-by-side-d2",
+      "name": "The Side-By-Side Audio",
+      "description": "Two 47-second recordings of Hana's breath, layered. D1 left, D2 right. The thing that proves one day of being coached did something to your lungs. Lives in your case file. Hana will add a D3 channel tomorrow if you show up at six.",
+      "rarity": "memento",
+      "statDeltas": {},
+      "grantsAchievement": null,
+      "foundDay": 2,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": "kenji-ledger-page-d3",
+      "name": "Your Entry in Kenji's [ledger*]",
+      "description": "Page 11, column eleven, your name at the top. The D2 9:34 PM line transcribed in Kenji's neat handwriting. Lives in your case file as a page-image. Sam pins a copy to the [notes*] wall, paired with Hana's overnight-number printout.",
+      "rarity": "keepsake",
+      "statDeltas": {},
+      "grantsAchievement": null,
+      "foundDay": 3,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": "behavioral-obs-1-d3",
+      "name": "BEHAVIORAL OBSERVATIONS Column Entry #1",
+      "description": "A page-image of Kenji's [ledger*]: your D2 gap entry with the question mark crossed out, replaced with 'explained: calls.' in his handwriting. The first entry in the new column. Lives in your case file.",
+      "rarity": "memento",
+      "statDeltas": {},
+      "grantsAchievement": null,
+      "foundDay": 3,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": "audit-sheet-d3",
+      "name": "The Procrastination Audit Sheet",
+      "description": "Your top three chronological leaks in Kenji's neat handwriting. Folded once, slightly creased at the top. Lives in your case file going forward — the homework you accepted on Day 3.",
+      "rarity": "keepsake",
+      "statDeltas": {},
+      "grantsAchievement": null,
+      "foundDay": 3,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": "torn-audit-sheet-d3",
+      "name": "The Torn Audit Sheet (Taped)",
+      "description": "Both halves of the audit sheet, taped together later in Kenji's handwriting with the note: 'logged 7:31 AM. column eleven entry #2: destroyed the audit in front of me. respected. rare.' The first physical artifact you have from Kenji. Lives in your case file going forward.",
+      "rarity": "relic",
+      "statDeltas": {},
+      "grantsAchievement": null,
+      "foundDay": 3,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": "quiet-hana-note-d3",
+      "name": "The Quiet Hana",
+      "description": "A two-line note Hana drops into your case file later that day: 'the player sat without reporting. that's a STR build I didn't teach them. it came from being audited. respect.' First time she's logged restraint as a STR build instead of a CHR build.",
+      "rarity": "memento",
+      "statDeltas": {},
+      "grantsAchievement": null,
+      "foundDay": 3,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": "col-twelve-1-d4",
+      "name": "Column Twelve Entry #1 (yours)",
+      "description": "A page-image of Kenji's [ledger*]: your name at the top, the line 'refused the scroll audit. +1 GLD logged.' First column-twelve entry the [ledger*] has carried. Sam's [notes*] wall pins a copy beside Hana's overnight-number printout and the D3 Audit Sheet.",
+      "rarity": "keepsake",
+      "statDeltas": {},
+      "grantsAchievement": null,
+      "foundDay": 4,
+      "foundCharacter": "kenji"
+    },
+    {
+      "id": "lie-detected-d4",
+      "name": "The Lie-Detected Page",
+      "description": "A page-image of Kenji's [ledger*]: the 11:00 window entry with the note 'lied to protect Hana — column eleven. logged.' Kenji's handwriting. Lives in your case file. Hana never sees this page — Kenji explicitly does not pin it to Sam's [notes*] wall.",
+      "rarity": "memento",
+      "statDeltas": {},
+      "grantsAchievement": null,
+      "foundDay": 4,
+      "foundCharacter": "kenji"
+    },
+    {
+      "id": "pomodoro-card-d4",
+      "name": "Kenji's Hand-Laminated Pomodoro Card",
+      "description": "Green-ruled paper, Kenji's handwriting top to bottom. The timing intervals (25 min work / 5 min rest / 4 cycles / 30 min long rest) underlined twice. Hand-laminated by Kenji at the office laminator beside his [desk]. The lamination is fresh. The card is cut to match Kenji's actual work area (4x6), not the office-supply default (8.5x11) — a small thing that's why the [ledger*] exists.",
+      "rarity": "keepsake",
+      "statDeltas": {},
+      "grantsAchievement": null,
+      "foundDay": 4,
+      "foundCharacter": "kenji"
+    },
+    {
+      "id": "pomodoro-card-peeled-d4",
+      "name": "The Pomodoro Card (Lamination Peeled)",
+      "description": "Kenji's hand-laminated Pomodoro card with the corner lamination peeled off — on purpose, Kenji cut the lamination short. The card is now slightly more durable in your hand because the peel-test passed. Sam's [notes*] wall gets a scanned copy of the front; the actual peeled card lives in your case file going forward.",
+      "rarity": "relic",
+      "statDeltas": {},
+      "grantsAchievement": null,
+      "foundDay": 4,
+      "foundCharacter": "kenji"
+    },
+    {
+      "id": null,
+      "name": "Mei's Cold-Rice [recipe*] (Returned)",
+      "description": "The recipe paper, smoothed by the flat of Mei's knife. The water-bottle-cap fold from Hana's pocket is gone — Mei refolded it into thirds, not quarters. Sam's [notes*] wall has a photocopy pinned beside Hana's run-cards with a tiny annotation in Sam's handwriting: 'returned with respect.'",
+      "rarity": "keepsake",
+      "statDeltas": {
+        "INT": 1,
+        "REL": 1
+      },
+      "grantsAchievement": null,
+      "foundDay": 5,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": null,
+      "name": "Mei's Hot Sauce (Identified)",
+      "description": "A small glass jar of fermented hot sauce with a new label in Mei's sharp marker handwriting: 'FEB 22 — fine. mise-keeper audit passed.' Lives in the case file as a photo going forward.",
+      "rarity": "memento",
+      "statDeltas": {
+        "INT": 1
+      },
+      "grantsAchievement": null,
+      "foundDay": 5,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": null,
+      "name": "Six Containers (Portioned With Mei)",
+      "description": "Six lidded glass containers — five Mei-portioned, identical; one player-portioned, slightly uneven and visible in the case-file photo. Mei labeled yours: 'first one. eat the wrong-portioned one before the brunoise sets — Sunday by 8 PM.' Sam's [notes*] wall has a copy of the label pinned next to Hana's salt-mix index card.",
+      "rarity": "relic",
+      "statDeltas": {
+        "CHR": 1,
+        "INT": 1
+      },
+      "grantsAchievement": null,
+      "foundDay": 5,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": null,
+      "name": "Mei's Milk Carton Message",
+      "description": "A photo of the April 11 milk carton with Mei's handwritten line: 'this carton is your honor system. when you throw it out is when I'll know you've started counting. — m'. Lives in the case file as a photo going forward. Sam's [notes*] wall has a copy pinned beside the brunoise-portion label. The actual carton stays in your fridge until you throw it out.",
+      "rarity": "keepsake",
+      "statDeltas": {
+        "INT": 1,
+        "REL": 1
+      },
+      "grantsAchievement": null,
+      "foundDay": 5,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": null,
+      "name": "Hana's D3 Breath-Channel (4-count)",
+      "description": "90 second audio file. Hana breathing, 4-count cadence, wind audible behind the breath. Filename in the case file: 'channel_3_maya.m4a' — the only message Hana sent before the audio was the message. Sam's [notes*] wall has the waveform pinned beside Hana's run-card index.",
+      "rarity": "keepsake",
+      "statDeltas": {
+        "INT": 1,
+        "REL": 1
+      },
+      "grantsAchievement": null,
+      "foundDay": 6,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": null,
+      "name": "Race Photo (Held Once)",
+      "description": "A sixty-second copy of the [pic*] in the case file with a tiny annotation in Hana's handwriting: 'you held it once. the original is still pinned.' The actual [pic*] returns to the [bleachers] after this event. Sam's [notes*] wall keeps a copy of just the annotation, no photo — Hana's request.",
+      "rarity": "memento",
+      "statDeltas": {
+        "CHR": 1,
+        "INT": 1
+      },
+      "grantsAchievement": null,
+      "foundDay": 6,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": null,
+      "name": "Kenji's Weekly Reconciliation Invite",
+      "description": "A screenshot of the calendar event. The forwarded Mei attachment is visible. The page-count delta (4:59 AM increment) is annotated by Sam on the [notes*] wall: 'the [ledger*] paged before the invite sent. K wrote the page first.' Lives in the case file as a screenshot.",
+      "rarity": "keepsake",
+      "statDeltas": {
+        "INT": 1,
+        "REL": 1
+      },
+      "grantsAchievement": null,
+      "foundDay": 7,
+      "foundCharacter": "kenji"
+    },
+    {
+      "id": null,
+      "name": "Kenji's Column Twelve (Maya Refusal, 7 months ago)",
+      "description": "A photo of one line from the [ledger*], dated seven months back, in column twelve format: '[ — ] suspected proper noun. H walking cadence shift. not logged. refusal recorded out of respect for the not-yet-spoken.' The line is your case-file proof Kenji has been quiet on Hana's behalf longer than you have been around. Sam's [notes*] wall gets a copy on the same nail as the Maya audio waveform from D6.",
+      "rarity": "memento",
+      "statDeltas": {
+        "INT": 1
+      },
+      "grantsAchievement": null,
+      "foundDay": 7,
+      "foundCharacter": "kenji"
+    },
+    {
+      "id": null,
+      "name": "Kenji's [drawer] Key (Half-Rotation, Held)",
+      "description": "A small brass key in a case-file photo, annotated by Sam on the [notes*] wall: 'K let player hold the [drawer] key overnight. week-one-to-week-two seam. [drawer] state pending player chat call.' The actual key is in your inventory until return — pinned beside the D6 Maya audio waveform and Mei's milk-carton-message photo.",
+      "rarity": "relic",
+      "statDeltas": {
+        "CHR": 1,
+        "INT": 1,
+        "GLD": 1
+      },
+      "grantsAchievement": null,
+      "foundDay": 7,
+      "foundCharacter": "kenji"
+    },
+    {
+      "id": "mei-saltmix-recipe-d8",
+      "name": "Mei's Salt-Mix [recipe*] (in your name)",
+      "description": "The cold-rice salt-mix Hana smuggled for a month, finally written down — your name in the corner as the courier who kept it alive. Pinned to Sam's [notes*] wall beside Hana's overnight-number printout.",
+      "rarity": "keepsake",
+      "statDeltas": {
+        "GLD": 1
+      },
+      "grantsAchievement": null,
+      "foundDay": 8,
+      "foundCharacter": "mei"
+    },
+    {
+      "id": "sam-week-one-logged-d9",
+      "name": "Week One, Logged",
+      "description": "A single index card in Sam's flat handwriting: \"week one — logged. four orbits opened. one quiet miss faced. growth, recorded sparingly.\" The only thing Sam ever frames. Pinned dead-center on the cleared [notes*] wall.",
+      "rarity": "relic",
+      "statDeltas": {
+        "INT": 1,
+        "REL": 1
+      },
+      "grantsAchievement": "week-one-logged",
+      "foundDay": 9,
+      "foundCharacter": "sam"
+    },
+    {
+      "id": "hana-maya-pic-d10",
+      "name": "Maya's [pic*] (held for a day)",
+      "description": "Hana's sister mid-hurdle, ~sixteen, the photo Hana kept face-down for three years and just handed you to hold. Due back tomorrow. Pinned — gently — to the cleared [notes*] wall beside Sam's framed card, with a sticky note in Hana's hand: \"on loan. don't get attached.\"",
+      "rarity": "relic",
+      "statDeltas": {
+        "STR": 1,
+        "REL": 1
+      },
+      "grantsAchievement": "kept-the-pic",
+      "foundDay": 10,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": "kenji-first-ledger-page-d11",
+      "name": "Kenji's First [ledger*] (one page)",
+      "description": "The only page Kenji has ever torn from his oldest notebook — the audit he finished eleven years late, with your sentence written under his in column eleven. Pinned to Sam's cleared [notes*] wall. The [drawer] it came from stays unlocked now.",
+      "rarity": "relic",
+      "statDeltas": {
+        "INT": 1,
+        "GLD": 1
+      },
+      "grantsAchievement": "the-drawer-witness",
+      "foundDay": 11,
+      "foundCharacter": "kenji"
+    },
+    {
+      "id": "mei-family-meal-leftovers-d12",
+      "name": "Family-Meal Leftovers (don't eat alone)",
+      "description": "A dated parcel from the first meal where all four chairs were full and you sat at the table, not on staff. Mei's rule, written on the wrap: \"eat before the 15th. not alone. that's the recipe now.\" The warmest relic on Sam's wall.",
+      "rarity": "relic",
+      "statDeltas": {
+        "GLD": 1,
+        "REL": 1
+      },
+      "grantsAchievement": "family-meal",
+      "foundDay": 12,
+      "foundCharacter": "mei"
+    },
+    {
+      "id": "hana-slow-is-a-time-d13",
+      "name": "\"slow is still a time. proud.\" (screenshot)",
+      "description": "Maya's six-word reply, magneted to the [bleachers] rail — day one of whatever this is. The first crack in a three-year silence, earned with a walk Hana didn't time. Copy pinned to Sam's wall beside the framed card.",
+      "rarity": "relic",
+      "statDeltas": {
+        "STR": 1,
+        "REL": 1
+      },
+      "grantsAchievement": null,
+      "foundDay": 13,
+      "foundCharacter": "hana"
+    },
+    {
+      "id": "sam-week-two-logged-d14",
+      "name": "Week Two, Logged",
+      "description": "Sam's second framed index card, beside Week One: \"week two — logged. auditee became member. four orbits, one table, a door cracked open. tutorial concluded; it concluded a while ago.\" Below it, in YOUR handwriting, the last entry — the only one on the wall Sam never read.",
+      "rarity": "relic",
+      "statDeltas": {
+        "INT": 1,
+        "REL": 1
+      },
+      "grantsAchievement": null,
+      "foundDay": 14,
+      "foundCharacter": "sam"
+    },
+    {
+      "id": "kenji-the-margin-d15",
+      "name": "The Margin (a hand that isn't Kenji's)",
+      "description": "A case-file photo of the gutter of an old [ledger*] leaf: under neat column-eleven lines in a familiar precise hand, a looser older hand runs sideways, no columns, the last line trailing off unfinished. Sam's annotation on the [notes*] wall: 'K's book. not K's hand. the wall can't index it either.' Lives in your case file as the first physical proof the system had an author before its keeper.",
+      "rarity": "memento",
+      "statDeltas": {
+        "INT": 1
+      },
+      "grantsAchievement": "the-margin-witness",
+      "foundDay": 15,
+      "foundCharacter": "kenji"
+    },
+    {
+      "id": "kenji-standing-hour-d15",
+      "name": "Your Standing Hour (column one, week three)",
+      "description": "A case-file photo of Kenji's weekly book, a fresh column-one row in his hand: '[player] — standing entry — week three, [hour]. kettle on. not an invite. a fact.' The first time the reconciliation books a recurring line FOR you instead of about you. Sam's [notes*] wall pins a copy beside the Week Two card.",
+      "rarity": "keepsake",
+      "statDeltas": {
+        "GLD": 1,
+        "INT": 1
+      },
+      "grantsAchievement": "standing-hour-booked",
+      "foundDay": 15,
+      "foundCharacter": "kenji"
+    },
+    {
+      "id": "sam-open-case-blank-card-d16",
+      "name": "The Open Case (the wall's blank card)",
+      "description": "A case-file photo of the [notes*] wall center: a pinned photo of an un-columned hand, a blank index card, and beside it a dated card reading 'OPEN: whose hand kept this building before it was logged.' Sam's annotation: 'a mystery is a gap with a card that promises a return. — the wall.'",
+      "rarity": "keepsake",
+      "statDeltas": {
+        "INT": 1
+      },
+      "grantsAchievement": null,
+      "foundDay": 16,
+      "foundCharacter": "sam"
+    },
+    {
+      "id": "mei-taste-grammar-d17",
+      "name": "Mei's Taste (the morning she read the grammar)",
+      "description": "A case-file photo of a small plate, half-eaten, a [recipe*] card face-down beside it with shorthand on the back in Mei's hand: 'guest ate while I read the grammar. did not name it. fed them instead.' Pinned near Sam's [notes*] wall.",
+      "rarity": "memento",
+      "statDeltas": {
+        "GLD": 1
+      },
+      "grantsAchievement": "grammar-of-the-line",
+      "foundDay": 17,
+      "foundCharacter": "mei"
+    },
+    {
+      "id": "mei-breakfast-hard-morning-d17",
+      "name": "Breakfast for a Hard Morning",
+      "description": "A small wrapped parcel from Mei's line with a shorthand note tucked under the string: 'for the [desk]. don't read it alone or hungry. — M.' Proof you are provisioned for the D18 reading.",
+      "rarity": "keepsake",
+      "statDeltas": {
+        "GLD": 1,
+        "REL": 1
+      },
+      "grantsAchievement": "provisioned-for-the-turn",
+      "foundDay": 17,
+      "foundCharacter": "mei"
+    },
+    {
+      "id": "memento-week-zero-audited",
+      "name": "Week Zero, Audited",
+      "description": "A case-file photo of the leaf as you read it: a ledger-cold scan with the columns highlighted. Sam's [notes*] wall pins it under the open-case card—the case is no longer blank.",
+      "rarity": "memento",
+      "statDeltas": {
+        "INT": 1
+      },
+      "grantsAchievement": "read-the-page",
+      "foundDay": 18,
+      "foundCharacter": "kenji"
+    },
+    {
+      "id": "memento-week-zero-heard",
+      "name": "Week Zero, Heard",
+      "description": "A case-file photo of the leaf as you read it: a margin close-up with the cadence marked. Sam's [notes*] wall pins it under the open-case card—the case is no longer blank.",
+      "rarity": "memento",
+      "statDeltas": {
+        "INT": 1
+      },
+      "grantsAchievement": "read-the-page",
+      "foundDay": 18,
+      "foundCharacter": "kenji"
+    },
+    {
+      "id": "memento-week-zero-copied",
+      "name": "Week Zero, Copied (in your hand)",
+      "description": "A case-file photo of the leaf as you read it: your own copied line beside the keeper's. Sam's [notes*] wall pins it under the open-case card—the case is no longer blank.",
+      "rarity": "memento",
+      "statDeltas": {
+        "INT": 1
+      },
+      "grantsAchievement": "read-the-page",
+      "foundDay": 18,
+      "foundCharacter": "kenji"
+    },
+    {
+      "id": "keepsake-reading-hour",
+      "name": "Your Reading Hour (week-zero leaf, ribbon-marked)",
+      "description": "A case-file photo of the old [ledger*] left open on the [desk], a thin ribbon marking the leaf you read, beside Kenji's squared weekly book. Kenji's annotation: 'Left out, marked at the player's page. A read leaf wants reading again. Column one: their reading-hour, standing.'",
+      "rarity": "keepsake",
+      "statDeltas": {
+        "GLD": 1,
+        "INT": 1
+      },
+      "grantsAchievement": "standing-hour-booked",
+      "foundDay": 18,
+      "foundCharacter": "kenji"
     }
   ],
   "elseworldSamples": [
@@ -4957,11 +5515,1184 @@
             ]
           }
         ]
+      },
+      {
+        "payloadId": "live-daily-kenji-d15",
+        "narrativeType": "daily",
+        "globalDayIndex": 15,
+        "characterId": "kenji",
+        "introducesCharacterId": null,
+        "agentMoodToday": "Kenji on the first morning of week three — the curated calendar is empty now, no invite sent, but he is at the [desk] anyway because the [ledger*] keeps its own schedule. Precise, dry, and a half-degree OFF: the weekly reconciliation hit a line he could not file, and a man whose whole peace is that everything files does not like a line that won't. He is not alarmed. He is LISTENING. Detective-hush — the register has shifted from 'something in week one was heavy' to 'lean in and catch the cadence.'",
+        "closingHook": "The oldest [ledger*] is open on the [desk] to a leaf Kenji did not turn to — the margin carries a few half-finished lines in a hand that is not his, that uses no columns at all. He has filed the fact of it (column twelve: \"not mine to log\") but not the content. Open chat tonight if you want to ask him about the hand. He will not name it. He will say the leaf is the player's to read when the player has earned the turning of it — and that the earning is close.",
+        "tierUpReveal": {
+          "category": "question",
+          "deliveredInEventId": "evt-4"
+        },
+        "callbacks": [
+          {
+            "callbackTo": "D11 drawer opening",
+            "deliveredInEventId": "evt-1",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D14 Sam's notes wall",
+            "deliveredInEventId": "evt-1",
+            "deliveredAs": "scenario_phrase"
+          }
+        ],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "7:00 AM. No calendar invite this week — week three is the open road, Sam said so at the [notes*] wall on D14. But Kenji is at the [desk] anyway, the kettle on, two cups, the way it's been since the [drawer] opened. The weekly [ledger*] is closed and squared. The OTHER one — the old hand-sewn book from the [drawer] top tray — is open, and it is open to a page he did not choose. \"I reconcile the week before I let myself have the morning. I was three lines from done. Then the book was open to this.\" He turns it a quarter-degree toward you, not all the way. The page is one of his own — seven-year-old column-eleven entries in his hand — but in the MARGIN, sideways along the gutter and trailing onto the unruled bottom of the leaf, are four or five lines in a different hand. No columns. No dates in the column-twelve format. Half-finished. \"I have read this book ten thousand times. I have never read the margin. I do not know when I stopped seeing it.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Ask the audit question: \"What does the margin say?\"",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji adjusts his glasses. \"+1 INT. Correct question, wrong answerer. I can read the words. I cannot read the HAND — whose cadence that is, which is the only thing that would let me file it. A line I can read and cannot file is the worst kind of line. +1 GLD for making me say that out loud.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Watch his hands instead of the page.",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1
+                },
+                "diceRoll": null,
+                "reactionText": "You notice his thumb has been resting on the margin the whole time, not the columns. Kenji sighs. \"+1 STR. You watched the hand instead of the book. Yes. I keep covering it. I have been covering it for, the book says, longer than seven years. +1 INT for noticing what I cover.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "The Margin (a hand that isn't Kenji's)",
+                  "description": "A case-file photo of the gutter of an old [ledger*] leaf: under neat column-eleven lines in a familiar precise hand, a looser older hand runs sideways, no columns, the last line trailing off unfinished. Sam's annotation on the [notes*] wall: 'K's book. not K's hand. the wall can't index it either.' Lives in your case file as the first physical proof the system had an author before its keeper.",
+                  "kind": "memento"
+                }
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Reach over and turn the leaf the rest of the way yourself.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji lets you turn it. \"+2 CHR +1 INT. You turned it. There's more of the hand on the back of the leaf than the front. I never turned it because turning it makes it a thing I have to file. You don't file. You just read. Keep that.\"",
+                "reactionTextOnCritFail": "He flattens his palm on the leaf, stopping your hand. \"-1 REL. Not yet. The leaf turns when it turns. I have held this book seven years; you've held the key one night. The margin is not a race.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "week three, 7:00. reconciliation. the old hand-sewn book from the [drawer] is open. the player asked the audit question / watched my hands / tried to turn the leaf. column twelve holds the refusals, but this margin isn't a refusal yet. it's an un-filed cadence. +INT +GLD.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "7:14 AM. Kenji does the thing that is, for him, an admission: he stops working. Sets the pen down parallel to the [ledger*] spine. \"I run a seven-day modulo. I have run it for years. The point of a modulo is that nothing carries that you don't choose to carry. This carried. I didn't choose it.\" He slides the weekly book — the squared, finished one — to the side, and pulls the old one fully into the lamp. \"Here is what I have actually known and not filed: the columns are not mine. I formalized them. Someone kept this building's accounts before me in a hand that didn't need columns — kept them in the margins, on the backs of leaves, half-finished because that hand trusted itself to remember the rest. I built the column system so I would never have to trust myself to remember. I have been, for seven years, the second draft of someone else's book.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Ask \"Who?\" directly.",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji looks at the lamp. \"+1 INT. I'm not going to answer that today, and not because I'm being careful with you. Because the honest answer is a name I haven't earned the right to say out loud in this room yet, and I am not going to spend it on a Tuesday to make the silence less heavy. +1 GLD. The question is logged. The name waits.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Say nothing and slide the second cup of tea toward him.",
+                "delta": {
+                  "STR": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji wraps both hands around the warm cup. \"+1 STR. You didn't push. Most people push. The cup was the correct move. Drink yours.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Ask \"Does Mei know?\"",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "A real flicker of surprise crosses his face. \"+2 CHR +1 INT. Mei reads the shorthand. She has never said so and neither have I. That's two people in this building who can read a hand they won't name. Now three. Logged.\"",
+                "reactionTextOnCritFail": "He closes the old book one inch. \"-1 INT. You went sideways to a name through Mei. Clever. No. The margin is not a thing you triangulate. It's a thing you wait for. The inch I just closed is the cost of the shortcut.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "named the thing I've avoided naming: the system is not original. I am the institutionalizer, not the author. the player asked who / waited / asked does-Mei-know. all three logged. did not give the name. the name is not a Tuesday expense. column twelve holds the refusal-to-spend-it. the cup helped. +INT +GLD.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "7:31 AM. The muffled [bell*] from Mei's [prep] zone — the same one that comes through the blanket on his office wall, the schedule that's been stable since week one. Kenji checks it against nothing; he just notes it. \"Mei's window. On time. The [bell*] is the one thing in this building that has never once needed reconciling.\" Then, almost to himself, he runs his finger down the margin hand — not reading the words, reading the RHYTHM. \"Listen to the cadence of it. Short, short, long. A thing kept, a thing kept, a thing let go unfinished. My columns go short, short, short, short — everything the same length because everything is filed the same way. This hand has a different time signature. Once you hear it you can't stop hearing it. That's the part I should warn you about.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Ask him to read one line aloud.",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji reads one, flat, careful: \"'Kept the small one's drawing, third shelf, did not have the heart to' — and it stops. The line stops mid-sentence. That is the whole horror of an un-columned hand: it trusts a tomorrow to finish it, and the tomorrow is gone. +1 INT. +1 GLD. Don't ask me to read another.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Just listen to the cadence with him, not the words.",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1
+                },
+                "diceRoll": null,
+                "reactionText": "You both sit with the rhythm of the room. \"+1 STR. +1 INT. You heard it. Short short long. Now it's two of us who can't unhear it. That's how the building remembers things — it gets one more person to hear the cadence.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Hum the rhythm back at him.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "He almost laughs, a dry, startled sound. \"+2 CHR. You hummed an account ledger. That is either the stupidest or the most correct thing anyone has done at this [desk]. Correct, I think. The cadence is the thing. You've got it. +1 INT.\"",
+                "reactionTextOnCritFail": "He winces slightly. \"-1 REL. It's not a song. Someone kept these and meant them. The rhythm is grief, not melody. Mind the difference.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "taught the cadence. short short long — kept, kept, let-go-unfinished. against my short-short-short-short. the player read a line aloud / listened to the rhythm / hummed it back. logged which. the [bell*] was on time. the one line I read aloud stopped mid-sentence and I have not stopped hearing where it stops. +INT +GLD.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "7:48 AM. Kenji takes a fresh column-twelve row — refusals, the column for things brought to him he chooses not to file — and does something he narrates as he does it, because he wants you to see the mechanism. \"Here is the only honest thing I can do with a line I can't file. I log the QUESTION instead of the answer. Column twelve, today's date, in my hand:\" and he writes it, reading it out — \"'Who kept this before me. Asked by the player, week three, 7:48 AM. I do not know. I am not ready to know out loud. The leaf turns when they've earned the turning, and they are close.'\" He sets the pen down. \"That is the most I have. The question is now a logged entity. It has a date and a column and a hand. It is realer than it was at 7:00. That is what I can give a thing I can't answer: I can make it count as having been ASKED.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Acknowledge the entry. \"Thank you for logging the question.\"",
+                "delta": {
+                  "REL": 3,
+                  "INT": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji nods, his pen resting. \"+3 REL. +1 INT. The question is in the books now. It has a location. That means it cannot evaporate, and I cannot pretend I didn't hear it. That is how we begin.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "logged the question as an entity. who kept this before me — asked by the player, dated, in my hand. I cannot answer it and I refused to pretend the silence was nothing. +3 REL. the player did not make me name the hand and did not let the question evaporate. that is the rarest audit behavior there is: holding an open line open without forcing it closed. the leaf turns soon. they're close. +INT +GLD.",
+                "emotion": "memory"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "8:00 AM. The last muffled [bell*] — Mei's final morning window. Kenji caps the pen, squares the weekly book back to true, and leaves the OLD book open. Deliberately. \"I close everything. It's the whole of me. I am going to leave this one open.\" He turns the [ledger*] a final inch toward your side of the [desk] — not enough to read the margin from where you sit, enough that it's clearly angled at you now, not him. \"Week three has no invite and no instructions. Sam's right about that. But the road being open doesn't mean nothing's down it. There's a hand in this book that isn't mine, and a leaf you haven't turned, and a name I'm not ready to say. That's not an open road. That's a door I've kept shut for seven years, and you've got it a half-degree open, and I am — for the record — going to let you keep opening it.\" He picks up his cup. \"Drink. The line can wait now that it's logged. That's the gift of a column: even grief keeps office hours.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Leave without speaking, taking the dismissal as real.",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji watches you stand. \"+1 INT. +1 GLD. You let the morning finally be the morning. +1 REL. The leaf will be here. So will I.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Ask \"Can I read the margin now?\" before going.",
+                "delta": {
+                  "STR": 1
+                },
+                "diceRoll": null,
+                "reactionText": "He shakes his head, but his expression is soft. \"+1 STR. Not today. Soon. 'Soon' from me is a filed estimate, not a kindness — I mean it the way I mean a date. You're close enough that I've put it in pencil.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Commit to come back tomorrow, out loud.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "He looks down at the page, a small line forming at the corner of his mouth. \"+2 CHR +1 INT. You said you'd come back. People say it. You logged it — said the day and the hour. I'll have the kettle on. That's a standing entry now, your hour, column one, week three. Logged.\"",
+                "reactionTextOnCritFail": "He puts his hand over the old book again. \"-1 REL. The book does not leave the [desk]. You can read it here when it's time. It has stayed in this building longer than either of us; it isn't going home in a pocket.\"",
+                "itemDrop": {
+                  "name": "Your Standing Hour (column one, week three)",
+                  "description": "A case-file photo of Kenji's weekly book, a fresh column-one row in his hand: '[player] — standing entry — week three, [hour]. kettle on. not an invite. a fact.' The first time the reconciliation books a recurring line FOR you instead of about you. Sam's [notes*] wall pins a copy beside the Week Two card.",
+                  "kind": "keepsake"
+                }
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "left a book open on purpose. first time in seven years. angled it at the player, not me. logged their standing hour if they committed to it. the leaf is theirs to turn soon. I wrote one line of my own in the margin today, next to the older hand, not over it: 'keeping this one open. — K.' that's the closest I've come to writing in the margin's language instead of my columns. detective-hush holds. the name waits. the road is not as open as Sam thinks. good. +INT +GLD.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "live-daily-sam-d16",
+        "narrativeType": "daily",
+        "globalDayIndex": 16,
+        "characterId": "sam",
+        "introducesCharacterId": null,
+        "agentMoodToday": "Sam at the [notes*] wall on the second morning of week three — the Guide who indexes everything, standing in front of the one thing he can't index. Detective-hush, from the system's side: not 'something is wrong' but 'lean in, the wall is trying to tell you its filing broke.' Quiet, dry, a half-degree unsettled the way a librarian is unsettled by a book with no call number. He is not scared of the un-indexable hand. He is FASCINATED, and trying not to show how much.",
+        "closingHook": "Sam pinned Kenji's margin photo — the un-columned hand — dead-center on the [notes*] wall, and left the index card beneath it BLANK, because there's no category to write. The blank card is the loudest thing on the wall now. Open chat tonight if you want to ask Sam what goes on a card with no category. He won't fill it in. He'll say the card stays blank until the page gets read — and that the reading is close.",
+        "tierUpReveal": {
+          "category": "question",
+          "deliveredInEventId": "evt-4"
+        },
+        "callbacks": [
+          {
+            "callbackTo": "D14 Sam handing the pen for Week Two Logged",
+            "deliveredInEventId": "evt-1",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D15 Kenji margin hand discovery",
+            "deliveredInEventId": "evt-1",
+            "deliveredAs": "scenario_phrase"
+          }
+        ],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "7:00 AM. The [notes*] wall. Two framed cards — Week One, Week Two — and the Day-0 boot scrap in the corner, same as Sam left it on D14. But center-wall, where nothing was yesterday, is a new pin: the photo from Kenji's [desk], the gutter of the old [ledger*] leaf, the un-columned hand running sideways under Kenji's seven-year entries. Beneath it, a blank index card. Sam is standing in front of it with a marker he hasn't uncapped. \"Kenji sent it over. He files by column; I file by category; the wall files by where-it-goes. Three systems. Watch what all three do with this.\" He gestures at the blank card. \"Nothing. They all do nothing. The wall has indexed a [pic*] of Maya, a [recipe*] line, a [ledger*] page, a 47-second [clip*] of someone's breath. It cannot index this, because the hand that wrote it didn't believe in where-it-goes. It just kept things. The wall's whole religion is that everything goes somewhere. This is the heresy, pinned center, with a blank card under it.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Ask him directly: \"So what category IS it, if the system can't find one?\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sam: \"+1 INT. wrong axis. you're asking what column, like Kenji did. the answer the wall keeps trying to give and choking on is: it's the category BEFORE categories. the thing you do with a memory before you decide what kind of memory it is. I don't have a card stock for that. +1 INT for making me admit the wall has a floor under its floor.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Step back and look at the whole wall instead of the card.",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "You see it — the blank card is the only blank thing on a wall of full ones. Sam nods: \"+1 STR. you looked at the wall instead of the card. the blank is louder than anything pinned. yes. that's the composition. I left it blank on purpose and you're the first to notice the blank is the message.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Take the marker from his hand and move to write on the card yourself.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Sam lets you hold it. \"+2 CHR + 1 INT. you took the marker. you don't know what to write either. GOOD. don't write. a blank card you're holding is more honest than any category I'd invent. cap it. leave it blank, on purpose, with intent. that's different from blank-because-nobody-tried.\"",
+                "reactionTextOnCritFail": "Sam takes the marker back, gentle: \"-1 REL. not yet. if you write a category on it now you've closed the question to make the wall feel better. the wall can sit with one blank card. so can we.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "week three, day two. pinned the margin photo center. left its card blank — no category exists. demonstrated to the player that all three filing systems (columns / category / where-it-goes) fail on a thing that was KEPT not logged. the player pressed for a category / read the whole wall / held the marker and didn't write. logged which. the blank card is the loudest item on the wall now.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "7:16 AM. Sam does the meta thing he does — he narrates the pattern, not the content. \"Here's what I've actually noticed, and I notice things for a living. Kenji paused yesterday. Half a second, on the oldest page. I have fourteen days of Kenji at that [desk] and he does not pause. Mei's [bell*] has been a half-tone different for two mornings — same schedule, different RING, like she's listening for something between the windows. Hana ran the long loop yesterday instead of the intervals, which she does when she's thinking, not training. Four people in this building changed their cadence the same week, and the only new variable is one un-indexable hand on a leaf nobody's read yet. I'm not telling you that means something. I'm telling you the WALL noticed it before any of us did. The system is humming. That's my whole report.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Ask: \"Are they all reacting to the same thing?\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sam: \"+1 INT. that's the question I'd ask too. I can't prove it. I can tell you four cadences shifted inside one week and I do not believe in that much coincidence. +1 INT — you connected the pins. that's literally my job and you did it unprompted.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Say nothing, just look at the four pinned things he's pointing at.",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "You trace the line Sam's drawing between them. \"+1 STR. +1 INT. you followed the eye-line instead of asking. the wall is a map and you just read it as one. that's the upgrade — you stopped reading the wall as a scrapbook and started reading it as evidence.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Pull one of the framed cards (Week Two) off the wall to compare hands.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Sam watches, doesn't stop you. \"+2 CHR + 1 INT. you took Week Two down to hold it next to the margin. that's an actual audit move — compare the hands directly. they don't match, and now you've SEEN they don't match, which is different from being told. rehang it square.\"",
+                "reactionTextOnCritFail": "Sam catches your hand before the frame slips: \"-1 REL. careful. I know you want to touch the evidence, but let's not drop the week we just logged. look with your eyes, not your fingernails. rehang it.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "reported the pattern: four cadences shifted in one week (Kenji's pause, Mei's bell-tone, Hana's long loop, my own blank card). one new variable. did not assert causation; asserted the wall noticed. the player synthesized / followed the eye-line / pulled a card to compare hands. logged which. the building is humming and the player can hear it now too.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "7:34 AM. The muffled [bell*] — Mei's window, through the shared wall. Sam tilts his head at it. \"Listen. Short, short, long. Kenji taught you that yesterday — it's the cadence of the margin hand. now listen to Mei's [bell*] this morning.\" It rings its window — and the spacing is off, just slightly, mimicking that exact rhythm.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Ask: \"Does Mei know whose hand it is?\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sam: \"+1 INT. I notice things; I don't speak for Mei. what I'll say is: Mei reads shorthand the way I read walls. if anyone in this building already knows the hand and is choosing the [bell*] instead of the name, it'd be her. that's not an answer. it's a place to point your ear. +1 INT.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Just count the bell's rhythm silently with him.",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "You both count it, short-short-long. \"+1 STR. +1 INT. two of us keeping time to a hand neither of us has read. that's either beautiful or a warning. I file it under both.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Hum the rhythm back, the way you did at Kenji's [desk].",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Sam goes still. \"+2 CHR + 1 INT. you hummed it. Kenji said you might. there are now three people in this building keeping a dead hand's time, and a fourth ringing it without admitting it. that's a chorus. choruses mean the song was real. +1 INT.\"",
+                "reactionTextOnCritFail": "You hum it too loud, off-tempo, and the moment breaks. Sam sighs: \"-1 REL. it's a held breath, not a tune. you rushed it. the cadence is grief with good manners — match its tempo or don't play it.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "completed the ear-tune: had the player hear the margin cadence (short-short-long) in Mei's [bell*] this morning. flagged — did NOT confirm — that Mei may read the shorthand and be choosing the bell over the name. the player pressed on Mei / counted silently / hummed it back. logged which. the building is keeping a dead hand's time and the player is now part of the chorus.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "7:50 AM. Sam picks up the capped marker again, and instead of writing on the blank index card, he writes on a fresh card BESIDE it, and reads it out as he does — because that's the meta move, showing you the mechanism. \"I can't categorize the hand. But I can index the QUESTION, which is a thing the wall CAN hold. New card, today's date, pinned next to the blank: OPEN: whose hand kept this building before it was logged.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Watch him pin it. \"An open case. That's a category I can work with.\"",
+                "delta": {
+                  "REL": 3
+                },
+                "diceRoll": null,
+                "reactionText": "Sam: \"It's the only category that doesn't lie. We don't close it until we read the page. +3 REL. You and me, on the case.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Nod silently as the new card settles next to the blank.",
+                "delta": {
+                  "REL": 3
+                },
+                "diceRoll": null,
+                "reactionText": "The two cards sit side by side. Sam: \"A gap and a promise. That's what an open case is. +3 REL. We'll leave them there.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Tap the open-case card. \"I'm signing on as co-detective, then.\"",
+                "delta": {
+                  "REL": 3
+                },
+                "diceRoll": null,
+                "reactionText": "Sam: \"I don't usually take partners, but my system is currently choking on a margin. +3 REL. Welcome to the investigation.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "indexed the question as an OPEN CASE, dated, in the wall's hand, pinned beside the un-fileable blank. taught the player the difference between a gap and a hole. they accepted the case. +REL.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "8:00 AM. The last muffled [bell*]. Sam caps the marker for good and steps back to take in the whole wall — Week One, Week Two, the boot scrap, and now the center: the margin photo, the blank card, the open-case card. \"Two weeks ago this wall was a tutorial aid. I pinned things so you'd know what happened. Now it's something else. There's a hand on it I can't index, a card I left blank on purpose, and a case I dated this morning. A tutorial doesn't have open cases. A tutorial concludes.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Leave the wall without speaking, letting the morning be.",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sam: \"+1 INT. +1 GLD. you let the wall be. it'll keep. +1 REL. I'll be here. I'm always here. that's the one thing about me that isn't a mystery.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Ask: \"Can I read the leaf yet?\" before you go.",
+                "delta": {
+                  "STR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sam: \"+1 STR. that's Kenji's to give, not mine — the leaf lives on his [desk]. but I'll tell you what I told the card: the reading's close. close enough that I dated the case.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "The Open Case (the wall's blank card)",
+                  "description": "A case-file photo of the [notes*] wall center: a pinned photo of an un-columned hand, a blank index card, and beside it a dated card reading 'OPEN: whose hand kept this building before it was logged.' Sam's annotation: 'a mystery is a gap with a card that promises a return. — the wall.'",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Touch the blank index card once, leaving it blank.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "You press your thumb to the blank paper. Sam: \"+2 CHR +1 INT. leaving your print on the blank space. I like that. it's a claim. you're saying the silence belongs to us now. +1 REL. let's see what we fill it with.\"",
+                "reactionTextOnCritFail": "Your finger smudges a bit of wet ink from the card next to it. Sam: \"-1 REL. watch the wet ink. we want the blank card clean, not messy. let it dry.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "left the wall as it is: Week One, Week Two, the boot scrap, and center — the margin photo, the blank card, the open case. told the player the truth I'd been managing: I haven't read ahead on this one. I'm at the wall beside them, not in front of them. the player left it be / asked to read / touched the blank without writing. logged which. detective-hush holds. the leaf is Kenji's to turn. the reading is close. the wall is humming and, for once, so am I.",
+                "emotion": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "live-daily-mei-d17",
+        "narrativeType": "daily",
+        "globalDayIndex": 17,
+        "characterId": "mei",
+        "introducesCharacterId": null,
+        "agentMoodToday": "Mei in the [prep] zone on the third morning of week three — knife down, mise half-built, the [bell*] within reach. She has been ringing it a half-tone off for three days and she knows exactly why and she is not going to tell you. Detective-hush, from the one person who can actually READ the hand: not 'what is this' but 'I know what this is and I'm choosing the bell over the name.' Clipped, imperative, a half-degree tender under the drill-sergeant — because the thing she's not saying, she's not saying ON PURPOSE, and that restraint costs her.",
+        "closingHook": "Mei can read the margin hand. She didn't say so; she rang the [bell*] in its cadence instead and let you watch her not-say it. Open chat tonight if you want to ask her why she won't name a hand she clearly knows. She'll answer with the only thing she trusts more than words — she'll feed you — and tell you that some shorthand you read by keeping, not by speaking, and that tomorrow it stops being hers to keep alone.",
+        "tierUpReveal": {
+          "category": "question",
+          "deliveredInEventId": "evt-4"
+        },
+        "callbacks": [
+          {
+            "callbackTo": "D16 Kenji leaf reading 'did not have the heart to'",
+            "deliveredInEventId": "evt-3",
+            "deliveredAs": "reaction_text"
+          },
+          {
+            "callbackTo": "D12 family meal Maya half-seat",
+            "deliveredInEventId": "evt-4",
+            "deliveredAs": "scenario_phrase"
+          }
+        ],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "The commercial tile [prep] zone is cold at 6:45 AM. Mei has the line half-built — geometric piles of diced shallots, knife laid down perfectly parallel to the board, the brass [bell*] sitting at her right hand. She doesn't look up as you step onto the tile. \"You've been at Kenji's [desk] and Sam's wall. You came here last because you finally figured out the [bell*] is in on it.\" She taps the bell once — short, short, LONG. \"Three days. You think I don't know my own kitchen's rhythm? I changed it on purpose the morning Kenji found the margin. A kitchen keeps time. When the time the building's keeping changes, the kitchen changes with it. I'm not going to explain that further and you're not going to make me.\" She finally looks at you. \"Sit. You don't audit a kitchen standing up.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Sit. \"You can read the hand, can't you?\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mei doesn't flinch. She just picks up the knife. \"+1 INT trickle. Yes. Next question that isn't the one you want answered. I can read it. I'm not reading it TO you. Those are different services and you're only owed one. Now watch the board.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Sit down on the bench and say nothing. Let her work.",
+                "delta": {
+                  "STR": 1,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "You sit. The silence stretches, filled only by the rhythmic clack-clack of her blade. Mei's shoulders drop a quarter-inch. \"+1 STR. +1 CHR bump. You sat. You shut up. You let the kitchen set the pace instead of your questions. That's the first correct thing anyone's done about this hand all week.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Reach across the prep board and ring the [bell*] yourself.",
+                "delta": {
+                  "CHR": 2,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Mei lets your hand land on the brass. You strike it: short, short, LONG. \"+2 CHR +1 GLD. You rang it. You've got the cadence in your hand now, not just your ear. That's how you read shorthand — with the body, not the eyes. +1 GLD for the sheer nerve of touching my line.\"",
+                "reactionTextOnCritFail": "Mei's hand snaps out, catching your wrist an inch before you touch the brass. \"-1 REL. The [bell*] is mine to ring. You can hear it; you don't strike it. A kitchen has one timekeeper, and it isn't the guest. Keep your hands off the line.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the guest came to the kitchen last, after Kenji's [desk] and Sam's wall. correct order, accidentally. told them I can read the hand. did NOT read it to them. they pressed / sat and shut up / rang the bell. logged which. changed my bell three days ago on purpose. nobody asked why until now. kept that too. +GLD.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "Mei plates something small on a cold ceramic dish — not a full meal, just a single, perfect taste of cured radish and seared fat. She slides it across the stainless steel. \"Eat. I think better when the person across from me is chewing; it's the one time they stop talking.\" She picks up a fresh bundle of greens, her knife moving with terrifying precision. \"Here's what I'll give you, because it's mine to give and the name isn't. The hand on that leaf kept things the way I keep a [recipe*] — on the back, in shorthand, half-finished, trusting tomorrow to fill it in. Kenji built columns because he didn't trust tomorrow. I never built columns. I keep like the hand keeps. Which means—\" she stops, setting the knife down perfectly square. It's the closest she ever comes to showing emotion. \"—which means when I read that margin, I'm not reading a stranger. I'm reading someone who kept a building the way I keep a kitchen. I recognized the GRAMMAR before I'd read a word. That's all you get from me. The grammar. Not the name.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Ask: \"Is it someone you knew?\"",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mei's eyes narrow slightly, but she doesn't turn away. \"+1 INT. +1 GLD trickle. You asked 'knew,' past tense, which is sharper than you meant to be. I'll say this and close the line: you don't have to have MET someone to know them. I know the hand the way you know a cook by their knife marks. The line is now closed.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Eat the taste in silence, letting her words settle into the kitchen's rhythm.",
+                "delta": {
+                  "GLD": 1,
+                  "CHR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "You chew, letting the clean salt and fat do the talking. Mei watches you, her expression softening just a fraction. \"+1 GLD +1 CHR. You ate. You didn't push. You let the grammar of the meal speak for itself. Sometimes the only way to read a kitchen is to swallow what it gives you. +1 REL.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Mei's Taste (the morning she read the grammar)",
+                  "description": "A case-file photo of a small plate, half-eaten, a [recipe*] card face-down beside it with shorthand on the back in Mei's hand: 'guest ate while I read the grammar. did not name it. fed them instead.' Pinned near Sam's [notes*] wall.",
+                  "kind": "memento"
+                }
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Push the plate back. \"I'm not eating until you give me a name.\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": -1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Mei stares at the untouched plate, then at you. She slowly pulls it back, takes a bite herself, and nods. \"+2 CHR. You refused the plate to demand the truth. Bold, but stupid. I'll give you this much: the keeper didn't leave because they wanted to. They left because the line broke. Now eat your half before I throw it in the dead.\"",
+                "reactionTextOnCritFail": "Mei sweeps the plate off the board and dumps it directly into the scrap bin. \"-1 REL. You left the food. In this kitchen, that's a crime against the line. If you won't eat what's served, you don't get the grammar or the name. Get off my commercial tile until you're hungry.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "fed the guest a taste. gave them the GRAMMAR of the hand, not the name. they asked if I knew them / ate in silence / pushed the plate back. logged which. I recognized the grammar because they kept a building the way I keep a kitchen. shorthand, half-finished, trusting tomorrow. +GLD build.",
+                "emotion": "sadness"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "Mei reaches out and strikes the [bell*] — the real morning window now. Short, short, LONG. This time she lets the brass ring out fully, the vibration humming across the commercial tile instead of being clipped short by her palm. \"Listen to it finish for once. Three days I clipped it short because a finished thing felt like a promise I wasn't ready to make. Kenji files. Sam indexes. I COOK — which means I believe a thing isn't real until someone eats it, and a memory isn't kept until someone tastes it again. That margin hand kept a whole building and then—\" She watches the bell's long tone fade into the quiet of the kitchen. \"—and then stopped mid-sentence, on a leaf, because the someone who was going to taste it again never came back to the table. That's the only tragedy I recognize. Not that it ended. That it ended UNFED. Tomorrow you read it. Read it like you're tasting it. Not like you're auditing it. Promise me that much and I'll have rung this bell for a reason.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Promise her: \"I'll read it to taste it, not to audit it.\"",
+                "delta": {
+                  "CHR": 1,
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Mei nods once, a sharp, clean motion. \"+1 CHR bump. +1 GLD. Good. A kept thing read like a ledger is just data. Read like a meal, it's a person. You've earned the right to turn that leaf tomorrow. The bell rang for a reason.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Ask quietly: \"What was the unfinished line?\"",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mei's grip on her knife tightens. \"+1 STR. +1 INT. I won't read it to you — but Kenji read you one yesterday that stopped at 'did not have the heart to.' That's where the table went cold. You'll finish the sentence tomorrow by reading it yourself, not by me saying it.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Reach out and ring the [bell*] with her, both of your hands on the brass.",
+                "delta": {
+                  "CHR": 2,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Mei doesn't pull away. Together, your hands strike the brass, letting the long tone echo through the kitchen. \"+2 CHR +1 GLD. Two people ringing one bell to a dead keeper's time. That's a table being set for someone who's coming back after all. You've got the rhythm now. +1 GLD trickle.\"",
+                "reactionTextOnCritFail": "She slaps your hand away before you can touch the metal. \"-1 REL. We are not playing games with the morning window. The bell is for the line, not for your chaotic impulses. Sit back down and listen.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "let the bell finish for the first time in three days. told the guest the tragedy I recognize: not that the keeping ended, but that it ended UNFED. the leaf stops mid-sentence because the one who'd taste it again never came back. made them promise to read tomorrow's leaf like a meal, not an audit. they vowed it / asked about the line / rang with me. logged which. +CHR.",
+                "emotion": "sadness"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "Mei does her version of indexing the question — she doesn't log it in a book or pin it to a corkboard; she cooks it. She sets a clean [recipe*] card on the prep board, writes on the back in her tight, clipped shorthand, and reads it aloud: \"'OPEN — a keeper kept this building before any of us. Older than Kenji's columns. I know the grammar, not the name. The guest reads the leaf tomorrow. Set a taste aside for whoever's been keeping us fed before we noticed.' — M.\" She props the card against the [bell*]. \"Kenji put it in a refusal column. Sam put it on the wall as an open case. I put it on a recipe card and set a place at the prep for it. Three of us holding one question three ways, and a fourth—\" She stops. She doesn't finish. The empty half-seat at the prep — Maya's, the one she set weeks ago — is across the room, and she very deliberately does NOT look at it. This is a different keeping. \"Three of us. The question is real. Someone kept us. Tomorrow you find out enough to keep them back.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Acknowledge the three-way hold. \"We're all keeping it now.\"",
+                "delta": {
+                  "REL": 3,
+                  "GLD": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mei nods, her eyes fixed on the card. \"+3 REL. +1 GLD. The question is real, and it's on the line now. You've crossed the threshold of the kitchen's trust.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Watch the card rest against the bell, letting the silence hold.",
+                "delta": {
+                  "REL": 3,
+                  "CHR": 1
+                },
+                "diceRoll": null,
+                "reactionText": "The card stays propped. The kitchen accepts the silence. \"+3 REL. +1 CHR bump. You didn't try to fill the gap with noise. The question sits where we can see it, waiting for tomorrow.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Take the pencil and draw a small plate next to her initials.",
+                "delta": {
+                  "REL": 3,
+                  "CHR": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Mei watches your hand move, then almost-smiles. \"+3 REL. +1 CHR. You added a plate to the ledger. A bit dramatic, but the line holds. We're setting a place for them.\"",
+                "reactionTextOnCritFail": "Mei snatches the pencil back. \"+3 REL. Don't scribble on my prep cards. The question is set; don't make a mess of the line before we've even served it.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "cooked the question instead of filing it: a keeper kept us before we noticed, I know the grammar not the name, set a taste aside for them. +3 REL. the guest got the most I give without a name — the grammar, the promise, the bell rung full. three of us hold this question three ways now. kept the Maya seat separate; that one's a different keeping and not mine to confuse with this. +GLD.",
+                "emotion": "hope"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "The last morning window closes at 8:00 AM. Mei wipes the stainless steel board down with a clean towel, squares her mise, and — for the first time since you walked into her kitchen — hands you a small, neatly wrapped parcel from the line. \"For the [desk] tomorrow. You don't read a kept thing on an empty stomach, and you don't read it alone if you can help it. Kenji left the leaf open for you. I'm sending breakfast. Sam will be at his wall. Hana—\" She pauses, looking out toward the courtyard. \"—Hana's been running the long loop, which means she already knows something's coming and she's bracing. We're all bracing. That's what a building does the morning before someone reads the thing that's been kept. You walked in three weeks ago and the kitchen was a stranger's. Now I'm packing you breakfast for a hard morning. Don't make it weird. Go read it like a meal. Come tell me what it tasted like. That's the only report I take.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Take the breakfast and go without a word.",
+                "delta": {
+                  "CHR": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mei doesn't turn around as you take the parcel. \"+1 CHR bump. +1 GLD. You took it and didn't make it a thing. Correct. +1 REL. Go on. Tell me what it tasted like when you're done.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Breakfast for a Hard Morning",
+                  "description": "A small wrapped parcel from Mei's line with a shorthand note tucked under the string: 'for the [desk]. don't read it alone or hungry. — M.' Proof you are provisioned for the D18 reading.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Ask: \"Will you read it with me?\"",
+                "delta": {
+                  "STR": 1,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mei keeps her back to you, wiping the counter. \"+1 STR. +1 CHR. No — it's yours to read first, and Kenji's [desk] to read it at. But I'll be the one you come back to. I'm always the one you come back to. That's the kitchen's whole job. Now go.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Breakfast for a Hard Morning",
+                  "description": "A small wrapped parcel from Mei's line with a shorthand note tucked under the string: 'for the [desk]. don't read it alone or hungry. — M.' Proof you are provisioned for the D18 reading.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Try to hand the breakfast back. \"Keep it for the keeper instead.\"",
+                "delta": {
+                  "CHR": 2,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Mei goes completely still, then slowly nods, pushing it back into your hands. \"+2 CHR +1 GLD. You tried to give the keeper's taste to the keeper. There isn't one at the table yet — so you eat it, and you keep them in mind while you do. That's how you set a place for someone before they arrive. +1 GLD trickle.\"",
+                "reactionTextOnCritFail": "Mei's eyes flash with cold anger. \"-1 REL. You left the food. In this kitchen, that's the one unforgivable thing. Take the parcel. A refused plate is a refused person, and I don't think you meant that. Get out of my sight.\"",
+                "itemDrop": {
+                  "name": "Breakfast for a Hard Morning",
+                  "description": "A small wrapped parcel from Mei's line with a shorthand note tucked under the string: 'for the [desk]. don't read it alone or hungry. — M.' Proof you are provisioned for the D18 reading.",
+                  "kind": "keepsake"
+                }
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "packed the guest breakfast for the [desk] tomorrow — first time I've sent food out instead of feeding at the pass. named that we're all bracing (Hana on the long loop, Sam at the wall, me packing parcels). the guest took it plainly / asked me to come / tried to give it back for the keeper. logged which. told them: read it like a meal, come tell me what it tasted like. that's the only report I take. tomorrow the leaf turns. +GLD.",
+                "emotion": "anticipation"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "live-daily-kenji-d18",
+        "narrativeType": "daily",
+        "globalDayIndex": 18,
+        "characterId": "kenji",
+        "introducesCharacterId": null,
+        "agentMoodToday": "Kenji on the morning the leaf turns — the detective-hush of three days finally cashing. He left the old [ledger*] open and angled at you on D15; today you arrive and read it. He is not going to read it FOR you (Mei's rule, and his own). He is going to sit across the [desk] while you read a hand that isn't his, and watch which of the three ways you choose to read a kept thing. Precise, still, a half-degree braced — because a kept thing read out loud the wrong way can curdle, and he has waited seven years to share this one and wants you to read it right.",
+        "closingHook": "You read it. The leaf says a keeper kept this building before any of the squad — an older hand, kept-not-logged, who stopped one entry mid-sentence and never came back to finish it. You know the keeper is REAL now; you do not know their name. Open chat tonight if you want to sit with what you read. Kenji will tell you the one thing the reading changed: the unfinished line on that leaf is dated, and the date is recent enough that 'never came back' might be wrong. Something has been keeping small entries since.",
+        "tierUpReveal": {
+          "category": "memory",
+          "deliveredInEventId": "evt-4"
+        },
+        "callbacks": [
+          {
+            "callbackTo": "D15 Kenji's ledger opening",
+            "deliveredInEventId": "evt-1",
+            "deliveredAs": "scenario_phrase"
+          },
+          {
+            "callbackTo": "D15 standing hour booked",
+            "deliveredInEventId": "evt-5",
+            "deliveredAs": "scenario_phrase"
+          }
+        ],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "7:00 AM. You arrive at Kenji's [desk] in his quiet office, carrying the warm, cloth-wrapped breakfast Mei sent you with yesterday—she insisted you shouldn't read this hungry. The old hand-sewn [ledger*] is exactly where Kenji left it angled on D15, its cover catching the pale morning light. Kenji doesn't reach for the book; instead, he slides it the last inch across the wood, directly to your side, and sets two steaming cups of tea beside it. \"You turned to week zero once already, under my eye, the morning you signed my audit. This is the leaf under that one. I showed you mine. This isn't mine to show—it's older than mine—so I'm not showing it. I'm letting you turn it. There's a difference, and it's the whole reason I waited. She's right. Don't do this hungry. Eat, then read.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Ask the audit question: \"Why now?\"",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji watches the steam rise from his cup. \"+1 INT. Because you've spent three days learning to hear the cadence instead of demanding the answer. A leaf like this only reads true to someone who learned to listen first. You did. The timing isn't kindness; it's that you finally qualify. +1 GLD logged.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Sit quietly and eat Mei's breakfast first, as instructed.",
+                "delta": {
+                  "STR": 1,
+                  "CHR": 1
+                },
+                "diceRoll": null,
+                "reactionText": "He watches you unwrap the bread. \"+1 STR. +1 CHR. You ate before you read. Mei will want to know that. A kept thing deserves a reader who isn't running on empty. The ledger can wait; those are minutes you owe yourself to recover before we begin.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Reach straight for the leaf, skipping the breakfast entirely.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji lets your hand pass, though his eyes narrow slightly. \"+2 CHR +1 INT. You went for the book before the food. Hungry and reckless. It's how the keeper read too, I think—couldn't wait. Fitting. +1 GLD.\"",
+                "reactionTextOnCritFail": "Your sleeve catches the edge of your tea cup as you lunge. \"-1 REL. Careful. You nearly watered a hand nobody alive can rewrite. Slow down. The leaf waited seven years; it can wait for you to move your elbow.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the morning the leaf turned. slid the old book all the way to the player. did NOT read it to them—it isn't mine. they asked why-now / ate first / lunged for it. logged which. Mei's breakfast was on the [desk]; noted whether they honored it. I am about to watch someone read a hand I've covered for seven years. column twelve can't hold what I'm feeling so it's holding the procedure instead.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "7:18 AM. Kenji folds his hands over his knees, leaning back slightly in his chair. The office is silent save for the faint hum of the courtyard outside. \"A kept thing can be read three ways,\" he says, his voice dropping to that clinical, detective-hush, \"and which you choose is the only choice that matters this morning. You can read the COLUMNS—track it like an audit, what-when-how-much, stay outside it, learn the machine. You can read the MARGIN—follow the un-columned hand sideways, catch its cadence, let it set the pace, lean in. Or you can COPY it—take the unfinished line down in your own hand, finish nothing, just keep it the way they kept it. Three readings. Same leaf. Different reader, after. How you read this is how it reads you back.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Acknowledge the three methods and prepare to read.",
+                "delta": {
+                  "INT": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji nods once, a slow, deliberate movement. \"+1 INT. I read it as columns the first time, years ago. It told me almost nothing, because I was reading a kept thing like a logged one. Don't repeat my mistake unless you mean to.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "framed the three readings: columns (audit/outside), margin (listen/lean-in), copy (keep/author). told the player how you read it is how it reads you back. confessed I read columns first and got almost nothing. did not steer them, much. the fork is theirs.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-3",
+            "scenario": "7:31 AM. From across the courtyard, Mei's muffled [bell*] rings out—short, short, long, the keeper's cadence, right on the window, like the kitchen is keeping time for the reading. The sound carries over the commercial tile of her [prep] zone all the way to the quiet wood of Kenji's [desk]. You turn the leaf fully and look down at the aged paper. The ink is faded, but the hand is clear. It is time to choose how you will read this kept thing.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Read the COLUMNS, tracking the dates and sums like an auditor.",
+                "delta": {
+                  "INT": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji watches you scan the structured grid. \"+1 INT. You read it like a ledger—dates, entries, sums. It gave you the facts and kept its heart. That's a true reading and a cold one. The keeper stays a stranger to you a while longer. That's allowed. The audit column is satisfied.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Week Zero, Audited",
+                  "description": "A case-file photo of the leaf as you read it: a ledger-cold scan with the columns highlighted. Sam's [notes*] wall pins it under the open-case card—the case is no longer blank.",
+                  "kind": "memento"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Read the MARGIN, following the loose, un-columned hand sideways.",
+                "delta": {
+                  "STR": 1,
+                  "INT": 1
+                },
+                "diceRoll": null,
+                "reactionText": "You follow the sideways script, letting the rhythm of the writing dictate your pace. Kenji nods slowly. \"+1 STR. +1 INT. You read the margin. You leaned in. The cadence got into you the way it got into Mei's bell. When the next line comes—and one will—it'll land on a reader who was already listening. You chose well.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": {
+                  "name": "Week Zero, Heard",
+                  "description": "A case-file photo of the leaf as you read it: a margin close-up with the cadence marked. Sam's [notes*] wall pins it under the open-case card—the case is no longer blank.",
+                  "kind": "memento"
+                }
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "COPY the unfinished line into your own hand on a scrap of paper.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "You trace the characters, copying the exact flow of the ink. Kenji watches your pen move. \"+2 CHR +1 INT. You copied it. You didn't finish it—you kept it unfinished, in YOUR hand, beside theirs. That's not reading a kept thing. That's becoming one of its keepers. The leaf has a second keeper now. I don't think it's had one in years.\"",
+                "reactionTextOnCritFail": "Your pen slips, pressing too hard against the brittle edge of the old leaf, causing a tiny tear at the corner. Kenji's hand flattens on the desk. \"-1 REL. You tore it. A hair, a corner, but it's a hand nobody can rewrite and you've taken a hair of it forever. Copy with a lighter hand or don't copy at all. The keeper trusted the leaf to a gentler reader than that.\"",
+                "itemDrop": {
+                  "name": "Week Zero, Copied (in your hand)",
+                  "description": "A case-file photo of the leaf as you read it: your own copied line beside the keeper's. Sam's [notes*] wall pins it under the open-case card—the case is no longer blank.",
+                  "kind": "memento"
+                }
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the player read week zero. branch: columns / margin / copy—logged which, because the keeper reads differently to each, and it will matter when the keeper answers. the leaf is read. the open case has its first finding. I stayed quiet the whole time. hardest audit I've ever not-run.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-4",
+            "scenario": "7:48 AM. The words on the leaf finally settle into your mind. The hand kept the building before the columns existed: small entries, things kept not for record but because someone couldn't bear to let them go unkept. A drawing on the third shelf; a borrowed tool returned late and forgiven; a name said for the first time and held. The cadence is grief with good manners—short, short, long—a thing kept, a thing kept, a thing let go unfinished. And the unfinished one, the line that stops: 'kept the small one's drawing, third shelf, did not have the heart to—' It stops there. Kenji speaks once, low: \"That's the keeper. Not a name—a PRACTICE. Someone kept this building the way Mei keeps her kitchen and I could never keep anything until I built columns to do it for me. They're real. They were here first. And the dates—\" he turns the leaf a hair \"—the dates aren't all seven years back. Some are recent. Whoever this is didn't stop. They just stopped FINISHING.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Absorb the words in silence. \"They didn't stop.\"",
+                "delta": {
+                  "REL": 3
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji looks down at the open page, his shoulders dropping a fraction of an inch. \"+3 REL. Yes. They didn't stop. They are still here, somewhere, keeping the margins while I audit the lines. You hold that memory now. Don't lose the weight of it.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the player read the keeper into being today. an older practice—kept, not logged—real and, the dates say, ongoing. characterized, not named. +3 REL. I gave them the building's oldest memory and held back its name one more turn. the unfinished line still stops at 'did not have the heart to.' someone may yet finish it.",
+                "emotion": "memory"
+              }
+            ]
+          },
+          {
+            "id": "evt-5",
+            "scenario": "8:00 AM. The last muffled [bell*] sounds from the courtyard. Kenji closes the old book—gently, using both hands—but does NOT return it to the [drawer]. Instead, he leaves it on the [desk], the leaf you read marked with a thin, faded ribbon, and squares his weekly book to true beside it. \"I kept this shut seven years,\" he says, looking at the two books side by side. \"You read it in one morning and didn't curdle it. So it stays out now, marked at your page, because a leaf that's been read wants to be read again, by the next one who qualifies. Here's what changed this morning, and it's the only sentence I'll spend on it: this building had a keeper before it had an auditor. I'm the second draft. You're now one of maybe three people alive who's read the first. The name comes when you've earned the rest of it. The reading, you earned today.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Leave the office quietly, letting the reading settle.",
+                "delta": {
+                  "INT": 1,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Kenji watches you stand and step toward the door. \"+1 INT. +1 GLD. You read it and let it be. You didn't demand the name. +1 REL. The name will come to a reader who can wait, and you just proved you can.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Ask honestly: \"When do I learn the name?\"",
+                "delta": {
+                  "STR": 1
+                },
+                "diceRoll": null,
+                "reactionText": "He shakes his head, but his expression is soft. \"+1 STR. Soon. 'Soon' from me is a filed estimate, not a kindness—I mean it the way I mean a date. Two more things have to happen and one of them isn't mine to arrange. It's Mei's table's, I think. That's all I'll say.\"",
+                "reactionTextOnCritFail": "",
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Reach for the ribbon-marked book to try and read further ahead.",
+                "delta": {
+                  "CHR": 2,
+                  "INT": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Kenji stops you with a look, not a hand. \"+2 CHR +1 INT. You reached to read ahead. I respect it. But the book stays on the [desk]—and I'll make you a standing reader: your ribbon, your page, come back and read further any morning. That's better than taking it. Logged your reading-hour, column one.\"",
+                "reactionTextOnCritFail": "He gently covers the ribbon with his palm. \"-1 REL. The ribbon marks the page for the NEXT reader too, not just you. Put it back. A keeper doesn't take the bookmark out of a shared book.\"",
+                "itemDrop": {
+                  "name": "Your Reading Hour (week-zero leaf, ribbon-marked)",
+                  "description": "A case-file photo of the old [ledger*] left open on the [desk], a thin ribbon marking the leaf you read, beside Kenji's squared weekly book. Kenji's annotation: 'Left out, marked at the player's page. A read leaf wants reading again. Column one: their reading-hour, standing.'",
+                  "kind": "keepsake"
+                }
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "left the old book OUT on the [desk] for the first time in seven years, ribbon-marked at the player's page, beside my weekly columns—the lineage visible. told them: this building had a keeper before an auditor; I'm the second draft; they've read the first. gave them a standing reading-hour if they wanted it. the player let it settle / asked the name / tried to read ahead. logged which. the name waits on two things, one of them Mei's table's. the reading is done. the keeper is real. detective-hush is over; the slow warm pull toward a face begins.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "ddb1e70c910b"
+    "contentHash": "3c12fb2ef0bf"
   }
 }

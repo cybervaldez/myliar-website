@@ -158,6 +158,33 @@ a:hover {
   text-transform: none;
 }
 
+/* ── Wiki skin — Fandom-style fan-wiki look, scoped to /wiki/* ──────────
+   The wiki reads as a real fan wiki (light page, dark text, blue links,
+   serif article titles / sans body, flat) instead of the game's chunky-cream
+   UI. Scoped via .wiki-skin on the wiki layout root: it re-defines the
+   semantic palette tokens locally, so every wiki component (bg-paper /
+   text-ink / text-forest …) re-skins automatically, while the marketing /
+   landing pages keep the game theme. Fixed light skin (not the 6 game packs). */
+.wiki-skin {
+  --paper: #ffffff;
+  --paper-shade: #f6f7f9;
+  --ink: #202122;
+  --ink-soft: #54595d;
+  --forest: #0645ad;        /* link + title accent → wiki blue */
+  --forest-dim: #3366cc;
+  --spot-red: #0b5fb0;      /* in-prose links → blue too (Fandom links aren't red) */
+  --margin-ink: #72777d;
+  --theme-display: Georgia, "Times New Roman", serif;       /* article titles: serif */
+  --theme-body: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --panel-radius: 2px;
+  --panel-shadow: none;
+  background: #ffffff;
+}
+/* Infobox title bars + fan-art badges (bg-ink) → the classic Fandom blue bar (#0645ad). */
+.wiki-skin .bg-ink { background: #0645ad !important; color: #ffffff !important; }
+/* Tighten the chunky double-rule under page titles to a clean 1px wiki rule. */
+.wiki-skin .border-b-2 { border-bottom-width: 1px; }
+
 /* Hero phone-artifact die-glyph pulse — subtle "tap to start" cue.
    One soft scale per ~3s, respects prefers-reduced-motion. */
 @keyframes die-pulse {
@@ -191,3 +218,43 @@ a:hover {
 }
 .rule-flourish::before { left: 0; }
 .rule-flourish::after { right: 0; }
+
+/* ── FANDOM look (A) — applied to the tooling SHELL (FandomShell). Light, wide, wiki-like:
+   white content on light-gray, serif headers, blue links, thin light borders. Restyles the
+   existing parchment Tailwind tokens within the .fandom scope (the tooling pages are text-heavy,
+   so this trades the chunky game-UI for the cleaner, denser fan-wiki reading surface). */
+.fandom { background: #f3f4f6; color: #202122; }
+.fandom [class~="bg-paper"] { background: #ffffff !important; }
+.fandom [class*="bg-paper-shade"] { background: #f8f9fa !important; }
+.fandom [class*="border-2"] { border-width: 1px !important; }
+.fandom [class*="border-ink"] { border-color: #c8ccd1 !important; }
+.fandom [class*="text-forest"] { color: #202122 !important; }   /* green headers → wiki-dark */
+.fandom [class*="text-spot-red"] { color: #b32424 !important; }  /* keep a wiki-ish red accent */
+.fandom [class*="font-display"] { font-family: Georgia, "Times New Roman", serif !important; font-weight: 700; letter-spacing: 0; text-transform: none; }
+.fandom a:not([class*="bg-"]) { color: #0645ad; }
+.fandom a:not([class*="bg-"]):hover { text-decoration: underline; }
+
+/* ── BASIC / NOT-MODERN — shared austere treatment for BOTH the tooling shell (.fandom)
+   and the wiki (.wiki-skin). Plain old-web: sans body (Arial), serif headers (Georgia),
+   SQUARE corners, NO shadows, FLAT accents (the green fills → light gray). This is the
+   "quite basic, not modern" classic-wiki direction. */
+.fandom, .wiki-skin { font-family: Arial, Helvetica, "Liberation Sans", sans-serif; }
+.fandom [class*="rounded"], .wiki-skin [class*="rounded"] { border-radius: 0 !important; }
+.fandom [class*="shadow"], .wiki-skin [class*="shadow"] { box-shadow: none !important; }
+.fandom [class*="bg-forest"], .wiki-skin [class*="bg-forest"] { background: #eaecf0 !important; color: #202122 !important; }
+.wiki-skin [class*="font-display"] { font-family: Georgia, "Times New Roman", serif !important; letter-spacing: 0; text-transform: none; }
+.wiki-skin [class*="bg-paper-shade"] { background: #f8f9fa !important; }
+.wiki-skin [class*="border-2"] { border-width: 1px !important; }
+.wiki-skin a:not([class*="bg-"]) { color: #0645ad; }
+.wiki-skin a:not([class*="bg-"]):hover { text-decoration: underline; }
+.fandom [class*="tracking-"] { letter-spacing: normal !important; }  /* drop the modern wide-tracked caps */
+/* readability: darken the lightest grays + nudge the smallest body up (the cards are dense). */
+.fandom [class*="text-margin-ink"], .wiki-skin [class*="text-margin-ink"] { color: #54595d !important; }
+.fandom [class*="text-ink-soft"], .wiki-skin [class*="text-ink-soft"] { color: #3c3c3c !important; }
+
+/* ── FANDOM fidelity (matches docs/design/wiki-look-previews.html, look A) ──
+   The single most Fandom-defining detail: SECTION HEADERS sit on a thin bottom rule.
+   Tooling = h2 only (h3 is reused for card titles); wiki articles = h2 + h3. */
+.fandom h2 { border-bottom: 1px solid #a2a9b1; padding-bottom: 4px; }
+.wiki-skin h2, .wiki-skin h3 { border-bottom: 1px solid #a2a9b1; padding-bottom: 3px; }
+.fandom a:visited:not([class*="bg-"]), .wiki-skin a:visited:not([class*="bg-"]) { color: #0b0080; }

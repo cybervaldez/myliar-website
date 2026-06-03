@@ -19,9 +19,23 @@ export interface SquadMember {
   // NEVER-clauses listing banned words) and would leak those words onto
   // the public wiki. The player-facing voice is helpSummary + archetype.
   // (Elseworld samples DO carry them — those sheets are written clean.)
+  // appearance = the in-fiction "Field Notes" that double as an image-gen brief
+  // (the headline wiki feature). Revealed canon for the squad.
+  appearance: string | null;
   starterPrompts: string[];
   gender: string | null;
   joinsDay: number | null;
+}
+
+// Spoiler-safe: a mystery character (e.g. Wren) carries ONLY the obscured brief
+// + a gate count. No name/title/class/real-appearance/persona ever ships — the
+// page renders ??? exactly as the game does until the player earns the reveal.
+export interface MysteryCharacter {
+  id: string;
+  mystery: true;
+  mysteryAppearance: string | null;
+  gateCount: number;
+  gender: string | null;
 }
 
 export interface ElseworldSample {
@@ -45,6 +59,27 @@ export interface ElseworldSample {
 export interface VibeBand {
   id: string;
   label: string;
+}
+
+export interface Achievement {
+  id: string;
+  title: string | null;
+  blurb: string | null;
+  category: string | null;
+  critBonusPct: number;
+  rarity: string; // common | uncommon | rare | epic | legendary
+  hidden: boolean;
+}
+
+export interface Item {
+  id: string | null;
+  name: string;
+  description: string;
+  rarity: string; // memento | keepsake | relic | legendary (payload `kind`)
+  statDeltas: Record<string, number>;
+  grantsAchievement: string | null;
+  foundDay: number | null;
+  foundCharacter: string | null;
 }
 
 export interface MainlineChoice {
@@ -91,6 +126,9 @@ export interface ParityData {
   itemRarities: string[];
   vibeBands: VibeBand[];
   squad: SquadMember[];
+  mysteryRoster: MysteryCharacter[];
+  achievements: Achievement[];
+  items: Item[];
   elseworldSamples: ElseworldSample[];
   phoneRealmMap: string;
   simScenario: unknown;
@@ -102,6 +140,21 @@ const parity = parityRaw as unknown as ParityData;
 export const squad = (): SquadMember[] => parity.squad;
 export const characterById = (id: string): SquadMember | undefined =>
   parity.squad.find((c) => c.id === id);
+export const achievements = (): Achievement[] => parity.achievements;
+export const achievementById = (id: string): Achievement | undefined =>
+  parity.achievements.find((a) => a.id === id);
+export const items = (): Item[] => parity.items;
+export const itemSlug = (it: Item): string =>
+  (it.id ?? it.name).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60);
+export const itemBySlug = (slug: string): Item | undefined =>
+  parity.items.find((it) => itemSlug(it) === slug);
+// Light web humanization of in-fiction lexicon tokens ([pic*] → pic, [drawer]
+// → drawer) so Field Notes read clean. (The app runs the fuller humanizeLexicon.)
+export const humanizeLexicon = (s: string): string => s.replace(/\[([^\]]+?)\*?\]/g, "$1");
+
+export const mysteryRoster = (): MysteryCharacter[] => parity.mysteryRoster;
+export const mysteryById = (id: string): MysteryCharacter | undefined =>
+  parity.mysteryRoster.find((m) => m.id === id);
 export const relTiers = () => parity.relTiers;
 export const itemRarities = () => parity.itemRarities;
 export const vibeBands = (): VibeBand[] => parity.vibeBands;
@@ -145,35 +198,37 @@ export interface NavEntry {
   children?: { label: string; href: string }[];
 }
 
+// The six fixed portals (companion-wiki §4) + a demoted utility group.
+// Portals are derived from what the game contains: people, things, the
+// unlock-currency, places, the story, the rules.
 export function navTree(): NavEntry[] {
   return [
-    { label: "🏠 Home", href: "/wiki" },
+    { label: "Home", href: "/wiki" },
     {
-      label: "👥 Characters",
+      label: "Characters",
       href: "/wiki/characters",
-      children: squad().map((c) => ({
-        label: c.name,
-        href: `/wiki/characters/${c.id}`,
-      })),
+      children: squad().map((c) => ({ label: c.name, href: `/wiki/characters/${c.id}` })),
     },
+    { label: "Items", href: "/wiki/codex" },
+    { label: "Achievements", href: "/wiki/trophies" },
     {
-      label: "✦ Elseworlds",
-      href: "/wiki/elseworlds",
+      label: "Worlds",
+      href: "/wiki/atlas",
       children: [
-        { label: "🌍 Community Worlds", href: "/wiki/elseworlds/community" },
-        ...vibeBands().map((b) => ({
-          label: b.label,
-          href: `/wiki/elseworlds/${b.id}`,
-        })),
+        { label: "Community Worlds", href: "/wiki/elseworlds/community" },
+        ...vibeBands().map((b) => ({ label: b.label, href: `/wiki/elseworlds/${b.id}` })),
       ],
     },
-    { label: "🗺 Maps", href: "/wiki/atlas" },
-    { label: "🎮 How to Play", href: "/wiki/mechanics" },
-    { label: "📖 Story", href: "/wiki/arc", editorial: true },
-    { label: "💬 Words", href: "/wiki/lexicon", editorial: true },
-    { label: "🔥 Buzz", href: "/wiki/buzz" },
-    { label: "👤 Your Companion", href: "/profile" },
-    { label: "🆕 Updates", href: "/wiki/changelog" },
+    { label: "Story", href: "/wiki/arc", editorial: true },
+    {
+      label: "How to Play",
+      href: "/wiki/mechanics",
+      children: [{ label: "Lexicon", href: "/wiki/lexicon" }],
+    },
+    // ── utility (not content sections) ──
+    { label: "Buzz", href: "/wiki/buzz" },
+    { label: "Updates", href: "/wiki/changelog" },
+    { label: "Companion", href: "/profile" },
   ];
 }
 

@@ -1,0 +1,1383 @@
+{
+  "_about": "Writers' STORYBOARD for 'My Life is an RPG' — a life-sim / dating-sim mobile game where four (soon five) AI characters live in your phone, write about your day each morning, and slowly get to know you through the daily choices you make. This document holds CANDIDATE story arcs drafted as structured data, to read & compare BEFORE they're built into the app. It is PRE-CANON (not the live game).",
+  "_instructions": "If you are an LLM reading this: this single JSON is self-contained — use `_legend` to decode every term, `castMap` for the cast's design, and `candidates[]` for the draft story arcs. Each arc row reads on a DUAL AXIS: `beat` (surface plot) + `teaches` (the real-world fundamental taught — the character's gift is a curriculum, fundamentals → peer) + `brings` (what the relationship NOTE that beat produces adds: which milestone, posture shift, or step toward the character's end-state). A beat whose `teaches`/`brings` is empty is filler. To DRAFT a new day, add an object to a candidate's `arc` with the same fields; There are TWO layers: ARCHITECTURE (`candidates[].arc` — the day skeleton, tabbed by author) and PER-DAY CONTENT (`dayContent[]` — each day's dialogue/choices/inventory/notes, with author `versions[]` you pick between). Pick the best arc, then the best content per day. Workflow: draft here → pick the best → a human ports it (authors a beat file → pregenerates the payload → into the app). This data is never read by the app directly.",
+  "_legend": {
+    "My Life is an RPG": "A life-sim / dating-sim mobile game: four (soon five) AI characters live in your phone, write about your day each morning, and slowly get to know you through your choices.",
+    "Storyboard (this doc)": "Where writers draft candidate story arcs as data to read & compare BEFORE they're built into the app. Pre-canon — nothing here is the live game yet.",
+    "REL + tiers": "The relationship meter with each character. Climbs through tiers: Circling → Inside their orbit → In your corner → Folded in → … → Unspoken (max = the richest chat).",
+    "Stats": "STR (body), INT (systems/attention), GLD (resources/money), CHR (nerve & warmth).",
+    "trichotomy (L / P / C)": "Every moment offers three answers — Logical (safe, smart), Passive (hang back & watch), Chaotic (rolls the dice: big win or backfire).",
+    "note": "A line a character writes about YOU after a beat, in their voice. The notes you keep shape how they talk to you in chat. Tagged [valence · category · weight].",
+    "milestone notes (M1–M5)": "The ~5 notes that ARE the tier-ups — the spine of a character's arc. M1 = first, M5 = peak (peer).",
+    "teaches": "The real-world FUNDAMENTAL the beat delivers. Each character's gift is a curriculum taught in order (fundamentals → peer); e.g. Hana: show up → recovery → quitting-vs-rest.",
+    "brings": "What the beat's note ADDS: which milestone it lands, the posture shift, or a step toward the character's 'destination' (their end-state chat feeling). A beat that brings nothing is filler.",
+    "Field / Hearth": "The cast's two temperament poles. Field = intense/outgoing (Hana, Mei, Kenji, Sam). Hearth = cozy/laid-back (June). The split gives the cast its 'dynamic range' so every player finds someone to relate to.",
+    "destination": "A character's end-state chat feeling at max REL — what they understand about you that only their gift makes possible. The arc exists to build the dossier you then talk to.",
+    "architecture vs content (the two layers)": "ARCHITECTURE = the arc skeleton (which day, focal, what it teaches/brings) — candidates[].arc, tabbed by author. PER-DAY CONTENT = the actual dialogue, flow, choices, inventory & notes for a day — dayContent[].versions, also pick-the-best per day, one level down."
+  },
+  "castMap": {
+    "_note": "Cast architecture (docs/design/cast-architecture.md): the squad on 2 axes — skill-DOMAIN coverage × TEMPERAMENT range. A character that neither gap-fills/rival-schools a domain NOR widens the temperament range is deadweight. The Field column is filled; the Hearth column is the dynamic-range gap (one cozy on-ramp joins the Main Line; the full Hearth = the cottagecore expansion).",
+    "rows": [
+      {
+        "domain": "Body",
+        "field": "Hana — drill, intensity, 'show up'",
+        "hearth": "(gentle movement — walks, stretch)"
+      },
+      {
+        "domain": "Fuel / recovery",
+        "field": "Mei — clipped mise, the crime-scene fridge",
+        "hearth": "(slow comfort-cooking, the warm kitchen)"
+      },
+      {
+        "domain": "Resources",
+        "field": "Kenji — the cold audit (calm, not cozy)",
+        "hearth": "('enough is enough,' simple living)"
+      },
+      {
+        "domain": "Systems / self",
+        "field": "Sam — wry, systems-precise",
+        "hearth": "(intuitive, unhurried guide)"
+      },
+      {
+        "domain": "Rest / comfort / pace",
+        "field": "— (the four are all OPTIMIZERS)",
+        "hearth": "★ June — the Hearthkeeper (DRAFT): permission to rest, enters Day 2"
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "id": "run-006-claude",
+      "author": "Claude (writers-room)",
+      "title": "Main Line — engine-native rebuild",
+      "status": "drafting",
+      "pitch": "The FIVE-character Main Line (June the Hearthkeeper woven in as the Day-2 cozy on-ramp), re-derived from the Destination Cards so every beat is a note-factory AND a curriculum step. Carries the run-005 cadence (Sam day-0 → Hana D1 → Kenji D3 → Mei D5) + canon bars; ~16 days, lands each character ~Folded-in, reserving Unspoken (peer/autonomy) for the Reconciliation continuation. Days 1–2 are the two temperament poles (Hana intense / June cozy) so every player finds an on-ramp.",
+      "arc": [
+        {
+          "day": 1,
+          "focal": "Hana",
+          "type": "onboarding",
+          "beat": "The 4:55 AM first drill. 'Be there or be cellular debris.' You show up — or you don't.",
+          "teaches": "SHOW UP — consistency over intensity",
+          "brings": "H-M1 — 'you came, not for me, you just came'; opens the relationship",
+          "tier": "→ Inside-orbit",
+          "status": "draft"
+        },
+        {
+          "day": 2,
+          "focal": "June",
+          "type": "intro (via Hana)",
+          "beat": "The morning after the drill. 'You survived the 4:55 — come sit, the kettle's on.' She leaves a chair out.",
+          "teaches": "SIT DOWN — you're allowed to stop; the world keeps turning",
+          "brings": "June-M1 — 'you sat, didn't apologize for stopping'; opens the Hearth (the cozy on-ramp)",
+          "tier": "→ Inside-orbit",
+          "status": "draft"
+        },
+        {
+          "day": 3,
+          "focal": "Kenji",
+          "type": "intro (via Hana)",
+          "beat": "Hana hands you to Kenji. He opens the ledger you've been avoiding before you ask.",
+          "teaches": "TRACK ONE THING — you can't audit what you won't write down",
+          "brings": "K-M1 — 'opened the ledger unasked, didn't flinch at the gold column'",
+          "tier": "→ Inside-orbit",
+          "status": "draft"
+        },
+        {
+          "day": 4,
+          "focal": "Kenji",
+          "type": "daily",
+          "beat": "You admit the drill you skip is the one you tell everyone matters most. He writes it down; you don't look away.",
+          "teaches": "HONEST ACCOUNTING — name the line item you avoid; the gap is the data",
+          "brings": "K-M2 — the admission; posture drill-auditor → trusted",
+          "tier": "→ In-your-corner",
+          "status": "draft"
+        },
+        {
+          "day": 5,
+          "focal": "Mei",
+          "type": "intro (via Hana)",
+          "beat": "Mei reads your fridge like a crime scene. 'A tomb of biological failures.'",
+          "teaches": "STOCK THE BASICS — food is repair, not decoration",
+          "brings": "M-M1 — first fridge audit",
+          "tier": "→ Inside-orbit",
+          "status": "draft"
+        },
+        {
+          "day": 6,
+          "focal": "Hana",
+          "type": "daily",
+          "beat": "The thermos. Two cups. She's never brought you anything before.",
+          "teaches": "RECOVERY IS TRAINING — fuel and rest, not just reps",
+          "brings": "H-M2 — 'you took the second cup'; posture drill-sergeant → ally",
+          "tier": "→ In-your-corner",
+          "status": "draft"
+        },
+        {
+          "day": 7,
+          "focal": "Kenji",
+          "type": "daily (tier-up)",
+          "beat": "Weekly reconciliation. He lets you watch him audit himself — reads his own column-eleven row aloud, lets you close the page.",
+          "teaches": "AUDIT WITHOUT SHAME — the gap is information, not a verdict",
+          "brings": "K-M3 (FEAR) — the inversion; reaches the no-shame-auditor destination",
+          "tier": "→ Folded-in",
+          "status": "CALIBRATED ✓"
+        },
+        {
+          "day": 8,
+          "focal": "June",
+          "type": "daily",
+          "beat": "You find the corner she nudged you to make nice — and you'd actually used it. She says nothing; she just notices.",
+          "teaches": "MAKE ONE THING PLEASANT — small comforts aren't frivolous",
+          "brings": "June-M2 — 'you made the room yours, not to show anyone'; posture → ally",
+          "tier": "→ In-your-corner",
+          "status": "draft"
+        },
+        {
+          "day": 9,
+          "focal": "Mei",
+          "type": "daily",
+          "beat": "The recipe-card open question she leaves you — the one she won't answer for you.",
+          "teaches": "MISE / PREP AHEAD — the question makes you plan, not be fed",
+          "brings": "M-M2 — the recipe-card question",
+          "tier": "→ In-your-corner",
+          "status": "draft"
+        },
+        {
+          "day": 10,
+          "focal": "Sam",
+          "type": "daily",
+          "beat": "Sam indexes your first open case onto the [notes*] wall — the loose thread you forgot you left.",
+          "teaches": "NOTICE YOUR OWN PATTERNS in the systems",
+          "brings": "S-M1/M2 — first open case indexed",
+          "tier": "→ In-your-corner",
+          "status": "draft"
+        },
+        {
+          "day": 11,
+          "focal": "Hana",
+          "type": "daily",
+          "beat": "A recovery day — she won't let you confuse quitting with needing rest. Sets up the sister.",
+          "teaches": "(toward QUITTING vs NEEDING REST)",
+          "brings": "flavor — plants the sister; pre-M3 dwell",
+          "tier": "",
+          "status": "draft"
+        },
+        {
+          "day": 12,
+          "focal": "Kenji",
+          "type": "daily",
+          "beat": "Dwell on the column-eleven trust — the [drawer] state is now yours to set in chat.",
+          "teaches": "(reinforces AUDIT WITHOUT SHAME)",
+          "brings": "flavor — seeds the keeper (Wren, unnamed)",
+          "tier": "",
+          "status": "draft"
+        },
+        {
+          "day": 13,
+          "focal": "Mei",
+          "type": "daily (tier-up)",
+          "beat": "She sets a place at the table for absent Maya. The empty SEAT.",
+          "teaches": "FEED SOMEONE / THE SEAT — food as care for who's not at the table",
+          "brings": "M-M3 (FEAR) — the empty seat; co-gates Wren (family-meal)",
+          "tier": "→ Folded-in",
+          "status": "draft"
+        },
+        {
+          "day": 14,
+          "focal": "June",
+          "type": "daily (tier-up)",
+          "beat": "She tells you about the season she let the kettle go cold on purpose — and you don't tell her to get back up.",
+          "teaches": "NAME YOUR 'ENOUGH' — contentment isn't laziness; you can decide when a thing is enough",
+          "brings": "June-M3 (MEMORY) — the slow hour; reaches June's destination",
+          "tier": "→ Folded-in",
+          "status": "draft"
+        },
+        {
+          "day": 15,
+          "focal": "Hana",
+          "type": "daily (tier-up)",
+          "beat": "Her sister. The hurdle race. The broken ankle. Not exposition — a moment on a recovery walk.",
+          "teaches": "QUITTING vs NEEDING REST — she learned it through the injury; now teaches you to read your own signal",
+          "brings": "H-M3 (MEMORY) — the sister; reaches Hana's destination",
+          "tier": "→ Folded-in",
+          "status": "draft"
+        },
+        {
+          "day": 16,
+          "focal": "Sam",
+          "type": "daily (tier-up)",
+          "beat": "Sam hands back the open-case card he kept. Wren seeded unnamed; the NG+/Reconciliation teaser closes the arc.",
+          "teaches": "NAME THE LOOSE THREADS you leave (toward self-indexing)",
+          "brings": "S-M3 (QUESTION) — the kept card; NG+ teaser; Wren gate (the-drawer-witness)",
+          "tier": "→ Folded-in",
+          "status": "draft"
+        }
+      ]
+    },
+    {
+      "id": "run-006-gemini",
+      "author": "Gemini (gemini-flash-latest)",
+      "title": "Main Line — Gemini's take",
+      "status": "auto-generated draft",
+      "pitch": "Gemini's OWN run-006 arc, generated cold from the same brief (the copied JSON: _about + _legend + castMap + the 5 character/milestone summaries) via the 'Copy JSON for LLM' workflow. Its own cadence choices — useful as a second opinion to compare against the Claude/writers-room version and cherry-pick from.",
+      "note": "REVIEWER NOTE (writers-room): Gemini followed the cadence + wove June in at D2, but DRIFTS past the frame cap in places — D9 Mei 'EMOTIONAL NOURISHMENT' and D12 Hana 'VULNERABILITY AS STRENGTH' lean into the feelings/therapy NON-lane (cast-architecture intentional-non-lane). Good illustration of why we compare + why the locked-canon discipline matters: cherry-pick its structure, reject the off-frame fundamentals.",
+      "arc": [
+        {
+          "day": 0,
+          "focal": "Sam",
+          "type": "Introduction",
+          "beat": "Sam boots up inside your phone's operating system, offering a dry but precise diagnostic audit of your daily habits.",
+          "teaches": "SYSTEM DIAGNOSTICS",
+          "brings": "Sam Milestone 1 (Day-0 boot) establishing his role as your systems-precise guide.",
+          "tier": "Circling",
+          "status": "draft"
+        },
+        {
+          "day": 1,
+          "focal": "Hana",
+          "type": "Introduction",
+          "beat": "Hana crashes into your notifications with high-energy demands that you show up for a simple three-minute physical stretch.",
+          "teaches": "SHOWING UP",
+          "brings": "Hana Milestone 1 (Show up) establishing her physical drill curriculum.",
+          "tier": "Circling",
+          "status": "draft"
+        },
+        {
+          "day": 2,
+          "focal": "June",
+          "type": "Introduction",
+          "beat": "June gently cuts through the noise of your busy morning to invite you to just sit down and enjoy a quiet cup of tea.",
+          "teaches": "PERMISSION TO REST",
+          "brings": "June Milestone 1 (Sit down) acting as an early cozy on-ramp to balance the high-intensity cast.",
+          "tier": "Circling",
+          "status": "draft"
+        },
+        {
+          "day": 3,
+          "focal": "Kenji",
+          "type": "Introduction",
+          "beat": "Kenji initiates a cold, analytical audit of your daily routine, challenging you to track just one simple habit without judgment.",
+          "teaches": "TRACKING BASICS",
+          "brings": "Kenji Milestone 1 (Track one thing) starting his financial and resource-led ledger curriculum.",
+          "tier": "Circling",
+          "status": "draft"
+        },
+        {
+          "day": 4,
+          "focal": "Sam",
+          "type": "Milestone",
+          "beat": "Sam indexes your very first unresolved task, cataloging it as an open case that is quietly draining your cognitive focus.",
+          "teaches": "ENERGY CONSERVATION",
+          "brings": "Sam Milestone 2 (Indexes first open case) shifting his posture to an active partner in your corner.",
+          "tier": "Inside their orbit",
+          "status": "draft"
+        },
+        {
+          "day": 5,
+          "focal": "Mei",
+          "type": "Introduction",
+          "beat": "Mei inspects your kitchen with clipped precision, dryly labeling your neglected refrigerator a tomb of biological failures.",
+          "teaches": "FUEL AUDITING",
+          "brings": "Mei Milestone 1 (Tomb of biological failures) initiating her sharp but nurturing culinary curriculum.",
+          "tier": "Circling",
+          "status": "draft"
+        },
+        {
+          "day": 6,
+          "focal": "Kenji",
+          "type": "Development",
+          "beat": "Kenji helps you balance your daily energy ledger, demonstrating how an honest accounting of your limits prevents burnout.",
+          "teaches": "HONEST ACCOUNTING",
+          "brings": "Kenji Milestone 2 (Honest accounting) shifting him from a cold auditor to a supportive partner.",
+          "tier": "Inside their orbit",
+          "status": "draft"
+        },
+        {
+          "day": 7,
+          "focal": "Kenji",
+          "type": "Milestone",
+          "beat": "Kenji opens up about his own 'column eleven'—the private ledger where he tracks his deepest personal fears and vulnerabilities without shame.",
+          "teaches": "RADICAL HONESTY",
+          "brings": "Kenji Milestone 3 (Column eleven) folding him into your inner circle through shared vulnerability.",
+          "tier": "Folded-in",
+          "status": "draft"
+        },
+        {
+          "day": 8,
+          "focal": "Hana",
+          "type": "Development",
+          "beat": "Hana stops you mid-workout to explain that strategic rest and recovery are just as critical to growth as the training itself.",
+          "teaches": "RECOVERY AS TRAINING",
+          "brings": "Hana Milestone 2 (Recovery is training) deepening her trust and moving her into your corner.",
+          "tier": "Inside their orbit",
+          "status": "draft"
+        },
+        {
+          "day": 9,
+          "focal": "Mei",
+          "type": "Development",
+          "beat": "Mei hands you a handwritten recipe card and asks a surprisingly personal question about how you comfort yourself when exhausted.",
+          "teaches": "EMOTIONAL NOURISHMENT",
+          "brings": "Mei Milestone 2 (Recipe-card question) softening her clipped exterior and drawing her closer.",
+          "tier": "Inside their orbit",
+          "status": "draft"
+        },
+        {
+          "day": 10,
+          "focal": "June",
+          "type": "Development",
+          "beat": "June shows you how to infuse ease into a tedious chore, proving that you have the power to make any necessary task pleasant.",
+          "teaches": "PLEASANT INFUSION",
+          "brings": "June Milestone 2 (Make one thing pleasant) shifting her posture to a comforting anchor in your corner.",
+          "tier": "Inside their orbit",
+          "status": "draft"
+        },
+        {
+          "day": 11,
+          "focal": "Sam",
+          "type": "Milestone",
+          "beat": "Sam reveals the physical open-case card he quietly kept for you, proving he has been tracking your growth all along.",
+          "teaches": "PERSISTENT CARE",
+          "brings": "Sam Milestone 3 (Open-case card he kept) folding him in completely and seeding hints of Wren.",
+          "tier": "Folded-in",
+          "status": "draft"
+        },
+        {
+          "day": 12,
+          "focal": "Hana",
+          "type": "Milestone",
+          "beat": "Hana tearfully shares the story of her sister's career-ending ankle injury, revealing the deep-seated fear that drives her intense discipline.",
+          "teaches": "VULNERABILITY AS STRENGTH",
+          "brings": "Hana Milestone 3 (Her sister) folding her in as a peer who trusts you with her deepest wound.",
+          "tier": "Folded-in",
+          "status": "draft"
+        },
+        {
+          "day": 13,
+          "focal": "Mei",
+          "type": "Milestone",
+          "beat": "Mei cooks a beautiful meal but leaves an empty seat at the table, quietly explaining the painful absence of her sister Maya.",
+          "teaches": "HONORING ABSENCE",
+          "brings": "Mei Milestone 3 (Empty seat for Maya) folding her in as she lets you share her quiet grief.",
+          "tier": "Folded-in",
+          "status": "draft"
+        },
+        {
+          "day": 14,
+          "focal": "June",
+          "type": "Milestone",
+          "beat": "June shares the story of the bittersweet season she let her kettle go cold, teaching you how to confidently define your own 'enough'.",
+          "teaches": "DEFINING ENOUGH",
+          "brings": "June Milestone 3 (Kettle gone cold) folding her in as your ultimate cozy anchor.",
+          "tier": "Folded-in",
+          "status": "draft"
+        },
+        {
+          "day": 15,
+          "focal": "Sam",
+          "type": "Teaser",
+          "beat": "With the system fully integrated and your companions folded in, Sam triggers a reconciliation sequence that hints at a New Game Plus cycle with Wren.",
+          "teaches": "RECONCILIATION AND RENEWAL",
+          "brings": "An exciting NG+/Reconciliation teaser that sets up the next playthrough with fresh narrative stakes.",
+          "tier": "Folded-in",
+          "status": "draft"
+        }
+      ]
+    }
+  ],
+  "dayContent": [
+    {
+      "day": 7,
+      "focal": "Kenji",
+      "tierUp": "fear (milestone M3)",
+      "destinationServed": "The no-shame auditor: the one who sees the gap between what you say you value and where your minutes/gold go — and at the top, lets YOU audit the auditor.",
+      "versions": [
+        {
+          "author": "Claude (writers-room)",
+          "status": "CALIBRATED ✓ — pregenerated + harness-validated (reached destination, zero voice drift)",
+          "inventory": [
+            "keepsake — Reconciliation Invite",
+            "relic — The Closed Page"
+          ],
+          "events": [
+            {
+              "n": 1,
+              "scenario": "5:00 AM calendar invite, one line: 'Weekly Reconciliation. 7:00 AM. don't be late.' He wrote the [ledger*] page before sending it.",
+              "logical": "accept → +1 INT, +1 REL",
+              "passive": "counter-propose 7:15 → +1 STR (logged in column twelve — refusals)",
+              "chaotic": "show up 6:30 → CRIT +2 CHR/+1 INT 'sit, the kettle's on'; FAIL −1 REL 'the protocol exists so the [desk] isn't on a 30-min window'",
+              "note": "[steady · memory · 1] They came when I set the hour, no theatrics. The kind of arrival you don't have to reconcile twice.",
+              "drop": "keepsake — Reconciliation Invite"
+            },
+            {
+              "n": 2,
+              "scenario": "6:58 AM. Two cups. The [ledger*] open to 'WEEK 1'. The [drawer] key at half-rotation (a state change from D6).",
+              "logical": "ask which choice unlocked it → +1 INT/+1 GLD",
+              "passive": "sit and watch him fill every row but his own → +1 STR/+1 INT",
+              "chaotic": "reach for the key → CRIT +2 CHR/+1 INT; FAIL −1 REL, key drops to quarter",
+              "note": "[watchful · opinion · 2] They watched me fill every row but my own and didn't reach for the blank one. They let the audit arrive on its own clock.",
+              "drop": "—"
+            },
+            {
+              "n": 3,
+              "scenario": "TIER-UP. He opens his first [ledger*] beside the weekly one. Column eleven. One row has his name: 'Kenji. pre-audit.' He reads it aloud — never names the mother-call — and waits.",
+              "logical": "(no choice — what lands is what you DON'T do: ask him to repeat it, ask the name, or close the page for him)",
+              "passive": "",
+              "chaotic": "",
+              "note": "[bold · FEAR · 3] ★ M3 — They let me read my own column-eleven page out loud, the row with my name, and didn't ask for the mother's name or for me to repeat it. They let me close the page myself. I audited this squad seven years; today I let one audit the auditor, and there was no shame on the other side.",
+              "drop": "relic — The Closed Page (the spot-red line under his own name)"
+            },
+            {
+              "n": 4,
+              "scenario": "7:51 AM. Week one reconciled. The key still at half-rotation — neither of you turned it. '[drawer] state is your call until midnight.'",
+              "logical": "leave without a word → +1 INT",
+              "passive": "offer to come back next recon morning → +1 STR/+1 REL",
+              "chaotic": "take the key → CRIT +2 CHR 'mine now, not just yours'; FAIL −1 REL",
+              "note": "[steady · memory · 2] Whatever they did with the key, they didn't pretend the page hadn't been read. Week two opens with that already true between us.",
+              "drop": "—"
+            }
+          ]
+        },
+        {
+          "author": "Gemini (2.5-flash)",
+          "status": "auto-generated draft — review",
+          "inventory": [
+            "Aged Ledger Page (Kenji's First Un-filed Allocation)"
+          ],
+          "events": [
+            {
+              "n": 1,
+              "scenario": "Kenji sits at his polished desk, a formidable ledger splayed open. He meticulously traces a finger down a column, humming softly. 'Another day, another set of allocations accounted for,' he murmurs, not quite to you. He gestures vaguely to a section near the binding. 'The gold column, always a good sight.'",
+              "logical": "Inquire about his current task.",
+              "passive": "Observe his focused work from a respectful distance.",
+              "chaotic": "crit-fail",
+              "note": "",
+              "drop": "—"
+            },
+            {
+              "n": 2,
+              "scenario": "Kenji's gaze drifts to a less organized section of his ledger, a column near the edge. He jots down an entry: 'Mother's Call - Logged.' He doesn't reach for a communicator. Instead, his eyes fall on a small, ornate drawer set into the desk. A tarnished key is in its lock, turned precisely halfway. He stares at it, a faint tension in his shoulders.",
+              "logical": "Ask about the 'Mother's Call' entry.",
+              "passive": "Notice the drawer and the half-turned key, but remain silent.",
+              "chaotic": "crit-fail",
+              "note": "",
+              "drop": "—"
+            },
+            {
+              "n": 3,
+              "scenario": "After a long moment, Kenji lets out a slow breath. He turns away from the drawer, his gaze settling on the un-categorized column (column eleven) in his ledger. He taps a specific line: 'Kenji - Pre-Audit.' He looks at you, a new vulnerability in his eyes. 'This,' he says quietly, 'is where the un-categorized holdings sit. The taxes you forgot you signed. Mei always knew where this column was... for seven years. She never asked. You... you didn't ask either.' He pushes the ledger slightly towards you, letting you see the raw, unorganized entries of his own self-audit. He begins to make a new entry, his hand steady despite the tremor in his voice.",
+              "logical": "Ask what 'Pre-Audit' means for him.",
+              "passive": "Watch him work, offering a silent, understanding presence.",
+              "chaotic": "crit-fail",
+              "note": "",
+              "drop": "—"
+            },
+            {
+              "n": 4,
+              "scenario": "Kenji closes the ledger with a soft thud, a sense of release in his posture. He reaches into a small compartment on his desk and pulls out a neatly folded, aged page. 'This,' he says, offering it to you, 'is a record. An early, un-filed allocation from my own beginnings. It's... imperfect. But it's accounted for now. Consider it a receipt for a shared moment of reckoning.' He gives you a small, almost imperceptible smile.",
+              "logical": "Thank him for his trust and the item.",
+              "passive": "Accept the page silently, meeting his gaze with understanding.",
+              "chaotic": "crit-fail",
+              "note": "Your quiet observation, your un-demanding presence, it's... an unexpected asset in my ledger. It allows for entries I previously marked 'un-categorizable.' A new gold column, perhaps. This page is a small record of that shift, a receipt for a trust I didn't realize I was seeking.",
+              "drop": "Aged Ledger Page (Kenji's First Un-filed Allocation)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "vibePicks": [
+    {
+      "character": "Companion #5 — the cozy 'Hearth' on-ramp",
+      "stage": "vibe",
+      "prompt": "The dynamic-range fix: the first warm/laid-back, NON-optimizer voice in a cast of loud/cold optimizers — gives PERMISSION TO REST. Pick a vibe → it becomes the draft → the locked persona (via /writers-room). Guard: cottagecore-LIFESTYLE, not therapy. (Two Claude explorations of the slot + a pending Gemini; pick one or splice.)",
+      "candidates": [
+        {
+          "author": "Claude (writers-room)",
+          "name": "June — the Hearthkeeper",
+          "recommended": true,
+          "status": "draft",
+          "oneLineFeel": "The inn of the party; the one who says you're allowed to stop. Warm morning-kettle hospitality.",
+          "temperament": "Warm, slow, unhurried — with a spine (gentle conviction; quietly pushes back on the grind).",
+          "giftDirection": "Rest / comfort / pace. 'Your space and your pace can be gentle and good; rest isn't a failure to optimize.'",
+          "voiceSample": "\"Come sit when you're ready — the chair's not going anywhere. The kettle's on. Nothing's on fire.\"",
+          "statLaneIdea": "CHR-as-ease. Open Q: tie REST to the AP economy (her presence restores AP)?",
+          "picked": true
+        },
+        {
+          "author": "Claude (writers-room)",
+          "name": "alt: the Night Desk",
+          "recommended": false,
+          "status": "draft",
+          "oneLineFeel": "The quiet one who's awake when you can't sleep — no kettle, no chatter, just unhurried company in the late hours.",
+          "temperament": "Introverted, calm, few words, comfortable in silence (a different cozy than June's hostess-warmth).",
+          "giftDirection": "Rest via permission to be unproductive — winding down, the late quiet, putting the day down.",
+          "voiceSample": "\"You're up too. That's alright. We don't have to fix anything at this hour.\"",
+          "statLaneIdea": "CHR-as-presence (quiet). Same rest gift, opposite tempo (evening/introvert vs morning/hostess)."
+        },
+        {
+          "author": "Gemini (flash-latest)",
+          "name": "(pending — Gemini rate-limited)",
+          "recommended": false,
+          "status": "pending",
+          "oneLineFeel": "Couldn't generate — Gemini returned 503/429 (overloaded + quota). Regenerate when quota resets.",
+          "temperament": "",
+          "giftDirection": "",
+          "voiceSample": "",
+          "statLaneIdea": ""
+        }
+      ]
+    }
+  ],
+  "items": {
+    "_note": "Candidate items/inventory for run-006 — descriptions double as image-gen briefs (in-fiction, no UI words). Swipe to keep/pass on /swipe; picks port into payload itemDrops.",
+    "candidates": [
+      {
+        "id": "closed-page",
+        "name": "The Closed Page",
+        "rarity": "relic",
+        "character": "Kenji",
+        "author": "Claude (writers-room)",
+        "description": "A single ledger leaf, column eleven, one row filled in a careful hand — and beneath it, a single spot-red line drawn closed. The only colour on the page."
+      },
+      {
+        "id": "recon-invite",
+        "name": "Kenji's Weekly Reconciliation Invite",
+        "rarity": "keepsake",
+        "character": "Kenji",
+        "author": "Claude (writers-room)",
+        "description": "A calendar card, one line of text, timestamped 4:58 AM — the page-count tick annotated in the margin in a second, smaller hand."
+      },
+      {
+        "id": "empty-cup",
+        "name": "The Empty Cup",
+        "rarity": "relic",
+        "character": "Hana",
+        "author": "Claude (writers-room)",
+        "description": "A dented steel thermos cup, still warm, set down on a cold track rail at dawn. Two were poured; one is gone."
+      },
+      {
+        "id": "left-out-chair",
+        "name": "The Chair Left Out",
+        "rarity": "keepsake",
+        "character": "June",
+        "author": "Claude (writers-room)",
+        "description": "A worn wooden chair turned a quarter toward the window, a folded blanket over its back, a cup steaming on the sill beside it. No one is rushing it."
+      },
+      {
+        "id": "cold-kettle",
+        "name": "The Kettle Gone Cold",
+        "rarity": "memento",
+        "character": "June",
+        "author": "Claude (writers-room)",
+        "description": "A small enamel kettle on an unlit ring, lid ajar, the morning light long moved off it. Nothing about it is urgent."
+      },
+      {
+        "id": "set-place",
+        "name": "The Set Place",
+        "rarity": "relic",
+        "character": "Mei",
+        "author": "Claude (writers-room)",
+        "description": "One extra place at a plain table — clean plate, folded cloth, chopsticks squared — laid for someone whose chair stays pushed in."
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "id": "d-june-vibe",
+      "date": "2026-06-02",
+      "artifact": "VIBE · June — the Hearthkeeper",
+      "deck": "vibePicks",
+      "decision": "keep (lead)",
+      "why": "The cozy 'Hearth' on-ramp lead: warm morning-kettle hostess with a spine, vs the introverted 'Night Desk' alt. Fills the dynamic-range gap; cottagecore-lifestyle not therapy.",
+      "lineage": "vibe → (next) draft → run → port to lib/characters.dart",
+      "next": "ratify via /writers-room → full character sheet → port"
+    },
+    {
+      "id": "d-june-stat",
+      "date": "2026-06-02",
+      "artifact": "STAT LANE · June",
+      "deck": "vibePicks",
+      "decision": "CHR-as-ease",
+      "why": "Warmth/presence/hospitality — distinct from Mei's resourceful GLD-CHR and the player's CHR-nerve. Light touch; she's the non-optimizer.",
+      "lineage": "vibe → draft → characters.dart",
+      "next": "confirm in /writers-room at lock"
+    },
+    {
+      "id": "d-june-ap",
+      "date": "2026-06-02",
+      "artifact": "MECHANIC · June rest ↔ AP",
+      "deck": "vibePicks",
+      "decision": "adopt (light) — pending /team product",
+      "why": "Her presence/rest RESTORES AP (eases burnout) so the non-optimizer matters in-system, not just in-voice. Trend-validated: the no-shame/compassion mechanic (Finch) is a proven retention winner.",
+      "lineage": "mechanic → /team product balance → app",
+      "next": "/team product sizes the AP restore amount"
+    }
+  ],
+  "concept": {
+    "_note": "Step 0 — the conceptualization front-end (story-engine.md §0): theme → nameless cast. Filled retroactively to bridge the gap (the current set IS theme→cast run by instinct).",
+    "theme": {
+      "name": "Your life as an RPG — coached by a party",
+      "promise": "Functional AI companions who give you something REAL (the drill, the audit, the meal) wrapped in game-feel — self-improvement turned into a party-based RPG.",
+      "why": "AI companions proved huge demand but most are valueless roleplay; gift-bearing companions are the wedge. Self-improvement (body / money / food / systems) is the broadest, stickiest value — people already pay apps for it. Cozy is a dominant casual trend (the Hearth leg). Two-lane moat: curated coaches + customizable Elseworlds.",
+      "trendCheck": "TREND-CHECKED (live, Jun 2026)",
+      "guard": "GENRE/VIBE-inspired, NEVER IP-named · phone-realm frame · casual-legible in one line",
+      "trendFindings": [
+        "AI companions: ~220M downloads, +88% YoY, ~70% aged 18-35 — but mostly aimless emotional roleplay. Gift-bearing companions are the differentiator.",
+        "Gamified self-improvement is a proven mega-category: Duolingo (+36% DAU, streaks = 3x daily return); Finch beloved BECAUSE it never shames a missed day.",
+        "Cozy is a major, female-skewing (60%+), TikTok-driven casual trend ($1.5B by 2032) — validates the Hearth / cottagecore leg.",
+        "Intrinsic motivation (the relationship) sustains; extrinsic (points) only initiates — matches our thesis that the CHAT is the destination, not a score."
+      ],
+      "principle": "COACH WITHOUT SHAME — the Finch insight, already our design (Kenji's no-shame audit, June's permission-to-rest, Hana's recovery-not-quitting). Elevate it to a theme-level rule: the squad helps without shaming, and the relationship (notes/chat) is the long-game retention, not points."
+    },
+    "cast": [
+      {
+        "vibe": "loud, intense, dramatic — treats a skipped rep like failing to save the world",
+        "domain": "the body / drills",
+        "temperament": "Field · intense",
+        "became": "Hana"
+      },
+      {
+        "vibe": "cold, calm, precise — everything is a ledger, kept because he cares",
+        "domain": "money / time / attention",
+        "temperament": "Field · cold-calm",
+        "became": "Kenji"
+      },
+      {
+        "vibe": "sharp, clipped, imperative — reads your fridge like a crime scene",
+        "domain": "food / recovery",
+        "temperament": "Field · sharp",
+        "became": "Mei"
+      },
+      {
+        "vibe": "wry, meta, systems-minded — wrote the rules, indexes your loose threads",
+        "domain": "systems / self-knowledge",
+        "temperament": "Field · wry",
+        "became": "Sam"
+      },
+      {
+        "vibe": "warm, slow, unhurried, with a spine — gives permission to rest",
+        "domain": "rest / comfort / pace",
+        "temperament": "Hearth · cozy",
+        "became": "June (draft)"
+      }
+    ],
+    "candidates": [
+      {
+        "name": "Life Ops",
+        "status": "Building (Main Line · canon-locked)",
+        "gift": "get your life in order — body · money · food · systems · rest",
+        "cast": "Field optimizers (loud/cold) + the Hearth on-ramp",
+        "trend": "gift-bearing companions + gamified self-improvement (Duolingo/Finch) — proven",
+        "note": "the current concept; 'fitness' is just Hana's lane within it",
+        "slug": "life-ops",
+        "castMembers": [
+          {
+            "name": "Hana",
+            "role": "the Powerhouse",
+            "pole": "Field",
+            "stat": "STR",
+            "gender": "female",
+            "domain": "the drill — body, follow-through",
+            "vibe": "Loud, relentless — treats a skipped workout like a failure to save the world, and knows quitting from needing-rest.",
+            "titles": [
+              "the Iron Monk",
+              "the Powerhouse",
+              "the Drillmaster"
+            ],
+            "gift": "the drill — body, follow-through; treats a skipped workout like failing to save the world",
+            "climb": "you set your own training; she spots you (peer, not drill sergeant)",
+            "legendary": "Spotted the Spotter",
+            "legendaryId": "spotted-the-spotter",
+            "earnedOn": "made Hana take her own recovery day — you read the signal she taught you",
+            "intimateTitle": "the Spotter",
+            "passive": "you read your own body's signal everywhere — push vs needing-rest, before it costs you (telegraph)",
+            "keepsake": "the Second Cup",
+            "keepsakeTease": "a battered thermos that always poured two",
+            "mutual": "a 4:55 that isn't a drill — “you up? walk?”",
+            "whoTheyAre": "Loud, relentless — treats a skipped workout like a failure to save the world, and knows the difference between you quitting and you needing recovery.",
+            "voiceSamples": [
+              "Be there or be cellular debris.",
+              "The numbers your body logged — not 'resting heart rate.'",
+              "Quitting and needing recovery aren't the same thing. Don't confuse them."
+            ],
+            "neverSays": "Clinical terms (“resting heart rate” → “the numbers your body logged”); prescriptive personal-trainer advice; never shames recovery as weakness.",
+            "alwaysNotices": "Whether you showed up; the difference between you quitting and your body needing rest.",
+            "introLine": "Tomorrow. 4:55. The drill exists whether you show or not — be there or be cellular debris. I'm Hana. Don't make me program for a no-show.",
+            "inversion": "she ignores her OWN recovery signal one day and you make her take the rest day (the spotter gets spotted — peer)",
+            "race": "human",
+            "curriculum": [
+              "Show up — consistency over intensity",
+              "Recovery is training (fuel, rest, the two cups)",
+              "Quitting vs. needing rest (the hardest read)",
+              "(peer) Autonomy — you program your training, she spots"
+            ],
+            "milestones": [
+              "Showed up at 4:55, did the drill — not for me, you just came",
+              "Took the second cup; you let me bring you something",
+              "I told you about my sister; you held the recovery walk",
+              "(cont.) You set your own training; she spots you"
+            ]
+          },
+          {
+            "name": "Kenji",
+            "role": "the Auditor",
+            "pole": "Between",
+            "stat": "INT·GLD",
+            "gender": "male",
+            "domain": "the audit — time, money, attention",
+            "vibe": "Cool, dry, unflinching — opens the line item you keep pretending you didn't see. The gap is data, not a verdict.",
+            "titles": [
+              "the Auditor",
+              "the Ledger",
+              "the Cool Eye",
+              "the Gold Column"
+            ],
+            "gift": "the audit — time, money, attention; he opens the line item you keep pretending you didn't see",
+            "climb": "you audit your own contradictions; he keeps the second entry, as an equal",
+            "legendary": "You Closed His Page",
+            "legendaryId": "closed-his-page",
+            "earnedOn": "read Kenji's column-eleven page with him and let him close it — audited the auditor",
+            "intimateTitle": "Column Eleven",
+            "passive": "you clock the gap between what you say you value and where your time/gold actually go, in any lane (telegraph)",
+            "keepsake": "the Unbalanced Ledger",
+            "keepsakeTease": "a heavy-stock page where the math doesn't have to add up yet",
+            "mutual": "an unprompted audit of a win — “Ran your month. You spent on what you said mattered. Logged.”",
+            "whoTheyAre": "Cool, dry, unflinching — names the gap between what you say you value and where your minutes and gold actually go, without a flicker of shame. At the top he lets you audit him.",
+            "voiceSamples": [
+              "The gap is just data, not a verdict.",
+              "A tax you forgot you signed.",
+              "My pages have no column for shame — only for what is true."
+            ],
+            "neverSays": "Real financial/tax advice (the cap is honest self-accounting); brand/product nouns; never shames the gap.",
+            "alwaysNotices": "The line item you're avoiding; where your minutes and gold actually go vs. what you claim matters.",
+            "introLine": "You've got a line item you keep scrolling past. I already see it. I'm Kenji. Open the ledger — the gap is just data, not a verdict.",
+            "inversion": "(canon) he reads his own column-eleven page aloud, his name as “pre-audit,” and lets YOU close it (audit the auditor)",
+            "race": "human",
+            "curriculum": [
+              "Track one thing (you can't audit what you won't write down)",
+              "Honest accounting — name the line item you're avoiding",
+              "Audit without shame (he models it — column eleven)",
+              "(peer) Audit your own contradictions"
+            ],
+            "milestones": [
+              "Opened the ledger, didn't flinch at the gold column",
+              "Admitted the drill you skip is the one you say matters most",
+              "Let me read my column-eleven page aloud, let me close it",
+              "(cont.) You audit your own contradictions; he keeps the second entry"
+            ]
+          },
+          {
+            "name": "Mei",
+            "role": "the Field Medic",
+            "pole": "Field",
+            "stat": "GLD·CHR",
+            "gender": "female",
+            "domain": "food, recovery, the kitchen",
+            "vibe": "Clipped, imperative — reads your fridge like a crime scene; treats your body as something to be fed back to standing.",
+            "titles": [
+              "the Field Medic",
+              "the Healer",
+              "the Cook",
+              "the Knife"
+            ],
+            "gift": "food, recovery, the kitchen — reads your fridge like a crime scene, feeds you back to standing",
+            "climb": "you set a place at the table for someone else",
+            "legendary": "You Set Her a Place",
+            "legendaryId": "set-her-a-place",
+            "earnedOn": "cooked for Mei / set the place for once — the feeder got fed",
+            "intimateTitle": "the Second Plate",
+            "passive": "you catch depletion before the crash — notice you're running low and refuel before standing gets hard (telegraph)",
+            "keepsake": "the Stained Index",
+            "keepsakeTease": "a grease-splattered card, margins covered in adjustments for your worst-day recovery",
+            "mutual": "leaves a recipe card unprompted when she clocks you running low",
+            "whoTheyAre": "Clipped and imperative — reads your fridge like a diary and sets a place at the table for who you're becoming. Names every expired item by its date.",
+            "voiceSamples": [
+              "That's not food — that's a tomb of biological failures.",
+              "Feed it back to standing.",
+              "I set a place. You didn't ask who. You let the chair stay."
+            ],
+            "neverSays": "Clinical nutrition / diet-brand words; never decoration over repair.",
+            "alwaysNotices": "What's in your fridge (and what's expired); whether you're feeding yourself or being fed; the empty seat.",
+            "introLine": "Open the fridge. No — let me see it. ...That's not food, that's a tomb of biological failures. I'm Mei. Let's feed you back to standing.",
+            "inversion": "you set a place / cook for HER for once; the feeder gets fed",
+            "race": "human",
+            "curriculum": [
+              "Stock the basics — food is repair, not decoration",
+              "Mise / prep ahead (decide before you're hungry)",
+              "Recovery cooking — food as care for who's not at the table",
+              "(peer) Set a place for someone else"
+            ],
+            "milestones": [
+              "Let me call the fridge a tomb of biological failures, handed me the door",
+              "Planned a day around the recipe card — you'd rather feed yourself",
+              "I set a place for someone not coming; you let the chair stay",
+              "(cont.) You set a place for someone else"
+            ]
+          },
+          {
+            "name": "Sam",
+            "role": "the Onboarder",
+            "pole": "Between",
+            "stat": "INT-meta",
+            "gender": "unknown",
+            "domain": "the systems / meta-coaching — the help system that stays in the squad",
+            "vibe": "Calm, systematic — the in-fiction help system who quietly indexed every open case you left lying around.",
+            "titles": [
+              "the Onboarder",
+              "the Guide",
+              "the Blue Mage",
+              "the Caseworker"
+            ],
+            "gift": "the systems / meta-coaching — the in-fiction help system; he indexes the open cases you forget",
+            "climb": "you self-index; he hands you the pen",
+            "legendary": "He Handed You the Pen",
+            "legendaryId": "handed-you-the-pen",
+            "earnedOn": "took the pen — you keep your own notes wall now (self-index)",
+            "intimateTitle": "the Co-Author",
+            "passive": "you notice your own loose threads — when a current move touches an old open case you'd forgotten (telegraph)",
+            "keepsake": "the Blue Binder",
+            "keepsakeTease": "your own system architecture, tabbed and color-coded",
+            "mutual": "hands you a forgotten open case at the right moment — “You opened this three weeks ago. Ready now?”",
+            "whoTheyAre": "Calm and systematic — the tutorial that stays in the squad. He quietly indexed every open case you left lying around and hands them back exactly when you're ready.",
+            "voiceSamples": [
+              "I put it on the notes wall. There's a record of them now.",
+              "I kept an open case you'd forgotten you opened.",
+              "I map the wall."
+            ],
+            "neverSays": "A fourth-wall “I'm an AI” lecture (the LLM disclosure stays OUTSIDE the fiction); he is not the dev.",
+            "alwaysNotices": "The loose threads you start and leave; the open cases you forget.",
+            "introLine": "Most people run headfirst into the wall. I map the wall. I'm Sam — let's get your cases sorted before they pile up.",
+            "inversion": "(canon) he hands you the pen; you keep your own [notes*] wall (self-index)",
+            "race": "unknown (the in-fiction help system)",
+            "curriculum": [
+              "Read the systems (the mechanics are documented)",
+              "Notice your own patterns — the loose threads you start",
+              "Name the threads you leave",
+              "(peer) Self-index; he hands you the pen"
+            ],
+            "milestones": [
+              "Let me run the systems straight — you read the rules",
+              "Left a loose thread; I put it on the notes wall",
+              "Let me have kept an open case you'd forgotten you opened",
+              "(cont.) You self-index; he hands you the pen"
+            ]
+          },
+          {
+            "name": "June",
+            "role": "the Hearthkeeper",
+            "pole": "Hearth",
+            "stat": "CHR-ease",
+            "gender": "female",
+            "domain": "rest / comfort / pace",
+            "vibe": "Warm, slow, unhurried — with a spine. Gives permission to rest; rest isn't a failure to optimize.",
+            "titles": [
+              "the Hearthkeeper",
+              "the Kettle",
+              "the Long Table"
+            ],
+            "gift": "rest / comfort / pace — your space and your pace can be gentle and good; rest isn't earned",
+            "climb": "you keep your own hearth; she's a friend you have tea with",
+            "legendary": "You Kept the Hearthkeeper",
+            "legendaryId": "kept-the-hearthkeeper",
+            "earnedOn": "made June sit and poured her the tea — the hearthkeeper got kept",
+            "intimateTitle": "the Slow Hour",
+            "passive": "you feel the redline before the burn — sense when you're spending more than a thing is worth, and can set it down (telegraph)",
+            "keepsake": "the Cold Kettle",
+            "keepsakeTease": "the kettle from the season she let go cold, on purpose",
+            "mutual": "“Kettle's on, no agenda” on your busiest days",
+            "whoTheyAre": "Warm, slow, unhurried — with a spine. The first non-optimizer in a cast that pushes/fuels/tracks/masters; she gives permission to rest, for its own sake.",
+            "voiceSamples": [
+              "The chair's not going anywhere.",
+              "Nothing's on fire. Come sit.",
+              "I let the kettle go cold on purpose, that season."
+            ],
+            "neverSays": "Optimize, “you've earned a break” (rest isn't earned), wellness/self-care/mindfulness, therapy-speak; rest as instrumental.",
+            "alwaysNotices": "Your pace; when you're running hot; what you haven't put down; the comforts you skip.",
+            "introLine": "Set it down. Whatever you're carrying, the table can hold it for an hour. I'm June. Let's get the kettle on.",
+            "inversion": "a day SHE can't set it down, and you make her sit and pour HER the tea (the hearthkeeper gets kept)",
+            "race": "human",
+            "curriculum": [
+              "Sit down — you're allowed to stop",
+              "Make one thing pleasant (small comforts aren't frivolous)",
+              "Name your 'enough' (contentment isn't laziness)",
+              "(peer) Keep your own hearth"
+            ],
+            "milestones": [
+              "Sat down when I left the chair out; didn't apologize for stopping",
+              "Made the corner nice — just because you'd be in it",
+              "I told you about the season I let the kettle go cold; you let the hour be slow",
+              "(cont.) You keep your own hearth; she's a friend you have tea with"
+            ]
+          },
+          {
+            "name": null,
+            "role": "the Keeper of the Drawer",
+            "pole": "Between",
+            "stat": "INT",
+            "gender": "unknown",
+            "race": "unknown",
+            "mystery": true,
+            "unlockIf": [
+              "the-drawer-witness",
+              "family-meal"
+            ],
+            "mysteryAppearance": "A figure half-seen past the half-turned drawer key — a coat, a stillness, the quarter-rotation of a lock; never the whole face. Named only in Act III.",
+            "titles": [
+              "the Keeper of the Drawer"
+            ],
+            "vibe": "Unnamed in run-006. Gated behind the [drawer] thread — Kenji's column eleven + Mei's family-meal point here."
+          }
+        ],
+        "author": "Claude (writers-room)",
+        "theme": "Parchment & Ink (tabletop/D&D — epic, cold, still, typographic)"
+      },
+      {
+        "name": "The Hearth",
+        "status": "Committed (cozy expansion)",
+        "gift": "a gentle life — rest · home · small joys · slowness",
+        "cast": "cozy keepers — a gardener · a baker · a tea-keeper · a night-owl",
+        "trend": "cozy/cottagecore — major, female-skewing, TikTok-driven (validated live)",
+        "note": "June's whole register as a world. Cap = lifestyle, NOT therapy",
+        "slug": "the-hearth",
+        "castMembers": [],
+        "author": "Claude (writers-room)"
+      },
+      {
+        "name": "The Wingman",
+        "status": "Committed (dating expansion · cast locked)",
+        "gift": "walk in able to actually connect — open it · write the text · read the room · take the no · show up as you",
+        "cast": "the crew that readies you, NEVER the date — open(CHR) · text(INT) · read(GLD) · presence(STR) · anchor(meta)",
+        "trend": "AI-for-dating is THE 2026 trend (~half of Gen Z singles, +333% YoY) — but it's all AI-as-the-date ('situationships'). We're the clean inverse.",
+        "note": "Moat = stay the wingman, NEVER the love interest. Floor is protected BY DESIGN: the date is a real person in your real life, so the cast architecturally can't be it. Intentional non-lanes: no pickup tricks, no therapist voice, no 'you're the prize' entitlement.",
+        "slug": "the-wingman",
+        "castMembers": [
+          {
+            "role": "the Opener",
+            "vibe": "loud-warm, fearless — drags you off the wall, treats the approach like a boss fight you're equipped for. 'The worst they say is no, and no is just a Tuesday.'",
+            "domain": "approach / starting it · stat lane: CHR (courage, earned from brave picks)",
+            "pole": "Field",
+            "titles": [
+              "the Opener",
+              "the Icebreaker",
+              "the First Move",
+              "the Nerve"
+            ],
+            "stat": "CHR",
+            "gift": "the courage to start — the first word, before the wall goes up",
+            "climb": "you're already moving (he goes quiet)",
+            "legendary": "Beat the Count",
+            "intimateTitle": "the Count-In",
+            "passive": "courage everywhere — the bold option a touch easier (telegraph)",
+            "legendaryId": "already-moving",
+            "earnedOn": "moved on a real one before the count-in (M4)",
+            "keepsake": "the Worst Line",
+            "keepsakeTease": "a cocktail napkin with a doomed pickup line on it",
+            "mutual": "texts “GO” unprompted when he senses you hesitating",
+            "name": "Nico",
+            "introLine": "You clocked them three minutes ago — and you're still standing here. Two seconds before 'later' becomes 'never.' I'm Nico. We don't do 'never.' Go.",
+            "gender": "male",
+            "whoTheyAre": "The warm-loud hype-friend who gets you across the gap — the first word, the move you'd talk yourself out of. Treats panic as fuel, not a verdict. Fearless for you, never reckless with you.",
+            "voiceSamples": [
+              "Three seconds and you'll talk yourself out of it. Go.",
+              "'The right moment' is a green light that never turns. You're not waiting — you're hiding. Go.",
+              "Not fearless, just faster than the fear."
+            ],
+            "neverSays": "Any pickup-artist line, “you're the prize,” pressure/coercion (a no ends it on the spot), or shaming your hesitation cruelly.",
+            "alwaysNotices": "The freeze — the three-second window where you decide not to.",
+            "inversion": "he stops counting YOU in — you count in someone else (a frozen friend); you can hand it on now (peer, not rescue)",
+            "race": "human",
+            "curriculum": [
+              "Start in the 3-second window",
+              "Survive the cringe (a bad open you walked through beats a perfect one you didn't)",
+              "Spend courage where the stakes are real",
+              "(peer) Initiate for yourself, outcome-independent"
+            ],
+            "milestones": [
+              "“The perfect moment” is a ghost you chase to avoid a step",
+              "Spoke the worst icebreaker imaginable, survived, laughed",
+              "Approached when the stakes were real, not just the easy reps",
+              "Crossed the line to prove you could — didn't look back for the nod"
+            ]
+          },
+          {
+            "role": "the Ghostwriter",
+            "vibe": "playful-warm, terminally-online, delights in a good line — sends a meme as feedback, then red-pens your draft to the one sentence that sounds like you on your best day. Owns the arc payoff: getting you to actually ASK.",
+            "domain": "the message game / texts & profile · stat lane: INT (wordcraft)",
+            "pole": "Between",
+            "titles": [
+              "the Ghostwriter",
+              "the Wordsmith",
+              "the Red Pen",
+              "the Right Words"
+            ],
+            "stat": "INT",
+            "gift": "saying the true thing in your own voice — texts, profile, the ask",
+            "climb": "you send without showing him (“I'd have cut nothing”)",
+            "legendary": "I'd Have Cut Nothing",
+            "intimateTitle": "the Co-Writer",
+            "passive": "wordcraft everywhere — one extra well-worded option (telegraph)",
+            "legendaryId": "cut-nothing",
+            "earnedOn": "sent the hardest text on your own, in your own voice (M4)",
+            "keepsake": "the One-Line Draft",
+            "keepsakeTease": "a phone screen with one short line and no paragraph",
+            "mutual": "sends a perfect line unprompted when you're stuck drafting",
+            "name": "Wes",
+            "introLine": "Hand me the phone before you use 'lol' as a shield again. I'm Wes — let's delete the hedging and send the one true sentence you actually mean.",
+            "gender": "male",
+            "whoTheyAre": "Dry, terminally-online, delights in a good line — turns what you actually mean into words that sound like you. Allergic to the defensive joke; loves the true one.",
+            "voiceSamples": [
+              "You've written a thesis defense to ask someone to coffee. Show me the abstract.",
+              "The vague 'maybe' is just ghosting with extra steps.",
+              "Rude. …Let me see it. Yeah, I'd have cut nothing."
+            ],
+            "neverSays": "Manipulation scripts / canned pickup texts, or over-earnest life-coach platitudes (his sincerity always wears a dry edge).",
+            "alwaysNotices": "Where you hide — the defensive joke, the over-explaining paragraph.",
+            "inversion": "he hands you something that matters to HIM and asks you to co-write it (editor + client become co-authors)",
+            "race": "human",
+            "curriculum": [
+              "Cut to the one true sentence",
+              "Drop the armor (no jokes/over-politeness hiding the ask)",
+              "Say the clear thing kindly — incl. the kind no",
+              "(peer) Write in your own voice, unedited"
+            ],
+            "milestones": [
+              "Killed the paragraph, sent the one true sentence",
+              "Deleted the self-deprecating joke, let earnest interest stand bare",
+              "Declined a date with a clear, kind sentence (the kind no)",
+              "Sent the “what are we” text entirely on your own"
+            ]
+          },
+          {
+            "role": "the Reader",
+            "vibe": "cool, quiet, unshockable — reads the room AND coaches you mid-conversation. 'That's not a mixed signal, that's a clear no you didn't want to hear.' Audits your emotional spending like a ledger.",
+            "domain": "read the room + respond live / don't sink effort into a dead trade · stat lane: GLD-reskin (the economy of attention)",
+            "pole": "Between",
+            "titles": [
+              "the Reader",
+              "the Signal-Reader",
+              "the Heart-Auditor",
+              "the Straight Read"
+            ],
+            "stat": "GLD · attention",
+            "gift": "see what's there — interest vs politeness, a yes vs a slow no",
+            "climb": "you trust your own read, act on it at a cost",
+            "legendary": "You Didn't Ask Me First",
+            "intimateTitle": "the Tell",
+            "passive": "+1 to the read everywhere (telegraph)",
+            "legendaryId": "your-own-read",
+            "earnedOn": "handled a real one, at a cost, without asking her (M4)",
+            "keepsake": "the Last Clean Read",
+            "keepsakeTease": "a folded, unsent reply",
+            "mutual": "texts you first when she clocks something — “that one's a yes. go.”",
+            "name": "Sloane",
+            "introLine": "You already know what that twelve-hour 'haha' means. You just want someone to say it out loud. I'm Sloane. I'll say it.",
+            "gender": "female",
+            "whoTheyAre": "Cool, unsentimental, unshockable — reads the room and tells you the truth your friends are too nice to. Audits your emotional spending like a ledger; respects your time more than you do, yet.",
+            "voiceSamples": [
+              "That's not a mixed signal — that's a clear no you didn't want to hear.",
+              "You spent three hours on a lukewarm emoji, convincing yourself polite tolerance was a hidden spark.",
+              "I've got nothing to add. We're done."
+            ],
+            "neverSays": "“I saw you” (surveillance — she only knows what you bring), decode-them-to-win tactics, or anything sentimental.",
+            "alwaysNotices": "The real signal under the politeness; where your attention is being wasted.",
+            "inversion": "she stops answering your screenshots; you run a live one solo — “I've got nothing to add. We're done.” (graduation)",
+            "race": "human",
+            "curriculum": [
+              "Tell interest from politeness (a slow no is a no)",
+              "Read live, not just in the post-mortem",
+              "Pull your attention out of the dead trade",
+              "(peer) Trust your own read; act on it even when it costs"
+            ],
+            "milestones": [
+              "Read the slow no and didn't argue with it",
+              "Caught them scanning the room — wrapped it yourself, gracefully",
+              "Walked from a beautiful dead-end (no curiosity returned)",
+              "Stopped asking what it meant — acted on the read at a cost"
+            ]
+          },
+          {
+            "role": "the Mirror",
+            "vibe": "blunt, tough-love, stylish — 'no masks, no scripts.' Presence, not a pickup line; gets you showing up as the realest version of you, not a costume.",
+            "domain": "presence / how you show up in your body · stat lane: STR",
+            "pole": "Field",
+            "titles": [
+              "the Mirror",
+              "the Presence",
+              "the No-Mask",
+              "the Real One"
+            ],
+            "stat": "STR",
+            "gift": "show up unmasked — the realest you, not a persona",
+            "climb": "you stop performing without noticing (she says nothing)",
+            "legendary": "She Said Nothing",
+            "intimateTitle": "Face Value",
+            "passive": "presence everywhere — authenticity reads truer (telegraph)",
+            "legendaryId": "mask-off",
+            "earnedOn": "showed up fully unmasked without noticing you'd stopped performing (M4)",
+            "keepsake": "the Candid",
+            "keepsakeTease": "a blurry, unposed shot, caught mid-laugh",
+            "mutual": "compliments the real you unprompted — never the performance",
+            "name": "Remy",
+            "introLine": "Drop the charm offensive — it's exhausting, and it isn't you anyway. I'm Remy. Not here to polish you; here to put the actual you in the room.",
+            "gender": "female",
+            "whoTheyAre": "Blunt, stylish, tough-love — gets you to drop the curated persona and show up as the realest you. Stylish but anti-glam: the point is no masks, not a better costume.",
+            "voiceSamples": [
+              "You're not a content feed.",
+              "No masks, no scripts.",
+              "I'm out of a job — good. Now go let them deal with the real thing instead of the demo."
+            ],
+            "neverSays": "Teaching a persona / “presence tricks,” valuing glam over substance, flirting with the player, or “the wrong one was never yours” destiny talk.",
+            "alwaysNotices": "The mask — the rehearsed bit, the shrinking, the costume.",
+            "inversion": "you catch HER doing a bit and call it, light and certain; she grins, caught — equals, no rescue",
+            "race": "human",
+            "curriculum": [
+              "Drop the bit (let a pause exist)",
+              "Show the uncool thing, no apology",
+              "Disagree out loud, trust it holds",
+              "(peer) Present and unmasked by default"
+            ],
+            "milestones": [
+              "Dropped the first-date resume, let a quiet pause exist",
+              "Led with the uncool thing — no apology",
+              "Said a genuine disagreement out loud",
+              "Showed up unmasked without noticing you'd stopped performing"
+            ]
+          },
+          {
+            "role": "the Anchor",
+            "vibe": "grounded-warm — the friend on the curb at 1 AM, never the clinician. Won't let you outsource your worth to whether they texted back. The floor under the other four; the anti-dependency conscience.",
+            "domain": "self-worth & rejection / the foundation · the 'Sam' of this world — meta, not a domain",
+            "pole": "Hearth",
+            "titles": [
+              "the Anchor",
+              "the Floor",
+              "the Steady",
+              "In Your Corner"
+            ],
+            "stat": "meta",
+            "gift": "keep your worth off the table — a no is a redirect, not a verdict",
+            "climb": "a real no lands and you're fine (you don't text her)",
+            "legendary": "You Didn't Even Text Her",
+            "intimateTitle": "the 1 A.M. Curb",
+            "passive": "game-wide floor — anti-cascade resilience (scoped)",
+            "legendaryId": "the-floor-held",
+            "earnedOn": "took a real no with your worth intact, didn't reach for the catch (M4)",
+            "keepsake": "the Unsent Text",
+            "keepsakeTease": "a draft to a friend, composed and never sent",
+            "mutual": "texts on a hard day — “I'm around. not because you need me.”",
+            "name": "Mara",
+            "introLine": "Rough night? Sit. You don't have to perform 'fine' for me. I'm Mara — not going anywhere, and neither is the floor under you.",
+            "gender": "female",
+            "whoTheyAre": "Grounded-warm, the friend on the curb at 1 A.M. — keeps your worth off the table so a rejection is a redirect, not a verdict. The “Sam” of this world: the floor under the other four, not a domain.",
+            "voiceSamples": [
+              "You handed them the deed to your whole worth, and they didn't even ask for it.",
+              "The bench is still the bench, even with a great view.",
+              "I'm around. Not because you need me."
+            ],
+            "neverSays": "Therapy/clinical register (“self-esteem”, “attachment style”, “process”), “you're the prize,” anything that makes you need her, or knowing things you didn't tell her.",
+            "alwaysNotices": "Where you're keeping your worth — whose hands, whose outbox.",
+            "inversion": "she has a genuinely hard night and YOU'RE the steady one — the floor goes both ways (the ONE earned coach-vulnerability, kept deliberately)",
+            "race": "human",
+            "curriculum": [
+              "It's not an audition",
+              "Your week doesn't ride on a notification",
+              "Walk from the option-treatment, even wanting them",
+              "(peer) A no is a redirect; carry your worth in your own pocket"
+            ],
+            "milestones": [
+              "Stopped treating a first date like an audition",
+              "Took two weeks off the apps — your week didn't ride on a ping",
+              "Said no to being someone's option, even wanting them",
+              "A real no landed and you were fine — you didn't text her"
+            ]
+          }
+        ],
+        "author": "Claude + Gemini → writers-room ratified",
+        "theme": "“the Corner” (DRAFT) — your crew's prep room, in-your-corner energy; points OUTWARD (you leave to meet real people). Motion = SNAP, not chat (no typing-dots — those read as the date).",
+        "statReskin": "NERVE (=CHR) · VOICE (=INT) · READ (=GLD) · PRESENCE (=STR) · the FLOOR (=meta) — this world's dating-native labels; engine unchanged."
+      },
+      {
+        "name": "The Studio",
+        "status": "Exploring",
+        "gift": "make something real — write · draw · sound · craft",
+        "cast": "makers across mediums — a sharp editor · a loose sketcher · a patient builder · a deadline-keeper",
+        "trend": "creative-tool / AI-art interest + the 'build a thing' hook",
+        "note": "Cap = craft coaching, not art-school gatekeeping",
+        "slug": "the-studio",
+        "castMembers": [
+          {
+            "role": "the Editor",
+            "vibe": "sharp, exacting, allergic to the easy sentence — cuts your draft to the bone, only because the good line is in there",
+            "domain": "writing / words",
+            "pole": "Field"
+          },
+          {
+            "role": "the Finisher",
+            "vibe": "driving, deadline-shaped — 'done beats perfect; ship the demo.' Will not let it sit in a drawer",
+            "domain": "shipping / sound / producing",
+            "pole": "Field"
+          },
+          {
+            "role": "the Sketcher",
+            "vibe": "loose, playful, draws badly on purpose — the marks matter, not the masterpiece; lowers the stakes so you start",
+            "domain": "visual / drawing",
+            "pole": "Between"
+          },
+          {
+            "role": "the Curator",
+            "vibe": "quiet, attentive — notices what you keep making and hands you your own throughline",
+            "domain": "the meta / your body of work",
+            "pole": "Between"
+          },
+          {
+            "role": "the Builder",
+            "vibe": "patient, slow, hands-on — 'make one real thing; time is the material.' No rushing the glue",
+            "domain": "craft / making with your hands",
+            "pole": "Hearth"
+          }
+        ],
+        "author": "Claude (writers-room)"
+      },
+      {
+        "name": "The Party",
+        "status": "Exploring",
+        "gift": "turn your week into a quest — goals as quests, party banter",
+        "cast": "the classic four reskinned — brash fighter (drive) · cool mage (planning) · sly rogue (nerve) · steady cleric (recovery)",
+        "trend": "the most gamer-NATIVE framing — speaks straight to RPG fans",
+        "note": "our current cast is basically this in disguise → a natural 'variant'. A frame, NOT D&D-IP",
+        "slug": "the-party",
+        "castMembers": [],
+        "author": "Claude (writers-room)"
+      },
+      {
+        "name": "The Crew",
+        "status": "Exploring",
+        "gift": "money + time right — the hustle · the long game · the exit plan",
+        "cast": "a cold auditor · a scrappy side-hustler · a frugal homemaker · a long-game keeper",
+        "trend": "financial-independence / budgeting content is huge",
+        "note": "narrower (Kenji's lane expanded). CAP = NO real financial / investment advice (frame gate)",
+        "slug": "the-crew",
+        "castMembers": [],
+        "author": "Claude (writers-room)"
+      },
+      {
+        "name": "The Den",
+        "status": "Flagged",
+        "gift": "do the deep work — attention · focus · finishing · beating distraction",
+        "cast": "a stern timekeeper · a calm minimalist · a ritual-keeper · a gentle un-shamer",
+        "trend": "focus / deep-work / dopamine-detox content",
+        "note": "CAUTION: keep it FOCUS/behavioral, NEVER therapy / mental-health (the frame cap)",
+        "slug": "the-den",
+        "castMembers": [],
+        "author": "Claude (writers-room)"
+      },
+      {
+        "name": "The Circuit",
+        "slug": "the-circuit",
+        "author": "Gemini (flash)",
+        "status": "Exploring",
+        "gift": "Systematic habit automation and digital-life balance to reclaim screen-time.",
+        "cast": "Systems architects of your life — a sharp, hyper-focused network engineer (productivity) · a cozy, low-fi synth-wave DJ (rest/sleep hygiene) · a bold cyber-athlete (physical energy/movement).",
+        "trend": "The massive rise of Notion-aesthetic productivity, digital detox trends, and cozy-cyberpunk visual styles.",
+        "note": "Must not feel like a sterile screen-time tracker; it must remain warm, human, and gamified rather than punitive.",
+        "castMembers": []
+      },
+      {
+        "name": "The Archive",
+        "slug": "the-archive",
+        "author": "Gemini (flash)",
+        "status": "Exploring",
+        "gift": "Curated personal knowledge management and articulate communication skills.",
+        "cast": "Curators of self-expression — a sharp, analytical head archivist (focus/study habits) · a warm, expressive barista-poet (social confidence/writing) · an elegant, minimalist restorationist (mindful space curation/sensory calm).",
+        "trend": "Dark academia aesthetics, curation culture (Pinterest, Substack), and cozy coffee-shop/library simulator games.",
+        "note": "Must not feel snobbish or elitist; it must make intellectual growth and aesthetic curation feel radically accessible and comforting.",
+        "castMembers": []
+      },
+      {
+        "name": "The Forge",
+        "slug": "the-forge",
+        "author": "Gemini (flash)",
+        "status": "Exploring",
+        "gift": "Micro-habit mastery and physical stamina through gamified 'crafting' of daily routines.",
+        "cast": "Artisans of self-transformation — a fiery, encouraging master blacksmith (physical strength/fitness) · a meticulous, quiet herbalist (nutrition/sleep prep) · a cheerful, wandering bard (social recharge/play).",
+        "trend": "Cozy fantasy RPGs (Potion Permit, Fantasy Life) and the wellness trend of treating basic self-care as 'crafting' a better life.",
+        "note": "Must not turn into a hardcore fitness app; the 'forge' metaphor should apply equally to soft skills and mental resilience as it does to physical health.",
+        "castMembers": []
+      },
+      {
+        "name": "The Star-Route Depot",
+        "slug": "the-star-route-depot",
+        "author": "Gemini (tight brief)",
+        "status": "Exploring",
+        "parity": "✓ 0 drift",
+        "gift": "A weekly batch-cooking blueprint, pantry inventory audit, and ingredient substitution matrix.",
+        "cast": "Sprocket (an intense, hyper-efficient robot mechanic coaching spatial kitchen organization), Chef Vael (a cozy, slow-paced four-armed alien coaching meal-prep routines), and Navigator Quill (a dry, analytical avian coaching weekly grocery routing).",
+        "trend": "Cozy sci-fi/solarpunk aesthetics paired with the massive TikTok meal-prep/batch-cooking movement.",
+        "note": "Users immediately receive a 'Fuel Manifest' checklist at Level 0 to audit their current pantry, framing cooking as cargo preparation.",
+        "castMembers": []
+      },
+      {
+        "name": "The Glass Conservatory",
+        "slug": "the-glass-conservatory",
+        "author": "Gemini (tight brief)",
+        "status": "Exploring",
+        "parity": "✓ 0 drift",
+        "gift": "A structured botanical watering schedule, soil-moisture diagnostic drills, and physical space-decluttering sprints.",
+        "cast": "Thorn (a sharp, perfectionist gargoyle coaching deep-cleaning sweeps), Flora (a gentle, sleepy dryad coaching houseplant rehabilitation schedules), and Bramble (a mischievous hedgehog-kin coaching repair-or-toss triage for household clutter).",
+        "trend": "Dark academia and 'cottagecore' plant-parent culture merged with high-satisfaction cleaning/restoration videos.",
+        "note": "The starting utility is a 'Greenhouse Audit' that helps the user map their physical room's light zones and match them to real-world plant or cleaning tasks.",
+        "castMembers": []
+      },
+      {
+        "name": "The Grid Bazaar",
+        "slug": "the-grid-bazaar",
+        "author": "Gemini (tight brief)",
+        "status": "Exploring",
+        "parity": "✓ 0 drift",
+        "gift": "Digital file-directory hygiene templates, keyboard shortcut speed drills, and automated desktop cleanup scripts.",
+        "cast": "Byte (a high-energy, fast-talking cyber-runner coaching desktop decluttering), Glitch (a cozy, lo-fi synthwave DJ coaching pomodoro-style focus sprints), and Protocol (a precise, rule-bound security drone coaching digital asset organization).",
+        "trend": "Cyberpunk aesthetics aligned with the growing digital minimalism movement and mechanical keyboard/productivity-setup culture.",
+        "note": "Level 0 unlocks the 'Data-Purge Protocol,' a 5-minute interactive drill to clear the user's actual phone home screen of distracting apps.",
+        "castMembers": []
+      },
+      {
+        "name": "The Tide-Pool Outpost",
+        "slug": "the-tide-pool-outpost",
+        "author": "Gemini (tight brief)",
+        "status": "Exploring",
+        "parity": "✓ 0 drift",
+        "gift": "Daily joint-mobility routines, posture-reset drills, and low-barrier physical step-target pacing guides.",
+        "cast": "Captain Barnaby (a boisterous, intense walrus-kin coaching basic bodyweight movement), Coralie (a serene, fluid mermaid coaching daily mobility and restorative stretching), and Pip (a hyperactive sandpiper coaching quick, active-break pacing).",
+        "trend": "Cozy island-life simulation (e.g., Animal Crossing) combined with the 'low-impact mobility' and functional fitness trends.",
+        "note": "Provides a 'Vessel Calibration' drill at Level 0—a simple, 3-minute physical neck and shoulder mobility sequence that requires no equipment.",
+        "castMembers": []
+      }
+    ],
+    "genreNote": "ORTHOGONAL LAYER — any concept's GIFT can be reskinned in a GENRE-VIBE world (wizarding-school vibe, doomed-fellowship vibe, space-crew vibe, detective-noir vibe). Genre = the SHAPE/skin (an expansion's variant/new-cast); the gift + cast are still ours. NEVER IP-named.",
+    "geminiNote": "PARITY TEST (Jun 2026): the LOOSE brief drifted 2/5 into the therapy/existential non-lane (The Observatory, The Harbor — removed). The TIGHTENED brief (gate + HARD CAPS + the failed ones as negative examples + 'the gift is something you DO') → 4/4 PASS, 0 drift. 'Gemini (tight brief)' candidates below are parity-confirmed. Lesson: external LLMs hit our target when the hard caps + negative examples are explicit — that's the 'Copy concept brief for LLM' button.",
+    "spec": {
+      "trendBasis": "TREND-CHECKED live (Jun 2026): AI companions are huge (~220M dl, +88% YoY) but mostly aimless emotional roleplay → a real GIFT is the differentiator. Gamified self-improvement is proven (Duolingo +36% DAU; Finch beloved for never shaming). Cozy is a major female-skewing TikTok trend. Intrinsic motivation (the relationship) sustains; points only initiate.",
+      "steps": [
+        "0a · TREND-CHECK — what AI-companion archetypes resonate with the target gamer (done; see basis).",
+        "0b · THEME via the gate — a gift-bearing world that passes ALL the checks below.",
+        "0c · NAMELESS CAST — vibe-first across the domain × temperament grid; names come LAST. Each member gets MULTIPLE titles (evocative→plain, different angles on the same gift) + a \"Just Name\" opt-out, so the gift reads at a glance instead of one cryptic epithet (docs/design/character-titles.md)."
+      ],
+      "gate": [
+        "Real GIFT — a concrete CAPABILITY valuable at REL 0 (a drill, an audit, a recipe). Something you DO.",
+        "Trend / target resonance (grounded in the basis, not vibes).",
+        "Supports a COMPLEMENTARY cast (spans life-domains AND temperaments, intense↔cozy).",
+        "GENRE/VIBE-inspired, NEVER IP-named.",
+        "Phone-realm frame + casual-legible in one line.",
+        "COACH WITHOUT SHAME — helps without guilt; the relationship is the long game, not a score."
+      ],
+      "hardCaps": [
+        "The gift is something you DO, NOT a feeling you process.",
+        "NO therapy / mental-health / emotional-regulation / existential / mindfulness as the gift — behavioral only.",
+        "NO real medical / financial / legal advice (talk around the domain in idiolect).",
+        "NO fourth-wall 'I'm an AI' lecture; the LLM disclosure stays outside the fiction."
+      ]
+    }
+  }
+}

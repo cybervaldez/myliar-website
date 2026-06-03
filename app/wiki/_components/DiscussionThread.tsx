@@ -15,11 +15,11 @@ import {
   unlike,
   setNoteStatus,
   hideComment,
-  currentSnapshot,
+  ensureSession,
+  amIOwner,
   type Comment,
   type NoteStatus,
-} from "../comments";
-import { ensureSession, amIOwner } from "../supabaseClient";
+} from "../../lib/codex";
 
 const STATUS: NoteStatus[] = ["open", "applied", "declined", "discuss", "superseded"];
 
@@ -33,11 +33,15 @@ export function DiscussionThread({
   anchorLabel,
   currentHash,
   defaultOpen = false,
+  notesOnly = false,
 }: {
   anchor: string;
   anchorLabel: string;
   currentHash?: string;
   defaultOpen?: boolean;
+  // notesOnly: the curator's marginalia surface (character pages) — show only
+  // owner NOTES, and let only the owner post. No open public thread.
+  notesOnly?: boolean;
 }) {
   const [open, setOpen] = useState(defaultOpen);
   const [loaded, setLoaded] = useState(false);
@@ -63,7 +67,7 @@ export function DiscussionThread({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
-  const tops = comments.filter((c) => !c.parent_id);
+  const tops = comments.filter((c) => !c.parent_id && (!notesOnly || c.is_note));
   const repliesOf = (id: string) => comments.filter((c) => c.parent_id === id);
   const totalLikes = comments.reduce((s, c) => s + c.score, 0);
 
@@ -88,7 +92,9 @@ export function DiscussionThread({
         onClick={() => setOpen((o) => !o)}
         className="font-display tracking-[0.12em] text-[10px] text-margin-ink hover:text-ink cursor-pointer"
       >
-        💬 {loaded ? comments.length : ""} DISCUSS{totalLikes > 0 ? ` · ▲ ${totalLikes}` : ""} {open ? "▾" : "▸"}
+        {notesOnly ? "🖊 " : "💬 "}
+        {loaded ? tops.length : ""} {notesOnly ? "OWNER NOTES" : "DISCUSS"}
+        {!notesOnly && totalLikes > 0 ? ` · ▲ ${totalLikes}` : ""} {open ? "▾" : "▸"}
       </button>
 
       {open && (
@@ -98,7 +104,9 @@ export function DiscussionThread({
           ) : (
             <>
               {tops.length === 0 && (
-                <div className="text-[12px] text-margin-ink italic mb-2">No comments yet.</div>
+                <div className="text-[12px] text-margin-ink italic mb-2">
+                  {notesOnly ? "No notes yet." : "No comments yet."}
+                </div>
               )}
               {tops.map((c) => (
                 <CommentRow
@@ -114,7 +122,9 @@ export function DiscussionThread({
                   onChange={refresh}
                 />
               ))}
-              <Composer anchor={anchor} anchorLabel={anchorLabel} currentHash={currentHash} owner={owner} onPosted={refresh} />
+              {(!notesOnly || owner) && (
+                <Composer anchor={anchor} anchorLabel={anchorLabel} currentHash={currentHash} owner={owner} onPosted={refresh} />
+              )}
             </>
           )}
         </div>

@@ -13,7 +13,7 @@ import { ImagePrompt, PortraitPlaceholder } from "../../_components/ImagePrompt"
 import { DiscussionThread } from "../../_components/DiscussionThread";
 import { buildSamplePrompt } from "../../art-direction";
 import { vibeBands, elseworldSampleByBand } from "../../wiki-data";
-import { anchors } from "../../comments";
+import { anchors } from "../../../lib/codex";
 
 export function generateStaticParams() {
   return vibeBands().map((b) => ({ band: b.id }));

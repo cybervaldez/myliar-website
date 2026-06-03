@@ -50,7 +50,7 @@ const SQUAD = [
 
 export default function Home() {
   return (
-    <main className="flex-1">
+    <main className="flex-1 fandom">
       {/* ── HERO ─────────────────────────────────────────────────────── */}
       <section className="max-w-[880px] mx-auto px-6 sm:px-8 pt-12 sm:pt-20 pb-8">
         <div className="font-display tracking-[0.22em] text-[12px] text-forest-dim mb-4 text-center">
@@ -413,6 +413,17 @@ export default function Home() {
           </Link>
           <span className="text-margin-ink italic ml-2">
             — the full wiki: characters, realms, mechanics.
+          </span>
+        </p>
+        <p className="mt-3 text-[12px]">
+          <Link
+            href="/the-engine"
+            className="font-display tracking-[0.16em] text-[12px] text-spot-red !border-b-0"
+          >
+            ▸ OR READ HOW THE ENGINE WORKS
+          </Link>
+          <span className="text-margin-ink italic ml-2">
+            — design notes: how the mechanics, rules, and Story Engine intertwine.
           </span>
         </p>
         <p className="font-sans italic text-margin-ink mt-10 text-[13px] leading-[1.55]">

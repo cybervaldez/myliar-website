@@ -194,6 +194,10 @@ function extractSquad() {
   const squad = [];
   for (const b of blocks) {
     if (!/isCanonical:\s*true/.test(b)) continue;
+    // SPOILER GUARD: mystery characters (e.g. Wren) are isCanonical:true too —
+    // exclude them here so their real name/appearance never ships. They go
+    // through extractMysteryRoster() (obscured brief only).
+    if (/mystery:\s*true/.test(b)) continue;
     const id = dartField(b, "id");
     // NOTE: personaDescription + quirk are deliberately NOT shipped. They
     // are author-craft fields written FOR the LLM — they carry IDIOLECT
@@ -210,6 +214,10 @@ function extractSquad() {
       specialty: applySubstitutions(dartField(b, "specialty")),
       helpSummary: dartField(b, "helpSummary"),
       archetype: dartField(b, "archetype"),
+      // appearance = the in-fiction "Field Notes" that double as an image-gen
+      // brief (the headline wiki feature). Revealed canon for the squad; frame-
+      // gated like the other player-facing fields.
+      appearance: applySubstitutions(dartField(b, "appearance")),
       starterPrompts: dartStringList(b, "starterPrompts"),
       gender: dartField(b, "gender"),
       // Sam is the Day-0 onboarder (not introduced via a payload); the
@@ -462,6 +470,110 @@ function extractMainline() {
   return { runId: RUN_DIR, days };
 }
 
+// ── 9. Achievements — the unlock-currency catalog (TROPHIES portal) ──
+// kAchievements in lib/achievements.dart: the curated trophy list. Small +
+// owner-authored, so it's frame-gated (BLOCKING) like the squad — a banned
+// word in a trophy blurb would render on the public Trophies page.
+function extractAchievements() {
+  const src = read("lib/achievements.dart");
+  const block = src.match(/kAchievements\s*=\s*\{([\s\S]*?)\n\};/);
+  if (!block) fail("could not find kAchievements in lib/achievements.dart");
+  const entries = [...block[1].matchAll(/Achievement\(\s*([\s\S]*?)\n\s*\),/g)].map((x) => x[1]);
+  const out = [];
+  for (const b of entries) {
+    const id = dartField(b, "id");
+    if (!id) continue;
+    const crit = b.match(/critBonusPct:\s*(\d+)/);
+    const rar = b.match(/rarity:\s*AchievementRarity\.(\w+)/);
+    const hid = b.match(/hidden:\s*(true|false)/);
+    out.push({
+      id,
+      title: dartField(b, "title"),
+      blurb: dartField(b, "blurb"),
+      category: dartField(b, "category"),
+      critBonusPct: crit ? parseInt(crit[1], 10) : 0,
+      rarity: rar ? rar[1] : "common",
+      hidden: hid ? hid[1] === "true" : false,
+    });
+  }
+  if (out.length === 0) fail("extracted zero achievements");
+  return out;
+}
+
+// ── 10. Items — harvested from the run payloads (THE CODEX portal) ───
+// Items are authored inline in the DailyStory payloads (choice.itemDrop),
+// not a central Dart catalog. Harvest + dedupe by id||name. Payloads store
+// the rarity in `kind`. These are the SAME texts the mainline surfaces, so
+// (like the mainline) item frame-flags are NON-blocking, not build errors.
+function extractItems() {
+  const dir = join(APP, "assets", "payloads", RUN_DIR);
+  let files;
+  try {
+    files = readdirSync(dir);
+  } catch {
+    return [];
+  }
+  const byKey = new Map();
+  for (const f of files) {
+    if (!f.endsWith(".json") || f.includes(".b1.") || f.includes(".gemini.") || f === "manifest.json") continue;
+    let p;
+    try {
+      p = JSON.parse(readFileSync(join(dir, f), "utf8"));
+    } catch {
+      continue;
+    }
+    const day = typeof p.globalDayIndex === "number" ? p.globalDayIndex : null;
+    const character = p.characterId ?? null;
+    for (const ev of p.events ?? []) {
+      for (const c of ev.choices ?? []) {
+        const it = c.itemDrop;
+        if (!it || !it.name) continue;
+        const key = it.id || it.name;
+        if (byKey.has(key)) continue; // first (earliest) occurrence wins
+        byKey.set(key, {
+          id: it.id ?? null,
+          name: it.name,
+          description: it.description ?? "",
+          rarity: it.kind ?? "memento", // payloads store rarity in `kind`
+          statDeltas: it.statDeltas ?? {},
+          grantsAchievement: it.grantsAchievement ?? null,
+          foundDay: day,
+          foundCharacter: character,
+        });
+      }
+    }
+  }
+  return [...byKey.values()].sort((a, b) => (a.foundDay ?? 0) - (b.foundDay ?? 0));
+}
+
+// ── 11. Mystery roster — SPOILER-SAFE at the data layer ──────────────
+// mysteryRoster in lib/characters.dart (e.g. Wren). The public wiki must mirror
+// the game's mysteryLocked: render ??? + the OBSCURED brief only. So we emit the
+// obscured mysteryAppearance + a gate COUNT (the "sealed by N" crest) and NOTHING
+// that reveals the character — no name/title/class/appearance/persona/helpSummary,
+// and NOT the gating achievement ids (naming them would spoil later acts). The
+// reveal fields simply never leave the app, so the wiki can't leak them.
+function extractMysteryRoster() {
+  const src = read("lib/characters.dart");
+  const blocks = [...src.matchAll(/Character\(([\s\S]*?)\n\);/g)].map((x) => x[1]);
+  const out = [];
+  for (const b of blocks) {
+    if (!/mystery:\s*true/.test(b)) continue;
+    const id = dartField(b, "id");
+    if (!id) continue;
+    const gateBody = (b.match(/unlockIf:\s*\[([\s\S]*?)\]/) || [, ""])[1];
+    const gateCount = [...gateBody.matchAll(/'[^']+'/g)].length;
+    out.push({
+      id, // routing only; the page renders ??? for everything
+      mystery: true,
+      mysteryAppearance: applySubstitutions(dartField(b, "mysteryAppearance")),
+      gateCount,
+      gender: dartField(b, "gender"), // ⚲ unknown — safe to show
+    });
+  }
+  return out;
+}
+
 // ── Frame-gate assertion — fail the build if any banned token ships ──
 // Walks the player-facing string fields of the assembled data. Any hit
 // is a ship-blocker (a banned word would render on the public wiki).
@@ -473,10 +585,17 @@ function assertFrameClean(data) {
     }
   };
   for (const c of data.squad) {
-    for (const f of ["name", "classLabel", "specialty", "helpSummary", "archetype"]) {
+    for (const f of ["name", "classLabel", "specialty", "helpSummary", "archetype", "appearance"]) {
       scan(`squad.${c.id}.${f}`, c[f]);
     }
     (c.starterPrompts || []).forEach((p, i) => scan(`squad.${c.id}.starterPrompts[${i}]`, p));
+  }
+  for (const m of data.mysteryRoster) {
+    scan(`mystery.${m.id}.mysteryAppearance`, m.mysteryAppearance);
+  }
+  for (const a of data.achievements) {
+    scan(`achievement.${a.id}.title`, a.title);
+    scan(`achievement.${a.id}.blurb`, a.blurb);
   }
   for (const s of data.elseworldSamples) {
     for (const f of [
@@ -510,6 +629,9 @@ function build() {
     itemRarities: extractItemRarities(),
     vibeBands: extractVibeBands(),
     squad: extractSquad(),
+    mysteryRoster: extractMysteryRoster(),
+    achievements: extractAchievements(),
+    items: extractItems(),
     elseworldSamples: extractElseworldSamples(),
     phoneRealmMap: extractPhoneRealmMap(),
     simScenario: extractSimScenario(),
@@ -603,7 +725,7 @@ if (isCheck) {
 } else {
   writeFileSync(OUT, next);
   console.log(`  ✓ parity: wrote ${OUT.replace(APP + "/", "")}`);
-  console.log(`      snapshot=${data.version.runId}·${data.version.contentHash}  tokens=${Object.keys(data.tokens).length}  relTiers=${data.relTiers.names.length}  vibeBands=${data.vibeBands.length}  squad=${data.squad.length}  elseworldSamples=${data.elseworldSamples.length}  simEvents=${data.simScenario.events.length}  mainlineDays=${data.mainline.days.length}`);
+  console.log(`      snapshot=${data.version.runId}·${data.version.contentHash}  tokens=${Object.keys(data.tokens).length}  relTiers=${data.relTiers.names.length}  vibeBands=${data.vibeBands.length}  squad=${data.squad.length}  mystery=${data.mysteryRoster.length}  achievements=${data.achievements.length}  items=${data.items.length}  elseworldSamples=${data.elseworldSamples.length}  simEvents=${data.simScenario.events.length}  mainlineDays=${data.mainline.days.length}`);
   if (cssDrift.length) {
     console.warn("\n  ⚠ parity: globals.css palette drifted — fix these by hand:");
     for (const d of cssDrift) console.warn(`      - ${d}`);

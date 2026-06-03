@@ -1,187 +1,148 @@
-// Character article — encyclopedic, neutral third-person. Facts are
-// generated from the game's own sheet (parity); the prose is the
-// connective tissue. Old-wiki layout: lead → contents → sections.
+// Character article — the three-zone template (companion-wiki §5): a mechanics
+// INFOBOX (the crunch), an in-universe LORE BODY whose Field Notes double as an
+// image-gen brief, and a walled COMMUNITY zone (the fan-art FACES gallery).
+// Words before numbers. Mystery characters (Wren) render the ??? variant — the
+// obscured brief only, mirroring the game's mysteryLocked. Per the comments
+// decision, character pages carry fan art + owner notes, NOT open threads.
 
 import { notFound } from "next/navigation";
-import {
-  WikiPage,
-  Infobox,
-  Navbox,
-  SectionHead,
-  VoiceQuote,
-  WikiLink,
-} from "../../_components/WikiChrome";
-import { ImagePrompt, PortraitPlaceholder } from "../../_components/ImagePrompt";
+import { WikiPage, Infobox, SectionHead } from "../../_components/WikiChrome";
+import { FanArtSection } from "../../_components/FanArtSection";
 import { DiscussionThread } from "../../_components/DiscussionThread";
-import { buildCharacterPrompt } from "../../art-direction";
-import { squad, characterById } from "../../wiki-data";
-import { anchors } from "../../comments";
+import { anchors } from "../../../lib/codex";
+import {
+  squad,
+  characterById,
+  mysteryRoster,
+  mysteryById,
+  humanizeLexicon,
+} from "../../wiki-data";
 
 export function generateStaticParams() {
-  return squad().map((c) => ({ id: c.id }));
+  return [...squad().map((c) => ({ id: c.id })), ...mysteryRoster().map((m) => ({ id: m.id }))];
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const c = characterById(id);
-  if (!c) return { title: "Unknown — Wiki" };
-  return {
-    title: `${c.name} — Wiki`,
-    description: `${c.name}, a ${c.classLabel}-class character in My Life is an RPG.`,
-  };
+  if (c) return { title: `${c.name} — My Life is an RPG Wiki`, description: `${c.name}, the ${c.classLabel} of the squad.` };
+  if (mysteryById(id)) return { title: "??? — My Life is an RPG Wiki", description: "A sealed entry. Keep playing." };
+  return { title: "Unknown — My Life is an RPG Wiki" };
 }
 
-// Per the JRPG-party table in docs/design/rpg-framing.md.
 const STAT_LANE: Record<string, string> = {
   hana: "STR",
   kenji: "INT + GLD",
-  mei: "GLD–CHR",
+  mei: "GLD · CHR",
   sam: "INT-adjacent (meta)",
 };
+const GLYPH: Record<string, string> = { female: "♀", male: "♂", unknown: "⚲" };
 
-const PRONOUN: Record<string, { subj: string; Subj: string; poss: string }> = {
-  female: { subj: "she", Subj: "She", poss: "Her" },
-  male: { subj: "he", Subj: "He", poss: "His" },
-};
-
-export default async function CharacterPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default async function CharacterPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+  const breadcrumb = [
+    { label: "Wiki", href: "/wiki" },
+    { label: "Characters", href: "/wiki/characters" },
+  ];
+
+  // ── Mystery variant (Wren): ??? + obscured brief only ──
+  const m = mysteryById(id);
+  if (m) {
+    return (
+      <WikiPage
+        title="???"
+        breadcrumb={breadcrumb}
+        infobox={
+          <Infobox
+            title="???"
+            subtitle="a stranger you've met"
+            rows={[
+              { label: "Class", value: "▓▓▓▓▓▓" },
+              { label: "Lane", value: "▓▓▓" },
+              { label: "Gender", value: GLYPH[m.gender ?? "unknown"] ?? "⚲" },
+              { label: "Canon", value: "Main Line · LOCKED" },
+              { label: "Sealed by", value: `${m.gateCount} things you haven't done yet` },
+            ]}
+            footer="You haven't earned their name yet. Keep playing — it fills in when the game decides you've earned it."
+          />
+        }
+      >
+        <p className="text-ink-soft leading-[1.6]">
+          You&apos;ve met them. You haven&apos;t been <em>told</em> about them. Some doors in
+          here only open after you&apos;ve earned the key — and this is one of them.
+        </p>
+        <SectionHead id="field-notes">▸ Field Notes — what little you can make out</SectionHead>
+        <p className="wiki-prose text-[14.5px] leading-[1.6] text-ink-soft italic">
+          {m.mysteryAppearance ? humanizeLexicon(m.mysteryAppearance) : "A shape in the dark."}
+        </p>
+        <p className="text-[13px] text-margin-ink mt-3">
+          The rest of this page is sealed. When the game decides you&apos;ve earned it, the
+          name fills in.
+        </p>
+        <FanArtSection targetKind="character" targetId={m.id} mystery />
+      </WikiPage>
+    );
+  }
+
+  // ── Revealed canonical squad member ──
   const c = characterById(id);
   if (!c) notFound();
-
-  const p = PRONOUN[c.gender ?? "female"] ?? PRONOUN.female;
-  const prompt = buildCharacterPrompt(c);
-
-  const infobox = (
-    <>
-      <PortraitPlaceholder caption={`${c.name.toUpperCase()} · ${c.classLabel.toUpperCase()}`} />
-      <Infobox
-        title={c.name}
-        subtitle={`${c.classLabel} · canonical squad`}
-        rows={[
-          { label: "Class", value: c.classLabel },
-          { label: "Specialty", value: c.specialty },
-          {
-            label: "Introduced",
-            value: c.joinsDay === 0 ? "Day 0 (tutorial)" : `Day ${c.joinsDay}`,
-          },
-          { label: "Stat lane", value: STAT_LANE[c.id] ?? "—" },
-          { label: "Gender", value: c.gender === "female" ? "Female" : "Male" },
-          {
-            label: "Relationship",
-            value: <WikiLink to="REL">10-tier REL ladder</WikiLink>,
-          },
-          { label: "Editable", value: "No (locked canon)" },
-        ]}
-        footer="Locked canonical sheet — players may chat and toggle context, but not edit the character."
-      />
-    </>
-  );
-
-  const navbox = (
-    <Navbox
-      title="The squad"
-      links={squad()
-        .slice()
-        .sort((a, b) => (a.joinsDay ?? 0) - (b.joinsDay ?? 0))
-        .map((m) => ({ label: m.name, href: `/wiki/characters/${m.id}` }))}
-    />
-  );
+  const lane = STAT_LANE[c.id] ?? "—";
 
   return (
     <WikiPage
       title={c.name}
-      breadcrumb={[
-        { label: "Wiki", href: "/wiki" },
-        { label: "Characters", href: "/wiki/characters" },
-      ]}
-      infobox={infobox}
-      toc={[
-        { id: "who", label: `Who ${c.name} is` },
-        { id: "help", label: `What ${p.subj} helps with` },
-        ...(c.starterPrompts.length ? [{ id: "openers", label: "Stuff to open with" }] : []),
-        { id: "art", label: "Art" },
-        { id: "community-notes", label: "Talk" },
-      ]}
-      navbox={navbox}
+      breadcrumb={breadcrumb}
+      infobox={
+        <Infobox
+          title={c.name}
+          subtitle={`${c.classLabel ?? ""} · canonical squad`}
+          rows={[
+            { label: "Class", value: c.classLabel ?? "—" },
+            { label: "Lane", value: lane },
+            { label: "Specialty", value: c.specialty ?? "—" },
+            { label: "Gender", value: GLYPH[c.gender ?? "unknown"] ?? "⚲" },
+            {
+              label: "Introduced",
+              value: c.joinsDay === 0 ? "Day 0 (onboarding)" : c.joinsDay != null ? `Day ${c.joinsDay}` : "—",
+            },
+            { label: "Canon", value: "Main Line · LOCKED" },
+            { label: "Editable", value: "No" },
+          ]}
+          footer="A locked canonical sheet — you can talk with them and toggle context, but not edit who they are."
+        />
+      }
     >
-      {/* Lead — casual. */}
-      <p className="text-[15px] leading-[1.6] mb-1">
-        <strong>{c.name}</strong> is the squad&apos;s {c.classLabel}.{" "}
-        {p.poss} whole thing is {c.specialty}
-        {c.archetype ? ` — ${c.archetype.toLowerCase()}` : ""}.{" "}
-        {c.joinsDay === 0
-          ? `You meet ${c.name} on Day 0 — ${p.subj} runs the tutorial.`
-          : `You first meet ${c.name} on Day ${c.joinsDay}.`}{" "}
-        {p.Subj} covers the{" "}
-        <WikiLink to={c.id}>{STAT_LANE[c.id] ?? "—"}</WikiLink> stat.
-      </p>
+      {c.helpSummary && <p className="text-ink-soft leading-[1.6]">{c.helpSummary}</p>}
+      {c.archetype && <p className="text-[13.5px] text-margin-ink italic mt-2">{c.archetype}.</p>}
 
-      <SectionHead id="who">👤 Who {c.name} is</SectionHead>
-      <p className="text-[15px] leading-[1.6]">
-        {c.name} is a <strong>set character</strong> — you can&apos;t change{" "}
-        {p.poss.toLowerCase()} personality. But you do talk to {p.subj}, and you
-        control what {p.subj} remembers about you: toggle any note or skill on
-        or off, or delete it. Doing things in {p.poss.toLowerCase()} area (
-        {c.specialty}) bumps your {STAT_LANE[c.id] ?? "—"} stat. See{" "}
-        <WikiLink to="trichotomy">How to Play</WikiLink> for how choices earn
-        stats.
-      </p>
-
-      <SectionHead id="help">🤝 What {p.subj} helps with</SectionHead>
-      {c.helpSummary ? (
+      {c.appearance && (
         <>
-          <p className="text-[15px] leading-[1.6] mb-1">Here&apos;s how {p.subj} puts it:</p>
-          <VoiceQuote>{c.helpSummary}</VoiceQuote>
+          <SectionHead id="field-notes">▸ Field Notes</SectionHead>
+          <p className="wiki-prose text-[14.5px] leading-[1.65] text-ink-soft italic">
+            {humanizeLexicon(c.appearance)}
+          </p>
         </>
-      ) : (
-        <p className="text-[15px] leading-[1.6] text-margin-ink italic">
-          ({p.Subj} doesn&apos;t do player coaching — {p.subj}&apos;s the one who
-          explains the game.)
-        </p>
       )}
 
       {c.starterPrompts.length > 0 && (
         <>
-          <SectionHead id="openers">💬 Stuff to open with</SectionHead>
-          <p className="text-[15px] leading-[1.6] mb-1.5">
-            Lines the chat suggests when you don&apos;t know where to start:
-          </p>
-          <ul className="list-disc list-inside m-0 p-0 space-y-1">
-            {c.starterPrompts.map((s, i) => (
-              <li key={i} className="text-[14px] italic text-ink-soft">
-                &ldquo;{s}&rdquo;
+          <SectionHead id="openers">Openers</SectionHead>
+          <ul className="list-none p-0 m-0 space-y-1.5">
+            {c.starterPrompts.map((p, i) => (
+              <li key={i} className="border-l-[3px] border-margin-ink/40 pl-3 text-[14px] text-ink-soft italic">
+                &ldquo;{p}&rdquo;
               </li>
             ))}
           </ul>
         </>
       )}
 
-      <SectionHead id="art">🎨 Art</SectionHead>
-      <p className="text-[14px] leading-[1.55] text-ink-soft mb-3">
-        No picture yet! Here&apos;s a ready-to-paste prompt that builds {c.name}{" "}
-        from {p.poss.toLowerCase()} character sheet plus the game&apos;s art
-        style — drop it into an image generator.
-      </p>
-      <ImagePrompt bundle={prompt} kind="portrait" />
+      <FanArtSection targetKind="character" targetId={c.id} />
 
-      <div id="community-notes">
-        <DiscussionThread defaultOpen anchor={anchors.character(c.id)} anchorLabel={c.name} />
+      <div className="mt-6 border-t border-margin-ink/30 pt-3">
+        <DiscussionThread anchor={anchors.character(c.id)} anchorLabel={c.name} notesOnly />
       </div>
-
-      <p className="mt-8 text-[12px] text-margin-ink italic border-t border-ink/15 pt-3">
-        Character facts are generated from the game&apos;s own sheet; the visual
-        design in the art brief is editorial (the game has no portrait data
-        yet).
-      </p>
     </WikiPage>
   );
 }

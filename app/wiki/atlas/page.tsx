@@ -9,7 +9,7 @@ import { ImagePrompt } from "../_components/ImagePrompt";
 import { DiscussionThread } from "../_components/DiscussionThread";
 import { buildCourtyardPrompt } from "../art-direction";
 import { phoneRealmMap, vibeBands } from "../wiki-data";
-import { anchors } from "../comments";
+import { anchors } from "../../lib/codex";
 
 export const metadata = {
   title: "Atlas — Wiki",

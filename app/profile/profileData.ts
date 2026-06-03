@@ -42,8 +42,8 @@ export async function fetchMyActivity(): Promise<MyActivity> {
   if (!c) return { comments: 0, likes: 0 };
   const uid = await currentUserId();
   if (!uid) return { comments: 0, likes: 0 };
-  const cm = await c.from("wiki_comments").select("id", { count: "exact", head: true }).eq("user_id", uid);
-  const lk = await c.from("wiki_comment_votes").select("comment_id", { count: "exact", head: true }).eq("voter_token", uid);
+  const cm = await c.from("codex_comment").select("id", { count: "exact", head: true }).eq("user_id", uid);
+  const lk = await c.from("codex_comment_vote").select("comment_id", { count: "exact", head: true }).eq("voter_token", uid);
   return { comments: cm.count ?? 0, likes: lk.count ?? 0 };
 }
 

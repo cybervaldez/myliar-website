@@ -7,7 +7,7 @@
 import { useEffect, useState } from "react";
 import { fetchPublicWorlds, setWorldStatus, type PublicWorld } from "../../worlds";
 import { ensureSession, amIOwner } from "../../supabaseClient";
-import { commentsConfigured, anchors, contentHash } from "../../comments";
+import { codexConfigured, anchors, contentHash } from "../../../lib/codex";
 import { DiscussionThread } from "../../_components/DiscussionThread";
 
 function worldHash(w: PublicWorld): string {
@@ -17,7 +17,7 @@ function worldHash(w: PublicWorld): string {
 }
 
 export function WorldGallery() {
-  const configured = commentsConfigured();
+  const configured = codexConfigured();
   const [worlds, setWorlds] = useState<PublicWorld[]>([]);
   const [loading, setLoading] = useState(configured);
   const [owner, setOwner] = useState(false);

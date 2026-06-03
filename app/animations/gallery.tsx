@@ -111,6 +111,90 @@ function Whisper({ text }: { text: string }) {
   );
 }
 
+// ── Character intro — name reveal + earned-title selection ──────────────────
+// REVEALS the locked name + the clearest title, then the player picks how to be
+// shown them (Title / Name+Title / Just Name). Names are LOCKED (no rename); the
+// flavored titles are EARNED — so this same reveal is reused as the "new title
+// unlocked" reward (TitleUnlock). Parchment register: staged fade-up, page still.
+function CharacterIntro() {
+  const [stage, setStage] = useState(0); // 0 → 1 name → 2 +title → 3 chips
+  const [mode, setMode] = useState<"both" | "title" | "name">("both");
+  useEffect(() => {
+    if (prefersReduced()) { setStage(3); return; }
+    const t = [
+      setTimeout(() => setStage(1), 150),
+      setTimeout(() => setStage(2), 750),
+      setTimeout(() => setStage(3), 1350),
+    ];
+    return () => t.forEach(clearTimeout);
+  }, []);
+  const name = "HANA";
+  const title = "the Drillmaster"; // the CLEAR intro title; flavored ones are earned later
+  return (
+    <div className="adk-introstage">
+      <div className="adk-intro-card">
+        {stage >= 1 && <div className="adk-intro-name adk-fadeup">{mode === "title" ? title : name}</div>}
+        {stage >= 2 && mode === "both" && <div className="adk-intro-title adk-fadeup">{title}</div>}
+      </div>
+      <div className={`adk-intro-chips ${stage >= 3 ? "adk-fadeup" : "adk-hide"}`}>
+        <span className="adk-chip-label">address as</span>
+        {([["both", "Name + Title"], ["title", "Title"], ["name", "Just Name"]] as const).map(([m, l]) => (
+          <button key={m} className={`adk-chip ${mode === m ? "on" : ""}`} onClick={() => setMode(m)}>{l}</button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// The same reveal, reused as the EARNED-title reward (REL tier-up / achievement).
+function TitleUnlock() {
+  const [shown, setShown] = useState(false);
+  useEffect(() => {
+    if (prefersReduced()) { setShown(true); return; }
+    const t = setTimeout(() => setShown(true), 300);
+    return () => clearTimeout(t);
+  }, []);
+  if (!shown) return <div className="adk-introstage" />;
+  return (
+    <div className="adk-introstage">
+      <div className="adk-stamp">
+        <div className="adk-stamp-eye">★ NEW TITLE EARNED · INSIDE-ORBIT</div>
+        <div className="adk-stamp-title">&ldquo;the Monk&rdquo;</div>
+      </div>
+      <div className="adk-intro-chips adk-fadeup" style={{ marginTop: 8 }}>
+        <span className="adk-chip-label">switch to it, or stay on</span>
+        <button className="adk-chip on">Just Hana</button>
+      </div>
+    </div>
+  );
+}
+
+// The Unspoken payoff — the full-REL reward STACK revealed as a staged bundle
+// (story-engine §2): intimate title + Passive + legendary keepsake + mutual mode.
+// Bigger than a title pop. Shown for the Reader (title-only — still nameless).
+function FullRelReward() {
+  const [s, setS] = useState(0);
+  useEffect(() => {
+    if (prefersReduced()) { setS(4); return; }
+    const t = [
+      setTimeout(() => setS(1), 200),
+      setTimeout(() => setS(2), 1000),
+      setTimeout(() => setS(3), 1700),
+      setTimeout(() => setS(4), 2400),
+    ];
+    return () => t.forEach(clearTimeout);
+  }, []);
+  return (
+    <div className="adk-rewardstage">
+      <div className="adk-reward-eye">★ UNSPOKEN · FULL BOND</div>
+      {s >= 1 && <div className="adk-reward-name adk-fadeup">the Reader &rarr; <i>the Tell</i></div>}
+      {s >= 2 && <div className="adk-reward-row adk-fadeup"><span className="adk-reward-tag">PASSIVE</span>+1 to the read — in everyone&apos;s scenarios now</div>}
+      {s >= 3 && <div className="adk-reward-row adk-fadeup"><span className="adk-reward-tag legendary">LEGENDARY</span>keepsake: <i>the Last Clean Read</i></div>}
+      {s >= 4 && <div className="adk-reward-row adk-fadeup"><span className="adk-reward-tag mutual">MUTUAL</span>she vouches for you now</div>}
+    </div>
+  );
+}
+
 export default function AnimationGallery() {
   return (
     <>
@@ -405,6 +489,40 @@ export default function AnimationGallery() {
           <div className="adk-instant">pages cut, never slide — popups fade, pages don't</div>
         </Demo>
       </Section>
+
+      <Section
+        title="Character intro — name + earned titles"
+        note="The intro REVEALS the locked name + the clearest title, then the player picks how to be shown them (Title / Name+Title / Just Name). Names are locked (no rename); the flavored titles are EARNED — so the SAME reveal doubles as the 'new title unlocked' reward on tier-ups. Parchment register: fade-up + typographic, the page stays still."
+      >
+        <Demo
+          title="Intro reveal + display-mode pick"
+          spec="staged fade-up: name @150ms → clear title @750ms → chips @1350ms; each 280ms ease-out (opacity + 6px rise). NO slide. Chips switch the label live (names locked — pick is display-only)."
+          flutter="CharacterIntro — AnimatedOpacity 280ms staggered; displayMode enum → displayName(char, prefs); no rename path"
+        >
+          <CharacterIntro />
+        </Demo>
+
+        <Demo
+          title="New title unlocked (reward reuse)"
+          spec="same reveal as a reward — reuses the celebration stamp (scale .85→1.06→1 · 280ms overshoot); fires on a REL tier-up / achievement, then offers the switch"
+          flutter="TitleUnlockToast — reuses GrowthReveal stamp curve; gated on the tier/Unspoken achievement"
+        >
+          <TitleUnlock />
+        </Demo>
+      </Section>
+
+      <Section
+        title="Full-REL reward — the Unspoken payoff"
+        note="Reaching Unspoken reveals the per-character reward STACK (story-engine §2): intimate title + the Passive ('what they taught you' = a permanent cross-game buff) + an always-mystery legendary keepsake + 'they reach out' mutual mode. A dignified staged reveal, bigger than a title pop. Shown for the Reader (title-only — still nameless)."
+      >
+        <Demo
+          title="Full-REL reward reveal (Unspoken)"
+          spec="staged fade-up bundle: title @200 → passive @1000 → keepsake @1700 → mutual @2400; 280ms ease-out each, NO slide. Legendary keepsake tagged gold."
+          flutter="UnspokenRewardSheet — staggered AnimatedOpacity; grants passive (critBonusPct/buff) + reveals legendary mystery + flips mutual mode"
+        >
+          <FullRelReward />
+        </Demo>
+      </Section>
     </>
   );
 }
@@ -464,6 +582,29 @@ const CSS = `
 .adk-stamp{border:2px solid var(--spot-red);background:color-mix(in srgb,var(--spot-red) 6%,transparent);padding:10px 14px;animation:adk-stampin .28s cubic-bezier(.34,1.56,.64,1) both;}
 .adk-stamp-eye{font-family:var(--theme-display);font-size:10px;letter-spacing:.14em;color:var(--spot-red);}
 .adk-stamp-title{font-family:var(--theme-display);font-size:18px;font-weight:700;color:var(--ink);line-height:1.15;margin-top:4px;}
+
+/* Character intro — name reveal + earned-title pick (Parchment: fade-up, still) */
+.adk-introstage{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;}
+.adk-intro-card{display:flex;flex-direction:column;align-items:center;min-height:62px;justify-content:center;}
+.adk-intro-name{font-family:var(--theme-display);font-size:30px;letter-spacing:.04em;color:var(--ink);line-height:1.05;}
+.adk-intro-title{font-family:var(--theme-display);font-size:14px;letter-spacing:.08em;color:var(--spot-red);margin-top:3px;}
+.adk-fadeup{animation:adk-fadeup .28s ease-out both;}
+@keyframes adk-fadeup{0%{opacity:0;transform:translateY(6px);}100%{opacity:1;transform:none;}}
+.adk-hide{visibility:hidden;}
+.adk-intro-chips{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center;}
+.adk-chip-label{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--margin-ink);margin-right:2px;}
+.adk-chip{font-family:var(--theme-display);font-size:11px;letter-spacing:.04em;border:1.5px solid var(--margin-ink);background:var(--paper);color:var(--ink-soft);padding:3px 9px;cursor:pointer;}
+.adk-chip:hover{border-color:var(--ink);}
+.adk-chip.on{border-color:var(--ink);background:var(--ink);color:var(--paper);}
+
+/* Full-REL reward — the Unspoken payoff (staged fade-up bundle) */
+.adk-rewardstage{width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:7px;font-family:var(--theme-body);}
+.adk-reward-eye{font-family:var(--theme-display);font-size:10px;letter-spacing:.18em;color:var(--spot-red);}
+.adk-reward-name{font-family:var(--theme-display);font-size:19px;color:var(--ink);line-height:1.1;}
+.adk-reward-row{font-size:12.5px;color:var(--ink);line-height:1.4;display:flex;align-items:baseline;}
+.adk-reward-tag{font-family:var(--theme-display);font-size:9px;letter-spacing:.1em;border:1.5px solid var(--ink);padding:1px 5px;margin-right:7px;color:var(--ink);white-space:nowrap;}
+.adk-reward-tag.legendary{border-color:#b8860b;color:#7a5c00;background:color-mix(in srgb,#b8860b 12%,transparent);}
+.adk-reward-tag.mutual{border-color:var(--forest);color:var(--forest);}
 
 /* Bottom bar — REL level-up progress */
 .adk-relbar,.adk-statbar{width:100%;border:2px solid var(--ink);background:var(--paper-shade);padding:8px 12px;}

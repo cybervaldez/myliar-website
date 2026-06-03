@@ -18,7 +18,7 @@ import {
   characterById,
   type MainlineChoice,
 } from "../../wiki-data";
-import { anchors, contentHash } from "../../comments";
+import { anchors, contentHash } from "../../../lib/codex";
 
 export function generateStaticParams() {
   return mainlineDays().map((d) => ({ day: String(d.globalDayIndex) }));
