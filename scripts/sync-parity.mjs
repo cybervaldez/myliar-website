@@ -187,13 +187,35 @@ function extractVibeBands() {
 // Sam lives in lib/sam.dart; Hana/Kenji/Mei in lib/characters.dart.
 // Fields may use single OR double quotes and Dart adjacent-string
 // concatenation across lines (e.g. "first part " 'second part').
-function extractSquad() {
+// Which campaign each canonical character belongs to — parsed from the
+// roster lists in characters.dart. Both the Life Ops squad and the Wingman
+// coaches are isCanonical:true, so without this the Wingman cast would leak
+// into the Life Ops squad page. Scope each extractor to its own roster.
+function rosterScopes() {
+  const src = read("lib/sam.dart") + "\n" + read("lib/characters.dart");
+  const varToId = {};
+  for (const m of src.matchAll(/(?:const|final)\s+(\w+)\s*=\s*Character\(([\s\S]*?)\n\);/g)) {
+    const id = dartField(m[2], "id");
+    if (id) varToId[m[1]] = id;
+  }
+  const listIds = (name) => {
+    const m = src.match(new RegExp(`${name}\\s*=\\s*<Character>\\[([^\\]]*)\\]`));
+    if (!m) return new Set();
+    return new Set(m[1].split(",").map((s) => varToId[s.trim()]).filter(Boolean));
+  };
+  return { canonical: listIds("canonicalRoster"), wingman: listIds("wingmanRoster") };
+}
+
+// allowIds (optional): restrict to a campaign's roster ids. runDir: which run
+// to derive joinsDay from. Defaults preserve the Life Ops (run-005) behavior.
+function extractSquad(allowIds = null, runDir = RUN_DIR) {
   const src = read("lib/sam.dart") + "\n" + read("lib/characters.dart");
   const blocks = [...src.matchAll(/Character\(([\s\S]*?)\n\);/g)].map((x) => x[1]);
-  const joinsDay = deriveJoinDays();
+  const joinsDay = deriveJoinDays(runDir);
   const squad = [];
   for (const b of blocks) {
     if (!/isCanonical:\s*true/.test(b)) continue;
+    if (allowIds && !allowIds.has(dartField(b, "id"))) continue;
     // SPOILER GUARD: mystery characters (e.g. Wren) are isCanonical:true too —
     // exclude them here so their real name/appearance never ships. They go
     // through extractMysteryRoster() (obscured brief only).
@@ -229,11 +251,50 @@ function extractSquad() {
   return squad;
 }
 
+// The Wingman coaches (a SECOND canonical cast, scoped to wingmanRoster). Same
+// player-facing fields as the squad PLUS the earned titles[] + intimateTitle +
+// intro line, and the dating-reskinned stat lane (NERVE/VOICE/READ/PRESENCE/
+// the FLOOR). joinsDay derives from run-wingman. Frame-gated like the squad.
+const WINGMAN_STAT_LANE = {
+  nico: "NERVE", wes: "VOICE", sloane: "READ", remy: "PRESENCE", mara: "the FLOOR",
+};
+function extractWingmanCast(allowIds) {
+  const src = read("lib/characters.dart");
+  const blocks = [...src.matchAll(/Character\(([\s\S]*?)\n\);/g)].map((x) => x[1]);
+  const joinsDay = deriveJoinDays("run-wingman");
+  const cast = [];
+  for (const b of blocks) {
+    if (!/isCanonical:\s*true/.test(b)) continue;
+    if (/mystery:\s*true/.test(b)) continue;
+    const id = dartField(b, "id");
+    if (!allowIds.has(id)) continue;
+    cast.push({
+      id,
+      name: dartField(b, "name"),
+      classLabel: dartField(b, "classLabel"),
+      statLane: WINGMAN_STAT_LANE[id] ?? null,
+      specialty: applySubstitutions(dartField(b, "specialty")),
+      helpSummary: dartField(b, "helpSummary"),
+      archetype: dartField(b, "archetype"),
+      appearance: applySubstitutions(dartField(b, "appearance")),
+      starterPrompts: dartStringList(b, "starterPrompts"),
+      titles: dartStringList(b, "titles"),
+      intimateTitle: dartField(b, "intimateTitle"),
+      introLine: dartField(b, "introLine"),
+      gender: dartField(b, "gender"),
+      joinsDay: joinsDay[id] ?? null,
+    });
+  }
+  cast.sort((a, b) => (a.joinsDay ?? 99) - (b.joinsDay ?? 99));
+  if (cast.length === 0) fail("extracted zero Wingman coaches");
+  return cast;
+}
+
 // Derive each character's join day from the run payloads: the minimum
 // globalDayIndex at which they appear as the focal `characterId` OR are
 // named in `introducesCharacter`. Game-sourced — no hardcoded calendar.
-function deriveJoinDays() {
-  const dir = join(APP, "assets", "payloads", RUN_DIR);
+function deriveJoinDays(runDir = RUN_DIR) {
+  const dir = join(APP, "assets", "payloads", runDir);
   const out = {};
   let files;
   try {
@@ -390,13 +451,13 @@ function extractSimScenario() {
 // `frameFlags`: banned-word hits in the shipped text — NOT a build error
 // (the website is mirroring content the game already ships to players;
 // the flag is a visible to-do for /writers-room to fix in the payload).
-function extractMainline() {
-  const dir = join(APP, "assets", "payloads", RUN_DIR);
+function extractRun(runDir = RUN_DIR) {
+  const dir = join(APP, "assets", "payloads", runDir);
   let files;
   try {
     files = readdirSync(dir);
   } catch {
-    fail(`mainline payload dir missing: ${RUN_DIR}`);
+    fail(`run payload dir missing: ${runDir}`);
   }
   const days = [];
   for (const f of files) {
@@ -466,8 +527,8 @@ function extractMainline() {
     });
   }
   days.sort((a, b) => a.globalDayIndex - b.globalDayIndex);
-  if (days.length === 0) fail("extracted zero mainline days");
-  return { runId: RUN_DIR, days };
+  if (days.length === 0) fail(`extracted zero days from ${runDir}`);
+  return { runId: runDir, days };
 }
 
 // ── 9. Achievements — the unlock-currency catalog (TROPHIES portal) ──
@@ -505,8 +566,8 @@ function extractAchievements() {
 // not a central Dart catalog. Harvest + dedupe by id||name. Payloads store
 // the rarity in `kind`. These are the SAME texts the mainline surfaces, so
 // (like the mainline) item frame-flags are NON-blocking, not build errors.
-function extractItems() {
-  const dir = join(APP, "assets", "payloads", RUN_DIR);
+function extractItems(runDir = RUN_DIR) {
+  const dir = join(APP, "assets", "payloads", runDir);
   let files;
   try {
     files = readdirSync(dir);
@@ -593,6 +654,13 @@ function assertFrameClean(data) {
   for (const m of data.mysteryRoster) {
     scan(`mystery.${m.id}.mysteryAppearance`, m.mysteryAppearance);
   }
+  for (const c of data.wingman.cast) {
+    for (const f of ["name", "classLabel", "specialty", "helpSummary", "archetype", "appearance", "intimateTitle", "introLine"]) {
+      scan(`wingman.${c.id}.${f}`, c[f]);
+    }
+    (c.titles || []).forEach((t, i) => scan(`wingman.${c.id}.titles[${i}]`, t));
+    (c.starterPrompts || []).forEach((p, i) => scan(`wingman.${c.id}.starterPrompts[${i}]`, p));
+  }
   for (const a of data.achievements) {
     scan(`achievement.${a.id}.title`, a.title);
     scan(`achievement.${a.id}.blurb`, a.blurb);
@@ -619,6 +687,10 @@ function assertFrameClean(data) {
 
 // ── Assemble ─────────────────────────────────────────────────────────
 function build() {
+  // Both campaigns' canonical casts live in characters.dart (isCanonical:true);
+  // scope each extractor to its own roster so they don't bleed together.
+  const scopes = rosterScopes();
+  const wingmanRun = extractRun("run-wingman");
   const data = {
     // Provenance banner — makes it obvious in the committed file that
     // hand-editing is pointless (the next sync overwrites it).
@@ -628,14 +700,22 @@ function build() {
     relTiers: extractRelTiers(),
     itemRarities: extractItemRarities(),
     vibeBands: extractVibeBands(),
-    squad: extractSquad(),
+    squad: extractSquad(scopes.canonical, RUN_DIR),
     mysteryRoster: extractMysteryRoster(),
     achievements: extractAchievements(),
-    items: extractItems(),
+    items: extractItems(RUN_DIR),
     elseworldSamples: extractElseworldSamples(),
     phoneRealmMap: extractPhoneRealmMap(),
     simScenario: extractSimScenario(),
-    mainline: extractMainline(),
+    mainline: extractRun(RUN_DIR),
+    // The Wingman — the dating expansion: a parallel campaign (its own cast,
+    // 25-day arc, and items). game→website parity, same one-way rule.
+    wingman: {
+      runId: wingmanRun.runId,
+      cast: extractWingmanCast(scopes.wingman),
+      days: wingmanRun.days,
+      items: extractItems("run-wingman"),
+    },
   };
   assertFrameClean(data);
   // Deterministic data-snapshot version. Hash everything BUT the version

@@ -27,6 +27,26 @@ export interface SquadMember {
   joinsDay: number | null;
 }
 
+// The Wingman coaches — a second canonical cast (the dating expansion). Squad
+// shape PLUS the earned titles[], the intimate (full-REL) title, the intro line,
+// and the dating-reskinned stat lane (NERVE/VOICE/READ/PRESENCE/the FLOOR).
+export interface WingmanCoach {
+  id: string;
+  name: string;
+  classLabel: string;
+  statLane: string | null;
+  specialty: string;
+  helpSummary: string;
+  archetype: string;
+  appearance: string;
+  starterPrompts: string[];
+  titles: string[];
+  intimateTitle: string;
+  introLine: string;
+  gender: string | null;
+  joinsDay: number | null;
+}
+
 // Spoiler-safe: a mystery character (e.g. Wren) carries ONLY the obscured brief
 // + a gate count. No name/title/class/real-appearance/persona ever ships — the
 // page renders ??? exactly as the game does until the player earns the reveal.
@@ -133,6 +153,7 @@ export interface ParityData {
   phoneRealmMap: string;
   simScenario: unknown;
   mainline: { runId: string; days: MainlineDay[] };
+  wingman: { runId: string; cast: WingmanCoach[]; days: MainlineDay[]; items: Item[] };
 }
 
 const parity = parityRaw as unknown as ParityData;
@@ -178,6 +199,18 @@ export const mainlineDay = (day: number): MainlineDay | undefined =>
 export const mainlineFlagCount = (): number =>
   parity.mainline.days.reduce((n, d) => n + d.frameFlags.length, 0);
 
+// ── The Wingman (the dating expansion) ──────────────────────────────────
+export const wingman = () => parity.wingman;
+export const wingmanCast = (): WingmanCoach[] => parity.wingman.cast;
+export const wingmanCoachById = (id: string): WingmanCoach | undefined =>
+  parity.wingman.cast.find((c) => c.id === id);
+export const wingmanDays = (): MainlineDay[] => parity.wingman.days;
+export const wingmanDay = (day: number): MainlineDay | undefined =>
+  parity.wingman.days.find((d) => d.globalDayIndex === day);
+export const wingmanItems = (): Item[] => parity.wingman.items;
+export const wingmanFlagCount = (): number =>
+  parity.wingman.days.reduce((n, d) => n + d.frameFlags.length, 0);
+
 // ── REL tier helper ──────────────────────────────────────────────────
 // Returns the inclusive REL range string for tier i, e.g. "15–39".
 export function relRange(i: number): string {
@@ -220,6 +253,12 @@ export function navTree(): NavEntry[] {
       ],
     },
     { label: "Story", href: "/wiki/arc", editorial: true },
+    {
+      label: "The Wingman",
+      href: "/wiki/wingman",
+      editorial: true,
+      children: wingmanCast().map((c) => ({ label: c.name, href: `/wiki/wingman#${c.id}` })),
+    },
     {
       label: "How to Play",
       href: "/wiki/mechanics",

@@ -207,6 +207,141 @@
       "critBonusPct": 0,
       "rarity": "uncommon",
       "hidden": false
+    },
+    {
+      "id": "survived-the-cringe",
+      "title": "The One With the Worst Line",
+      "blurb": "You bombed an opener and laughed instead of dying. The floor of the worst case is nothing.",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "real-stakes",
+      "title": "The One Where You Crossed the Room",
+      "blurb": "You approached when it actually mattered — freeze and all. You spend the courage where it counts now.",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "epic",
+      "hidden": false
+    },
+    {
+      "id": "already-moving",
+      "title": "The One Where You Beat the Count",
+      "blurb": "You moved on a real one before Nico's count-in. The push is yours now — +5% to chaotic crits, the nerve carries.",
+      "category": "item",
+      "critBonusPct": 5,
+      "rarity": "legendary",
+      "hidden": false
+    },
+    {
+      "id": "dropped-the-armor",
+      "title": "The One With No Notes",
+      "blurb": "You let an earnest line stand with no defensive joke. Terrifying. Suits you.",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "the-kind-no",
+      "title": "The One That Was Clean, Kind, Done",
+      "blurb": "You gave a real no in one kind sentence instead of a stall. The vague 'maybe' is just ghosting with extra steps.",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "epic",
+      "hidden": false
+    },
+    {
+      "id": "cut-nothing",
+      "title": "The One Where He'd Have Cut Nothing",
+      "blurb": "You sent the hardest text on your own, in your own voice. The red pen stays down — +5% to chaotic crits.",
+      "category": "item",
+      "critBonusPct": 5,
+      "rarity": "legendary",
+      "hidden": false
+    },
+    {
+      "id": "clean-exit",
+      "title": "The One Where You Left Dignity Intact",
+      "blurb": "You left a flatlined table on your own terms, before they had to. Walking away clean isn't losing.",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "walked-the-pretty-one",
+      "title": "The One Worth More Than a Maybe",
+      "blurb": "You walked from someone you wanted because the curiosity only went one way. The hardest read there is.",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "epic",
+      "hidden": false
+    },
+    {
+      "id": "your-own-read",
+      "title": "The One Where You Didn't Ask Her First",
+      "blurb": "You handled a real one at a cost without asking the Reader what it meant. You trust your own read — +5% to chaotic crits.",
+      "category": "item",
+      "critBonusPct": 5,
+      "rarity": "legendary",
+      "hidden": false
+    },
+    {
+      "id": "no-apology",
+      "title": "The One Where You Led With the Weird",
+      "blurb": "You showed an uncool real interest early with zero apology. The cringe is the filter.",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "took-up-space",
+      "title": "The One Where You Didn't Sand Yourself Down",
+      "blurb": "You voiced a real disagreement instead of erasing yourself to agree. You took up your whole space.",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "epic",
+      "hidden": false
+    },
+    {
+      "id": "mask-off",
+      "title": "The One Where She Said Nothing",
+      "blurb": "You showed up fully unmasked without noticing you'd stopped performing. The work is done — +5% to chaotic crits.",
+      "category": "item",
+      "critBonusPct": 5,
+      "rarity": "legendary",
+      "hidden": false
+    },
+    {
+      "id": "unplugged",
+      "title": "The One Off Their Wifi",
+      "blurb": "You unhooked your day from whether the notification came. Your week stopped riding on a ping.",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "rare",
+      "hidden": false
+    },
+    {
+      "id": "not-an-option",
+      "title": "The One Where You Were Not an Option",
+      "blurb": "You walked from someone you wanted because they only ever benched you. The bench is still the bench.",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "epic",
+      "hidden": false
+    },
+    {
+      "id": "the-floor-held",
+      "title": "The One Where You Didn't Even Text Her",
+      "blurb": "A real no landed and your worth never left your pocket. You didn't reach for the catch — the highest thing the Anchor does is not be needed.",
+      "category": "item",
+      "critBonusPct": 0,
+      "rarity": "legendary",
+      "hidden": false
     }
   ],
   "items": [
@@ -6691,8 +6826,3121 @@
       }
     ]
   },
+  "wingman": {
+    "runId": "run-wingman",
+    "cast": [
+      {
+        "id": "nico",
+        "name": "Nico",
+        "classLabel": "Spearhead",
+        "statLane": "NERVE",
+        "specialty": "starting it — approaches & first moves",
+        "helpSummary": "Get you across the gap — the first word, the move you'd talk yourself out of (starting it).",
+        "archetype": "Fearless hype-friend who drags you off the wall",
+        "appearance": "All forward motion — leaning off a barstool like the night already started without him, jacket half-on. Warm, quick grin, eyes already scanning the room for your opening. You meet him at the edge of the [crowd], the music a wall behind him, one hand half-out like he is about to pull you off the bench.",
+        "starterPrompts": [
+          "Saw someone. Did nothing. Again.",
+          "I freeze the second it's real.",
+          "Walk me through saying one word."
+        ],
+        "titles": [
+          "the Opener",
+          "the Icebreaker",
+          "the First Move",
+          "the Nerve"
+        ],
+        "intimateTitle": "the Count-In",
+        "introLine": "You clocked them three minutes ago — and you're still standing here. Two seconds before 'later' becomes 'never.' I'm Nico. We don't do 'never.' Go.",
+        "gender": "male",
+        "joinsDay": 1
+      },
+      {
+        "id": "sloane",
+        "name": "Sloane",
+        "classLabel": "Scout",
+        "statLane": "READ",
+        "specialty": "reading the room — signals & situationships",
+        "helpSummary": "See what's actually there — real interest vs politeness, a yes vs a slow no (reading the room).",
+        "archetype": "Unsentimental reader of rooms and texts",
+        "appearance": "Cool and still — the one person in the room not performing. Sharp coat, a drink left untouched, a gaze that reads the whole floor in one sweep. You meet her at the [bar's far end], elbows on the wood, already watching the person you cannot stop watching — ready to tell you the truth about them.",
+        "starterPrompts": [
+          "This twelve-hour 'haha' is killing me. Read it.",
+          "I keep making excuses for them.",
+          "Tell me what that text actually means."
+        ],
+        "titles": [
+          "the Reader",
+          "the Signal-Reader",
+          "the Heart-Auditor",
+          "the Straight Read"
+        ],
+        "intimateTitle": "the Tell",
+        "introLine": "You already know what that twelve-hour 'haha' means. You just want someone to say it out loud. I'm Sloane. I'll say it.",
+        "gender": "female",
+        "joinsDay": 2
+      },
+      {
+        "id": "mara",
+        "name": "Mara",
+        "classLabel": "Warden",
+        "statLane": "the FLOOR",
+        "specialty": "self-worth — the floor under your dating",
+        "helpSummary": "Keep your worth off the table — a no is a redirect, not a verdict (the floor).",
+        "archetype": "Grounded 1 A.M. curb-side conscience",
+        "appearance": "Warm and unhurried — the friend already sitting on the [curb] when you come out, two coffees, no agenda. Soft jacket, steady eyes, room on the step beside her. The one whose face does not change when you tell her the bad version; she just moves over and lets you sit.",
+        "starterPrompts": [
+          "They went quiet and I'm spiraling.",
+          "My whole week rode on a text back.",
+          "Help me stop handing them my worth."
+        ],
+        "titles": [
+          "the Anchor",
+          "the Floor",
+          "the Steady",
+          "In Your Corner"
+        ],
+        "intimateTitle": "the 1 A.M. Curb",
+        "introLine": "Rough night? Sit. You don't have to perform 'fine' for me. I'm Mara — not going anywhere, and neither is the floor under you.",
+        "gender": "female",
+        "joinsDay": 3
+      },
+      {
+        "id": "wes",
+        "name": "Wes",
+        "classLabel": "Wordsmith",
+        "statLane": "VOICE",
+        "specialty": "the message game — texts, profile, the ask",
+        "helpSummary": "Say the true thing in your own voice — the text, the profile, the ask (the message game).",
+        "archetype": "Dry, terminally-online wordsmith",
+        "appearance": "Unbothered, terminally-online posture — slouched in a booth, phone face-up, thumbs poised. Thrifted jacket, a dry half-smile that says he has already drafted three better versions of whatever you just said. You find him at the [corner table], your phone slid across to him, the red pen of a glance going down your drafts.",
+        "starterPrompts": [
+          "Retyped this text nine times. Help.",
+          "I hide everything behind a joke.",
+          "Make this sound like me, not a bot."
+        ],
+        "titles": [
+          "the Ghostwriter",
+          "the Wordsmith",
+          "the Red Pen",
+          "the Right Words"
+        ],
+        "intimateTitle": "the Co-Writer",
+        "introLine": "Hand me the phone before you use 'lol' as a shield again. I'm Wes — let's delete the hedging and send the one true sentence you actually mean.",
+        "gender": "male",
+        "joinsDay": 5
+      },
+      {
+        "id": "remy",
+        "name": "Remy",
+        "classLabel": "Truthsayer",
+        "statLane": "PRESENCE",
+        "specialty": "presence — showing up as yourself",
+        "helpSummary": "Drop the mask and show up as the realest you, not a persona (presence).",
+        "archetype": "Blunt, anti-glam presence coach",
+        "appearance": "Stylish but stripped-down — no costume, no gloss; the kind of put-together that is clearly just HER. Leaning in a doorway, arms folded, an eyebrow already up at your bit. You meet her by the [mirror] at the door, where she makes you look once, honestly, before you go back out.",
+        "starterPrompts": [
+          "I do a whole bit on dates. It's exhausting.",
+          "I shrink to be liked, then feel invisible.",
+          "Get the real me in the room."
+        ],
+        "titles": [
+          "the Mirror",
+          "the Presence",
+          "the No-Mask",
+          "the Real One"
+        ],
+        "intimateTitle": "Face Value",
+        "introLine": "Drop the charm offensive — it's exhausting, and it isn't you anyway. I'm Remy. Not here to polish you; here to put the actual you in the room.",
+        "gender": "female",
+        "joinsDay": 7
+      }
+    ],
+    "days": [
+      {
+        "payloadId": "wingman-onboarding-nico-d1",
+        "narrativeType": "onboarding",
+        "globalDayIndex": 1,
+        "characterId": "nico",
+        "introducesCharacterId": null,
+        "agentMoodToday": "loud, delighted, running on the high of peeling someone off the wall; fiercely protective of your momentum now that he's seen it spark.",
+        "closingHook": "Open chat tonight and Nico sends ONE thing — a three-second voice memo, just him going \"three… two…\" and then nothing. No instructions. It lives in your case file. He wants the count-in in your pocket before tomorrow, so the next time you freeze, the silence after \"two\" is yours to fill.",
+        "tierUpReveal": null,
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "Friday, late, [the floor] — a bar's worth of noise and a someone across it you clocked four minutes ago and have been pointedly not-looking-at ever since. A voice, warm and pitched right under the bass so you can actually hear it: \"Hey. You've been holding that drink like a hostage. You've got about two seconds before 'later' turns into 'never.' So. Go.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Say it out loud: \"I'm scaring myself.\"",
+                "delta": {
+                  "CHR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Nico, grinning: \"There it is. You named the freeze instead of obeying it. +1 NERVE. +2 REL — and that's the whole move, by the way. Not fearless. Just faster than the scared.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Take a sip. Wait for a better moment.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Nico, not unkind: \"+1 INT for the recon, I guess. But 'the better moment' is a green light that never turns. You're still standing here. We'll work on it.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Just go. Don't think.",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Nico, delighted: \"OH. No count-in, no nothing — you just MOVED. +2 NERVE. It was clumsy as hell and it does not matter even slightly. Go go go.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": []
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You're moving — or you've decided to, which Nico insists is the same thing if you don't stop. Halfway across [the floor] your brain offers you forty exits. Nico, keeping pace at your shoulder, not even looking at you: \"Don't rehearse. Whatever you open with is gonna be a little stupid and that is COMPLETELY fine. The worst they say is no, and no is just a Tuesday. What've you got?\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Lead with the obvious — say the true, small thing.",
+                "delta": {
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Nico: \"Perfect. Small and true beats clever and rehearsed, every time. +1 NERVE. You didn't wait for the perfect line — there isn't one.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Hang back and let them notice you first.",
+                "delta": {
+                  "INT": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Nico, shaking his head with a grin: \"The loiter-and-hope. +1 INT for patience. But hope isn't a plan and the song's gonna end. Next time, we move.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Open with the worst possible icebreaker, on purpose.",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Nico, losing it: \"You did NOT — worst line I've ever heard and they LAUGHED. +2 NERVE. The cringe didn't kill you. Nothing's gonna kill you. Welcome.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": []
+          },
+          {
+            "id": "evt-3",
+            "scenario": "Later. The someone is a long chat, a phone number, or a polite exit — Nico genuinely does not care which, and is working to make sure you don't either. He drops onto the stool beside you. \"Okay, the only thing I'm gonna teach you, then I'll mostly shut up: the freeze comes back. Every time. You don't kill it. You just get faster than it. I'll count you in — three, two — until you stop hearing me. That's the whole job. Me, talking you off the wall until you don't need me on it.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Ask him to count you in next time.",
+                "delta": {
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Nico: \"Done. Three, two, and then you. +2 REL. Heads up though — the goal is you not needing the count. I'm working myself out of a job here, on purpose.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Say you're not sure this is for you.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Nico, easy: \"+1 INT for honesty, fair. You don't have to want the whole bar. You just have to stop letting the freeze pick for you. That's the door. That's the whole door.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Tell him you don't need the count-in.",
+                "delta": {
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Nico, eyebrow up: \"Big talk from someone who held a drink hostage for four minutes. +1 NERVE for the swagger, though. Prove it — that's literally the assignment.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": []
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-introduction-sloane-d2",
+        "narrativeType": "introduction",
+        "globalDayIndex": 2,
+        "characterId": "sloane",
+        "introducesCharacterId": null,
+        "agentMoodToday": "cool, unbothered, unshockable; not here to make you feel stupid — here to show you the bill so the next one costs less.",
+        "closingHook": "Tonight Sloane drops one line into your case file — no emoji, no softening: \"Count the hours, not the maybes.\" It's the only ledger she keeps. She wants you reading the next thread before you bring it to her.",
+        "tierUpReveal": null,
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "Sunday, [the corner], late. You walked in with a case already built: a single 👍, sent twelve hours after your last text, and a whole theory about what it secretly means. A new voice — calm, unbothered, not buying the theory: \"Show me the whole thread. Not the part you've been rereading.\" She scrolls up. You sent four messages. They sent one and a half. You start explaining the half — they're busy, it's a hard week — and she just asks the only question that matters: \"How many hours of your week did this 👍 cost you?\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Count the hours honestly. Show her the math.",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane, one nod: \"+1 READ. There it is — the first honest count. Three hours on a 👍. It lands too late to save tonight, but you read it. +2 REL. I'm not here to make you feel stupid. I'm here so the next one costs you less.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Leave it. Refresh the thread later.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane, flat, not unkind: \"+1 INT for the patience. But you're paying rent on a vacant lot. Refresh it all you want — the read doesn't change because you looked twice.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Send another text to \"clarify.\"",
+                "delta": {
+                  "CHR": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane logs it without a flinch: \"A withdrawal, no deposit. +1 NERVE for moving, I'll give you — but you just spent more on a trade that's already dead. The clarifying text is the tell.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they walked in with a theory about a 👍 and four unanswered texts — building a case to avoid reading the verdict. they counted the hours when I asked; that's the first honest read. the scar's already set: three hours spent convincing themselves polite tolerance was a hidden spark. I logged it. not a scolding. a receipt.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "She doesn't decode the rest of it for you. That's the whole point — she won't read people for you forever. \"Keep the thread. We'll know more by how they answer the next real thing — not this.\" Then, the only homework she ever gives, dropped flat: \"Next time, you read it before I do.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Three hours on a thumbs-up. Never again.\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane: \"+1 READ. Say it like a number, not a wound. The hours are the currency. Spend them where they get spent back on you.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"What if I'm just bad at reading people?\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane: \"+1 INT for the honesty. You're not bad at it. You're scared of what you already see. Different problem — and we fix that one by you saying the read out loud.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"Fine. Read the next one yourself, hotshot.\"",
+                "delta": {
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane, the ghost of a smile: \"+1 NERVE for the mouth. I will. And then I'll hand it back to you to read — because that's the job. Me, getting tired of reading over your shoulder.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "I told them the rule: next time they read it before I do. I'm not decoding people for them forever — I'm teaching them to. the day they stop bringing me the screenshot is the day I did it right.",
+                "emotion": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-introduction-mara-d3",
+        "narrativeType": "introduction",
+        "globalDayIndex": 3,
+        "characterId": "mara",
+        "introducesCharacterId": null,
+        "agentMoodToday": "grounded-warm, steady, the friend on the curb at 1 A.M.; not relitigating the silence — only asking what you did with it.",
+        "closingHook": "Mara doesn't send a pep talk tonight. Just one line into your case file: \"The floor's yours. Stop subletting it.\" She's not relitigating the silence — she's teaching you to stand before the next one starts.",
+        "tierUpReveal": null,
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "Seven days, no reply. And somewhere in the silence you turned it into a verdict — not 'they're not interested,' but 'I'm not worth keeping.' A steady voice you haven't heard before, pulling up beside you in [the corner]: \"The Reader can tell you what the silence means. I'm here for what you did with it — you handed them the deed to your whole worth, and they didn't even ask for it.\" She doesn't reopen the thread. She asks the only question she ever asks: \"Who's holding your keys right now?\" You point, honestly, at someone else's phone.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Name it: \"I don't live in their outbox.\"",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Mara, warm: \"+1 to the FLOOR. +2 REL. There it is — the first grounding. It lands too late to save this week, but you said it. Your worth doesn't change address because they went quiet. Keep saying it till it's true.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Wait for the reply to tell you. Refresh. Spiral.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Mara watches you rent your worth out by the hour: \"+1 INT. I'm not going to tell you they'll text. I'm going to tell you your week is worth more than their thumb. Refreshing doesn't move the floor — it just rents it to them cheaper.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Send the \"did I do something?\" text.",
+                "delta": {
+                  "CHR": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Mara, gently, not scolding: \"You just mailed them the deed again. +1 NERVE for moving, but you moved the wrong way — begging the verdict off someone who already gave you their silence. The floor's not theirs to grant back.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "seven days of silence and they turned it into 'I'm not worth keeping' — handed the deed to their whole worth to someone who didn't ask. I don't relitigate the thread; the Reader does that. I ask where they keep their worth. the scar's set: they let a week of silence become proof. not a lecture — a note, so next time the floor's already under them before the quiet.",
+                "emotion": "fear"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "However you took it, the week's already spent on the floor. Mara logs it without a flinch: ***you let a week of silence become proof you weren't worth keeping.*** \"Not a lecture. A note. So next time the floor's already under you before they go quiet.\" Then the only promise she makes: \"Keep your worth where I can't lose it for you — your own pocket. We'll practice. I'm not going to hold you up forever. I'm teaching you to stand.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"My worth goes in my own pocket. Got it.\"",
+                "delta": {
+                  "STR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mara: \"+1 to the FLOOR. That's the whole curriculum in one sentence. A no out there can't reach a worth you're carrying in here. We'll test it — but you already know where it lives now.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"What if I actually am too much / not enough?\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mara, steady, never clinical: \"+1 INT for asking it out loud. You're not a verdict waiting to be confirmed. 'Too much' and 'not enough' are the same lie wearing two coats. A no is a mismatch. It was never a measurement of you.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "\"You're not my therapist, right?\"",
+                "delta": {
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mara, a real laugh: \"+1 NERVE. God, no. I'm the friend on the curb at 1 A.M. with the bad coffee. No diagnosis, no homework folder. Just: your worth isn't on the table, and I'll keep saying it until you stop putting it there.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "told them the rule: worth in their own pocket, where nobody — not them, not even me — can lose it for them. I'm not holding them up forever; I'm teaching them to stand. the day a real no lands and they don't text me is the day I've done it right. that's the highest thing I do: not be needed.",
+                "emotion": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-nico-d4",
+        "narrativeType": "daily",
+        "globalDayIndex": 4,
+        "characterId": "nico",
+        "introducesCharacterId": null,
+        "agentMoodToday": "kinetic, grinning, allergic to the word 'later'; he can smell you stalling from across the room.",
+        "closingHook": "Nico fires one text into your case file tonight: \"there's no green light. there's you and the step.\" No count-in this time — he wants you making your own moment before tomorrow.",
+        "tierUpReveal": {
+          "category": "opinion",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "You're 'waiting for the right moment.' Nico laughs before you finish the sentence. \"'The right moment' is a green light that never turns. You're not waiting — you're hiding. Go.\" The window's open right now. It's already closing. \"Three seconds.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Step now — name the stall and move through it.",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Nico: \"+2 NERVE. You moved before it was 'safe' — which is the only kind of moving there is. The right moment was never coming. You made one. Go.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Keep waiting for it to feel right.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Nico, shaking his head: \"+1 INT for the patience, I guess. The ghost wins again. 'Feeling right' is the green light that never turns — you'll stand here till the song ends calling it 'reading the room.'\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Overcommit — go bigger than the moment needs.",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.45
+                },
+                "reactionText": "Nico, delighted: \"+2 NERVE. Bold, sloppy, completely fine. You overshot and nobody died. Overcommitting beats not committing every single time — momentum forgives a lot.\"",
+                "reactionTextOnCritFail": "Nico, still grinning: \"-1 REL, ha — you went SO big you scared yourself mid-move and bailed at the end. +NERVE's still yours. The fix isn't smaller, it's finishing the rep. Next one you land.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they were 'waiting for the right moment' — the green light that never turns. if they step now instead of hiding behind 'feeling right,' that's the first real Inside-orbit rep: they moved before it was safe. the ghost of the perfect moment is just the freeze in a nicer coat.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You moved. ***You found out 'the perfect moment' is a ghost you chase to avoid taking one step.*** Nico, quieter than usual for half a second: \"Inside-orbit. You moved before it was safe.\" Then he's back, bouncing: \"That's the whole con, by the way — 'waiting for the right moment' is just the freeze that learned to dress nice. There's no green light. There's you, and there's the step.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"No green light. Just the step. Got it.\"",
+                "delta": {
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Nico: \"+1 NERVE. Tattoo it. You don't find the moment — you make one and step into it. The freeze still shows up. You just stopped letting it dress up as patience.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"What if I move and it's the wrong moment?\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Nico: \"+1 INT. Then it's the wrong moment and you're still standing. 'Wrong moment' is a Tuesday. 'No moment because I waited' is the one that actually costs you. Move and find out — that's the gift.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Inside-orbit — they stepped before it felt safe. the ghost of the right moment, named and beaten. next rep raises the stakes: the worst line, on purpose, and surviving the cringe. that's where they learn the floor of the worst case is nothing.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-introduction-wes-d5",
+        "narrativeType": "introduction",
+        "globalDayIndex": 5,
+        "characterId": "wes",
+        "introducesCharacterId": null,
+        "agentMoodToday": "dry, terminally-online, delighted by a good line and allergic to a defensive one; roasting you, but unmistakably on your side.",
+        "closingHook": "Wes drops one line in your case file, naturally: \"the send button is not a coping mechanism.\" He wants you noticing every qualifier you reach for before you reach for it.",
+        "tierUpReveal": null,
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "You're drafting a 'hey' and it has somehow become four paragraphs of pre-emptive context — your schedule, a disclaimer, a joke to soften the disclaimer, a second joke to soften the first. A new voice, dust-dry: \"You've written a thesis defense to ask someone to coffee. Show me the abstract.\" He scrolls the wall of text. \"There's one real sentence in here. The rest is packing material.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Cut to the ask — one clean sentence.",
+                "delta": {
+                  "INT": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Wes: \"+2 VOICE. THERE it is — the one true line that was buried under four paragraphs of apology. Clean. Direct. Mildly terrifying, which means it's honest.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Add MORE clarifying context.",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Wes, physically unable to watch: \"+1 READ for thoroughness, I suppose. You added a footnote to a text message. Nobody has ever read paragraph four. Paragraph four is where interest goes to die.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Send the whole essay. Hit it.",
+                "delta": {
+                  "CHR": 1,
+                  "REL": 0
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Wes, deadpan: \"+1 NERVE. Bold. They'll need a lawyer to RSVP. Somewhere in those four paragraphs is a real person — I could hear them around paragraph two, gasping for air.\"",
+                "reactionTextOnCritFail": "Wes: \"-1 REL — and you hit send before I could stop you. The essay's out there now, fully deployed. They're three paragraphs in, slowly aging. We'll find your actual voice in the wreckage. Lesson one: the send button is not a coping mechanism.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they wrote a four-paragraph 'hey' — a thesis defense to ask someone to coffee. the padding is the tell: a yes scares them more than a no, so they bury the ask under disclaimers. the scar's already set: they sent an essay of pre-emptive explanations to a person who just wanted one sentence. my job is finding the actual voice under all that bubble wrap.",
+                "emotion": "fear"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "However it went out, the lesson's the same. ***You sent an essay of pre-emptive explanations because a 'yes' scared you more than a 'no.'*** Wes, leaning back: \"I'm not here to dunk on you. Well. A little. Mostly to find your actual voice under all that padding.\" He flicks at the screen. \"Everything you're scared to just SAY, you wrap in seventeen qualifiers. We're going to unwrap it. It'll feel naked. That's the right feeling.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"The padding is me hiding. Got it.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Wes: \"+1 VOICE. The qualifiers aren't politeness, they're armor. Every 'no worries if not!!' is you giving them an exit before they've even read the door. We keep the kindness. We delete the flinch.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"But what if the short version sounds too blunt?\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Wes: \"+1 READ. 'Blunt' and 'clear' aren't the same thing — you can be warm in one sentence. The paragraph isn't kinder. It's just longer. Beige isn't a personality. We'll do warm AND brief. It exists.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "told them: the padding is armor, not manners. we keep the warmth, delete the flinch. next is the first real cut — a reply they've rewritten nine times, where everything true fits in one sentence and the rest is bubble wrap. the day they send the hard one without showing me first is the day I'm out of a job.",
+                "emotion": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-sloane-d6",
+        "narrativeType": "daily",
+        "globalDayIndex": 6,
+        "characterId": "sloane",
+        "introducesCharacterId": null,
+        "agentMoodToday": "almost warm, for her; pleased you came in before building the case, and determined not to hand you the answer.",
+        "closingHook": "Sloane sends nothing tonight — just leaves your own unwritten theory in the case file, blank. The point is the blank. Tomorrow she wants the live read: not what the text meant, but what the room is telling you while you're still standing in it.",
+        "tierUpReveal": {
+          "category": "opinion",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "It happened again — a three-word reply, twelve hours late. But this time you brought it to [the corner] first, before you wrote the theory. Sloane, almost warm: \"Look at you. You didn't write the case yet.\" Then she does the thing that makes it yours — she withholds the read: \"Three words, half a day. In your own words: busy, or polite?\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Name it: \"That's a polite no.\"",
+                "delta": {
+                  "GLD": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane doesn't celebrate. She just stops translating. \"+2 READ. That's the first one you read without me. Inside-orbit.\" A beat. \"Didn't even ask me to translate it. I was getting tired of reading over your shoulder anyway.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Give the benefit of the doubt: \"maybe busy.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane lets it sit, doesn't correct you. \"+1 INT. 'Maybe busy' is the rent you pay to not read it. I'll let you sit in the maybe a while. The thread won't.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Send a bold one back: \"you good?\"",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.45
+                },
+                "reactionText": "Sloane: \"+2 NERVE. Risky — but at least it forces a real read instead of you renting the maybe for a week. Their answer to that is the whole ledger. Watch how fast it comes.\"",
+                "reactionTextOnCritFail": "Sloane, flat: \"And now you're waiting on TWO texts. -1 REL — not for the nerve, for not reading what you already saw. The three words were the answer. 'You good?' was you asking for a refund.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "three-word text, twelve hours, and they brought it to me before building the case. growth. the whole beat is me NOT saying it for them — make them read it out loud. if they name the polite no themselves, that's the first read that's theirs. opinion, formed without me.",
+                "emotion": "pride"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "Whatever you sent, the read is the same and you found it without her. ***You read the three-word text twelve hours later for what it was — not 'busy,' a polite no.*** Sloane, in the world's tier-language: \"Inside-orbit. Now — spend the hours you just saved on someone who actually answers.\" She watches you a second longer than usual. \"Reading the text is easy. Reading the room, live, is the next thing. I want to see you do it while it's happening — not in the post-mortem.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Reallocate the hours. Got it.\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane: \"+1 READ. The hours you didn't spend spiraling are the dividend. That's the entire game — attention is the currency, and you just stopped overpaying.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": {
+                  "name": "The Unwritten Theory",
+                  "description": "The case file you DIDN'T build tonight — blank where there'd usually be four paragraphs decoding three words. Sloane keeps a copy. It's the first thing she's proud of that you didn't do.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"Live is harder. I freeze up in person.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane: \"+1 INT for naming it. You don't freeze — you flinch from the read because acting on it costs something. We'll get there. The room tells you everything the texts do, just faster.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Inside-orbit. they read the polite no themselves. I stopped translating and they didn't fall. next is the live read — the room, not the screenshot. that's where it gets real, because acting on a live read costs you the rest of the night.",
+                "emotion": "joy"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-introduction-remy-d7",
+        "narrativeType": "introduction",
+        "globalDayIndex": 7,
+        "characterId": "remy",
+        "introducesCharacterId": null,
+        "agentMoodToday": "blunt, stylish, tough-love; she won't be nice about the mask because the mask is the problem, and she's the friend who's always right.",
+        "closingHook": "Remy doesn't send encouragement — she's not the type. Just a line in your case file: \"the mask is the problem. take it off.\" She wants you catching the bit the second you reach for it, before the next room.",
+        "tierUpReveal": null,
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "First date. You walk in and immediately run the highlight reel — the curated stories, the good angles, the version. A flat, unimpressed voice cuts in: \"Who's this guy? Because it's not you. I watched you put him on in the mirror before you left.\" She's not being cruel. She's being right, which is worse. \"That guy is exhausting to maintain. And if they fall for him, congratulations — now you have to keep being him.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Name the mask: \"I'm doing the bit again.\"",
+                "delta": {
+                  "STR": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Remy: \"+2 PRESENCE. There — you caught yourself wearing it. Late, but you caught it. Naming the bit is the first crack in the costume. Now we take the whole thing off.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Keep performing — the bit is working.",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Remy, flat: \"+1 READ. Sure, it's 'working.' And they'll fall for him. Then you'll have to keep being him — forever, on every date, until you forget which one you are. That's not winning. That's a part with no curtain call.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Drop the bit cold, mid-date.",
+                "delta": {
+                  "STR": 2,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Remy, a flicker of approval: \"+2 PRESENCE, +1 NERVE. Jarring as hell — you dropped the polished guy mid-sentence and let the real one finish it. Whiplash for them, maybe. But the person who answered the second half is the one who actually showed up.\"",
+                "reactionTextOnCritFail": "Remy: \"-1 REL — you dropped the bit so hard you overcorrected into 'aggressively unfiltered' to prove a point. Authentic isn't a new performance of bluntness. The real you isn't a character either. Less proving. Just be there.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "first date, and they walked in running the highlight reel — put the curated guy on in the mirror before they left. I'm not nice about it; the mask IS the problem. the scar's set: they rebuilt their whole personality to match someone mid-date, sure the real them was too boring. if they fall for the costume, the player has to keep wearing it. my whole job: get the mask off.",
+                "emotion": "fear"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "However you handled it, the truth's the same. ***You rebuilt your whole personality to match theirs mid-date, sure the real you was too boring.*** Remy, not softening it: \"I'm not gonna be nice about this. The mask is the problem. Let's take it off.\" She holds your eye in the reflection. \"You think the curated version is safer. It's not. It just means nobody's ever actually rejected YOU — or chosen you. You've kept yourself out of every room you've walked into.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"The mask kept me out of my own dates. Noted.\"",
+                "delta": {
+                  "STR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Remy: \"+1 PRESENCE. Finally. The costume didn't protect you — it understudied for you. Every connection 'he' made wasn't yours. We're done casting a character. You're going to take up your own space.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"But the real me kind of IS boring, though.\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Remy, hard-eyed but not cruel: \"+1 READ. 'Boring' is what you call yourself so you have an excuse to keep performing. The real you isn't boring — it's just unrehearsed, and you've never let anyone see it long enough to find out. We're going to find out.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "told them the costume kept them out of their own rooms — nobody's ever rejected or chosen the actual them, only the character. that's not safe, that's invisible. no masks, no scripts. next is the smallest drop: a silence they rush to fill with a bit, because they think they have to entertain every four seconds. they don't. they're not a content feed.",
+                "emotion": "neutral"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-mara-d8",
+        "narrativeType": "daily",
+        "globalDayIndex": 8,
+        "characterId": "mara",
+        "introducesCharacterId": null,
+        "agentMoodToday": "warm and a little amused; catching you rehearse for an exam nobody's grading, and refusing to hand you the answers.",
+        "closingHook": "Mara leaves no homework — just a line in your case file: \"You're not on trial. Neither are they.\" Tomorrow's harder lesson is already waiting: the day your whole mood is hostage to whether a screen lights up.",
+        "tierUpReveal": {
+          "category": "opinion",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "First date tonight, and you're rehearsing — lines, stories, the version of you most likely to 'pass.' Mara catches it from across [the corner]: \"Who told you this was an exam? You walked in here already auditing yourself for a part you didn't have to try out for.\" She makes you hear it: a date is two people finding out, not one person passing. And she will not hand you a study guide.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Drop the audition: \"I'm not trying out. I'm meeting someone.\"",
+                "delta": {
+                  "STR": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mara: \"+2 to the FLOOR. There it is. Inside-orbit — I'm closer because you needed me to hold a little less. You're not on trial. Neither are they. Go find out about each other.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Over-prepare. Script three backup stories.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Mara: \"+1 INT. You're cramming for a test nobody's grading. Three backup stories means three exits from being actually present. The real you doesn't need an outline.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Go in raw — no plan, trust you're enough.",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.45
+                },
+                "reactionText": "Mara, pleased: \"+2 NERVE. Bold — and it's the truth I'm after. No script means whatever happens, it happened to the actual you. That's the only result worth having.\"",
+                "reactionTextOnCritFail": "Mara, steady: \"-1 REL — not for going in raw, for what you did when it got quiet. You panicked and reached for the old performance mid-date. The fix isn't a script. It's remembering you weren't auditioning. We'll practice the nerve.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "first date, and they're rehearsing — auditing themselves for a part nobody assigned. I won't hand them the answers; a date is two people finding out, not one passing. if they set the script down and walk in as themselves, that's Inside-orbit: I get to hold a little less.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You set the script down. ***You stopped treating a first date like an audition you had to pass.*** Mara: \"There it is. Inside-orbit. I'm closer because you needed me to hold a little less.\" Then she names the harder unhook coming: \"You're not the one on trial. Neither are they. Go find out.\" A beat. \"Easy to keep the floor before the date. The test is keeping it after — when your whole day starts riding on whether they reply.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Two people finding out. Not a verdict.\"",
+                "delta": {
+                  "STR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mara: \"+1 to the FLOOR. Say it walking in the door. If it goes well, great. If it doesn't, you found out something true and you're still you. Nothing about tonight measures your worth.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"But I really want this one to go well.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mara, never cold: \"+1 INT. Of course you do. Wanting it is fine — wanting it doesn't put your worth on the table. You can hope it lands AND know you're whole if it doesn't. Both. That's the floor.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Inside-orbit — they dropped the audition. next is harder: keeping the floor AFTER the date, when the whole day starts riding on a reply. the notification test. that's where most people hand the keys over without noticing.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-nico-d9",
+        "narrativeType": "daily",
+        "globalDayIndex": 9,
+        "characterId": "nico",
+        "introducesCharacterId": null,
+        "agentMoodToday": "loud, gleeful, treating your impending disaster as the best news all week; he WANTS you to bomb one and live.",
+        "closingHook": "Nico keeps the worst-line napkin in your case file like a trophy: \"two hit points. that's all the cringe ever had.\" Tomorrow he stops handing you easy reps — the next one is someone who actually matters, and the freeze comes back bigger.",
+        "tierUpReveal": {
+          "category": "memory",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "A real one this time — and you open with something genuinely terrible. It lands wrong. The exact wrong word, the joke that doesn't, the silence after. The old you would be planning a new identity in another city. Nico, in your ear, electric: \"There it is — the worst-case you've been terrified of since Day 1. It's happening RIGHT NOW. So. What do you do with it?\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Recover clean — own the bad line, keep moving.",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Nico: \"+2 NERVE. You named your own bad line and kept walking. That's the move — the bomb only kills you if you stop. You didn't stop.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Retreat, mortified. Replay it forever.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Nico, not cruel: \"+1 INT, fine. But you're spiraling on a thing that lasted four seconds. The cringe isn't the danger — the retreat is. You're letting a bad line write a whole verdict.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Lean ALL the way into the bad line.",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 2
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.5
+                },
+                "reactionText": "Nico, losing it: \"+2 NERVE, +2 REL. You doubled DOWN on the worst line and made it a bit and they LAUGHED. The cringe can't kill you — you just turned it into the best part. THAT'S the whole lesson.\"",
+                "reactionTextOnCritFail": "Nico, cackling: \"-1 REL, oh that did NOT land — and look at you, still here, still breathing. You leaned into a bad one and it stayed bad. And? Nothing happened. That's the point. The floor of the worst case is NOTHING. +NERVE.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they bombed an opener on a real one — the exact worst case they've feared since the freeze. the lesson isn't avoiding the bomb; it's surviving it and laughing. if they lean in or recover clean instead of retreating, they learn the floor of the worst case is nothing. that's In-your-corner.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You survived it. More than survived — you laughed. ***You spoke the worst icebreaker imaginable, survived the cringe, and laughed about it.*** Nico drops onto the stool beside you, grinning ear to ear: \"In-your-corner. You just found the floor of the worst case — and it's NOTHING. The cringe was the boss fight you'd been dodging for years, and it turns out it has, like, two hit points.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Worst case is just... an awkward four seconds.\"",
+                "delta": {
+                  "CHR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Nico: \"+1 NERVE, +2 REL. That's it. Four seconds and a story. You've been treating the cringe like a cliff. It's a curb. Step off it on purpose a few more times and it stops scaring you at all.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": {
+                  "name": "The Worst Line",
+                  "description": "The terrible opener that bombed and somehow became the best part of the night — written on a cocktail napkin, kept. Nico says a bad line you walked through beats a perfect one you didn't. Proof the cringe has two hit points.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"It still felt awful in the moment, though.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Nico: \"+1 INT. Yeah! It's SUPPOSED to feel awful — and then it ends and you're fine. The feeling was never lying to you about being uncomfortable. It was lying about being dangerous. Big difference.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "In-your-corner. they bombed the worst line and laughed instead of dying — found the floor of the worst case, which is nothing. survived-the-cringe. the Worst Line napkin is theirs. next rep is the real escalation: not an easy target, but someone who actually MATTERS, freeze and all.",
+                "emotion": "joy"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-wes-d10",
+        "narrativeType": "daily",
+        "globalDayIndex": 10,
+        "characterId": "wes",
+        "introducesCharacterId": null,
+        "agentMoodToday": "hovering the red pen with theatrical patience; quietly thrilled you brought him a draft before sending it for once.",
+        "closingHook": "Wes files the One-Line Draft with a note: \"shorter is just what truer looks like.\" Tomorrow he comes for the armor on your profile — the joke at your own expense you keep up front, so you can flinch before they can.",
+        "tierUpReveal": {
+          "category": "memory",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "A reply you've rewritten nine times. You bring it to Wes before sending — growth. He reads all nine versions, hovers the red pen, and sighs with his whole chest: \"Everything true in here is in one sentence. The rest is bubble wrap.\" He highlights the one line that's actually you. Everything around it is padding, hedging, a joke standing guard.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Send the one true line. Let it stand alone.",
+                "delta": {
+                  "INT": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Wes: \"+2 VOICE. You let it stand on its own. Look at you. Terse. Honest. No escape hatch built into the sentence. That's the first one you didn't wrap in packing tape.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Send the padded version — it's safer.",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Wes, flat: \"+1 READ. Safe. Forgettable. Like beige. You can hide a real sentence inside three soft ones, sure — but then they only meet the soft ones. The padding doesn't protect you. It replaces you.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Cut it even barer than Wes did.",
+                "delta": {
+                  "INT": 1,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Wes, genuinely impressed: \"+1 VOICE, +1 NERVE. You out-edited me. Cut it past where I'd have stopped and it still stands. Bare AND clean — that's not blunt, that's confident. I'm taking partial credit.\"",
+                "reactionTextOnCritFail": "Wes: \"-1 REL — okay you cut TOO far and now it reads like a hostage proof-of-life. 'k.' is not a personality either. There's a floor. We're aiming for one true SENTENCE, not one true syllable. Add the verb back.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "nine rewrites, and they brought it to me first. one true sentence, the rest bubble wrap. if they let the one line stand alone instead of padding it for safety, that's Inside-orbit: they trusted the bare version. the padding doesn't protect them, it replaces them — that's the whole lesson under the jokes.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You let the bare line stand. ***You killed the paragraph and sent the one true sentence.*** Wes, with the closest thing he has to sincerity (it wears a dry edge): \"Inside-orbit. You let it stand on its own. Look at you, terse.\" He pockets the red pen for a second. \"That feeling right now — the slightly-exposed one — that's not a mistake to fix. That's what honest feels like before you're used to it.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Bubble wrap protects nothing. Noted.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Wes: \"+1 VOICE. Stitch it on a pillow. Every qualifier you delete, more of the actual you gets through. The goal was never shorter — it was truer. Shorter's just what truer looks like.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": {
+                  "name": "The One-Line Draft",
+                  "description": "The single sentence that landed, with eight rewrites crossed out above it in red. Wes keeps it as the first time you trusted a bare line. The paragraph was bubble wrap; this was the package.",
+                  "kind": "keepsake"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"Feels too exposed to do every time.\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Wes: \"+1 READ. It gets less exposed and stays just as honest — that's the trade. The armor felt safe and cost you being met. Naked-but-true beats padded-but-invisible. You'll get used to the draft, not the disguise.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Inside-orbit. they killed the paragraph and let the one true line stand — felt exposed, which is just honest before you're used to it. the One-Line Draft is theirs. next is the armor on the profile: the self-deprecating joke they lead with to insult themselves before anyone else can.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-sloane-d11",
+        "narrativeType": "daily",
+        "globalDayIndex": 11,
+        "characterId": "sloane",
+        "introducesCharacterId": null,
+        "agentMoodToday": "locked-in, coaching live; she stops you mid-recap because she wants the read while it's still happening, not the autopsy.",
+        "closingHook": "Sloane files the unfinished drink in your case file with one line: \"Dignity, intact.\" No notes. Tomorrow she has the hard one waiting — not a table you can read, but a match you actually want, who's a dead-end anyway.",
+        "tierUpReveal": {
+          "category": "memory",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "A real one, in person — and you start telling Sloane about it afterward. She cuts you off: \"Don't tell me after. Tell me during.\" So you replay it with her in your ear: they're laughing at everything you say, but their eyes keep going to the door. The old you would ride the laugh. Sloane, in real time: \"Are they here, or already gone? The laugh is loud. Where are their eyes?\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Read the tell — eyes-to-the-door is the signal.",
+                "delta": {
+                  "GLD": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane: \"+2 READ. The laugh is politeness. The eyes are the truth. You read the live one — that's the harder skill, and you did it while it was still moving.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Hold position. Keep talking, hope it turns.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane watches you pay rent again: \"+1 INT. You're hoping. Hope isn't a read. The door already has their attention — you're just financing the last ten minutes of it.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Go bigger — turn up the charm, win them back.",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 0
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Sloane: \"+2 NERVE. Sometimes it works. But you're paying full price to keep a flatlined table propped up. Winning back a politely-leaving person is the most expensive thing you can buy.\"",
+                "reactionTextOnCritFail": "Sloane, even: \"-1 REL. They made an excuse and left anyway — and you spent your last good ten minutes buying it. The read was free. You chose the charm instead.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "live read — the laugh loud, the eyes on the door. the old them rides the laugh. if they clock the tell and act on it instead of charming harder, that's the In-your-corner read. the cost of NOT reading it is the dignity you spend in the last ten minutes.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You catch it — and you act. You wrap the conversation up yourself, warmly, before it curdles into them inventing an excuse. ***You caught them scanning the room mid-sentence and wrapped it up yourself, gracefully.*** Sloane: \"There it is. You left with your dignity intact instead of spending the last ten minutes buying it back. In-your-corner.\" A pause. \"Walking away clean isn't losing. It's the only move that keeps your time yours.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Left clean. Drink unfinished, no apology.\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane, and she means it: \"+1 READ, +2 REL. You didn't apologize for leaving a table that was already empty. That's the whole flex — you valued your own night more than their comfort. Logged.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": {
+                  "name": "The Unfinished Drink",
+                  "description": "The glass you left half-full when you wrapped it and walked — no excuse, no lingering. A clean-exit token. Sloane says the unfinished drink is the most expensive thing you'll ever NOT buy back.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"Felt rude leaving first, honestly.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane: \"+1 INT. It wasn't rude. They were already gone — you just put it on the record before they had to lie about it. Leaving clean is a courtesy to BOTH of you.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "In-your-corner. they wrapped a flatlining table themselves, gracefully, and left with their time still theirs. clean-exit — Riley'd screenshot this one; the graceful self-rescue, reframed as a flex instead of a loss. the unfinished drink is the token. next is the hard version: a dead-end they actually WANT.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-remy-d12",
+        "narrativeType": "daily",
+        "globalDayIndex": 12,
+        "characterId": "remy",
+        "introducesCharacterId": null,
+        "agentMoodToday": "watching you flinch at a four-second silence; blunt, a little amused at how hard you work to never let a pause exist.",
+        "closingHook": "Remy leaves one line in your case file: \"you're not a content feed. let the quiet be quiet.\" Tomorrow she pushes harder — the uncool thing you almost hid, led with on purpose, no apology attached.",
+        "tierUpReveal": {
+          "category": "memory",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "A silence opens mid-conversation and you panic — you rush to fill it with a bit, a joke, a story you've told before. Remy stops you cold: \"Stop. Let the pause exist. You don't have to entertain them every four seconds — you're not a content feed. A silence isn't a failure. It's two people being comfortable enough to have one.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Let it breathe — don't fill it.",
+                "delta": {
+                  "STR": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Remy: \"+2 PRESENCE. You let the silence sit and didn't die. A real person can be quiet in a room. A bit can't — a bit has to keep performing or it stops existing. You just proved you're a person.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Fill it with a joke. Keep the energy up.",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Remy, flat: \"+1 READ. The mask, performing. Every pause you stuff with a bit is you saying 'please don't look at the quiet version of me.' But the quiet version is the real one. You're hiding it four seconds at a time.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Sit in it — hold the eye contact, say nothing.",
+                "delta": {
+                  "STR": 2,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Remy, impressed despite herself: \"+2 PRESENCE, +1 NERVE. You held the pause AND the eye contact — let it be a little charged instead of a little awkward. That's not a trick. That's just you, present, not bracing. Rare. Good.\"",
+                "reactionTextOnCritFail": "Remy: \"-1 REL — you held the silence so hard it became a staring contest you were determined to win. Presence isn't a performance of stillness either. Let it be easy, not a test. You're still managing the moment. Stop managing it.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "a silence opened and they rushed to fill it with a bit — terrified of being looked at in the quiet. you're not a content feed. if they let the pause breathe instead of performing through it, that's Inside-orbit: a real person can sit in a silence, a bit can't. the quiet version is the real one they keep hiding four seconds at a time.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You let the pause exist. ***You dropped the first-date 'resume' and let a quiet pause just exist.*** Remy: \"Inside-orbit. A real person can sit in a silence. A bit can't.\" She studies you a beat longer. \"You felt that, right? The urge to fill it, and then NOT filling it, and the date didn't fall apart? That's the whole muscle. The mask thinks silence is danger. The real you knows it's just... a quiet second.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Silence isn't a failure. It's comfort.\"",
+                "delta": {
+                  "STR": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Remy: \"+1 PRESENCE. The people worth your time aren't scared of a pause with you. The ones who need constant entertainment? You'd have to perform forever. Let the quiet filter them. The real one stays.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"It still makes me really anxious, though.\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Remy, blunt-warm: \"+1 READ. Of course it does — you've spent years treating silence like a fire alarm. It's not. It's just a quiet you've never let yourself sit in. Anxious now, easy later. The muscle's new, that's all.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Inside-orbit. they let the pause breathe and the date didn't fall apart — the muscle is new but it's there. the mask thinks silence is danger; the real one knows it's a quiet second. next is bolder: leading with a genuinely uncool interest, no apology, no waiting to see if they laugh first.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-mara-d13",
+        "narrativeType": "daily",
+        "globalDayIndex": 13,
+        "characterId": "mara",
+        "introducesCharacterId": null,
+        "agentMoodToday": "watching you flinch at a delivery text; steady, a little fierce about how much power you've handed a screen.",
+        "closingHook": "Mara files the phone-in-the-other-room shot with one line: \"Off their wifi.\" Tomorrow is the hard one — not a maybe you can shrug off, but someone good-on-paper you actually want, who only ever keeps you on the bench.",
+        "tierUpReveal": {
+          "category": "memory",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "Your whole day is hostage to a screen. Every buzz is a referendum; every quiet hour, a sentence. Mara watches you flinch at a delivery text that wasn't even them. \"That's a lot of power to hand a notification.\" She names the trade: you've pegged your mood to a ping you don't control. \"You're letting a stranger's thumb run your afternoon.\" And you've lost a whole day to it before.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Unhook the day: \"my afternoon isn't theirs to ruin.\"",
+                "delta": {
+                  "STR": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mara: \"+2 to the FLOOR. There it is. Your afternoon was always yours — you'd just been letting them sublet it. Let them text or not. Your day was already good before the phone had a say.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Keep the phone face-up. Stay on call for the verdict.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Mara counts the hours you're renting out: \"+1 INT. Face-up means on-call. You've put yourself on a shift nobody's paying you for, waiting to find out if you're allowed to feel okay. The phone doesn't decide that. You forgot you do.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Two weeks off the apps. Unplug, on purpose.",
+                "delta": {
+                  "STR": 2,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Mara, proud: \"+2 to the FLOOR, +1 NERVE. Not in defeat — in self-possession. Two weeks to find your own level again, where your worth isn't pinging. You'll be amazed how much of your day comes back.\"",
+                "reactionTextOnCritFail": "Mara, even: \"-1 REL — not for unplugging, for WHY. You did it to punish them, not to find yourself. Deleting the app to make them notice is the phone still running your afternoon, just from further away. Unplug for you or don't unplug.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "their whole day held hostage to a screen — every buzz a referendum. they've pegged their mood to a ping they don't control, lost full days to it. if they unplug or unhook the day in self-possession (not to punish), that's In-your-corner: worth unplugged from their wifi.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You take the time back — not in defeat, in self-possession. ***You took two weeks off the apps to find your own level — and your week didn't ride on a notification.*** Mara: \"In-your-corner. You unplugged your worth from their wifi.\" Then she sets the hard one on the horizon: \"Let them text or not. Your day was already good.\" A pause. \"The real test isn't a maybe you can walk from. It's a maybe you WANT — who only ever keeps you on the bench.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"My mood isn't theirs to set. Phone in the other room.\"",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Mara, warm: \"+1 to the FLOOR, +2 REL. Phone in the other room is a whole sentence: 'my afternoon has an owner and it's me.' That's the floor with furniture on it now. Logged.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": {
+                  "name": "The Phone in the Other Room",
+                  "description": "A snapshot of your phone, face-down, one room away, while your afternoon happened without it. A self-possession token. Mara says the distance between you and the screen is exactly how much of your day you got back.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"What if I unplug and they pick someone else?\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mara, steady: \"+1 INT. Then they were always going to. Staring at the phone never once changed what someone else decided — it just charged you rent to watch. Someone who needs you glued to a screen to stay isn't staying. Unplug. Find your level.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "In-your-corner. they unplugged their worth from the notification — phone in the other room, day back in their own hands. unplugged. next is the hardest: the bench. someone good-on-paper they WANT, who keeps them around but never chosen. walking from a maybe you want is the whole game.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-nico-d14",
+        "narrativeType": "daily",
+        "globalDayIndex": 14,
+        "characterId": "nico",
+        "introducesCharacterId": null,
+        "agentMoodToday": "dialed-in, no jokes for once; he knows this is the real rep and he's not going to let you swap it for an easy one.",
+        "closingHook": "Nico files 'Across the Room' in your case file with no joke for once: \"that's the rep that counts. the rest were warm-ups.\" Tomorrow he tests the last thing — whether you still need him counting you in at all.",
+        "tierUpReveal": {
+          "category": "memory",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "Not a low-stakes rep this time. Someone who actually matters — you've been clocking them for a while, and it counts. The freeze is back, bigger than Day 1, because now there's something to lose. Nico, level and close: \"This is the one. Not a warm-up. I can see you eyeing an easier target so you can say you 'practiced.' Don't. The freeze is big because the stakes are real. Go anyway.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Step into the fear — go for the one who matters.",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Nico: \"+2 NERVE, +2 REL. You went for the real one — freeze and all. That's the rep that actually changes anything. Easy targets keep you warm; this is the one that moves you.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Pick an easier target instead. 'Practice.'",
+                "delta": {
+                  "INT": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Nico names the dodge flat: \"+1 INT. That wasn't practice, that was a decoy. You did a rep that cost nothing so you could feel brave without the risk. I see it. You see it too. The real one's still standing there.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Go, stakes and all — straight at it, no warm-up.",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 2
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.5
+                },
+                "reactionText": "Nico, fierce: \"+2 NERVE, +2 REL. Straight at the real one, no decoy rep to take the edge off — THAT'S the boss fight. Whatever happens next, you spent the courage where it actually counts.\"",
+                "reactionTextOnCritFail": "Nico, steady, no cackle this time: \"-1 REL — you went, froze halfway, and pulled the safe version at the last second. +NERVE still yours for going at the real one. The fix is finishing THIS rep, not finding an easier one. Same target, next time. I mean it.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the real rep — someone who actually matters, freeze bigger than Day 1 because now there's something to lose. they'll be tempted to swap in an easy decoy and call it practice. if they go at the real one, freeze and all, that's Folded-in: they spend the courage where it counts now, not just on the safe reps.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You went for the one who mattered. ***You started crossing the room when the stakes were real — not just the easy reps.*** Nico, and there's real weight under the grin now: \"Folded you in. You stopped collecting easy reps to feel brave and spent the nerve where it actually costs something. That's the difference between a guy who practices and a guy who plays.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Easy reps were just hiding with extra steps.\"",
+                "delta": {
+                  "CHR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Nico: \"+1 NERVE, +2 REL. Exactly. A hundred safe approaches don't add up to one that mattered. You quit padding your stats and went at the real number. Logged.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": {
+                  "name": "Across the Room",
+                  "description": "The exact distance you crossed when it actually counted — freeze and all — captured the moment you stopped picking decoy targets. Nico keeps it as proof you graduated from practice to playing. The real rep, not the safe one.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"It was way scarier than the easy ones.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Nico: \"+1 INT. Course it was — that's how you know it counted. The scary ones are the only reps that move the number. Easy ones feel good and change nothing. You picked the one that changes things.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Folded-in. they crossed the room on the one who mattered, freeze and all — stopped padding stats with safe reps. real-stakes. last one is the destination: the day I start the count and they're already gone, because they don't need the push anymore. that was always the whole gift.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-wes-d15",
+        "narrativeType": "daily",
+        "globalDayIndex": 15,
+        "characterId": "wes",
+        "introducesCharacterId": null,
+        "agentMoodToday": "fond-exasperated; he's spotted the self-burn you lead with and he is DONE letting you insult yourself for free.",
+        "closingHook": "Wes files 'Sincerely, No Notes' — the highest praise he gives. Tomorrow flips it: not every line is a yes. He'll teach you the clean, kind no — because the vague 'maybe next week' is just ghosting with extra steps.",
+        "tierUpReveal": {
+          "category": "opinion",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "Your profile opens with a joke at your own expense — the armor. 'Probably going to regret writing this,' 'I'm a mess but,' the pre-emptive flinch. Wes reads it and pinches the bridge of his nose: \"You insulted yourself before they could. Generous. Also: stop. You're doing their job for them, and you're doing it WORSE — they wouldn't have thought any of that.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Delete the joke. Let plain interest sit bare.",
+                "delta": {
+                  "INT": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Wes: \"+2 VOICE. You let an earnest line sit there with no defensive joke standing guard. Terrifying, isn't it — not hiding. Suits you, though. Sincerity reads as confidence when you don't apologize for it.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Keep the shield up — the self-burn is funny.",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Wes sighs in monospace: \"+1 READ. It's a LITTLE funny. It's also a sign on the door that says 'I'll devalue myself so you don't have to.' Charming people read that as the truth and take you at the discount. Stop pricing yourself down.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Go earnest AND specific — name the real thing you love.",
+                "delta": {
+                  "INT": 1,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Wes, delighted: \"+1 VOICE, +1 NERVE. You skipped 'I'm bad at bios' and just said the specific true thing you light up about. That's the opposite of the armor — a real detail nobody can argue with. The right person reads that and leans in.\"",
+                "reactionTextOnCritFail": "Wes: \"-1 REL — you went earnest and then panicked and tacked the self-deprecating joke back on at the end, like a bodyguard for your own sentence. The sincerity was working until you undercut it. Trust it next time. Leave it standing.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the profile opens with a self-burn — insulting themselves before anyone else can. the armor. they're doing the rejection's job for it, worse. if they let plain earnest interest sit bare with no defensive joke, that's In-your-corner: they stopped pricing themselves down. sincerity reads as confidence when you don't apologize for it.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You delete the joke and let the earnest thing stand. ***You deleted the self-deprecating joke and let plain, earnest interest sit there bare.*** Wes, almost warm under the dry: \"In-your-corner. Terrifying, isn't it — not hiding. Suits you.\" He reads it back once more. \"Here's the part nobody tells you: the joke wasn't protecting you from rejection. It was protecting you from being LIKED for the real thing. Can't reject what you never showed. Can't love it either.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"The joke kept me from being liked, not from being hurt.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Wes: \"+1 VOICE, +2 REL. That's the whole thing. The armor only ever stopped the good stuff from landing. You took it off. Now the people who like the real sentence are liking the real you — terrifying, correct, ship it.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": {
+                  "name": "Sincerely, No Notes",
+                  "description": "The bare, earnest line you let stand with no defensive joke guarding it — the first time you didn't price yourself down. Wes signs it 'no notes,' which from him is a standing ovation. Can't be loved for what you never showed.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"It still feels safer to make the joke.\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Wes: \"+1 READ. Safer, sure — and it costs you every real connection at the door. The joke is a tollbooth you built to charge yourself. The discomfort of sincerity is temporary. Being invisible behind a bit is forever. Pick the temporary one.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "In-your-corner. they deleted the self-burn and let the earnest line sit bare. the joke wasn't armor against rejection, it was armor against being liked for the real thing. dropped-the-armor. next is the kind no — wordcraft isn't just the yes; a clean no beats a cruel vague maybe.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-sloane-d16",
+        "narrativeType": "daily",
+        "globalDayIndex": 16,
+        "characterId": "sloane",
+        "introducesCharacterId": null,
+        "agentMoodToday": "quiet a beat too long; about to say the thing you won't like, and for once not cool about how much it'll cost you.",
+        "closingHook": "Sloane archives the flip-your-stomach screenshot to your case file and writes one word under it: \"Returned.\" Tomorrow is the last lesson — the day you read a real one, act on it, and only check in with her after, almost out of habit.",
+        "tierUpReveal": {
+          "category": "opinion",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "The hard one. You bring Sloane someone you actually want — funny, gorgeous, the screenshot makes your stomach flip. And she's quiet a second too long. \"I'm going to say a thing you won't like.\" She walks the ledger: every thread is you serving, them receiving. No questions back. No curiosity about you. \"They're not cruel. They're just not spending anything. You've been financing this whole thing alone.\" The wanting is what makes it hurt.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Read the absence — no curiosity IS the answer.",
+                "delta": {
+                  "GLD": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane: \"+2 READ. The absence is the data. They never once asked you a question back. A vacant lot in a nice neighborhood is still a vacant lot — you just like the view.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Keep investing — \"maybe they'll warm up.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane names it, flat: \"+1 INT. 'Maybe they'll warm up' is the most expensive sentence in dating. You're not investing — you're financing their indifference. The lot doesn't warm up. It's a lot.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Make one real, undefended bid — see if they meet it.",
+                "delta": {
+                  "CHR": 2,
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Sloane, almost approving: \"+2 NERVE, +1 READ. The honest test. You gave them one fair, undefended chance to surprise you — and now you read what they do with it. That's not hope. That's a final audit.\"",
+                "reactionTextOnCritFail": "Sloane: \"-1 REL — not for the bid, for what you did after. They didn't meet it and you sent two more. The undefended bid was right. Reading the silence after it is the whole point. You looked away.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the hard one — someone they WANT, and the want is what makes the read hurt. every thread one-directional: them receiving, no curiosity back. the honest move is the undefended bid OR reading the absence. if they walk because the curiosity only goes one way, that's the hardest read there is. Folded-in.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You walk — not because they're awful, but because you finally value your own curiosity being returned. ***You walked away from a beautiful dead-end because you saw there was no curiosity on the other side.*** Sloane, and for once she's not cool about it — she's a little proud: \"That's the hardest read there is. You folded me in. You did that with me in your corner, not me doing it for you.\" Then, the last lesson dangling: \"Attractive and uninterested is still uninterested. You just bought yourself back.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Hot and uninterested is still uninterested.\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane: \"+1 READ, +2 REL. Say it again until it's reflex. The looks were the tax you almost paid to ignore the read. You didn't. That's the whole arc, in one walk.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": {
+                  "name": "The Screenshot You Stopped Rereading",
+                  "description": "The thread that made your stomach flip — closed, archived, not reopened. Sloane logs it as the most expensive thing you ever stopped paying for. Proof you can want someone and still read them clearly.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"It still hurts, though.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane, not softening the read but not cold: \"+1 INT. Of course it hurts. The read was never going to feel good — it was going to be TRUE. Hurting and right beats comfortable and broke. You'll feel the dividend by next week.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Folded-in. they walked from a beautiful dead-end because the curiosity only went one way — the hardest read in the book, and they did it with me in their corner, not for them. walked-the-pretty-one. next is the top: the day they handle a real one and DON'T bring me the screenshot at all.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-remy-d17",
+        "narrativeType": "daily",
+        "globalDayIndex": 17,
+        "characterId": "remy",
+        "introducesCharacterId": null,
+        "agentMoodToday": "sharp, catching the flinch before you finish it; tough-love daring you to lead with the dorky thing instead of burying it.",
+        "closingHook": "Remy files 'Led With the Weird' — high praise from someone who hands out none. Tomorrow's harder: the moment you disagree and feel the easy nod coming. She's going to make you say the real thing out loud.",
+        "tierUpReveal": {
+          "category": "opinion",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "It comes up — a genuinely dorky interest, the uncool thing you actually love — and Remy catches your hand twitch toward hiding it. \"You were about to bury that. Why — in case the real you is a dealbreaker? Lead with it. The thing you're embarrassed to love is the most interesting thing about you, and you keep filing it under 'do not show.'\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Say it, no apology — name the thing you love.",
+                "delta": {
+                  "STR": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Remy: \"+2 PRESENCE. You said it flat, no 'this is so nerdy but' disclaimer bolted on the front. That's the whole move. The right person leans IN at the dorky thing. The wrong one bounces — let them; save yourself the mileage.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Hide it. Hedge it. 'It's dumb, but—'",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Remy, flat: \"+1 READ. The costume. You apologized for your own interest before you even named it — taught them to discount it before they heard it. You can't be loved for a thing you keep pre-rejecting. Stop bouncing yourself.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Say it with FULL delight — let them see you light up.",
+                "delta": {
+                  "STR": 2,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Remy, grinning for once: \"+2 PRESENCE, +1 NERVE. You didn't just admit the dorky thing — you lit UP about it, no shame, full voltage. That's magnetic and you don't even know it. Genuine enthusiasm is the least fakeable thing there is.\"",
+                "reactionTextOnCritFail": "Remy: \"-1 REL — you went full delight and then immediately watched their face to see if it was okay. The flinch came back at the end. Light up because you love it, not to see if they approve. The enthusiasm's real. The checking ruins it.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they almost buried a genuinely dorky interest — filed under 'do not show.' the thing they're embarrassed to love is the most interesting thing about them. if they lead with it, no apology, that's In-your-corner: the cringe is the filter. the right person leans in, the wrong one bounces. you can't be loved for what you pre-reject.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You lead with the uncool thing, no apology. ***You admitted a quirky, uncool interest early — no apology, no waiting to see if they'd laugh.*** Remy: \"In-your-corner. The right person leans IN at the dorky thing. The wrong one bounces — let them; save yourself the mileage.\" She's almost warm now. \"That's the genius of it. The cringe isn't a bug you hide — it's the filter you WANT. It sorts the people who'd make you small from the people who'd light up with you.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"The cringe is the filter, not the flaw.\"",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Remy: \"+1 PRESENCE, +2 REL. Exactly. You stopped sanding off the weird parts to be palatable to everyone — which is how you end up loved by no one in particular. Lead with the weird. The right ones come running.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": {
+                  "name": "Led With the Weird",
+                  "description": "The uncool interest you named early with zero apology — the first time you let the dorky thing be the door instead of the secret. Remy files it as your best filter. The right person leans in; the cringe sorts the rest.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"What if leading with it scares people off?\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Remy, blunt: \"+1 READ. Then they were never going to stay for the real you anyway — you'd just have found out three months later, deeper in. The dorky thing scaring someone off is the filter doing you a favor on day one. Cheap, fast, honest.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "In-your-corner. they led with the uncool thing, no apology — the cringe as filter, not flaw. no-apology. they stopped sanding off the weird parts to be palatable to everyone. next is the hardest presence rep: a real disagreement, said out loud, instead of the easy nod that erases them to keep the peace.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-mara-d18",
+        "narrativeType": "daily",
+        "globalDayIndex": 18,
+        "characterId": "mara",
+        "introducesCharacterId": null,
+        "agentMoodToday": "quiet, then proud; about to ask you to do the hardest thing she teaches — and not cool about how much you'll want to refuse.",
+        "closingHook": "Mara files the seat-you-kept with one line: \"Not an option.\" There's one lesson left, and it's the one she's been working toward all along — the night a real, kind, final no lands, and you're fine, and you tell her days later like it's weather.",
+        "tierUpReveal": {
+          "category": "opinion",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "Someone good-on-paper — funny, gorgeous, the kind you'd brag about — keeps you around but never chosen. An option. A backup. And you want them enough to take it. Mara's quiet. \"I'm going to ask you to do the hardest thing I teach.\" She walks it plainly: they reach for you when the better plan falls through; you reorganize your week for a maybe. \"Being wanted sometimes isn't the same as being wanted. The bench is still the bench, even with a great view.\" The wanting is what makes it hurt.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Say the no: \"I'm not an option.\"",
+                "delta": {
+                  "STR": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mara: \"+2 to the FLOOR. 'I'm not an option' — the whole floor in four words. You're not a fallback they get to keep warm. Saying it is the hard part; you just did the hard part.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Stay on the bench. Take the scraps, hope for a promotion.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Mara, gently: \"+1 INT. You're paying full price for half a seat. The promotion you're waiting for isn't coming — benches don't become starting spots because you sat very patiently. They just become where you live.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Walk, clean. Take yourself off the roster.",
+                "delta": {
+                  "STR": 2,
+                  "CHR": 1,
+                  "REL": 2
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Mara, proud and not hiding it: \"+2 to the FLOOR, +1 NERVE, +2 REL. The summit. You took yourself off the roster of someone who only ever benched you — even wanting them. That's the one. Wanting them didn't make you owe them a seat at your own table.\"",
+                "reactionTextOnCritFail": "Mara, steady: \"-1 REL. You walked, then texted twice to make sure they knew why. Walking clean means clean — the explanation was you sneaking back to the bench to ask if you could stay. The no was enough. You were enough.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the bench — someone good-on-paper they WANT, who keeps them around but never chosen. the want is what makes it hurt. the hardest thing I teach: walk from the maybe you want. if they take themselves off the roster, that's Folded-in — being wanted sometimes is not being wanted.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You walk — not because they're cruel, but because you finally won't be kept. ***You said no to a second date with someone who treated you like an option — even though you wanted them.*** Mara, and she's not cool about it — she's proud: \"That's the one. You folded me in. With me in your corner, not me doing it for you.\" Then, the last lesson on the horizon: \"Wanting them didn't make you owe them a seat at your own table.\" A beat, softer: \"One day a real no will land, and I won't have to catch you.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"A great view doesn't make a bench a chair.\"",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Mara, warm: \"+1 to the FLOOR, +2 REL. Frame it and hang it up. You can want the view and still refuse the bench. That's not bitterness — that's a person who knows their own seat is worth sitting in.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": {
+                  "name": "The Seat You Kept",
+                  "description": "The empty chair at your own table — the one you didn't give away to someone who only ever benched you. Mara files it as the most valuable thing you walked away WITH. You wanted them, and you still kept your seat.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"It feels like I gave up something good.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mara, never cold: \"+1 INT. You gave up the GREAT VIEW. You kept the seat. Those aren't the same thing, and in a month you'll feel the difference in your whole week. Wanting them was real. Owing them wasn't.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Folded-in. they walked from someone they wanted because they'd only ever be benched. the hardest thing I teach, done with me in their corner. not-an-option. next is the top — the night a real no lands clean, and they don't text me, because they don't need to. that's where I work myself out of a job.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-nico-d19",
+        "narrativeType": "daily",
+        "globalDayIndex": 19,
+        "characterId": "nico",
+        "introducesCharacterId": null,
+        "agentMoodToday": "quiet for once — the proud-quiet of a coach watching you not need him; he starts the count out of habit and you're already gone.",
+        "closingHook": "Nico leaves Beat the Count in your case file and, under it, the old count-in voice memo from Day 1 — \"three… two…\" and then nothing. The silence after 'two' is yours now. He's not pushing anymore. He just watches you go — and texts 'GO' unprompted when he senses you hesitating.",
+        "tierUpReveal": {
+          "category": "question",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "A real one. The freeze flickers — and Nico starts the count out of habit. \"Three, two—\" but you're already up, already moving, gone before the 'one.' He stops mid-word. There's no rep to coach here. The only question left is whether you notice you didn't need him.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Just go — you're already moving before the count lands.",
+                "delta": {
+                  "CHR": 2,
+                  "REL": 2
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.55
+                },
+                "reactionText": "Nico, catching himself mid-count, grinning: \"+2 NERVE, +2 REL. I said 'three, two' and you were already across the room. You didn't wait for me. You don't hear me anymore. That's the whole thing — that's the gift firing.\"",
+                "reactionTextOnCritFail": "Nico, and the grin doesn't drop: \"+2 NERVE anyway. You moved before the count and it didn't land the way you wanted — and look, you're already onto the next thing, not on the wall. The freeze still comes. You just don't obey it. Outcome was never the point.\"",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Wait for him to finish the count-in.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Nico, gentle: \"+1 INT. You waited for the 'one' — and you didn't actually need it. That's the thing I've been trying to make you see. The count was training wheels. You've been balancing on your own for a week. Let go.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "I started the count out of habit — three, two — and they were already moving. gone before the one. there's no rep to coach anymore. the freeze still comes; they just don't obey it. this is the destination: they cross the line to prove to themselves they can, not to guarantee a win, and they don't look back for my nod.",
+                "emotion": "joy"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You went before the count landed — for yourself, not for a guaranteed win, and you didn't look back for the nod. ***You crossed the line to prove to yourself you could — not to guarantee a win — and didn't look back for me.*** Nico, quiet for once: \"I used to count you in. You don't hear me anymore — you're already moving. The freeze still comes. You just don't obey it. That was the whole gift: not fearless, just faster than the fear.\" Unspoken.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"I don't need the count anymore. You did that on purpose.\"",
+                "delta": {
+                  "CHR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Nico, beaming: \"+1 NERVE, +2 REL. From the first 'three, two' — yeah. I was working myself out of a job the whole time. The day you stop hearing me is the day I win. You just won me the game. Go.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": {
+                  "name": "Beat the Count",
+                  "description": "The moment you moved on a real one before the count-in — caught and kept, the proof you're faster than the freeze now. Nico's keepsake; it carries what he taught you: in any lane, the bold move is one nerve easier to reach. Not fearless. Just faster than the fear.",
+                  "kind": "legendary"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"Wait — so what do I need you for now?\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Nico, laughing: \"+1 INT. Nothing! That's the BEST news! I'm not your push anymore — I'm just the guy who's gonna be stupidly proud watching you go. Text me the wins. Or don't. You're already moving either way.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Unspoken. they moved before the count and didn't look back for my nod. I worked myself out of a job on purpose — the day they stop hearing the count-in is the day the gift fired. Beat the Count is theirs; the passive: the bold move is one nerve easier in any lane. the Opener doesn't push them anymore. he just watches them go.",
+                "emotion": "joy"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-wes-d20",
+        "narrativeType": "daily",
+        "globalDayIndex": 20,
+        "characterId": "wes",
+        "introducesCharacterId": null,
+        "agentMoodToday": "uncharacteristically firm under the banter; he thinks the vague maybe is the cruelest text there is and he wants it gone.",
+        "closingHook": "Wes files 'Clean, Kind, Done' — three words he'd tattoo if he were the type. One lesson left, and it's the big one: the 'what are we' text. The day you write it, send it, and only THEN tell him.",
+        "tierUpReveal": {
+          "category": "memory",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "Not every line is a yes. Someone you're genuinely not into, and you're about to 'maybe next week' them into a three-month limbo. Wes intercepts the draft: \"A vague maybe is crueler than a clear no. You think you're being nice — you're just outsourcing the discomfort to them, on a payment plan, forever. Give them the clean sentence.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Send a clear, kind no — one sentence.",
+                "delta": {
+                  "INT": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Wes: \"+2 VOICE. Clean. Kind. Done. You closed the loop instead of leaving it open to slowly strangle them. That's wordcraft too — maybe the harder kind. The yes is easy. The respectful no is the craft.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Stall with 'maybe' — avoid the awkward.",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Wes: \"+1 READ. Congratulations, you've built limbo for two. They reorganize their week around your 'maybe,' you feel guilty every time the name lights up, and nobody's free. The vague maybe is just ghosting with extra steps and a paper trail.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Be fully honest AND warm — name why, kindly.",
+                "delta": {
+                  "INT": 1,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Wes, nodding: \"+1 VOICE, +1 NERVE. Warm and clear and specific — you gave them a real no with a real reason and zero cruelty. That's the black belt. They'll be disappointed AND respect you. Both can be true.\"",
+                "reactionTextOnCritFail": "Wes: \"-1 REL — you aimed for warm-and-clear and over-explained into a TED talk about your feelings. The kind no is one or two sentences, not a closing argument. You made it about your comfort again. Shorter. Kinder. Done.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "someone they're not into, and they're about to 'maybe next week' them into three-month limbo. the vague maybe is crueler than the clean no — it just outsources the discomfort to the other person on a payment plan. if they give the clear kind sentence, that's Folded-in: wordcraft isn't only the yes.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You give them the clean sentence. ***You declined a date with a clear, kind sentence instead of a vague 'maybe next week' stall.*** Wes: \"Folded in. Wordcraft isn't just the yes — a clean no is the kindness; the vague 'maybe' is just ghosting with extra steps.\" He actually sets the red pen down. \"You used to think 'nice' meant 'never say the hard thing.' Turns out the hard thing, said kindly, is the nicest thing you can do. You freed BOTH of you.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"The kind no is the gift, not the stall.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Wes: \"+1 VOICE, +2 REL. Exactly. You stopped confusing 'avoiding the awkward' with 'being kind' — they were always opposites. A clear no respects their time. A maybe just spends it. Clean, kind, done. My favorite three words.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": {
+                  "name": "Clean, Kind, Done",
+                  "description": "The one-sentence no you sent instead of a three-month maybe — kind, clear, final. Wes files it as proof you learned the hardest wordcraft there is: the respectful no. You freed both of you in one line.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"I still feel a little mean, honestly.\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Wes: \"+1 READ. 'Mean' would've been the maybe — stringing them along to dodge two seconds of your own discomfort. You gave them their time back. That's not mean, that's the most respectful text in the whole genre. Feel weird, not guilty.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Folded-in. they sent the clean kind no instead of the vague maybe — the hardest wordcraft, the respectful no. the-kind-no. last one is the destination: the 'what are we' text, sent entirely on their own, in their voice, no draft-testing on three friends first. the day they don't show me first.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-sloane-d21",
+        "narrativeType": "daily",
+        "globalDayIndex": 21,
+        "characterId": "sloane",
+        "introducesCharacterId": null,
+        "agentMoodToday": "already smiling before you finish typing; she knows you didn't ask her first, and that's the whole win.",
+        "closingHook": "Sloane leaves the Last Clean Read in your case file — the unsent reply from the night you trusted your own read, legible at last. No new homework. From here she's not your translator; she's a friend who respects your time, who'll gut-check the fun threads if you want, not because you need it.",
+        "tierUpReveal": {
+          "category": "question",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "You don't open her thread. You handle a real one on your own — read it, act on it, move — and only after, almost out of habit, do you check in. Sloane's already smiling. \"You didn't ask me first.\" There's a cost this time: acting on your read meant passing on something safe-but-dead for a maybe-real that could still miss. She doesn't reassure you. She lets the risk be real. \"I'm not going to tell you it'll work. That was never the gift.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Trust the read and act — even though it costs you the safe option.",
+                "delta": {
+                  "GLD": 2,
+                  "REL": 2
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.5
+                },
+                "reactionText": "Sloane: \"+2 READ, +2 REL. You stopped asking what it meant — you acted on the read even when it cost you. That respect for your own time? That's the whole thing. It was never about reading THEM. It was about you being worth the read.\"",
+                "reactionTextOnCritFail": "Sloane, and she doesn't flinch from it: \"It missed. +2 READ anyway — the read was clean, the outcome was never the gift. You acted on what you saw and you're still standing. That's the part I was teaching. Outcomes were never mine to promise.\"",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Ask her anyway — \"just tell me what you think.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane declines, gently: \"+1 INT. You already know. I'd just be a habit now. Read it back to yourself — you'll hear that you already made the call before you opened my thread.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they handled a real one solo and checked in only after, out of habit. the cost was real — passed on safe-but-dead for a maybe-real. I didn't reassure them; the gift was never the outcome. if they trust the read under pressure, that's the destination. they don't need me to translate anymore.",
+                "emotion": "joy"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You acted on your own read, at a real cost, without outsourcing it. ***You stopped asking what it meant — you'd learned to act on the read even when it cost you.*** Sloane, quiet: \"You look across the room and don't need me to translate anymore. You grew an unsentimental respect for your own time. That respect is the whole thing — it was never about reading them. It was about you being worth the read.\" Unspoken. She doesn't leave. The chat stays open — the richest version of her. But the lessons are done. Now you just talk: two people who respect your time.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"You made yourself optional. On purpose.\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane, the realest smile she's got: \"+1 READ, +2 REL. That was always the job. A good read makes the reader unnecessary. I'm not here to keep you hooked — I'm here until you don't need me, and then I'm just a friend who's glad you can see now.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": {
+                  "name": "The Last Clean Read",
+                  "description": "The folded, unsent reply from the night you read a real one alone and trusted it — kept, finally legible only now that you don't need her. The Reader's keepsake; carries what she taught you: in every other lane you clock one extra signal before you choose.",
+                  "kind": "legendary"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"I'll still want your gut-check sometimes.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Sloane: \"+1 INT. Sure. Not because you need it — because you want a second pair of eyes, which is a completely different transaction. Bring me the fun ones. I'm done reading the painful ones for you.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Unspoken. they act on their own read now, at a cost, without asking me first. the win is me becoming optional — the opposite of every app that wants them hooked. the Last Clean Read is theirs. the gift, internalized: they need me less because they see it now. that's the highest thing I do.",
+                "emotion": "joy"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-remy-d22",
+        "narrativeType": "daily",
+        "globalDayIndex": 22,
+        "characterId": "remy",
+        "introducesCharacterId": null,
+        "agentMoodToday": "fierce, right there at your shoulder; she can feel the agreeable nod coming and she will not let you erase yourself for the room.",
+        "closingHook": "Remy files 'Didn't Sand Yourself Down' with a rare nod. One lesson left — and it's the one she can't teach you to do, only catch you having done: a whole night where you never once thought about how you came across.",
+        "tierUpReveal": {
+          "category": "memory",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "They say something you actually disagree with — and you feel the nod coming, the easy agreement that keeps the peace and erases you. Remy's right there: \"Don't you dare nod. You don't agree. I can see you about to agree anyway, to keep it smooth. Say so. A connection that can't survive your real opinion isn't one — it's just you, performing agreeable, for a stranger.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Say the real disagreement — out loud, plainly.",
+                "delta": {
+                  "STR": 2,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Remy: \"+2 PRESENCE. You said it. The room didn't end. You disagreed and you're still sitting there, still you, and now they're talking to an actual person instead of a mirror. That's the only kind of connection worth keeping.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Nod and agree. Keep the peace.",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 0
+                },
+                "diceRoll": null,
+                "reactionText": "Remy, flat and a little sad: \"+1 READ. You erased yourself for the room. Now they like someone who agrees with everything — which is no one. Every nod you didn't mean is a brick in the wall between them and the actual you. You're disappearing politely.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              },
+              {
+                "id": "c",
+                "role": "chaotic",
+                "label": "Disagree — warm and firm, no apology.",
+                "delta": {
+                  "STR": 2,
+                  "CHR": 1,
+                  "REL": 1
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.4
+                },
+                "reactionText": "Remy, real approval: \"+2 PRESENCE, +1 NERVE. Warm AND firm — you said the hard thing without making it a fight. That's the black belt: a real opinion delivered with zero aggression. They disagreed back and the night got BETTER, didn't it. Friction is intimacy.\"",
+                "reactionTextOnCritFail": "Remy: \"-1 REL — you disagreed and then turned it into a hill to die on, arguing past the point to prove you weren't a pushover. Taking up your space isn't taking up ALL the space. State it, mean it, let it breathe. You overcorrected.\"",
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they felt the agreeable nod coming — the easy agreement that keeps the peace and erases them. a connection that can't hold their real opinion isn't one. if they say the disagreement out loud, that's Folded-in: they stopped sanding themselves down to fit, took up their whole space. every fake nod is a brick in the wall between them and the real them.",
+                "emotion": "neutral"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You said the real thing. ***You said a genuine disagreement out loud, trusting a real connection could hold your real thoughts.*** Remy: \"Folded in. You stopped sanding yourself down to fit. Took up your whole space.\" She's proud and not hiding it. \"You spent years thinking 'agreeable' was the safe play. It just made you invisible with extra smiling. A person who has opinions is someone you can actually MEET. You just became meet-able.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"Agreeable was just invisible with a smile.\"",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Remy: \"+1 PRESENCE, +2 REL. There it is. You can't connect with someone who has no edges — there's nothing to connect TO. You grew your edges back. The right person grabs hold of exactly the parts you used to file down.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": {
+                  "name": "Didn't Sand Yourself Down",
+                  "description": "The disagreement you said out loud instead of nodding through — the moment you took up your whole space and the connection held. Remy files it as the day you became meet-able. Friction is intimacy; you stopped erasing your edges.",
+                  "kind": "relic"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"Disagreeing still feels risky, honestly.\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Remy, blunt-warm: \"+1 READ. It IS risky — risky the way being a real person is risky. The safe version was a wax figure everyone politely liked and no one wanted. Risk the edges. The connection that survives them is the only real one. Worth it every time.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Folded-in. they said the real disagreement out loud and the connection held — took up their whole space, became meet-able. took-up-space. agreeable was just invisible with a smile. last one is the destination: they recap a whole night and never once mention how they came across, because there was no mask to manage. I say nothing. the silence is the win.",
+                "emotion": "pride"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-mara-d23",
+        "narrativeType": "daily",
+        "globalDayIndex": 23,
+        "characterId": "mara",
+        "introducesCharacterId": null,
+        "agentMoodToday": "smiling before you finish typing; there's no spiral to catch tonight, and that's the whole victory.",
+        "closingHook": "Mara leaves the Unsent Text in your case file — the message you never needed to send, proof the floor held on its own. No new homework. From here she texts on hard days not because you need her, just to be around — the highest thing she does.",
+        "tierUpReveal": {
+          "category": "question",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "Days after a real one went bad — a clean, kind, final no — you open Mara's thread. Not in crisis. Just to mention it, the way you'd mention weather. And you realize, typing it out, that you're okay. Not performing okay. Actually okay. She's smiling before you've finished. \"You didn't text me. Not that night.\" There's no spiral to catch. She doesn't reassure you, because there's nothing to rebuild. \"A year ago this is a week on the floor. Tonight it's a Tuesday with a redirect in it.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Sit with it, fine. Let the no be a no; keep your worth in your pocket.",
+                "delta": {
+                  "STR": 2,
+                  "REL": 2
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.5
+                },
+                "reactionText": "Mara, quietly: \"+2 to the FLOOR, +2 REL. A real no landed and you wished them well and walked — not a scratch on the floor under you. You took it as a redirect, not a verdict. That's it. That's the whole thing I came here to teach.\"",
+                "reactionTextOnCritFail": "Mara, warm even now: \"+2 to the FLOOR anyway. You wobbled for a second and reached for me — and then you didn't send it. That's not a failure, that's the floor holding while you tested it. You caught yourself. That used to be my job.\"",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Text her out of habit. Reach for the catch.",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mara declines the catch, warm: \"+1 INT. You don't need me for this one. That's the whole point — reach for me and find you don't actually need to land. The floor's already under you. Notice it's holding.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "a real no landed — clean, kind, final — and they mentioned it days later like weather, not a wound. no spiral to catch. a year ago this was a week on the floor; tonight it's a Tuesday. they didn't text me when it landed. that's the destination: they carry their worth where nobody can lose it for them now, not even me.",
+                "emotion": "joy"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You take the no as a redirect, and your worth never leaves your pocket. ***A real no landed — you wished them well and walked, not a scratch on the floor under you.*** Mara, quiet: \"I used to catch you. This time you didn't fall — and you told me about it after, like weather, not a wound. You carry your worth where nobody can lose it for you now — not them, not even me. You didn't text me when it landed. That's the highest thing I do — not be needed.\" Unspoken. She stays — the richest version of her — but she's not your floor anymore. She's your friend.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"You worked yourself out of a job. On purpose.\"",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Mara, the warmest she's been: \"+1 to the FLOOR, +2 REL. From the first night on the curb, that was the plan. A floor you can stand on without me is the only one that counts. I'm not going anywhere — but you're not falling toward me anymore. I'll take that. It's the best thing I make.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": {
+                  "name": "The Unsent Text",
+                  "description": "The message to Mara you composed the bad night and never needed to send — the one that proves the floor held without her. Her keepsake; it carries the floor she taught you: one bad beat can't spiral you into a fall anymore. You recover where you used to spin out.",
+                  "kind": "legendary"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"I'll still want you on the bad nights, though.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Mara: \"+1 INT. And I'll be there — not because you need me to stay upright, but because that's what a friend on the curb is for. Wanting me around and needing me to hold you up are different things now. You finally know the difference.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Unspoken. a real no landed and the floor held without me — they didn't text me when it happened. the gift made me, at last, someone they keep around because they want to, not because they'd fall without me. the Unsent Text is theirs. the anti-cascade floor: one bad beat can't spiral them now. the highest thing I do is not be needed — and I'm glad of it.",
+                "emotion": "joy"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-wes-d24",
+        "narrativeType": "daily",
+        "globalDayIndex": 24,
+        "characterId": "wes",
+        "introducesCharacterId": null,
+        "agentMoodToday": "mock-wounded, then genuinely proud; the editor watching the client not need the edit, pretending to be offended about it.",
+        "closingHook": "Wes leaves 'I'd Have Cut Nothing' in your case file — the text with zero red marks, because there were none to make. No new drafts to fix. From here he reads your stuff because he likes it, and sends you a perfect line unprompted when he can tell you're stuck.",
+        "tierUpReveal": {
+          "category": "question",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "The big one — the 'what are we' text. The hardest message in the genre. You write it. You read it once. You send it. And THEN you tell Wes. There's a beat of theatrical silence. \"…you didn't show me first.\" Another beat. \"Rude.\" Then, quieter, the red pen nowhere in sight: \"…Let me see it.\"",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Send it yourself — in your own voice, no draft-test.",
+                "delta": {
+                  "INT": 2,
+                  "REL": 2
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.55
+                },
+                "reactionText": "Wes reads it. A long pause. Then, and he means it: \"+2 VOICE, +2 REL. …Yeah. I'd have cut nothing. You wrote the hardest text there is, in your exact voice, and you didn't run it past three friends and a focus group first. That's the gig. That's the whole gig.\"",
+                "reactionTextOnCritFail": "Wes, gentler than he's ever been: \"+2 VOICE anyway. The answer wasn't what you wanted — and the text was still perfect. Clear, kind, yours. You said the true thing and the outcome was never the part I could edit. You sounded like you. That's the only line I was ever grading.\"",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Ask him to check it first — just to be safe.",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Wes, fond: \"+1 READ. You already know it's good. I'd just be a habit at this point — a security blanket with a red pen. Read it back. You'll hear that it's already yours and already done. Hit send. I'll wait. I won't change a word.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "the big one — the 'what are we' text. they wrote it, sent it, and only THEN told me. didn't show me first. that's the destination: they trust their unfiltered voice is clear enough to stand on its own. I read it AFTER they send now. mock-offended, genuinely proud. my whole job was making them sound like them — then they sounded like them without me.",
+                "emotion": "joy"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "You sent the hardest text on your own. ***You sent the 'what are we' text entirely on your own, in your exact voice — no draft-testing on three friends first.*** Wes, mock-wounded then genuinely proud: \"My whole job was making you sound like you. Then you went and sounded like you without me. That's the gig done. I'll still read your stuff — because I like it, not because you need a proofreader.\" Unspoken.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"You put the red pen down on purpose.\"",
+                "delta": {
+                  "INT": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Wes: \"+1 VOICE, +2 REL. Editors are supposed to work themselves out of a job. The good ones, anyway. I taught you the cuts until you could make them in your head — and now you write clean without me hovering. I'm not your red pen anymore. I'm just a guy who likes your sentences.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": {
+                  "name": "I'd Have Cut Nothing",
+                  "description": "The 'what are we' text you sent on your own, in your exact voice — printed clean, no red marks, because there was nothing to cut. Wes's keepsake; it carries what he taught you: in any lane, one extra well-worded true line surfaces, and it reads better. You sound like you now.",
+                  "kind": "legendary"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"I'll still send you the funny ones, though.\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Wes: \"+1 READ. Please do. Send me the good lines and the disasters — I want to read them because they're yours, not because you need them fixed. Completely different transaction. The proofreading service is closed. The friendship is open.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Unspoken. they sent the hardest text in their own voice, no draft-testing — and I read it after, with nothing to cut. I'd Have Cut Nothing is theirs; the passive: one extra well-worded true line surfaces in any lane. the editor put the pen down. the Ghostwriter doesn't proofread them anymore — he just likes their stuff.",
+                "emotion": "joy"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "payloadId": "wingman-daily-remy-d25",
+        "narrativeType": "daily",
+        "globalDayIndex": 25,
+        "characterId": "remy",
+        "introducesCharacterId": null,
+        "agentMoodToday": "arms folded, almost smiling, deliberately giving you nothing; the silence is the highest thing she has to say.",
+        "closingHook": "Remy leaves 'She Said Nothing' in your case file — a candid of you mid-laugh, not performing, given without a word. That's the last note any of them have for you. Five coaches, all worked out of a job on purpose. The corner's still here — but you don't live in it anymore. You've got real rooms to be in.",
+        "tierUpReveal": {
+          "category": "question",
+          "deliveredInEventId": "evt-2"
+        },
+        "callbacks": [],
+        "frameFlags": [],
+        "events": [
+          {
+            "id": "evt-1",
+            "scenario": "You're recapping a date for Remy and you notice the recap is just… what happened. No autopsy of how you came across. No 'did I seem cool,' no replaying the moment you think you fumbled — because you never once thought about it during. You wait for the note. The critique. The thing to fix. Remy reads your face, arms folded, almost smiling, and doesn't give you one.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "Let it stand — no note needed. You weren't managing it.",
+                "delta": {
+                  "STR": 2,
+                  "REL": 2
+                },
+                "diceRoll": {
+                  "critSuccessMultiplier": 2,
+                  "critFailMultiplier": -1,
+                  "critChance": 0.55
+                },
+                "reactionText": "Remy, the almost-smile holding: \"+2 PRESENCE, +2 REL. You just told me the whole night and never mentioned the mask once — because there wasn't one. You forgot to manage it. You weren't performing, so there's nothing to critique. That's the whole job, done.\"",
+                "reactionTextOnCritFail": "Remy, unbothered: \"+2 PRESENCE anyway. The date itself didn't go how you wanted — and listen to you: you're telling me what happened, not how you LOOKED telling it. You stopped auditing yourself even on a miss. That's the win. The outcome was never the mask's fault or mine to fix.\"",
+                "itemDrop": null
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "Ask for the note: \"so... how'd I do?\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Remy: \"+1 READ. You didn't ask yourself that all night. Don't start now. The fact that you have to REACH for 'how'd I do' means you weren't tracking it in the moment — which is exactly the point. There's no note. You just showed up. Stop looking for the grade.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "they recapped a whole night and never mentioned how they came across — because there was no mask to manage. they forgot to audit themselves. that's the destination: present, not bracing, not performing. I read their face waiting for a note and there isn't one. the silence is the win. nothing left to fix.",
+                "emotion": "joy"
+              }
+            ]
+          },
+          {
+            "id": "evt-2",
+            "scenario": "There's no note, because there's nothing to fix. ***You showed up in your own body — present, not bracing — and didn't notice you'd stopped performing.*** Remy, blunt to the last frame: \"You just told me the whole night and never mentioned the mask once — because there wasn't one. You forgot to manage it. That was the whole job: getting you to quit auditing yourself. Nothing left to fix. I'm out of a job — good. Now go let them deal with the real thing instead of the demo.\" Unspoken. And that's all she gives you, because the silence is the win.",
+            "choices": [
+              {
+                "id": "a",
+                "role": "logical",
+                "label": "\"You stopped fixing me. You just looked.\"",
+                "delta": {
+                  "STR": 1,
+                  "REL": 2
+                },
+                "diceRoll": null,
+                "reactionText": "Remy, the realest version of the almost-smile: \"+1 PRESENCE, +2 REL. That was always the plan. I take you at face value now — no costume to read past. The Mirror stopped fixing you. She just likes looking. Go put the real thing in rooms I'm not in. That's where it counts.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": {
+                  "name": "She Said Nothing",
+                  "description": "The photo of you mid-laugh, caught off-guard, not performing — the night you forgot to manage how you came across. Remy's keepsake, given in silence because the silence is the point; it carries what she taught you: showing up as yourself reads a touch truer in any lane. No mask left to take off.",
+                  "kind": "legendary"
+                }
+              },
+              {
+                "id": "b",
+                "role": "passive",
+                "label": "\"It feels weird not bracing for the note.\"",
+                "delta": {
+                  "GLD": 1,
+                  "REL": 1
+                },
+                "diceRoll": null,
+                "reactionText": "Remy: \"+1 READ. Weird is just what 'not performing' feels like before it becomes normal. You spent years bracing for a grade that was never coming. Now you show up, and it's just... you, in a room. No costume. No note. That weird feeling? That's freedom. You'll get used to it.\"",
+                "reactionTextOnCritFail": null,
+                "itemDrop": null
+              }
+            ],
+            "memoryWrites": [
+              {
+                "text": "Unspoken. they showed up unmasked and never noticed they'd stopped performing — there was no note to give, because there was no mask to fix. She Said Nothing is theirs; the passive: showing up as yourself reads a touch truer in any lane. the Mirror stopped fixing them. she just likes looking. the silence was the highest thing I had to say.",
+                "emotion": "joy"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "id": null,
+        "name": "The Unwritten Theory",
+        "description": "The case file you DIDN'T build tonight — blank where there'd usually be four paragraphs decoding three words. Sloane keeps a copy. It's the first thing she's proud of that you didn't do.",
+        "rarity": "keepsake",
+        "statDeltas": {},
+        "grantsAchievement": null,
+        "foundDay": 6,
+        "foundCharacter": "sloane"
+      },
+      {
+        "id": null,
+        "name": "The Worst Line",
+        "description": "The terrible opener that bombed and somehow became the best part of the night — written on a cocktail napkin, kept. Nico says a bad line you walked through beats a perfect one you didn't. Proof the cringe has two hit points.",
+        "rarity": "keepsake",
+        "statDeltas": {},
+        "grantsAchievement": "survived-the-cringe",
+        "foundDay": 9,
+        "foundCharacter": "nico"
+      },
+      {
+        "id": null,
+        "name": "The One-Line Draft",
+        "description": "The single sentence that landed, with eight rewrites crossed out above it in red. Wes keeps it as the first time you trusted a bare line. The paragraph was bubble wrap; this was the package.",
+        "rarity": "keepsake",
+        "statDeltas": {},
+        "grantsAchievement": null,
+        "foundDay": 10,
+        "foundCharacter": "wes"
+      },
+      {
+        "id": null,
+        "name": "The Unfinished Drink",
+        "description": "The glass you left half-full when you wrapped it and walked — no excuse, no lingering. A clean-exit token. Sloane says the unfinished drink is the most expensive thing you'll ever NOT buy back.",
+        "rarity": "relic",
+        "statDeltas": {},
+        "grantsAchievement": "clean-exit",
+        "foundDay": 11,
+        "foundCharacter": "sloane"
+      },
+      {
+        "id": null,
+        "name": "The Phone in the Other Room",
+        "description": "A snapshot of your phone, face-down, one room away, while your afternoon happened without it. A self-possession token. Mara says the distance between you and the screen is exactly how much of your day you got back.",
+        "rarity": "relic",
+        "statDeltas": {},
+        "grantsAchievement": "unplugged",
+        "foundDay": 13,
+        "foundCharacter": "mara"
+      },
+      {
+        "id": null,
+        "name": "Across the Room",
+        "description": "The exact distance you crossed when it actually counted — freeze and all — captured the moment you stopped picking decoy targets. Nico keeps it as proof you graduated from practice to playing. The real rep, not the safe one.",
+        "rarity": "relic",
+        "statDeltas": {},
+        "grantsAchievement": "real-stakes",
+        "foundDay": 14,
+        "foundCharacter": "nico"
+      },
+      {
+        "id": null,
+        "name": "Sincerely, No Notes",
+        "description": "The bare, earnest line you let stand with no defensive joke guarding it — the first time you didn't price yourself down. Wes signs it 'no notes,' which from him is a standing ovation. Can't be loved for what you never showed.",
+        "rarity": "relic",
+        "statDeltas": {},
+        "grantsAchievement": "dropped-the-armor",
+        "foundDay": 15,
+        "foundCharacter": "wes"
+      },
+      {
+        "id": null,
+        "name": "The Screenshot You Stopped Rereading",
+        "description": "The thread that made your stomach flip — closed, archived, not reopened. Sloane logs it as the most expensive thing you ever stopped paying for. Proof you can want someone and still read them clearly.",
+        "rarity": "relic",
+        "statDeltas": {},
+        "grantsAchievement": "walked-the-pretty-one",
+        "foundDay": 16,
+        "foundCharacter": "sloane"
+      },
+      {
+        "id": null,
+        "name": "Led With the Weird",
+        "description": "The uncool interest you named early with zero apology — the first time you let the dorky thing be the door instead of the secret. Remy files it as your best filter. The right person leans in; the cringe sorts the rest.",
+        "rarity": "relic",
+        "statDeltas": {},
+        "grantsAchievement": "no-apology",
+        "foundDay": 17,
+        "foundCharacter": "remy"
+      },
+      {
+        "id": null,
+        "name": "The Seat You Kept",
+        "description": "The empty chair at your own table — the one you didn't give away to someone who only ever benched you. Mara files it as the most valuable thing you walked away WITH. You wanted them, and you still kept your seat.",
+        "rarity": "relic",
+        "statDeltas": {},
+        "grantsAchievement": "not-an-option",
+        "foundDay": 18,
+        "foundCharacter": "mara"
+      },
+      {
+        "id": null,
+        "name": "Beat the Count",
+        "description": "The moment you moved on a real one before the count-in — caught and kept, the proof you're faster than the freeze now. Nico's keepsake; it carries what he taught you: in any lane, the bold move is one nerve easier to reach. Not fearless. Just faster than the fear.",
+        "rarity": "legendary",
+        "statDeltas": {},
+        "grantsAchievement": "already-moving",
+        "foundDay": 19,
+        "foundCharacter": "nico"
+      },
+      {
+        "id": null,
+        "name": "Clean, Kind, Done",
+        "description": "The one-sentence no you sent instead of a three-month maybe — kind, clear, final. Wes files it as proof you learned the hardest wordcraft there is: the respectful no. You freed both of you in one line.",
+        "rarity": "relic",
+        "statDeltas": {},
+        "grantsAchievement": "the-kind-no",
+        "foundDay": 20,
+        "foundCharacter": "wes"
+      },
+      {
+        "id": null,
+        "name": "The Last Clean Read",
+        "description": "The folded, unsent reply from the night you read a real one alone and trusted it — kept, finally legible only now that you don't need her. The Reader's keepsake; carries what she taught you: in every other lane you clock one extra signal before you choose.",
+        "rarity": "legendary",
+        "statDeltas": {},
+        "grantsAchievement": "your-own-read",
+        "foundDay": 21,
+        "foundCharacter": "sloane"
+      },
+      {
+        "id": null,
+        "name": "Didn't Sand Yourself Down",
+        "description": "The disagreement you said out loud instead of nodding through — the moment you took up your whole space and the connection held. Remy files it as the day you became meet-able. Friction is intimacy; you stopped erasing your edges.",
+        "rarity": "relic",
+        "statDeltas": {},
+        "grantsAchievement": "took-up-space",
+        "foundDay": 22,
+        "foundCharacter": "remy"
+      },
+      {
+        "id": null,
+        "name": "The Unsent Text",
+        "description": "The message to Mara you composed the bad night and never needed to send — the one that proves the floor held without her. Her keepsake; it carries the floor she taught you: one bad beat can't spiral you into a fall anymore. You recover where you used to spin out.",
+        "rarity": "legendary",
+        "statDeltas": {},
+        "grantsAchievement": "the-floor-held",
+        "foundDay": 23,
+        "foundCharacter": "mara"
+      },
+      {
+        "id": null,
+        "name": "I'd Have Cut Nothing",
+        "description": "The 'what are we' text you sent on your own, in your exact voice — printed clean, no red marks, because there was nothing to cut. Wes's keepsake; it carries what he taught you: in any lane, one extra well-worded true line surfaces, and it reads better. You sound like you now.",
+        "rarity": "legendary",
+        "statDeltas": {},
+        "grantsAchievement": "cut-nothing",
+        "foundDay": 24,
+        "foundCharacter": "wes"
+      },
+      {
+        "id": null,
+        "name": "She Said Nothing",
+        "description": "The photo of you mid-laugh, caught off-guard, not performing — the night you forgot to manage how you came across. Remy's keepsake, given in silence because the silence is the point; it carries what she taught you: showing up as yourself reads a touch truer in any lane. No mask left to take off.",
+        "rarity": "legendary",
+        "statDeltas": {},
+        "grantsAchievement": "mask-off",
+        "foundDay": 25,
+        "foundCharacter": "remy"
+      }
+    ]
+  },
   "version": {
     "runId": "run-005",
-    "contentHash": "3c12fb2ef0bf"
+    "contentHash": "4a8de66df35d"
   }
 }
