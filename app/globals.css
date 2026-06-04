@@ -60,6 +60,18 @@
   --theme-display:'Courier New',ui-monospace,monospace; --theme-body:'Courier New',ui-monospace,monospace;
   --panel-radius:0px; --panel-shadow:0 0 14px rgba(255,176,0,.18);
 }
+/* The Corner · light (gym daylight — The Wingman's native theme) */
+:root[data-pack="corner"][data-mode="light"]{
+  --paper:#e8e2d6; --paper-shade:#dad2c2; --ink:#1c1a17; --ink-soft:#45403a;
+  --forest:#2e5266; --forest-dim:#4c778c; --spot-red:#b23a2e; --margin-ink:#6e665a;
+  --panel-radius:0px; --panel-shadow:5px 5px 0 rgba(28,26,23,0.18);
+}
+/* The Corner · dark (late session, single light) */
+:root[data-pack="corner"][data-mode="dark"]{
+  --paper:#17150f; --paper-shade:#201d15; --ink:#ece4d2; --ink-soft:#b5ab93;
+  --forest:#6fa8be; --forest-dim:#58899c; --spot-red:#e0705f; --margin-ink:#9a9078;
+  --panel-radius:0px; --panel-shadow:5px 5px 0 rgba(0,0,0,0.4);
+}
 /* Optional font override (Vibrant/Parchment only; DOS forces mono) */
 :root:not([data-pack="dos"])[data-font="maple"]{--theme-display:'Maplestory',sans-serif;--theme-body:'Maplestory',sans-serif;}
 :root:not([data-pack="dos"])[data-font="jua"]  {--theme-display:'Jua',sans-serif;--theme-body:'Jua',sans-serif;}

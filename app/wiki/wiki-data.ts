@@ -37,6 +37,7 @@ export interface CampaignMeta {
   tagline: string;
   gift: string;
   runId: string;
+  nativeThemeId: string; // theme_pack id this campaign wears (e.g. 'corner')
   motif: { kind: string; pattern: string; hook: string };
   relTierNames: string[];
 }

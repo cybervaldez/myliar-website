@@ -164,6 +164,7 @@
       "tagline": "Sam · Hana · Kenji · Mei",
       "gift": "Get your life in order — body, money, food, systems — coached by a party of functional agents.",
       "runId": "run-005",
+      "nativeThemeId": "parchment",
       "motif": {
         "kind": "prefix",
         "pattern": "The One…",
@@ -177,6 +178,7 @@
       "tagline": "Nico · Wes · Sloane · Remy · Mara",
       "gift": "Get ready to date REAL humans — a crew of coaches in your corner, never the date.",
       "runId": "run-wingman",
+      "nativeThemeId": "corner",
       "motif": {
         "kind": "theme",
         "pattern": "the moment, named (terse coach-talk)",
@@ -11073,6 +11075,6 @@
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "8596c2ab602a"
+    "contentHash": "afb544b5d43d"
   }
 }

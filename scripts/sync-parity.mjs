@@ -685,6 +685,9 @@ function extractCampaignMeta() {
       tagline: dartField(b, "tagline"),
       gift: dartField(b, "gift"),
       runId: dartField(b, "runId") || "",
+      // the campaign's native display theme (theme_pack id) — defaults to
+      // 'parchment' (the home default) when the Campaign omits it.
+      nativeThemeId: dartField(b, "nativeThemeId") || "parchment",
       motif: { kind: grab("kind"), pattern: grab("pattern"), hook: grab("hook") },
       relTierNames,
     });

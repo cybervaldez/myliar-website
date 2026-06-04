@@ -15,7 +15,7 @@ export const SKINS: Record<string, SkinDef> = {
   parchment: { bg: "#f2ebdd", ink: "#1a1a1a", sub: "#5a6650", accent: "#b81f1c", border: "#2d4a2b", mono: false, round: "rounded-[2px]", label: "Parchment & Ink" },
   vibrant: { bg: "#f6e9c9", ink: "#4a3a22", sub: "#6f5a38", accent: "#e0531f", border: "#e0531f", mono: false, round: "rounded-[14px]", label: "Vibrant Realm" },
   dos: { bg: "#00140a", ink: "#43ff8d", sub: "#2aa860", accent: "#43ff8d", border: "#43ff8d", mono: true, round: "rounded-none", label: "DOS-era" },
-  corner: { bg: "#241f1b", ink: "#f5ede0", sub: "#bfae97", accent: "#e0a44e", border: "#b8860b", mono: true, round: "rounded-none", label: "the Corner" },
+  corner: { bg: "#17150f", ink: "#ece4d2", sub: "#b5ab93", accent: "#e0705f", border: "#58899c", mono: false, round: "rounded-none", label: "the Corner" },
   // genre vibes (the spin-off lens)
   anime: { bg: "#fdeef3", ink: "#2a1620", sub: "#9a5e72", accent: "#e0357a", border: "#e0357a", mono: false, round: "rounded-[10px]", label: "90s anime" },
   cottagecore: { bg: "#eef1e3", ink: "#38422a", sub: "#6f7a55", accent: "#7a8c3a", border: "#97a35a", mono: false, round: "rounded-[16px]", label: "cottagecore" },
