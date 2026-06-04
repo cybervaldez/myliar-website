@@ -10,6 +10,7 @@ import { FandomShell } from "../../_components/FandomShell";
 import { ShareCard, SKINS, campaignCards, campaignDefaultSkin, genreLensCards } from "../../cards/share-card";
 import { CampaignTabs, type ViewRow, type ViewCoach, type ViewMetrics } from "./CampaignTabs";
 import { DayDiagram } from "./DayDiagram";
+import { CopyForLLM } from "../../_components/CopyForLLM";
 
 // per-day STRUCTURE diagram (the trichotomy tree) — built server-side as a
 // mermaid string, rendered lazily by <DayDiagram>.
@@ -334,6 +335,14 @@ export default async function CampaignDaysPage({ params }: { params: Promise<{ i
         delta, reaction, memory write, and reveal — plus which <strong>selections</strong> change a{" "}
         <strong>future day&apos;s dialogue</strong> (routed through achievement flags). <strong>Spoilers visible.</strong>
       </p>
+
+      <div className="mb-5">
+        <CopyForLLM
+          payload={JSON.stringify({ _what: `My Life is an RPG — ${c.title} (${c.runId}) campaign data: every day's events, choices, deltas, reactions, memory writes, tier-ups, and callback flags. Read/instruct/cross-check (e.g. paste to Gemini).`, campaign: c.title, runId: c.runId, days: c.days }, null, 2)}
+          label={`Copy ${c.title} for LLM`}
+          title="The whole campaign as self-describing JSON — hand it to Gemini/an LLM for a cross-check (migrated from the retired Storyboard/Lab tooling)."
+        />
+      </div>
 
       {/* ── Viral motifs (trophy naming + REL ladder), declared in the engine ── */}
       {(() => {

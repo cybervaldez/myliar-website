@@ -12,9 +12,6 @@ const TOOLS = [
   { href: "/concepts", label: "Concepts", desc: "theme slate — pick what to build" },
   { href: "/campaigns", label: "Campaigns", desc: "daily events, by campaign" },
   { href: "/cards", label: "Cards", desc: "shareable moment cards" },
-  { href: "/lab", label: "Engine Lab", desc: "run history — what worked" },
-  { href: "/storyboard", label: "Storyboard", desc: "draft & compare content" },
-  { href: "/swipe", label: "Run Simulator", desc: "play the run, pick inline" },
 ];
 
 // Concept sub-links (shown nested under "Concepts" in the sidebar).
@@ -36,7 +33,7 @@ export function FandomShell({
   active,
   children,
 }: {
-  active: "/the-engine" | "/lab" | "/storyboard" | "/swipe" | "/concepts" | "/campaigns" | "/cards";
+  active: "/the-engine" | "/concepts" | "/campaigns" | "/cards";
   children: React.ReactNode;
 }) {
   return (

@@ -2,8 +2,8 @@
 
 // One-click "copy this whole dataset as self-describing JSON" — the reliable way to
 // hand a dev page to an LLM (parse / read / instruct) instead of hoping it scrapes the
-// rendered HTML. Used by /storyboard and /lab. The payload is the entire source JSON
-// (about + instructions + legend + data), stringified server-side and passed in.
+// rendered HTML. Used by /concepts and /campaigns (the Gemini cross-check move).
+// The payload is the entire source JSON, stringified server-side and passed in.
 
 import { useState } from "react";
 
