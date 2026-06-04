@@ -2400,7 +2400,7 @@
         "events": [
           {
             "id": "evt-1",
-            "scenario": "7:00 AM exactly. A sharp crimson calendar alert on your lock screen: \"K · 07:00–07:25 · review window · [desk].\" Kenji's first calendar block, locked overnight via the audit-chain access. Across the [courtyard center] the [ledger*] is already open at his [desk] — visible from the hallway, page turned to today's column. The [drawer] key sits in the SECOND-QUARTER position from yesterday — visible from the doorway. Mei's [bell*] from the [prep] zone has already rung once. Hana is on the [bleachers] watching the door of Kenji's office.",
+            "scenario": "7:00 AM exactly. A sharp crimson calendar alert on your lock screen: \"K · 07:00–07:25 · review window · [desk].\" Kenji's first calendar block, locked overnight via the audit-chain access. Across the [courtyard center] the [ledger*] is already open at his [desk] — visible from the hallway. At the top of today's column his morning ink is already dry: '23:42–00:25 · 43 min, off-cycle · scroll · unreconciled.' He logged your midnight activity before you even woke up. The [drawer] key sits in the SECOND-QUARTER position from yesterday. Mei's [bell*] from the [prep] zone has already rung once; Hana is on the [bleachers] watching the door of Kenji's office. The 7:00 block is ticking, and the unreconciled line is waiting.",
             "choices": [
               {
                 "id": "a",
@@ -11133,6 +11133,6 @@
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "99a2129966f0"
+    "contentHash": "e3889ac82704"
   }
 }
