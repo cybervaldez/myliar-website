@@ -5,10 +5,12 @@
 
 import Link from "next/link";
 import board from "../lib/storyboard.json";
+import parity from "../lib/parity.generated.json";
 
 const TOOLS = [
   { href: "/the-engine", label: "The Engine", desc: "how it works (essay)" },
   { href: "/concepts", label: "Concepts", desc: "theme slate — pick what to build" },
+  { href: "/campaigns", label: "Campaigns", desc: "daily events, by campaign" },
   { href: "/lab", label: "Engine Lab", desc: "run history — what worked" },
   { href: "/storyboard", label: "Storyboard", desc: "draft & compare content" },
   { href: "/swipe", label: "Run Simulator", desc: "play the run, pick inline" },
@@ -22,11 +24,18 @@ function statusDot(s: string): string {
   return t.includes("building") ? "●" : t.includes("committed") ? "◐" : t.includes("flagged") ? "⚠" : "○";
 }
 
+// Campaign sub-links (shown nested under "Campaigns"). The shipped campaigns
+// with an authored daily story — sourced from the parity export (game→website).
+const CAMPAIGNS = [
+  { id: "main-line", name: "Life Ops", days: parity.mainline?.days?.length ?? 0 },
+  { id: "wingman", name: "The Wingman", days: parity.wingman?.days?.length ?? 0 },
+].filter((c) => c.days > 0);
+
 export function FandomShell({
   active,
   children,
 }: {
-  active: "/the-engine" | "/lab" | "/storyboard" | "/swipe" | "/concepts";
+  active: "/the-engine" | "/lab" | "/storyboard" | "/swipe" | "/concepts" | "/campaigns";
   children: React.ReactNode;
 }) {
   return (
@@ -50,6 +59,15 @@ export function FandomShell({
                     {CONCEPTS.map((c) => (
                       <Link key={c.slug} href={`/concepts/${c.slug}`} className="block text-[11px] leading-tight text-[#0645ad] hover:underline">
                         {statusDot(c.status)} {c.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+                {t.href === "/campaigns" && CAMPAIGNS.length > 0 && (
+                  <div className="ml-2 mt-1 mb-1 space-y-0.5 border-l border-[#dee1e6] pl-2">
+                    {CAMPAIGNS.map((c) => (
+                      <Link key={c.id} href={`/campaigns/${c.id}`} className="block text-[11px] leading-tight text-[#0645ad] hover:underline">
+                        {c.name} <span className="text-[#72777d]">· {c.days}d</span>
                       </Link>
                     ))}
                   </div>
