@@ -135,6 +135,32 @@
       "joinsDay": 5
     }
   ],
+  "campaigns": [
+    {
+      "id": "main-line",
+      "title": "Life Ops",
+      "tagline": "Sam · Hana · Kenji · Mei",
+      "gift": "Get your life in order — body, money, food, systems — coached by a party of functional agents.",
+      "runId": "run-005",
+      "motif": {
+        "kind": "prefix",
+        "pattern": "The One…",
+        "hook": "Borrows the FRIENDS episode-title meme — instantly recognizable, screenshot-ready, and it frames each grind-win (\"The One Where You Ate at the Pass\") as a beloved sitcom episode OF YOUR OWN LIFE — the whole pitch of Life Ops in three words."
+      }
+    },
+    {
+      "id": "wingman",
+      "title": "The Wingman",
+      "tagline": "Nico · Wes · Sloane · Remy · Mara",
+      "gift": "Get ready to date REAL humans — a crew of coaches in your corner, never the date.",
+      "runId": "run-wingman",
+      "motif": {
+        "kind": "theme",
+        "pattern": "the moment, named (terse coach-talk)",
+        "hook": "Each title is a quotable line you would text a friend — \"Beat the Count\", \"She Said Nothing\", \"Dignity, Intact\" — coach-talk straight from the Corner that doubles as a flex you screenshot when you pull off the real-life rep. Distinct from Life Ops on purpose: every world gets its own shareable trophy voice."
+      }
+    }
+  ],
   "mysteryRoster": [
     {
       "id": "wren",
@@ -210,7 +236,7 @@
     },
     {
       "id": "survived-the-cringe",
-      "title": "The One With the Worst Line",
+      "title": "Worst Line, Best Outcome",
       "blurb": "You bombed an opener and laughed instead of dying. The floor of the worst case is nothing.",
       "category": "milestone",
       "critBonusPct": 0,
@@ -219,7 +245,7 @@
     },
     {
       "id": "real-stakes",
-      "title": "The One Where You Crossed the Room",
+      "title": "Across the Room",
       "blurb": "You approached when it actually mattered — freeze and all. You spend the courage where it counts now.",
       "category": "milestone",
       "critBonusPct": 0,
@@ -228,7 +254,7 @@
     },
     {
       "id": "already-moving",
-      "title": "The One Where You Beat the Count",
+      "title": "Beat the Count",
       "blurb": "You moved on a real one before Nico's count-in. The push is yours now — +5% to chaotic crits, the nerve carries.",
       "category": "item",
       "critBonusPct": 5,
@@ -237,7 +263,7 @@
     },
     {
       "id": "dropped-the-armor",
-      "title": "The One With No Notes",
+      "title": "Sincerely, No Notes",
       "blurb": "You let an earnest line stand with no defensive joke. Terrifying. Suits you.",
       "category": "milestone",
       "critBonusPct": 0,
@@ -246,7 +272,7 @@
     },
     {
       "id": "the-kind-no",
-      "title": "The One That Was Clean, Kind, Done",
+      "title": "Clean, Kind, Done",
       "blurb": "You gave a real no in one kind sentence instead of a stall. The vague 'maybe' is just ghosting with extra steps.",
       "category": "milestone",
       "critBonusPct": 0,
@@ -255,7 +281,7 @@
     },
     {
       "id": "cut-nothing",
-      "title": "The One Where He'd Have Cut Nothing",
+      "title": "I'd Have Cut Nothing",
       "blurb": "You sent the hardest text on your own, in your own voice. The red pen stays down — +5% to chaotic crits.",
       "category": "item",
       "critBonusPct": 5,
@@ -264,7 +290,7 @@
     },
     {
       "id": "clean-exit",
-      "title": "The One Where You Left Dignity Intact",
+      "title": "Dignity, Intact",
       "blurb": "You left a flatlined table on your own terms, before they had to. Walking away clean isn't losing.",
       "category": "milestone",
       "critBonusPct": 0,
@@ -273,7 +299,7 @@
     },
     {
       "id": "walked-the-pretty-one",
-      "title": "The One Worth More Than a Maybe",
+      "title": "Worth More Than a Maybe",
       "blurb": "You walked from someone you wanted because the curiosity only went one way. The hardest read there is.",
       "category": "milestone",
       "critBonusPct": 0,
@@ -282,7 +308,7 @@
     },
     {
       "id": "your-own-read",
-      "title": "The One Where You Didn't Ask Her First",
+      "title": "You Didn't Ask Me First",
       "blurb": "You handled a real one at a cost without asking the Reader what it meant. You trust your own read — +5% to chaotic crits.",
       "category": "item",
       "critBonusPct": 5,
@@ -291,7 +317,7 @@
     },
     {
       "id": "no-apology",
-      "title": "The One Where You Led With the Weird",
+      "title": "Led With the Weird",
       "blurb": "You showed an uncool real interest early with zero apology. The cringe is the filter.",
       "category": "milestone",
       "critBonusPct": 0,
@@ -300,7 +326,7 @@
     },
     {
       "id": "took-up-space",
-      "title": "The One Where You Didn't Sand Yourself Down",
+      "title": "Didn't Sand Yourself Down",
       "blurb": "You voiced a real disagreement instead of erasing yourself to agree. You took up your whole space.",
       "category": "milestone",
       "critBonusPct": 0,
@@ -309,7 +335,7 @@
     },
     {
       "id": "mask-off",
-      "title": "The One Where She Said Nothing",
+      "title": "She Said Nothing",
       "blurb": "You showed up fully unmasked without noticing you'd stopped performing. The work is done — +5% to chaotic crits.",
       "category": "item",
       "critBonusPct": 5,
@@ -318,7 +344,7 @@
     },
     {
       "id": "chased-the-leaving",
-      "title": "The One Where You Chased the Leaving",
+      "title": "Chased the Leaving",
       "blurb": "You turned up the charm to win back a table that was already leaving — Sloane remembers.",
       "category": "milestone",
       "critBonusPct": 0,
@@ -336,7 +362,7 @@
     },
     {
       "id": "unplugged",
-      "title": "The One Off Their Wifi",
+      "title": "Off Their Wifi",
       "blurb": "You unhooked your day from whether the notification came. Your week stopped riding on a ping.",
       "category": "milestone",
       "critBonusPct": 0,
@@ -345,7 +371,7 @@
     },
     {
       "id": "not-an-option",
-      "title": "The One Where You Were Not an Option",
+      "title": "Not an Option",
       "blurb": "You walked from someone you wanted because they only ever benched you. The bench is still the bench.",
       "category": "milestone",
       "critBonusPct": 0,
@@ -354,7 +380,7 @@
     },
     {
       "id": "the-floor-held",
-      "title": "The One Where You Didn't Even Text Her",
+      "title": "You Didn't Even Text Her",
       "blurb": "A real no landed and your worth never left your pocket. You didn't reach for the catch — the highest thing the Anchor does is not be needed.",
       "category": "item",
       "critBonusPct": 0,
@@ -10938,6 +10964,6 @@
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "afef6784eb6d"
+    "contentHash": "305c3ab708ee"
   }
 }

@@ -652,6 +652,38 @@ function extractMysteryRoster() {
   return out;
 }
 
+// ── Campaign metadata + the per-campaign TITLE MOTIF (v0.0.42) ───────────
+// Each Campaign in characters.dart declares a titleMotif (kind/pattern/hook) —
+// the viral, story-tied achievement-naming convention the campaign's trophies
+// share. Surface it so the tooling /campaigns view shows each world's motif.
+// Dart string concat (adjacent 'a' 'b' literals across lines) is joined.
+function joinDartString(raw) {
+  return [...raw.matchAll(/'((?:[^'\\]|\\.)*)'/g)].map((m) => m[1].replace(/\\'/g, "'")).join("");
+}
+function extractCampaignMeta() {
+  const src = read("lib/characters.dart");
+  const out = [];
+  for (const m of src.matchAll(/Campaign\(\s*([\s\S]*?)\n\);/g)) {
+    const b = m[1];
+    const id = dartField(b, "id");
+    if (!id) continue;
+    const motifBlock = (b.match(/titleMotif:\s*TitleMotif\(([\s\S]*?)\n\s*\),/) || [, ""])[1];
+    const grab = (field) => {
+      const mm = motifBlock.match(new RegExp(`${field}:\\s*((?:'(?:[^'\\\\]|\\\\.)*'\\s*)+)`));
+      return mm ? joinDartString(mm[1]) : "";
+    };
+    out.push({
+      id,
+      title: dartField(b, "title"),
+      tagline: dartField(b, "tagline"),
+      gift: dartField(b, "gift"),
+      runId: dartField(b, "runId") || "",
+      motif: { kind: grab("kind"), pattern: grab("pattern"), hook: grab("hook") },
+    });
+  }
+  return out;
+}
+
 // ── Frame-gate assertion — fail the build if any banned token ships ──
 // Walks the player-facing string fields of the assembled data. Any hit
 // is a ship-blocker (a banned word would render on the public wiki).
@@ -718,6 +750,7 @@ function build() {
     itemRarities: extractItemRarities(),
     vibeBands: extractVibeBands(),
     squad: extractSquad(scopes.canonical, RUN_DIR),
+    campaigns: extractCampaignMeta(),
     mysteryRoster: extractMysteryRoster(),
     achievements: extractAchievements(),
     items: extractItems(RUN_DIR),

@@ -27,6 +27,17 @@ export interface SquadMember {
   joinsDay: number | null;
 }
 
+// A campaign's metadata + its achievement-title MOTIF (the viral, story-tied
+// trophy-naming convention it holds — kind: prefix | suffix | theme).
+export interface CampaignMeta {
+  id: string;
+  title: string;
+  tagline: string;
+  gift: string;
+  runId: string;
+  motif: { kind: string; pattern: string; hook: string };
+}
+
 // The Wingman coaches — a second canonical cast (the dating expansion). Squad
 // shape PLUS the earned titles[], the intimate (full-REL) title, the intro line,
 // and the dating-reskinned stat lane (NERVE/VOICE/READ/PRESENCE/the FLOOR).
@@ -163,6 +174,7 @@ export interface ParityData {
   itemRarities: string[];
   vibeBands: VibeBand[];
   squad: SquadMember[];
+  campaigns?: CampaignMeta[];
   mysteryRoster: MysteryCharacter[];
   achievements: Achievement[];
   items: Item[];
@@ -176,6 +188,9 @@ export interface ParityData {
 const parity = parityRaw as unknown as ParityData;
 
 export const squad = (): SquadMember[] => parity.squad;
+export const campaignsMeta = (): CampaignMeta[] => parity.campaigns ?? [];
+export const campaignMeta = (id: string): CampaignMeta | undefined =>
+  (parity.campaigns ?? []).find((c) => c.id === id);
 export const characterById = (id: string): SquadMember | undefined =>
   parity.squad.find((c) => c.id === id);
 export const achievements = (): Achievement[] => parity.achievements;

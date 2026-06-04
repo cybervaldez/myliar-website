@@ -12,6 +12,7 @@ import {
   characterById,
   wingmanCoachById,
   achievementById,
+  campaignMeta,
   type MainlineDay,
   type MainlineChoice,
 } from "../../wiki/wiki-data";
@@ -173,6 +174,19 @@ export default async function CampaignDaysPage({ params }: { params: Promise<{ i
         delta, reaction, memory write, and reveal — plus which <strong>selections</strong> change a{" "}
         <strong>future day&apos;s dialogue</strong> (routed through achievement flags). <strong>Spoilers visible.</strong>
       </p>
+
+      {/* ── Trophy motif (the viral, story-tied naming convention) ── */}
+      {(() => {
+        const m = campaignMeta(id)?.motif;
+        return m ? (
+          <div className="border border-[#b8860b] bg-[#fdf6e3] p-3 mb-6">
+            <div className="font-sans text-[11px] uppercase tracking-[0.16em] text-[#8a6d0b] mb-1">★ Trophy motif — {m.kind}</div>
+            <div className="font-display text-[18px] leading-tight mb-1">{m.pattern}</div>
+            <p className="text-[12px] text-ink-soft leading-[1.5]">{m.hook}</p>
+            <p className="text-[10.5px] text-margin-ink mt-1 italic">One motif per campaign (declared on the Campaign in the engine) — a shareable hook every trophy here holds.</p>
+          </div>
+        ) : null;
+      })()}
 
       {/* ── Influence map ── */}
       {ripples.size > 0 && (

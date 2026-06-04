@@ -5,7 +5,7 @@
 
 import Link from "next/link";
 import { FandomShell } from "../_components/FandomShell";
-import { mainline, wingman, squad, wingmanCast } from "../wiki/wiki-data";
+import { mainline, wingman, squad, wingmanCast, campaignMeta } from "../wiki/wiki-data";
 
 export const metadata = {
   title: "Campaigns — daily events (dev) · My Life is an RPG",
@@ -69,6 +69,15 @@ export default function CampaignsPage() {
             <div className="font-sans text-[9.5px] uppercase tracking-[0.1em] text-margin-ink mt-1">{c.runId}</div>
             <p className="text-[12.5px] text-ink-soft mt-2 leading-[1.4]">{c.tagline}</p>
             <div className="text-[11px] text-margin-ink mt-2 leading-[1.4]">{c.cast.join(" · ")}</div>
+            {(() => {
+              const m = campaignMeta(c.id)?.motif;
+              return m ? (
+                <div className="mt-2 border border-[#b8860b] bg-[#fdf6e3] px-2 py-1">
+                  <span className="font-sans text-[9px] uppercase tracking-[0.08em] text-[#8a6d0b]">trophy motif · {m.kind}</span>
+                  <div className="text-[12px] text-ink font-bold leading-[1.3]">{m.pattern}</div>
+                </div>
+              ) : null;
+            })()}
             <div className="font-sans text-[10px] text-[#0645ad] mt-2 group-hover:underline">daily events →</div>
           </Link>
         ))}
