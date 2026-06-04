@@ -9,6 +9,27 @@ import Link from "next/link";
 import { FandomShell } from "../../_components/FandomShell";
 import { ShareCard, SKINS, campaignCards, campaignDefaultSkin, genreLensCards } from "../../cards/share-card";
 import { CampaignTabs, type ViewRow, type ViewCoach, type ViewMetrics } from "./CampaignTabs";
+import { DayDiagram } from "./DayDiagram";
+
+// per-day STRUCTURE diagram (the trichotomy tree) — built server-side as a
+// mermaid string, rendered lazily by <DayDiagram>.
+function dayMermaid(d: MainlineDay): string {
+  let s = "flowchart LR\n";
+  s += "classDef log fill:#eaf6ee,stroke:#2e7d4f,color:#222;\nclassDef pas fill:#f0f1f3,stroke:#54595d,color:#222;\nclassDef cha fill:#fdecec,stroke:#c0392b,color:#222;\n";
+  d.events.forEach((ev, i) => {
+    const en = `E${i + 1}`;
+    const cb = (ev.scenarioVariants?.length ?? 0) > 0 ? " ⤷" : "";
+    s += `${en}["Event ${i + 1}${cb}"]\n`;
+    ev.choices.forEach((ch) => {
+      const cls = ch.role === "logical" ? "log" : ch.role === "chaotic" ? "cha" : "pas";
+      const deltas = Object.entries(ch.delta).filter(([, v]) => v !== 0).map(([k, v]) => `${k}${v > 0 ? "+" : ""}${v}`).join(" ");
+      const marks = `${ch.grantsAchievement ? " ⚑" : ""}${ch.itemDrop ? " ★" : ""}${ch.diceRoll ? " 🎲" : ""}${(ch.reactionVariants?.length ?? 0) > 0 ? " ↩" : ""}`;
+      const label = `${ch.id.toUpperCase()} ${ch.role}${deltas ? " " + deltas : ""}${marks}`.replace(/["[\]]/g, "");
+      s += `${en} --> ${en}${ch.id}["${label}"]:::${cls}\n`;
+    });
+  });
+  return s;
+}
 
 const PALETTE = [
   { fill: "#fdecec", stroke: "#c0392b" }, { fill: "#eaf1fb", stroke: "#2c5fa8" },
@@ -248,6 +269,7 @@ export default async function CampaignDaysPage({ params }: { params: Promise<{ i
               <span className="ml-auto font-sans text-[10px] text-margin-ink">{d.events.length} ev</span>
             </summary>
             <div className="px-3 py-2 space-y-3">
+              <DayDiagram src={dayMermaid(d)} uid={`${id}-d${d.globalDayIndex}`} />
               {d.events.map((ev, idx) => (
                 <div key={ev.id}>
                   <div className="font-sans text-[10px] uppercase tracking-[0.1em] text-[#54595d] mb-1">Event {idx + 1}</div>
