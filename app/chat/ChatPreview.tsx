@@ -23,9 +23,9 @@ function stack(intimate: string): { k: string; s: keyof typeof STATUS }[] {
   return [
     { k: `Intimate title — "${intimate || "—"}"`, s: "wired" },
     { k: "Keepsake (legendary)", s: "wired" },
-    { k: "Passive — cross-game buff", s: "partial" },
+    { k: "Passive — within-campaign buff (silo-scoped)", s: "wired" },
+    { k: "Mutual mode — “they reach out” (preamble)", s: "wired" },
     { k: "Inversion / peer beat", s: "authored" },
-    { k: "Mutual mode — “they reach out”", s: "unwired" },
   ];
 }
 
