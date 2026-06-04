@@ -370,11 +370,11 @@ export default async function CampaignDaysPage({ params }: { params: Promise<{ i
             <ShareCard key={i} skin={campaignDefaultSkin(id)} campaign={c.title} c={card} />
           ))}
         </div>
-        {id === "wingman" && (
+        {genreLensCards(id).length > 0 && (
           <>
-            <div className="font-sans text-[10px] uppercase tracking-[0.12em] text-[#8a6d0b] mt-4 mb-2">the genre lens · the same moment, retold in an Elseworld vibe (non-canon remix)</div>
+            <div className="font-sans text-[10px] uppercase tracking-[0.12em] text-[#8a6d0b] mt-4 mb-2">the genre lens · a moment retold in an Elseworld vibe (non-canon remix, text only)</div>
             <div className="flex gap-3 flex-wrap">
-              {genreLensCards().slice(0, 3).map((g, i) => (
+              {genreLensCards(id).slice(0, 3).map((g, i) => (
                 <ShareCard key={i} skin={g.skin} campaign={c.title} c={g.c} />
               ))}
             </div>

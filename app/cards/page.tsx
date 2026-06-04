@@ -3,7 +3,7 @@
 // with /campaigns/[id]). Spec: docs/design/viral-moments.md.
 
 import { FandomShell } from "../_components/FandomShell";
-import { ShareCard, SKINS, lifeOpsCards, wingmanCards, genreLensCards, type CardSpec } from "./share-card";
+import { ShareCard, SKINS, lifeOpsCards, wingmanCards, genreLensGroups, type CardSpec } from "./share-card";
 
 export const metadata = {
   title: "Cards — shareable moments (dev) · My Life is an RPG",
@@ -14,7 +14,7 @@ export const metadata = {
 export default function CardsPage() {
   const flagship: CardSpec = wingmanCards()[1]; // Sloane's "read a will faster" roast
   const themeShowcase: (keyof typeof SKINS)[] = ["parchment", "vibrant", "dos"];
-  const genre = genreLensCards();
+  const genreGroups = genreLensGroups();
 
   return (
     <FandomShell active="/cards">
@@ -45,16 +45,21 @@ export default function CardsPage() {
       </div>
 
       <div className="font-sans text-[12px] uppercase tracking-[0.14em] text-[#54595d] border-b border-[#a2b1c2] pb-1 mb-1">
-        The Genre Lens <span className="text-margin-ink normal-case">· the SAME moment, retold in an Elseworld vibe — a non-canon remix (text only, no new art)</span>
+        The Genre Lens <span className="text-margin-ink normal-case">· a moment retold in an Elseworld vibe — a non-canon remix (text only, no new art). Gemini-generated, frame-checked.</span>
       </div>
-      <div className="flex gap-4 flex-wrap mb-8 mt-3">
-        {genre.map((g, i) => (
-          <div key={i}>
-            <ShareCard skin={g.skin} campaign="The Wingman" c={g.c} />
-            <div className="text-center text-[10px] uppercase tracking-[0.12em] text-margin-ink mt-1">{SKINS[g.skin].label}</div>
+      {genreGroups.map((grp) => (
+        <div key={grp.title} className="mt-3 mb-6">
+          <div className="font-sans text-[11px] tracking-[0.04em] text-[#8a6d0b] mb-2">{grp.title} <span className="text-margin-ink">· {grp.campaign === "wingman" ? "The Wingman" : "Life Ops"}</span></div>
+          <div className="flex gap-4 flex-wrap">
+            {grp.cards.map((g, i) => (
+              <div key={i}>
+                <ShareCard skin={g.skin} campaign={grp.campaign === "wingman" ? "The Wingman" : "Life Ops"} c={g.c} />
+                <div className="text-center text-[10px] uppercase tracking-[0.12em] text-margin-ink mt-1">{SKINS[g.skin].label}</div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
 
       {[
         { title: "Life Ops", skin: "parchment" as keyof typeof SKINS, cards: lifeOpsCards(), note: "Parchment skin (default)" },

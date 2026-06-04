@@ -99,18 +99,51 @@ export function campaignDefaultSkin(id: string): keyof typeof SKINS {
   return id === "wingman" ? "corner" : "parchment";
 }
 
-// THE GENRE LENS — the same canonical moment (Sloane's roast) retold in a genre
-// vibe, badged NON-CANON remix (framing A; Gemini-approved, golden-age punched up).
-export function genreLensCards(): { skin: keyof typeof SKINS; c: CardSpec }[] {
-  const mk = (skin: keyof typeof SKINS, vibe: string, hero: string): { skin: keyof typeof SKINS; c: CardSpec } => ({
-    skin,
-    c: { kind: `GENRE LENS · ${vibe} · REMIX`, shape: "quote", hero, support: "the Reader's read, in another life · non-canon", tag: "spin-off lens · text remix, no new art" },
-  });
+// THE GENRE LENS — a canonical moment retold in an Elseworld genre vibe, badged
+// NON-CANON remix (framing A; text remix, no new art). A real generator across
+// MULTIPLE moments + campaigns; copy Gemini-generated + curated, frame-safe.
+type GenreCard = { skin: keyof typeof SKINS; c: CardSpec };
+const mkGenre = (skin: keyof typeof SKINS, vibe: string, hero: string, src: string): GenreCard => ({
+  skin,
+  c: { kind: `GENRE LENS · ${vibe} · REMIX`, shape: "quote", hero, support: `${src} · in another life · non-canon`, tag: "spin-off lens · text remix, no new art" },
+});
+
+export type GenreGroup = { title: string; campaign: "wingman" | "main-line"; cards: GenreCard[] };
+
+export function genreLensGroups(): GenreGroup[] {
   return [
-    mk("isekai", "mcu / isekai", "So in this world you spent three hours interpreting a single 👍. Truly, your power is… patience. The guild does not rank that."),
-    mk("anime", "90s anime", "Three hours… THREE HOURS you channeled into a single 👍?! Even a half-dead swordsman reads the ancient scrolls faster than this."),
-    mk("cottagecore", "cottagecore", "Oh sweet thing — three whole hours on one little 👍? Bless. I've watched sourdough rise with more conviction."),
-    mk("cyber", "80s cyber", "THREE HOURS. One 👍. You're decrypting slower than a 2400-baud modem, choom. Jack out."),
-    mk("fantasy", "golden-age fantasy", "Thou hast toiled three hours upon a lone rune of approval. I have seen ancient prophecies deciphered with greater haste."),
+    {
+      title: "Sloane's read · «three hours decoding a 👍»", campaign: "wingman",
+      cards: [
+        mkGenre("isekai", "mcu / isekai", "So in this world you spent three hours interpreting a single 👍. Truly, your power is… patience. The guild does not rank that.", "the Reader's read"),
+        mkGenre("anime", "90s anime", "Three hours… THREE HOURS you channeled into a single 👍?! Even a half-dead swordsman reads the ancient scrolls faster.", "the Reader's read"),
+        mkGenre("cottagecore", "cottagecore", "Oh sweet thing — three whole hours on one little 👍? Bless. I've watched sourdough rise with more conviction.", "the Reader's read"),
+        mkGenre("cyber", "80s cyber", "THREE HOURS. One 👍. You're decrypting slower than a 2400-baud modem, choom. Jack out.", "the Reader's read"),
+        mkGenre("fantasy", "golden-age fantasy", "Thou hast toiled three hours upon a lone rune of approval. I have seen ancient prophecies deciphered with greater haste.", "the Reader's read"),
+      ],
+    },
+    {
+      title: "Hana's case file · «might be a person»", campaign: "main-line",
+      cards: [
+        mkGenre("isekai", "mcu / isekai", "Isekai alert: a new challenger appeared at 6am. Again. They might actually have a soul — not just a health bar.", "what Hana wrote"),
+        mkGenre("anime", "90s anime", "The prophecy spoke of a warrior who rises before dawn. Twice. …okay, it's a client. But they CAME. Twice. A bond forged in the crucible of 6am burpees.", "what Hana wrote"),
+        mkGenre("cottagecore", "cottagecore", "A little robin came to my window at dawn. Then again. Twice. A persistent thing — perhaps not just a bird, but a kindred spirit drawn to the quiet morning light.", "what Hana wrote"),
+      ],
+    },
+    {
+      title: "The graduation · «healthiest breakup of my life»", campaign: "wingman",
+      cards: [
+        mkGenre("isekai", "mcu / isekai", "Mission complete. My tactical advisor declared me self-sufficient and disbanded the alliance. The final boss was my own self-doubt. No more side quests for him, apparently.", "the graduation"),
+        mkGenre("anime", "90s anime", "My sensei, with a single profound gaze, knew my spirit was ready. Training complete, his duty fulfilled. A tear in his eye? No — just the wind. *epic orchestral swell*", "the graduation"),
+        mkGenre("cottagecore", "cottagecore", "The kind elder who helped me tend my inner garden has deemed it self-sufficient. He's moved on to nurture other saplings. A gentle letting go, like dandelion seeds on the breeze.", "the graduation"),
+      ],
+    },
   ];
+}
+
+// for the per-campaign embed: the first genre group for that campaign.
+export function genreLensCards(campaignId?: string): GenreCard[] {
+  const groups = genreLensGroups();
+  const g = campaignId ? groups.find((x) => x.campaign === campaignId) : groups[0];
+  return (g ?? groups[0]).cards;
 }
