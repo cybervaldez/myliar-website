@@ -31,7 +31,7 @@ export async function POST(req: Request) {
   const payload = {
     systemInstruction: { parts: [{ text: context }] },
     contents,
-    generationConfig: { temperature: typeof body.temperature === "number" ? body.temperature : 0.85, maxOutputTokens: 400 },
+    generationConfig: { temperature: typeof body.temperature === "number" ? body.temperature : 0.85, maxOutputTokens: 280, thinkingConfig: { thinkingBudget: 0 } },
   };
 
   try {

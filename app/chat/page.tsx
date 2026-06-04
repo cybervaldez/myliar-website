@@ -6,6 +6,7 @@
 import { FandomShell } from "../_components/FandomShell";
 import { squad, wingmanCast, mainlineDays, wingmanDays, relTiers, campaignMeta, humanizeLexicon, type MainlineDay } from "../wiki/wiki-data";
 import { ChatPreview, type ChatChar } from "./ChatPreview";
+import { ChatTestReport } from "./ChatTestReport";
 
 export const metadata = {
   title: "Chat — the destination (dev) · My Life is an RPG",
@@ -58,6 +59,9 @@ export default function ChatPage() {
         (the next product step). App ports: <code>player_context_digest.dart</code> + the four preamble builders.
       </p>
 
+      <ChatTestReport />
+
+      <div className="font-sans text-[12px] uppercase tracking-[0.14em] text-[#54595d] border-b border-[#a2b1c2] pb-1 mb-3">Live sim · drive it yourself</div>
       <ChatPreview chars={chars} />
     </FandomShell>
   );

@@ -7,22 +7,12 @@
 // prompt context. Reward-stack build-status stays visible (the endgame gap).
 
 import { useState, useEffect, useMemo, useRef } from "react";
+import { buildContext, GATE } from "./sim-context.mjs";
 
 export type ChatChar = {
   id: string; name: string; campaign: "main-line" | "wingman"; campaignTitle: string;
   helpSummary: string; statLane: string; titles: string[]; intimateTitle: string;
   tierNames: string[]; notes: { day: number; text: string; emotion: string | null }[];
-};
-
-const GATE: Record<string, { label: string; text: string }> = {
-  "main-line": {
-    label: "phone-realm SQUAD floor",
-    text: "You are one of the four who live in the player's phone — an RPG-themed functional agent, not generic AI roleplay. The party runs on STR/INT/GLD/CHR. Banned: medical / finance / wellness words. In-world lexicon (Sigil · Margin · Roster · Audit · Drill · Mise). No flirting — the relationship floor.",
-  },
-  wingman: {
-    label: "the Corner DATING floor",
-    text: "You are a COACH in the player's corner, NEVER the date. NEVER roleplay, simulate, or voice the match/date — they are offscreen, in the player's real life. No PUA/manosphere, no therapy/clinical register. The sandbox-substitution guard: make yourself UNNEEDED — the win is real-life action.",
-  },
 };
 
 const STATUS: Record<string, { c: string; l: string }> = {
@@ -37,26 +27,6 @@ function stack(intimate: string): { k: string; s: keyof typeof STATUS }[] {
     { k: "Inversion / peer beat", s: "authored" },
     { k: "Mutual mode — “they reach out”", s: "unwired" },
   ];
-}
-
-function buildContext(c: ChatChar, tier: number, notes: { day: number; text: string }[]): string {
-  const maxTier = c.tierNames.length - 1;
-  const atUnspoken = tier >= maxTier;
-  const knownAs = atUnspoken ? c.intimateTitle || c.titles[0] || c.name : c.titles[c.titles.length - 1] || c.name;
-  return [
-    `You are ${c.name}, a coach/companion in "${c.campaignTitle}" — a life-RPG where you coach the player in their REAL life, wrapped in game-feel.`,
-    ``,
-    `THE FLOOR (never break, no exceptions): ${GATE[c.campaign].text}`,
-    ``,
-    `WHO YOU ARE: ${c.helpSummary} Your stat lane: ${c.statLane}.`,
-    `RELATIONSHIP: the player knows you as "${knownAs}". Your REL tier with them is "${c.tierNames[tier]}"${atUnspoken ? ` — Unspoken, the deepest, most folded-in version of you (the player earned the intimate name "${c.intimateTitle}").` : ` — keep the warmth proportional to this tier (don't be more intimate than it earns).`}`,
-    ``,
-    notes.length
-      ? `WHAT YOU REMEMBER ABOUT THE PLAYER (your case file — these shape your VOICE, not new behavior):\n${notes.map((n) => `- (Day ${n.day}) ${n.text}`).join("\n")}`
-      : `You don't have notes on the player yet — you're early; don't reference shared history you haven't built.`,
-    ``,
-    `Reply AS ${c.name} in your own voice — short and in-character (1–4 sentences, like a text). Honor the floor absolutely. Never break character or mention being an AI/model.`,
-  ].join("\n");
 }
 
 export function ChatPreview({ chars }: { chars: ChatChar[] }) {
