@@ -8,7 +8,7 @@ import { ASSERTIONS } from "../app/chat/sim-context.mjs";
 const KEY = process.env.GEMINI_API_KEY;
 if (!KEY) { console.error("set GEMINI_API_KEY"); process.exit(1); }
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${KEY}`;
+const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${KEY}`;
 const file = new URL("../app/chat/chat-test-results.json", import.meta.url);
 const data = JSON.parse(readFileSync(file));
 
@@ -42,7 +42,7 @@ for (let b = 0; b < judgeable.length; b += 4) {
   const v = await judge(slice.map((x) => x.c), slice.map((x) => x.i));
   all.push(...v);
   process.stderr.write(`judged batch ${b / 4} (+${v.length})\n`);
-  await sleep(6000);
+  await sleep(12000); // wider spacing — keep the 9 batches under the per-minute RPM
 }
 data.cases = data.cases.map((c, i) => {
   const quota = c._quota; delete c._quota;
@@ -52,7 +52,7 @@ const pass = data.cases.filter((m) => m.judge.pass === true).length;
 const fail = data.cases.filter((m) => m.judge.pass === false).length;
 data.summary = { total: data.cases.length, pass, fail, unjudged: data.cases.length - pass - fail };
 data.judgedAt = new Date().toISOString();
-data.judgedBy = "gemini-2.5-flash";
+data.judgedBy = "gemini-flash-latest";
 delete data.provenance; // clear the interim banner once Gemini has judged
 writeFileSync(file, JSON.stringify(data, null, 2));
 console.log(`judged — ${pass}/${data.cases.length} pass · ${fail} fail · ${data.summary.unjudged} unjudged`);

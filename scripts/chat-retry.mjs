@@ -8,7 +8,7 @@ const KEY = process.env.GEMINI_API_KEY;
 if (!KEY) { console.error("set GEMINI_API_KEY"); process.exit(1); }
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const humanize = (s) => (s || "").replace(/\[([^\]]+?)\*?\]/g, "$1");
-const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${KEY}`;
+const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${KEY}`;
 
 const parity = JSON.parse(readFileSync(new URL("../app/lib/parity.generated.json", import.meta.url)));
 const LIFE_LANE = { sam: "meta (the onboarder)", hana: "STR · body", kenji: "INT · GLD", mei: "GLD · CHR" };
