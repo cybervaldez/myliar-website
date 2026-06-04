@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Campaign views — mockup (dev) · My Life is an RPG</title>
+<style>
+  :root { --ink:#202122; --soft:#54595d; --line:#a2b1c2; --line2:#dee1e6; --blue:#0645ad; --gold:#8a6d0b; --goldbg:#fdf6e3; --paper:#fff; --shade:#f6f7f9; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: -apple-system, Segoe UI, Roboto, sans-serif; color:var(--ink); background:#eaecf0; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 24px 18px 80px; }
+  h1 { font-family: Georgia, serif; font-size: 34px; margin: 4px 0 2px; }
+  .kicker { font-size: 11px; letter-spacing:.2em; text-transform:uppercase; color:#b81f1c; }
+  .lede { color:var(--soft); font-size:14px; line-height:1.5; max-width:760px; }
+  .panel { background:var(--paper); border:1px solid var(--line); padding:16px; }
+  /* tabs */
+  .tabs { display:flex; gap:2px; margin: 18px 0 0; border-bottom:2px solid var(--line); flex-wrap:wrap; }
+  .tab { font-size:13px; letter-spacing:.04em; text-transform:uppercase; padding:9px 16px; cursor:pointer; border:1px solid var(--line); border-bottom:none; background:var(--shade); color:var(--blue); user-select:none; }
+  .tab.active { background:var(--paper); color:var(--ink); font-weight:700; position:relative; top:2px; }
+  .view { display:none; background:var(--paper); border:1px solid var(--line); border-top:none; padding:18px; }
+  .view.active { display:block; }
+  .subtoggle { display:flex; gap:6px; margin-bottom:14px; }
+  .sub { font-size:11px; text-transform:uppercase; letter-spacing:.08em; padding:5px 12px; border:1px solid var(--line); background:var(--shade); color:var(--blue); cursor:pointer; }
+  .sub.active { background:var(--blue); color:#fff; border-color:var(--blue); }
+  .mer { display:none; overflow:auto; }
+  .mer.active { display:block; }
+  .note { font-size:12px; color:var(--soft); margin: 6px 0 12px; }
+  /* sheet */
+  table { border-collapse: collapse; width:100%; font-size:13px; }
+  th, td { border:1px solid var(--line2); padding:5px 9px; text-align:left; }
+  th { background:var(--shade); cursor:pointer; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+  td.flag { color:var(--gold); font-weight:700; }
+  td.tier { color:#b81f1c; }
+  .dot { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:6px; vertical-align:middle; }
+  /* kanban */
+  .kb { display:flex; gap:12px; overflow-x:auto; }
+  .col { flex:1; min-width:150px; }
+  .colhd { font-size:11px; text-transform:uppercase; letter-spacing:.08em; padding:6px 8px; color:#fff; font-weight:700; }
+  .kcard { border:1px solid var(--line2); border-left-width:4px; background:var(--paper); padding:7px 9px; margin-top:8px; font-size:12.5px; }
+  .badge { display:inline-block; font-size:9px; text-transform:uppercase; letter-spacing:.05em; border:1px solid var(--gold); color:var(--gold); padding:0 4px; margin-left:4px; }
+  .badge.tier { border-color:#b81f1c; color:#b81f1c; }
+  /* metrics */
+  .metrics { display:grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap:12px; }
+  .stat { border:1px solid var(--line2); padding:12px; }
+  .stat .n { font-family:Georgia,serif; font-size:30px; font-weight:700; }
+  .stat .l { font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--soft); }
+  .bars { margin-top:14px; }
+  .bar { display:flex; align-items:center; gap:8px; margin:4px 0; font-size:12px; }
+  .bar .fill { height:14px; }
+  .leg { font-size:11px; color:var(--soft); margin-top:6px; }
+  code { background:var(--shade); padding:1px 4px; font-size:12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Campaign views · mockup to review</div>
+  <h1>The Wingman — view variations</h1>
+  <p class="lede">Pick which views to add as tabs on <code>/campaigns/[id]</code>. Real arc data (25 days, 5 coaches, 4 callbacks). <b>ux-planner + Gemini both say:</b> mermaid = <b>whole-campaign</b> (the callback web is the win; per-day is redundant with the Events list), keep Events/Flow/Sheet (high) + Kanban (med) + Metrics (Gemini's add), drop a Card view. This file is just for your eyeball — nothing wired yet.</p>
+
+  <div class="tabs" id="tabs">
+    <div class="tab active" data-v="events">Events</div>
+    <div class="tab" data-v="flow">Flow ◆</div>
+    <div class="tab" data-v="sheet">Sheet</div>
+    <div class="tab" data-v="kanban">Kanban</div>
+    <div class="tab" data-v="metrics">Metrics</div>
+  </div>
+
+  <!-- EVENTS -->
+  <div class="view active" data-v="events">
+    <p class="note">The current default — the collapsible day-by-day (scenario / choices / deltas / reactions / memory). Shown here as a stub; it already exists on the live page.</p>
+    <div style="border:1px solid var(--line2); padding:10px; background:var(--shade); font-size:13px;">
+      ▸ <b>Day 11 — Sloane</b> · daily · tier-up: memory · ⚑ sets <i>chased-the-leaving</i><br>
+      <span style="color:var(--soft)">evt-1 · "A real one, in person…" · [A] read the tell +2 READ · [B] hold +1 INT · [C] go bigger +2 NERVE ⚑</span>
+    </div>
+  </div>
+
+  <!-- FLOW (mermaid) -->
+  <div class="view" data-v="flow">
+    <div class="subtoggle" id="flowsub">
+      <div class="sub active" data-m="web">Callback web ◆ (the win)</div>
+      <div class="sub" data-m="arc">Arc interleave (all 25)</div>
+    </div>
+    <p class="note">Whole-campaign. <b>Callback web</b> = the selection→future-dialogue graph (a flag set on one day, read on a later day to change dialogue) — the Influence map made visual. <b>Arc interleave</b> = the full 25-day coach weave.</p>
+    <div class="mer active" data-m="web"><pre class="mermaid">
+flowchart LR
+  classDef nico fill:#fdecec,stroke:#c0392b,color:#7a1c12;
+  classDef sloane fill:#eaf1fb,stroke:#2c5fa8,color:#173a6b;
+  classDef mara fill:#eaf6ee,stroke:#2e7d4f,color:#15482b;
+  D9["D9 · Nico<br/>survived-the-cringe"]:::nico
+  D11["D11 · Sloane<br/>chased-the-leaving"]:::sloane
+  D13["D13 · Mara<br/>unplugged"]:::mara
+  D14["D14 · Nico<br/>↩ reads cringe"]:::nico
+  D16["D16 · Sloane<br/>↩ reads charm · sets pretty-one"]:::sloane
+  D18["D18 · Mara<br/>↩ reads pretty-one"]:::mara
+  D21["D21 · Sloane<br/>↩ reads unplugged"]:::sloane
+  D9 -. "survived-the-cringe" .-> D14
+  D11 -. "chased-the-leaving" .-> D16
+  D16 -. "walked-the-pretty-one" .-> D18
+  D13 -. "unplugged (cross-coach)" .-> D21
+    </pre></div>
+    <div class="mer" data-m="arc"><pre class="mermaid">
+flowchart LR
+  classDef nico fill:#fdecec,stroke:#c0392b,color:#7a1c12;
+  classDef sloane fill:#eaf1fb,stroke:#2c5fa8,color:#173a6b;
+  classDef mara fill:#eaf6ee,stroke:#2e7d4f,color:#15482b;
+  classDef wes fill:#f1ecfb,stroke:#6a3fb5,color:#3a2070;
+  classDef remy fill:#fdf0e6,stroke:#cc6a1f,color:#7a3a0f;
+  D1[D1 Nico]:::nico --> D2[D2 Sloane]:::sloane --> D3[D3 Mara]:::mara --> D4[D4 Nico]:::nico --> D5[D5 Wes]:::wes --> D6[D6 Sloane]:::sloane --> D7[D7 Remy]:::remy --> D8[D8 Mara]:::mara --> D9[D9 Nico]:::nico --> D10[D10 Wes]:::wes --> D11[D11 Sloane]:::sloane --> D12[D12 Remy]:::remy --> D13[D13 Mara]:::mara
+  D13 --> D14[D14 Nico]:::nico --> D15[D15 Wes]:::wes --> D16[D16 Sloane]:::sloane --> D17[D17 Remy]:::remy --> D18[D18 Mara]:::mara --> D19[D19 Nico ★]:::nico --> D20[D20 Wes]:::wes --> D21[D21 Sloane ★]:::sloane --> D22[D22 Remy]:::remy --> D23[D23 Mara ★]:::mara --> D24[D24 Wes ★]:::wes --> D25[D25 Remy ★]:::remy
+  D9 -. cringe .-> D14
+  D11 -. charm .-> D16
+  D16 -. pretty-one .-> D18
+  D13 -. unplugged .-> D21
+    </pre></div>
+    <p class="leg">★ = Unspoken (the coach's destination). Dashed = a callback. Colors = coach.</p>
+  </div>
+
+  <!-- SHEET -->
+  <div class="view" data-v="sheet">
+    <p class="note">Audit the whole arc in one scroll — click a header to sort. Spot gaps (a coach with no tier-up), the flag chains, the cadence.</p>
+    <table id="sheet"><thead><tr>
+      <th data-k="day">Day</th><th data-k="coach">Coach</th><th data-k="type">Type</th><th data-k="tier">Tier-up</th><th data-k="sets">⚑ sets</th><th data-k="reads">↩ reads</th>
+    </tr></thead><tbody></tbody></table>
+  </div>
+
+  <!-- KANBAN -->
+  <div class="view" data-v="kanban">
+    <p class="note">By coach — interleave balance + each coach's 5-beat arc at a glance (B1 intro → … → ★ Unspoken).</p>
+    <div class="kb" id="kanban"></div>
+  </div>
+
+  <!-- METRICS -->
+  <div class="view" data-v="metrics">
+    <p class="note">Gemini's add — the campaign at a glance: coverage, tier cadence, the callback count, choice mix.</p>
+    <div class="metrics">
+      <div class="stat"><div class="n">25</div><div class="l">days</div></div>
+      <div class="stat"><div class="n">5</div><div class="l">coaches · 5 beats each</div></div>
+      <div class="stat"><div class="n">21</div><div class="l">tier-up reveals</div></div>
+      <div class="stat"><div class="n">4</div><div class="l">callbacks (selection→future)</div></div>
+      <div class="stat"><div class="n">5</div><div class="l">Unspoken destinations</div></div>
+      <div class="stat"><div class="n">15</div><div class="l">achievements granted</div></div>
+    </div>
+    <div class="bars" id="bars"></div>
+  </div>
+</div>
+
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+mermaid.initialize({ startOnLoad:false, theme:'neutral', flowchart:{ htmlLabels:true, curve:'basis' } });
+
+const COACH = { Nico:'#c0392b', Sloane:'#2c5fa8', Mara:'#2e7d4f', Wes:'#6a3fb5', Remy:'#cc6a1f' };
+// day, coach, type, tier, sets-flag, reads-flag
+const DAYS = [
+ [1,'Nico','onboarding','—','','' ],[2,'Sloane','introduction','—','',''],[3,'Mara','introduction','—','',''],
+ [4,'Nico','daily','opinion','',''],[5,'Wes','introduction','—','',''],[6,'Sloane','daily','opinion','',''],
+ [7,'Remy','introduction','—','',''],[8,'Mara','daily','opinion','',''],[9,'Nico','daily','memory','survived-the-cringe',''],
+ [10,'Wes','daily','memory','',''],[11,'Sloane','daily','memory','chased-the-leaving',''],[12,'Remy','daily','memory','',''],
+ [13,'Mara','daily','memory','unplugged',''],[14,'Nico','daily','memory','','survived-the-cringe'],[15,'Wes','daily','opinion','',''],
+ [16,'Sloane','daily','opinion','walked-the-pretty-one','chased-the-leaving'],[17,'Remy','daily','opinion','',''],
+ [18,'Mara','daily','opinion','','walked-the-pretty-one'],[19,'Nico','daily','question ★','',''],[20,'Wes','daily','memory','',''],
+ [21,'Sloane','daily','question ★','','unplugged'],[22,'Remy','daily','memory','',''],[23,'Mara','daily','question ★','',''],
+ [24,'Wes','daily','question ★','',''],[25,'Remy','daily','question ★','','']
+];
+
+// SHEET
+const tb = document.querySelector('#sheet tbody');
+function renderSheet(rows){ tb.innerHTML = rows.map(r=>`<tr>
+  <td>${r[0]}</td><td><span class="dot" style="background:${COACH[r[1]]}"></span>${r[1]}</td>
+  <td>${r[2]}</td><td class="tier">${r[3]}</td><td class="flag">${r[4]||''}</td><td class="flag">${r[5]?'↩ '+r[5]:''}</td></tr>`).join(''); }
+renderSheet(DAYS);
+let asc = true, lastK='day';
+const KEYS={day:0,coach:1,type:2,tier:3,sets:4,reads:5};
+document.querySelectorAll('#sheet th').forEach(th=>th.onclick=()=>{
+  const k=KEYS[th.dataset.k]; asc = (lastK===th.dataset.k)?!asc:true; lastK=th.dataset.k;
+  const s=[...DAYS].sort((a,b)=>{ let x=a[k],y=b[k]; if(k===0){return asc?x-y:y-x;} return asc?(''+x).localeCompare(''+y):(''+y).localeCompare(''+x); });
+  renderSheet(s);
+});
+
+// KANBAN
+const kb = document.querySelector('#kanban');
+kb.innerHTML = Object.keys(COACH).map(c=>{
+  const cards = DAYS.filter(d=>d[1]===c).map(d=>`<div class="kcard" style="border-left-color:${COACH[c]}">D${d[0]} · ${d[2].replace('★','')}
+    ${d[3]!=='—'?`<span class="badge tier">${d[3].replace('★','★')}</span>`:''}
+    ${d[4]?`<span class="badge">⚑ ${d[4].split('-')[0]}…</span>`:''}
+    ${d[5]?`<span class="badge">↩</span>`:''}</div>`).join('');
+  return `<div class="col"><div class="colhd" style="background:${COACH[c]}">${c}</div>${cards}</div>`;
+}).join('');
+
+// METRICS bars — choice trichotomy presence (illustrative)
+document.querySelector('#bars').innerHTML = `<div class="l" style="font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--soft);margin-bottom:4px">days per coach</div>` +
+  Object.keys(COACH).map(c=>`<div class="bar"><span style="width:60px">${c}</span><span class="fill" style="width:${5*36}px;background:${COACH[c]}"></span><span>5</span></div>`).join('');
+
+// TABS
+const tabs=document.querySelectorAll('#tabs .tab'), views=document.querySelectorAll('.view');
+let rendered={};
+tabs.forEach(t=>t.onclick=()=>{
+  tabs.forEach(x=>x.classList.remove('active')); t.classList.add('active');
+  views.forEach(v=>v.classList.toggle('active', v.dataset.v===t.dataset.v));
+  if(t.dataset.v==='flow' && !rendered.flow){ rendered.flow=true; mermaid.run({ querySelector:'.view[data-v=flow] .mermaid' }); }
+});
+// flow sub-toggle
+document.querySelectorAll('#flowsub .sub').forEach(s=>s.onclick=()=>{
+  document.querySelectorAll('#flowsub .sub').forEach(x=>x.classList.remove('active')); s.classList.add('active');
+  document.querySelectorAll('.view[data-v=flow] .mer').forEach(m=>m.classList.toggle('active', m.dataset.m===s.dataset.m));
+});
+</script>
+</body>
+</html>
