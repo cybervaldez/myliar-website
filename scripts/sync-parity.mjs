@@ -672,6 +672,10 @@ function extractCampaignMeta() {
       const mm = motifBlock.match(new RegExp(`${field}:\\s*((?:'(?:[^'\\\\]|\\\\.)*'\\s*)+)`));
       return mm ? joinDartString(mm[1]) : "";
     };
+    // per-campaign REL-tier names (the relationship-status ladder motif); empty
+    // → the campaign uses the shared default (game_state kRelTierNames).
+    const relBlock = (b.match(/relTierNames:\s*\[([\s\S]*?)\]/) || [, ""])[1];
+    const relTierNames = [...relBlock.matchAll(/'((?:[^'\\]|\\.)*)'/g)].map((x) => x[1].replace(/\\'/g, "'"));
     out.push({
       id,
       title: dartField(b, "title"),
@@ -679,6 +683,7 @@ function extractCampaignMeta() {
       gift: dartField(b, "gift"),
       runId: dartField(b, "runId") || "",
       motif: { kind: grab("kind"), pattern: grab("pattern"), hook: grab("hook") },
+      relTierNames,
     });
   }
   return out;

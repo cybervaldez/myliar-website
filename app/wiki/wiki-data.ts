@@ -36,6 +36,7 @@ export interface CampaignMeta {
   gift: string;
   runId: string;
   motif: { kind: string; pattern: string; hook: string };
+  relTierNames: string[];
 }
 
 // The Wingman coaches — a second canonical cast (the dating expansion). Squad

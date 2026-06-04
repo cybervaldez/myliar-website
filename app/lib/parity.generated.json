@@ -146,7 +146,8 @@
         "kind": "prefix",
         "pattern": "The One…",
         "hook": "Borrows the FRIENDS episode-title meme — instantly recognizable, screenshot-ready, and it frames each grind-win (\"The One Where You Ate at the Pass\") as a beloved sitcom episode OF YOUR OWN LIFE — the whole pitch of Life Ops in three words."
-      }
+      },
+      "relTierNames": []
     },
     {
       "id": "wingman",
@@ -158,7 +159,19 @@
         "kind": "theme",
         "pattern": "the moment, named (terse coach-talk)",
         "hook": "Each title is a quotable line you would text a friend — \"Beat the Count\", \"She Said Nothing\", \"Dignity, Intact\" — coach-talk straight from the Corner that doubles as a flex you screenshot when you pull off the real-life rep. Distinct from Life Ops on purpose: every world gets its own shareable trophy voice."
-      }
+      },
+      "relTierNames": [
+        "Just walked in",
+        "On the roster",
+        "In the rotation",
+        "Worth a real rep",
+        "In your corner",
+        "Straight with you",
+        "Knows where you flinch",
+        "Cornerman",
+        "Reaches out first",
+        "Unspoken"
+      ]
     }
   ],
   "mysteryRoster": [
@@ -10964,6 +10977,6 @@
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "305c3ab708ee"
+    "contentHash": "b4e151aa0b87"
   }
 }

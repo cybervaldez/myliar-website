@@ -175,15 +175,23 @@ export default async function CampaignDaysPage({ params }: { params: Promise<{ i
         <strong>future day&apos;s dialogue</strong> (routed through achievement flags). <strong>Spoilers visible.</strong>
       </p>
 
-      {/* ── Trophy motif (the viral, story-tied naming convention) ── */}
+      {/* ── Viral motifs (trophy naming + REL ladder), declared in the engine ── */}
       {(() => {
-        const m = campaignMeta(id)?.motif;
+        const meta = campaignMeta(id);
+        const m = meta?.motif;
+        const ladder = meta?.relTierNames ?? [];
         return m ? (
           <div className="border border-[#b8860b] bg-[#fdf6e3] p-3 mb-6">
             <div className="font-sans text-[11px] uppercase tracking-[0.16em] text-[#8a6d0b] mb-1">★ Trophy motif — {m.kind}</div>
             <div className="font-display text-[18px] leading-tight mb-1">{m.pattern}</div>
             <p className="text-[12px] text-ink-soft leading-[1.5]">{m.hook}</p>
-            <p className="text-[10.5px] text-margin-ink mt-1 italic">One motif per campaign (declared on the Campaign in the engine) — a shareable hook every trophy here holds.</p>
+            {ladder.length > 0 && (
+              <div className="mt-2 pt-2 border-t border-[#b8860b]/40">
+                <div className="font-sans text-[10px] uppercase tracking-[0.12em] text-[#8a6d0b] mb-1">REL ladder — this world&apos;s closeness motif</div>
+                <div className="text-[12px] text-ink leading-[1.5]">{ladder.join("  ·  ")}</div>
+              </div>
+            )}
+            <p className="text-[10.5px] text-margin-ink mt-2 italic">Declared per campaign on the engine (see docs/design/viral-moments.md) — shareable hooks every trophy + relationship card here holds.</p>
           </div>
         ) : null;
       })()}
