@@ -6,7 +6,7 @@
 // decision, character pages carry fan art + owner notes, NOT open threads.
 
 import { notFound } from "next/navigation";
-import { WikiPage, Infobox, SectionHead } from "../../_components/WikiChrome";
+import { WikiPage, Infobox, SectionHead, SpoilerTag } from "../../_components/WikiChrome";
 import { FanArtSection } from "../../_components/FanArtSection";
 import { DiscussionThread } from "../../_components/DiscussionThread";
 import { anchors } from "../../../lib/codex";
@@ -135,6 +135,30 @@ export default async function CharacterPage({ params }: { params: Promise<{ id: 
               </li>
             ))}
           </ul>
+        </>
+      )}
+
+      {(c.intimateTitle || c.passive) && (
+        <>
+          <SectionHead id="full-rel">Full-REL reward (Unspoken)</SectionHead>
+          <SpoilerTag>
+            <div className="text-[13.5px] leading-[1.5] space-y-1">
+              {c.intimateTitle && (
+                <div>
+                  Intimate title: <strong>{c.intimateTitle}</strong>
+                </div>
+              )}
+              {c.passive && (
+                <div>
+                  What they taught you: <strong>{c.passive.name}</strong>
+                  {c.passive.critBonusPct > 0 && (
+                    <span className="text-margin-ink"> · +{c.passive.critBonusPct}% (within this campaign)</span>
+                  )}
+                  <span className="block text-margin-ink italic mt-0.5 leading-[1.4]">{c.passive.taught}</span>
+                </div>
+              )}
+            </div>
+          </SpoilerTag>
         </>
       )}
 

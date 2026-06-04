@@ -85,6 +85,7 @@
       "gender": "male",
       "titles": [],
       "intimateTitle": null,
+      "passive": null,
       "joinsDay": 0
     },
     {
@@ -107,6 +108,11 @@
         "the Drillmaster"
       ],
       "intimateTitle": "the Spotter",
+      "passive": {
+        "name": "the Spotter's Eye",
+        "taught": "You catch the rep before it breaks form — in any room you see the one thing about to go wrong, and you brace it before it does.",
+        "critBonusPct": 3
+      },
       "joinsDay": 1
     },
     {
@@ -131,6 +137,11 @@
         "the Gold Column"
       ],
       "intimateTitle": "Column Eleven",
+      "passive": {
+        "name": "the Standing Audit",
+        "taught": "You read the ledger under the story now — the real cost, the quiet exception, the thing that does not add up — without anyone asking you to.",
+        "critBonusPct": 3
+      },
       "joinsDay": 3
     },
     {
@@ -154,6 +165,11 @@
         "the Knife"
       ],
       "intimateTitle": "the Second Plate",
+      "passive": {
+        "name": "Mise en Place",
+        "taught": "You set the table before the moment needs it — prepared, never scrambling, always one plate ahead of the rush.",
+        "critBonusPct": 3
+      },
       "joinsDay": 5
     }
   ],
@@ -7634,6 +7650,11 @@
           "the Nerve"
         ],
         "intimateTitle": "the Count-In",
+        "passive": {
+          "name": "the Count-In",
+          "taught": "You move before the doubt finishes its sentence — the half-second of nerve is yours now, in any room you walk into.",
+          "critBonusPct": 3
+        },
         "introLine": "You clocked them three minutes ago — and you're still standing here. Two seconds before 'later' becomes 'never.' I'm Nico. We don't do 'never.' Go.",
         "gender": "male",
         "joinsDay": 1
@@ -7659,6 +7680,11 @@
           "the Straight Read"
         ],
         "intimateTitle": "the Tell",
+        "passive": {
+          "name": "the Read",
+          "taught": "You catch the tell — the pause, the lean, what a person means under what they actually said — before the moment moves on.",
+          "critBonusPct": 3
+        },
         "introLine": "You already know what that twelve-hour 'haha' means. You just want someone to say it out loud. I'm Sloane. I'll say it.",
         "gender": "female",
         "joinsDay": 2
@@ -7684,6 +7710,11 @@
           "In Your Corner"
         ],
         "intimateTitle": "the 1 A.M. Curb",
+        "passive": {
+          "name": "the Anchor",
+          "taught": "One bad night does not spiral anymore — you find the curb, you sit, the floor holds, and you come back tomorrow.",
+          "critBonusPct": 0
+        },
         "introLine": "Rough night? Sit. You don't have to perform 'fine' for me. I'm Mara — not going anywhere, and neither is the floor under you.",
         "gender": "female",
         "joinsDay": 3
@@ -7709,6 +7740,11 @@
           "the Right Words"
         ],
         "intimateTitle": "the Co-Writer",
+        "passive": {
+          "name": "the First Line",
+          "taught": "You find the honest opening without rehearsing it — the words land because they are yours, not a script you borrowed.",
+          "critBonusPct": 3
+        },
         "introLine": "Hand me the phone before you use 'lol' as a shield again. I'm Wes — let's delete the hedging and send the one true sentence you actually mean.",
         "gender": "male",
         "joinsDay": 5
@@ -7734,6 +7770,11 @@
           "the Real One"
         ],
         "intimateTitle": "Face Value",
+        "passive": {
+          "name": "Face Value",
+          "taught": "You show up as the whole, unperformed thing — the mask costs more than the truth ever did, so you stopped wearing it.",
+          "critBonusPct": 3
+        },
         "introLine": "Drop the charm offensive — it's exhausting, and it isn't you anyway. I'm Remy. Not here to polish you; here to put the actual you in the room.",
         "gender": "female",
         "joinsDay": 7
@@ -11075,6 +11116,6 @@
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "afb544b5d43d"
+    "contentHash": "ad3881b5681e"
   }
 }

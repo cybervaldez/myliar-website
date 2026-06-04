@@ -7,6 +7,14 @@
 
 import parityRaw from "../lib/parity.generated.json";
 
+// The Full-REL PASSIVE ("what they taught you") — the KEEP reward unlocked at
+// a character's Unspoken tier (story-engine §2). null when none (e.g. Sam).
+export interface Passive {
+  name: string;
+  taught: string;
+  critBonusPct: number;
+}
+
 export interface SquadMember {
   id: string;
   name: string;
@@ -26,6 +34,7 @@ export interface SquadMember {
   gender: string | null;
   titles: string[];
   intimateTitle: string;
+  passive: Passive | null;
   joinsDay: number | null;
 }
 
@@ -57,6 +66,7 @@ export interface WingmanCoach {
   starterPrompts: string[];
   titles: string[];
   intimateTitle: string;
+  passive: Passive | null;
   introLine: string;
   gender: string | null;
   joinsDay: number | null;

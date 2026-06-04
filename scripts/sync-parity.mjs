@@ -208,6 +208,21 @@ function rosterScopes() {
 
 // allowIds (optional): restrict to a campaign's roster ids. runDir: which run
 // to derive joinsDay from. Defaults preserve the Life Ops (run-005) behavior.
+// The Full-REL PASSIVE ("what they taught you") — story-engine §2 KEEP axis.
+// Pulled from the `passive: Passive(name, taught, critBonusPct)` on a Character.
+// null when a character has no passive (e.g. Sam, the onboarder). Frame-gated
+// like the other player-facing fields.
+function extractPassive(b) {
+  const m = b.match(/passive:\s*Passive\(([\s\S]*?)\)\s*,/);
+  if (!m) return null;
+  const p = m[1];
+  return {
+    name: dartField(p, "name"),
+    taught: applySubstitutions(dartField(p, "taught")),
+    critBonusPct: Number((p.match(/critBonusPct:\s*(\d+)/) || [, 0])[1]),
+  };
+}
+
 function extractSquad(allowIds = null, runDir = RUN_DIR) {
   const src = read("lib/sam.dart") + "\n" + read("lib/characters.dart");
   const blocks = [...src.matchAll(/Character\(([\s\S]*?)\n\);/g)].map((x) => x[1]);
@@ -245,6 +260,8 @@ function extractSquad(allowIds = null, runDir = RUN_DIR) {
       // titles + the intimate (Unspoken) title — for the chat-dossier preview.
       titles: dartStringList(b, "titles"),
       intimateTitle: dartField(b, "intimateTitle"),
+      // the Full-REL passive ("what they taught you") — the KEEP reward.
+      passive: extractPassive(b),
       // Sam is the Day-0 onboarder (not introduced via a payload); the
       // rest derive from the run payloads. Default 0 for anyone absent.
       joinsDay: id === "sam" ? 0 : (joinsDay[id] ?? null),
@@ -283,6 +300,7 @@ function extractWingmanCast(allowIds) {
       starterPrompts: dartStringList(b, "starterPrompts"),
       titles: dartStringList(b, "titles"),
       intimateTitle: dartField(b, "intimateTitle"),
+      passive: extractPassive(b),
       introLine: dartField(b, "introLine"),
       gender: dartField(b, "gender"),
       joinsDay: joinsDay[id] ?? null,

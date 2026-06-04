@@ -102,6 +102,19 @@ export default function WingmanPage() {
                 </SpoilerTag>
               </div>
             )}
+            {c.passive && (
+              <div className="mt-1.5">
+                <SpoilerTag>
+                  <span className="text-[12px]">
+                    What they taught you: <strong>{c.passive.name}</strong>
+                    {c.passive.critBonusPct > 0 && (
+                      <span className="text-margin-ink"> · +{c.passive.critBonusPct}% (within this campaign)</span>
+                    )}
+                    <span className="block text-margin-ink italic mt-0.5 leading-[1.4]">{c.passive.taught}</span>
+                  </span>
+                </SpoilerTag>
+              </div>
+            )}
           </div>
         ))}
       </div>
