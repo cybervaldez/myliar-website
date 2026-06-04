@@ -486,6 +486,15 @@ function extractRun(runDir = RUN_DIR) {
           flag(`${ev.id}.${c.id}.item`, c.itemDrop.name);
           flag(`${ev.id}.${c.id}.item`, c.itemDrop.description);
         }
+        // v0.0.42 — callback reactions (a held flag swaps the reaction text).
+        const reactionVariants = (c.reactionVariants ?? []).map((rv) => {
+          flag(`${ev.id}.${c.id}.variantReaction`, rv.reactionText);
+          return {
+            unlockIf: rv.unlockIf ?? [],
+            reactionText: rv.reactionText ?? "",
+            reactionTextOnCritFail: rv.reactionTextOnCritFail ?? null,
+          };
+        });
         return {
           id: c.id,
           role: c.role,
@@ -497,6 +506,9 @@ function extractRun(runDir = RUN_DIR) {
           itemDrop: c.itemDrop
             ? { name: c.itemDrop.name, description: c.itemDrop.description ?? "", kind: c.itemDrop.kind ?? "memento" }
             : null,
+          // v0.0.42 — the flag this SELECTION sets (read by future days' variants).
+          grantsAchievement: c.grantsAchievement ?? null,
+          reactionVariants,
         };
       });
       const memoryWrites = (ev.memoryWrites ?? []).map((m) => {
@@ -504,7 +516,12 @@ function extractRun(runDir = RUN_DIR) {
         flag(`${ev.id}.memory`, text);
         return { text, emotion: typeof m === "object" ? (m.emotion ?? null) : null };
       });
-      return { id: ev.id, scenario: ev.scenario, choices, memoryWrites };
+      // v0.0.42 — callback scenarios (a held flag swaps the event's scenario).
+      const scenarioVariants = (ev.scenarioVariants ?? []).map((sv) => {
+        flag(`${ev.id}.variantScenario`, sv.scenario);
+        return { unlockIf: sv.unlockIf ?? [], scenario: sv.scenario ?? "" };
+      });
+      return { id: ev.id, scenario: ev.scenario, choices, memoryWrites, scenarioVariants };
     });
 
     flag("closingHook", p.closingHook);

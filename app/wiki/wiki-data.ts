@@ -102,6 +102,19 @@ export interface Item {
   foundCharacter: string | null;
 }
 
+// v0.0.42 — callback variants: a held achievement FLAG (set by a past
+// selection) swaps in this text on a later day. The "selections influence
+// future dialogue" mechanic, routed through the one unlock currency.
+export interface ReactionVariant {
+  unlockIf: string[];
+  reactionText: string;
+  reactionTextOnCritFail: string | null;
+}
+export interface ScenarioVariant {
+  unlockIf: string[];
+  scenario: string;
+}
+
 export interface MainlineChoice {
   id: string;
   role: string;
@@ -111,12 +124,16 @@ export interface MainlineChoice {
   reactionText: string;
   reactionTextOnCritFail: string | null;
   itemDrop: { name: string; description: string; kind: string } | null;
+  // v0.0.42 — the flag this selection sets, + callback reactions it may show.
+  grantsAchievement: string | null;
+  reactionVariants: ReactionVariant[];
 }
 
 export interface MainlineEvent {
   id: string;
   scenario: string;
   choices: MainlineChoice[];
+  scenarioVariants: ScenarioVariant[];
   memoryWrites: { text: string; emotion: string | null }[];
 }
 
