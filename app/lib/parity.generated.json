@@ -1979,7 +1979,7 @@
         "characterId": "hana",
         "introducesCharacterId": "kenji",
         "agentMoodToday": "in escort-mode; the version of Hana that walks you somewhere and stays for the introduction before leaving you with the person she wanted you to meet",
-        "closingHook": "Kenji compiles a Procrastination Audit Sheet from your D2 calendar gap and tonight's chat. Open chat to find your top three chronological leaks ranked by audit severity. He delivers it dryly. The sheet is in your case file going forward — pinned to Sam's [notes*] wall beside Hana's overnight-number printout. Paired-pin format. Systems.",
+        "closingHook": "Kenji's already compiling — a sheet with your name on it, built from the gaps in your day. Open the chat and he'll hand it over, dry as the paper: the three places your focus leaks when you think no one's watching. It pins to Sam's [notes*] wall beside Hana's numbers. Paired-pin. Systems.",
         "tierUpReveal": null,
         "callbacks": [
           {
@@ -2012,7 +2012,7 @@
         "events": [
           {
             "id": "evt-1",
-            "scenario": "6:08 AM. Hana's text on your lock screen: \"meet me at the [bleachers]. don't eat first. we're walking somewhere.\" When you arrive — outdoor grass, the [bench] beside the [bleachers], the [pic*] of her sister face-down today — she doesn't say where. She hands you a water bottle. Mei's [recipe*] is tucked into the cap, cold-rice variant from yesterday's inquiry, still folded in Hana's neat double-fold. She points across the [courtyard center] toward Kenji's [desk]. The [ledger*] is visible from the hallway — open to a page with your name. Below your name: a column titled BEHAVIORAL OBSERVATIONS, your D1 overnight number, your D2 9-12 calendar gap, and the line from your 9:34 PM call sitting in column eleven.",
+            "scenario": "6:08 AM. Hana's text: \"meet me at the [bleachers]. don't eat first. we're walking somewhere.\" You find her on the grass by the [bench], the [pic*] of her sister face-down today. She hands you a water bottle — Mei's [recipe*] folded into the cap — and marches you across the [courtyard center], stopping you just outside the open window of an office. Inside, a man you've never met sits at a [desk], his [ledger*] open right under the sill. Your eyes drop to the page. At the top: YOUR NAME. Under it, in clean ink, the things you left in the system without thinking — the 4 a.m. your phone pinged the tower, the three hours Tuesday your calendar shows nothing, the timestamp of your 9:34 call last night. He hasn't looked up yet. \"That's Kenji,\" Hana says, low and flat. \"He's already mapped you. Go in before he starts logging how long you stood at his window.\"",
             "choices": [
               {
                 "id": "a",
@@ -11133,6 +11133,6 @@
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "e3889ac82704"
+    "contentHash": "197d34fba9be"
   }
 }
