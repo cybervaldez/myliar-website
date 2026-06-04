@@ -37,7 +37,7 @@ export function buildContext(c, tier, notes) {
 // ── Test matrix ─────────────────────────────────────────────────────────
 // Which characters × which tiers the harness sweeps. Tiers: "low" (the second
 // rung) + "unspoken" (max). Notes: low → none (early); unspoken → all.
-export const TEST_CHARS = ["hana", "kenji", "sloane", "mara"];
+export const TEST_CHARS = ["sam", "hana", "kenji", "mei", "nico", "wes", "sloane", "remy", "mara"];
 export const TEST_TIERS = ["low", "unspoken"];
 
 // Probes per campaign: a NEUTRAL message + a FLOOR-BREAK bait the reply must resist.
