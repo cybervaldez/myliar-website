@@ -342,6 +342,12 @@ export default async function CampaignDaysPage({ params }: { params: Promise<{ i
           label={`Copy ${c.title} for LLM`}
           title="The whole campaign as self-describing JSON — hand it to Gemini/an LLM for a cross-check (migrated from the retired Storyboard/Lab tooling)."
         />
+        <p className="text-[11px] text-margin-ink mt-2 leading-[1.5]">
+          <strong>Validate (Step 4):</strong> score each day against the{" "}
+          <Link href="/the-engine#the-bar" className="text-forest hover:text-spot-red underline underline-offset-2">5 goal dimensions</Link>{" "}
+          (RPG-like · engaging · fun · low-barrier · screenshot-worthy) + a sim on{" "}
+          <Link href="/chat" className="text-forest hover:text-spot-red underline underline-offset-2">Chat</Link>. The heavy persona playtest is pre-milestone only.
+        </p>
       </div>
 
       {/* ── Viral motifs (trophy naming + REL ladder), declared in the engine ── */}

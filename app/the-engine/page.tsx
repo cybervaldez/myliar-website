@@ -47,6 +47,7 @@ const TOC = [
   ["the-order", "08", "The authoring order that fell out"],
   ["the-weave", "09", "How it all intertwines"],
   ["my-take", "10", "What I actually think"],
+  ["the-bar", "11", "The bar it all serves"],
 ];
 
 export default function EngineEssay() {
@@ -358,6 +359,25 @@ export default function EngineEssay() {
             <strong>the chat is the destination, and the story is the factory
             that builds the person you get to talk to.</strong> Every mechanic on
             this page earns its place by serving that, or it doesn&apos;t ship.
+          </p>
+
+          <H2 id="the-bar" n="11">The bar it all serves</H2>
+          <p>
+            &ldquo;Or it doesn&apos;t ship&rdquo; needs a yardstick. Every beat — and the whole
+            machine — is scored against five dimensions. These are the <strong>product goal</strong>;
+            the note factory is in service of them, never the reverse.
+          </p>
+          <ol className="font-body leading-[1.7] list-decimal pl-5 space-y-1.5">
+            <li><strong>RPG-like</strong> — reads as a role-playing game, not a chat app: stat lanes, progression, the real-domain × stat-lane blend, party dynamics, items and reveals.</li>
+            <li><strong>Engaging</strong> — the beat pulls you to the next one. A hook, a cliffhanger, &ldquo;what happens tomorrow.&rdquo;</li>
+            <li><strong>Fun</strong> — surprising, characterful, never a chore.</li>
+            <li><strong>Low barrier</strong> — a casual player follows it with no jargon, confusion, or friction. Frame-breaks and app-vocab drift count as barriers.</li>
+            <li><strong>Screenshot-worthy</strong> — yields shareable moments; ~10 across a run (the App Store carousel bar).</li>
+          </ol>
+          <p>
+            Routine validation is a light self-check against these five plus the build-time guards
+            (the lexicon-leak + frame gates); the heavy casual-persona <em>playtest</em> is reserved
+            for a milestone, not every beat.
           </p>
 
           <hr className="border-0 border-t border-ink/15 my-10" />
