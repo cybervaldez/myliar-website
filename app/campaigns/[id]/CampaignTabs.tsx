@@ -11,14 +11,21 @@ import { useState, useEffect, useRef, type ReactNode } from "react";
 export type ViewRow = { day: number; coachId: string; coach: string; color: string; type: string; tier: string; unspoken: boolean; sets: string[]; reads: string[]; events: number };
 export type ViewCoach = { id: string; name: string; color: string };
 export type ViewMetrics = { days: number; coaches: number; tierUps: number; callbacks: number; unspoken: number; achievements: number };
+export type ViewAudit = {
+  ledger: { day: number; focal: string; grants: { id: string; rarity: string }[]; keepsakes: string[] }[];
+  totalGrants: number; emptyDays: number; bloatDays: number[]; legendaryCount: number;
+  viral: { itemDrops: number; tierUps: number; callbacks: number; motifTitles: number };
+  viralTotal: number; viralBar: number; thinDays: number[];
+};
 
-type Tab = "events" | "flow" | "sheet" | "kanban" | "metrics";
+type Tab = "events" | "flow" | "sheet" | "kanban" | "metrics" | "audit";
 const TABS: { id: Tab; label: string }[] = [
   { id: "events", label: "Events" },
   { id: "flow", label: "Flow ◆" },
   { id: "sheet", label: "Sheet" },
   { id: "kanban", label: "Kanban" },
   { id: "metrics", label: "Metrics" },
+  { id: "audit", label: "Audit ✓" },
 ];
 
 function MermaidFlow({ web, arc, uid }: { web: string; arc: string; uid: string }) {
@@ -116,9 +123,9 @@ function MermaidFlow({ web, arc, uid }: { web: string; arc: string; uid: string 
   );
 }
 
-export function CampaignTabs({ events, influence, flowWeb, flowArc, rows, coaches, metrics, uid }: {
+export function CampaignTabs({ events, influence, flowWeb, flowArc, rows, coaches, metrics, audit, uid }: {
   events: ReactNode; influence: ReactNode; flowWeb: string; flowArc: string;
-  rows: ViewRow[]; coaches: ViewCoach[]; metrics: ViewMetrics; uid: string;
+  rows: ViewRow[]; coaches: ViewCoach[]; metrics: ViewMetrics; audit: ViewAudit; uid: string;
 }) {
   const [tab, setTab] = useState<Tab>("events");
   const [sortK, setSortK] = useState<keyof ViewRow>("day");
@@ -222,6 +229,63 @@ export function CampaignTabs({ events, influence, flowWeb, flowArc, rows, coache
                   </div>
                 );
               })}
+            </div>
+          </div>
+        )}
+
+        {tab === "audit" && (
+          <div className="space-y-6">
+            <p className="text-[12px] text-margin-ink">Data-derived validation — the <a href="/the-engine#the-bar" className="text-forest underline underline-offset-2">goal-dimensions</a> check made visible (no manual input; reads the payloads).</p>
+
+            {/* Achievement Ledger — the sparse / bloat discipline */}
+            <div>
+              <div className="flex items-baseline justify-between mb-2 flex-wrap gap-1">
+                <h3 className="font-display text-[16px] text-forest">Achievement Ledger</h3>
+                <span className="text-[11px] text-margin-ink">{audit.totalGrants} grants / {audit.ledger.length} days · {audit.legendaryCount} legendary keepsakes (mystery-gated)</span>
+              </div>
+              <div className="border border-[#dee1e6]">
+                {audit.ledger.map((r) => {
+                  const bloat = r.grants.length > 1;
+                  const empty = r.grants.length === 0 && r.keepsakes.length === 0;
+                  return (
+                    <div key={r.day} className={`flex items-baseline gap-2 px-2.5 py-1 text-[12px] border-b border-[#eef0f2] last:border-0 ${bloat ? "bg-[#fdf6e3]" : ""}`}>
+                      <span className="w-[40px] text-margin-ink tabular-nums">D{r.day}</span>
+                      <span className="w-[58px] text-ink-soft shrink-0">{r.focal}</span>
+                      <span className="flex-1 leading-[1.5]">
+                        {empty && <span className="text-[#15803d]">— <span className="text-[10px] text-margin-ink">empty by design ✓</span></span>}
+                        {r.grants.map((g) => (
+                          <span key={g.id} className="inline-block mr-2">★ {g.id}{g.rarity && <span className="text-[9px] uppercase text-margin-ink"> {g.rarity}</span>}</span>
+                        ))}
+                        {r.keepsakes.map((k) => <span key={k} className="inline-block mr-2 text-[#8a6d0b]">◆ {k}</span>)}
+                      </span>
+                      {bloat && <span className="text-[10px] text-spot-red uppercase tracking-[0.04em] shrink-0">⚠ {r.grants.length} in one day</span>}
+                    </div>
+                  );
+                })}
+              </div>
+              <p className="text-[11px] text-margin-ink mt-1.5 leading-[1.5]">
+                avg {(audit.totalGrants / Math.max(1, audit.ledger.length)).toFixed(1)}/day · {audit.emptyDays} of {audit.ledger.length} days grant nothing (sparse by design ✓).
+                {audit.bloatDays.length > 0 && <span className="text-spot-red"> ⚠ {audit.bloatDays.map((d) => `D${d}`).join(", ")} grant 2+ — confirm both are earned moments, not bolted on.</span>}
+              </p>
+            </div>
+
+            {/* Virality coverage — designed shareable beats vs the ~10 carousel bar */}
+            <div>
+              <div className="flex items-baseline justify-between mb-2 flex-wrap gap-1">
+                <h3 className="font-display text-[16px] text-forest">Virality coverage</h3>
+                <span className={`text-[11px] ${audit.viralTotal >= audit.viralBar ? "text-[#15803d]" : "text-spot-red"}`}>{audit.viralTotal} designed shareable beats / ~{audit.viralBar} bar {audit.viralTotal >= audit.viralBar ? "✓" : "⚠"}</span>
+              </div>
+              <div className="grid gap-2" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(110px,1fr))" }}>
+                {(([["★ item drops", audit.viral.itemDrops], ["▲ tier-ups", audit.viral.tierUps], ["↩ callbacks", audit.viral.callbacks], ["◆ motif titles", audit.viral.motifTitles]]) as [string, number][]).map(([l, n]) => (
+                  <div key={l} className="border border-[#dee1e6] p-2">
+                    <div className="font-display text-[22px] font-bold" style={{ fontFamily: "Georgia, serif" }}>{n}</div>
+                    <div className="text-[10px] uppercase tracking-[0.06em] text-margin-ink">{l}</div>
+                  </div>
+                ))}
+              </div>
+              {audit.thinDays.length > 0
+                ? <p className="text-[11px] text-spot-red mt-1.5 leading-[1.5]">⚠ screenshot-thin days (0 designed shareable beats): {audit.thinDays.map((d) => `D${d}`).join(", ")} — front-load a hook.</p>
+                : <p className="text-[11px] text-[#15803d] mt-1.5">Every day carries at least one designed shareable beat ✓</p>}
             </div>
           </div>
         )}

@@ -8,7 +8,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { FandomShell } from "../../_components/FandomShell";
 import { ShareCard, SKINS, campaignCards, campaignDefaultSkin, genreLensCards } from "../../cards/share-card";
-import { CampaignTabs, type ViewRow, type ViewCoach, type ViewMetrics } from "./CampaignTabs";
+import { CampaignTabs, type ViewRow, type ViewCoach, type ViewMetrics, type ViewAudit } from "./CampaignTabs";
 import { DayDiagram } from "./DayDiagram";
 import { CopyForLLM } from "../../_components/CopyForLLM";
 
@@ -233,6 +233,45 @@ export default async function CampaignDaysPage({ params }: { params: Promise<{ i
     achievements: granted.size,
   };
 
+  // ── Audit views (data-derived: the validation step made visible) ──
+  // Achievement Ledger — per-day grants + the sparse/bloat discipline.
+  const ledger = c.days.map((d) => {
+    const grantIds = new Set<string>();
+    const keepsakes: string[] = [];
+    for (const ev of d.events) for (const ch of ev.choices) {
+      if (ch.grantsAchievement) grantIds.add(ch.grantsAchievement);
+      const itf = (ch.itemDrop as { grantsAchievement?: string } | null)?.grantsAchievement;
+      if (itf) grantIds.add(itf);
+      if (ch.itemDrop?.kind === "legendary") keepsakes.push(ch.itemDrop.name);
+    }
+    return {
+      day: d.globalDayIndex,
+      focal: d.characterId ? c.nameOf(d.characterId) ?? d.characterId : "—",
+      grants: [...grantIds].map((id) => ({ id, rarity: achievementById(id)?.rarity ?? "" })),
+      keepsakes,
+    };
+  });
+  let itemDrops = 0;
+  for (const d of c.days) for (const ev of d.events) for (const ch of ev.choices) if (ch.itemDrop) itemDrops++;
+  const audit: ViewAudit = {
+    ledger,
+    totalGrants: ledger.reduce((n, r) => n + r.grants.length, 0),
+    emptyDays: ledger.filter((r) => r.grants.length === 0).length,
+    bloatDays: ledger.filter((r) => r.grants.length > 1).map((r) => r.day),
+    legendaryCount: ledger.reduce((n, r) => n + r.keepsakes.length, 0),
+    // Virality coverage — the designed shareable beats vs the ~10 carousel bar.
+    viral: { itemDrops, tierUps: metrics.tierUps, callbacks: metrics.callbacks, motifTitles: granted.size },
+    viralTotal: itemDrops + metrics.tierUps + metrics.callbacks + granted.size,
+    viralBar: 10,
+    thinDays: c.days
+      .filter((d) => {
+        const hasDrop = d.events.some((ev) => ev.choices.some((ch) => ch.itemDrop));
+        const hasGrant = d.events.some((ev) => ev.choices.some((ch) => ch.grantsAchievement || (ch.itemDrop as { grantsAchievement?: string } | null)?.grantsAchievement));
+        return !hasDrop && !d.tierUpReveal && !hasGrant;
+      })
+      .map((d) => d.globalDayIndex),
+  };
+
   // mermaid graph strings (built server-side, rendered client-side on the Flow tab)
   const label = (d: typeof c.days[number]) => `D${d.globalDayIndex} ${(c.nameOf(d.characterId ?? "") ?? "").split(" ")[0]}${d.tierUpReveal?.category === "question" ? " ★" : ""}`;
   const cls = (d: typeof c.days[number]) => `c${coachIdx.get(d.characterId ?? "") ?? 0}`;
@@ -397,7 +436,7 @@ export default async function CampaignDaysPage({ params }: { params: Promise<{ i
         )}
       </div>
 
-      {/* ── Views (Events · Flow · Sheet · Kanban · Metrics) ── */}
+      {/* ── Views (Events · Flow · Sheet · Kanban · Metrics · Audit) ── */}
       <CampaignTabs
         events={eventsSlot}
         influence={influenceSlot}
@@ -406,6 +445,7 @@ export default async function CampaignDaysPage({ params }: { params: Promise<{ i
         rows={rows}
         coaches={coaches}
         metrics={metrics}
+        audit={audit}
         uid={id}
       />
 
