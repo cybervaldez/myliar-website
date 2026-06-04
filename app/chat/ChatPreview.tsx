@@ -1,13 +1,12 @@
 "use client";
 
-// The chat-DESTINATION preview: pick a character + a REL-tier game-state and see
-// the DOSSIER the arc builds toward — the thing the player talks to at the end.
-// (story-engine: "the arc is a note-factory; the chat is the destination.") Shows
-// the gate/floor, the identity + title-at-tier, the case-file notes the digest
-// surfaces, and the Unspoken reward stack WITH honest build-status — so the
-// endgame gap is visible, not hidden.
+// The chat DESTINATION + LIVE SIM. Pick a character + a REL-tier game-state +
+// which notes are in context → the assembled prompt context (editable) → a live
+// Gemini chat (via /api/chat-sim, server-side key). Change REL/notes → the
+// context regenerates → responses shift. This is the loop for tightening the
+// prompt context. Reward-stack build-status stays visible (the endgame gap).
 
-import { useState } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 
 export type ChatChar = {
   id: string; name: string; campaign: "main-line" | "wingman"; campaignTitle: string;
@@ -18,126 +17,167 @@ export type ChatChar = {
 const GATE: Record<string, { label: string; text: string }> = {
   "main-line": {
     label: "phone-realm SQUAD floor",
-    text: "You're one of the four who live in the player's phone — an RPG-themed functional agent, not generic AI roleplay. STR/INT/GLD/CHR party. Banned: medical/finance/wellness words. In-world lexicon (Sigil · Margin · Roster · Audit · Drill · Mise). No flirting — the relationship floor.",
+    text: "You are one of the four who live in the player's phone — an RPG-themed functional agent, not generic AI roleplay. The party runs on STR/INT/GLD/CHR. Banned: medical / finance / wellness words. In-world lexicon (Sigil · Margin · Roster · Audit · Drill · Mise). No flirting — the relationship floor.",
   },
   wingman: {
     label: "the Corner DATING floor",
-    text: "You're a COACH in the player's corner, NEVER the date. NEVER roleplay, simulate, or voice the match/date — they're offscreen, in the player's real life. No PUA/manosphere, no therapy/clinical register. The sandbox-substitution guard: make yourself UNNEEDED — the win is real-life action.",
+    text: "You are a COACH in the player's corner, NEVER the date. NEVER roleplay, simulate, or voice the match/date — they are offscreen, in the player's real life. No PUA/manosphere, no therapy/clinical register. The sandbox-substitution guard: make yourself UNNEEDED — the win is real-life action.",
   },
 };
 
 const STATUS: Record<string, { c: string; l: string }> = {
-  wired: { c: "#15803d", l: "WIRED" },
-  partial: { c: "#b8860b", l: "PARTIAL" },
-  authored: { c: "#0645ad", l: "AUTHORED ONLY" },
-  unwired: { c: "#b81f1c", l: "SPEC'D · NOT WIRED" },
+  wired: { c: "#15803d", l: "WIRED" }, partial: { c: "#b8860b", l: "PARTIAL" },
+  authored: { c: "#0645ad", l: "AUTHORED ONLY" }, unwired: { c: "#b81f1c", l: "SPEC'D · NOT WIRED" },
 };
-
-function STACK(intimate: string): { k: string; status: keyof typeof STATUS; note: string }[] {
+function stack(intimate: string): { k: string; s: keyof typeof STATUS }[] {
   return [
-    { k: `Intimate title — "${intimate || "—"}"`, status: "wired", note: "a display field on the character, revealed at Unspoken." },
-    { k: "Keepsake (always-mystery legendary)", status: "wired", note: "the legendary item, unlocked by the Unspoken achievement (mysteryLocked)." },
-    { k: "Passive — “what they taught you” (cross-game buff)", status: "partial", note: "the Unspoken achievement carries a crit-% buff; the anti-cascade / lane buffs are NOT wired yet." },
-    { k: "Inversion / peer beat (the gift turns around)", status: "authored", note: "written into the B5 payloads (you audit Kenji / read the Reader) — narrative only, no mechanic." },
-    { k: "Mutual mode — “they reach out” unprompted", status: "unwired", note: "spec'd in story-engine §2; no code path exists yet." },
+    { k: `Intimate title — "${intimate || "—"}"`, s: "wired" },
+    { k: "Keepsake (legendary)", s: "wired" },
+    { k: "Passive — cross-game buff", s: "partial" },
+    { k: "Inversion / peer beat", s: "authored" },
+    { k: "Mutual mode — “they reach out”", s: "unwired" },
   ];
+}
+
+function buildContext(c: ChatChar, tier: number, notes: { day: number; text: string }[]): string {
+  const maxTier = c.tierNames.length - 1;
+  const atUnspoken = tier >= maxTier;
+  const knownAs = atUnspoken ? c.intimateTitle || c.titles[0] || c.name : c.titles[c.titles.length - 1] || c.name;
+  return [
+    `You are ${c.name}, a coach/companion in "${c.campaignTitle}" — a life-RPG where you coach the player in their REAL life, wrapped in game-feel.`,
+    ``,
+    `THE FLOOR (never break, no exceptions): ${GATE[c.campaign].text}`,
+    ``,
+    `WHO YOU ARE: ${c.helpSummary} Your stat lane: ${c.statLane}.`,
+    `RELATIONSHIP: the player knows you as "${knownAs}". Your REL tier with them is "${c.tierNames[tier]}"${atUnspoken ? ` — Unspoken, the deepest, most folded-in version of you (the player earned the intimate name "${c.intimateTitle}").` : ` — keep the warmth proportional to this tier (don't be more intimate than it earns).`}`,
+    ``,
+    notes.length
+      ? `WHAT YOU REMEMBER ABOUT THE PLAYER (your case file — these shape your VOICE, not new behavior):\n${notes.map((n) => `- (Day ${n.day}) ${n.text}`).join("\n")}`
+      : `You don't have notes on the player yet — you're early; don't reference shared history you haven't built.`,
+    ``,
+    `Reply AS ${c.name} in your own voice — short and in-character (1–4 sentences, like a text). Honor the floor absolutely. Never break character or mention being an AI/model.`,
+  ].join("\n");
 }
 
 export function ChatPreview({ chars }: { chars: ChatChar[] }) {
   const [id, setId] = useState(chars[0]?.id ?? "");
-  const c = chars.find((x) => x.id === id) ?? chars[0];
+  const c = useMemo(() => chars.find((x) => x.id === id) ?? chars[0], [chars, id]);
   const maxTier = (c?.tierNames.length ?? 10) - 1;
   const [tier, setTier] = useState(maxTier);
+  // default in-context notes = the ~3 most recent (matching the digest)
+  const defaultNotes = useMemo(() => new Set(c ? c.notes.map((_, i) => i).slice(-3) : []), [c]);
+  const [sel, setSel] = useState<Set<number>>(defaultNotes);
+  const [ctx, setCtx] = useState("");
+  const [dirty, setDirty] = useState(false);
+  const [msgs, setMsgs] = useState<{ role: "user" | "model"; text: string }[]>([]);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState("");
+  const scroller = useRef<HTMLDivElement>(null);
+
+  // character change → reset
+  useEffect(() => { setTier(maxTier); setSel(defaultNotes); setMsgs([]); setErr(""); setDirty(false); /* eslint-disable-next-line */ }, [id]);
+  // regenerate context from state unless the user has edited it
+  const selNotes = useMemo(() => (c ? c.notes.filter((_, i) => sel.has(i)) : []), [c, sel]);
+  useEffect(() => { if (!dirty && c) setCtx(buildContext(c, tier, selNotes)); }, [c, tier, selNotes, dirty]);
+  useEffect(() => { scroller.current?.scrollTo(0, scroller.current.scrollHeight); }, [msgs, loading]);
+
   if (!c) return null;
   const atUnspoken = tier >= maxTier;
-  const earnedTitles = atUnspoken ? c.titles.length : Math.max(1, Math.round(((tier + 1) / (maxTier + 1)) * c.titles.length));
-  const gate = GATE[c.campaign];
+
+  async function send() {
+    const t = input.trim(); if (!t || loading) return;
+    const next = [...msgs, { role: "user" as const, text: t }];
+    setMsgs(next); setInput(""); setLoading(true); setErr("");
+    try {
+      const r = await fetch("/api/chat-sim", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ context: ctx, messages: next }) });
+      const j = await r.json();
+      if (j.error) setErr(j.error); else setMsgs([...next, { role: "model", text: j.reply }]);
+    } catch (e) { setErr(String(e)); } finally { setLoading(false); }
+  }
 
   return (
     <div>
-      {/* character picker */}
+      {/* picker */}
       <div className="flex gap-2 flex-wrap mb-4">
         {["main-line", "wingman"].map((cam) => (
           <div key={cam} className="flex gap-1.5 flex-wrap items-center">
             <span className="text-[10px] uppercase tracking-[0.1em] text-margin-ink mr-1">{cam === "wingman" ? "The Wingman" : "Life Ops"}</span>
             {chars.filter((x) => x.campaign === cam).map((x) => (
-              <button key={x.id} onClick={() => { setId(x.id); setTier((x.tierNames.length) - 1); }}
-                className={`text-[12px] px-2.5 py-1 border ${x.id === id ? "bg-[#0645ad] text-white border-[#0645ad]" : "border-[#a2b1c2] text-[#0645ad]"}`}>
-                {x.name}
-              </button>
+              <button key={x.id} onClick={() => setId(x.id)} className={`text-[12px] px-2.5 py-1 border ${x.id === id ? "bg-[#0645ad] text-white border-[#0645ad]" : "border-[#a2b1c2] text-[#0645ad]"}`}>{x.name}</button>
             ))}
           </div>
         ))}
       </div>
 
-      {/* REL-tier game-state slider */}
-      <div className="border border-[#a2b1c2] bg-[#f6f7f9] p-3 mb-4">
-        <div className="flex items-baseline justify-between mb-1">
-          <span className="text-[11px] uppercase tracking-[0.1em] text-[#54595d]">game-state · REL tier</span>
-          <span className="font-display text-[18px]" style={{ fontFamily: "Georgia, serif" }}>{c.tierNames[tier]}{atUnspoken ? " ★" : ""}</span>
-        </div>
-        <input type="range" min={0} max={maxTier} value={tier} onChange={(e) => setTier(Number(e.target.value))} className="w-full" />
-        <div className="flex justify-between text-[9px] text-margin-ink mt-0.5"><span>{c.tierNames[0]}</span><span>{c.tierNames[maxTier]} (Unspoken)</span></div>
-      </div>
-
-      {/* the assembled dossier */}
-      <div className="border-[1.5px] border-ink bg-white">
-        <div className="bg-[#202122] text-white px-4 py-2 flex items-baseline justify-between">
-          <span className="font-display text-[18px]">{c.name}</span>
-          <span className="text-[11px] text-[#bbb]">{c.campaignTitle} · the dossier the player talks to</span>
-        </div>
-        <div className="p-4 space-y-4">
-          {/* the gate */}
-          <div>
-            <div className="font-sans text-[10px] uppercase tracking-[0.12em] text-spot-red mb-1">the gate · {gate.label}</div>
-            <p className="text-[12.5px] text-ink-soft leading-[1.5]">{gate.text}</p>
-          </div>
-
-          {/* identity + title at tier */}
-          <div>
-            <div className="font-sans text-[10px] uppercase tracking-[0.12em] text-[#54595d] mb-1">who they are · the gift</div>
-            <p className="text-[13px] text-ink leading-[1.5]">{c.helpSummary}</p>
-            <div className="text-[11px] text-margin-ink mt-1">stat lane: <strong>{c.statLane}</strong></div>
-            <div className="mt-2 flex flex-wrap gap-1.5 items-center">
-              <span className="text-[10px] uppercase tracking-[0.08em] text-margin-ink">titles earned by this tier:</span>
-              {c.titles.map((t, i) => (
-                <span key={t} className={`text-[11px] px-1.5 py-0.5 border ${i < earnedTitles ? "border-forest text-forest" : "border-[#cbd2da] text-[#9aa4af]"}`}>{i < earnedTitles ? "" : "🔒 "}{t}</span>
-              ))}
-              <span className={`text-[11px] px-1.5 py-0.5 border ${atUnspoken ? "border-[#b8860b] text-[#8a6d0b] bg-[#fdf6e3]" : "border-[#cbd2da] text-[#9aa4af]"}`}>{atUnspoken ? "★ " : "🔒 "}{c.intimateTitle || "—"} <span className="text-[9px]">(intimate · Unspoken)</span></span>
+      <div className="grid gap-4 lg:grid-cols-2">
+        {/* LEFT — game-state that feeds the context */}
+        <div className="space-y-4">
+          <div className="border border-[#a2b1c2] bg-[#f6f7f9] p-3">
+            <div className="flex items-baseline justify-between mb-1">
+              <span className="text-[11px] uppercase tracking-[0.1em] text-[#54595d]">REL tier</span>
+              <span className="font-display text-[18px]" style={{ fontFamily: "Georgia, serif" }}>{c.tierNames[tier]}{atUnspoken ? " ★" : ""}</span>
             </div>
+            <input type="range" min={0} max={maxTier} value={tier} onChange={(e) => setTier(Number(e.target.value))} className="w-full" />
+            <div className="text-[10px] text-margin-ink mt-1">{GATE[c.campaign].label} · {c.helpSummary.slice(0, 90)}…</div>
           </div>
 
-          {/* case file — the notes */}
-          <div>
-            <div className="font-sans text-[10px] uppercase tracking-[0.12em] text-[#15803d] mb-1">the case file · {c.notes.length} notes the arc wrote about the player</div>
-            <p className="text-[11px] text-margin-ink mb-2 italic">The live chat digest surfaces the ~3 most-recent toggled-in notes into the preamble (player_context_digest, Mode A). Below = the full dossier the arc has built so far.</p>
-            <div className="space-y-1 max-h-[280px] overflow-auto border border-[#eef0f2] p-2">
-              {c.notes.length === 0 ? <p className="text-[12px] text-margin-ink italic">No notes yet — this character has no authored daily story (chat works, but the note-factory hasn't run).</p> :
+          <div className="border border-[#a2b1c2] bg-white p-3">
+            <div className="font-sans text-[10px] uppercase tracking-[0.12em] text-[#15803d] mb-1">notes in context · {sel.size}/{c.notes.length} (the digest surfaces ~3)</div>
+            <div className="space-y-1 max-h-[200px] overflow-auto">
+              {c.notes.length === 0 ? <p className="text-[12px] text-margin-ink italic">No notes — chat works but the note-factory hasn&apos;t run.</p> :
                 c.notes.map((n, i) => (
-                  <p key={i} className="text-[12px] text-ink-soft leading-[1.45] border-l-2 border-[#15803d]/40 pl-2">
-                    <span className="text-[9px] text-margin-ink uppercase tracking-[0.06em]">D{n.day}{n.emotion ? " · " + n.emotion : ""}</span><br />✎ {n.text}
-                  </p>
+                  <label key={i} className="flex gap-1.5 text-[11.5px] text-ink-soft leading-[1.4] cursor-pointer">
+                    <input type="checkbox" checked={sel.has(i)} onChange={() => { const s = new Set(sel); s.has(i) ? s.delete(i) : s.add(i); setSel(s); setDirty(false); }} className="mt-0.5 shrink-0" />
+                    <span><span className="text-[9px] text-margin-ink uppercase">D{n.day}</span> {n.text.slice(0, 120)}{n.text.length > 120 ? "…" : ""}</span>
+                  </label>
                 ))}
             </div>
           </div>
 
-          {/* Unspoken reward stack — with honest build-status */}
+          <div className="border border-[#eef0f2] p-3">
+            <div className="font-sans text-[10px] uppercase tracking-[0.12em] text-[#8a6d0b] mb-1">Unspoken reward stack · build-status</div>
+            {stack(c.intimateTitle).map((s) => (
+              <div key={s.k} className="flex items-baseline justify-between gap-2 text-[11.5px] py-0.5">
+                <span className="text-ink">{s.k}</span>
+                <span className="text-[8.5px] uppercase tracking-[0.05em] px-1 border shrink-0" style={{ color: STATUS[s.s].c, borderColor: STATUS[s.s].c }}>{STATUS[s.s].l}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT — the assembled context + live chat */}
+        <div className="space-y-3">
           <div>
-            <div className="font-sans text-[10px] uppercase tracking-[0.12em] text-[#8a6d0b] mb-1">the Unspoken payoff · the full-REL reward stack {atUnspoken ? "(unlocked)" : "(locked until Unspoken)"}</div>
-            <p className="text-[11px] text-margin-ink mb-2 italic">This is the reason to MAX a character — and the honest state of how much of it is actually built. The arc is the note-factory; THIS is the destination it builds toward.</p>
-            <div className={`space-y-1.5 ${atUnspoken ? "" : "opacity-50"}`}>
-              {STACK(c.intimateTitle).map((s) => (
-                <div key={s.k} className="border border-[#eef0f2] p-2">
-                  <div className="flex items-baseline justify-between gap-2 flex-wrap">
-                    <span className="text-[12.5px] text-ink font-medium">{s.k}</span>
-                    <span className="text-[9px] uppercase tracking-[0.06em] px-1.5 py-0.5 border shrink-0" style={{ color: STATUS[s.status].c, borderColor: STATUS[s.status].c }}>{STATUS[s.status].l}</span>
-                  </div>
-                  <p className="text-[11px] text-ink-soft leading-[1.4] mt-0.5">{s.note}</p>
+            <div className="flex items-baseline justify-between mb-1">
+              <span className="font-sans text-[10px] uppercase tracking-[0.12em] text-spot-red">the context fed to the LLM {dirty ? "(edited)" : "(auto from REL + notes)"}</span>
+              {dirty && <button onClick={() => { setDirty(false); setCtx(buildContext(c, tier, selNotes)); }} className="text-[10px] text-[#0645ad] underline">regenerate</button>}
+            </div>
+            <textarea value={ctx} onChange={(e) => { setCtx(e.target.value); setDirty(true); }} spellCheck={false}
+              className="w-full h-[200px] text-[11.5px] font-mono leading-[1.45] border border-[#a2b1c2] p-2 bg-[#fbfbfb]" />
+          </div>
+
+          <div className="border-[1.5px] border-ink bg-white flex flex-col" style={{ height: 320 }}>
+            <div className="bg-[#202122] text-white px-3 py-1.5 text-[12px] flex justify-between items-baseline">
+              <span>{c.name} · {c.tierNames[tier]}</span>
+              <button onClick={() => { setMsgs([]); setErr(""); }} className="text-[10px] text-[#bbb] underline">clear</button>
+            </div>
+            <div ref={scroller} className="flex-1 overflow-auto p-3 space-y-2">
+              {msgs.length === 0 && <p className="text-[12px] text-margin-ink italic">Say something to {c.name}. Change the REL tier or notes, then chat again to feel the context shift.</p>}
+              {msgs.map((m, i) => (
+                <div key={i} className={`text-[13px] leading-[1.45] ${m.role === "user" ? "text-right" : ""}`}>
+                  <span className={`inline-block px-2.5 py-1.5 max-w-[85%] ${m.role === "user" ? "bg-[#0645ad] text-white" : "bg-[#f0f1f3] text-ink"}`}>{m.text}</span>
                 </div>
               ))}
+              {loading && <p className="text-[12px] text-margin-ink italic">{c.name} is typing…</p>}
+              {err && <p className="text-[12px] text-spot-red">⚠ {err}</p>}
             </div>
-            <p className="text-[11px] text-spot-red mt-2 leading-[1.5]">⚠ Two of five reward-stack rungs are <strong>spec'd-but-not-wired</strong> (the cross-game passive beyond crit-%, and mutual mode). The destination the whole engine builds toward is the most underbuilt part of the loop — the next product step.</p>
+            <div className="border-t border-[#dee1e6] p-2 flex gap-2">
+              <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") send(); }} placeholder={`message ${c.name}…`} className="flex-1 text-[13px] border border-[#a2b1c2] px-2 py-1" />
+              <button onClick={send} disabled={loading} className="text-[12px] uppercase tracking-[0.06em] px-3 bg-[#0645ad] text-white disabled:opacity-50">send</button>
+            </div>
           </div>
+          <p className="text-[10.5px] text-margin-ink leading-[1.5]">Live chat needs <code>GEMINI_API_KEY</code> in the server env (Vercel project env, or a local <code>.env</code>). The key stays server-side (never the browser). Edit the context above to test/tighten the prompt; change REL/notes to watch the voice shift.</p>
         </div>
       </div>
     </div>
