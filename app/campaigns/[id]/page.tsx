@@ -8,6 +8,13 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { FandomShell } from "../../_components/FandomShell";
 import { ShareCard, SKINS, campaignCards, campaignDefaultSkin, genreLensCards } from "../../cards/share-card";
+import { CampaignTabs, type ViewRow, type ViewCoach, type ViewMetrics } from "./CampaignTabs";
+
+const PALETTE = [
+  { fill: "#fdecec", stroke: "#c0392b" }, { fill: "#eaf1fb", stroke: "#2c5fa8" },
+  { fill: "#eaf6ee", stroke: "#2e7d4f" }, { fill: "#f1ecfb", stroke: "#6a3fb5" },
+  { fill: "#fdf0e6", stroke: "#cc6a1f" }, { fill: "#fbf5e3", stroke: "#b8860b" },
+];
 import {
   mainline,
   wingman,
@@ -162,6 +169,135 @@ export default async function CampaignDaysPage({ params }: { params: Promise<{ i
   const flagTargets = new Map<string, number[]>();
   for (const r of ripples.values()) flagTargets.set(r.flag, [...new Set(r.targets.map((t) => t.day))].sort((a, b) => a - b));
 
+  // ── view-data for the tabs (generic across campaigns) ──
+  const coachOrder: string[] = [];
+  for (const d of c.days) if (d.characterId && !coachOrder.includes(d.characterId)) coachOrder.push(d.characterId);
+  const coachIdx = new Map(coachOrder.map((cid, i) => [cid, i]));
+  const palOf = (cid: string) => PALETTE[(coachIdx.get(cid) ?? 0) % PALETTE.length];
+  const coaches: ViewCoach[] = coachOrder.map((cid) => ({ id: cid, name: c.nameOf(cid) ?? cid, color: palOf(cid).stroke }));
+
+  const setsByDay = new Map<number, Set<string>>();
+  const readsByDay = new Map<number, Set<string>>();
+  const add = (m: Map<number, Set<string>>, day: number, flag: string) => { (m.get(day) ?? m.set(day, new Set()).get(day)!).add(flag); };
+  for (const r of ripples.values()) {
+    for (const s of r.sources) add(setsByDay, s.day, r.flag);
+    for (const t of r.targets) add(readsByDay, t.day, r.flag);
+  }
+  const rows: ViewRow[] = c.days.map((d) => ({
+    day: d.globalDayIndex,
+    coachId: d.characterId ?? "",
+    coach: d.characterId ? c.nameOf(d.characterId) ?? d.characterId : "—",
+    color: palOf(d.characterId ?? "").stroke,
+    type: d.narrativeType,
+    tier: d.tierUpReveal?.category ?? "",
+    unspoken: d.tierUpReveal?.category === "question",
+    sets: [...(setsByDay.get(d.globalDayIndex) ?? [])],
+    reads: [...(readsByDay.get(d.globalDayIndex) ?? [])],
+    events: d.events.length,
+  }));
+
+  const granted = new Set<string>();
+  for (const d of c.days) for (const ev of d.events) for (const ch of ev.choices) {
+    if (ch.grantsAchievement) granted.add(ch.grantsAchievement);
+    const itf = (ch.itemDrop as { grantsAchievement?: string } | null)?.grantsAchievement;
+    if (itf) granted.add(itf);
+  }
+  const metrics: ViewMetrics = {
+    days: c.days.length,
+    coaches: coaches.length,
+    tierUps: c.days.filter((d) => d.tierUpReveal).length,
+    callbacks: ripples.size,
+    unspoken: c.days.filter((d) => d.tierUpReveal?.category === "question").length,
+    achievements: granted.size,
+  };
+
+  // mermaid graph strings (built server-side, rendered client-side on the Flow tab)
+  const label = (d: typeof c.days[number]) => `D${d.globalDayIndex} ${(c.nameOf(d.characterId ?? "") ?? "").split(" ")[0]}${d.tierUpReveal?.category === "question" ? " ★" : ""}`;
+  const cls = (d: typeof c.days[number]) => `c${coachIdx.get(d.characterId ?? "") ?? 0}`;
+  const classDefs = coachOrder.map((cid, i) => `classDef c${i} fill:${PALETTE[i % PALETTE.length].fill},stroke:${PALETTE[i % PALETTE.length].stroke},color:#222;`).join("\n");
+  const edges = [...ripples.values()].flatMap((r) => r.sources.flatMap((s) => [...new Set(r.targets.map((t) => t.day))].map((t) => `D${s.day} -. ${r.flag} .-> D${t}`)));
+  let flowArc = "flowchart LR\n" + classDefs + "\n";
+  c.days.forEach((d, i) => { flowArc += `D${d.globalDayIndex}["${label(d)}"]:::${cls(d)}` + (i < c.days.length - 1 ? " --> " : "\n"); });
+  flowArc += edges.join("\n");
+  const webDays = new Set<number>();
+  for (const r of ripples.values()) { for (const s of r.sources) webDays.add(s.day); for (const t of r.targets) webDays.add(t.day); }
+  let flowWeb = "";
+  if (webDays.size) {
+    flowWeb = "flowchart LR\n" + classDefs + "\n" +
+      c.days.filter((d) => webDays.has(d.globalDayIndex)).map((d) => `D${d.globalDayIndex}["${label(d)}"]:::${cls(d)}`).join("\n") + "\n" + edges.join("\n");
+  }
+
+  // the rich server-rendered slots passed into the client tab shell
+  const eventsSlot = (
+    <div className="space-y-2">
+      {c.days.map((d, i) => {
+        const focal = d.characterId ? c.nameOf(d.characterId) : null;
+        const introduces = d.introducesCharacterId ? c.nameOf(d.introducesCharacterId) : null;
+        const dayHasCallback = d.events.some((ev) => (ev.scenarioVariants?.length ?? 0) > 0 || ev.choices.some((ch) => (ch.reactionVariants?.length ?? 0) > 0));
+        const daySetsFlag = d.events.some((ev) => ev.choices.some((ch) => ch.grantsAchievement && flagTargets.has(ch.grantsAchievement)));
+        return (
+          <details key={d.globalDayIndex} open={i === 0} className="border border-[#a2b1c2] bg-white">
+            <summary className="cursor-pointer select-none px-3 py-2 bg-[#f6f7f9] hover:bg-[#eaecf0] flex items-baseline gap-2 flex-wrap">
+              <span className="font-display text-[16px]">Day {d.globalDayIndex}</span>
+              {focal && <span className="font-body italic text-[13px] text-[#15803d]">{focal}</span>}
+              <span className="font-sans text-[9px] uppercase tracking-[0.1em] text-margin-ink">{d.narrativeType}</span>
+              {introduces && <span className="font-sans text-[10px] text-[#15803d]">+ {introduces}</span>}
+              {d.tierUpReveal && <span className="font-sans text-[10px] text-spot-red">tier-up: {d.tierUpReveal.category}</span>}
+              {daySetsFlag && <span className="font-sans text-[9px] text-[#8a6d0b] border border-[#b8860b] px-1">⚑ sets flag</span>}
+              {dayHasCallback && <span className="font-sans text-[9px] text-[#8a6d0b] border border-[#b8860b] px-1 bg-[#fdf6e3]">⤷ callback</span>}
+              <span className="ml-auto font-sans text-[10px] text-margin-ink">{d.events.length} ev</span>
+            </summary>
+            <div className="px-3 py-2 space-y-3">
+              {d.events.map((ev, idx) => (
+                <div key={ev.id}>
+                  <div className="font-sans text-[10px] uppercase tracking-[0.1em] text-[#54595d] mb-1">Event {idx + 1}</div>
+                  <p className="text-[13px] text-ink leading-[1.45] mb-1.5">{ev.scenario}</p>
+                  {(ev.scenarioVariants ?? []).map((sv, si) => (
+                    <div key={si} className="mb-1.5 border-l-2 border-[#b8860b] bg-[#fdf6e3]/60 pl-2 py-1">
+                      <div className="font-sans text-[9px] tracking-[0.05em] text-[#8a6d0b]">⤷ CALLBACK SCENARIO if {sv.unlockIf.map(flagLabel).join(" + ")}</div>
+                      <p className="text-[12.5px] text-ink leading-[1.4]">{sv.scenario}</p>
+                    </div>
+                  ))}
+                  <div className="space-y-1">
+                    {ev.choices.map((ch) => (<Choice key={ch.id} c={ch} flagTargets={flagTargets} />))}
+                  </div>
+                  {ev.memoryWrites.length > 0 && (
+                    <div className="mt-1.5 border-l-2 border-[#15803d] pl-2">
+                      {ev.memoryWrites.map((m, mi) => (
+                        <p key={mi} className="text-[11px] italic text-ink-soft leading-[1.4]">✎ {m.text}{m.emotion && <span className="not-italic text-margin-ink"> · {m.emotion}</span>}</p>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+              {d.closingHook && (<p className="border-l-[3px] border-spot-red pl-2 font-body italic text-[12.5px] text-ink leading-[1.45]">→ {d.closingHook}</p>)}
+            </div>
+          </details>
+        );
+      })}
+    </div>
+  );
+
+  const influenceSlot = ripples.size > 0 ? (
+    <div>
+      <div className="font-sans text-[11px] uppercase tracking-[0.16em] text-[#8a6d0b] mb-2">⚑ Influence map — selections that change a future day</div>
+      <div className="space-y-2">
+        {[...ripples.values()].sort((a, b) => (a.sources[0]?.day ?? 99) - (b.sources[0]?.day ?? 99)).map((r) => (
+          <div key={r.flag} className="text-[12px] leading-[1.5] border-l-2 border-[#b8860b] pl-2">
+            <div><span className="font-sans text-[9px] uppercase tracking-[0.06em] text-[#8a6d0b]">flag</span> <strong>{flagLabel(r.flag)}</strong>{achievementById(r.flag)?.hidden && <span className="font-sans text-[9px] text-margin-ink ml-1">(hidden)</span>}</div>
+            <div className="text-ink-soft">
+              {r.sources.length === 0 ? (<span className="text-spot-red">⚠ no source selection in this campaign</span>) : (
+                r.sources.map((s, i) => (<span key={i}>{i > 0 && " · "}set by <strong>D{s.day}</strong> {s.choiceId.toUpperCase()}/{s.role}<span className="italic"> “{s.label}”</span>{s.via === "item" && <span className="text-[10px] text-margin-ink"> (reward)</span>}</span>))
+              )}
+              {" → changes "}
+              {[...new Set(r.targets.map((t) => `D${t.day} ${t.kind}`))].map((t, i, arr) => (<span key={t}><strong className="text-[#8a6d0b]">{t}</strong>{i < arr.length - 1 ? ", " : ""}</span>))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  ) : <p className="text-[12px] text-ink-soft italic">No callbacks in this campaign.</p>;
+
   return (
     <FandomShell active="/campaigns">
       <div className="text-[11px] text-[#54595d] mb-2">
@@ -224,96 +360,17 @@ export default async function CampaignDaysPage({ params }: { params: Promise<{ i
         )}
       </div>
 
-      {/* ── Influence map ── */}
-      {ripples.size > 0 && (
-        <div className="border border-[#b8860b] bg-[#fdf6e3] p-3 mb-6">
-          <div className="font-sans text-[11px] uppercase tracking-[0.16em] text-[#8a6d0b] mb-2">⚑ Influence map — selections that change a future day</div>
-          <div className="space-y-2">
-            {[...ripples.values()]
-              .sort((a, b) => (a.sources[0]?.day ?? 99) - (b.sources[0]?.day ?? 99))
-              .map((r) => (
-                <div key={r.flag} className="text-[12px] leading-[1.5] border-l-2 border-[#b8860b] pl-2">
-                  <div>
-                    <span className="font-sans text-[9px] uppercase tracking-[0.06em] text-[#8a6d0b]">flag</span>{" "}
-                    <strong>{flagLabel(r.flag)}</strong>
-                    {achievementById(r.flag)?.hidden && <span className="font-sans text-[9px] text-margin-ink ml-1">(hidden)</span>}
-                  </div>
-                  <div className="text-ink-soft">
-                    {r.sources.length === 0 ? (
-                      <span className="text-spot-red">⚠ no source selection in this campaign</span>
-                    ) : (
-                      r.sources.map((s, i) => (
-                        <span key={i}>
-                          {i > 0 && " · "}
-                          set by <strong>D{s.day}</strong> {s.choiceId.toUpperCase()}/{s.role}
-                          <span className="italic"> “{s.label}”</span>
-                          {s.via === "item" && <span className="text-[10px] text-margin-ink"> (reward)</span>}
-                        </span>
-                      ))
-                    )}
-                    {" → changes "}
-                    {[...new Set(r.targets.map((t) => `D${t.day} ${t.kind}`))].map((t, i, arr) => (
-                      <span key={t}><strong className="text-[#8a6d0b]">{t}</strong>{i < arr.length - 1 ? ", " : ""}</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-          </div>
-        </div>
-      )}
-
-      {/* ── Day-by-day ── */}
-      <div className="space-y-2">
-        {c.days.map((d, i) => {
-          const focal = d.characterId ? c.nameOf(d.characterId) : null;
-          const introduces = d.introducesCharacterId ? c.nameOf(d.introducesCharacterId) : null;
-          const dayHasCallback = d.events.some((ev) => (ev.scenarioVariants?.length ?? 0) > 0 || ev.choices.some((ch) => (ch.reactionVariants?.length ?? 0) > 0));
-          const daySetsFlag = d.events.some((ev) => ev.choices.some((ch) => ch.grantsAchievement && flagTargets.has(ch.grantsAchievement)));
-          return (
-            <details key={d.globalDayIndex} open={i === 0} className="border border-[#a2b1c2] bg-white">
-              <summary className="cursor-pointer select-none px-3 py-2 bg-[#f6f7f9] hover:bg-[#eaecf0] flex items-baseline gap-2 flex-wrap">
-                <span className="font-display text-[16px]">Day {d.globalDayIndex}</span>
-                {focal && <span className="font-body italic text-[13px] text-[#15803d]">{focal}</span>}
-                <span className="font-sans text-[9px] uppercase tracking-[0.1em] text-margin-ink">{d.narrativeType}</span>
-                {introduces && <span className="font-sans text-[10px] text-[#15803d]">+ {introduces}</span>}
-                {d.tierUpReveal && <span className="font-sans text-[10px] text-spot-red">tier-up: {d.tierUpReveal.category}</span>}
-                {daySetsFlag && <span className="font-sans text-[9px] text-[#8a6d0b] border border-[#b8860b] px-1">⚑ sets flag</span>}
-                {dayHasCallback && <span className="font-sans text-[9px] text-[#8a6d0b] border border-[#b8860b] px-1 bg-[#fdf6e3]">⤷ callback</span>}
-                <span className="ml-auto font-sans text-[10px] text-margin-ink">{d.events.length} ev</span>
-              </summary>
-              <div className="px-3 py-2 space-y-3">
-                {d.events.map((ev, idx) => (
-                  <div key={ev.id}>
-                    <div className="font-sans text-[10px] uppercase tracking-[0.1em] text-[#54595d] mb-1">Event {idx + 1}</div>
-                    <p className="text-[13px] text-ink leading-[1.45] mb-1.5">{ev.scenario}</p>
-                    {(ev.scenarioVariants ?? []).map((sv, si) => (
-                      <div key={si} className="mb-1.5 border-l-2 border-[#b8860b] bg-[#fdf6e3]/60 pl-2 py-1">
-                        <div className="font-sans text-[9px] tracking-[0.05em] text-[#8a6d0b]">⤷ CALLBACK SCENARIO if {sv.unlockIf.map(flagLabel).join(" + ")}</div>
-                        <p className="text-[12.5px] text-ink leading-[1.4]">{sv.scenario}</p>
-                      </div>
-                    ))}
-                    <div className="space-y-1">
-                      {ev.choices.map((ch) => (
-                        <Choice key={ch.id} c={ch} flagTargets={flagTargets} />
-                      ))}
-                    </div>
-                    {ev.memoryWrites.length > 0 && (
-                      <div className="mt-1.5 border-l-2 border-[#15803d] pl-2">
-                        {ev.memoryWrites.map((m, mi) => (
-                          <p key={mi} className="text-[11px] italic text-ink-soft leading-[1.4]">✎ {m.text}{m.emotion && <span className="not-italic text-margin-ink"> · {m.emotion}</span>}</p>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-                {d.closingHook && (
-                  <p className="border-l-[3px] border-spot-red pl-2 font-body italic text-[12.5px] text-ink leading-[1.45]">→ {d.closingHook}</p>
-                )}
-              </div>
-            </details>
-          );
-        })}
-      </div>
+      {/* ── Views (Events · Flow · Sheet · Kanban · Metrics) ── */}
+      <CampaignTabs
+        events={eventsSlot}
+        influence={influenceSlot}
+        flowWeb={flowWeb}
+        flowArc={flowArc}
+        rows={rows}
+        coaches={coaches}
+        metrics={metrics}
+        uid={id}
+      />
 
       <p className="text-[11px] text-margin-ink mt-6 leading-[1.5]">
         Read-only from the {c.runId} payloads (parity export). The app is the source of truth. ⚑ gold marks
