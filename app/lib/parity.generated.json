@@ -706,6 +706,18 @@
     },
     {
       "id": null,
+      "name": "Kenji's Closed Page",
+      "description": "A high-resolution scan of a standard grey ring-binder cover. A hand rests flat on the center, obscuring the index tab. No metadata on the name beneath. You chose to let the [ledger*] close. Filed under: Assets (Intangible).",
+      "rarity": "memento",
+      "statDeltas": {
+        "REL": 3
+      },
+      "grantsAchievement": null,
+      "foundDay": 7,
+      "foundCharacter": "kenji"
+    },
+    {
+      "id": null,
       "name": "Kenji's [drawer] Key (Half-Rotation, Held)",
       "description": "A small brass key in a case-file photo, annotated by Sam on the [notes*] wall: 'K let player hold the [drawer] key overnight. week-one-to-week-two seam. [drawer] state pending player chat call.' The actual key is in your inventory until return — pinned beside the D6 Maya audio waveform and Mei's milk-carton-message photo.",
       "rarity": "relic",
@@ -3485,7 +3497,7 @@
         "characterId": "kenji",
         "introducesCharacterId": null,
         "agentMoodToday": "Kenji at his weekly reconciliation — the one morning a week when the [ledger*] eats him instead of the other way around. precise, dry, half a degree warmer than usual because the audit is closing for the week. ready to be the audited instead of the auditor for exactly one event.",
-        "closingHook": "Week one is logged. The [drawer] sits where you left it this morning — sealed at half, open at half, or empty with the key in your hand. That's where week two starts. Chat tonight is an epilogue, not the decision; the decision's already made.",
+        "closingHook": "Week one is logged. The [drawer] sits where you left it this morning — sealed at half, open at half, or empty with the key in your hand. That's where week two starts. Chat tonight isn't the epilogue — the current period is closing, but how you use the key tonight determines the opening balance carried into week two.",
         "tierUpReveal": {
           "category": "fear",
           "deliveredInEventId": "evt-4"
@@ -3521,7 +3533,7 @@
         "events": [
           {
             "id": "evt-1",
-            "scenario": "5:00 AM sharp. Your phone makes a calendar-tone notification — Kenji's invite, single line: 'Weekly Reconciliation. one slot. 7:00 AM. office. don't be late.' No body. No agenda. The metadata says the event was created at 4:58 AM and the [ledger*] page count was incremented at 4:59. He's already at the [desk]. The [bell*] from the [prep] zone is muffled — the blanket on his office wall is doing what the realm map said it would do. Mei's 5:14 AM line from yesterday ('recipe back in pocket. ratio unchanged. logged.') is attached as a forwarded note on the invite.",
+            "scenario": "5:00 AM sharp. Your phone makes a calendar-tone notification — Kenji's invite, single line: 'Weekly Reconciliation. one slot. 7:00 AM. office. don't be late.' No body. No agenda. The metadata says the event was created at 4:58 AM and the [ledger*] page count was incremented at 4:59. He's already at the [desk]. The [bell*] from the [prep] zone is muffled — the blanket on his office wall is doing what the realm map said it would do. Mei's 5:14 AM line from yesterday ('recipe back in pocket. ratio unchanged. logged.') is attached as a forwarded note on the invite. The invite carries a second attachment the metadata shouldn't — a [ledger*] row with Kenji's own name on it, the entry itself redacted to a black bar. Created 4:58, never unsent. An auditor doesn't miss an extra row; he either deferred the reconciliation, or left the error in the margin on purpose.",
             "choices": [
               {
                 "id": "a",
@@ -3588,7 +3600,7 @@
           },
           {
             "id": "evt-2",
-            "scenario": "6:58 AM. You arrive at Kenji's [desk]. The kettle is on; two clean cups beside it. The [ledger*] is open to a fresh page — the weekly reconciliation header in Kenji's handwriting at the top: 'WEEK 1. player-squad reconciliation. seven-day audit.' Three column headers below it: 'column one: net REL delta per squad member.' 'column two: anomaly entries (mismatched stat deltas / lexical drift).' 'column eleven: entries without category.' The [drawer] is closed but the brass key sits on the [desk] beside the [ledger*] — turned at the half-rotation mark, not quarter. That's a state change from D6 evt-5. Kenji glances at the key as you sit down. 'the [drawer] earned the next turn yesterday. half-rotation today. quarter to go before it opens.'",
+            "scenario": "6:58 AM. You arrive at Kenji's [desk]. The kettle is on; two clean cups beside it. The [ledger*] is open to a fresh page — the weekly reconciliation header in Kenji's handwriting at the top: 'WEEK 1. player-squad reconciliation. seven-day audit.' Four rows ruled below it — Sam, Hana, Mei, and a fourth reserved but un-entered, double-underlined: the black-bar row from the invite, a space he's kept and hasn't had the ink to fill. The [drawer] is closed but the brass key sits on the [desk] beside the [ledger*] — turned at the half-rotation mark, not quarter. That's a state change from D6 evt-5. Kenji glances at the key as you sit down. 'the [drawer] earned the next turn yesterday. half-rotation today. quarter to go before it opens.'",
             "choices": [
               {
                 "id": "a",
@@ -3600,7 +3612,7 @@
                   "REL": 1
                 },
                 "diceRoll": null,
-                "reactionText": "Kenji taps the page. '+1 INT. correct question. the chaotic crit-success cleared the first rotation. the logical and passive options each contributed half a rotation in parallel — the system averages. you got the half. don't ask which one mattered more — the system doesn't distinguish and neither do I. +1 GLD + 1 REL for asking the question the [ledger*] is built to answer.'",
+                "reactionText": "Kenji taps the page. '+1 INT. correct question. the chaotic crit cleared the first rotation; your steady picks earned the half-turn in their own column. two distinct entries, one balanced ledger — both logged, both load-bearing. +1 GLD + 1 REL for asking the question the [ledger*] is built to answer.'",
                 "reactionTextOnCritFail": "",
                 "itemDrop": null,
                 "grantsAchievement": null,
@@ -3734,7 +3746,12 @@
                 "diceRoll": null,
                 "reactionText": "Kenji closes the page himself — slow, both hands, the same motion he used at the window on D6. '+3 REL. you didn't ask for the name. you let me close it. that's the entry I'll write about you in column eleven.'",
                 "reactionTextOnCritFail": "",
-                "itemDrop": null,
+                "itemDrop": {
+                  "name": "Kenji's Closed Page",
+                  "description": "A high-resolution scan of a standard grey ring-binder cover. A hand rests flat on the center, obscuring the index tab. No metadata on the name beneath. You chose to let the [ledger*] close. Filed under: Assets (Intangible).",
+                  "kind": "memento",
+                  "grantsAchievement": null
+                },
                 "grantsAchievement": null,
                 "reactionVariants": []
               },
@@ -11116,6 +11133,6 @@
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "ad3881b5681e"
+    "contentHash": "99a2129966f0"
   }
 }
