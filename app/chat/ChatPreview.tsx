@@ -68,11 +68,11 @@ export function ChatPreview({ chars }: { chars: ChatChar[] }) {
 
   return (
     <div>
-      {/* picker */}
-      <div className="flex gap-2 flex-wrap mb-4">
+      {/* picker — campaigns are independent silos; keep them visually separate */}
+      <div className="space-y-1.5 mb-4">
         {["main-line", "wingman"].map((cam) => (
-          <div key={cam} className="flex gap-1.5 flex-wrap items-center">
-            <span className="text-[10px] uppercase tracking-[0.1em] text-margin-ink mr-1">{cam === "wingman" ? "The Wingman" : "Life Ops"}</span>
+          <div key={cam} className="flex gap-1.5 flex-wrap items-center border-l-2 border-[#c8d0d9] pl-2.5 py-0.5">
+            <span className="text-[10px] uppercase tracking-[0.1em] text-margin-ink w-[78px] shrink-0">{cam === "wingman" ? "The Wingman" : "Life Ops"}</span>
             {chars.filter((x) => x.campaign === cam).map((x) => (
               <button key={x.id} onClick={() => setId(x.id)} className={`text-[12px] px-2.5 py-1 border ${x.id === id ? "bg-[#0645ad] text-white border-[#0645ad]" : "border-[#a2b1c2] text-[#0645ad]"}`}>{x.name}</button>
             ))}
