@@ -504,7 +504,7 @@ function extractRun(runDir = RUN_DIR) {
           reactionText: c.reactionText ?? "",
           reactionTextOnCritFail: c.reactionTextOnCritFail ?? null,
           itemDrop: c.itemDrop
-            ? { name: c.itemDrop.name, description: c.itemDrop.description ?? "", kind: c.itemDrop.kind ?? "memento" }
+            ? { name: c.itemDrop.name, description: c.itemDrop.description ?? "", kind: c.itemDrop.kind ?? "memento", grantsAchievement: c.itemDrop.grantsAchievement ?? null }
             : null,
           // v0.0.42 — the flag this SELECTION sets (read by future days' variants).
           grantsAchievement: c.grantsAchievement ?? null,

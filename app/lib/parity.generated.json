@@ -1305,7 +1305,8 @@
                 "itemDrop": {
                   "name": "Hana's First Drill Card",
                   "description": "A torn page. The hip hinge sequence in Hana's handwriting. Numbered. Underlined twice where it says BREATHE.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -1373,7 +1374,8 @@
                 "itemDrop": {
                   "name": "The Signed Agreement",
                   "description": "One page. Hana's handwriting, top to bottom. Your signature scribbled at the bottom. The clause that matters is the one that says I GET TO WAKE YOU UP.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -1517,7 +1519,8 @@
                 "itemDrop": {
                   "name": "The 47-Second Recording",
                   "description": "Hana's running breath. No words. The audio file you'll keep in your case file for the next thirteen days — until she sends a 53-second version and the lesson is that her breath got longer.",
-                  "kind": "memento"
+                  "kind": "memento",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -1661,7 +1664,8 @@
                 "itemDrop": {
                   "name": "Hinge Set 2 — Log Entry",
                   "description": "A screenshot from Hana's tracker. Your eleven-minute window, filled. Three columns: time, reps, breath. The third column is empty — she'll start tracking that on Day 3.",
-                  "kind": "memento"
+                  "kind": "memento",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -1728,7 +1732,8 @@
                 "itemDrop": {
                   "name": "Kenji's Calendar Invite (Forwarded)",
                   "description": "The 9:30 PM call invitation, with Hana added as a co-attendee. The original was three words long. The forwarded version is the same three words plus your trust as the attached file.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -1830,7 +1835,8 @@
                 "itemDrop": {
                   "name": "Kenji's First Logged Quote",
                   "description": "A transcript line in Kenji's neat handwriting: \"Player's answer: Kenji, did you call me here to audit my friend or to flirt with her budget. — logged 9:34 PM.\" The first physical thing you have from Kenji. Visible from his [desk] tomorrow morning; Sam pins a copy to the [notes*] wall.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -1863,7 +1869,8 @@
                 "itemDrop": {
                   "name": "The Side-By-Side Audio",
                   "description": "Two 47-second recordings of Hana's breath, layered. D1 left, D2 right. The thing that proves one day of being coached did something to your lungs. Lives in your case file. Hana will add a D3 channel tomorrow if you show up at six.",
-                  "kind": "memento"
+                  "kind": "memento",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -2034,7 +2041,8 @@
                 "itemDrop": {
                   "name": "Your Entry in Kenji's [ledger*]",
                   "description": "Page 11, column eleven, your name at the top. The D2 9:34 PM line transcribed in Kenji's neat handwriting. Lives in your case file as a page-image. Sam pins a copy to the [notes*] wall, paired with Hana's overnight-number printout.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -2102,7 +2110,8 @@
                 "itemDrop": {
                   "name": "BEHAVIORAL OBSERVATIONS Column Entry #1",
                   "description": "A page-image of Kenji's [ledger*]: your D2 gap entry with the question mark crossed out, replaced with 'explained: calls.' in his handwriting. The first entry in the new column. Lives in your case file.",
-                  "kind": "memento"
+                  "kind": "memento",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -2171,7 +2180,8 @@
                 "itemDrop": {
                   "name": "The Procrastination Audit Sheet",
                   "description": "Your top three chronological leaks in Kenji's neat handwriting. Folded once, slightly creased at the top. Lives in your case file going forward — the homework you accepted on Day 3.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -2211,7 +2221,8 @@
                 "itemDrop": {
                   "name": "The Torn Audit Sheet (Taped)",
                   "description": "Both halves of the audit sheet, taped together later in Kenji's handwriting with the note: 'logged 7:31 AM. column eleven entry #2: destroyed the audit in front of me. respected. rare.' The first physical artifact you have from Kenji. Lives in your case file going forward.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -2258,7 +2269,8 @@
                 "itemDrop": {
                   "name": "The Quiet Hana",
                   "description": "A two-line note Hana drops into your case file later that day: 'the player sat without reporting. that's a STR build I didn't teach them. it came from being audited. respect.' First time she's logged restraint as a STR build instead of a CHR build.",
-                  "kind": "memento"
+                  "kind": "memento",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -2435,7 +2447,8 @@
                 "itemDrop": {
                   "name": "Column Twelve Entry #1 (yours)",
                   "description": "A page-image of Kenji's [ledger*]: your name at the top, the line 'refused the scroll audit. +1 GLD logged.' First column-twelve entry the [ledger*] has carried. Sam's [notes*] wall pins a copy beside Hana's overnight-number printout and the D3 Audit Sheet.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -2524,7 +2537,8 @@
                 "itemDrop": {
                   "name": "The Lie-Detected Page",
                   "description": "A page-image of Kenji's [ledger*]: the 11:00 window entry with the note 'lied to protect Hana — column eleven. logged.' Kenji's handwriting. Lives in your case file. Hana never sees this page — Kenji explicitly does not pin it to Sam's [notes*] wall.",
-                  "kind": "memento"
+                  "kind": "memento",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -2621,7 +2635,8 @@
                 "itemDrop": {
                   "name": "Kenji's Hand-Laminated Pomodoro Card",
                   "description": "Green-ruled paper, Kenji's handwriting top to bottom. The timing intervals (25 min work / 5 min rest / 4 cycles / 30 min long rest) underlined twice. Hand-laminated by Kenji at the office laminator beside his [desk]. The lamination is fresh. The card is cut to match Kenji's actual work area (4x6), not the office-supply default (8.5x11) — a small thing that's why the [ledger*] exists.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -2662,7 +2677,8 @@
                 "itemDrop": {
                   "name": "The Pomodoro Card (Lamination Peeled)",
                   "description": "Kenji's hand-laminated Pomodoro card with the corner lamination peeled off — on purpose, Kenji cut the lamination short. The card is now slightly more durable in your hand because the peel-test passed. Sam's [notes*] wall gets a scanned copy of the front; the actual peeled card lives in your case file going forward.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -2799,7 +2815,8 @@
                 "itemDrop": {
                   "name": "Mei's Cold-Rice [recipe*] (Returned)",
                   "description": "The recipe paper, smoothed by the flat of Mei's knife. The water-bottle-cap fold from Hana's pocket is gone — Mei refolded it into thirds, not quarters. Sam's [notes*] wall has a photocopy pinned beside Hana's run-cards with a tiny annotation in Sam's handwriting: 'returned with respect.'",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -2867,7 +2884,8 @@
                 "itemDrop": {
                   "name": "Mei's Hot Sauce (Identified)",
                   "description": "A small glass jar of fermented hot sauce with a new label in Mei's sharp marker handwriting: 'FEB 22 — fine. mise-keeper audit passed.' Lives in the case file as a photo going forward.",
-                  "kind": "memento"
+                  "kind": "memento",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -2971,7 +2989,8 @@
                 "itemDrop": {
                   "name": "Six Containers (Portioned With Mei)",
                   "description": "Six lidded glass containers — five Mei-portioned, identical; one player-portioned, slightly uneven and visible in the case-file photo. Mei labeled yours: 'first one. eat the wrong-portioned one before the brunoise sets — Sunday by 8 PM.' Sam's [notes*] wall has a copy of the label pinned next to Hana's salt-mix index card.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -3015,7 +3034,8 @@
                 "itemDrop": {
                   "name": "Mei's Milk Carton Message",
                   "description": "A photo of the April 11 milk carton with Mei's handwritten line: 'this carton is your honor system. when you throw it out is when I'll know you've started counting. — m'. Lives in the case file as a photo going forward. Sam's [notes*] wall has a copy pinned beside the brunoise-portion label. The actual carton stays in your fridge until you throw it out.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -3035,7 +3055,8 @@
                 "itemDrop": {
                   "name": "Mei's Milk Carton Message",
                   "description": "A photo of the April 11 milk carton with Mei's handwritten line: 'this carton is your honor system. when you throw it out is when I'll know you've started counting. — m'. Lives in the case file as a photo going forward. Sam's [notes*] wall has a copy pinned beside the brunoise-portion label. The actual carton stays in your fridge until you throw it out.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -3129,7 +3150,8 @@
                 "itemDrop": {
                   "name": "Hana's D3 Breath-Channel (4-count)",
                   "description": "90 second audio file. Hana breathing, 4-count cadence, wind audible behind the breath. Filename in the case file: 'channel_3_maya.m4a' — the only message Hana sent before the audio was the message. Sam's [notes*] wall has the waveform pinned beside Hana's run-card index.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -3294,7 +3316,8 @@
                 "itemDrop": {
                   "name": "Race Photo (Held Once)",
                   "description": "A sixty-second copy of the [pic*] in the case file with a tiny annotation in Hana's handwriting: 'you held it once. the original is still pinned.' The actual [pic*] returns to the [bleachers] after this event. Sam's [notes*] wall keeps a copy of just the annotation, no photo — Hana's request.",
-                  "kind": "memento"
+                  "kind": "memento",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -3474,7 +3497,8 @@
                 "itemDrop": {
                   "name": "Kenji's Weekly Reconciliation Invite",
                   "description": "A screenshot of the calendar event. The forwarded Mei attachment is visible. The page-count delta (4:59 AM increment) is annotated by Sam on the [notes*] wall: 'the [ledger*] paged before the invite sent. K wrote the page first.' Lives in the case file as a screenshot.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -3621,7 +3645,8 @@
                 "itemDrop": {
                   "name": "Kenji's Column Twelve (Maya Refusal, 7 months ago)",
                   "description": "A photo of one line from the [ledger*], dated seven months back, in column twelve format: '[ — ] suspected proper noun. H walking cadence shift. not logged. refusal recorded out of respect for the not-yet-spoken.' The line is your case-file proof Kenji has been quiet on Hana's behalf longer than you have been around. Sam's [notes*] wall gets a copy on the same nail as the Maya audio waveform from D6.",
-                  "kind": "memento"
+                  "kind": "memento",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -3751,7 +3776,8 @@
                 "itemDrop": {
                   "name": "Kenji's [drawer] Key (Half-Rotation, Held)",
                   "description": "A small brass key in a case-file photo, annotated by Sam on the [notes*] wall: 'K let player hold the [drawer] key overnight. week-one-to-week-two seam. [drawer] state pending player chat call.' The actual key is in your inventory until return — pinned beside the D6 Maya audio waveform and Mei's milk-carton-message photo.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -4052,7 +4078,8 @@
                 "itemDrop": {
                   "name": "Mei's Salt-Mix [recipe*] (in your name)",
                   "description": "The cold-rice salt-mix Hana smuggled for a month, finally written down — your name in the corner as the courier who kept it alive. Pinned to Sam's [notes*] wall beside Hana's overnight-number printout.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -4071,7 +4098,8 @@
                 "itemDrop": {
                   "name": "Mei's Salt-Mix [recipe*] (in your name)",
                   "description": "The cold-rice salt-mix Hana smuggled for a month, finally written down — your name in the corner as the courier who kept it alive. Pinned to Sam's [notes*] wall beside Hana's overnight-number printout.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -4095,7 +4123,8 @@
                 "itemDrop": {
                   "name": "Mei's Salt-Mix [recipe*] (in your name)",
                   "description": "The cold-rice salt-mix Hana smuggled for a month, finally written down — your name in the corner as the courier who kept it alive. Pinned to Sam's [notes*] wall beside Hana's overnight-number printout.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -4396,7 +4425,8 @@
                 "itemDrop": {
                   "name": "Week One, Logged",
                   "description": "A single index card in Sam's flat handwriting: \"week one — logged. four orbits opened. one quiet miss faced. growth, recorded sparingly.\" The only thing Sam ever frames. Pinned dead-center on the cleared [notes*] wall.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "week-one-logged"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -4416,7 +4446,8 @@
                 "itemDrop": {
                   "name": "Week One, Logged",
                   "description": "A single index card in Sam's flat handwriting: \"week one — logged. four orbits opened. one quiet miss faced. growth, recorded sparingly.\" The only thing Sam ever frames. Pinned dead-center on the cleared [notes*] wall.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "week-one-logged"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -4440,7 +4471,8 @@
                 "itemDrop": {
                   "name": "Week One, Logged",
                   "description": "A single index card in Sam's flat handwriting: \"week one — logged. four orbits opened. one quiet miss faced. growth, recorded sparingly.\" The only thing Sam ever frames. Pinned dead-center on the cleared [notes*] wall.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "week-one-logged"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -4741,7 +4773,8 @@
                 "itemDrop": {
                   "name": "Maya's [pic*] (held for a day)",
                   "description": "Hana's sister mid-hurdle, ~sixteen, the photo Hana kept face-down for three years and just handed you to hold. Due back tomorrow. Pinned — gently — to the cleared [notes*] wall beside Sam's framed card, with a sticky note in Hana's hand: \"on loan. don't get attached.\"",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "kept-the-pic"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -4761,7 +4794,8 @@
                 "itemDrop": {
                   "name": "Maya's [pic*] (held for a day)",
                   "description": "Hana's sister mid-hurdle, ~sixteen, the photo Hana kept face-down for three years and just handed you to hold. Due back tomorrow. Pinned — gently — to the cleared [notes*] wall beside Sam's framed card, with a sticky note in Hana's hand: \"on loan. don't get attached.\"",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "kept-the-pic"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -5089,7 +5123,8 @@
                 "itemDrop": {
                   "name": "Kenji's First [ledger*] (one page)",
                   "description": "The only page Kenji has ever torn from his oldest notebook — the audit he finished eleven years late, with your sentence written under his in column eleven. Pinned to Sam's cleared [notes*] wall. The [drawer] it came from stays unlocked now.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "the-drawer-witness"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -5109,7 +5144,8 @@
                 "itemDrop": {
                   "name": "Kenji's First [ledger*] (one page)",
                   "description": "The only page Kenji has ever torn from his oldest notebook — the audit he finished eleven years late, with your sentence written under his in column eleven. Pinned to Sam's cleared [notes*] wall. The [drawer] it came from stays unlocked now.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "the-drawer-witness"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -5133,7 +5169,8 @@
                 "itemDrop": {
                   "name": "Kenji's First [ledger*] (one page)",
                   "description": "The only page Kenji has ever torn from his oldest notebook — the audit he finished eleven years late, with your sentence written under his in column eleven. Pinned to Sam's cleared [notes*] wall. The [drawer] it came from stays unlocked now.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "the-drawer-witness"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -5437,7 +5474,8 @@
                 "itemDrop": {
                   "name": "Family-Meal Leftovers (don't eat alone)",
                   "description": "A dated parcel from the first meal where all four chairs were full and you sat at the table, not on staff. Mei's rule, written on the wrap: \"eat before the 15th. not alone. that's the recipe now.\" The warmest relic on Sam's wall.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "family-meal"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -5456,7 +5494,8 @@
                 "itemDrop": {
                   "name": "Family-Meal Leftovers (don't eat alone)",
                   "description": "A dated parcel from the first meal where all four chairs were full and you sat at the table, not on staff. Mei's rule, written on the wrap: \"eat before the 15th. not alone. that's the recipe now.\" The warmest relic on Sam's wall.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "family-meal"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -5480,7 +5519,8 @@
                 "itemDrop": {
                   "name": "Family-Meal Leftovers (don't eat alone)",
                   "description": "A dated parcel from the first meal where all four chairs were full and you sat at the table, not on staff. Mei's rule, written on the wrap: \"eat before the 15th. not alone. that's the recipe now.\" The warmest relic on Sam's wall.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "family-meal"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -5793,7 +5833,8 @@
                 "itemDrop": {
                   "name": "\"slow is still a time. proud.\" (screenshot)",
                   "description": "Maya's six-word reply, magneted to the [bleachers] rail — day one of whatever this is. The first crack in a three-year silence, earned with a walk Hana didn't time. Copy pinned to Sam's wall beside the framed card.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -5812,7 +5853,8 @@
                 "itemDrop": {
                   "name": "\"slow is still a time. proud.\" (screenshot)",
                   "description": "Maya's six-word reply, magneted to the [bleachers] rail — day one of whatever this is. The first crack in a three-year silence, earned with a walk Hana didn't time. Copy pinned to Sam's wall beside the framed card.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -5835,7 +5877,8 @@
                 "itemDrop": {
                   "name": "\"slow is still a time. proud.\" (screenshot)",
                   "description": "Maya's six-word reply, magneted to the [bleachers] rail — day one of whatever this is. The first crack in a three-year silence, earned with a walk Hana didn't time. Copy pinned to Sam's wall beside the framed card.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -6152,7 +6195,8 @@
                 "itemDrop": {
                   "name": "Week Two, Logged",
                   "description": "Sam's second framed index card, beside Week One: \"week two — logged. auditee became member. four orbits, one table, a door cracked open. tutorial concluded; it concluded a while ago.\" Below it, in YOUR handwriting, the last entry — the only one on the wall Sam never read.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -6172,7 +6216,8 @@
                 "itemDrop": {
                   "name": "Week Two, Logged",
                   "description": "Sam's second framed index card, beside Week One: \"week two — logged. auditee became member. four orbits, one table, a door cracked open. tutorial concluded; it concluded a while ago.\" Below it, in YOUR handwriting, the last entry — left deliberately unsigned, an open sentence.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -6196,7 +6241,8 @@
                 "itemDrop": {
                   "name": "Week Two, Logged",
                   "description": "Sam's second framed index card, beside Week One: \"week two — logged. auditee became member. four orbits, one table, a door cracked open. tutorial concluded; it concluded a while ago.\" With your line written under his.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -6271,7 +6317,8 @@
                 "itemDrop": {
                   "name": "The Margin (a hand that isn't Kenji's)",
                   "description": "A case-file photo of the gutter of an old [ledger*] leaf: under neat column-eleven lines in a familiar precise hand, a looser older hand runs sideways, no columns, the last line trailing off unfinished. Sam's annotation on the [notes*] wall: 'K's book. not K's hand. the wall can't index it either.' Lives in your case file as the first physical proof the system had an author before its keeper.",
-                  "kind": "memento"
+                  "kind": "memento",
+                  "grantsAchievement": "the-margin-witness"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -6514,7 +6561,8 @@
                 "itemDrop": {
                   "name": "Your Standing Hour (column one, week three)",
                   "description": "A case-file photo of Kenji's weekly book, a fresh column-one row in his hand: '[player] — standing entry — week three, [hour]. kettle on. not an invite. a fact.' The first time the reconciliation books a recurring line FOR you instead of about you. Sam's [notes*] wall pins a copy beside the Week Two card.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": "standing-hour-booked"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -6837,7 +6885,8 @@
                 "itemDrop": {
                   "name": "The Open Case (the wall's blank card)",
                   "description": "A case-file photo of the [notes*] wall center: a pinned photo of an un-columned hand, a blank index card, and beside it a dated card reading 'OPEN: whose hand kept this building before it was logged.' Sam's annotation: 'a mystery is a gap with a card that promises a return. — the wall.'",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -7005,7 +7054,8 @@
                 "itemDrop": {
                   "name": "Mei's Taste (the morning she read the grammar)",
                   "description": "A case-file photo of a small plate, half-eaten, a [recipe*] card face-down beside it with shorthand on the back in Mei's hand: 'guest ate while I read the grammar. did not name it. fed them instead.' Pinned near Sam's [notes*] wall.",
-                  "kind": "memento"
+                  "kind": "memento",
+                  "grantsAchievement": "grammar-of-the-line"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -7184,7 +7234,8 @@
                 "itemDrop": {
                   "name": "Breakfast for a Hard Morning",
                   "description": "A small wrapped parcel from Mei's line with a shorthand note tucked under the string: 'for the [desk]. don't read it alone or hungry. — M.' Proof you are provisioned for the D18 reading.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": "provisioned-for-the-turn"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -7204,7 +7255,8 @@
                 "itemDrop": {
                   "name": "Breakfast for a Hard Morning",
                   "description": "A small wrapped parcel from Mei's line with a shorthand note tucked under the string: 'for the [desk]. don't read it alone or hungry. — M.' Proof you are provisioned for the D18 reading.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": "provisioned-for-the-turn"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -7228,7 +7280,8 @@
                 "itemDrop": {
                   "name": "Breakfast for a Hard Morning",
                   "description": "A small wrapped parcel from Mei's line with a shorthand note tucked under the string: 'for the [desk]. don't read it alone or hungry. — M.' Proof you are provisioned for the D18 reading.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": "provisioned-for-the-turn"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -7376,7 +7429,8 @@
                 "itemDrop": {
                   "name": "Week Zero, Audited",
                   "description": "A case-file photo of the leaf as you read it: a ledger-cold scan with the columns highlighted. Sam's [notes*] wall pins it under the open-case card—the case is no longer blank.",
-                  "kind": "memento"
+                  "kind": "memento",
+                  "grantsAchievement": "read-the-page"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -7395,7 +7449,8 @@
                 "itemDrop": {
                   "name": "Week Zero, Heard",
                   "description": "A case-file photo of the leaf as you read it: a margin close-up with the cadence marked. Sam's [notes*] wall pins it under the open-case card—the case is no longer blank.",
-                  "kind": "memento"
+                  "kind": "memento",
+                  "grantsAchievement": "read-the-page"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -7418,7 +7473,8 @@
                 "itemDrop": {
                   "name": "Week Zero, Copied (in your hand)",
                   "description": "A case-file photo of the leaf as you read it: your own copied line beside the keeper's. Sam's [notes*] wall pins it under the open-case card—the case is no longer blank.",
-                  "kind": "memento"
+                  "kind": "memento",
+                  "grantsAchievement": "read-the-page"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -7511,7 +7567,8 @@
                 "itemDrop": {
                   "name": "Your Reading Hour (week-zero leaf, ribbon-marked)",
                   "description": "A case-file photo of the old [ledger*] left open on the [desk], a thin ribbon marking the leaf you read, beside Kenji's squared weekly book. Kenji's annotation: 'Left out, marked at the player's page. A read leaf wants reading again. Column one: their reading-hour, standing.'",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": "standing-hour-booked"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -8426,7 +8483,8 @@
                 "itemDrop": {
                   "name": "The Unwritten Theory",
                   "description": "The case file you DIDN'T build tonight — blank where there'd usually be four paragraphs decoding three words. Sloane keeps a copy. It's the first thing she's proud of that you didn't do.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -8794,7 +8852,8 @@
                 "itemDrop": {
                   "name": "The Worst Line",
                   "description": "The terrible opener that bombed and somehow became the best part of the night — written on a cocktail napkin, kept. Nico says a bad line you walked through beats a perfect one you didn't. Proof the cringe has two hit points.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": "survived-the-cringe"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -8921,7 +8980,8 @@
                 "itemDrop": {
                   "name": "The One-Line Draft",
                   "description": "The single sentence that landed, with eight rewrites crossed out above it in red. Wes keeps it as the first time you trusted a bare line. The paragraph was bubble wrap; this was the package.",
-                  "kind": "keepsake"
+                  "kind": "keepsake",
+                  "grantsAchievement": null
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -9047,7 +9107,8 @@
                 "itemDrop": {
                   "name": "The Unfinished Drink",
                   "description": "The glass you left half-full when you wrapped it and walked — no excuse, no lingering. A clean-exit token. Sloane says the unfinished drink is the most expensive thing you'll ever NOT buy back.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "clean-exit"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -9297,7 +9358,8 @@
                 "itemDrop": {
                   "name": "The Phone in the Other Room",
                   "description": "A snapshot of your phone, face-down, one room away, while your afternoon happened without it. A self-possession token. Mara says the distance between you and the screen is exactly how much of your day you got back.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "unplugged"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -9431,7 +9493,8 @@
                 "itemDrop": {
                   "name": "Across the Room",
                   "description": "The exact distance you crossed when it actually counted — freeze and all — captured the moment you stopped picking decoy targets. Nico keeps it as proof you graduated from practice to playing. The real rep, not the safe one.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "real-stakes"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -9558,7 +9621,8 @@
                 "itemDrop": {
                   "name": "Sincerely, No Notes",
                   "description": "The bare, earnest line you let stand with no defensive joke guarding it — the first time you didn't price yourself down. Wes signs it 'no notes,' which from him is a standing ovation. Can't be loved for what you never showed.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "dropped-the-armor"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -9692,7 +9756,8 @@
                 "itemDrop": {
                   "name": "The Screenshot You Stopped Rereading",
                   "description": "The thread that made your stomach flip — closed, archived, not reopened. Sloane logs it as the most expensive thing you ever stopped paying for. Proof you can want someone and still read them clearly.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "walked-the-pretty-one"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -9819,7 +9884,8 @@
                 "itemDrop": {
                   "name": "Led With the Weird",
                   "description": "The uncool interest you named early with zero apology — the first time you let the dorky thing be the door instead of the secret. Remy files it as your best filter. The right person leans in; the cringe sorts the rest.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "no-apology"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -9953,7 +10019,8 @@
                 "itemDrop": {
                   "name": "The Seat You Kept",
                   "description": "The empty chair at your own table — the one you didn't give away to someone who only ever benched you. Mara files it as the most valuable thing you walked away WITH. You wanted them, and you still kept your seat.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "not-an-option"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -10064,7 +10131,8 @@
                 "itemDrop": {
                   "name": "Beat the Count",
                   "description": "The moment you moved on a real one before the count-in — caught and kept, the proof you're faster than the freeze now. Nico's keepsake; it carries what he taught you: in any lane, the bold move is one nerve easier to reach. Not fearless. Just faster than the fear.",
-                  "kind": "legendary"
+                  "kind": "legendary",
+                  "grantsAchievement": "already-moving"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -10191,7 +10259,8 @@
                 "itemDrop": {
                   "name": "Clean, Kind, Done",
                   "description": "The one-sentence no you sent instead of a three-month maybe — kind, clear, final. Wes files it as proof you learned the hardest wordcraft there is: the respectful no. You freed both of you in one line.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "the-kind-no"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -10310,7 +10379,8 @@
                 "itemDrop": {
                   "name": "The Last Clean Read",
                   "description": "The folded, unsent reply from the night you read a real one alone and trusted it — kept, finally legible only now that you don't need her. The Reader's keepsake; carries what she taught you: in every other lane you clock one extra signal before you choose.",
-                  "kind": "legendary"
+                  "kind": "legendary",
+                  "grantsAchievement": "your-own-read"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -10437,7 +10507,8 @@
                 "itemDrop": {
                   "name": "Didn't Sand Yourself Down",
                   "description": "The disagreement you said out loud instead of nodding through — the moment you took up your whole space and the connection held. Remy files it as the day you became meet-able. Friction is intimacy; you stopped erasing your edges.",
-                  "kind": "relic"
+                  "kind": "relic",
+                  "grantsAchievement": "took-up-space"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -10548,7 +10619,8 @@
                 "itemDrop": {
                   "name": "The Unsent Text",
                   "description": "The message to Mara you composed the bad night and never needed to send — the one that proves the floor held without her. Her keepsake; it carries the floor she taught you: one bad beat can't spiral you into a fall anymore. You recover where you used to spin out.",
-                  "kind": "legendary"
+                  "kind": "legendary",
+                  "grantsAchievement": "the-floor-held"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -10659,7 +10731,8 @@
                 "itemDrop": {
                   "name": "I'd Have Cut Nothing",
                   "description": "The 'what are we' text you sent on your own, in your exact voice — printed clean, no red marks, because there was nothing to cut. Wes's keepsake; it carries what he taught you: in any lane, one extra well-worded true line surfaces, and it reads better. You sound like you now.",
-                  "kind": "legendary"
+                  "kind": "legendary",
+                  "grantsAchievement": "cut-nothing"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -10770,7 +10843,8 @@
                 "itemDrop": {
                   "name": "She Said Nothing",
                   "description": "The photo of you mid-laugh, caught off-guard, not performing — the night you forgot to manage how you came across. Remy's keepsake, given in silence because the silence is the point; it carries what she taught you: showing up as yourself reads a touch truer in any lane. No mask left to take off.",
-                  "kind": "legendary"
+                  "kind": "legendary",
+                  "grantsAchievement": "mask-off"
                 },
                 "grantsAchievement": null,
                 "reactionVariants": []
@@ -10977,6 +11051,6 @@
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "b4e151aa0b87"
+    "contentHash": "c10cf71a8696"
   }
 }

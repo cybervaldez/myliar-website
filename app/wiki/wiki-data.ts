@@ -135,7 +135,7 @@ export interface MainlineChoice {
   diceRoll: { critSuccessMultiplier: number; critFailMultiplier: number; critChance: number } | null;
   reactionText: string;
   reactionTextOnCritFail: string | null;
-  itemDrop: { name: string; description: string; kind: string } | null;
+  itemDrop: { name: string; description: string; kind: string; grantsAchievement: string | null } | null;
   // v0.0.42 — the flag this selection sets, + callback reactions it may show.
   grantsAchievement: string | null;
   reactionVariants: ReactionVariant[];
