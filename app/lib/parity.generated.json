@@ -1551,7 +1551,7 @@
                   "REL": 1
                 },
                 "diceRoll": null,
-                "reactionText": "Hana doesn't text back. She keeps running. +1 STR for the commitment to tomorrow. +1 REL because she expected you to say more and you didn't, which is the right amount.",
+                "reactionText": "Hana doesn't text back. She keeps running. +1 STR. the commitment to tomorrow. +1 REL because she expected you to say more and you didn't, which is the right amount.",
                 "reactionTextOnCritFail": "",
                 "itemDrop": null,
                 "grantsAchievement": null,
@@ -3217,7 +3217,7 @@
                   "GLD": 1
                 },
                 "diceRoll": null,
-                "reactionText": "When you arrive at the [bleachers] she's already walking the loop. She nods once. 'you didn't listen. you came. +1 STR for trusting the audio is meant to be heard live. +1 GLD for not making the file do the explaining. the 4-count is what we'll do today together — you'll feel it by the second loop.'",
+                "reactionText": "When you arrive at the [bleachers] she's already walking the loop. She nods once. 'you didn't listen. you came. +1 STR. trusting the audio is meant to be heard live. +1 GLD. not making the file do the explaining. the 4-count is what we'll do today together — you'll feel it by the second loop.'",
                 "reactionTextOnCritFail": "",
                 "itemDrop": null,
                 "grantsAchievement": null,
@@ -3265,7 +3265,7 @@
                   "REL": 1
                 },
                 "diceRoll": null,
-                "reactionText": "She doesn't say anything for one full loop. After the first lap she glances sideways: 'you matched the cadence. that's how I knew you played the audio. +1 STR + 1 INT for the silence. +1 REL. the 4-count works.'",
+                "reactionText": "She doesn't say anything for one full loop. After the first lap she glances sideways: 'you matched the cadence. that's how I knew you played the audio. +1 STR + 1 INT. the silence. +1 REL. the 4-count works.'",
                 "reactionTextOnCritFail": "",
                 "itemDrop": null,
                 "grantsAchievement": null,
@@ -3280,7 +3280,7 @@
                   "GLD": 1
                 },
                 "diceRoll": null,
-                "reactionText": "She walks two loops past you without comment. On the third she stops in front of the bench. 'you sat. most people pace next to the walker — it feels rude not to. +1 STR for the patience. +1 GLD because sitting is the other half of the walk. you got the half right.'",
+                "reactionText": "She walks two loops past you without comment. On the third she stops in front of the bench. 'you sat. most people pace next to the walker — it feels rude not to. +1 STR. the patience. +1 GLD because sitting is the other half of the walk. you got the half right.'",
                 "reactionTextOnCritFail": "",
                 "itemDrop": null,
                 "grantsAchievement": null,
@@ -3327,7 +3327,7 @@
                   "REL": 1
                 },
                 "diceRoll": null,
-                "reactionText": "She looks at the [pic*], not at you. 'the one running is me. the one standing is the one who taught me to count. +1 INT for the right question — most people ask the wrong way. the wrong way is which one are you. there are two of us. +1 REL.'",
+                "reactionText": "She looks at the [pic*], not at you. 'the one running is me. the one standing is the one who taught me to count. +1 INT. the right question — most people ask the wrong way. the wrong way is which one are you. there are two of us. +1 REL.'",
                 "reactionTextOnCritFail": "",
                 "itemDrop": null,
                 "grantsAchievement": null,
@@ -3343,7 +3343,7 @@
                   "GLD": 1
                 },
                 "diceRoll": null,
-                "reactionText": "Three full minutes of silence. The [bell*] doesn't ring. Hana stares at the [pic*]. Then: 'thank you for not asking. I was about to say it. the silence helped me find the sentence. +1 STR + 1 INT for the wait. +1 GLD because you let me pick the moment.'",
+                "reactionText": "Three full minutes of silence. The [bell*] doesn't ring. Hana stares at the [pic*]. Then: 'thank you for not asking. I was about to say it. the silence helped me find the sentence. +1 STR + 1 INT. the wait. +1 GLD because you let me pick the moment.'",
                 "reactionTextOnCritFail": "",
                 "itemDrop": null,
                 "grantsAchievement": null,
@@ -3410,7 +3410,7 @@
                   "INT": 1
                 },
                 "diceRoll": null,
-                "reactionText": "You don't fill the silence. Hana sits with the name out loud between you for a long beat, then stands on her own. '+3 REL. +1 INT for not rushing me past it. fold-the-paper things. logged.'",
+                "reactionText": "You don't fill the silence. Hana sits with the name out loud between you for a long beat, then stands on her own. '+3 REL. +1 INT. not rushing me past it. fold-the-paper things. logged.'",
                 "reactionTextOnCritFail": "",
                 "itemDrop": null,
                 "grantsAchievement": null,
@@ -3439,7 +3439,7 @@
                   "REL": 1
                 },
                 "diceRoll": null,
-                "reactionText": "She lets you walk her the extra three minutes past the [courtyard center] hallway. At her door she nods. 'you walked the walker home. +1 INT for the followthrough. +1 GLD for the extra minutes. the 4-count was the lesson and the walking-home was the punctuation. +1 REL. Maya would have walked Hana home too. she did, actually. for a long time.'",
+                "reactionText": "She lets you walk her the extra three minutes past the [courtyard center] hallway. At her door she nods. 'you walked the walker home. +1 INT. the followthrough. +1 GLD. the extra minutes. the 4-count was the lesson and the walking-home was the punctuation. +1 REL. Maya would have walked Hana home too. she did, actually. for a long time.'",
                 "reactionTextOnCritFail": "",
                 "itemDrop": null,
                 "grantsAchievement": null,
@@ -3454,7 +3454,7 @@
                   "INT": 1
                 },
                 "diceRoll": null,
-                "reactionText": "Hana watches you peel off at the cardinal split. Her text arrives nine minutes later: '+1 STR for taking tomorrow's audit seriously. +1 INT for scoping the route. Kenji will respect that you walked his approach the day before. the [drawer] sees you.'",
+                "reactionText": "Hana watches you peel off at the cardinal split. Her text arrives nine minutes later: '+1 STR. taking tomorrow's audit seriously. +1 INT. scoping the route. Kenji will respect that you walked his approach the day before. the [drawer] sees you.'",
                 "reactionTextOnCritFail": "",
                 "itemDrop": null,
                 "grantsAchievement": null,
@@ -11133,6 +11133,6 @@
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "197d34fba9be"
+    "contentHash": "195d16d8f2f3"
   }
 }
