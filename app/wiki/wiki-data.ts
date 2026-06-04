@@ -24,6 +24,8 @@ export interface SquadMember {
   appearance: string | null;
   starterPrompts: string[];
   gender: string | null;
+  titles: string[];
+  intimateTitle: string;
   joinsDay: number | null;
 }
 

@@ -11,6 +11,7 @@ const TOOLS = [
   { href: "/the-engine", label: "The Engine", desc: "how it works (essay)" },
   { href: "/concepts", label: "Concepts", desc: "theme slate — pick what to build" },
   { href: "/campaigns", label: "Campaigns", desc: "daily events, by campaign" },
+  { href: "/chat", label: "Chat", desc: "the dossier the arc builds toward" },
   { href: "/cards", label: "Cards", desc: "shareable moment cards" },
 ];
 
@@ -33,7 +34,7 @@ export function FandomShell({
   active,
   children,
 }: {
-  active: "/the-engine" | "/concepts" | "/campaigns" | "/cards";
+  active: "/the-engine" | "/concepts" | "/campaigns" | "/chat" | "/cards";
   children: React.ReactNode;
 }) {
   return (

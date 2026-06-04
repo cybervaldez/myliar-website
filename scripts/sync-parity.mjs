@@ -242,6 +242,9 @@ function extractSquad(allowIds = null, runDir = RUN_DIR) {
       appearance: applySubstitutions(dartField(b, "appearance")),
       starterPrompts: dartStringList(b, "starterPrompts"),
       gender: dartField(b, "gender"),
+      // titles + the intimate (Unspoken) title — for the chat-dossier preview.
+      titles: dartStringList(b, "titles"),
+      intimateTitle: dartField(b, "intimateTitle"),
       // Sam is the Day-0 onboarder (not introduced via a payload); the
       // rest derive from the run payloads. Default 0 for anyone absent.
       joinsDay: id === "sam" ? 0 : (joinsDay[id] ?? null),

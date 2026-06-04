@@ -83,6 +83,8 @@
         "Why did Hana's REL just go up?"
       ],
       "gender": "male",
+      "titles": [],
+      "intimateTitle": null,
       "joinsDay": 0
     },
     {
@@ -99,6 +101,12 @@
         "Walk me through ten minutes I won't quit."
       ],
       "gender": "female",
+      "titles": [
+        "the Iron Monk",
+        "the Powerhouse",
+        "the Drillmaster"
+      ],
+      "intimateTitle": "the Spotter",
       "joinsDay": 1
     },
     {
@@ -116,6 +124,13 @@
         "Audit the thing I keep pretending isn't a tax."
       ],
       "gender": "male",
+      "titles": [
+        "the Auditor",
+        "the Ledger",
+        "the Cool Eye",
+        "the Gold Column"
+      ],
+      "intimateTitle": "Column Eleven",
       "joinsDay": 3
     },
     {
@@ -132,6 +147,13 @@
         "Teach me one meal I can repeat all week."
       ],
       "gender": "female",
+      "titles": [
+        "the Field Medic",
+        "the Healer",
+        "the Cook",
+        "the Knife"
+      ],
+      "intimateTitle": "the Second Plate",
       "joinsDay": 5
     }
   ],
@@ -11051,6 +11073,6 @@
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "c10cf71a8696"
+    "contentHash": "8596c2ab602a"
   }
 }
