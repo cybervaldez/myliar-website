@@ -197,6 +197,15 @@ export default function EngineEssay() {
             dossier of who you&apos;ve been. The entire arc exists to build the
             person you then get to <em>talk to</em>.
           </Aside>
+          <p>
+            And that destination is a <strong>secure goodbye, not a hook</strong>:
+            at the top the coach goes quiet because you don&apos;t need the push
+            anymore — the door stays open, never &ldquo;come back or they&apos;ll
+            forget you.&rdquo; That&apos;s the deliberate opposite of the
+            engagement-maximizing companion apps now under FTC fire for engineering
+            dependence. &ldquo;No retention by guilt or FOMO&rdquo; is a ship-blocker
+            floor here; the coach that makes itself unneeded is the whole moat.
+          </p>
 
           {/* 05 */}
           <H2 id="the-lock" n="05">Why the characters are locked</H2>
