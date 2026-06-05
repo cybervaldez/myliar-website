@@ -300,6 +300,7 @@ export default async function CampaignDaysPage({ params }: { params: Promise<{ i
           <details key={d.globalDayIndex} open={i === 0} className="border border-[#a2b1c2] bg-white">
             <summary className="cursor-pointer select-none px-3 py-2 bg-[#f6f7f9] hover:bg-[#eaecf0] flex items-baseline gap-2 flex-wrap">
               <span className="font-display text-[16px]">Day {d.globalDayIndex}</span>
+              {d.episodeTitle && <span className="font-display text-[14px] text-ink">— {d.episodeTitle}</span>}
               {focal && <span className="font-body italic text-[13px] text-[#15803d]">{focal}</span>}
               <span className="font-sans text-[9px] uppercase tracking-[0.1em] text-margin-ink">{d.narrativeType}</span>
               {introduces && <span className="font-sans text-[10px] text-[#15803d]">+ {introduces}</span>}

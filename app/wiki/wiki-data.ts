@@ -165,6 +165,7 @@ export interface MainlineEvent {
 export interface MainlineDay {
   payloadId: string;
   narrativeType: string;
+  episodeTitle: string; // the per-campaign EPISODE-TITLE motif (the day card)
   globalDayIndex: number;
   characterId: string | null;
   introducesCharacterId: string | null;

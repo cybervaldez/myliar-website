@@ -551,6 +551,7 @@ function extractRun(runDir = RUN_DIR) {
     days.push({
       payloadId: p.payloadId ?? f.replace(/\.json$/, ""),
       narrativeType: p.narrativeType ?? "daily",
+      episodeTitle: p.episodeTitle ?? "", // the per-campaign EPISODE-TITLE motif (day card)
       globalDayIndex: p.globalDayIndex,
       characterId: p.characterId ?? null,
       introducesCharacterId: p.introducesCharacter?.id ?? null,

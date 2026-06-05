@@ -1264,6 +1264,7 @@
       {
         "payloadId": "live-onboarding-hana-d1",
         "narrativeType": "onboarding",
+        "episodeTitle": "The One Where You Showed Up",
         "globalDayIndex": 1,
         "characterId": "hana",
         "introducesCharacterId": null,
@@ -1611,6 +1612,7 @@
       {
         "payloadId": "live-daily-hana-d2",
         "narrativeType": "daily",
+        "episodeTitle": "The One Where Hana Heard You Try",
         "globalDayIndex": 2,
         "characterId": "hana",
         "introducesCharacterId": null,
@@ -1975,6 +1977,7 @@
       {
         "payloadId": "live-introduction-hana-d3",
         "narrativeType": "introduction",
+        "episodeTitle": "The One With Your Own File",
         "globalDayIndex": 3,
         "characterId": "hana",
         "introducesCharacterId": "kenji",
@@ -2360,6 +2363,7 @@
       {
         "payloadId": "live-daily-kenji-d4",
         "narrativeType": "daily",
+        "episodeTitle": "The One With the Laminated Card",
         "globalDayIndex": 4,
         "characterId": "kenji",
         "introducesCharacterId": null,
@@ -2749,6 +2753,7 @@
       {
         "payloadId": "live-introduction-hana-d5",
         "narrativeType": "introduction",
+        "episodeTitle": "The One Where Mei Wrote on Your Milk",
         "globalDayIndex": 5,
         "characterId": "hana",
         "introducesCharacterId": "mei",
@@ -3146,6 +3151,7 @@
       {
         "payloadId": "live-daily-hana-d6",
         "narrativeType": "daily",
+        "episodeTitle": "The One Where Hana Said Maya",
         "globalDayIndex": 6,
         "characterId": "hana",
         "introducesCharacterId": null,
@@ -3493,6 +3499,7 @@
       {
         "payloadId": "live-daily-kenji-d7",
         "narrativeType": "daily",
+        "episodeTitle": "The One Where Kenji Kept Both",
         "globalDayIndex": 7,
         "characterId": "kenji",
         "introducesCharacterId": null,
@@ -3853,6 +3860,7 @@
       {
         "payloadId": "live-daily-mei-d8",
         "narrativeType": "daily",
+        "episodeTitle": "The One Where Sam Ran Out of Wall",
         "globalDayIndex": 8,
         "characterId": "mei",
         "introducesCharacterId": null,
@@ -4200,6 +4208,7 @@
       {
         "payloadId": "live-daily-sam-d9",
         "narrativeType": "daily",
+        "episodeTitle": "The One Where Sam Framed It",
         "globalDayIndex": 9,
         "characterId": "sam",
         "introducesCharacterId": null,
@@ -4548,6 +4557,7 @@
       {
         "payloadId": "live-daily-hana-d10",
         "narrativeType": "daily",
+        "episodeTitle": "The One With Maya's Picture",
         "globalDayIndex": 10,
         "characterId": "hana",
         "introducesCharacterId": null,
@@ -4890,6 +4900,7 @@
       {
         "payloadId": "live-daily-kenji-d11",
         "narrativeType": "daily",
+        "episodeTitle": "The One With Two Scoreboards",
         "globalDayIndex": 11,
         "characterId": "kenji",
         "introducesCharacterId": null,
@@ -5246,6 +5257,7 @@
       {
         "payloadId": "live-daily-mei-d12",
         "narrativeType": "daily",
+        "episodeTitle": "The One Where the Books Closed",
         "globalDayIndex": 12,
         "characterId": "mei",
         "introducesCharacterId": null,
@@ -5596,6 +5608,7 @@
       {
         "payloadId": "live-daily-hana-d13",
         "narrativeType": "daily",
+        "episodeTitle": "The One Where Maya Wrote Back",
         "globalDayIndex": 13,
         "characterId": "hana",
         "introducesCharacterId": null,
@@ -5969,6 +5982,7 @@
       {
         "payloadId": "live-daily-sam-d14",
         "narrativeType": "daily",
+        "episodeTitle": "The One With Two Weeks on the Wall",
         "globalDayIndex": 14,
         "characterId": "sam",
         "introducesCharacterId": null,
@@ -6318,6 +6332,7 @@
       {
         "payloadId": "live-daily-kenji-d15",
         "narrativeType": "daily",
+        "episodeTitle": "",
         "globalDayIndex": 15,
         "characterId": "kenji",
         "introducesCharacterId": null,
@@ -6638,6 +6653,7 @@
       {
         "payloadId": "live-daily-sam-d16",
         "narrativeType": "daily",
+        "episodeTitle": "",
         "globalDayIndex": 16,
         "characterId": "sam",
         "introducesCharacterId": null,
@@ -6982,6 +6998,7 @@
       {
         "payloadId": "live-daily-mei-d17",
         "narrativeType": "daily",
+        "episodeTitle": "",
         "globalDayIndex": 17,
         "characterId": "mei",
         "introducesCharacterId": null,
@@ -7357,6 +7374,7 @@
       {
         "payloadId": "live-daily-kenji-d18",
         "narrativeType": "daily",
+        "episodeTitle": "",
         "globalDayIndex": 18,
         "characterId": "kenji",
         "introducesCharacterId": null,
@@ -7801,6 +7819,7 @@
       {
         "payloadId": "wingman-onboarding-nico-d1",
         "narrativeType": "onboarding",
+        "episodeTitle": "Three, Two—",
         "globalDayIndex": 1,
         "characterId": "nico",
         "introducesCharacterId": null,
@@ -7972,6 +7991,7 @@
       {
         "payloadId": "wingman-introduction-sloane-d2",
         "narrativeType": "introduction",
+        "episodeTitle": "Count the Hours",
         "globalDayIndex": 2,
         "characterId": "sloane",
         "introducesCharacterId": null,
@@ -8102,6 +8122,7 @@
       {
         "payloadId": "wingman-introduction-mara-d3",
         "narrativeType": "introduction",
+        "episodeTitle": "The Floor's Yours",
         "globalDayIndex": 3,
         "characterId": "mara",
         "introducesCharacterId": null,
@@ -8232,6 +8253,7 @@
       {
         "payloadId": "wingman-daily-nico-d4",
         "narrativeType": "daily",
+        "episodeTitle": "No Green Light",
         "globalDayIndex": 4,
         "characterId": "nico",
         "introducesCharacterId": null,
@@ -8354,6 +8376,7 @@
       {
         "payloadId": "wingman-introduction-wes-d5",
         "narrativeType": "introduction",
+        "episodeTitle": "The Send Button",
         "globalDayIndex": 5,
         "characterId": "wes",
         "introducesCharacterId": null,
@@ -8473,6 +8496,7 @@
       {
         "payloadId": "wingman-daily-sloane-d6",
         "narrativeType": "daily",
+        "episodeTitle": "Your Own Read",
         "globalDayIndex": 6,
         "characterId": "sloane",
         "introducesCharacterId": null,
@@ -8600,6 +8624,7 @@
       {
         "payloadId": "wingman-introduction-remy-d7",
         "narrativeType": "introduction",
+        "episodeTitle": "Take It Off",
         "globalDayIndex": 7,
         "characterId": "remy",
         "introducesCharacterId": null,
@@ -8720,6 +8745,7 @@
       {
         "payloadId": "wingman-daily-mara-d8",
         "narrativeType": "daily",
+        "episodeTitle": "Not on Trial",
         "globalDayIndex": 8,
         "characterId": "mara",
         "introducesCharacterId": null,
@@ -8842,6 +8868,7 @@
       {
         "payloadId": "wingman-daily-nico-d9",
         "narrativeType": "daily",
+        "episodeTitle": "Two Hit Points",
         "globalDayIndex": 9,
         "characterId": "nico",
         "introducesCharacterId": null,
@@ -8969,6 +8996,7 @@
       {
         "payloadId": "wingman-daily-wes-d10",
         "narrativeType": "daily",
+        "episodeTitle": "The One-Line Draft",
         "globalDayIndex": 10,
         "characterId": "wes",
         "introducesCharacterId": null,
@@ -9097,6 +9125,7 @@
       {
         "payloadId": "wingman-daily-sloane-d11",
         "narrativeType": "daily",
+        "episodeTitle": "Dignity, Intact",
         "globalDayIndex": 11,
         "characterId": "sloane",
         "introducesCharacterId": null,
@@ -9224,6 +9253,7 @@
       {
         "payloadId": "wingman-daily-remy-d12",
         "narrativeType": "daily",
+        "episodeTitle": "Let the Quiet Be Quiet",
         "globalDayIndex": 12,
         "characterId": "remy",
         "introducesCharacterId": null,
@@ -9347,6 +9377,7 @@
       {
         "payloadId": "wingman-daily-mara-d13",
         "narrativeType": "daily",
+        "episodeTitle": "Off Their Wifi",
         "globalDayIndex": 13,
         "characterId": "mara",
         "introducesCharacterId": null,
@@ -9475,6 +9506,7 @@
       {
         "payloadId": "wingman-daily-nico-d14",
         "narrativeType": "daily",
+        "episodeTitle": "Across the Room",
         "globalDayIndex": 14,
         "characterId": "nico",
         "introducesCharacterId": null,
@@ -9610,6 +9642,7 @@
       {
         "payloadId": "wingman-daily-wes-d15",
         "narrativeType": "daily",
+        "episodeTitle": "Sincerely, No Notes",
         "globalDayIndex": 15,
         "characterId": "wes",
         "introducesCharacterId": null,
@@ -9738,6 +9771,7 @@
       {
         "payloadId": "wingman-daily-sloane-d16",
         "narrativeType": "daily",
+        "episodeTitle": "The 'Re—' Thread",
         "globalDayIndex": 16,
         "characterId": "sloane",
         "introducesCharacterId": null,
@@ -9873,6 +9907,7 @@
       {
         "payloadId": "wingman-daily-remy-d17",
         "narrativeType": "daily",
+        "episodeTitle": "Led With the Weird",
         "globalDayIndex": 17,
         "characterId": "remy",
         "introducesCharacterId": null,
@@ -10001,6 +10036,7 @@
       {
         "payloadId": "wingman-daily-mara-d18",
         "narrativeType": "daily",
+        "episodeTitle": "Not an Option",
         "globalDayIndex": 18,
         "characterId": "mara",
         "introducesCharacterId": null,
@@ -10136,6 +10172,7 @@
       {
         "payloadId": "wingman-daily-nico-d19",
         "narrativeType": "daily",
+        "episodeTitle": "Beat the Count",
         "globalDayIndex": 19,
         "characterId": "nico",
         "introducesCharacterId": null,
@@ -10248,6 +10285,7 @@
       {
         "payloadId": "wingman-daily-wes-d20",
         "narrativeType": "daily",
+        "episodeTitle": "Clean, Kind, Done",
         "globalDayIndex": 20,
         "characterId": "wes",
         "introducesCharacterId": null,
@@ -10376,6 +10414,7 @@
       {
         "payloadId": "wingman-daily-sloane-d21",
         "narrativeType": "daily",
+        "episodeTitle": "The Last Clean Read",
         "globalDayIndex": 21,
         "characterId": "sloane",
         "introducesCharacterId": null,
@@ -10496,6 +10535,7 @@
       {
         "payloadId": "wingman-daily-remy-d22",
         "narrativeType": "daily",
+        "episodeTitle": "Didn't Sand Yourself Down",
         "globalDayIndex": 22,
         "characterId": "remy",
         "introducesCharacterId": null,
@@ -10624,6 +10664,7 @@
       {
         "payloadId": "wingman-daily-mara-d23",
         "narrativeType": "daily",
+        "episodeTitle": "Proof the Floor Holds",
         "globalDayIndex": 23,
         "characterId": "mara",
         "introducesCharacterId": null,
@@ -10736,6 +10777,7 @@
       {
         "payloadId": "wingman-daily-wes-d24",
         "narrativeType": "daily",
+        "episodeTitle": "I'd Have Cut Nothing",
         "globalDayIndex": 24,
         "characterId": "wes",
         "introducesCharacterId": null,
@@ -10848,6 +10890,7 @@
       {
         "payloadId": "wingman-daily-remy-d25",
         "narrativeType": "daily",
+        "episodeTitle": "She Said Nothing",
         "globalDayIndex": 25,
         "characterId": "remy",
         "introducesCharacterId": null,
@@ -11133,6 +11176,6 @@
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "195d16d8f2f3"
+    "contentHash": "c81cf8b21bd1"
   }
 }
