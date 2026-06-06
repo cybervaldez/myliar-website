@@ -1173,6 +1173,7 @@
               "id": "drill-card-d1",
               "name": "Hana's First Drill Card",
               "description": "A torn page. The hip hinge sequence in Hana's handwriting. Numbered. Underlined twice where it says BREATHE.",
+              "imageBrief": "A torn page, a hip-hinge sequence numbered in Hana's hand, the word BREATHE underlined twice, ink on cream.",
               "kind": "keepsake"
             }
           },
@@ -1229,6 +1230,7 @@
               "id": "signed-agreement-d1",
               "name": "The Signed Agreement",
               "description": "One page. Hana's handwriting, top to bottom. Your signature scribbled at the bottom. The clause that matters is the one that says I GET TO WAKE YOU UP.",
+              "imageBrief": "A single page hand-lettered top to bottom, your scribbled signature at the foot, one clause underlined, flat on cream.",
               "kind": "keepsake"
             }
           },
@@ -11185,6 +11187,6 @@
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "65e5fb873b69"
+    "contentHash": "0b56f8c6e9ac"
   }
 }
