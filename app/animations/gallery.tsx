@@ -195,10 +195,82 @@ function FullRelReward() {
   );
 }
 
+// ── CG unlock — the earned event-still (the HEADLINE reveal) ────────────────
+// 3-phase: anticipation (SHORT) → hit (theme dialect) → settle (the campaign's CG
+// artifact eases in + HOLDS). The "polaroid" is the VIBRANT skin; the artifact is
+// per-campaign (Campaign.cgFrame: polaroid | framed-card | terminal-plate). This
+// is a DETERMINISTIC, earned reward — NOT a gacha pull: short anticipation, a
+// SINGLE flash, no "pull again". Reduced-motion → instant, no flash (a11y).
+// Spec: docs/design/animation-delights.md.
+function CGReveal({ dialect, forceReduced = false }: {
+  dialect: "vibrant" | "parchment" | "dos"; forceReduced?: boolean;
+}) {
+  const reduced = forceReduced || prefersReduced();
+  // Title in the campaign motif voice (the Corner = terse coach-talk); the
+  // caption is the achievement blurb.
+  const title = dialect === "dos" ? "BEAT THE COUNT" : "Beat the Count";
+  const caption = "You moved on a real one before the count-in.";
+  return (
+    <div className={`adk-cg adk-cg-${dialect}${reduced ? " adk-cg-reduced" : ""}`}>
+      {!reduced && <div className="adk-cg-dim" />}
+      {!reduced && <div className="adk-cg-hit" />}
+      <div className="adk-cg-card">
+        <div className="adk-cg-art">
+          <span className="adk-cg-fig adk-cg-coach" />
+          {/* the MC, back-turned = drawn but face-OBSCURED (canon stays faceless) */}
+          <span className="adk-cg-fig adk-cg-mc" />
+          <span className="adk-cg-arttag">CG · MC face-obscured</span>
+        </div>
+        <div className="adk-cg-meta">
+          <div className="adk-cg-title">{title}</div>
+          <div className="adk-cg-cap">{caption}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function AnimationGallery() {
   return (
     <>
       <style>{CSS}</style>
+
+      <Section
+        title="CG unlock — the earned moment  ★NEW (headline)"
+        note="A peak beat earns a full event-still (the achievement blurb captions it). 3 phases — anticipation (SHORT) → hit → settle (the campaign's CG card eases in + HOLDS). The 'polaroid' is the Vibrant skin; the artifact is per-campaign (Campaign.cgFrame). DETERMINISTIC + earned — NOT a gacha pull (no drumroll, no 'again'). One flash max (WCAG 2.3.1); reduced-motion skips it. Spec: docs/design/animation-delights.md."
+      >
+        <Demo
+          title="Vibrant Realm — flash → polaroid"
+          spec="dim 180ms easeIn → SINGLE white flash 140ms easeOut → polaroid drop+tilt+settle 420ms easeOutBack (delay .3s)"
+          flutter="RevealOverlay(spec: vibrant) — explicit controller, 3 phases; flash = white overlay opacity 0→.95→0 (ONE pulse); card ScaleTransition+rotation easeOutBack; RepaintBoundary"
+        >
+          <CGReveal dialect="vibrant" />
+        </Demo>
+
+        <Demo
+          title="Parchment &amp; Ink — cream-bloom → framed card"
+          spec="page STILLS → soft cream-bloom 500ms (NO white flash — would cheapen) → framed card fade-up 360ms easeOut (no overshoot, delay .28s)"
+          flutter="RevealOverlay(spec: parchment) — bloom = paper-color overlay; card FadeTransition only, no transform overshoot (stillness)"
+        >
+          <CGReveal dialect="parchment" />
+        </Demo>
+
+        <Demo
+          title="DOS-era — █ wipe → terminal plate"
+          spec="cursor stops → single █ wipe (steps, hard cut) → ASCII plate appears, title INSTANT (DOS text is never typed except Day-0 boot)"
+          flutter="RevealOverlay(spec: dos) — wipe = accent block opacity step; plate instant; monospace + box frame"
+        >
+          <CGReveal dialect="dos" />
+        </Demo>
+
+        <Demo
+          title="Reduced-motion fallback (forced)"
+          spec="prefers-reduced-motion → NO flash, NO dim, NO transform — the card is simply already there (single fade max). Designed here, not bolted on"
+          flutter="if MediaQuery.disableAnimations: skip flash/anticipation, set end state instantly (a11y + seizure-safe)"
+        >
+          <CGReveal dialect="vibrant" forceReduced />
+        </Demo>
+      </Section>
 
       <Section
         title="Text &amp; narration — themed"
@@ -722,9 +794,48 @@ const CSS = `
 
 .adk-instant{font-family:var(--theme-body);font-size:12px;color:var(--ink-soft);text-align:center;}
 
+/* CG unlock — earned event-still: anticipation → hit → settle, per theme dialect */
+.adk-cg{position:relative;width:100%;min-height:160px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.adk-cg-dim{position:absolute;inset:-14px;background:#000;opacity:0;pointer-events:none;animation:adk-cgdim .18s ease-in both;}
+@keyframes adk-cgdim{to{opacity:.42;}}
+.adk-cg-hit{position:absolute;inset:-14px;opacity:0;pointer-events:none;z-index:2;}
+.adk-cg-vibrant .adk-cg-hit{background:#fff;animation:adk-cgflash .14s ease-out .18s both;}
+@keyframes adk-cgflash{0%{opacity:0;}45%{opacity:.95;}100%{opacity:0;}}
+.adk-cg-parchment .adk-cg-hit{background:var(--paper);animation:adk-cgbloom .5s ease-out .12s both;}
+@keyframes adk-cgbloom{0%{opacity:0;}50%{opacity:.7;}100%{opacity:0;}}
+.adk-cg-dos .adk-cg-hit{background:#43ff8d;animation:adk-cgwipe .16s steps(1,end) .12s both;}
+@keyframes adk-cgwipe{0%{opacity:0;}50%{opacity:.55;}100%{opacity:0;}}
+.adk-cg-card{position:relative;z-index:1;}
+.adk-cg-vibrant .adk-cg-card{background:#fff;border:1px solid #e2e2e2;padding:7px 7px 0;box-shadow:0 8px 20px rgba(0,0,0,.28);animation:adk-cgvib .42s cubic-bezier(.34,1.56,.64,1) .3s both;}
+@keyframes adk-cgvib{0%{opacity:0;transform:translateY(-24px) rotate(-5deg) scale(.9);}70%{opacity:1;transform:translateY(0) rotate(2.5deg) scale(1.02);}100%{transform:rotate(-1.5deg) scale(1);}}
+.adk-cg-parchment .adk-cg-card{background:var(--paper);border:2px solid var(--ink);padding:7px;animation:adk-cgparch .36s ease-out .28s both;}
+@keyframes adk-cgparch{0%{opacity:0;transform:translateY(8px);}100%{opacity:1;transform:none;}}
+.adk-cg-dos .adk-cg-card{background:#00140a;border:1px solid #43ff8d;padding:7px;animation:adk-cgdos .12s steps(2,end) .28s both;}
+@keyframes adk-cgdos{0%{opacity:0;}100%{opacity:1;}}
+.adk-cg-reduced .adk-cg-card{animation:none;opacity:1;transform:none;}
+.adk-cg-art{position:relative;width:190px;height:92px;overflow:hidden;background:linear-gradient(160deg,#3a4a52,#1d2630);}
+.adk-cg-parchment .adk-cg-art{background:linear-gradient(160deg,#d8cfba,#bcae90);}
+.adk-cg-dos .adk-cg-art{background:#00140a;border:1px dashed #2c6b45;}
+.adk-cg-fig{position:absolute;bottom:-10px;border-radius:50% 50% 45% 45%;}
+.adk-cg-coach{left:46%;width:46px;height:60px;background:rgba(255,255,255,.22);}
+.adk-cg-mc{left:14%;width:52px;height:66px;background:rgba(0,0,0,.5);}
+.adk-cg-dos .adk-cg-coach{background:rgba(67,255,141,.3);}
+.adk-cg-dos .adk-cg-mc{background:rgba(67,255,141,.6);}
+.adk-cg-arttag{position:absolute;top:4px;right:5px;font-size:8px;letter-spacing:.04em;color:rgba(255,255,255,.6);font-family:ui-monospace,monospace;}
+.adk-cg-dos .adk-cg-arttag{color:#43ff8d;}
+.adk-cg-parchment .adk-cg-arttag{color:rgba(40,30,20,.5);}
+.adk-cg-meta{padding:6px 4px 7px;max-width:190px;}
+.adk-cg-title{font-family:var(--theme-display);font-size:15px;letter-spacing:.04em;color:var(--ink);line-height:1.1;}
+.adk-cg-cap{font-family:var(--theme-body);font-size:11px;color:var(--ink-soft);line-height:1.35;margin-top:2px;}
+.adk-cg-vibrant .adk-cg-title{color:#1a1a1a;}
+.adk-cg-vibrant .adk-cg-cap{color:#555;font-style:italic;}
+.adk-cg-dos .adk-cg-title,.adk-cg-dos .adk-cg-cap{color:#43ff8d;font-family:ui-monospace,monospace;}
+.adk-cg-dos .adk-cg-title{font-size:13px;}
+
 @media (prefers-reduced-motion: reduce){
   .adk-stamp,.adk-toast,.adk-bar-fill,.adk-bloom,.adk-float,.adk-drop,.adk-relfill,.adk-popword,.adk-whisperword,
-  .adk-bb-fill,.adk-tbar,.adk-tlayer-rel,.adk-tlayer-battle,.adk-tbar-fill,.adk-modal-fade,.adk-modal-slide{animation-duration:.001s;}
+  .adk-bb-fill,.adk-tbar,.adk-tlayer-rel,.adk-tlayer-battle,.adk-tbar-fill,.adk-modal-fade,.adk-modal-slide,.adk-cg-card{animation-duration:.001s;}
   .adk-cursor,.adk-shoutchar{animation:none;}
+  .adk-cg-dim,.adk-cg-hit{display:none;} /* no flash / no dim under reduced-motion (a11y) */
 }
 `;
