@@ -277,6 +277,26 @@ function YouSee() {
   );
 }
 
+// ── Scene heartbeat (BPM) — the felt pulse, threshold-gated ──────────────────
+// Two BPMs (character/player) for asymmetry; pulses ONLY when a BPM leaves the
+// resting band (55–90) — an emotional shift, not a constant hum ("if everything
+// pulses, nothing pulses"). NEVER labeled "heart rate" in-game (banned clinical
+// word) — felt, not shown. Music uses ONE derived scene tempo. Spec: docs/design/bpm.md.
+function Heartbeat({ label, bpm }: { label: string; bpm: number }) {
+  const pulses = bpm < 55 || bpm > 90;
+  const dur = (60 / bpm).toFixed(2);
+  return (
+    <div className="adk-hb-node">
+      <span
+        className={`adk-hb-dot${pulses ? " adk-hb-beat" : ""}`}
+        style={pulses ? ({ "--hb-dur": `${dur}s` } as React.CSSProperties) : undefined}
+      />
+      <span className="adk-hb-label">{label}</span>
+      <span className="adk-hb-bpm">{bpm}{pulses ? "" : " · resting"}</span>
+    </div>
+  );
+}
+
 export default function AnimationGallery() {
   return (
     <>
@@ -356,6 +376,33 @@ export default function AnimationGallery() {
           flutter="narrative_event_screen: Event.youSee → AnimatedOpacity/slide by theme; whisper-tier, never the CG grammar"
         >
           <YouSee />
+        </Demo>
+      </Section>
+
+      <Section
+        title="Scene heartbeat — BPM  ★NEW"
+        note="Every scene has a felt BPM (its emotional heartbeat) — two BPMs (character + player) for asymmetry; DERIVED from state (lib/bpm.dart), not hand-set per line. Pulses ONLY when a BPM leaves the resting band 55–90 (an emotional shift, never a constant hum). NEVER labeled 'heart rate' in-game (banned clinical word) — felt, not shown. Music uses ONE derived scene tempo; the two BPMs drive arrangement. Spec: docs/design/bpm.md."
+      >
+        <Demo
+          title="Resting — NO pulse (the threshold)"
+          spec="both inside 55–90 → static. 'If everything pulses, nothing pulses' — no baseline hum (anti-fatigue + reduced-motion-safe)"
+          flutter="Bpm.anyPulse == false → no heartbeat driver; UI still"
+        >
+          <div className="adk-hb"><Heartbeat label="Hana" bpm={64} /><Heartbeat label="You" bpm={70} /></div>
+        </Demo>
+        <Demo
+          title="Tense — asymmetric (calm coach, racing player)"
+          spec="player 108 BPM pulses (lub-dub at 60/bpm s); coach 60 stays composed (the gift). The dramatic asymmetry"
+          flutter="deriveBpm(stakes:3, valenceTilt:-1) → player pulses, character static; pulse dur = Bpm.secondsPerBeat"
+        >
+          <div className="adk-hb"><Heartbeat label="Sloane" bpm={60} /><Heartbeat label="You" bpm={108} /></div>
+        </Demo>
+        <Demo
+          title="Their exposed beat (the Monument)"
+          spec="the character's OWN vulnerable beat spikes THEIR heartbeat (104, pulsing); the player steadies (76)"
+          flutter="deriveBpm(stakes:3, characterExposed:true) → character pulses (Hana tells Maya's story)"
+        >
+          <div className="adk-hb"><Heartbeat label="Hana" bpm={104} /><Heartbeat label="You" bpm={76} /></div>
         </Demo>
       </Section>
 
@@ -951,11 +998,20 @@ const CSS = `
 .adk-ys-line{font-size:12px;font-style:italic;color:var(--ink-soft);line-height:1.45;margin-top:10px;animation:adk-ysin .42s ease-out .25s both;}
 @keyframes adk-ysin{0%{opacity:0;transform:translateY(5px);}100%{opacity:1;transform:none;}}
 
+/* Scene heartbeat (BPM) — lub-dub pulse, threshold-gated (only extremes pulse) */
+.adk-hb{display:flex;gap:30px;align-items:flex-start;justify-content:center;}
+.adk-hb-node{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.adk-hb-dot{width:34px;height:34px;border-radius:50%;background:var(--spot-red);opacity:.5;display:block;}
+.adk-hb-beat{animation:adk-beat var(--hb-dur,1s) ease-in-out infinite;}
+@keyframes adk-beat{0%,52%,100%{transform:scale(1);opacity:.5;}12%{transform:scale(1.42);opacity:.95;}24%{transform:scale(1.06);opacity:.66;}34%{transform:scale(1.2);opacity:.85;}}
+.adk-hb-label{font-family:var(--theme-display);font-size:10px;letter-spacing:.1em;color:var(--ink);text-transform:uppercase;}
+.adk-hb-bpm{font-family:ui-monospace,monospace;font-size:10px;color:var(--margin-ink);}
+
 @media (prefers-reduced-motion: reduce){
   .adk-stamp,.adk-toast,.adk-bar-fill,.adk-bloom,.adk-float,.adk-drop,.adk-relfill,.adk-popword,.adk-whisperword,
   .adk-bb-fill,.adk-tbar,.adk-tlayer-rel,.adk-tlayer-battle,.adk-tbar-fill,.adk-modal-fade,.adk-modal-slide,.adk-cg-card,
   .adk-poly-fill,.adk-vital-q,.adk-vital-v,.adk-ys-line{animation-duration:.001s;}
-  .adk-cursor,.adk-shoutchar{animation:none;}
+  .adk-cursor,.adk-shoutchar,.adk-hb-beat{animation:none;}
   .adk-cg-dim,.adk-cg-hit{display:none;} /* no flash / no dim under reduced-motion (a11y) */
 }
 `;
