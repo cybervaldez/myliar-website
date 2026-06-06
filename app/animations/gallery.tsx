@@ -297,6 +297,35 @@ function Heartbeat({ label, bpm }: { label: string; bpm: number }) {
   );
 }
 
+// ── Dialogue PACED by BPM — the heartbeat conducts the reveal ────────────────
+// The same line reveals slow + lingering at a calm BPM, fast + snappy at a tense
+// one (revealMsPerChar = 60ms@calm → 16ms@panic), with the threshold-gated pulse
+// beside it. BPM is the conductor of the dialogue motion. Mirrors lib/bpm.dart.
+function bpmRevealMs(bpm: number) {
+  const t = Math.min(1, Math.max(0, (bpm - 40) / (120 - 40)));
+  return Math.round(60 + (16 - 60) * t);
+}
+function BpmLine({ text, bpm }: { text: string; bpm: number }) {
+  const ms = bpmRevealMs(bpm);
+  const pulses = bpm < 55 || bpm > 90;
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    if (prefersReduced()) { setN(text.length); return; }
+    let i = 0;
+    const id = setInterval(() => { i += 1; setN(i); if (i >= text.length) clearInterval(id); }, ms);
+    return () => clearInterval(id);
+  }, [text, ms]);
+  return (
+    <div className="adk-bpmline">
+      <span
+        className={`adk-hb-dot adk-hb-sm${pulses ? " adk-hb-beat" : ""}`}
+        style={pulses ? ({ "--hb-dur": `${(60 / bpm).toFixed(2)}s` } as React.CSSProperties) : undefined}
+      />
+      <span className="adk-bpmline-txt">{text.slice(0, n)}<span className="adk-cursor">▌</span></span>
+    </div>
+  );
+}
+
 export default function AnimationGallery() {
   return (
     <>
@@ -403,6 +432,21 @@ export default function AnimationGallery() {
           flutter="deriveBpm(stakes:3, characterExposed:true) → character pulses (Hana tells Maya's story)"
         >
           <div className="adk-hb"><Heartbeat label="Hana" bpm={104} /><Heartbeat label="You" bpm={76} /></div>
+        </Demo>
+
+        <Demo
+          title="BPM conducts the dialogue — calm (slow reveal)"
+          spec="same line, BPM 64 → revealMsPerChar 51ms (slow, weighty) + long dwell + no pulse. ▶ replay to feel the pace"
+          flutter="Bpm.revealMsPerChar drives the type/stagger; DOS types, Vibrant staggers, Parchment instant + dwell"
+        >
+          <BpmLine text="So. Same drill as yesterday. You already know the first move." bpm={64} />
+        </Demo>
+        <Demo
+          title="BPM conducts the dialogue — tense (fast reveal + pulse)"
+          spec="same line, BPM 108 → revealMsPerChar ~23ms (fast, urgent) + short dwell + the pulse fires. The heartbeat IS the pace"
+          flutter="higher sceneTempo → shorter revealMsPerChar + dwellMs; pulse threshold-crossed → heartbeat shows"
+        >
+          <BpmLine text="So. Same drill as yesterday. You already know the first move." bpm={108} />
         </Demo>
       </Section>
 
@@ -1006,6 +1050,10 @@ const CSS = `
 @keyframes adk-beat{0%,52%,100%{transform:scale(1);opacity:.5;}12%{transform:scale(1.42);opacity:.95;}24%{transform:scale(1.06);opacity:.66;}34%{transform:scale(1.2);opacity:.85;}}
 .adk-hb-label{font-family:var(--theme-display);font-size:10px;letter-spacing:.1em;color:var(--ink);text-transform:uppercase;}
 .adk-hb-bpm{font-family:ui-monospace,monospace;font-size:10px;color:var(--margin-ink);}
+/* Dialogue paced by BPM — the heartbeat conducts the reveal */
+.adk-bpmline{display:flex;align-items:center;gap:11px;width:100%;}
+.adk-hb-sm{width:16px;height:16px;flex:none;}
+.adk-bpmline-txt{font-family:var(--theme-body);font-size:14px;color:var(--ink);line-height:1.5;}
 
 @media (prefers-reduced-motion: reduce){
   .adk-stamp,.adk-toast,.adk-bar-fill,.adk-bloom,.adk-float,.adk-drop,.adk-relfill,.adk-popword,.adk-whisperword,
