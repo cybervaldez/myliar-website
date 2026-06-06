@@ -230,6 +230,53 @@ function CGReveal({ dialect, forceReduced = false }: {
   );
 }
 
+// ── Stat polygon — "your shape" grows/breathes to the new vertices ──────────
+// The genre-feel core (Persona/FF stat chart). The dashed ghost = yesterday; the
+// filled shape breathes out to today. Lab approximates the per-vertex tween with
+// a scale-breathe + the curve; the Flutter StatPolygon tweens each axis value.
+function PolyGrowth({ dialect }: { dialect: "vibrant" | "parchment" }) {
+  return (
+    <div className={`adk-poly adk-poly-${dialect}`}>
+      <svg viewBox="0 0 120 120" width="120" height="120">
+        {/* guide ring */}
+        <polygon points="60,8 112,60 60,112 8,60" className="adk-poly-ring" />
+        {/* ghost (yesterday) */}
+        <polygon points="60,34 86,60 60,92 36,60" className="adk-poly-ghost" />
+        {/* today — breathes out from center */}
+        <polygon points="60,16 104,58 64,104 22,66" className="adk-poly-fill" />
+      </svg>
+      <div className="adk-poly-axes"><span>STR</span><span>INT</span><span>GLD</span><span>CHR</span></div>
+    </div>
+  );
+}
+
+// ── Vital reveal — the SILENT "whisper" (??? → value), no flash/toast ────────
+// A perception line just named the detail; the sheet row fills in QUIETLY. The
+// delight here is subtlety — interrupting it with a fanfare is the failure case.
+function VitalWhisper() {
+  return (
+    <div className="adk-vrow">
+      <span className="adk-vlabel">HAIR</span>
+      <span className="adk-vslot">
+        <span className="adk-vital-q">???</span>
+        <span className="adk-vital-v">Amber</span>
+      </span>
+    </div>
+  );
+}
+
+// ── "You see" perception line — gentle entrance under the scenario ───────────
+// Whisper-tier (NOT a headline): the italic line drifts/fades in below the prose.
+// Theme variants: Parchment fade (still) · Vibrant soft drift · DOS type-on.
+function YouSee() {
+  return (
+    <div className="adk-ys">
+      <div className="adk-ys-scene">She doesn&apos;t narrate the walk this morning. Just walks.</div>
+      <div className="adk-ys-line">You catch her watching the gate instead of you — dark eyes already on the door.</div>
+    </div>
+  );
+}
+
 export default function AnimationGallery() {
   return (
     <>
@@ -269,6 +316,46 @@ export default function AnimationGallery() {
           flutter="if MediaQuery.disableAnimations: skip flash/anticipation, set end state instantly (a11y + seizure-safe)"
         >
           <CGReveal dialect="vibrant" forceReduced />
+        </Demo>
+      </Section>
+
+      <Section
+        title="Stat polygon — your shape  ★NEW"
+        note="The genre-feel core (Persona/FF stat chart): the dashed ghost = yesterday, the filled shape BREATHES out to today's vertices. Accent tier. Vibrant overshoots (breathe); Parchment settles (no overshoot — stillness); DOS redraws instant. Flutter tweens each axis value per-vertex; the lab shows the curve + feel."
+      >
+        <Demo
+          title="Vibrant — breathe (overshoot)"
+          spec="filled polygon scales .5→1 + fade, easeOutBack ~550ms (a single breath out past the ghost, settling)"
+          flutter="StatPolygon: Tween per axis value, Curves.easeOutBack ~550ms; dashed ghost = previousStats (static)"
+        >
+          <PolyGrowth dialect="vibrant" />
+        </Demo>
+        <Demo
+          title="Parchment — settle (no overshoot)"
+          spec="filled polygon scales .5→1 + fade, easeOut ~480ms — grows and stops, no bounce (stillness)"
+          flutter="StatPolygon: Tween per axis, Curves.easeOut ~480ms (no overshoot under Parchment)"
+        >
+          <PolyGrowth dialect="parchment" />
+        </Demo>
+      </Section>
+
+      <Section
+        title="Vitals &amp; &ldquo;you see&rdquo; — the perception mechanic  ★NEW"
+        note="The faceless-MC visual layer (docs/design/character-vitals.md). The 'you see' line does the describing; revealing a VITAL is a WHISPER — silent, no flash, no toast (a fanfare on an eye-color reveal is the failure case). The line itself enters gently (whisper-tier, never the headline grammar)."
+      >
+        <Demo
+          title="Vital reveal — SILENT whisper (??? → value)"
+          spec="the slot cross-fades ??? out (150ms, delay .3s) then the value in (150ms) — opacity only, NO movement, NO flash, NO toast"
+          flutter="character sheet _VitalRow: AnimatedSwitcher (fade) on isVitalRevealed; NO toast/sound — silent by contract"
+        >
+          <VitalWhisper />
+        </Demo>
+        <Demo
+          title="&ldquo;You see&rdquo; line — gentle entrance"
+          spec="italic perception drifts/fades in below the scenario · ~420ms · Parchment fade (still) / Vibrant soft drift / DOS type-on"
+          flutter="narrative_event_screen: Event.youSee → AnimatedOpacity/slide by theme; whisper-tier, never the CG grammar"
+        >
+          <YouSee />
         </Demo>
       </Section>
 
@@ -832,9 +919,42 @@ const CSS = `
 .adk-cg-dos .adk-cg-title,.adk-cg-dos .adk-cg-cap{color:#43ff8d;font-family:ui-monospace,monospace;}
 .adk-cg-dos .adk-cg-title{font-size:13px;}
 
+/* Stat polygon — "your shape" breathes to the new vertices */
+.adk-poly{position:relative;width:120px;height:140px;}
+.adk-poly svg{display:block;}
+.adk-poly-ring{fill:none;stroke:var(--margin-ink);stroke-width:.8;opacity:.4;}
+.adk-poly-ghost{fill:none;stroke:var(--ink-soft);stroke-width:1.2;stroke-dasharray:3 3;opacity:.7;}
+.adk-poly-fill{fill:color-mix(in srgb,var(--forest) 28%,transparent);stroke:var(--forest);stroke-width:2;stroke-linejoin:round;transform-box:fill-box;transform-origin:center;}
+.adk-poly-vibrant .adk-poly-fill{animation:adk-polygrow .55s cubic-bezier(.34,1.56,.64,1) both;}
+.adk-poly-parchment .adk-poly-fill{animation:adk-polygrow .48s cubic-bezier(.22,1,.36,1) both;}
+@keyframes adk-polygrow{0%{transform:scale(.5);opacity:.35;}100%{transform:scale(1);opacity:1;}}
+.adk-poly-axes{position:absolute;inset:0;pointer-events:none;}
+.adk-poly-axes span{position:absolute;font-family:var(--theme-display);font-size:9px;letter-spacing:.06em;color:var(--ink-soft);}
+.adk-poly-axes span:nth-child(1){top:-1px;left:50%;transform:translateX(-50%);}
+.adk-poly-axes span:nth-child(2){top:52px;right:-3px;}
+.adk-poly-axes span:nth-child(3){top:114px;left:50%;transform:translateX(-50%);}
+.adk-poly-axes span:nth-child(4){top:52px;left:-3px;}
+
+/* Vital reveal — SILENT whisper (??? cross-fades to value; opacity only) */
+.adk-vrow{display:flex;justify-content:space-between;align-items:center;gap:12px;width:240px;border:1px solid var(--margin-ink);background:var(--paper-shade);padding:10px 12px;}
+.adk-vlabel{font-family:var(--theme-display);font-size:11px;letter-spacing:.1em;color:var(--margin-ink);}
+.adk-vslot{position:relative;flex:1;min-height:17px;font-family:var(--theme-body);font-size:13px;}
+.adk-vslot>span{position:absolute;right:0;top:0;white-space:nowrap;}
+.adk-vital-q{color:var(--margin-ink);font-style:italic;animation:adk-vqout .15s ease .35s both;}
+@keyframes adk-vqout{to{opacity:0;}}
+.adk-vital-v{color:var(--ink);opacity:0;animation:adk-vvin .15s ease .5s both;}
+@keyframes adk-vvin{from{opacity:0;}to{opacity:1;}}
+
+/* "You see" perception line — gentle fade-up under the scenario */
+.adk-ys{width:250px;font-family:var(--theme-body);}
+.adk-ys-scene{font-size:13px;color:var(--ink);line-height:1.5;}
+.adk-ys-line{font-size:12px;font-style:italic;color:var(--ink-soft);line-height:1.45;margin-top:10px;animation:adk-ysin .42s ease-out .25s both;}
+@keyframes adk-ysin{0%{opacity:0;transform:translateY(5px);}100%{opacity:1;transform:none;}}
+
 @media (prefers-reduced-motion: reduce){
   .adk-stamp,.adk-toast,.adk-bar-fill,.adk-bloom,.adk-float,.adk-drop,.adk-relfill,.adk-popword,.adk-whisperword,
-  .adk-bb-fill,.adk-tbar,.adk-tlayer-rel,.adk-tlayer-battle,.adk-tbar-fill,.adk-modal-fade,.adk-modal-slide,.adk-cg-card{animation-duration:.001s;}
+  .adk-bb-fill,.adk-tbar,.adk-tlayer-rel,.adk-tlayer-battle,.adk-tbar-fill,.adk-modal-fade,.adk-modal-slide,.adk-cg-card,
+  .adk-poly-fill,.adk-vital-q,.adk-vital-v,.adk-ys-line{animation-duration:.001s;}
   .adk-cursor,.adk-shoutchar{animation:none;}
   .adk-cg-dim,.adk-cg-hit{display:none;} /* no flash / no dim under reduced-motion (a11y) */
 }

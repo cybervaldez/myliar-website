@@ -13,6 +13,7 @@ const TOOLS = [
   { href: "/campaigns", label: "Campaigns", desc: "daily events, by campaign" },
   { href: "/chat", label: "Chat", desc: "the dossier the arc builds toward" },
   { href: "/cards", label: "Cards", desc: "shareable moment cards" },
+  { href: "/animations", label: "Animations", desc: "motion lab — prototype → Flutter" },
 ];
 
 // Concept sub-links (shown nested under "Concepts" in the sidebar).
