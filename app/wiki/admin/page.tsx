@@ -107,7 +107,8 @@ export default function AdminPage() {
         (credited); feature to pin it as the owner&apos;s pick; remove to reject.
       </p>
       <p className="text-[12px] text-margin-ink mb-2">
-        Curating character images? That moved to the tooling suite — <a href="/likenesses" className="text-forest">Likenesses</a>.
+        Curating character images? That lives in the tooling suite — open a campaign at{" "}
+        <a href="/campaigns" className="text-forest">Campaigns</a> → the <b>Likenesses</b> tab.
       </p>
       <p className="text-[12px] text-margin-ink mb-6">
         Signed in as {name}. There&apos;s no auto-filter yet — eyes on each piece.

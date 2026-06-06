@@ -20,7 +20,11 @@ import {
   type FanArt,
 } from "../lib/codex";
 
-export function OwnerImageUpload() {
+type Target = { id: string; label: string; mystery: boolean };
+
+// `targets` scopes the character picker (e.g. one campaign's cast). Omit → the
+// full cross-campaign roster (characterTargets()).
+export function OwnerImageUpload({ targets }: { targets?: Target[] }) {
   const [owner, setOwner] = useState<boolean | null>(null);
   const [name, setName] = useState<string | null>(null);
 
@@ -53,11 +57,11 @@ export function OwnerImageUpload() {
       </div>
     );
   }
-  return <UploadForm />;
+  return <UploadForm targets={targets} />;
 }
 
-function UploadForm() {
-  const targets = characterTargets();
+function UploadForm({ targets: propTargets }: { targets?: Target[] }) {
+  const targets = propTargets ?? characterTargets();
   const [targetId, setTargetId] = useState(targets[0]?.id ?? "");
   const [caption, setCaption] = useState("");
   const [mystery, setMystery] = useState(false);
