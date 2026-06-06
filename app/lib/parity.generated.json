@@ -186,7 +186,9 @@
         "pattern": "The One…",
         "hook": "Borrows the FRIENDS episode-title meme — instantly recognizable, screenshot-ready, and it frames each grind-win (\"The One Where You Ate at the Pass\") as a beloved sitcom episode OF YOUR OWN LIFE — the whole pitch of Life Ops in three words."
       },
-      "relTierNames": []
+      "relTierNames": [],
+      "statAxes": {},
+      "dayUnit": ""
     },
     {
       "id": "wingman",
@@ -211,7 +213,14 @@
         "Cornerman",
         "Reaches out first",
         "Unspoken"
-      ]
+      ],
+      "statAxes": {
+        "STR": "PRESENCE",
+        "INT": "VOICE",
+        "GLD": "READ",
+        "CHR": "NERVE"
+      },
+      "dayUnit": "ROUND"
     }
   ],
   "mysteryRoster": [
@@ -11176,6 +11185,6 @@
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "c81cf8b21bd1"
+    "contentHash": "65e5fb873b69"
   }
 }

@@ -698,6 +698,11 @@ function extractCampaignMeta() {
     // → the campaign uses the shared default (game_state kRelTierNames).
     const relBlock = (b.match(/relTierNames:\s*\[([\s\S]*?)\]/) || [, ""])[1];
     const relTierNames = [...relBlock.matchAll(/'((?:[^'\\]|\\.)*)'/g)].map((x) => x[1].replace(/\\'/g, "'"));
+    // per-campaign STAT-AXIS labels (the polygon motif) — re-voice STR/INT/GLD/CHR
+    // for display only; empty → the raw mechanic ids. See campaign-motif-framework.md.
+    const axesBlock = (b.match(/statAxes:\s*\{([\s\S]*?)\}/) || [, ""])[1];
+    const statAxes = {};
+    for (const a of axesBlock.matchAll(/'(STR|INT|GLD|CHR)'\s*:\s*'((?:[^'\\]|\\.)*)'/g)) statAxes[a[1]] = a[2];
     out.push({
       id,
       title: dartField(b, "title"),
@@ -709,6 +714,10 @@ function extractCampaignMeta() {
       nativeThemeId: dartField(b, "nativeThemeId") || "parchment",
       motif: { kind: grab("kind"), pattern: grab("pattern"), hook: grab("hook") },
       relTierNames,
+      // newest motif slots (campaign-motif-framework.md): stat-polygon labels +
+      // the day-unit word ('' → the shared "DAY"; the Corner runs on ROUNDs).
+      statAxes,
+      dayUnit: dartField(b, "dayUnit") || "",
     });
   }
   return out;

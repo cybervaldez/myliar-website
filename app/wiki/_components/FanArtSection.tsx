@@ -22,6 +22,12 @@ const TECH_LABEL: Record<FanArtTechnique, string> = {
   mixed: "◐ mixed",
 };
 
+// The pivot (companion-wiki §7-8): images are now OWNER-curated interpretations
+// (uploaded on the keeper's desk), not community submissions. The submission
+// pipeline stays in the code but DORMANT — flip this to re-open public fan-art
+// submissions. The approved gallery still renders regardless.
+const COMMUNITY_SUBMISSIONS_OPEN = false;
+
 export function FanArtSection({
   targetKind,
   targetId,
@@ -58,7 +64,7 @@ export function FanArtSection({
         <h2 className="font-display tracking-[0.06em] text-[16px] text-ink !m-0">
           🎨 Fan art
         </h2>
-        {configured && (
+        {configured && COMMUNITY_SUBMISSIONS_OPEN && (
           <button
             onClick={() => setOpen((v) => !v)}
             className="font-display tracking-[0.1em] text-[10px] text-spot-red border border-spot-red px-2 py-1 hover:bg-spot-red hover:text-paper transition"
@@ -75,7 +81,7 @@ export function FanArtSection({
         </p>
       )}
 
-      {open && configured && (
+      {open && configured && COMMUNITY_SUBMISSIONS_OPEN && (
         <SubmitForm
           targetKind={targetKind}
           targetId={targetId}
