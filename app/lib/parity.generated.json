@@ -570,17 +570,17 @@
           {
             "helperId": "kenji",
             "monologue": "I've been avoiding the numbers for months. Time to actually look.",
-            "post": "He turns the ledger toward you. “Then we look together. It's always worse in the dark than on the page.”"
+            "post": "He turns the ledger toward you. “Then we look together. It's always worse in the dark than on the page. One warning: the body's column reports first — Hana, five a.m., all caps. Answer the phone. It's cheaper than her doorbell.”"
           },
           {
             "helperId": "mei",
             "monologue": "I can't keep running on empty.",
-            "post": "A plate is already in front of you. “Good. Start there. The rest is just the next plate.”"
+            "post": "A plate is already in front of you. “Good. Start there. The rest is just the next plate. And eat well tonight — Hana takes the first shift at five sharp, straight to your phone, and she runs it loud. You'll want the rice.”"
           },
           {
             "helperId": "sam",
             "monologue": "I don't even know where to begin.",
-            "post": "He opens the binder to a blank page. “Page one, then. We'll fill it as we go.”"
+            "post": "He opens the binder to a blank page. “Page one, then. We'll fill it as we go. Fair warning about page one: it starts at 5 AM, in all caps, on your phone, with Hana. It always does.”"
           }
         ],
         "clusters": [
@@ -733,22 +733,22 @@
           {
             "helperId": "mara",
             "monologue": "Maybe I just need to sit down before I try to fix anything.",
-            "post": "She nudges the chair out with her foot before you ask. “Sit. You don't have to say anything yet.” The door stops mattering for a second."
+            "post": "She nudges the chair out with her foot before you ask. “Sit. You don't have to say anything yet.” The door stops mattering for a second. “When the loud one finds you — and he will, tonight — that's Nico. He opens. I hold. You'll want both.”"
           },
           {
             "helperId": "sloane",
             "monologue": "I always think I read it right. Then I'm wrong. What am I missing?",
-            "post": "She doesn't look over. “You've been replaying it for ten minutes,” she says. “Want to know what you actually missed?” You do."
+            "post": "She doesn't look over. “You've been replaying it for ten minutes,” she says. “Want to know what you actually missed?” You do. “First read's free. The second comes after Nico's opener — he clocked you at the door. Ten seconds.”"
           },
           {
             "helperId": "wes",
             "monologue": "I knew exactly what to say. Two hours too late, in the shower.",
-            "post": "He slides a fresh napkin toward you. “Then we write it down before the moment, not after. Draft one.”"
+            "post": "He slides a fresh napkin toward you. “Then we write it down before the moment, not after. Draft one.” A glance past you. “Write fast. Nico's seen you.”"
           },
           {
             "helperId": "remy",
             "monologue": "Every time it matters, I send the character in instead. I'm tired of doing the bit.",
-            "post": "Her eyebrow comes down — somewhere between the door and the rail, your bit fell off. “Better,” she says, tipping her chin at the room. “Now walk in like that.”"
+            "post": "Her eyebrow comes down — somewhere between the door and the rail, your bit fell off. “Better,” she says, tipping her chin at the room. “Now walk in like that. And brace: Nico greets at the door. It's a whole thing. It's also why it works.”"
           }
         ],
         "clusters": [
@@ -23069,6 +23069,6 @@
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "b3f2c8a9c148"
+    "contentHash": "c13f558e5725"
   }
 }
