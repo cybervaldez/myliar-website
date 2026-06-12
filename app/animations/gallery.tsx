@@ -111,6 +111,115 @@ function Whisper({ text }: { text: string }) {
   );
 }
 
+// ── VOICE-MOTION — per-character dialogue personalities (voice-motion.md) ────
+// The THIRD text-motion layer: the THEME owns the reveal family, the EMOTION
+// TAG owns the line modifier (say/shout/whisper), VOICE-MOTION owns the
+// CHARACTER — how their words habitually move. Auditioned at the character
+// stage; the picked preset is locked-sheet canon.
+type VMSpec = {
+  unit: "word" | "pair" | "phrase" | "sentence";
+  pace: number;          // ms between units
+  entry: string;         // arrival class (vm-pop / vm-drift / vm-ignite / …)
+  holds?: number;        // punctuation-hold multiplier (the pen-lift beats)
+  burst?: number;        // front-burst: first N units at 1/3 pace (COUNT-IN)
+  paired?: boolean;      // units arrive in twos (TWO CUPS)
+  caps?: boolean;        // ALL-CAPS words get the caps-snap emphasis
+  weights?: boolean;     // numbers land with a weight-settle (LEDGER family)
+};
+
+function vmUnits(text: string, unit: VMSpec["unit"]): string[] {
+  if (unit === "sentence") return text.split(/(?<=[.!?])\s+/);
+  if (unit === "phrase") return text.split(/(?<=[,.;!?—])\s+/);
+  const w = text.split(" ");
+  if (unit === "word") return w;
+  const out: string[] = [];
+  for (let i = 0; i < w.length; i += 2) out.push(w.slice(i, i + 2).join(" "));
+  return out;
+}
+
+function VMLine({ text, spec }: { text: string; spec: VMSpec }) {
+  const units = vmUnits(text, spec.unit);
+  let t = 120;
+  return (
+    <span className="vm-stage">
+      {units.map((u, i) => {
+        const d = t;
+        let step = spec.pace;
+        if (spec.burst && i < spec.burst) step = spec.pace / 3;
+        if (spec.paired) step = i % 2 === 0 ? 70 : spec.pace;
+        t += step;
+        if (spec.holds && /[.!?—]$/.test(u)) t += spec.pace * spec.holds;
+        const cls =
+          "vm-unit " + spec.entry +
+          (spec.caps && /\b[A-Z]{2,}\b/.test(u) ? " vm-snap" : "") +
+          (spec.weights && /\d|\b(one|two|three|five|ten|eleven)\b/i.test(u) ? " vm-weight" : "");
+        return (
+          <span key={i} className={cls} style={{ animationDelay: `${d}ms` }}>
+            {u}{" "}
+          </span>
+        );
+      })}
+    </span>
+  );
+}
+
+// RED PEN (Wes) — one word mid-line struck and replaced: the draft, visible in the voice.
+function RedPenLine({ before, from, to, after }: { before: string; from: string; to: string; after: string }) {
+  const b = before.split(" "), a = after.split(" ");
+  const pace = 110, start = 120;
+  const fromD = start + b.length * pace;
+  const toD = fromD + 1050;
+  const afterD = toD + 380;
+  return (
+    <span className="vm-stage">
+      {b.map((w, i) => <span key={"b" + i} className="vm-unit vm-pop" style={{ animationDelay: `${start + i * pace}ms` }}>{w} </span>)}
+      <span className="vm-unit vm-strike" style={{ animationDelay: `${fromD}ms` }}>{from} </span>
+      <span className="vm-unit vm-pop vm-fix" style={{ animationDelay: `${toD}ms` }}>{to} </span>
+      {a.map((w, i) => <span key={"a" + i} className="vm-unit vm-pop" style={{ animationDelay: `${afterD + i * pace}ms` }}>{w} </span>)}
+    </span>
+  );
+}
+
+// STRAIGHT READ (Sloane) — flat even delivery, then the verdict lands whole.
+function StraightRead({ read, verdict }: { read: string; verdict: string }) {
+  const words = read.split(" ");
+  const pace = 105, start = 120;
+  const vD = start + words.length * pace + 700;
+  return (
+    <span className="vm-stage">
+      {words.map((w, i) => <span key={i} className="vm-unit vm-flat" style={{ animationDelay: `${start + i * pace}ms` }}>{w} </span>)}
+      <span className="vm-unit vm-verdict" style={{ animationDelay: `${vD}ms` }}>{verdict}</span>
+    </span>
+  );
+}
+
+const VM: Record<string, VMSpec> = {
+  "DRILL":      { unit: "word", pace: 70, entry: "vm-pop", caps: true },
+  "LEDGER":     { unit: "word", pace: 125, entry: "vm-pop", holds: 2.4, weights: true },
+  "SERVICE":    { unit: "phrase", pace: 260, entry: "vm-drift" },
+  "NARRATOR":   { unit: "sentence", pace: 620, entry: "vm-drift" },
+  "COUNT-IN":   { unit: "word", pace: 150, entry: "vm-pop", burst: 4, caps: true },
+  "ANCHOR":     { unit: "phrase", pace: 430, entry: "vm-drift" },
+  "ROPE":       { unit: "pair", pace: 95, entry: "vm-pop", holds: 3.2 },
+  "KINDLE":     { unit: "word", pace: 230, entry: "vm-ignite" },
+  "CHALK":      { unit: "word", pace: 150, entry: "vm-stamp" },
+  "TWO CUPS":   { unit: "phrase", pace: 520, entry: "vm-drift", paired: true },
+  "FULL PRICE": { unit: "phrase", pace: 430, entry: "vm-flatline" },
+  "COIL":       { unit: "pair", pace: 165, entry: "vm-pop" },
+  "SURFACE":    { unit: "sentence", pace: 950, entry: "vm-surface" },
+  "LADLE":      { unit: "phrase", pace: 210, entry: "vm-tick" },
+  "RULED INK":  { unit: "word", pace: 130, entry: "vm-pop", holds: 2.6, weights: true },
+};
+
+function VoiceRow({ who, preset, text }: { who: string; preset: string; text: string }) {
+  return (
+    <div className="vm-row">
+      <span className="vm-who">{who} · {preset}</span>
+      <span className="vm-text"><VMLine text={text} spec={VM[preset]} /></span>
+    </div>
+  );
+}
+
 // ── Character intro — name reveal + earned-title selection ──────────────────
 // REVEALS the locked name + the clearest title, then the player picks how to be
 // shown them (Title / Name+Title / Just Name). Names are LOCKED (no rename); the
@@ -1010,6 +1119,63 @@ export default function AnimationGallery() {
       </Section>
 
       <Section
+        title="VOICE-MOTION — per-character dialogue personalities  ★NEW"
+        note="The THIRD text-motion layer (docs/design/voice-motion.md): the THEME owns the reveal family (above) · the EMOTION TAG owns the line (say/shout/whisper) · VOICE-MOTION owns the CHARACTER — pace, rhythm, emphasis, settle: the voice, kinetic (never sound). The preset is locked-sheet canon: AUDITIONED at the character audits (each audit names its preset + voice lines), ratified at canon-lock, rendered wherever the character speaks. Composes UNDER the theme (Rule C): DOS collapses to holds-only, Parchment damps continuous motion, reduced-motion collapses to instant. Emphasis stays sparse (≤1-2 words per line — juice celebrates, never decorates)."
+      >
+        <Demo
+          title="Life Ops — the squad"
+          spec="DRILL word·70ms even + caps-snap (counted reps, snap-still) · LEDGER word·125ms + pen-lift holds at [.—], numbers weight-settle · SERVICE phrase·260ms drift (plated in portions) · NARRATOR sentence·620ms drift (page-lines)"
+          flutter="VoiceMotionSpec{unit, paceMs, rhythm, entry, emphasis, settle} on the locked sheet; renderer splits by unit + schedules per-unit AnimatedOpacity/Transform; holds = scheduler delays at [.!?—]"
+        >
+          <VoiceRow who="Hana" preset="DRILL" text="Up. Laps first. The board can wait — YOU can’t." />
+          <VoiceRow who="Kenji" preset="LEDGER" text="Eleven line items. Ten reconciled. We talk after breakfast." />
+          <VoiceRow who="Mei" preset="SERVICE" text="Sit. Eat while it’s hot — the lecture can share the plate." />
+          <VoiceRow who="Sam" preset="NARRATOR" text="The kitchen went quiet. That’s how the good chapters start." />
+        </Demo>
+
+        <Demo
+          title="The Wingman — the corner"
+          spec="COUNT-IN front-burst (first 4 words at pace/3, then relaxes — the first ten seconds are his) · RED PEN strike-revise mid-line (the draft visible) · STRAIGHT READ flat-even, then the verdict lands WHOLE after a hold · ANCHOR damped phrase drift — never jitters, even on a shout"
+          flutter="burst = first-N units at pace/3 · strike = struck style keyframe + replacement unit · verdict = full-line instant after hold · damped = drift with zero overshoot"
+        >
+          <VoiceRow who="Nico" preset="COUNT-IN" text="THREE, two, one — see? The hard part was over before you counted." />
+          <div className="vm-row"><span className="vm-who">Wes · RED PEN</span><span className="vm-text"><RedPenLine before="Tell her you’re" from="nervous." to="glad you came." after="Send it before you edit the glad out." /></span></div>
+          <div className="vm-row"><span className="vm-who">Sloane · STRAIGHT READ</span><span className="vm-text"><StraightRead read="He looked back twice on the way out." verdict="That’s not a maybe." /></span></div>
+          <VoiceRow who="Mara" preset="ANCHOR" text="Breathe. The room isn’t going anywhere. Neither am I." />
+        </Demo>
+
+        <Demo
+          title="The Long Hunt — the lodge"
+          spec="ROPE pair·95ms with LONG holds (3.2× at clause ends) — terse lengths of rope, paid out and tied off. The WARMTH DIAL: high REL softens the holds, never the length"
+          flutter="pair unit = words two at a time; holds multiplier on the sheet; REL warmth maps holds × (1 − warmth)"
+        >
+          <VoiceRow who="Roan" preset="ROPE" text="Again. Slower. The rope remembers — make it remember right." />
+        </Demo>
+
+        <Demo
+          title="The Night Market — the row"
+          spec="KINDLE word·230ms IGNITE (each word brightens in like a wick taking) · CHALK word·150ms STAMP (presses in, corrects a hair upward — the re-chalked price) · TWO CUPS paired phrases (the second arrives just after the first) · FULL PRICE whole phrases, flat, no ornament"
+          flutter="ignite = brightness/saturate keyframe · stamp = scale 1.25→.96→1 + translateY −1px · paired = alternating 70ms/pace · flatline = opacity step per phrase"
+        >
+          <VoiceRow who="Tam" preset="KINDLE" text="One wick. Then the next. The row lights itself, once it’s started." />
+          <VoiceRow who="Zohra" preset="CHALK" text="Full price. The work was full work — the number says so." />
+          <VoiceRow who="Lin" preset="TWO CUPS" text="Two cups. One question. Drink first — the counter has two sides." />
+          <VoiceRow who="Edda" preset="FULL PRICE" text="Burnt edge. Best flavor. Full price." />
+        </Demo>
+
+        <Demo
+          title="The Last Ferry — the crew (pilot-A canon: brisk-tender)"
+          spec="COIL pair·165ms work-rhythm (loop over loop, warm settle) · SURFACE sentence·950ms fades up from dark, the way the far shore arrives · LADLE phrase·210ms percussive TICK (the ladle on the pot — punctuation, not anger) · RULED INK word·130ms pen-lift holds, logged things weight-settle"
+          flutter="surface = opacity + blur keyframe · tick = translateY dip .26s · ruled ink = the LEDGER family with weights on cargo nouns"
+        >
+          <VoiceRow who="The Deckhand" preset="COIL" text="Hold that taut. Eyes on me. The rope doesn’t care if you’re ready." />
+          <VoiceRow who="The Pilot" preset="SURFACE" text="Fog on the tide. The dark has its own currents. Heading’s good." />
+          <VoiceRow who="The Cook" preset="LADLE" text="Stew’s on. Five bowls. Eat it or don’t." />
+          <VoiceRow who="The Keeper" preset="RULED INK" text="One passenger. Three crates. Logged at true weight — all of it." />
+        </Demo>
+      </Section>
+
+      <Section
         title="Modals &amp; popups — themed  ★NEW"
         note="How a popup/modal enters is part of the theme's motion personality: Parchment & Ink fades (calm, no movement), Vibrant Realm slides (kinetic), DOS-era appears instantly inside an ASCII frame."
       >
@@ -1645,12 +1811,43 @@ export const CSS = `
 .adk-choice-picked{border-color:var(--spot-red);background:var(--paper-shade);transform:translateX(3px);}
 .adk-choice-react{position:relative;margin-top:2px;border-left:3px solid var(--spot-red);background:var(--paper-shade);padding:8px 36px 8px 11px;font-size:13px;line-height:1.5;color:var(--ink);}
 .adk-choice-float{position:absolute;right:11px;top:7px;color:var(--spot-red);font-family:var(--theme-display);font-size:13px;letter-spacing:.04em;}
+
+/* ── VOICE-MOTION (voice-motion.md) — per-character dialogue presets ──────── */
+.vm-stage{display:block;line-height:1.75;}
+.vm-row{margin:0 0 12px;}
+.vm-row:last-child{margin-bottom:0;}
+.vm-who{display:block;font-size:10px;letter-spacing:.14em;color:var(--spot-red);font-family:var(--theme-display);margin-bottom:2px;text-transform:uppercase;}
+.vm-unit{display:inline-block;white-space:pre-wrap;animation-fill-mode:both;}
+.vm-pop{animation-name:adk-pop;animation-duration:.3s;animation-timing-function:cubic-bezier(.34,1.56,.64,1);}
+.vm-drift{animation-name:vm-driftin;animation-duration:.55s;animation-timing-function:ease-out;}
+@keyframes vm-driftin{0%{opacity:0;transform:translateY(-2px);}100%{opacity:1;transform:none;}}
+.vm-flat{animation-name:vm-flatin;animation-duration:.18s;}
+@keyframes vm-flatin{0%{opacity:0;}100%{opacity:1;}}
+.vm-flatline{animation-name:vm-flatin;animation-duration:.04s;}
+.vm-ignite{animation-name:vm-ignitein;animation-duration:.8s;animation-timing-function:ease-in-out;}
+@keyframes vm-ignitein{0%{opacity:0;filter:brightness(2.2) saturate(.2);}45%{opacity:1;filter:brightness(1.5);color:var(--spot-red);}100%{opacity:1;filter:none;color:inherit;}}
+.vm-stamp{animation-name:vm-stampin;animation-duration:.32s;animation-timing-function:cubic-bezier(.2,1.4,.5,1);}
+@keyframes vm-stampin{0%{opacity:0;transform:scale(1.25) translateY(2px);}65%{opacity:1;transform:scale(.96) translateY(0);}100%{opacity:1;transform:scale(1) translateY(-1px);}}
+.vm-tick{animation-name:vm-tickin;animation-duration:.26s;}
+@keyframes vm-tickin{0%{opacity:0;transform:translateY(-3px);}55%{opacity:1;transform:translateY(2px);}100%{opacity:1;transform:translateY(0);}}
+.vm-surface{animation-name:vm-surfacein;animation-duration:1s;animation-timing-function:ease-out;}
+@keyframes vm-surfacein{0%{opacity:0;filter:blur(3px);}100%{opacity:1;filter:none;}}
+.vm-snap{font-weight:800;animation-name:vm-snapin;animation-duration:.26s;}
+@keyframes vm-snapin{0%{opacity:0;transform:scale(1.5);}100%{opacity:1;transform:scale(1);}}
+.vm-weight{animation-name:vm-weightin;animation-duration:.5s;}
+@keyframes vm-weightin{0%{opacity:0;transform:translateY(-5px);}60%{opacity:1;transform:translateY(1.5px);}100%{opacity:1;transform:translateY(0);}}
+.vm-strike{animation-name:vm-strikein;animation-duration:1.5s;animation-timing-function:ease;}
+@keyframes vm-strikein{0%{opacity:0;transform:translateY(6px);}8%{opacity:1;transform:none;}55%{text-decoration:none;color:inherit;opacity:1;}65%,100%{text-decoration:line-through;color:var(--margin-ink);opacity:.45;}}
+.vm-fix{color:var(--spot-red);font-weight:700;}
+.vm-verdict{animation-name:vm-flatin;animation-duration:.05s;font-weight:700;}
+
 @media (prefers-reduced-motion: reduce){
   .adk-choice-opt,.adk-choice-react,
   .adk-stamp,.adk-toast,.adk-bar-fill,.adk-bloom,.adk-float,.adk-drop,.adk-relfill,.adk-popword,.adk-whisperword,
   .adk-bb-fill,.adk-tbar,.adk-tlayer-rel,.adk-tlayer-battle,.adk-tbar-fill,.adk-modal-fade,.adk-modal-slide,.adk-cg-mount,
   .adk-poly-fill,.adk-vital-q,.adk-vital-v,.adk-ys-line{animation-duration:.001s;}
   .adk-cursor,.adk-shoutchar,.adk-hb-beat{animation:none;}
+  .vm-unit{animation-duration:.001s;}
   .adk-cg-dim,.adk-cg-hit{display:none;} /* no flash / no dim under reduced-motion (a11y) */
 }
 `;

@@ -36,7 +36,7 @@ function renderPrelude(md: string, campaignTitle: string) {
       );
     } else if (b === "---") {
       out.push(<hr key={k} style={{ border: "none", borderTop: "1px solid var(--ink-soft)", margin: "22px 0" }} />);
-    } else if (/^(FOR|THE OPEN SEAT|THE DOOR):/.test(b)) {
+    } else if (/^(THE WORLD|THE GIFT|WHO THIS IS FOR|FOR|THE OPEN SEAT|THE DOOR):/.test(b)) {
       const [, label, rest] = b.match(/^([A-Z ]+):\s*([\s\S]*)$/) ?? [];
       out.push(
         <p key={k} style={{ fontSize: 14, lineHeight: 1.6, margin: "0 0 12px", borderLeft: "2px solid var(--forest)", paddingLeft: 11 }}>
