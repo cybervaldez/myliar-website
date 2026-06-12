@@ -839,7 +839,7 @@
         "lean": "clipped",
         "environment": "The lodge common room, night one — woodsmoke, wet boots drying by the stove, a board of names where yours has just been chalked in at the bottom. By the cold window, the lodge's best hunter looks up.",
         "defaultHelperId": "roan",
-        "identityRead": "Roan doesn't turn from the window. “The oath-book takes a line before the rope does,” he says. “You go down in the book as—”",
+        "identityRead": "Roan doesn't turn from the window. “Your muster letter came up half rain — the book doesn't take guesses,” he says. “It takes a line before the rope does. Your own words. You go down as—”",
         "identityOwn": "He writes it without comment — once, no flourish. “The dark won't care,” he says. “I keep the book anyway.”",
         "titleAsk": "“Roan,” he says, like the word costs. “The lodge says ‘the Best on the Rope.’ Both hold. The dark doesn't ask.”",
         "identityPattern": "complete",
@@ -868,7 +868,7 @@
           {
             "helperId": "roan",
             "monologue": "I didn't come here to be kept safe. Give me the hard one.",
-            "post": "He doesn't smile. He just hands you the rope. “Then tie in. We leave before light.” It's the warmest thing he'll say for a while."
+            "post": "He doesn't smile. He just hands you the rope — and the spare harness from the peg nearest the door, checked buckle by buckle, somehow already waiting. “Then tie in. We leave before light.” It's the warmest thing he'll say for a while."
           }
         ],
         "clusters": [
@@ -1015,7 +1015,7 @@
           {
             "helperId": "tam",
             "monologue": "I'm tired of not starting. Light the wick.",
-            "post": "Tam nods once, as if you'd said something sensible about the weather, and hands you the match. \"Your wick. My order. Light, shutter, tray, sign.\" The flame takes. The row pretends not to cheer."
+            "post": "Tam nods once, as if you'd said something sensible about the weather, and hands you the second match — the one that has been riding his pocket since dusk, for no reason he could have named. \"Your wick. My order. Light, shutter, tray, sign.\" The flame takes. The row pretends not to cheer."
           },
           {
             "helperId": "zohra",
@@ -23069,6 +23069,6 @@
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "e021da604a62"
+    "contentHash": "b3f2c8a9c148"
   }
 }
