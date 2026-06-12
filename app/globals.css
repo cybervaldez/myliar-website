@@ -270,3 +270,36 @@ a:hover {
 .fandom h2 { border-bottom: 1px solid #a2a9b1; padding-bottom: 4px; }
 .wiki-skin h2, .wiki-skin h3 { border-bottom: 1px solid #a2a9b1; padding-bottom: 3px; }
 .fandom a:visited:not([class*="bg-"]), .wiki-skin a:visited:not([class*="bg-"]) { color: #0b0080; }
+
+/* ── VOICE-MOTION (voice-motion.md) — per-character dialogue presets ──────── */
+.vm-stage{display:block;line-height:1.75;}
+.vm-row{margin:0 0 12px;}
+.vm-row:last-child{margin-bottom:0;}
+.vm-who{display:block;font-size:10px;letter-spacing:.14em;color:var(--spot-red);font-family:var(--theme-display);margin-bottom:2px;text-transform:uppercase;}
+.vm-unit{display:inline-block;white-space:pre-wrap;animation-fill-mode:both;}
+.vm-pop{animation-name:vm-popin;animation-duration:.3s;animation-timing-function:cubic-bezier(.34,1.56,.64,1);}
+.vm-drift{animation-name:vm-driftin;animation-duration:.55s;animation-timing-function:ease-out;}
+@keyframes vm-driftin{0%{opacity:0;transform:translateY(-2px);}100%{opacity:1;transform:none;}}
+.vm-flat{animation-name:vm-flatin;animation-duration:.18s;}
+@keyframes vm-flatin{0%{opacity:0;}100%{opacity:1;}}
+.vm-flatline{animation-name:vm-flatin;animation-duration:.04s;}
+.vm-ignite{animation-name:vm-ignitein;animation-duration:.8s;animation-timing-function:ease-in-out;}
+@keyframes vm-ignitein{0%{opacity:0;filter:brightness(2.2) saturate(.2);}45%{opacity:1;filter:brightness(1.5);color:var(--spot-red);}100%{opacity:1;filter:none;color:inherit;}}
+.vm-stamp{animation-name:vm-stampin;animation-duration:.32s;animation-timing-function:cubic-bezier(.2,1.4,.5,1);}
+@keyframes vm-stampin{0%{opacity:0;transform:scale(1.25) translateY(2px);}65%{opacity:1;transform:scale(.96) translateY(0);}100%{opacity:1;transform:scale(1) translateY(-1px);}}
+.vm-tick{animation-name:vm-tickin;animation-duration:.26s;}
+@keyframes vm-tickin{0%{opacity:0;transform:translateY(-3px);}55%{opacity:1;transform:translateY(2px);}100%{opacity:1;transform:translateY(0);}}
+.vm-surface{animation-name:vm-surfacein;animation-duration:1s;animation-timing-function:ease-out;}
+@keyframes vm-surfacein{0%{opacity:0;filter:blur(3px);}100%{opacity:1;filter:none;}}
+.vm-snap{font-weight:800;animation-name:vm-snapin;animation-duration:.26s;}
+@keyframes vm-snapin{0%{opacity:0;transform:scale(1.5);}100%{opacity:1;transform:scale(1);}}
+.vm-weight{animation-name:vm-weightin;animation-duration:.5s;}
+@keyframes vm-weightin{0%{opacity:0;transform:translateY(-5px);}60%{opacity:1;transform:translateY(1.5px);}100%{opacity:1;transform:translateY(0);}}
+.vm-strike{animation-name:vm-strikein;animation-duration:1.5s;animation-timing-function:ease;}
+@keyframes vm-strikein{0%{opacity:0;transform:translateY(6px);}8%{opacity:1;transform:none;}55%{text-decoration:none;color:inherit;opacity:1;}65%,100%{text-decoration:line-through;color:var(--margin-ink);opacity:.45;}}
+.vm-fix{color:var(--spot-red);font-weight:700;}
+.vm-verdict{animation-name:vm-flatin;animation-duration:.05s;font-weight:700;}
+
+@keyframes vm-popin{0%{opacity:0;transform:translateY(6px) scale(.8);}100%{opacity:1;transform:none;}}
+@media (prefers-reduced-motion: reduce){.vm-unit{animation-duration:.001s;}}
+

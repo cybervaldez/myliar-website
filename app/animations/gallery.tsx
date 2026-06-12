@@ -1,5 +1,7 @@
 "use client";
 
+import { VMLine, RedPenLine, StraightRead, VoiceRow } from "../lib/voice-motion";
+
 // Animation sandbox — web prototypes of the game's motion. Tweak here (fast
 // iteration), then translate the curve + duration to Flutter. Each card lists
 // the spec so the port is mechanical. Uses the site theme tokens, so the
@@ -108,115 +110,6 @@ function Whisper({ text }: { text: string }) {
         <span key={i} className="adk-whisperword" style={{ animationDelay: `${i * 0.11}s` }}>{w}</span>
       ))}
     </span>
-  );
-}
-
-// ── VOICE-MOTION — per-character dialogue personalities (voice-motion.md) ────
-// The THIRD text-motion layer: the THEME owns the reveal family, the EMOTION
-// TAG owns the line modifier (say/shout/whisper), VOICE-MOTION owns the
-// CHARACTER — how their words habitually move. Auditioned at the character
-// stage; the picked preset is locked-sheet canon.
-type VMSpec = {
-  unit: "word" | "pair" | "phrase" | "sentence";
-  pace: number;          // ms between units
-  entry: string;         // arrival class (vm-pop / vm-drift / vm-ignite / …)
-  holds?: number;        // punctuation-hold multiplier (the pen-lift beats)
-  burst?: number;        // front-burst: first N units at 1/3 pace (COUNT-IN)
-  paired?: boolean;      // units arrive in twos (TWO CUPS)
-  caps?: boolean;        // ALL-CAPS words get the caps-snap emphasis
-  weights?: boolean;     // numbers land with a weight-settle (LEDGER family)
-};
-
-function vmUnits(text: string, unit: VMSpec["unit"]): string[] {
-  if (unit === "sentence") return text.split(/(?<=[.!?])\s+/);
-  if (unit === "phrase") return text.split(/(?<=[,.;!?—])\s+/);
-  const w = text.split(" ");
-  if (unit === "word") return w;
-  const out: string[] = [];
-  for (let i = 0; i < w.length; i += 2) out.push(w.slice(i, i + 2).join(" "));
-  return out;
-}
-
-function VMLine({ text, spec }: { text: string; spec: VMSpec }) {
-  const units = vmUnits(text, spec.unit);
-  let t = 120;
-  return (
-    <span className="vm-stage">
-      {units.map((u, i) => {
-        const d = t;
-        let step = spec.pace;
-        if (spec.burst && i < spec.burst) step = spec.pace / 3;
-        if (spec.paired) step = i % 2 === 0 ? 70 : spec.pace;
-        t += step;
-        if (spec.holds && /[.!?—]$/.test(u)) t += spec.pace * spec.holds;
-        const cls =
-          "vm-unit " + spec.entry +
-          (spec.caps && /\b[A-Z]{2,}\b/.test(u) ? " vm-snap" : "") +
-          (spec.weights && /\d|\b(one|two|three|five|ten|eleven)\b/i.test(u) ? " vm-weight" : "");
-        return (
-          <span key={i} className={cls} style={{ animationDelay: `${d}ms` }}>
-            {u}{" "}
-          </span>
-        );
-      })}
-    </span>
-  );
-}
-
-// RED PEN (Wes) — one word mid-line struck and replaced: the draft, visible in the voice.
-function RedPenLine({ before, from, to, after }: { before: string; from: string; to: string; after: string }) {
-  const b = before.split(" "), a = after.split(" ");
-  const pace = 110, start = 120;
-  const fromD = start + b.length * pace;
-  const toD = fromD + 1050;
-  const afterD = toD + 380;
-  return (
-    <span className="vm-stage">
-      {b.map((w, i) => <span key={"b" + i} className="vm-unit vm-pop" style={{ animationDelay: `${start + i * pace}ms` }}>{w} </span>)}
-      <span className="vm-unit vm-strike" style={{ animationDelay: `${fromD}ms` }}>{from} </span>
-      <span className="vm-unit vm-pop vm-fix" style={{ animationDelay: `${toD}ms` }}>{to} </span>
-      {a.map((w, i) => <span key={"a" + i} className="vm-unit vm-pop" style={{ animationDelay: `${afterD + i * pace}ms` }}>{w} </span>)}
-    </span>
-  );
-}
-
-// STRAIGHT READ (Sloane) — flat even delivery, then the verdict lands whole.
-function StraightRead({ read, verdict }: { read: string; verdict: string }) {
-  const words = read.split(" ");
-  const pace = 105, start = 120;
-  const vD = start + words.length * pace + 700;
-  return (
-    <span className="vm-stage">
-      {words.map((w, i) => <span key={i} className="vm-unit vm-flat" style={{ animationDelay: `${start + i * pace}ms` }}>{w} </span>)}
-      <span className="vm-unit vm-verdict" style={{ animationDelay: `${vD}ms` }}>{verdict}</span>
-    </span>
-  );
-}
-
-const VM: Record<string, VMSpec> = {
-  "DRILL":      { unit: "word", pace: 70, entry: "vm-pop", caps: true },
-  "LEDGER":     { unit: "word", pace: 125, entry: "vm-pop", holds: 2.4, weights: true },
-  "SERVICE":    { unit: "phrase", pace: 260, entry: "vm-drift" },
-  "NARRATOR":   { unit: "sentence", pace: 620, entry: "vm-drift" },
-  "COUNT-IN":   { unit: "word", pace: 150, entry: "vm-pop", burst: 4, caps: true },
-  "ANCHOR":     { unit: "phrase", pace: 430, entry: "vm-drift" },
-  "ROPE":       { unit: "pair", pace: 95, entry: "vm-pop", holds: 3.2 },
-  "KINDLE":     { unit: "word", pace: 230, entry: "vm-ignite" },
-  "CHALK":      { unit: "word", pace: 150, entry: "vm-stamp" },
-  "TWO CUPS":   { unit: "phrase", pace: 520, entry: "vm-drift", paired: true },
-  "FULL PRICE": { unit: "phrase", pace: 430, entry: "vm-flatline" },
-  "COIL":       { unit: "pair", pace: 165, entry: "vm-pop" },
-  "SURFACE":    { unit: "sentence", pace: 950, entry: "vm-surface" },
-  "LADLE":      { unit: "phrase", pace: 210, entry: "vm-tick" },
-  "RULED INK":  { unit: "word", pace: 130, entry: "vm-pop", holds: 2.6, weights: true },
-};
-
-function VoiceRow({ who, preset, text }: { who: string; preset: string; text: string }) {
-  return (
-    <div className="vm-row">
-      <span className="vm-who">{who} · {preset}</span>
-      <span className="vm-text"><VMLine text={text} spec={VM[preset]} /></span>
-    </div>
   );
 }
 
@@ -1812,42 +1705,12 @@ export const CSS = `
 .adk-choice-react{position:relative;margin-top:2px;border-left:3px solid var(--spot-red);background:var(--paper-shade);padding:8px 36px 8px 11px;font-size:13px;line-height:1.5;color:var(--ink);}
 .adk-choice-float{position:absolute;right:11px;top:7px;color:var(--spot-red);font-family:var(--theme-display);font-size:13px;letter-spacing:.04em;}
 
-/* ── VOICE-MOTION (voice-motion.md) — per-character dialogue presets ──────── */
-.vm-stage{display:block;line-height:1.75;}
-.vm-row{margin:0 0 12px;}
-.vm-row:last-child{margin-bottom:0;}
-.vm-who{display:block;font-size:10px;letter-spacing:.14em;color:var(--spot-red);font-family:var(--theme-display);margin-bottom:2px;text-transform:uppercase;}
-.vm-unit{display:inline-block;white-space:pre-wrap;animation-fill-mode:both;}
-.vm-pop{animation-name:adk-pop;animation-duration:.3s;animation-timing-function:cubic-bezier(.34,1.56,.64,1);}
-.vm-drift{animation-name:vm-driftin;animation-duration:.55s;animation-timing-function:ease-out;}
-@keyframes vm-driftin{0%{opacity:0;transform:translateY(-2px);}100%{opacity:1;transform:none;}}
-.vm-flat{animation-name:vm-flatin;animation-duration:.18s;}
-@keyframes vm-flatin{0%{opacity:0;}100%{opacity:1;}}
-.vm-flatline{animation-name:vm-flatin;animation-duration:.04s;}
-.vm-ignite{animation-name:vm-ignitein;animation-duration:.8s;animation-timing-function:ease-in-out;}
-@keyframes vm-ignitein{0%{opacity:0;filter:brightness(2.2) saturate(.2);}45%{opacity:1;filter:brightness(1.5);color:var(--spot-red);}100%{opacity:1;filter:none;color:inherit;}}
-.vm-stamp{animation-name:vm-stampin;animation-duration:.32s;animation-timing-function:cubic-bezier(.2,1.4,.5,1);}
-@keyframes vm-stampin{0%{opacity:0;transform:scale(1.25) translateY(2px);}65%{opacity:1;transform:scale(.96) translateY(0);}100%{opacity:1;transform:scale(1) translateY(-1px);}}
-.vm-tick{animation-name:vm-tickin;animation-duration:.26s;}
-@keyframes vm-tickin{0%{opacity:0;transform:translateY(-3px);}55%{opacity:1;transform:translateY(2px);}100%{opacity:1;transform:translateY(0);}}
-.vm-surface{animation-name:vm-surfacein;animation-duration:1s;animation-timing-function:ease-out;}
-@keyframes vm-surfacein{0%{opacity:0;filter:blur(3px);}100%{opacity:1;filter:none;}}
-.vm-snap{font-weight:800;animation-name:vm-snapin;animation-duration:.26s;}
-@keyframes vm-snapin{0%{opacity:0;transform:scale(1.5);}100%{opacity:1;transform:scale(1);}}
-.vm-weight{animation-name:vm-weightin;animation-duration:.5s;}
-@keyframes vm-weightin{0%{opacity:0;transform:translateY(-5px);}60%{opacity:1;transform:translateY(1.5px);}100%{opacity:1;transform:translateY(0);}}
-.vm-strike{animation-name:vm-strikein;animation-duration:1.5s;animation-timing-function:ease;}
-@keyframes vm-strikein{0%{opacity:0;transform:translateY(6px);}8%{opacity:1;transform:none;}55%{text-decoration:none;color:inherit;opacity:1;}65%,100%{text-decoration:line-through;color:var(--margin-ink);opacity:.45;}}
-.vm-fix{color:var(--spot-red);font-weight:700;}
-.vm-verdict{animation-name:vm-flatin;animation-duration:.05s;font-weight:700;}
-
 @media (prefers-reduced-motion: reduce){
   .adk-choice-opt,.adk-choice-react,
   .adk-stamp,.adk-toast,.adk-bar-fill,.adk-bloom,.adk-float,.adk-drop,.adk-relfill,.adk-popword,.adk-whisperword,
   .adk-bb-fill,.adk-tbar,.adk-tlayer-rel,.adk-tlayer-battle,.adk-tbar-fill,.adk-modal-fade,.adk-modal-slide,.adk-cg-mount,
   .adk-poly-fill,.adk-vital-q,.adk-vital-v,.adk-ys-line{animation-duration:.001s;}
   .adk-cursor,.adk-shoutchar,.adk-hb-beat{animation:none;}
-  .vm-unit{animation-duration:.001s;}
   .adk-cg-dim,.adk-cg-hit{display:none;} /* no flash / no dim under reduced-motion (a11y) */
 }
 `;

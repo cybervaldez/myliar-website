@@ -4,6 +4,7 @@
 // audition notes, and the exact PROMPT used, so anyone can generate their own entry.
 import Link from "next/link";
 import data from "../lib/auditions.generated.json";
+import { AuditionVoice } from "../lib/voice-motion";
 
 export const metadata = {
   title: "Auditions — My Life is an RPG",
@@ -24,12 +25,30 @@ function em(s: string) {
     : p);
 }
 
+const VM_PRESET_RE = /\b(DRILL|LEDGER|SERVICE|NARRATOR|COUNT-IN|RED PEN|STRAIGHT READ|MIRROR|ANCHOR|ROPE|KINDLE|CHALK|TWO CUPS|FULL PRICE|COIL|SURFACE|LADLE|RULED INK)\b/;
+
 function renderEntry(md: string) {
   const blocks = md.split(/\n\n+/).map((b) => b.trim()).filter(Boolean);
   const out: React.ReactNode[] = [];
   let k = 0;
-  for (const b of blocks) {
+  for (let bi = 0; bi < blocks.length; bi++) {
+    const b = blocks[bi];
     k++;
+    // VOICE blocks render LIVE in the character's declared voice-motion preset
+    // (the working-animation audit surface — voice-motion.md §the audit bridge).
+    if (/^\*{0,2}VOICE:?\*{0,2}\s*$/m.test(b.split("\n")[0]) && b.includes("\n")) {
+      const lines = b.split("\n").slice(1)
+        .map((l) => l.replace(/^[-*•]\s*/, "").replace(/^"|"$/g, "").replace(/\*\*/g, "").trim())
+        .filter(Boolean);
+      let preset = "";
+      for (let j = bi + 1; j < Math.min(bi + 3, blocks.length); j++) {
+        if (/VOICE-MOTION/.test(blocks[j])) { preset = blocks[j].match(VM_PRESET_RE)?.[1] ?? ""; break; }
+      }
+      if (lines.length > 0) {
+        out.push(<AuditionVoice key={k} lines={lines} preset={preset || "COIL"} />);
+        continue;
+      }
+    }
     if (b.startsWith("# ")) {
       out.push(<h3 key={k} style={{ fontFamily: "var(--theme-display)", fontSize: 21, lineHeight: 1.15, margin: "18px 0 10px", color: "var(--ink)" }}>{b.slice(2)}</h3>);
     } else if (b.startsWith("## ")) {
