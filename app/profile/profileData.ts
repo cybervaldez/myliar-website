@@ -1,5 +1,5 @@
 // Web companion profile data — a signed-in user's OWN data across surfaces
-// (docs/design/guest-claim.md). All reads are gated by the user's auth.uid():
+// (docs/design/auth-model.md (PART 2)). All reads are gated by the user's auth.uid():
 // cloud_saves (self-read RLS, 0003), wiki comments/votes (uid), own Elseworld
 // shares (self-read RLS, 0013). Works once the player has claimed in-app with
 // the same Google/Apple account (app uid = web uid).

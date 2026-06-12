@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Cover-Line Formats — pick &amp; choose</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Lora:ital,wght@0,400;0,600;1,400&family=PT+Sans:ital@1&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f2ebdd;--ink:#2a2a26;--forest:#2d4a2b;--red:#b81f1c;--soft:#6f6a5c;--line:#cdc2a8;--gold:#9a7b1f;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Lora,Georgia,serif;font-size:15px;line-height:1.45;padding:20px 16px 80px;max-width:880px;margin:0 auto}
+h1{font-family:Anton,Impact,sans-serif;font-weight:400;letter-spacing:.5px;font-size:30px;margin:0 0 4px}
+.sub{color:var(--soft);font-size:13px;margin:0 0 14px;max-width:760px}
+.sub b{color:var(--ink)}
+a{color:#0645ad}
+.bar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:9px 0;margin-bottom:14px;position:sticky;top:0;background:var(--paper);z-index:5}
+.grp{display:flex;gap:6px;align-items:center}
+.grp b{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--soft)}
+.seg{font:inherit;font-size:12px;padding:3px 10px;border:1px solid var(--line);background:transparent;color:#0645ad;cursor:pointer;border-radius:0}
+.seg.on{background:var(--forest);color:var(--paper);border-color:var(--forest)}
+details.rules{border:1.5px solid var(--line);background:#00000006;padding:8px 12px;margin-bottom:18px}
+details.rules summary{font-family:Anton;font-size:14px;letter-spacing:.4px;color:var(--forest);cursor:pointer}
+details.rules ol{margin:8px 0 2px;padding-left:20px;font-size:12.5px;color:#3a382f}
+details.rules li{margin:3px 0}
+.fmt{margin:0 0 26px;border-top:2px solid var(--forest);padding-top:10px}
+.fmt.hide{display:none}
+.fmt h2{font-family:Anton;font-weight:400;font-size:20px;color:var(--forest);margin:0 0 2px;letter-spacing:.5px}
+.fmt h2 .n{color:var(--red);margin-right:7px}
+.fmt .intent{font-size:13px;color:#3a382f;margin:0 0 8px}
+.meta{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:11px;color:var(--soft);margin:0 0 12px;padding-bottom:8px;border-bottom:1px dotted var(--line)}
+.meta .pat{font-family:'PT Sans',monospace;font-style:italic;color:var(--gold)}
+.meta .lab{text-transform:uppercase;letter-spacing:.08em;font-size:9px;color:var(--soft)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:12px}
+/* a cover card — mimics the front-door cast preview */
+.card{border:1.6px solid var(--ink);background:#fffaf0;padding:0;position:relative;display:flex;flex-direction:column;box-shadow:3px 3px 0 #0000000f}
+.card.cc{display:none}
+.card .top{display:flex;justify-content:space-between;align-items:baseline;background:var(--forest);color:var(--paper);padding:5px 9px}
+.card .nm{font-family:Anton;font-size:14px;letter-spacing:.4px}
+.card .ti{font-size:10px;font-style:italic;opacity:.85}
+.card .ln{padding:12px 12px 10px;font-size:14.5px;line-height:1.5;flex:1;white-space:pre-line}
+.card .ln .you{font-style:italic;color:#46443b}
+.card .foot{display:flex;justify-content:space-between;align-items:center;border-top:1px dotted var(--line);padding:5px 9px;font-size:9px;color:var(--soft)}
+.card .camp{text-transform:uppercase;letter-spacing:.08em}
+.card .rel{font-family:Anton;font-size:9px;color:var(--gold);letter-spacing:.06em}
+.note{font-size:11px;color:var(--soft);font-style:italic;margin:8px 0 0;border-left:2px solid var(--line);padding-left:9px}
+.foothint{font-size:11.5px;color:var(--soft);margin-top:26px;border-top:1px solid var(--line);padding-top:10px}
+.pill{display:inline-block;font-size:9px;border:1px solid var(--line);padding:1px 6px;letter-spacing:.06em;color:var(--soft);text-transform:uppercase}
+.pill.rom{color:var(--red);border-color:var(--red)}
+</style>
+</head>
+<body>
+<h1>Cover-Line Formats</h1>
+<p class="sub">The front-door <b>one-liner cover</b> — a few lines that preview a character at <b>base REL</b>
+(their initial, not-yet-warm personality) and hint at the bond that <b>grows</b> as you play. Eight reproducible
+<b>formats</b> — pick &amp; choose per character, per campaign. Examples use the real cast (drafts — each authored
+line still gets the Gemini 2nd-opinion vet before it ships). Spec: <code>docs/design/cover-line-formats.md</code>.</p>
+
+<details class="rules">
+<summary>The shared rules every variation follows ▾</summary>
+<ol>
+<li><b>Base-REL temperature</b> — they don't know you yet; initial personality, never warm. Warmth is the payoff, not the hook.</li>
+<li><b>In-voice</b> — sounds like only this character (quote the real register, don't paraphrase).</li>
+<li><b>MC-POV faceless</b> — 2nd-person perception, never dictates the player's named emotion.</li>
+<li><b>Anticipation, never FOMO</b> — show the shape + "more ahead"; no "X / N" count, no deadline, no dare. <i>Hearsay: describe their intrinsic state, never imply they await/need you ("she's been ready," not "she's waiting").</i></li>
+<li><b>Honest proportionality</b> — the tease's depth ≤ the real arc. If it isn't authored, the cover doesn't promise it.</li>
+<li><b>The gift is legible</b> — what they give you reads at REL 0 (the value-prop floor).</li>
+<li><b>Grows-with-you</b> — the bond deepens AS autonomy grows; the inversion/peer beat is the gold tease. <i>Preview the shift in KIND (transactional→peer, respect, the process) — not the feeling of warmth; that's the payoff.</i></li>
+<li><b>Identity grammar</b> — a name is not a drop-in pronoun (§4.5): pronoun tokens for references, [name] for address.</li>
+<li><b>Romance/platonic floor</b> — the Spark hard-gates on <code>romanceEnabled</code>; friction, not flirtation, when off. <i>Root the friction in task/worldview clash, never personal magnetism.</i></li>
+<li><b>Motif IP-stripped</b> — the genre shape, never an IP name.</li>
+<li><b>displayName routing</b> — never hardcode a title; route through displayName().</li>
+<li><b>2nd-opinion gate + Riley's gate</b> — Gemini-vet before ratifying; a casual non-fan must want to tap in.</li>
+</ol>
+</details>
+
+<div class="bar">
+  <div class="grp"><b>Campaign</b>
+    <button class="seg on" data-camp="all">All</button>
+    <button class="seg" data-camp="lifeops">Life Ops</button>
+    <button class="seg" data-camp="corner">The Corner</button>
+    <button class="seg" data-camp="hunt">The Long Hunt</button>
+  </div>
+  <div class="grp"><b>View</b>
+    <button class="seg on" data-view="design">Designer</button>
+    <button class="seg" data-view="cover">Cover-only</button>
+  </div>
+</div>
+
+<div id="root"></div>
+
+<p class="foothint">Tap a format's cards to compare. <b>Designer</b> view shows the pattern + what each format is best
+for; <b>Cover-only</b> hides the scaffolding so you see what the player sees. Pick the format(s) you want per
+character and I'll Gemini-vet the lines, then wire <code>Character.coverLines</code> + the front-door surface.</p>
+
+<script>
+const CAMP = {lifeops:"Life Ops", corner:"The Corner", hunt:"The Long Hunt"};
+// format id, name, intent, pattern, best-for, rules, + examples [{camp, nm, ti, line, rom?}]
+const FORMATS = [
+ {id:"cold-open", n:1, name:"The Cold Open", tag:"in-voice · base REL · doesn't know you",
+  intent:"Their first words to a stranger, in their own voice. The voice IS the preview — no narration. (This is today's silhouette-teaser shape, formalized.)",
+  pat:'"[first line to a stranger — in-voice, base-REL]" — [displayName]', best:"a character whose voice is the whole hook; the fastest, lowest-risk format.",
+  ex:[
+   {camp:"corner", nm:"Nico", ti:"the Opener", line:'"You\'ve got three seconds. Go."'},
+   {camp:"corner", nm:"Mara", ti:"the Anchor", line:'"Rough night? Sit. I\'m not going anywhere."'},
+   {camp:"hunt", nm:"Roan", ti:"the Best on the Rope", line:'"Hands out. Let me see the knots before the dark does."'},
+  ]},
+ {id:"motif-frame", n:2, name:"The Motif Frame", tag:"the campaign's genre lens",
+  intent:"Preview the character + bond THROUGH the campaign motif — boxing, the hunt, the ledger. The motif is the metaphor that carries the meaning.",
+  pat:"[a line framing the character via Campaign.motif — the motif is the vehicle]", best:"establishing the world's flavor + the character in one stroke; great for a cast's face.",
+  ex:[
+   {camp:"corner", nm:"Nico", ti:"the Opener", line:"Everyone walks in swinging. Nico teaches you to listen between the bells."},
+   {camp:"hunt", nm:"Roan", ti:"the Best on the Rope", line:"The forest doesn't forgive a loud step. Roan walks it beside you anyway."},
+   {camp:"lifeops", nm:"Kenji", ti:"the Auditor", line:"Kenji keeps a ledger of everyone he's audited. There's a blank page with your name on it."},
+  ]},
+ {id:"you-see", n:3, name:'The "You See"', tag:"MC-POV first-sight perception",
+  intent:"Faceless 2nd-person: what you perceive of them on first sight — posture, an object, a tell. Sources the character vitals. Never names your emotion.",
+  pat:"*You see [perception — posture / object / tell that telegraphs personality].*", best:"a character with a strong visual signature; pairs with a future establishing CG.",
+  ex:[
+   {camp:"corner", nm:"Nico", ti:"the Opener", you:1, line:"You see him before he sees you — leaning off a barstool, oxblood jacket he never zips, already scanning for your opening."},
+   {camp:"lifeops", nm:"Hana", ti:"the Iron Monk", you:1, line:"You see her at the far end of the mat, breathing like the 5 AM cold is a friend she's kept for years."},
+  ]},
+ {id:"gift", n:4, name:"The Gift Line", tag:"what they GIVE you (valuable at REL 0)",
+  intent:"Lead with the character's gift — the thing they do for you before any relationship — and the edge that makes it real, not soft.",
+  pat:"[Character] gives you [the gift — concrete, valuable now]. [The cost/edge that makes it land.]", best:"the trust-lane pitch; the most marketable, benefit-driven format.",
+  ex:[
+   {camp:"lifeops", nm:"Kenji", ti:"the Auditor", line:"Kenji gives you the number you've been avoiding — out loud, no flinch. The kindest unkind thing anyone's done for you."},
+   {camp:"corner", nm:"Sloane", ti:"the Reader", line:"Sloane gives you the read you can't give yourself: “That's not a mixed signal. You know that.”"},
+  ]},
+ {id:"grow-with-you", n:5, name:"The Grow-With-You Tease", tag:"base-now → the door that opens",
+  intent:"Preview the trajectory: where they are at base REL → the earned thing that comes as you play. Honest open loop, no count. The inversion/peer beat is the gold standard.",
+  pat:"[who they are at base REL] → [the earned thing that comes as you go — no count, no deadline].", best:"selling the relationship itself (the dating-sim/VN driver); the clearest grows-with-you preview.",
+  ex:[
+   {camp:"corner", nm:"Nico", ti:"the Opener", line:"Day one he's a stopwatch with a leather jacket. Stay in the corner long enough and the stopwatch starts saying your name."},
+   {camp:"hunt", nm:"Roan", ti:"the Best on the Rope", line:"First he checks your knots. Later he trusts you to check his."},
+  ]},
+ {id:"hearsay", n:6, name:"The Hearsay", tag:"the world's reputation, before you meet",
+  intent:"How others describe them — folklore, rumor, the legend. Builds world-mystery (the retention engine), not pressure.",
+  pat:"They say [the legend]. [the hook that puts you near it — no dare, no count.]", best:"a mythic / high-status character; seeding world-mystery; a mystery-gated cast member.",
+  ex:[
+   {camp:"lifeops", nm:"Hana", ti:"the Iron Monk", line:"They say she runs at 5 AM. They say the discipline came before anyone asked it of her. Both are true."},
+   {camp:"hunt", nm:"Roan", ti:"the Best on the Rope", line:"They say he's the best on the rope. They don't say he used to hunt alone."},
+  ]},
+ {id:"spark", n:7, name:"The Spark", tag:"base-REL friction → the promise (shipper format)",
+  intent:"The base-REL edge that telegraphs the dynamic-to-come. Friction, NOT flirtation — and hard-gated on romanceEnabled (platonic floor absolute when off; a romance campaign lets the slow-burn breathe, still clean).",
+  pat:"[the base-REL friction — they push, you bristle / lean in]. [why it's going somewhere.]", best:"the chemistry hook the shippers come for; the rival/foil; (romance on) the slow-burn lead.",
+  ex:[
+   {camp:"corner", nm:"Remy", ti:"the Authenticity Coach", line:"“Drop the bit. I've seen it twice already.” You wanted to be liked; he wanted you to be real. You'll argue about it for weeks."},
+   {camp:"corner", nm:"Nico", ti:"the Opener", line:"He won't slow down for you. That's the point — and the reason you'll keep showing up."},
+   {camp:"hunt", nm:"Roan", ti:"the Best on the Rope", rom:1, line:"He talks less than anyone you've met and notices more. The woods are long. Something's going to give."},
+  ]},
+ {id:"two-beat", n:8, name:"The Two-Beat", tag:"contrast: base voice + the turn",
+  intent:"Two lines: the guarded base-REL voice, then a one-line glimpse of who they become to you. The before/after in miniature — the most emotionally complete card.",
+  pat:'"[base-REL in-voice line]." ⏎ [later, one line of who they become — grows-with-you, no spoilers.]', best:"the emotional centerpiece of the cover; the one card that earns the install.",
+  ex:[
+   {camp:"lifeops", nm:"Hana", ti:"the Iron Monk", line:"“Cellular debris,” she calls your excuses, not looking up.\nMonths from now she'll call them by their real names — and so will you."},
+   {camp:"corner", nm:"Mara", ti:"the Anchor", line:"“Rough night? Sit.”\nOne day you'll be the one who says it to someone else. She'd like that."},
+  ]},
+ {id:"withheld", n:9, name:"The Withheld", tag:"the deliberate omission / the question they guard (mystery)",
+  intent:"Pose an intriguing question or name a deliberate omission about the character — the dating-sim character-select hook. Sparks curiosity without dictating emotion. (What ISN'T said — distinct from Hearsay's stated reputation.) Pairs with the mystery mechanic. Invites, never dares.",
+  pat:"[an intriguing omission / open question about the character — curiosity, never a dare or a count]", best:"a mystery-gated cast member; a high-mystique character; seeding the world-mystery retention engine.",
+  ex:[
+   {camp:"lifeops", nm:"Kenji", ti:"the Auditor", line:"He keeps a ledger of everyone he's audited. No one's ever seen his own page."},
+   {camp:"hunt", nm:"Roan", ti:"the Best on the Rope", line:"He reads the forest like a page he's already turned. He won't say who taught him."},
+   {camp:"corner", nm:"Mara", ti:"the Anchor", line:"She's the calm everyone leans on. You'll wonder, eventually, who she leans on."},
+  ]},
+];
+
+let camp="all", view="design";
+function card(e){
+  const romPill = e.rom ? '<span class="pill rom">romance on</span>' : '';
+  const ln = e.you ? `<span class="you">${e.line}</span>` : e.line;
+  return `<div class="card" data-camp="${e.camp}">
+    <div class="top"><span class="nm">${e.nm}</span><span class="ti">${e.ti}</span></div>
+    <div class="ln">${ln}</div>
+    <div class="foot"><span class="camp">${CAMP[e.camp]}</span><span class="rel">BASE REL ${romPill}</span></div>
+  </div>`;
+}
+function render(){
+  document.getElementById("root").innerHTML = FORMATS.map(f=>{
+    const cards = f.ex.filter(e=>camp==="all"||e.camp===camp);
+    if(!cards.length) return `<div class="fmt hide"></div>`;
+    const designer = view==="design" ? `<div class="meta">
+        <span><span class="lab">Pattern</span> <span class="pat">${f.pat}</span></span>
+        <span><span class="lab">Best for</span> ${f.best}</span></div>` : "";
+    const intent = view==="design" ? `<p class="intent">${f.intent}</p>` : "";
+    return `<section class="fmt">
+      <h2><span class="n">${f.n}</span>${f.name} <span style="font-family:Lora;font-size:12px;font-style:italic;color:var(--soft)">— ${f.tag}</span></h2>
+      ${intent}${designer}
+      <div class="cards">${cards.map(card).join("")}</div>
+    </section>`;
+  }).join("");
+}
+document.querySelectorAll(".seg").forEach(b=>b.onclick=()=>{
+  if(b.dataset.camp){camp=b.dataset.camp;document.querySelectorAll("[data-camp].seg").forEach(x=>x.classList.toggle("on",x===b));}
+  if(b.dataset.view){view=b.dataset.view;document.querySelectorAll("[data-view]").forEach(x=>x.classList.toggle("on",x===b));}
+  render();
+});
+render();
+</script>
+</body>
+</html>

@@ -671,7 +671,9 @@
         "cast": "Field optimizers (loud/cold) + the Hearth on-ramp",
         "trend": "gift-bearing companions + gamified self-improvement (Duolingo/Finch) — proven",
         "note": "the current concept; 'fitness' is just Hana's lane within it",
-        "slug": "life-ops",
+        "sourceCategory": "original",
+        "sourceCategoryWhy": "original — the flagship product thesis (a JRPG party for your real life); anchor retro-annotated as a private analytical lens",
+        "slug": "main-line",
         "castMembers": [
           {
             "name": "Hana",
@@ -931,7 +933,43 @@
           }
         ],
         "author": "Claude (writers-room)",
-        "theme": "Parchment & Ink (tabletop/D&D — epic, cold, still, typographic)"
+        "theme": "Parchment & Ink (tabletop/D&D — epic, cold, still, typographic)",
+        "source": "Anchor: the ensemble-mentor 'fix your life with a party' shape (the JRPG party x the sitcom-of-your-own-life). Fit: a multi-coach party + the episode-of-your-life motif; each coach a domain that graduates you. PRIVATE anchor; ships original.",
+        "legs": "A four-person party that actually shows up for your real life — body, money, food, systems.",
+        "keep": "Your life running on a system YOU built, and four coaches who worked themselves out of a job.",
+        "kind": "campaign",
+        "metrics": {
+          "cozy": 3,
+          "cozyLabel": "Warm",
+          "type": "Coach -> Graduation",
+          "genre": "Contemporary slice-of-life",
+          "length": "Standard - 18 days",
+          "age": "All Ages",
+          "trophies": "~14",
+          "unlocks": "A party you keep: a drill coach, an auditor, a cook, and the one who reads the manual - four agents + the passives they leave you.",
+          "characters": [
+            {
+              "who": "Sam",
+              "gift": "the map - gets you oriented and moving",
+              "romance": "platonic"
+            },
+            {
+              "who": "Hana",
+              "gift": "the dawn discipline - show up, push past the wall",
+              "romance": "platonic"
+            },
+            {
+              "who": "Kenji",
+              "gift": "read the ledger - see where it really goes",
+              "romance": "platonic"
+            },
+            {
+              "who": "Mei",
+              "gift": "the rhythm of the kitchen - feed yourself right",
+              "romance": "platonic"
+            }
+          ]
+        }
       },
       {
         "name": "The Hearth",
@@ -940,9 +978,44 @@
         "cast": "cozy keepers — a gardener · a baker · a tea-keeper · a night-owl",
         "trend": "cozy/cottagecore — major, female-skewing, TikTok-driven (validated live)",
         "note": "June's whole register as a world. Cap = lifestyle, NOT therapy",
+        "sourceCategory": "original",
+        "sourceCategoryWhy": "original — conceived from a cast-architecture need (the cozy rest/comfort on-ramp); anchor retro-annotated",
         "slug": "the-hearth",
         "castMembers": [],
-        "author": "Claude (writers-room)"
+        "author": "Claude (writers-room)",
+        "source": "Anchor: the cozy healing slice-of-life (the 'gentle life' / iyashikei shape — calm, low-stakes, restorative). Fit: the rest/comfort ON-RAMP; the gift is permission-to-rest + small rituals, a low-barrier door into the engine. PRIVATE anchor; ships original.",
+        "legs": "A gentle life — somewhere warm to land when everything else is too loud.",
+        "keep": "Permission to rest, a home that holds you, and the small rituals that make a day kind.",
+        "kind": "concept",
+        "metrics": {
+          "cozy": 5,
+          "cozyLabel": "Cocoon",
+          "type": "Companion -> Rest",
+          "genre": "Cozy slice-of-life (gentle / iyashikei)",
+          "length": "projected Standard",
+          "age": "All Ages",
+          "trophies": "projected ~8 (gentle, no grind)",
+          "unlocks": "A home and the small rituals that make a day kind - companions who hold space, not homework.",
+          "characters": [
+            {
+              "who": "the keeper of the hearth",
+              "gift": "permission to rest - somewhere warm to land",
+              "romance": "platonic"
+            },
+            {
+              "who": "a slow companion",
+              "gift": "the small rituals - tea, a walk, a quiet hour",
+              "romance": "platonic"
+            }
+          ]
+        },
+        "collection": "the-cozy-shelf",
+        "recommendedReads": [
+          {
+            "id": "the-wayhouse",
+            "why": "The same warmth with an inn around it — keep the hearth at the edge of the wild."
+          }
+        ]
       },
       {
         "name": "The Wingman",
@@ -951,7 +1024,30 @@
         "cast": "the crew that readies you, NEVER the date — open(CHR) · text(INT) · read(GLD) · presence(STR) · anchor(meta)",
         "trend": "AI-for-dating is THE 2026 trend (~half of Gen Z singles, +333% YoY) — but it's all AI-as-the-date ('situationships'). We're the clean inverse.",
         "note": "Moat = stay the wingman, NEVER the love interest. Floor is protected BY DESIGN: the date is a real person in your real life, so the cast architecturally can't be it. Intentional non-lanes: no pickup tricks, no therapist voice, no 'you're the prize' entitlement.",
-        "slug": "the-wingman",
+        "collection": "the-romance-shelf",
+        "collectionNote": "ASYMMETRIC by design (campaign-metrics §COLLECTIONS, Gemini B-guard): the Wingman is the READINESS volume on the romance shelf and recommends NO reads — a 'go meet real people' coach must not graduate you into a fictional romance. The shelf groups them in the browser; post-completion nudges run romance-volumes → Wingman only. (Shelf renamed from the-dating-shelf 2026-06-11 as the romance volumes grew.)",
+        "recommendedReads": [],
+        "realShelf": [
+          {
+            "title": null,
+            "creator": null,
+            "medium": "book",
+            "coverageBrief": "a warm, non-pickup approach-anxiety / social-courage book — the corner's gift (open it, take the no, show up as you) deepened into the long course; coach campaign → non-fiction, the book IS the graduation",
+            "status": "to-curate",
+            "monetized": true
+          },
+          {
+            "title": null,
+            "creator": null,
+            "medium": "book",
+            "coverageBrief": "a modern communication/connection skills book (reading the room, saying the real thing) — Sloane's + Wes's lanes in print",
+            "status": "to-curate",
+            "monetized": true
+          }
+        ],
+        "sourceCategory": "original",
+        "sourceCategoryWhy": "original — the moat thesis (coach-NOT-the-date) applied to the dating domain; the AI-dating trend was positioning context (tie-breaker: remove the trend, the thesis still demands it); anchor retro-annotated",
+        "slug": "wingman",
         "castMembers": [
           {
             "role": "the Opener",
@@ -1196,187 +1292,783 @@
         ],
         "author": "Claude + Gemini → writers-room ratified",
         "theme": "“the Corner” (DRAFT) — your crew's prep room, in-your-corner energy; points OUTWARD (you leave to meet real people). Motion = SNAP, not chat (no typing-dots — those read as the date).",
-        "statReskin": "NERVE (=CHR) · VOICE (=INT) · READ (=GLD) · PRESENCE (=STR) · the FLOOR (=meta) — this world's dating-native labels; engine unchanged."
+        "statReskin": "NERVE (=CHR) · VOICE (=INT) · READ (=GLD) · PRESENCE (=STR) · the FLOOR (=meta) — this world's dating-native labels; engine unchanged.",
+        "source": "Anchor: the corner-man/boxing-coach x the dating-readiness mentor (coach-NOT-the-date). Fit: the readiness-coach + the anti-parasocial moat (the coach is never the love interest; they ready you for REAL people). PRIVATE anchor; ships original.",
+        "legs": "Five coaches who ready you for REAL people — and are never the date.",
+        "keep": "The nerve to walk up, the words that sound like you, and the read to trust — taken out the door.",
+        "kind": "campaign",
+        "metrics": {
+          "cozy": 2,
+          "cozyLabel": "Charged",
+          "type": "Coach -> Graduation",
+          "genre": "Contemporary (dating-readiness)",
+          "length": "Long - 25 rounds",
+          "age": "Teen",
+          "trophies": "~22",
+          "unlocks": "Five corner agents you keep: the Opener (nerve), the Ghostwriter (words), the Reader (the room), the Mirror (presence), the Anchor (your worth) - and what each taught you.",
+          "characters": [
+            {
+              "who": "Nico",
+              "gift": "the nerve to walk up - beat the count",
+              "romance": "platonic (never the date)"
+            },
+            {
+              "who": "Wes",
+              "gift": "words that sound like you",
+              "romance": "platonic (opt-in 'co-writer' confidant undertone, NOT romance)"
+            },
+            {
+              "who": "Sloane",
+              "gift": "the read on the room",
+              "romance": "platonic"
+            },
+            {
+              "who": "Remy",
+              "gift": "drop the act - presence",
+              "romance": "platonic"
+            },
+            {
+              "who": "Mara",
+              "gift": "your worth, off the table",
+              "romance": "platonic"
+            }
+          ]
+        }
       },
       {
-        "name": "The Studio",
-        "status": "Exploring",
-        "gift": "make something real — write · draw · sound · craft",
-        "cast": "makers across mediums — a sharp editor · a loose sketcher · a patient builder · a deadline-keeper",
-        "trend": "creative-tool / AI-art interest + the 'build a thing' hook",
-        "note": "Cap = craft coaching, not art-school gatekeeping",
-        "slug": "the-studio",
-        "castMembers": [
+        "name": "The Bench",
+        "status": "Source-anchored concept (Phase 0 cross-checked)",
+        "source": "Anchor: the underdog sports-team coach arc (Slam Dunk / Haikyuu / Ted Lasso shape). Fit: coach-builds-the-team-then-steps-back IS our obsolescence spine, pre-validated across many works; the gift (athletic discipline + the nerve to compete + belonging) is concrete + transferable. PRIVATE anchor; ships IP-stripped (a generic team sport, no franchise).",
+        "legs": "A washed-up coach drags you off the bench onto a team that actually needs you.",
+        "keep": "The discipline to train when no one's watching, the nerve to compete, and a team that has your back.",
+        "gift": "Train like an athlete: show up, push past the wall, compete for real.",
+        "cast": "A hard head coach (the drill) + a captain who pulls you in (the peer) + a rival-school foil + a trainer who reads your body (recovery). Field, team-collective.",
+        "theme": "A vibrant team-sport register - the gym, the court, the season clock.",
+        "note": "The gift is REAL athletic competence + belonging, not 'believe in yourself' platitudes. Distinct from Life Ops (solo admin) = the TEAM + the season; the crew you keep is found-family, never dependence on the coach.",
+        "sourceCategory": "inspiration",
+        "sourceCategoryWhy": "inspiration — conceived FROM the underdog sports-team coach shape (Phase-0 source-anchored)",
+        "slug": "the-bench",
+        "castMembers": [],
+        "author": "Claude (writers-room) - source-anchored",
+        "kind": "concept",
+        "metrics": {
+          "cozy": 2,
+          "cozyLabel": "Charged",
+          "type": "Coach -> Graduation",
+          "genre": "Sports / team",
+          "length": "projected Long (a season)",
+          "age": "Teen",
+          "trophies": "projected ~18",
+          "unlocks": "An athlete's toolkit you keep - train when no one's watching, compete, and a team that has your back.",
+          "characters": [
+            {
+              "who": "the hard head coach",
+              "gift": "the drill - push past the wall",
+              "romance": "platonic"
+            },
+            {
+              "who": "the captain",
+              "gift": "pulls you onto the team - belonging",
+              "romance": "platonic"
+            },
+            {
+              "who": "a rival-school foil",
+              "gift": "the measure - who you're really up against",
+              "romance": "platonic"
+            },
+            {
+              "who": "the trainer",
+              "gift": "reads your body - recover right",
+              "romance": "platonic"
+            }
+          ]
+        }
+      },
+      {
+        "name": "The Sect",
+        "status": "Source-anchored concept (Phase 0 cross-checked)",
+        "source": "Anchor: cultivation/murim master-disciple manhwa (the forms, the rank-climb, the surpass-the-master canon). Fit: 'surpass the master' is the most direct obsolescence beat there is; the gift = real deep-practice/focus discipline. PRIVATE anchor; ships as a genre-vibe martial world, never an IP sect.",
+        "legs": "A cold master takes you on as the last disciple - learn the forms, climb the ranks, surpass them.",
+        "keep": "The patience to grind toward mastery, and a technique (a focus practice) that's yours for life.",
+        "gift": "Deep practice: the discipline to grind toward mastery, one form at a time.",
+        "cast": "A cold master (the technique) + a senior disciple (the handoff) + a rival-sect foil + the keeper of the records (the lore/structure). Field-cold, the climb.",
+        "theme": "A martial-cultivation register (cold parchment / wuxia) - the forms, the ranks. Genre-vibe, never IP.",
+        "note": "'Cultivation' maps to REAL deep-work/focus discipline (the gift), never a power fantasy; the master becomes obsolete the day you surpass them.",
+        "sourceCategory": "inspiration",
+        "sourceCategoryWhy": "inspiration — conceived FROM the cultivation master-disciple shape (Phase-0 source-anchored)",
+        "slug": "the-sect",
+        "castMembers": [],
+        "author": "Claude (writers-room) - source-anchored",
+        "kind": "concept",
+        "metrics": {
+          "cozy": 3,
+          "cozyLabel": "Warm",
+          "type": "Mentor -> Mastery",
+          "genre": "Cultivation fantasy (wuxia / murim)",
+          "length": "projected Epic (the climb)",
+          "age": "All Ages",
+          "trophies": "projected ~24 (the ranks)",
+          "unlocks": "A deep-practice discipline you keep - the patience to grind toward mastery, one form at a time - and a technique that's yours for life.",
+          "characters": [
+            {
+              "who": "the cold master",
+              "gift": "the technique - the forms, the climb",
+              "romance": "platonic"
+            },
+            {
+              "who": "the senior disciple",
+              "gift": "the handoff - what comes after the basics",
+              "romance": "platonic"
+            },
+            {
+              "who": "a rival-sect foil",
+              "gift": "the measure of your climb",
+              "romance": "platonic"
+            },
+            {
+              "who": "the keeper of records",
+              "gift": "the lore - why the forms are the forms",
+              "romance": "platonic"
+            }
+          ]
+        },
+        "collection": "the-mastery-shelf",
+        "recommendedReads": [
           {
-            "role": "the Editor",
-            "vibe": "sharp, exacting, allergic to the easy sentence — cuts your draft to the bone, only because the good line is in there",
-            "domain": "writing / words",
-            "pole": "Field"
+            "id": "the-workshop",
+            "why": "The same long patience with sawdust on it — mastery you can hold in two hands."
+          }
+        ]
+      },
+      {
+        "name": "The Workshop",
+        "status": "Source-anchored concept (Phase 0 cross-checked)",
+        "source": "Anchor: the artisan-master apprenticeship (the maker-mentor craft shape - the old craftsman, the slow mastery of MAKING). Fit: apprenticeship is intrinsically built for obsolescence (graduate to your own bench); the gift = a real making-skill. PRIVATE anchor; ships IP-stripped.",
+        "legs": "An old maker takes you into the workshop - learn to build the thing, not just buy it.",
+        "keep": "The patience and the hands to make something real, and a maker's eye you keep for life.",
+        "gift": "Make something real with your hands: patience, the craft, finishing what you start.",
+        "cast": "A gruff master maker (the craft) + an apprentice peer + a materials-merchant (the economy) + the keeper of the old tools. Warm, hands-on.",
+        "theme": "A warm-craft register - sawdust, the bench, the work-lamp.",
+        "note": "A real making-skill, not a metaphor; the master graduates you to your own bench (obsolescence).",
+        "sourceCategory": "inspiration",
+        "sourceCategoryWhy": "inspiration — conceived FROM the artisan-apprenticeship shape (Phase-0 source-anchored)",
+        "slug": "the-workshop",
+        "castMembers": [],
+        "author": "Claude (writers-room) - source-anchored",
+        "kind": "concept",
+        "metrics": {
+          "cozy": 4,
+          "cozyLabel": "Cozy",
+          "type": "Mentor -> Mastery",
+          "genre": "Craft / maker (artisan)",
+          "length": "projected Standard",
+          "age": "All Ages",
+          "trophies": "projected ~14",
+          "unlocks": "A maker's hands you keep - the patience to build the thing, not just buy it - and a maker's eye for life.",
+          "characters": [
+            {
+              "who": "the gruff master maker",
+              "gift": "the craft - make something real",
+              "romance": "platonic"
+            },
+            {
+              "who": "an apprentice peer",
+              "gift": "the bench beside you",
+              "romance": "platonic"
+            },
+            {
+              "who": "a materials-merchant",
+              "gift": "the economy of the craft",
+              "romance": "platonic"
+            },
+            {
+              "who": "the keeper of the old tools",
+              "gift": "the lineage of making",
+              "romance": "platonic"
+            }
+          ]
+        },
+        "collection": "the-mastery-shelf",
+        "recommendedReads": [
+          {
+            "id": "the-sect",
+            "why": "The same climb without the bench — forms, ranks, and a master to surpass."
+          }
+        ]
+      },
+      {
+        "name": "The Greenroom",
+        "status": "Source-anchored concept (Phase 0 cross-checked)",
+        "source": "Anchor: the idol-producer / performance-mentor shape (the producer readies the performer for the stage, coach-NOT-the-star). Fit: the same anti-parasocial coach-not-the-X shape as the Wingman, applied to creative performance; obsolescence = you headline without them. PRIVATE anchor; ships IP-stripped.",
+        "legs": "A burnt-out producer agrees to get you stage-ready - one open mic at a time.",
+        "keep": "The nerve to perform, a voice that's yours, and the instinct to read a room.",
+        "gift": "Get on stage and perform: your voice, your presence, the nerve to be seen.",
+        "cast": "A burnt-out producer (the eye) + a vocal/movement coach + a stage-veteran peer + a sound tech (the unseen craft). Vibrant backstage.",
+        "theme": "A vibrant backstage register - the green room, the open mic, the load-in.",
+        "note": "Producers ready you for REAL stages/audiences (offscreen, never voiced - like the Wingman's dates); obsolescence = you headline without them. CREATIVE performance, distinct from the Wingman's dating.",
+        "sourceCategory": "inspiration",
+        "sourceCategoryWhy": "inspiration — conceived FROM the idol-producer/performance-mentor shape (Phase-0 source-anchored)",
+        "slug": "the-greenroom",
+        "castMembers": [],
+        "author": "Claude (writers-room) - source-anchored",
+        "kind": "concept",
+        "metrics": {
+          "cozy": 2,
+          "cozyLabel": "Charged",
+          "type": "Coach -> Graduation",
+          "genre": "Contemporary (performance / backstage)",
+          "length": "projected Long",
+          "age": "Teen",
+          "trophies": "projected ~18",
+          "unlocks": "Stage agents you keep - the nerve to perform, a voice that's yours, the instinct to read a room - taken to any stage.",
+          "characters": [
+            {
+              "who": "the burnt-out producer",
+              "gift": "the eye - get you stage-ready",
+              "romance": "platonic (never the star)"
+            },
+            {
+              "who": "a vocal / movement coach",
+              "gift": "your voice, your body",
+              "romance": "platonic"
+            },
+            {
+              "who": "a stage-veteran peer",
+              "gift": "what the green room teaches",
+              "romance": "platonic"
+            },
+            {
+              "who": "a sound tech",
+              "gift": "the unseen craft that holds the show",
+              "romance": "platonic"
+            }
+          ]
+        }
+      },
+      {
+        "name": "The Long Way Back",
+        "status": "Source-anchored concept (Phase 0 cross-checked)",
+        "source": "Anchor: the redemption-coach / been-to-the-bottom sponsor (Ted-Lasso belief + the comeback-coach drama). Fit: the recover-then-hold-the-door-for-the-next shape is the outward-gift inversion made literal. PRIVATE anchor; ships IP-stripped.",
+        "legs": "Someone who's been to the bottom shows you the climb back - one honest day at a time.",
+        "keep": "The resilience to get back up, the discipline of the small climb, and the belief someone held for you - now yours to hand on.",
+        "gift": "Rebuild from a low point: the small daily climb, the discipline of starting over.",
+        "cast": "A recovered guide who's been there (the climb) + a peer a few steps ahead + an honest accountability voice + the one you later hold the door for. Grounded, warm.",
+        "theme": "A grounded-warm register - the early morning, the kept promise, the one honest day.",
+        "note": "HARD GUARD (ship-blocker): the gift is a real COMEBACK DISCIPLINE, NEVER therapy ('process your trauma'/'attachment'); the guide has BEEN there, is NOT a counselor; obsolescence = you climb solo + hold the door for the next.",
+        "sourceCategory": "inspiration",
+        "sourceCategoryWhy": "inspiration — conceived FROM the redemption-coach/sponsor shape (Phase-0 source-anchored)",
+        "slug": "the-long-way-back",
+        "castMembers": [],
+        "author": "Claude (writers-room) - source-anchored",
+        "kind": "concept",
+        "metrics": {
+          "cozy": 3,
+          "cozyLabel": "Warm",
+          "type": "Coach -> Graduation",
+          "genre": "Contemporary (comeback / recovery)",
+          "length": "projected Standard",
+          "age": "Mature",
+          "trophies": "projected ~12",
+          "unlocks": "A comeback discipline you keep - the small daily climb, the resilience to get back up - and the belief someone held for you, now yours to hand on.",
+          "characters": [
+            {
+              "who": "a recovered guide who's been there",
+              "gift": "the climb back - one honest day",
+              "romance": "platonic (a guide, NOT a counselor)"
+            },
+            {
+              "who": "a peer a few steps ahead",
+              "gift": "proof it's walkable",
+              "romance": "platonic"
+            },
+            {
+              "who": "an honest accountability voice",
+              "gift": "the kind, hard truth",
+              "romance": "platonic"
+            },
+            {
+              "who": "the one you later hold the door for",
+              "gift": "the inversion - you become the guide",
+              "romance": "platonic"
+            }
+          ]
+        }
+      },
+      {
+        "name": "The Far Shore",
+        "status": "Source-anchored concept (Phase 0 cross-checked)",
+        "source": "Anchor: the wise-mentor-hero fantasy (the old guide walks the hero to the edge, then they go on alone - the doomed-fellowship / wizard-mentor shape). Fit: 'go on alone' is the archetypal obsolescence exit; the gift = real self-direction/courage. PRIVATE anchor; ships as a genre-vibe quest, a guide emphatically NOT Gandalf.",
+        "legs": "An old guide walks you to the edge of the map - then steps back, because the rest is yours to cross.",
+        "keep": "The self-reliance to go where no one can follow, and the wayfinding you carry into any unknown.",
+        "gift": "Self-reliance in the unknown: the courage and the wayfinding to go where the guide can't.",
+        "cast": "An old guide (the wayfinding) + a fellow traveler peer + a trickster foil + the keeper of the threshold. Epic, genre-vibe.",
+        "theme": "An epic-fantasy parchment register - the map's edge, the crossing. Genre-vibe, NEVER IP-named.",
+        "note": "Genre-vibe, never IP-named (a guide emphatically NOT Gandalf); the 'quest' maps to real-life self-direction/courage; the guide's 'go on alone' is the canonical exit beat.",
+        "sourceCategory": "inspiration",
+        "sourceCategoryWhy": "inspiration — conceived FROM the wise-mentor-hero fantasy shape (Phase-0 source-anchored)",
+        "slug": "the-far-shore",
+        "castMembers": [],
+        "author": "Claude (writers-room) - source-anchored",
+        "kind": "concept",
+        "metrics": {
+          "cozy": 3,
+          "cozyLabel": "Warm",
+          "type": "Guide -> Self-reliance",
+          "genre": "Quest fantasy (mentor-hero)",
+          "length": "projected Epic (the journey)",
+          "age": "All Ages",
+          "trophies": "projected ~20",
+          "unlocks": "Self-reliance you keep - the wayfinding to go where no one can follow - and the courage to cross the unknown alone.",
+          "characters": [
+            {
+              "who": "the old guide",
+              "gift": "the wayfinding - walks you to the edge",
+              "romance": "platonic"
+            },
+            {
+              "who": "a fellow traveler",
+              "gift": "the road shared, for a while",
+              "romance": "platonic"
+            },
+            {
+              "who": "a trickster foil",
+              "gift": "the unexpected turn",
+              "romance": "platonic"
+            },
+            {
+              "who": "the keeper of the threshold",
+              "gift": "what waits at the crossing",
+              "romance": "platonic"
+            }
+          ]
+        }
+      },
+      {
+        "name": "The Long Hunt",
+        "status": "Built campaign (romance, live)",
+        "source": "Anchor: the cold-partner survival-romance (oath-bond) shape - the two-on-a-rope, prove-yourself-then-the-bond-turns arc. Fit: the rope-craft is a real transferable GIFT (so it fits the engine, not a pure will-they-won't-they); romance is the destination (romanceEnabled). PRIVATE anchor; ships original M/M, genre-vibe dark-fantasy.",
+        "legs": "Oathed to the lodge's coldest, best hunter on night one - then the long climb to learn who's really on the other end of the rope.",
+        "keep": "Rope-craft for the dark, and the one who holds the other end - partner, or the second he trusts.",
+        "gift": "Survive the dark: the knots, the read, the nerve to make the drop - and a bond you steer.",
+        "cast": "Roan (the lodge's coldest hunter) - a one-character deep romance arc.",
+        "theme": "Parchment & Ink, run cold for the dark (genre-vibe, never IP).",
+        "note": "The only romanceEnabled campaign so far; the gift (rope-craft) keeps it engine-fit, not a pure romance.",
+        "collection": "the-romance-shelf",
+        "recommendedReads": [
+          {
+            "id": "wingman",
+            "why": "Loved the long climb? The Wingman is the readiness volume on this shelf — a corner that coaches the real thing: opening, reading the room, showing up as you."
           },
           {
-            "role": "the Finisher",
-            "vibe": "driving, deadline-shaped — 'done beats perfect; ship the demo.' Will not let it sit in a drawer",
-            "domain": "shipping / sound / producing",
-            "pole": "Field"
-          },
-          {
-            "role": "the Sketcher",
-            "vibe": "loose, playful, draws badly on purpose — the marks matter, not the masterpiece; lowers the stakes so you start",
-            "domain": "visual / drawing",
-            "pole": "Between"
-          },
-          {
-            "role": "the Curator",
-            "vibe": "quiet, attentive — notices what you keep making and hands you your own throughline",
-            "domain": "the meta / your body of work",
-            "pole": "Between"
-          },
-          {
-            "role": "the Builder",
-            "vibe": "patient, slow, hands-on — 'make one real thing; time is the material.' No rushing the glue",
-            "domain": "craft / making with your hands",
-            "pole": "Hearth"
+            "id": "the-briar-crown",
+            "why": "Another long bargain — a thorned court instead of a cold rope, and a crown on the other end of the table."
           }
         ],
-        "author": "Claude (writers-room)"
-      },
-      {
-        "name": "The Party",
-        "status": "Exploring",
-        "gift": "turn your week into a quest — goals as quests, party banter",
-        "cast": "the classic four reskinned — brash fighter (drive) · cool mage (planning) · sly rogue (nerve) · steady cleric (recovery)",
-        "trend": "the most gamer-NATIVE framing — speaks straight to RPG fans",
-        "note": "our current cast is basically this in disguise → a natural 'variant'. A frame, NOT D&D-IP",
-        "slug": "the-party",
+        "realShelf": [
+          {
+            "title": null,
+            "creator": null,
+            "medium": "book",
+            "coverageBrief": "an M/M slow-burn survival/fantasy romance novel (enemies-to-lovers, prove-yourself-then-the-bond-turns) — the campaign's tropes are the reader's handles; two degrees from the private anchor, kindred to the FINAL campaign not the source",
+            "status": "to-curate",
+            "monetized": true
+          },
+          {
+            "title": null,
+            "creator": null,
+            "medium": "manga",
+            "coverageBrief": "a dark-fantasy hunt/wilderness manga with a cold-partner dynamic — the vibe continued for the manga-native side of the audience; physical volumes = monetizable, stable links",
+            "status": "to-curate",
+            "monetized": true
+          }
+        ],
+        "sourceCategory": "inspiration",
+        "sourceCategoryWhy": "inspiration — conceived FROM the cold-partner survival-romance (oath-bond) shape",
+        "slug": "long-hunt",
         "castMembers": [],
-        "author": "Claude (writers-room)"
+        "author": "Claude (writers-room)",
+        "kind": "campaign",
+        "metrics": {
+          "cozy": 2,
+          "cozyLabel": "Charged",
+          "type": "Partner -> Romance",
+          "genre": "Dark fantasy (hunters' lodge)",
+          "length": "Short - 7 nights",
+          "age": "Mature",
+          "trophies": "~7",
+          "unlocks": "Rope-craft you keep - the knots, the read of the dark, the nerve to make the drop - and the bond with the one on the other end of the rope.",
+          "characters": [
+            {
+              "who": "Roan",
+              "gift": "the rope-craft - survive the dark; and the other end of the rope",
+              "romance": "ROMANCEABLE (M/M slow-burn; you steer partner-or-trusted-second)"
+            }
+          ]
+        }
       },
       {
-        "name": "The Crew",
-        "status": "Exploring",
-        "gift": "money + time right — the hustle · the long game · the exit plan",
-        "cast": "a cold auditor · a scrappy side-hustler · a frugal homemaker · a long-game keeper",
-        "trend": "financial-independence / budgeting content is huge",
-        "note": "narrower (Kenji's lane expanded). CAP = NO real financial / investment advice (frame gate)",
-        "slug": "the-crew",
+        "name": "The Night Market",
+        "status": "Built campaign (audience-driven, live)",
+        "source": "Audience-driven concept (the executive start: starting, self-worth, the counter, finishing imperfect) folded into the cozy-commerce genre-shape - the open-your-small-stall dream. Conceived through the campaign-playbook v3 pipeline; Gates 1+2 owner-ratified.",
+        "legs": "An empty stall at the end of a lantern-lit row - yours from the first night - and four elders who teach the craft of running it: the wick, the price, the counter, the tray.",
+        "keep": "The opening ritual, the warm no at full price, a regular of your own, and a row that keeps a stool by the till for you.",
+        "gift": "Run your own small thing: start the prep, open the shutter, face the counter, price the work, close the till.",
+        "cast": "Tam (the Lamplighter - starting), Zohra (the Saffron Merchant - worth), Lin (the Tea-Stall Veteran - the counter), Edda (the Night-Baker - done beats perfect).",
+        "theme": "Parchment & Ink, lantern-warm (battles off - the quiet roll everywhere; the slate's gentlest world).",
+        "note": "The gentlest on-ramp on the slate: nothing here is late - no streaks, shame-free closed nights, brave losses paid out loud. The dark stall at the row's end stays wonder, never a quest.",
+        "collection": "the-cozy-shelf",
+        "recommendedReads": [
+          {
+            "id": "the-hearth",
+            "why": "A full night's work earns a full rest - the Hearth is the rest half of this shelf: somewhere warm to land when the till is counted."
+          },
+          {
+            "id": "the-workshop",
+            "why": "The craft itself caught you? The Workshop is the mastery direction - go deep on the making, past the selling."
+          }
+        ],
+        "realShelf": [
+          {
+            "title": "Can't Spell Treason Without Tea",
+            "creator": "Rebecca Thorne",
+            "medium": "book",
+            "coverageBrief": "tea-shop cozy-commerce - the open-your-small-place dream the campaign let you live; the book is the long warm soak",
+            "status": "to-curate",
+            "monetized": true
+          },
+          {
+            "title": "Before the Coffee Gets Cold",
+            "creator": "Toshikazu Kawaguchi",
+            "medium": "book",
+            "coverageBrief": "the cafe counter at night, gentle melancholy - the row's quieter sorrows, held kindly",
+            "status": "to-curate",
+            "monetized": true
+          },
+          {
+            "title": "Midnight Diner: Tokyo Stories",
+            "creator": null,
+            "medium": "streaming",
+            "coverageBrief": "counter intimacy after dark - what your stall's counter feels like from the other side; tag-only",
+            "status": "to-curate",
+            "monetized": false
+          }
+        ],
+        "sourceCategory": "inspiration",
+        "sourceCategoryWhy": "inspiration - conceived FROM the cozy-commerce shape for the pressure-sensitive audience; the private anchor exemplar is never shelved (two degrees - siblings shelved instead)",
+        "slug": "night-market",
         "castMembers": [],
-        "author": "Claude (writers-room)"
+        "author": "Claude (campaign-playbook v3 pipeline)",
+        "kind": "campaign",
+        "metrics": {
+          "cozy": 4,
+          "cozyLabel": "Cozy",
+          "type": "Coach -> Graduation",
+          "genre": "Cozy fantasy - night bazaar (cozy-commerce)",
+          "length": "Standard - 25 lanterns",
+          "age": "All Ages",
+          "trophies": "~9 (chalkboard specials) + 4 keepsakes",
+          "unlocks": "The craft of running your own small thing - starting, pricing, the counter, finishing imperfect - and the stall that grows with you.",
+          "characters": [
+            {
+              "who": "Tam, the Lamplighter",
+              "gift": "the craft of starting - one wick, not the stall",
+              "romance": "platonic"
+            },
+            {
+              "who": "Zohra, the Saffron Merchant",
+              "gift": "worth with a number on it - the warm no at full price",
+              "romance": "platonic"
+            },
+            {
+              "who": "Lin, the Tea-Stall Veteran",
+              "gift": "the counter, one face at a time - names that come back",
+              "romance": "platonic"
+            },
+            {
+              "who": "Edda, the Night-Baker",
+              "gift": "done beats perfect - the tray that leaves ugly and sells",
+              "romance": "platonic"
+            }
+          ]
+        }
       },
       {
-        "name": "The Den",
-        "status": "Flagged",
-        "gift": "do the deep work — attention · focus · finishing · beating distraction",
-        "cast": "a stern timekeeper · a calm minimalist · a ritual-keeper · a gentle un-shamer",
-        "trend": "focus / deep-work / dopamine-detox content",
-        "note": "CAUTION: keep it FOCUS/behavioral, NEVER therapy / mental-health (the frame cap)",
-        "slug": "the-den",
+        "name": "The Briar Crown",
+        "status": "Audience-driven concept (Phase 0 draft, cross-checked)",
+        "sourceCategory": "audience",
+        "sourceCategoryWhy": "audience — conceived FROM the romantasy taste-cluster + its canon (the fae-court / crown-bargain romance readership); the Real Shelf is part of the reason-to-exist; the campaign is a SEMI-ADVERT toward the category's concept (play the court → read the canon)",
+        "source": "Audience-canon: the romantasy wave — the dominant romance-bookstore current; special-edition physical buyers = the cleanest referral economics in fiction. Engine fit: the bargain-court shape carries a real gift (court-craft) + a Partner-type lead (romanceEnabled). Two degrees: shelf titles kindred to the FINAL court, never one mirrored title; ships an original court, genre-vibe only.",
+        "legs": "Bargained into a thorned court on a debt you didn't make — hold your own against the lord who holds the crown.",
+        "keep": "Court-craft — read the room's games, name your terms, hold them — and the one bargain you chose to keep.",
+        "gift": "Court-craft: reading power and intent, naming your terms, holding your nerve in rooms that play games.",
+        "cast": "A cold fae lord (the crown — the Partner-type lead, romanceable) + a mortal steward (the ropes) + a rival court's envoy (the foil) + the keeper of debts (the ledger of bargains).",
+        "theme": "A thorned-court register (vine, oath, candle-dark) — genre-vibe romantasy, never IP.",
+        "note": "Romance-first (romanceEnabled, Partner archetype lead — the romance front-door interaction applies). The gift (court-craft = social read + negotiation under charm) keeps it engine-fit, not a pure will-they-won't-they. The universal romance floor holds: the arc ends secure, never an eternal in-app partner. NAME pends an IP-collision check at canon-lock (Phase 6) — vet flagged common-trope adjacency; the concept name is a placeholder like all Phase-0 names.",
+        "collection": "the-romance-shelf",
+        "recommendedReads": [
+          {
+            "id": "long-hunt",
+            "why": "The other long bargain on this shelf — a cold rope in the dark instead of a thorned crown."
+          },
+          {
+            "id": "wingman",
+            "why": "And when you close the book: the readiness volume — a corner that coaches the real thing."
+          }
+        ],
+        "realShelf": [
+          {
+            "title": null,
+            "creator": null,
+            "medium": "book",
+            "coverageBrief": "a fae-court bargain romantasy novel (court intrigue, terms-and-thorns, the slow turn) — the campaign's court-craft + bargain tropes are the reader's handles; two degrees from any single canon title",
+            "status": "to-curate",
+            "monetized": true
+          },
+          {
+            "title": null,
+            "creator": null,
+            "medium": "book",
+            "coverageBrief": "a second romantasy pick skewing crown-politics / rivals-to-lovers — covers the envoy/foil lane the campaign exercises",
+            "status": "to-curate",
+            "monetized": true
+          }
+        ],
+        "slug": "the-briar-crown",
         "castMembers": [],
-        "author": "Claude (writers-room)"
+        "author": "Claude (writers-room) - audience-driven",
+        "kind": "concept",
+        "metrics": {
+          "cozy": 2,
+          "cozyLabel": "Charged",
+          "type": "Partner -> Romance",
+          "genre": "Romantasy (fae-court bargain)",
+          "length": "projected Long (the season of the court)",
+          "age": "Teen+ (romance; nothing explicit)",
+          "trophies": "projected ~20 (the bargains)",
+          "unlocks": "Court-craft you keep — reading power and intent, naming terms, holding your nerve in charged rooms.",
+          "characters": [
+            {
+              "who": "the fae lord",
+              "gift": "the crown's game - power read plainly",
+              "romance": "romanceable (oriented; the Partner lead)"
+            },
+            {
+              "who": "the mortal steward",
+              "gift": "the ropes - how to survive the court",
+              "romance": "platonic"
+            },
+            {
+              "who": "the rival envoy",
+              "gift": "the measure - what your terms are worth",
+              "romance": "platonic"
+            },
+            {
+              "who": "the keeper of debts",
+              "gift": "the ledger - what every bargain really costs",
+              "romance": "platonic"
+            }
+          ]
+        }
       },
       {
-        "name": "The Circuit",
-        "slug": "the-circuit",
-        "author": "Gemini (flash)",
-        "status": "Exploring",
-        "gift": "Systematic habit automation and digital-life balance to reclaim screen-time.",
-        "cast": "Systems architects of your life — a sharp, hyper-focused network engineer (productivity) · a cozy, low-fi synth-wave DJ (rest/sleep hygiene) · a bold cyber-athlete (physical energy/movement).",
-        "trend": "The massive rise of Notion-aesthetic productivity, digital detox trends, and cozy-cyberpunk visual styles.",
-        "note": "Must not feel like a sterile screen-time tracker; it must remain warm, human, and gamified rather than punitive.",
-        "castMembers": []
+        "name": "The Wayhouse",
+        "status": "Audience-driven concept (Phase 0 draft, cross-checked)",
+        "sourceCategory": "audience",
+        "sourceCategoryWhy": "audience — conceived FROM the cozy-fantasy taste-cluster + its canon (low-stakes fantasy hospitality readership, the bookstore's fastest-growing cozy shelf); the Real Shelf is part of the reason-to-exist; the campaign is a SEMI-ADVERT toward the category's concept (keep the inn → read the canon)",
+        "source": "Audience-canon: the cozy-fantasy wave (fantasy inns/shops, found-family regulars, stakes that stay human-sized; strong physical-book affiliate legs). Engine fit: hearth-craft is a real transferable gift; Companion->Rest fills the cozy band beside the Hearth with a FANTASY genre column (the Hearth is real-life). Ships an original inn, genre-vibe only.",
+        "legs": "Handed the keys to a half-asleep inn on the last road out of the wild — make it the place everyone means by 'somewhere warm.'",
+        "keep": "Hearth-craft — hosting, the small rituals of care, a room that feels safe because you made it — and the regulars who became yours.",
+        "gift": "Hearth-craft: hosting, small rituals of care, making a room feel safe.",
+        "cast": "The retiring keeper (hands you the keys — the Companion) + a cook who writes nothing down (the recipes) + a road-worn regular (the stories) + the supplier who knows everyone on the road (the threads).",
+        "theme": "A warm-lantern register (kettle, ledger, rain on the road) — genre-vibe cozy fantasy, never IP.",
+        "note": "Cozy band 4 with a fantasy genre column (distinct from the Hearth's real-life lifestyle lane — the cozy shelf gets two volumes, one real one fantastical). Cap = hospitality + rest, NOT therapy.",
+        "collection": "the-cozy-shelf",
+        "recommendedReads": [
+          {
+            "id": "the-hearth",
+            "why": "The same warmth without the wild — a gentle real life, somewhere soft to land."
+          }
+        ],
+        "realShelf": [
+          {
+            "title": null,
+            "creator": null,
+            "medium": "book",
+            "coverageBrief": "a cozy-fantasy hospitality novel (an inn/shop kept warm at the edge of an adventuring world) — the campaign's hosting + found-family regulars are the reader's handles",
+            "status": "to-curate",
+            "monetized": true
+          },
+          {
+            "title": null,
+            "creator": null,
+            "medium": "book",
+            "coverageBrief": "a second cozy-fantasy pick skewing food/craft comfort — covers the cook's no-recipe lane",
+            "status": "to-curate",
+            "monetized": true
+          }
+        ],
+        "slug": "the-wayhouse",
+        "castMembers": [],
+        "author": "Claude (writers-room) - audience-driven",
+        "kind": "concept",
+        "metrics": {
+          "cozy": 4,
+          "cozyLabel": "Cozy",
+          "type": "Companion -> Rest",
+          "genre": "Cozy fantasy (the inn at the wild's edge)",
+          "length": "projected Medium (a season of the road)",
+          "age": "All Ages",
+          "trophies": "projected ~16 (the rooms and the recipes)",
+          "unlocks": "Hearth-craft you keep — hosting, small rituals, the knack of making any room feel safe.",
+          "characters": [
+            {
+              "who": "the retiring keeper",
+              "gift": "the keys - how a house holds people",
+              "romance": "platonic"
+            },
+            {
+              "who": "the cook",
+              "gift": "the recipes nobody wrote down",
+              "romance": "platonic"
+            },
+            {
+              "who": "the road-worn regular",
+              "gift": "the stories - why people stop here",
+              "romance": "platonic"
+            },
+            {
+              "who": "the supplier",
+              "gift": "the threads - everyone on the road, by name",
+              "romance": "platonic"
+            }
+          ]
+        }
       },
       {
-        "name": "The Archive",
-        "slug": "the-archive",
-        "author": "Gemini (flash)",
-        "status": "Exploring",
-        "gift": "Curated personal knowledge management and articulate communication skills.",
-        "cast": "Curators of self-expression — a sharp, analytical head archivist (focus/study habits) · a warm, expressive barista-poet (social confidence/writing) · an elegant, minimalist restorationist (mindful space curation/sensory calm).",
-        "trend": "Dark academia aesthetics, curation culture (Pinterest, Substack), and cozy coffee-shop/library simulator games.",
-        "note": "Must not feel snobbish or elitist; it must make intellectual growth and aesthetic curation feel radically accessible and comforting.",
-        "castMembers": []
+        "name": "The Table",
+        "status": "Original concept (Phase 0 draft, cross-checked)",
+        "sourceCategory": "original",
+        "sourceCategoryWhy": "original — the moat thesis (ready you for REAL people, never the substitute) applied to adult FRIENDSHIP (the loneliness-epidemic domain); tie-breaker: remove any media canon and the thesis still demands a friendship campaign",
+        "source": "No anchor at conception (original lane). Domain: adult friendship / community-building — validation via domain deep-research + playtest, per the taxonomy's original path. Sibling thesis to the Wingman (dating), aimed at the platonic half of connection.",
+        "legs": "Coaches who get you from 'we should hang out sometime' to a full table — real friends, in real life, yours.",
+        "keep": "Circle-craft — the invite, the follow-up, the hosting, keeping the thread — and the table you built.",
+        "gift": "Circle-craft: the invite, the follow-up, hosting, keeping the thread alive.",
+        "cast": "The host (gathering — rooms and tables) + the keeper-in-touch (the thread — the text you actually send) + the joiner (third places — showing up alone) + the mender (the repair — friction without losing the friend).",
+        "theme": "A long-table register (chairs scraping in, the second round, the standing invite) — modern life.",
+        "note": "The coaching floor holds exactly as the Wingman's: your FRIENDS are real people in your real life, never voiced by the game, never an NPC to keep — the cast readies you for them and graduates. Standalone for now; the natural future shelf is a CONNECTION shelf beside the Wingman.",
+        "slug": "the-table",
+        "castMembers": [],
+        "author": "Claude (writers-room) - original",
+        "kind": "concept",
+        "metrics": {
+          "cozy": 3,
+          "cozyLabel": "Warm",
+          "type": "Coach -> Graduation",
+          "genre": "Modern life (the friendship campaign)",
+          "length": "projected Medium (a season of invites)",
+          "age": "All Ages",
+          "trophies": "projected ~18 (the firsts - first invite, first table, first repair)",
+          "unlocks": "Circle-craft you keep — the invite, the follow-up, the hosting, the repair; agents for keeping a real circle alive.",
+          "characters": [
+            {
+              "who": "the host",
+              "gift": "gathering - rooms, tables, the welcome",
+              "romance": "platonic"
+            },
+            {
+              "who": "the keeper-in-touch",
+              "gift": "the thread - the follow-up that keeps people",
+              "romance": "platonic"
+            },
+            {
+              "who": "the joiner",
+              "gift": "third places - walking in alone",
+              "romance": "platonic"
+            },
+            {
+              "who": "the mender",
+              "gift": "the repair - friction without losing the friend",
+              "romance": "platonic"
+            }
+          ]
+        }
       },
       {
-        "name": "The Forge",
-        "slug": "the-forge",
-        "author": "Gemini (flash)",
-        "status": "Exploring",
-        "gift": "Micro-habit mastery and physical stamina through gamified 'crafting' of daily routines.",
-        "cast": "Artisans of self-transformation — a fiery, encouraging master blacksmith (physical strength/fitness) · a meticulous, quiet herbalist (nutrition/sleep prep) · a cheerful, wandering bard (social recharge/play).",
-        "trend": "Cozy fantasy RPGs (Potion Permit, Fantasy Life) and the wellness trend of treating basic self-care as 'crafting' a better life.",
-        "note": "Must not turn into a hardcore fitness app; the 'forge' metaphor should apply equally to soft skills and mental resilience as it does to physical health.",
-        "castMembers": []
-      },
-      {
-        "name": "The Star-Route Depot",
-        "slug": "the-star-route-depot",
-        "author": "Gemini (tight brief)",
-        "status": "Exploring",
-        "parity": "✓ 0 drift",
-        "gift": "A weekly batch-cooking blueprint, pantry inventory audit, and ingredient substitution matrix.",
-        "cast": "Sprocket (an intense, hyper-efficient robot mechanic coaching spatial kitchen organization), Chef Vael (a cozy, slow-paced four-armed alien coaching meal-prep routines), and Navigator Quill (a dry, analytical avian coaching weekly grocery routing).",
-        "trend": "Cozy sci-fi/solarpunk aesthetics paired with the massive TikTok meal-prep/batch-cooking movement.",
-        "note": "Users immediately receive a 'Fuel Manifest' checklist at Level 0 to audit their current pantry, framing cooking as cargo preparation.",
-        "castMembers": []
-      },
-      {
-        "name": "The Glass Conservatory",
-        "slug": "the-glass-conservatory",
-        "author": "Gemini (tight brief)",
-        "status": "Exploring",
-        "parity": "✓ 0 drift",
-        "gift": "A structured botanical watering schedule, soil-moisture diagnostic drills, and physical space-decluttering sprints.",
-        "cast": "Thorn (a sharp, perfectionist gargoyle coaching deep-cleaning sweeps), Flora (a gentle, sleepy dryad coaching houseplant rehabilitation schedules), and Bramble (a mischievous hedgehog-kin coaching repair-or-toss triage for household clutter).",
-        "trend": "Dark academia and 'cottagecore' plant-parent culture merged with high-satisfaction cleaning/restoration videos.",
-        "note": "The starting utility is a 'Greenhouse Audit' that helps the user map their physical room's light zones and match them to real-world plant or cleaning tasks.",
-        "castMembers": []
-      },
-      {
-        "name": "The Grid Bazaar",
-        "slug": "the-grid-bazaar",
-        "author": "Gemini (tight brief)",
-        "status": "Exploring",
-        "parity": "✓ 0 drift",
-        "gift": "Digital file-directory hygiene templates, keyboard shortcut speed drills, and automated desktop cleanup scripts.",
-        "cast": "Byte (a high-energy, fast-talking cyber-runner coaching desktop decluttering), Glitch (a cozy, lo-fi synthwave DJ coaching pomodoro-style focus sprints), and Protocol (a precise, rule-bound security drone coaching digital asset organization).",
-        "trend": "Cyberpunk aesthetics aligned with the growing digital minimalism movement and mechanical keyboard/productivity-setup culture.",
-        "note": "Level 0 unlocks the 'Data-Purge Protocol,' a 5-minute interactive drill to clear the user's actual phone home screen of distracting apps.",
-        "castMembers": []
-      },
-      {
-        "name": "The Tide-Pool Outpost",
-        "slug": "the-tide-pool-outpost",
-        "author": "Gemini (tight brief)",
-        "status": "Exploring",
-        "parity": "✓ 0 drift",
-        "gift": "Daily joint-mobility routines, posture-reset drills, and low-barrier physical step-target pacing guides.",
-        "cast": "Captain Barnaby (a boisterous, intense walrus-kin coaching basic bodyweight movement), Coralie (a serene, fluid mermaid coaching daily mobility and restorative stretching), and Pip (a hyperactive sandpiper coaching quick, active-break pacing).",
-        "trend": "Cozy island-life simulation (e.g., Animal Crossing) combined with the 'low-impact mobility' and functional fitness trends.",
-        "note": "Provides a 'Vessel Calibration' drill at Level 0—a simple, 3-minute physical neck and shoulder mobility sequence that requires no equipment.",
-        "castMembers": []
+        "name": "The Backbone",
+        "status": "Original concept (Phase 0 draft, cross-checked)",
+        "sourceCategory": "original",
+        "sourceCategoryWhy": "original — the product thesis (a real transferable capability + graduation) applied to the BOUNDARIES / being-heard domain (the ask, the no, the raise); conceived from the slate's coverage gap, no media shaped it",
+        "source": "No anchor at conception (original lane). Domain: assertiveness / boundaries / negotiation-of-everyday-life — validation via domain deep-research + playtest. Distinct from the Greenroom (stage performance) and the Wingman (dating): this is the WEEKDAY voice — meetings, family, landlords, your own time.",
+        "legs": "Coaches who train your spine — say the thing, ask the price, take the no, keep the boundary.",
+        "keep": "The spine — the clean ask, the held no, the boundary that stays — yours in any room.",
+        "gift": "The spine: asking plainly, refusing cleanly, holding the line without heat.",
+        "cast": "The negotiator (the ask — price it, say it) + the gatekeeper (the no — boundaries that hold) + the steady (heat without harm — de-escalation) + the witness (the debrief — what actually happened in that room).",
+        "theme": "A square-shoulders register (the held pause, the plain sentence, the closed door) — modern life.",
+        "note": "Cozy 2 by domain (confrontation is charged) but the moat floor holds — the safety is structural: every rep is opt-in, every loss is secure (a held boundary that wobbles is a rep, not a failure). Graduation = the spine is yours; the coaches stop staging the rooms. HARD GUARD (vet, same class as the Long Way Back's): strictly personal SKILL-building for self-advocacy — never mediation, never conflict-therapy, never 'process the relationship'; the coaches train reps, not feelings.",
+        "slug": "the-backbone",
+        "castMembers": [],
+        "author": "Claude (writers-room) - original",
+        "kind": "concept",
+        "metrics": {
+          "cozy": 2,
+          "cozyLabel": "Charged",
+          "type": "Coach -> Graduation",
+          "genre": "Modern life (the assertion campaign)",
+          "length": "projected Medium (a season of rooms)",
+          "age": "All Ages",
+          "trophies": "projected ~18 (the rooms you walked out of taller)",
+          "unlocks": "The spine you keep — the clean ask, the held no, the steady voice; agents for the rooms that used to win.",
+          "characters": [
+            {
+              "who": "the negotiator",
+              "gift": "the ask - price it, then say it",
+              "romance": "platonic"
+            },
+            {
+              "who": "the gatekeeper",
+              "gift": "the no - boundaries that hold",
+              "romance": "platonic"
+            },
+            {
+              "who": "the steady",
+              "gift": "heat without harm",
+              "romance": "platonic"
+            },
+            {
+              "who": "the witness",
+              "gift": "the debrief - what that room actually did",
+              "romance": "platonic"
+            }
+          ]
+        }
       }
     ],
     "genreNote": "ORTHOGONAL LAYER — any concept's GIFT can be reskinned in a GENRE-VIBE world (wizarding-school vibe, doomed-fellowship vibe, space-crew vibe, detective-noir vibe). Genre = the SHAPE/skin (an expansion's variant/new-cast); the gift + cast are still ours. NEVER IP-named.",
     "geminiNote": "PARITY TEST (Jun 2026): the LOOSE brief drifted 2/5 into the therapy/existential non-lane (The Observatory, The Harbor — removed). The TIGHTENED brief (gate + HARD CAPS + the failed ones as negative examples + 'the gift is something you DO') → 4/4 PASS, 0 drift. 'Gemini (tight brief)' candidates below are parity-confirmed. Lesson: external LLMs hit our target when the hard caps + negative examples are explicit — that's the 'Copy concept brief for LLM' button.",
     "spec": {
-      "trendBasis": "TREND-CHECKED live (Jun 2026): AI companions are huge (~220M dl, +88% YoY) but mostly aimless emotional roleplay → a real GIFT is the differentiator. Gamified self-improvement is proven (Duolingo +36% DAU; Finch beloved for never shaming). Cozy is a major female-skewing TikTok trend. Intrinsic motivation (the relationship) sustains; points only initiate.",
+      "sourceAnchor": "SOURCE-ANCHORED (2026-06, docs/design/source-anchored-concepts.md): every concept is ANCHORED to a PROVEN existing story-shape (anime/manga/manhwa/show/fan-fic) whose mentor->obsolescence + transferable-gift arc is fan-validated AND analyzable -- we study (and /deep-research) WHY it works + what to tighten, then adapt the SHAPE only. The source is a PRIVATE analytical anchor; the concept SHIPS IP-STRIPPED (genre-vibe, never a named franchise -- 'a mentor emphatically NOT Dumbledore'). Anchor to the GENRE-SHAPE many works share (un-ownable), not a mega-franchise. Demand-context (secondary, not the anchor): AI-companion apps are huge but mostly aimless roleplay -> a real GIFT + a proven story is the differentiator.",
       "steps": [
-        "0a · TREND-CHECK — what AI-companion archetypes resonate with the target gamer (done; see basis).",
-        "0b · THEME via the gate — a gift-bearing world that passes ALL the checks below.",
-        "0c · NAMELESS CAST — vibe-first across the domain × temperament grid; names come LAST. Each member gets MULTIPLE titles (evocative→plain, different angles on the same gift) + a \"Just Name\" opt-out, so the gift reads at a glance instead of one cryptic epithet (docs/design/character-titles.md)."
+        "0a - SOURCE-ANCHOR: pick a proven story-shape whose native arc supplies the engine-needs (a MENTOR whose telos is the protege's INDEPENDENCE + a transferable GIFT + the bond deepening AS autonomy rises). Study it; /deep-research why it works + what to tighten.",
+        "0b - THE TWO LOAD-BEARING QUESTIONS (answer BOTH, crisply): (1) what does the STORY bring to the table = the Front-Door hook (legs); (2) what do the CHARACTERS give the player when the campaign is DONE = the outward gift they walk out HOLDING (keep). A concept that can't answer both is not a concept yet.",
+        "0c - IP-STRIP + THEME via the gate: file the serial numbers off (the recombinable shape is un-copyrightable; strip the names/specifics) -> a gift-bearing genre-vibe world that passes ALL the checks below.",
+        "0d - NAMELESS CAST: vibe-first across the domain x temperament grid; names come LAST. Each member gets MULTIPLE titles (evocative->plain) + a 'Just Name' opt-out (docs/design/character-titles.md)."
       ],
       "gate": [
-        "Real GIFT — a concrete CAPABILITY valuable at REL 0 (a drill, an audit, a recipe). Something you DO.",
-        "Trend / target resonance (grounded in the basis, not vibes).",
-        "Supports a COMPLEMENTARY cast (spans life-domains AND temperaments, intense↔cozy).",
+        "ANCHORED to a proven story-shape (source-anchored-concepts.md) -- not invented from vibes; the shape's mentor->obsolescence + gift arc IS the validation.",
+        "Answers BOTH load-bearing questions -- the STORY's front-door hook (legs) + the outward gift the player KEEPS (keep).",
+        "Real GIFT -- a concrete CAPABILITY valuable at REL 0 (a drill, an audit, a recipe). Something you DO.",
+        "FITS the true north (grows-with-you) -- the relationship deepens AS the player becomes autonomous; the coach makes themselves OBSOLETE. A mentor who STAYS needed is rejected (moat violation).",
+        "Supports a COMPLEMENTARY cast (spans life-domains AND temperaments, intense<->cozy).",
         "GENRE/VIBE-inspired, NEVER IP-named.",
         "Phone-realm frame + casual-legible in one line.",
-        "COACH WITHOUT SHAME — helps without guilt; the relationship is the long game, not a score."
+        "COACH WITHOUT SHAME -- helps without guilt; the relationship is the long game, not a score."
       ],
       "hardCaps": [
         "The gift is something you DO, NOT a feeling you process.",
-        "NO therapy / mental-health / emotional-regulation / existential / mindfulness as the gift — behavioral only.",
+        "NO therapy / mental-health / emotional-regulation / existential / mindfulness as the gift -- behavioral only.",
         "NO real medical / financial / legal advice (talk around the domain in idiolect).",
-        "NO fourth-wall 'I'm an AI' lecture; the LLM disclosure stays outside the fiction."
+        "NO fourth-wall 'I'm an AI' lecture; the LLM disclosure stays outside the fiction.",
+        "SOURCE STAYS PRIVATE: the `source` field may name a real story (dev-facing only); the concept SHIPS IP-stripped (original cast/world, the proven shape only). NEVER a named franchise/place/character in player-facing copy."
       ]
     }
   }

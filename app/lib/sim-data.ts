@@ -27,7 +27,7 @@ export interface Choice {
   reactionText: string;
   reactionTextOnCritFail?: string;
   // Chaotic-only: visitor sees a die roll. critChance is the prob of
-  // failure; we resolve only crit-success or crit-fail per docs/GDD.md.
+  // failure; we resolve only crit-success or crit-fail (engine convention).
   diceRoll?: {
     critChance: number;
     critSuccessMultiplier: number;

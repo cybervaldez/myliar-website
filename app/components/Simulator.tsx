@@ -36,7 +36,7 @@ function applyChoice(
   if (!choice.diceRoll) {
     return { applied: choice.delta, reaction: choice.reactionText };
   }
-  // Chaotic: roll. critChance is the failure probability per docs/GDD.md.
+  // Chaotic: roll. critChance is the failure probability (engine convention).
   const isCritFail = Math.random() < choice.diceRoll.critChance;
   if (isCritFail) {
     const applied: ResolvedChoice["appliedDelta"] = {};

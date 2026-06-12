@@ -203,7 +203,12 @@ function rosterScopes() {
     if (!m) return new Set();
     return new Set(m[1].split(",").map((s) => varToId[s.trim()]).filter(Boolean));
   };
-  return { canonical: listIds("canonicalRoster"), wingman: listIds("wingmanRoster") };
+  return {
+    canonical: listIds("canonicalRoster"),
+    wingman: listIds("wingmanRoster"),
+    longHunt: listIds("longHuntRoster"),
+    nightMarket: listIds("nightMarketRoster"),
+  };
 }
 
 // allowIds (optional): restrict to a campaign's roster ids. runDir: which run
@@ -246,6 +251,7 @@ function extractSquad(allowIds = null, runDir = RUN_DIR) {
       id,
       name: dartField(b, "name"),
       classLabel: dartField(b, "classLabel"),
+      title: dartField(b, "title"), // the singular Day-1 title (lead-in bridge); titles[] may be empty (e.g. Sam)
       // specialty carries the one canon-documented banned word ("fitness &
       // wellness"); substitute it the way the game's own comment prescribes.
       specialty: applySubstitutions(dartField(b, "specialty")),
@@ -271,17 +277,50 @@ function extractSquad(allowIds = null, runDir = RUN_DIR) {
   return squad;
 }
 
-// The Wingman coaches (a SECOND canonical cast, scoped to wingmanRoster). Same
-// player-facing fields as the squad PLUS the earned titles[] + intimateTitle +
-// intro line, and the dating-reskinned stat lane (NERVE/VOICE/READ/PRESENCE/
-// the FLOOR). joinsDay derives from run-wingman. Frame-gated like the squad.
+// ── 5b. Character vitals — the unlockable "??? → value" reveals ──────
+// v0.0.45 — each Vital(label, value, revealKey) on a canonical Character;
+// Event.revealsVitals names a revealKey to unlock it in-scene. Surfaced as a
+// flat revealKey → { label, value } map so the wiki / play-sim can render the
+// reveal ("??? → value"). The value is in-fiction prose, so it's substituted +
+// frame-gated like `appearance`. Source: lib/sam.dart + lib/characters.dart.
+// Anchored on the trailing `revealKey:` literal so a paren in an earlier value
+// can't truncate the match.
+function extractVitals() {
+  const src = read("lib/sam.dart") + "\n" + read("lib/characters.dart");
+  const out = {};
+  const re = /Vital\(([\s\S]*?revealKey:\s*(?:'(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*"))\s*\)/g;
+  let m;
+  while ((m = re.exec(src)) !== null) {
+    const b = m[1];
+    // revealKey is the LAST field (no trailing comma inside `b`), so dartField's
+    // comma-anchored match won't catch it — parse it directly.
+    const rk = b.match(/revealKey:\s*(?:'((?:[^'\\]|\\.)*)'|"((?:[^"\\]|\\.)*)")/);
+    const revealKey = rk ? (rk[1] ?? rk[2]) : null;
+    if (!revealKey) continue;
+    out[revealKey] = {
+      label: dartField(b, "label"),
+      value: applySubstitutions(dartField(b, "value")),
+    };
+  }
+  if (Object.keys(out).length === 0) fail("extracted zero vitals");
+  return out;
+}
+
+// A campaign's canonical cast (scoped to its roster). Same player-facing fields
+// as the squad PLUS the earned titles[] + intimateTitle + intro line + the
+// campaign's reskinned stat lane. joinsDay derives from the run payloads.
+// Frame-gated like the squad.
 const WINGMAN_STAT_LANE = {
   nico: "NERVE", wes: "VOICE", sloane: "READ", remy: "PRESENCE", mara: "the FLOOR",
 };
-function extractWingmanCast(allowIds) {
+const LONG_HUNT_STAT_LANE = { roan: "the ROPE" };
+const NIGHT_MARKET_STAT_LANE = {
+  tam: "THREAD", zohra: "WORTH", lin: "OPEN", edda: "STOCK",
+};
+function extractCampaignCast(allowIds, runDir, statLane) {
   const src = read("lib/characters.dart");
   const blocks = [...src.matchAll(/Character\(([\s\S]*?)\n\);/g)].map((x) => x[1]);
-  const joinsDay = deriveJoinDays("run-wingman");
+  const joinsDay = deriveJoinDays(runDir);
   const cast = [];
   for (const b of blocks) {
     if (!/isCanonical:\s*true/.test(b)) continue;
@@ -292,7 +331,8 @@ function extractWingmanCast(allowIds) {
       id,
       name: dartField(b, "name"),
       classLabel: dartField(b, "classLabel"),
-      statLane: WINGMAN_STAT_LANE[id] ?? null,
+      title: dartField(b, "title"), // the singular Day-1 title (lead-in bridge); titles[] may be empty (e.g. Sam)
+      statLane: statLane[id] ?? null,
       specialty: applySubstitutions(dartField(b, "specialty")),
       helpSummary: dartField(b, "helpSummary"),
       archetype: dartField(b, "archetype"),
@@ -307,7 +347,7 @@ function extractWingmanCast(allowIds) {
     });
   }
   cast.sort((a, b) => (a.joinsDay ?? 99) - (b.joinsDay ?? 99));
-  if (cast.length === 0) fail("extracted zero Wingman coaches");
+  if (cast.length === 0) fail(`extracted zero cast for ${runDir}`);
   return cast;
 }
 
@@ -408,11 +448,13 @@ function dartField(block, name) {
 // Extract a Dart list-of-strings field: `name: [ 'a', 'b', 'c' ]`.
 // Returns [] if absent. Single-element strings only (no adjacent-concat
 // inside list items, which the source doesn't use for these fields).
+// QUOTE-AGNOSTIC (playtest fix #7): Dart writes apostrophe-bearing strings
+// with double quotes ("the Lodge's Edge") — both forms must extract.
 function dartStringList(block, name) {
   const m = block.match(new RegExp(`${name}:\\s*\\[([\\s\\S]*?)\\]`, "m"));
   if (!m) return [];
-  return [...m[1].matchAll(/'((?:[^'\\]|\\.)*)'/g)].map((x) =>
-    x[1].replace(/\\'/g, "'"),
+  return [...m[1].matchAll(/'((?:[^'\\]|\\.)*)'|"((?:[^"\\]|\\.)*)"/g)].map((x) =>
+    (x[1] ?? x[2]).replace(/\\'/g, "'").replace(/\\"/g, '"'),
   );
 }
 
@@ -499,10 +541,14 @@ function extractRun(runDir = RUN_DIR) {
 
     const events = (p.events ?? []).map((ev) => {
       flag(`${ev.id}.scenario`, ev.scenario);
+      flag(`${ev.id}.youSee`, ev.youSee); // MC-POV perception line — player-facing prose
       const choices = (ev.choices ?? []).map((c) => {
         flag(`${ev.id}.${c.id}.label`, c.label);
         flag(`${ev.id}.${c.id}.reaction`, c.reactionText);
         flag(`${ev.id}.${c.id}.critfail`, c.reactionTextOnCritFail);
+        if (c.scriptedLine) flag(`${ev.id}.${c.id}.scriptedLine`, c.scriptedLine); // the default line is player-facing
+        for (const lo of (c.lineOptions ?? [])) flag(`${ev.id}.${c.id}.lineOption`, lo); // the dice-pool defaults are player-facing
+        if (c.battle) flag(`${ev.id}.${c.id}.battle`, c.battle.intro); // battle intro is player-facing
         if (c.itemDrop) {
           flag(`${ev.id}.${c.id}.item`, c.itemDrop.name);
           flag(`${ev.id}.${c.id}.item`, c.itemDrop.description);
@@ -525,11 +571,25 @@ function extractRun(runDir = RUN_DIR) {
           reactionText: c.reactionText ?? "",
           reactionTextOnCritFail: c.reactionTextOnCritFail ?? null,
           itemDrop: c.itemDrop
-            ? { name: c.itemDrop.name, description: c.itemDrop.description ?? "", kind: c.itemDrop.kind ?? "memento", grantsAchievement: c.itemDrop.grantsAchievement ?? null }
+            ? { name: c.itemDrop.name, description: c.itemDrop.description ?? "", kind: c.itemDrop.kind ?? "memento", grantsAchievement: c.itemDrop.grantsAchievement ?? null, statDeltas: c.itemDrop.statDeltas ?? {} }
             : null,
           // v0.0.42 — the flag this SELECTION sets (read by future days' variants).
           grantsAchievement: c.grantsAchievement ?? null,
           reactionVariants,
+          // v0.0.46 — Smart Chaotic: opt-in for the player-line UGC input (freeform) or a
+          // lighter multiple-choice set. null = un-authored (engine interim heuristic).
+          // See docs/design/community-discussion.md § SMART CHAOTIC.
+          allowPlayerInput: typeof c.allowPlayerInput === "boolean" ? c.allowPlayerInput : null,
+          lineOptions: Array.isArray(c.lineOptions) ? c.lineOptions : null,
+          // the ACTUAL default line the textbox shows (an authored line, NOT the
+          // instruction label). Player-facing → frame-flagged.
+          scriptedLine: c.scriptedLine ?? null,
+          // v0.0.33 — battle minigame framing (theme-gated): a chaotic choice with
+          // a BattleSpec plays as a battle (outcome IS the crit) when the active
+          // theme has battlesEnabled, else it resolves as the instant roll.
+          battle: c.battle
+            ? { hero: c.battle.hero ?? "YOU", enemy: c.battle.enemy ?? "THE MOMENT", enemyHp: c.battle.enemyHp ?? 40, heroHp: c.battle.heroHp ?? 3, intro: c.battle.intro ?? "" }
+            : null,
         };
       });
       const memoryWrites = (ev.memoryWrites ?? []).map((m) => {
@@ -542,11 +602,31 @@ function extractRun(runDir = RUN_DIR) {
         flag(`${ev.id}.variantScenario`, sv.scenario);
         return { unlockIf: sv.unlockIf ?? [], scenario: sv.scenario ?? "" };
       });
-      return { id: ev.id, scenario: ev.scenario, choices, memoryWrites, scenarioVariants };
+      return {
+        id: ev.id,
+        scenario: ev.scenario,
+        choices,
+        memoryWrites,
+        scenarioVariants,
+        // v0.0.45 — animation-critical fields the play-sim renders:
+        // youSee (MC-POV whisper) + revealsVitals (the "??? → value" unlock keys,
+        // resolved against the top-level `vitals` map). bpmShift/characterExposed
+        // are the authored BPM inputs (currently always default — BPM is derived
+        // at runtime; shipped for forward-compat + client-side derivation).
+        youSee: ev.youSee ?? "",
+        revealsVitals: Array.isArray(ev.revealsVitals) ? ev.revealsVitals : [],
+        bpmShift: ev.bpmShift ?? "",
+        characterExposed: ev.characterExposed ?? false,
+      };
     });
 
     flag("closingHook", p.closingHook);
     flag("agentMoodToday", p.agentMoodToday);
+    // nextDayStart — the day-entry recap ("PREVIOUSLY", shown on the NEXT day) + the
+    // cliffhanger label for that day's START button. Both player-facing → frame-flagged.
+    // seedHint is author-craft (LLM gen hint) — NOT shipped.
+    flag("nextDayStart.recap", p.nextDayStart?.recap);
+    flag("nextDayStart.label", p.nextDayStart?.label);
 
     days.push({
       payloadId: p.payloadId ?? f.replace(/\.json$/, ""),
@@ -561,6 +641,11 @@ function extractRun(runDir = RUN_DIR) {
         ? { category: p.tierUpReveal.category, deliveredInEventId: p.tierUpReveal.deliveredInEventId }
         : null,
       callbacks: Array.isArray(p.callbacks) ? p.callbacks : [],
+      // "the story so far" — this day's recap (shown on the NEXT day's entry) + the
+      // cliffhanger label for the next day's START button. seedHint dropped (author-craft).
+      nextDayStart: p.nextDayStart
+        ? { label: p.nextDayStart.label ?? "", recap: p.nextDayStart.recap ?? "" }
+        : null,
       frameFlags,
       events,
     });
@@ -680,8 +765,85 @@ function extractMysteryRoster() {
 // share. Surface it so the tooling /campaigns view shows each world's motif.
 // Dart string concat (adjacent 'a' 'b' literals across lines) is joined.
 function joinDartString(raw) {
-  return [...raw.matchAll(/'((?:[^'\\]|\\.)*)'/g)].map((m) => m[1].replace(/\\'/g, "'")).join("");
+  // quote-agnostic (playtest fix #7): "Rope's free tonight" must survive the join.
+  return [...raw.matchAll(/'((?:[^'\\]|\\.)*)'|"((?:[^"\\]|\\.)*)"/g)]
+    .map((m) => (m[1] ?? m[2]).replace(/\\'/g, "'").replace(/\\"/g, '"'))
+    .join("");
 }
+// The motif-driven LEAD-IN (docs/design/convergent-origins.md) — the front-door Scene
+// Board. Parses the `leadIn: LeadIn(...)` block out of a campaign body (the `const`
+// is optional — campaigns inside a `const Campaign(` don't repeat it). The Day-1
+// title is NOT stored here — the website resolves it by joining helper.id → the cast's
+// own title (which parity already exports). Sub-blocks get a trailing ',' appended so
+// dartField can read each block's LAST field (which ends in `),` not `,`).
+function extractLeadIn(b) {
+  const lm = b.match(/leadIn:\s*(?:const\s+)?LeadIn\(([\s\S]*)$/);
+  if (!lm) return null;
+  const lb = lm[1];
+  const sub = (re) => (lb.match(re) || [, ""])[1];
+  const helpers = [...sub(/helpers:\s*\[([\s\S]*?)\n\s*\],/).matchAll(/LeadInHelper\(([\s\S]*?)\),/g)].map((h) => {
+    const x = h[1] + ",";
+    return {
+      id: dartField(x, "id") || "",
+      gift: dartField(x, "gift") || "",
+      look: applySubstitutions(dartField(x, "look") || ""),
+      glimpse: applySubstitutions(dartField(x, "glimpse") || ""),
+      metaKind: dartField(x, "metaKind") || "",
+      metaText: applySubstitutions(dartField(x, "metaText") || ""),
+      // front-door interaction (v0.0.51): the default lead's pre-identity popover + his read of the alts
+      firstImpression: applySubstitutions(dartField(x, "firstImpression") || ""),
+      read: applySubstitutions(dartField(x, "read") || ""),
+    };
+  });
+  const actions = [...sub(/actions:\s*\[([\s\S]*?)\n\s*\],/).matchAll(/LeadInAction\(([\s\S]*?)\),/g)].map((a) => {
+    const x = a[1] + ",";
+    return {
+      helperId: dartField(x, "helperId") || "",
+      monologue: applySubstitutions(dartField(x, "monologue") || ""),
+      post: applySubstitutions(dartField(x, "post") || ""),
+    };
+  });
+  const clusters = [...sub(/clusters:\s*\[([\s\S]*?)\n\s*\],/).matchAll(/LeadInCluster\(\s*'((?:[^'\\]|\\.)*)'\s*,\s*\[([^\]]*)\]/g)].map((c) => ({
+    label: c[1].replace(/\\'/g, "'"),
+    members: [...c[2].matchAll(/'((?:[^'\\]|\\.)*)'/g)].map((x) => x[1]),
+  }));
+  // the "what are you here for?" hook (prefs-as-hooks): the gate-intake micro-beat
+  const hereForOptions = [...sub(/hereForOptions:\s*\[([\s\S]*?)\n\s*\],/).matchAll(/LeadInHereFor\(([\s\S]*?)\),/g)].map((o) => {
+    const x = o[1] + ",";
+    return {
+      key: dartField(x, "key") || "",
+      line: applySubstitutions(dartField(x, "line") || ""),
+      sub: applySubstitutions(dartField(x, "sub") || ""),
+      post: applySubstitutions(dartField(x, "post") || ""),
+      flag: dartField(x, "flag") || "",
+    };
+  });
+  return {
+    problem: applySubstitutions(dartField(lb, "problem") || ""),
+    motif: dartField(lb, "motif") || "",
+    type: dartField(lb, "type") || "",
+    lean: dartField(lb, "lean") || "",
+    environment: applySubstitutions(dartField(lb, "environment") || ""),
+    defaultHelperId: dartField(lb, "defaultHelperId") || "",
+    identityRead: applySubstitutions(dartField(lb, "identityRead") || ""),
+    identityOwn: applySubstitutions(dartField(lb, "identityOwn") || ""),
+    titleAsk: applySubstitutions(dartField(lb, "titleAsk") || ""),
+    identityPattern: dartField(lb, "identityPattern") || "cutoff",
+    identityNameAsk: applySubstitutions(dartField(lb, "identityNameAsk") || ""),
+    castInvite: applySubstitutions(dartField(lb, "castInvite") || ""),
+    welcomeMech: {
+      title: dartField(lb, "welcomeMechTitle") || "",
+      text: applySubstitutions(dartField(lb, "welcomeMechText") || ""),
+    },
+    welcomeAchBlurb: applySubstitutions(dartField(lb, "welcomeAchBlurb") || ""),
+    hereForAsk: applySubstitutions(dartField(lb, "hereForAsk") || ""),
+    hereForOptions,
+    helpers,
+    actions,
+    clusters,
+  };
+}
+
 function extractCampaignMeta() {
   const src = read("lib/characters.dart");
   const out = [];
@@ -697,7 +859,8 @@ function extractCampaignMeta() {
     // per-campaign REL-tier names (the relationship-status ladder motif); empty
     // → the campaign uses the shared default (game_state kRelTierNames).
     const relBlock = (b.match(/relTierNames:\s*\[([\s\S]*?)\]/) || [, ""])[1];
-    const relTierNames = [...relBlock.matchAll(/'((?:[^'\\]|\\.)*)'/g)].map((x) => x[1].replace(/\\'/g, "'"));
+    // quote-agnostic (playtest fix #7): "Rope's free tonight" + "Unspoken" are double-quoted in Dart.
+    const relTierNames = [...relBlock.matchAll(/'((?:[^'\\]|\\.)*)'|"((?:[^"\\]|\\.)*)"/g)].map((x) => (x[1] ?? x[2]).replace(/\\'/g, "'").replace(/\\"/g, '"'));
     // per-campaign STAT-AXIS labels (the polygon motif) — re-voice STR/INT/GLD/CHR
     // for display only; empty → the raw mechanic ids. See campaign-motif-framework.md.
     const axesBlock = (b.match(/statAxes:\s*\{([\s\S]*?)\}/) || [, ""])[1];
@@ -708,6 +871,18 @@ function extractCampaignMeta() {
       title: dartField(b, "title"),
       tagline: dartField(b, "tagline"),
       gift: dartField(b, "gift"),
+      // v0.0.49 — the MARKETABLE "what you'll get" bullets (the Front Door hook) —
+      // player-facing prose, each substituted through the banned-word gate.
+      whatYouGet: dartStringList(b, "whatYouGet").map(applySubstitutions),
+      // the Day-1 OPENING HOOK (the cover) — player-facing prose, substituted.
+      openingHook: applySubstitutions(dartField(b, "openingHook")),
+      // v0.0.47 — campaign TAXONOMY tags (campaign-taxonomy-and-romance.md) for the picker/wiki.
+      campaignType: dartField(b, "campaignType") || "coach",
+      relationshipCategory: dartField(b, "relationshipCategory") || "gen",
+      intensity: dartField(b, "intensity") || "",
+      tone: dartField(b, "tone") || "",
+      tropes: dartStringList(b, "tropes"),
+      romanceEnabled: /romanceEnabled:\s*true/.test(b),
       runId: dartField(b, "runId") || "",
       // the campaign's native display theme (theme_pack id) — defaults to
       // 'parchment' (the home default) when the Campaign omits it.
@@ -718,6 +893,11 @@ function extractCampaignMeta() {
       // the day-unit word ('' → the shared "DAY"; the Corner runs on ROUNDs).
       statAxes,
       dayUnit: dartField(b, "dayUnit") || "",
+      // story-significant NON-CAST names (e.g. Maya) — the front door's gentle
+      // free-name collision note; never a block, never a spoiler.
+      storyNames: dartStringList(b, "storyNames"),
+      // the motif-driven LEAD-IN (convergent-origins.md) — null when the campaign opens linearly.
+      leadIn: extractLeadIn(b),
     });
   }
   return out;
@@ -779,6 +959,8 @@ function build() {
   // scope each extractor to its own roster so they don't bleed together.
   const scopes = rosterScopes();
   const wingmanRun = extractRun("run-wingman");
+  const longHuntRun = extractRun("run-long-hunt");
+  const nightMarketRun = extractRun("run-night-market");
   const data = {
     // Provenance banner — makes it obvious in the committed file that
     // hand-editing is pointless (the next sync overwrites it).
@@ -789,6 +971,7 @@ function build() {
     itemRarities: extractItemRarities(),
     vibeBands: extractVibeBands(),
     squad: extractSquad(scopes.canonical, RUN_DIR),
+    vitals: extractVitals(), // revealKey → { label, value } — for Event.revealsVitals reveals
     campaigns: extractCampaignMeta(),
     mysteryRoster: extractMysteryRoster(),
     achievements: extractAchievements(),
@@ -801,9 +984,25 @@ function build() {
     // 25-day arc, and items). game→website parity, same one-way rule.
     wingman: {
       runId: wingmanRun.runId,
-      cast: extractWingmanCast(scopes.wingman),
+      cast: extractCampaignCast(scopes.wingman, "run-wingman", WINGMAN_STAT_LANE),
       days: wingmanRun.days,
       items: extractItems("run-wingman"),
+    },
+    // The Long Hunt — the romance campaign (its own cast, 7-night arc, items).
+    // Same one-way parity rule; playable in the /play simulator like the others.
+    longHunt: {
+      runId: longHuntRun.runId,
+      cast: extractCampaignCast(scopes.longHunt, "run-long-hunt", LONG_HUNT_STAT_LANE),
+      days: longHuntRun.days,
+      items: extractItems("run-long-hunt"),
+    },
+    // The Night Market — the gentlest campaign (its own cast, 25-LANTERN arc,
+    // keepsake items). Same one-way parity rule; playable in /play like the others.
+    nightMarket: {
+      runId: nightMarketRun.runId,
+      cast: extractCampaignCast(scopes.nightMarket, "run-night-market", NIGHT_MARKET_STAT_LANE),
+      days: nightMarketRun.days,
+      items: extractItems("run-night-market"),
     },
   };
   assertFrameClean(data);

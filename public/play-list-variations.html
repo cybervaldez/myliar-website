@@ -1,0 +1,122 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>/play — list layout sub-variations</title>
+<link rel=preconnect href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Anton&display=swap" rel=stylesheet>
+<style>
+:root{--paper:#f2ebdd;--ink:#2a2a26;--forest:#2d4a2b;--red:#b81f1c;--soft:#6f6a5c;--line:#cdc2a8;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Lora,Georgia,serif;font-size:15px;line-height:1.4}
+header{padding:16px 18px 8px;max-width:920px;margin:0 auto}
+h1{font-family:Anton,Impact,sans-serif;font-weight:400;letter-spacing:.5px;font-size:28px;margin:0 0 4px}
+.sub{color:var(--soft);font-size:12.5px;margin:0 0 12px;max-width:740px}
+.bar{display:flex;flex-wrap:wrap;gap:14px 18px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:8px 0;margin-bottom:6px}
+.grp{display:flex;gap:5px;align-items:center}.grp b{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--soft)}
+.seg{font:inherit;font-size:12px;padding:3px 9px;border:1px solid var(--line);background:transparent;color:#0645ad;cursor:pointer}
+.seg.on{background:var(--forest);color:var(--paper);border-color:var(--forest)}
+main{max-width:920px;margin:0 auto;padding:6px 18px 90px}
+.grouphead{font-family:Anton;font-size:17px;color:var(--forest);border-bottom:1px solid var(--line);margin:16px 0 7px;letter-spacing:.5px}
+.grouphead span{font-family:Lora;font-size:12px;color:var(--soft)}
+.kindtag{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+.cz{display:inline-flex;gap:4px;align-items:center;font-size:11px;padding:1px 6px;border:1px solid;white-space:nowrap}
+.cz b{font-weight:700}.cz .n{opacity:.6}
+.czs{font-family:Anton;font-size:15px;padding:0 4px;border:1px solid;display:inline-block;min-width:30px;text-align:center}
+.czbar{display:inline-block;width:64px;height:9px;border:1px solid var(--line);background:#0000000d;vertical-align:middle;position:relative}
+.czbar i{position:absolute;left:0;top:0;bottom:0;display:block}
+.czbar b{font-size:9px;margin-left:6px;font-weight:400}
+.rom{color:var(--red)}
+.gp{font-size:12px;font-style:italic;color:#3a382f;margin:3px 0 0;border-left:2px solid var(--line);padding-left:8px}
+.gal{display:flex;gap:5px;margin:5px 0 0;flex-wrap:wrap}
+.galcard{width:42px;text-align:center}
+.galframe{border:1.5px solid var(--ink-soft,var(--line));background:#fffaf0;height:42px;display:flex;align-items:center;justify-content:center;font-family:Anton;font-size:17px;color:var(--soft)}
+.galname{font-size:8px;color:var(--soft);margin-top:1px;line-height:1.1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.galcap{font-size:9px;color:var(--soft);font-style:italic;align-self:center;margin-left:4px}
+.detail{padding:10px 12px;background:#00000008;border-left:3px solid var(--forest);margin:2px 0 8px;font-size:13px}
+.detail .lab{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--soft);margin-right:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0}
+.charchip{font:inherit;font-size:12px;padding:3px 8px;border:1px solid var(--line);background:transparent;cursor:pointer}
+.charchip.on{background:var(--forest);color:var(--paper);border-color:var(--forest)}
+.glimpse{border-left:3px solid var(--forest);padding:5px 10px;margin-top:4px;font-size:12px;background:#00000008}
+.spec{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px;padding-top:6px;border-top:1px solid var(--line);font-size:11px;color:var(--soft)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{position:sticky;top:0;background:var(--paper);text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--soft);padding:5px 7px;border-bottom:1px solid var(--ink);white-space:nowrap}
+th[data-s]{cursor:pointer}th[data-s]:hover{color:var(--ink)}
+td{padding:4px 7px;border-bottom:1px solid var(--line);vertical-align:top}
+tr.tw{cursor:pointer}tr.tw:hover td{background:#00000008}
+.tname{font-family:Anton;letter-spacing:.3px;font-size:13px}
+.fic{border:1px solid var(--line);background:#fffaf0;margin-bottom:7px}
+.fic .top{display:flex;justify-content:space-between;gap:8px;padding:7px 12px 0;cursor:pointer}
+.fic .nm{font-family:Anton;font-size:16px;letter-spacing:.3px}
+.fic .meta{padding:2px 12px 0;font-size:12px;color:var(--soft);display:flex;flex-wrap:wrap;gap:2px 7px;align-items:center}
+.fic .blurb{padding:3px 12px 9px;font-size:12.5px;cursor:pointer}
+.spine{display:flex;border:1px solid var(--line);border-left-width:7px;background:#fffaf0;margin-bottom:6px;cursor:pointer}
+.spine .scol{width:60px;text-align:center;padding:7px 2px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;gap:2px}
+.spine .body{flex:1;padding:6px 12px}
+.spine .nm{font-family:Anton;font-size:15px;letter-spacing:.3px}
+.spine .sm{font-size:12px}.spine .st{font-size:11px;color:var(--soft);margin-top:2px}
+.arrow{color:var(--soft);font-size:11px}
+</style></head><body>
+<header>
+  <h1>/play — list sub-variations</h1>
+  <p class=sub><b>Mix the toggles</b> to compare. <b>Layout</b> = Table / Fic-list / Cozy-spine (Index dropped). <b>Cozy</b> = how the score reads (icon &amp;middot; 0&ndash;100 &amp;middot; bar). <b>Extra</b> = add a game-PREVIEW line or an ART-GALLERY strip (framed slots; art is owner-submitted via tooling — honest placeholder). Click any row to expand to the full card.</p>
+  <div class=bar>
+    <div class=grp><b>Layout</b><button class=seg data-l=table>Table</button><button class=seg data-l=fic>Fic-list</button><button class=seg data-l=spine>Cozy-spine</button></div>
+    <div class=grp><b>Cozy</b><button class=seg data-cz=icon>Icon</button><button class=seg data-cz=score>0&ndash;100</button><button class=seg data-cz=bar>Bar</button></div>
+    <div class=grp><b>Extra</b><button class=seg data-ex=none>None</button><button class=seg data-ex=preview>Game preview</button><button class=seg data-ex=gallery>Art gallery</button></div>
+    <div class=grp><b>Group</b><button class=seg data-grp=kind>Kind</button><button class=seg data-grp=cozy>Cozy</button><button class=seg data-grp=type>Type</button></div>
+    <div class=grp><b>Sort</b><button class=seg data-s=default>Def</button><button class=seg data-s=cozy>Cozy</button><button class=seg data-s=length>Len</button><button class=seg data-s=trophies>\u{1F3C6}</button></div>
+  </div>
+</header><main id=app></main>
+<script>
+const DATA=[{"name": "Life Ops", "slug": "life-ops", "kind": "campaign", "summary": "A four-person party that actually shows up for your real life — body, money, food, systems.", "cozy": 3, "cozy100": 60, "type": "Coach -> Graduation", "genre": "Contemporary slice-of-life", "length": "Standard - 18 days", "lenBand": "Standard", "age": "All Ages", "trophies": "~14", "trophiesNum": 14, "theme": "Parchment & Ink", "unlocks": "A party you keep: a drill coach, an auditor, a cook, and the one who reads the manual - four agents + the passives they leave you.", "preview": "5:14 AM — your phone overrides silent for a stranger YELLING about your numbers.", "chars": [{"who": "Sam", "gift": "the map - gets you oriented and moving", "romance": "platonic"}, {"who": "Hana", "gift": "the dawn discipline - show up, push past the wall", "romance": "platonic"}, {"who": "Kenji", "gift": "read the ledger - see where it really goes", "romance": "platonic"}, {"who": "Mei", "gift": "the rhythm of the kitchen - feed yourself right", "romance": "platonic"}]}, {"name": "The Wingman", "slug": "the-wingman", "kind": "campaign", "summary": "Five coaches who ready you for REAL people — and are never the date.", "cozy": 2, "cozy100": 41, "type": "Coach -> Graduation", "genre": "Contemporary (dating-readiness)", "length": "Long - 25 rounds", "lenBand": "Long", "age": "Teen", "trophies": "~22", "trophiesNum": 22, "theme": "The Corner", "unlocks": "Five corner agents you keep: the Opener (nerve), the Ghostwriter (words), the Reader (the room), the Mirror (presence), the Anchor (your worth) - and what each taught you.", "preview": "A loud stranger claps your shoulder: “Nope. Not tonight.”", "chars": [{"who": "Nico", "gift": "the nerve to walk up - beat the count", "romance": "platonic (never the date)"}, {"who": "Wes", "gift": "words that sound like you", "romance": "platonic (opt-in 'co-writer' confidant undertone, NOT romance)"}, {"who": "Sloane", "gift": "the read on the room", "romance": "platonic"}, {"who": "Remy", "gift": "drop the act - presence", "romance": "platonic"}, {"who": "Mara", "gift": "your worth, off the table", "romance": "platonic"}]}, {"name": "The Long Hunt", "slug": "long-hunt", "kind": "campaign", "summary": "Oathed to the lodge's coldest, best hunter on night one - then the long climb to learn who's really on the other end of the rope.", "cozy": 2, "cozy100": 41, "type": "Partner -> Romance", "genre": "Dark fantasy (hunters' lodge)", "length": "Short - 7 nights", "lenBand": "Short", "age": "Mature", "trophies": "~7", "trophiesNum": 7, "theme": "Parchment (cold)", "unlocks": "Rope-craft you keep - the knots, the read of the dark, the nerve to make the drop - and the bond with the one on the other end of the rope.", "preview": "He checks your knots like he’s already writing the report on how they failed.", "chars": [{"who": "Roan", "gift": "the rope-craft - survive the dark; and the other end of the rope", "romance": "ROMANCEABLE (M/M slow-burn; you steer partner-or-trusted-second)"}]}, {"name": "The Hearth", "slug": "the-hearth", "kind": "concept", "summary": "A gentle life — somewhere warm to land when everything else is too loud.", "cozy": 5, "cozy100": 96, "type": "Companion -> Rest", "genre": "Cozy slice-of-life (gentle / iyashikei)", "length": "projected Standard", "lenBand": "Standard", "age": "All Ages", "trophies": "projected ~8 (gentle, no grind)", "trophiesNum": 8, "theme": "Cozy / cottagecore", "unlocks": "A home and the small rituals that make a day kind - companions who hold space, not homework.", "preview": "Mismatched mugs, bread cooling on the sill. Sit. Stay a while.", "chars": [{"who": "the keeper of the hearth", "gift": "permission to rest - somewhere warm to land", "romance": "platonic"}, {"who": "a slow companion", "gift": "the small rituals - tea, a walk, a quiet hour", "romance": "platonic"}]}, {"name": "The Bench", "slug": "the-bench", "kind": "concept", "summary": "A washed-up coach drags you off the bench onto a team that actually needs you.", "cozy": 2, "cozy100": 41, "type": "Coach -> Graduation", "genre": "Sports / team", "length": "projected Long (a season)", "lenBand": "Long", "age": "Teen", "trophies": "projected ~18", "trophiesNum": 18, "theme": "Vibrant — team sport", "unlocks": "An athlete's toolkit you keep - train when no one's watching, compete, and a team that has your back.", "preview": "“You’ve been on that bench all season. Get up.”", "chars": [{"who": "the hard head coach", "gift": "the drill - push past the wall", "romance": "platonic"}, {"who": "the captain", "gift": "pulls you onto the team - belonging", "romance": "platonic"}, {"who": "a rival-school foil", "gift": "the measure - who you're really up against", "romance": "platonic"}, {"who": "the trainer", "gift": "reads your body - recover right", "romance": "platonic"}]}, {"name": "The Sect", "slug": "the-sect", "kind": "concept", "summary": "A cold master takes you on as the last disciple - learn the forms, climb the ranks, surpass them.", "cozy": 3, "cozy100": 60, "type": "Mentor -> Mastery", "genre": "Cultivation fantasy (wuxia / murim)", "length": "projected Epic (the climb)", "lenBand": "Epic", "age": "All Ages", "trophies": "projected ~24 (the ranks)", "trophiesNum": 24, "theme": "Wuxia / cultivation", "unlocks": "A deep-practice discipline you keep - the patience to grind toward mastery, one form at a time - and a technique that's yours for life.", "preview": "“Again. The form is wrong. Again.”", "chars": [{"who": "the cold master", "gift": "the technique - the forms, the climb", "romance": "platonic"}, {"who": "the senior disciple", "gift": "the handoff - what comes after the basics", "romance": "platonic"}, {"who": "a rival-sect foil", "gift": "the measure of your climb", "romance": "platonic"}, {"who": "the keeper of records", "gift": "the lore - why the forms are the forms", "romance": "platonic"}]}, {"name": "The Workshop", "slug": "the-workshop", "kind": "concept", "summary": "An old maker takes you into the workshop - learn to build the thing, not just buy it.", "cozy": 4, "cozy100": 81, "type": "Mentor -> Mastery", "genre": "Craft / maker (artisan)", "length": "projected Standard", "lenBand": "Standard", "age": "All Ages", "trophies": "projected ~14", "trophiesNum": 14, "theme": "Warm craft", "unlocks": "A maker's hands you keep - the patience to build the thing, not just buy it - and a maker's eye for life.", "preview": "“Don’t buy it — we’ll make it. Hands here.”", "chars": [{"who": "the gruff master maker", "gift": "the craft - make something real", "romance": "platonic"}, {"who": "an apprentice peer", "gift": "the bench beside you", "romance": "platonic"}, {"who": "a materials-merchant", "gift": "the economy of the craft", "romance": "platonic"}, {"who": "the keeper of the old tools", "gift": "the lineage of making", "romance": "platonic"}]}, {"name": "The Greenroom", "slug": "the-greenroom", "kind": "concept", "summary": "A burnt-out producer agrees to get you stage-ready - one open mic at a time.", "cozy": 2, "cozy100": 41, "type": "Coach -> Graduation", "genre": "Contemporary (performance / backstage)", "length": "projected Long", "lenBand": "Long", "age": "Teen", "trophies": "projected ~18", "trophiesNum": 18, "theme": "Vibrant backstage", "unlocks": "Stage agents you keep - the nerve to perform, a voice that's yours, the instinct to read a room - taken to any stage.", "preview": "“Open mic’s in ten. You’re going up. Breathe.”", "chars": [{"who": "the burnt-out producer", "gift": "the eye - get you stage-ready", "romance": "platonic (never the star)"}, {"who": "a vocal / movement coach", "gift": "your voice, your body", "romance": "platonic"}, {"who": "a stage-veteran peer", "gift": "what the green room teaches", "romance": "platonic"}, {"who": "a sound tech", "gift": "the unseen craft that holds the show", "romance": "platonic"}]}, {"name": "The Long Way Back", "slug": "the-long-way-back", "kind": "concept", "summary": "Someone who's been to the bottom shows you the climb back - one honest day at a time.", "cozy": 3, "cozy100": 60, "type": "Coach -> Graduation", "genre": "Contemporary (comeback / recovery)", "length": "projected Standard", "lenBand": "Standard", "age": "Mature", "trophies": "projected ~12", "trophiesNum": 12, "theme": "Grounded warm", "unlocks": "A comeback discipline you keep - the small daily climb, the resilience to get back up - and the belief someone held for you, now yours to hand on.", "preview": "“One honest day. That’s all I’m asking. Then another.”", "chars": [{"who": "a recovered guide who's been there", "gift": "the climb back - one honest day", "romance": "platonic (a guide, NOT a counselor)"}, {"who": "a peer a few steps ahead", "gift": "proof it's walkable", "romance": "platonic"}, {"who": "an honest accountability voice", "gift": "the kind, hard truth", "romance": "platonic"}, {"who": "the one you later hold the door for", "gift": "the inversion - you become the guide", "romance": "platonic"}]}, {"name": "The Far Shore", "slug": "the-far-shore", "kind": "concept", "summary": "An old guide walks you to the edge of the map - then steps back, because the rest is yours to cross.", "cozy": 3, "cozy100": 60, "type": "Guide -> Self-reliance", "genre": "Quest fantasy (mentor-hero)", "length": "projected Epic (the journey)", "lenBand": "Epic", "age": "All Ages", "trophies": "projected ~20", "trophiesNum": 20, "theme": "Epic parchment", "unlocks": "Self-reliance you keep - the wayfinding to go where no one can follow - and the courage to cross the unknown alone.", "preview": "“This is as far as I go. The rest of the map is yours.”", "chars": [{"who": "the old guide", "gift": "the wayfinding - walks you to the edge", "romance": "platonic"}, {"who": "a fellow traveler", "gift": "the road shared, for a while", "romance": "platonic"}, {"who": "a trickster foil", "gift": "the unexpected turn", "romance": "platonic"}, {"who": "the keeper of the threshold", "gift": "what waits at the crossing", "romance": "platonic"}]}];
+const COZY={1:{g:'\u{1F525}',l:'Bracing',c:'#b81f1c'},2:{g:'⚡',l:'Charged',c:'#c2691f'},3:{g:'☕',l:'Warm',c:'#a8841f'},4:{g:'\u{1F6CB}',l:'Cozy',c:'#5a8a3a'},5:{g:'\u{1F56F}',l:'Cocoon',c:'#2d6a4a'}};
+const LEN={Short:1,Standard:2,Long:3,Epic:4};
+let layout='table',cozyMode='icon',extra='none',group='kind',sort='default';
+const expanded=new Set(),glimpse={};
+const esc=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const rom=r=>/romanceable/i.test(r)?' <span class=rom>♥</span>':'';
+// cozy display variants
+function czd(t){const k=COZY[t.cozy]||COZY[3];
+  if(cozyMode==='score')return `<span class=czs style="border-color:${k.c};color:${k.c}">${t.cozy100}</span>`;
+  if(cozyMode==='bar')return `<span class=czbar title="Cozy ${t.cozy100}/100"><i style="width:${t.cozy100}%;background:${k.c}"></i></span><b style="color:${k.c}">${k.g}</b>`;
+  return `<span class=cz style="border-color:${k.c};color:${k.c}"><span>${k.g}</span><b>${k.l}</b><span class=n>${t.cozy}/5</span></span>`;}
+function gallery(t){return `<div class=gal>${t.chars.map(c=>`<div class=galcard><div class=galframe>${esc(c.who).replace(/^(the |a |an )/i,'').charAt(0).toUpperCase()}</div><div class=galname>${esc(c.who.split(' ').slice(-1)[0])}</div></div>`).join('')}<span class=galcap>owner-submitted art slots</span></div>`;}
+function extraEl(t){if(extra==='preview'&&t.preview)return `<div class=gp>${esc(t.preview)}</div>`;if(extra==='gallery')return gallery(t);return '';}
+function detail(t){
+  const chips=t.chars.map((c,i)=>`<button class="charchip ${glimpse[t.slug]===i?'on':''}" data-g="${t.slug}|${i}">${esc(c.who)}${rom(c.romance)}</button>`).join('');
+  let gl='';const gi=glimpse[t.slug];
+  if(gi!=null&&t.chars[gi]){const c=t.chars[gi];gl=`<div class=glimpse><b>${esc(c.who)}</b> gives you: ${esc(c.gift)}<br><span class=lab>Relationship</span>${esc(c.romance)}</div>`}
+  return `<div class=detail><div><span class=lab>Summary</span>${esc(t.summary)}</div>
+    <div style="margin-top:6px"><span class=lab>Characters — tap a name</span><div class=chips>${chips}</div>${gl}</div>
+    <div style="margin-top:6px"><span class=lab>Unlocks</span>${esc(t.unlocks)}</div>
+    <div class=spec><span><span class=lab>Type</span>${esc(t.type)}</span><span><span class=lab>Length</span>${esc(t.length)}</span><span><span class=lab>Genre</span>${esc(t.genre)}</span><span><span class=lab>Theme</span>${esc(t.theme)}</span><span><span class=lab>Trophies</span>${esc(t.trophies)}</span><span><span class=lab>Age</span>${esc(t.age)}</span></div></div>`;
+}
+function srt(items){const a=[...items];if(sort==='cozy')a.sort((x,y)=>y.cozy-x.cozy);else if(sort==='length')a.sort((x,y)=>(LEN[y.lenBand]||0)-(LEN[x.lenBand]||0));else if(sort==='trophies')a.sort((x,y)=>y.trophiesNum-x.trophiesNum);return a;}
+function groups(){if(group==='kind')return[['Campaigns — playable now',DATA.filter(t=>t.kind==='campaign')],['Concepts — in the pipeline',DATA.filter(t=>t.kind==='concept')]];
+  if(group==='cozy'){let g=[];for(let n=5;n>=2;n--){const it=DATA.filter(t=>t.cozy===n);if(it.length)g.push([`${COZY[n].g} ${COZY[n].l} (${n}/5)`,it])}return g}
+  return [...new Set(DATA.map(t=>t.type))].map(tp=>[tp,DATA.filter(t=>t.type===tp)]);}
+function rTable(rows){const cols=[['Title',''],['Cozy','cozy'],['Type',''],['Len','length'],['Genre',''],['Age','age'],['\u{1F3C6}','trophies']];
+  const head=`<tr>${cols.map(([h,s])=>`<th ${s?`data-s="${s}"`:''}>${h}</th>`).join('')}</tr>`;
+  const body=rows.map(t=>{const o=expanded.has(t.slug);const ex=extraEl(t);
+    let r=`<tr class=tw data-r="${t.slug}"><td><span class=arrow>${o?'▾':'▸'}</span> <span class=tname>${esc(t.name)}</span> <span class=kindtag>${t.kind}</span>${ex}</td><td>${czd(t)}</td><td>${esc(t.type)}</td><td>${esc(t.lenBand)}</td><td>${esc(t.genre)}</td><td>${esc(t.age)}</td><td>${esc(t.trophies)}</td></tr>`;
+    if(o)r+=`<tr><td colspan=7 style="padding:0 0 2px">${detail(t)}</td></tr>`;return r;}).join('');
+  return `<table>${head}${body}</table>`;}
+function rFic(rows){return rows.map(t=>{const o=expanded.has(t.slug);
+  return `<div class=fic><div class=top data-r="${t.slug}"><span class=nm>${esc(t.name)}</span><span class=kindtag>${t.kind} ${o?'▾':'▸'}</span></div>
+   <div class=meta>${czd(t)}<span>· ${esc(t.type)}</span><span>· ${esc(t.lenBand)}</span><span>· ${esc(t.genre)}</span><span>· ${esc(t.age)}</span><span>· \u{1F3C6}${esc(t.trophies)}</span></div>
+   ${extra!=='none'?`<div style="padding:0 12px">${extraEl(t)}</div>`:''}
+   <div class=blurb data-r="${t.slug}">${esc(t.summary)}</div>${o?detail(t):''}</div>`;}).join('');}
+function rSpine(rows){return rows.map(t=>{const o=expanded.has(t.slug);const k=COZY[t.cozy]||COZY[3];
+  return `<div class=spine style="border-left-color:${k.c}" data-r="${t.slug}"><div class=scol>${czd(t)}</div>
+   <div class=body><div class=nm>${esc(t.name)} <span class=kindtag>${t.kind} ${o?'▾':'▸'}</span></div><div class=sm>${esc(t.summary)}</div>${extra!=='none'?extraEl(t):''}<div class=st>${esc(t.type)} · ${esc(t.lenBand)} · ${esc(t.genre)} · ${esc(t.age)} · \u{1F3C6}${esc(t.trophies)}</div></div></div>${o?detail(t):''}`;}).join('');}
+function render(){
+  for(const [a,v] of [['l',layout],['cz',cozyMode],['ex',extra],['grp',group],['s',sort]])
+    document.querySelectorAll(`[data-${a}]`).forEach(b=>b.classList.toggle('on',b.dataset[a==='l'?'l':a==='cz'?'cz':a==='ex'?'ex':a==='grp'?'grp':'s']===v));
+  const R={table:rTable,fic:rFic,spine:rSpine}[layout];
+  document.getElementById('app').innerHTML=groups().map(([label,items])=>items.length?`<div class=grouphead>${esc(label)} <span>(${items.length})</span></div>`+R(srt(items)):'').join('');
+}
+document.addEventListener('click',e=>{
+  for(const a of ['l','cz','ex','grp','s']){const el=e.target.closest(`[data-${a}]`);if(el){const v=el.dataset[a];if(a==='l')layout=v;else if(a==='cz')cozyMode=v;else if(a==='ex')extra=v;else if(a==='grp')group=v;else sort=v;render();return;}}
+  const c=e.target.closest('[data-g]');if(c){const p=c.dataset.g.split('|');glimpse[p[0]]=glimpse[p[0]]===+p[1]?null:+p[1];render();return;}
+  const r=e.target.closest('[data-r]');if(r){const sl=r.dataset.r;expanded.has(sl)?expanded.delete(sl):expanded.add(sl);render();return;}
+});
+render();
+</script></body></html>

@@ -4,7 +4,7 @@
 // inside the fiction — deliberately separate from the in-fiction Codex (/wiki)
 // so the spoiler-safe, in-world discipline there is never diluted by craft talk.
 // Sources: docs/design/story-engine.md, storybuilding-guide.md, rpg-framing.md,
-// rel-tiers.md, achievements-and-unlocks.md + test/engine_pressure_test.dart.
+// relationship-status-and-identity.md (REL LADDER), achievements-and-unlocks.md + test/engine_pressure_test.dart.
 
 import Link from "next/link";
 import { FandomShell } from "../_components/FandomShell";

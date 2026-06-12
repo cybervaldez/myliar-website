@@ -10,9 +10,9 @@ import parity from "../lib/parity.generated.json";
 const TOOLS = [
   { href: "/the-engine", label: "The Engine", desc: "how it works (essay)" },
   { href: "/concepts", label: "Concepts", desc: "theme slate — pick what to build" },
+  { href: "/play", label: "Play — the slate", desc: "macro browser + scorecard (cozy · cast · unlocks)" },
   { href: "/campaigns", label: "Campaigns", desc: "daily events, by campaign" },
   { href: "/chat", label: "Chat", desc: "the dossier the arc builds toward" },
-  { href: "/cards", label: "Cards", desc: "shareable moment cards" },
   { href: "/animations", label: "Animations", desc: "motion lab — prototype → Flutter" },
 ];
 
@@ -35,7 +35,7 @@ export function FandomShell({
   active,
   children,
 }: {
-  active: "/the-engine" | "/concepts" | "/campaigns" | "/chat" | "/cards";
+  active: "/the-engine" | "/concepts" | "/play" | "/campaigns" | "/chat" | "/animations";
   children: React.ReactNode;
 }) {
   return (
@@ -66,9 +66,13 @@ export function FandomShell({
                 {t.href === "/campaigns" && CAMPAIGNS.length > 0 && (
                   <div className="ml-2 mt-1 mb-1 space-y-0.5 border-l border-[#dee1e6] pl-2">
                     {CAMPAIGNS.map((c) => (
-                      <Link key={c.id} href={`/campaigns/${c.id}`} className="block text-[11px] leading-tight text-[#0645ad] hover:underline">
-                        {c.name} <span className="text-[#72777d]">· {c.days}d</span>
-                      </Link>
+                      <div key={c.id} className="flex items-center justify-between gap-1">
+                        <Link href={`/campaigns/${c.id}`} className="block text-[11px] leading-tight text-[#0645ad] hover:underline">
+                          {c.name} <span className="text-[#72777d]">· {c.days}d</span>
+                        </Link>
+                        {/* completed campaigns (days > 0) get an animated play preview */}
+                        <Link href={`/play/${c.id}`} title={`Play ${c.name} (preview)`} className="text-[10px] leading-none text-[#0645ad] hover:underline shrink-0">▶ play</Link>
+                      </div>
                     ))}
                   </div>
                 )}

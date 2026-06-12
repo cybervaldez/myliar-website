@@ -216,9 +216,86 @@ export const itemSlug = (it: Item): string =>
   (it.id ?? it.name).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60);
 export const itemBySlug = (slug: string): Item | undefined =>
   parity.items.find((it) => itemSlug(it) === slug);
-// Light web humanization of in-fiction lexicon tokens ([pic*] → pic, [drawer]
-// → drawer) so Field Notes read clean. (The app runs the fuller humanizeLexicon.)
-export const humanizeLexicon = (s: string): string => s.replace(/\[([^\]]+?)\*?\]/g, "$1");
+// Display-time lexicon substitution — a faithful 1:1 port of the Flutter app's
+// lib/lexicon.dart humanizeLexicon(), so the WEBSITE (wiki, codex, /play) shows
+// the SAME player-facing prose the app does. Authoring anchors like "[the floor]"
+// / "[bell*]" / "`,` outdoor grass" are realm-map grammar for the generation
+// pipeline, NOT meant to render to players. Keep this in lockstep with the Dart.
+const _objectTokens: Record<string, string> = {
+  recipe: "the recipe", ledger: "the ledger", bell: "the bell", clip: "the training log",
+  pic: "the photo", notes: "the notes wall", drawer: "the drawer", desk: "the desk",
+  "foam-roller": "the foam roller", noticeboard: "the noticeboard", bleachers: "the bleachers",
+  track: "the track", bench: "the bench", prep: "the prep station", line: "the line",
+  mise: "the mise station", "dish pit": "the dish pit", "courtyard center": "the courtyard",
+  "portal gate": "the portal gate",
+  urn: "the urn", till: "the till", shelf: "the shelf", book: "the burnt book", gate: "the gate", stall: "the stall",
+};
+const _tilePhrases: Record<string, string> = {
+  "outdoor grass": "the grass", "commercial tile": "the kitchen floor", "neutral tile": "the floor",
+};
+const _bracketToken = /\[([^[\]]+?)\]/g;
+const _backtickGlyph = /`[^`]`(\s+[a-z]+(?:\s+[a-z]+)?)?/g;
+// A word that already determines the noun — when it immediately precedes a
+// token, the injected "the" is dropped ("a [desk]" → "a desk", "Kenji's
+// [ledger*]" → "Kenji's ledger"). The 's branch must be a true possessive:
+// contraction stems ("that's the recipe" = "that is") keep the article.
+const _precedingDeterminer = new RegExp(
+  "(?:\\b(?:a|an|the|his|her|their|your|my|our|its)" +
+    "|\\b(?!(?:that|it|what|here|there|she|he|who|let|where|how|when|why" +
+    "|everything|something|anything|nothing|everyone|someone|anyone|one)')" +
+    "\\w+'s)\\s*$",
+  "i",
+);
+
+// Fit a substitution into its surroundings: drop the injected article when
+// the preceding word already determines the noun, and drop the trailing word
+// when the very next word repeats it ("[notes*] wall" → "the notes wall").
+const _fitContext = (input: string, start: number, end: number, sub: string): string => {
+  let s = sub;
+  if (s.toLowerCase().startsWith("the ") && _precedingDeterminer.test(input.slice(0, start))) {
+    s = s.slice(4);
+  }
+  const lastWord = s.includes(" ") ? s.split(" ").pop()! : s;
+  const follow = /^\s+([A-Za-z-]+)/.exec(input.slice(end));
+  if (follow && follow[1].toLowerCase() === lastWord.toLowerCase()) {
+    s = s.slice(0, s.length - lastWord.length).trimEnd();
+  }
+  return s;
+};
+
+/** Convert authoring lexicon tokens into player-facing prose. Idempotent. */
+export const humanizeLexicon = (raw: string): string => {
+  if (!raw) return raw;
+  let out = raw;
+  // 1. Backtick map-glyphs first ("`,` outdoor grass" → "the grass"; bare "`:`" → "").
+  out = out.replace(_backtickGlyph, (m, g1: string | undefined, offset: number, full: string) => {
+    const trailing = (g1 ?? "").trim().toLowerCase();
+    if (!trailing) return "";
+    const sub = _tilePhrases[trailing] ?? trailing;
+    return _fitContext(full, offset, offset + m.length, sub);
+  });
+  // 2. Bracket object-tokens ("[bell*]" → "the bell"; "[prep] zone" → "the prep station zone").
+  out = out.replace(_bracketToken, (m, inner: string, offset: number, full: string) => {
+    let v = inner.trim();
+    if (v.endsWith("*")) v = v.slice(0, -1);
+    const key = v.toLowerCase();
+    let sub: string;
+    if (key in _objectTokens) {
+      sub = _objectTokens[key];
+    } else {
+      // An inner that already carries its article ("[the floor]") is not
+      // double-articled by the graceful default.
+      const cleaned = v.replace(/[_-]/g, " ").trim();
+      if (!cleaned) return "";
+      sub = cleaned.toLowerCase().startsWith("the ") ? cleaned : `the ${cleaned}`;
+    }
+    return _fitContext(full, offset, offset + m.length, sub);
+  });
+  // 3. Tidy doubled articles (CASE-PRESERVING — "The the grass" keeps its
+  //    capital) + whitespace the substitution can create.
+  out = out.replace(/\b(the)\s+the\b/gi, "$1").replace(/ {2,}/g, " ").replace(/ +([.,;:!?])/g, "$1");
+  return out.trim();
+};
 
 export const mysteryRoster = (): MysteryCharacter[] => parity.mysteryRoster;
 export const mysteryById = (id: string): MysteryCharacter | undefined =>

@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Front Door — identity + mechanics/achievements (Wingman)</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f2ebdd;--ink:#2a2a26;--forest:#2d4a2b;--red:#b81f1c;--soft:#6f6a5c;--line:#cdc2a8;--gold:#9a7b1f;--shade:#fffaf0;--theme-display:Anton,Impact,sans-serif;}
+*{box-sizing:border-box}
+body{margin:0;background:#e7ddc7;color:var(--ink);font-family:Lora,Georgia,serif;font-size:15px;line-height:1.5;padding:16px 12px 100px}
+h1{font-family:Anton;font-weight:400;letter-spacing:.5px;font-size:21px;margin:0 0 3px;text-align:center}
+.intro{max-width:500px;margin:0 auto 14px;color:var(--soft);font-size:12.5px;text-align:center}.intro b{color:var(--ink)}
+.stage{max-width:430px;margin:0 auto}
+.toprow{display:flex;justify-content:flex-end;align-items:center;gap:10px;padding:2px 2px 8px}
+.topright{display:flex;align-items:center;gap:11px}
+.bag{font:inherit;font-size:13px;color:var(--soft);background:none;border:none;cursor:pointer;padding:2px 0}.bag b{color:var(--forest)}
+.romtog{font-family:JetBrains Mono,monospace;font-size:9.5px;letter-spacing:.05em;color:#c2bba6;background:none;border:none;cursor:pointer;padding:2px 0}.romtog.on{color:#c14b6b}
+.namebadge{font:inherit;font-size:12px;color:var(--soft);background:none;border:none;cursor:pointer;padding:2px 0;white-space:nowrap}.namebadge b{color:var(--forest)}.namebadge .pron{color:var(--gold);font-style:italic}.namebadge .ed{color:var(--gold);font-size:11px}
+.phone{background:var(--paper);border:2px solid var(--ink);box-shadow:5px 5px 0 #00000014;padding:16px 16px 22px;min-height:460px}
+.eyebrow{font-family:JetBrains Mono,monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin:0 0 9px}
+.pull{border:1.5px dashed var(--red);background:#b81f1c0a;padding:9px 11px;margin:0 0 12px}
+.pull .l{font-family:JetBrains Mono,monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:3px}
+.pull p{margin:0;font-size:14.5px;font-style:italic;color:#5a2422}
+.env{font-size:14.5px;line-height:1.58;margin:0 0 10px}
+.beat{font-size:15px;line-height:1.6;margin:10px 0 10px;border-left:2px solid var(--forest);padding-left:11px}
+.beat .cut{color:var(--soft)} .beat .pron-cut{font-weight:700;font-style:italic}
+.beat .char{color:var(--forest);font-weight:600;border-bottom:1.5px dotted var(--forest);cursor:pointer}
+.ta{margin:4px 0 2px}
+.tachoice{display:block;width:100%;text-align:left;background:none;border:none;font:inherit;font-size:15px;color:var(--forest);cursor:pointer;padding:7px 0}.tachoice:hover{color:var(--red)}
+.tachoice::before{content:"> ";color:var(--gold);font-weight:600}
+.tachoice .s{display:block;font-size:11.5px;color:var(--soft);font-style:italic;margin:1px 0 0 14px}
+.reroll{font-size:11px;color:var(--soft);background:none;border:none;cursor:pointer;text-decoration:underline;margin-top:10px;padding:0}
+.woven{font-size:14.5px;line-height:1.62;margin:0 0 6px;color:#3a382f}
+.woven .char{color:var(--forest);font-weight:600;border-bottom:1.5px dotted var(--forest);cursor:pointer;white-space:nowrap}.woven .char:hover{background:#2d4a2b14}
+.woven .char.rom{color:#c14b6b;border-bottom-color:#c14b6b}
+.mainbtn{display:block;width:100%;text-align:left;background:var(--shade);border:2px solid var(--forest);padding:13px 15px;cursor:pointer;box-shadow:3px 3px 0 #2d4a2b22}.mainbtn:hover{background:#fff}
+.mainbtn .th{font-size:15px;font-style:italic;color:var(--ink)}.mainbtn .ac{font-size:13px;color:var(--forest);margin-top:6px;font-weight:600}.mainbtn .ac::before{content:"▶ ";font-weight:400}
+.bridge{text-align:center;padding:20px 14px}
+.bridge .post{font-size:14.5px;font-style:italic;text-align:left;margin:0 0 26px;color:#3a382f}
+.bridge .clab{font-family:JetBrains Mono,monospace;font-size:10px;letter-spacing:.42em;color:var(--soft);text-indent:.42em}
+.bridge .ctitle{font-family:var(--theme-display);font-weight:400;font-size:38px;color:var(--ink);margin:6px 0 4px;line-height:1.05;text-transform:capitalize}
+.bridge .crule{width:54px;height:2px;background:var(--gold);margin:8px auto 8px}
+.bridge .ccredit{font-size:11.5px;color:var(--soft);font-style:italic}
+.begin{display:inline-block;margin-top:20px;font-family:Anton;font-size:15px;letter-spacing:.05em;padding:9px 24px;background:var(--forest);color:var(--paper);text-decoration:none;border:2px solid var(--forest)}
+.back{display:block;margin:14px auto 0;font:inherit;font-size:12px;background:none;border:none;color:var(--soft);text-decoration:underline;cursor:pointer}
+/* floating popover (pronoun list, first-impression, char reads, bag) */
+#pop{position:absolute;z-index:60;width:300px;max-width:calc(100vw - 20px);background:var(--ink);color:var(--paper);padding:12px 13px;border:1px solid #000;box-shadow:4px 4px 0 #00000033;display:none;font-size:14px;line-height:1.45}
+#pop .ph{display:flex;align-items:center;gap:7px;font-family:JetBrains Mono,monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:#c9b98a;margin-bottom:7px}#pop .ph .who{flex:1;line-height:1.3}#pop .ph .who.rom{color:#e8889f}
+#pop .qbtn{flex:none;width:17px;height:17px;line-height:14px;text-align:center;border:1px solid #c9b98a55;border-radius:50%;background:none;color:#c9b98a;font-size:11px;cursor:pointer;padding:0}#pop .qbtn:hover{color:#fff;border-color:#fff}
+#pop .qlab{flex:none;font-family:JetBrains Mono,monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:#c9b98a}
+#pop .achfoot{display:block;width:100%;text-align:left;margin-top:10px;padding:9px 0 0;border:none;border-top:1px solid #ffffff1f;background:none;font:inherit;font-size:11.5px;color:#d8c98e;cursor:pointer}#pop .achfoot b{color:#fff}#pop .achfoot:hover{color:#fff}
+#pop .bagach{display:block;width:100%;text-align:left;background:none;border:none;font:inherit;cursor:pointer;margin:0 0 10px;padding:0}#pop .bagach b{color:#e7e0cf}#pop .bagach div{color:#a59c84;font-size:12px;margin-top:2px}#pop .bagach:hover b{color:#fff}
+#pop .read{font-style:italic;font-size:13.5px;color:#efe7d4;margin:0 0 4px}
+#pop .pmove{display:block;width:100%;text-align:left;font:inherit;font-size:13.5px;padding:9px 11px;background:#b81f1c;color:#fff;border:1px solid #000;cursor:pointer;margin-top:8px}#pop .pmove .sub{display:block;font-size:10.5px;opacity:.8;margin-top:2px}
+#pop .namefield{font:inherit;font-size:13px;padding:5px 9px;border:1.5px solid #5a5446;background:#2a2a26;color:#e7e0cf;width:100%}
+#pop .pm{font-size:11.5px;color:#a59c84;margin-top:7px}
+#pop .dchoice{display:block;width:100%;text-align:left;background:none;border:none;font:inherit;font-size:14.5px;color:#e7e0cf;cursor:pointer;padding:6px 2px}
+#pop .dchoice::before{content:"> ";color:#c9b98a;font-weight:600}#pop .dchoice:hover{color:#fff}
+#pop .dchoice.cont{color:#a59c84;font-size:13px;border-top:1px solid #ffffff1f;margin-top:6px;padding-top:9px}
+#pop .bagitem{margin:0 0 10px}#pop .bagitem b{color:#e7e0cf}#pop .bagitem div{color:#a59c84;font-size:12px;margin-top:2px}
+/* bottom-sheet modals (mechanic / portrait / achievement) — unobtrusive, transparent catcher (tap-outside closes), no dim */
+.sheet{position:fixed;inset:0;background:transparent;display:none;align-items:flex-end;justify-content:center;padding:0 16px 18px}
+#mech{z-index:80}#art{z-index:82}#ach{z-index:95}
+.sheet .card{position:relative;max-width:360px;width:100%;background:var(--shade);border:2px solid var(--forest);box-shadow:5px 5px 0 #2d4a2b44;padding:16px 16px 14px;animation:sheetup .26s ease}
+@keyframes sheetup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.sheet .mclose{position:absolute;top:7px;right:9px;font:inherit;font-size:17px;line-height:1;color:var(--soft);background:none;border:none;cursor:pointer;padding:2px}.sheet .mclose:hover{color:var(--ink)}
+.sheet .mlab{font-family:JetBrains Mono,monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--forest);margin-bottom:7px}
+.sheet .mtitle{font-family:Anton;font-weight:400;font-size:23px;color:var(--ink);margin:0 0 8px;line-height:1.08}
+.sheet .mtext{font-size:14px;color:#3a382f;margin:0 0 16px;line-height:1.5}
+.sheet .mbtn{font-family:Anton;font-size:14px;letter-spacing:.04em;padding:8px 22px;background:var(--forest);color:var(--paper);border:2px solid var(--forest);cursor:pointer}
+.sheet .achfoot{display:block;width:100%;text-align:left;margin-top:13px;padding:11px 0 0;border:none;border-top:1px solid var(--line);background:none;font:inherit;font-size:12px;color:var(--gold);cursor:pointer}.sheet .achfoot b{color:var(--ink)}.sheet .achfoot:hover{color:var(--ink)}
+.sheet .portrait{border:1.5px solid #cdbfa0;background:#fff;padding:13px 14px;font-style:italic;font-size:14px;color:#3a382f;line-height:1.55;margin:2px 0 7px}
+.sheet .pm2{font-size:11px;color:var(--soft);font-style:italic}
+.note{font-size:11.5px;color:var(--soft);margin:16px auto 0;border-top:1px solid var(--line);padding-top:9px;max-width:430px;text-align:center}
+/* ── WHAT-CHANGES matrix (birds-eye; reproducible per campaign) ── */
+.changes{max-width:790px;margin:36px auto 0;padding:0 6px}
+.changes h2{font-family:Anton;font-weight:400;font-size:19px;letter-spacing:.3px;margin:0 0 4px;color:var(--ink);text-align:center}
+.changes .sub{font-size:12px;color:var(--soft);margin:0 auto 6px;max-width:640px;text-align:center}
+.changes h3{font-family:JetBrains Mono,monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--red);margin:22px 0 6px}
+.changes .muted{color:#8f897a}
+.ctab{width:100%;border-collapse:collapse;font-size:12.5px;background:var(--paper);border:2px solid var(--ink)}
+.ctab th,.ctab td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top;line-height:1.4}
+.ctab thead th{background:var(--ink);color:var(--paper);font-family:JetBrains Mono,monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.ctab tbody th{background:#0000000a;font-weight:600;color:var(--forest);white-space:nowrap}
+.ctab tr.peer th{color:#c14b6b}
+.ctab .heart{color:#c14b6b;font-weight:600;white-space:nowrap}
+.ctab .no{color:var(--soft)} .ctab .yes{color:var(--forest);font-weight:600}
+.ctab tr.active{background:#b81f1c10}.ctab tr.active>th{background:#b81f1c18}
+.changes .legend{font-size:11.5px;color:var(--soft);font-style:italic;margin:7px 0 0}
+</style>
+</head>
+<body>
+<h1>Front door — interaction prototype</h1>
+<p style="max-width:520px;margin:0 auto 10px;text-align:center;font-size:11px;color:#8a4a4a;background:#b81f1c0c;border:1px dashed #b81f1c55;padding:6px 10px">⚠ A romance-campaign INTERACTION prototype on a Wingman <i>skin</i>. The romance parts (red names) ship on a <b>romance-first</b> campaign — <b>The Long Hunt</b> — because the real Wingman is a coaching campaign with <b>no romanceable NPC</b> (story-engine rule 11). See <code>docs/design/the-long-hunt-front-door.md</code>.</p>
+<p class="intro">Tap <b>Nico</b> for a first-impression — each popover has a <b>?</b> for their look (a portrait sheet; the gallery seed). Engage the read (Actually— / Let him
+continue) → your first <b>mechanic</b> (a bottom sheet that explains the game) with the <b>achievement</b> unlocked at its foot — tap it for the achievement card; the <b>🏆</b>
+up top collects them (like the <b>🎒</b> mechanics). A <b style="color:#c14b6b">name in red</b> is a romanceable <b>peer</b> (oriented; never a coach). Top-right <b>romance</b>
+toggles it off. Then see the <a href="#changes">What-Changes matrix ↓</a>.</p>
+
+<div class="stage"><div id="topbar"></div><div id="board"></div></div>
+<div id="pop"></div>
+<div id="mech" class="sheet" onclick="event.stopPropagation();if(event.target===this)closeMech()"></div>
+<div id="art" class="sheet" onclick="event.stopPropagation();if(event.target===this)closeArt()"></div>
+<div id="ach" class="sheet" onclick="event.stopPropagation();if(event.target===this)closeAch()"></div>
+<p class="note">Everyone has an orientation (depth, low-key). A romanceable <b>peer</b> open to you simply reads <b style="color:#c14b6b">in red</b> — a door that&rsquo;s open, never a slot to fill (it never tallies into a count), <b>never the coach</b> (dating your coach would invert &ldquo;readies you for real people&rdquo;). Oriented, not playersexual: authored from character truth, so a given pronoun may find no match here (honest, not engineered for coverage). Romance is opt-in + the top-right <b>romance</b> toggle turns it off entirely. Tap a red name → romance mechanic + achievement.</p>
+
+<section class="changes" id="changes">
+<h2>What Changes — front-door preferences → content</h2>
+<p class="sub">A birds-eye matrix of how each front-door choice reshapes <b>dialogue · cast · romance · paths</b> — the Wingman as the worked example. <b>Reproducible per campaign:</b> same columns, that campaign&rsquo;s cast/data. Rows highlight live as you play the sketch above.</p>
+
+<h3>A · Pronoun — the main lever (how you&rsquo;re read &amp; who&rsquo;s open to you)</h3>
+<table class="ctab"><thead><tr><th>You pick</th><th>Nico&rsquo;s opening read</th><th>Cast refers to you as</th><th>Romanceable (name in red)</th><th>Honest gap</th></tr></thead><tbody>
+<tr data-pron="he"><th>He / him</th><td>&ldquo;There <i>he</i>—&rdquo; <span class="muted">(cut off; correct or let stand)</span></td><td>he / him</td><td><span class="heart">Joss</span></td><td>—</td></tr>
+<tr data-pron="she"><th>She / her</th><td>&ldquo;There <i>she</i>—&rdquo;</td><td>she / her</td><td><span class="heart">Remy</span></td><td>—</td></tr>
+<tr data-pron="they"><th>They / them</th><td>&ldquo;There <i>they</i>—&rdquo;</td><td>they / them</td><td><span class="heart">Remy, Joss</span></td><td>—</td></tr>
+<tr data-pron="name"><th>Just my name</th><td>&ldquo;Just your name, then.&rdquo; <span class="muted">(no pronoun lands)</span></td><td>your name / &ldquo;you&rdquo;</td><td><span class="no">none</span></td><td>no presumption: both peers are oriented, so a gender-withheld player honestly sees no red name here</td></tr>
+</tbody></table>
+<p class="legend"><b>Paths are NOT changed by pronoun</b> — routing (which character becomes your Day 1) is steered by <i>who you walk toward</i>. Pronoun changes how you&rsquo;re <i>read &amp; addressed</i> + which peer&rsquo;s door reads open.</p>
+
+<h3>B · The other two levers</h3>
+<table class="ctab"><thead><tr><th>Lever</th><th>Choice</th><th>What changes</th></tr></thead><tbody>
+<tr><th rowspan="2">Name</th><td>Set</td><td>characters use it as a vocative (&ldquo;Sit, [name]&rdquo;); the badge shows it; name-aware lines unlock — <span class="muted">never a pronoun swap (a name isn&rsquo;t a drop-in pronoun)</span></td></tr>
+<tr><td>Blank</td><td>the story just says &ldquo;you&rdquo;; no vocative</td></tr>
+<tr data-rom="on"><th rowspan="2">Romance</th><td>On <span class="muted">(default)</span></td><td>peers open to you read in <span class="heart">red</span>; tapping one → <b>&ldquo;A Spark&rdquo;</b> achievement + the romance mechanic; a romance thread opens if you walk toward them</td></tr>
+<tr data-rom="off"><td>Off</td><td>no red names; peers are just cast (walk toward them platonically); no Spark, no romance mechanic — aro/ace never face one</td></tr>
+</tbody></table>
+
+<h3>C · The cast at a glance — who&rsquo;s romanceable &amp; why</h3>
+<table class="ctab"><thead><tr><th>Character</th><th>Archetype</th><th>Gift <span class="muted">(value at REL 0)</span></th><th>Orientation <span class="muted">(trait)</span></th><th>Player-romanceable?</th><th>Red name for</th></tr></thead><tbody>
+<tr><th>Nico · the Opener</th><td>Coach <span class="muted">· default lead</span></td><td>the approach</td><td>she / they</td><td class="no">No — coach</td><td class="no">never</td></tr>
+<tr><th>Sloane · the Reader</th><td>Coach</td><td>reading the room</td><td>he / they</td><td class="no">No — coach</td><td class="no">never</td></tr>
+<tr><th>Wes · the Ghostwriter</th><td>Coach</td><td>the right words</td><td>she / they</td><td class="no">No — coach</td><td class="no">never</td></tr>
+<tr><th>Mara · the Anchor</th><td>Coach</td><td>steadying first</td><td>she / he / they</td><td class="no">No — coach</td><td class="no">never</td></tr>
+<tr class="peer"><th>Remy · the Regular</th><td><b>Peer</b></td><td><span class="muted">— a real person</span></td><td>she / they</td><td class="yes">Yes — peer</td><td class="heart">she, they</td></tr>
+<tr class="peer"><th>Joss · the Newcomer</th><td><b>Peer</b></td><td><span class="muted">— a real person</span></td><td>he / they</td><td class="yes">Yes — peer</td><td class="heart">he, they</td></tr>
+</tbody></table>
+<p class="legend">The 4 coaches carry an orientation as low-key depth (a life of their own) but are <b>never</b> player-romanceable — dating the one readying you for real people inverts the campaign. The <b style="color:#c14b6b">red name</b> lives on <b>peers</b>: the real people the corner is readying you for.</p>
+</section>
+
+<script>
+const CAMP={eyebrow:"The Wingman · your corner"};
+const PULL="There&rsquo;s a chance you keep not-taking. You freeze at the moment that matters and let it pass — and you&rsquo;re tired of being the person who does that.";
+const ENV="You are in a bar you didn&rsquo;t pick — low light, a muted game over the bottles, a Tuesday crowd of regulars and no occasion. What you walked in with is still right there in your chest.";
+const LABELS={name:"Just my name",he:"He / him",she:"She / her",they:"They / them"};
+const SETACK={name:"Just your name, then.",he:"He it is.",she:"She it is.",they:"They it is."};
+const STARTWORD={she:"she",he:"he",they:"they"}; const PRONS=["she","he","they"];
+const MECH_WELCOME={id:"how-it-works", title:"You&rsquo;re the main character", text:"Welcome — this is <b>My Life is an RPG</b>. It turns what you&rsquo;re actually working on in life into a <b>story you play</b>, with you as the lead. The people here are coaches for what you walked in with; <b>what you say and who you step toward</b> shapes the story and how they treat you. The bond grows as you <b>outgrow needing it</b> — short scenes, no streaks, no guilt. This is your first move."};
+const ACH_WELCOME={id:"first-call", title:"On the Board", blurb:"Your first call of the night — the story&rsquo;s steering off you now."};
+const ACH_OOPS={id:"no-harm", title:"No Harm Done", blurb:"Set the Opener straight in his first ten seconds. He&rsquo;ll live — might even respect it."};
+const MECH_ROMANCE={id:"romance", title:"Someone real", text:"A name in <b style=\"color:#c14b6b\">red</b> means the door&rsquo;s open — someone here you could actually connect with. Not your corner: your corner gets you READY, and this is one of the real people they&rsquo;re readying you for. Oriented, opt-in, never forced. Chase it or keep it simple. Yours to steer."};
+const ACH_SPARK={id:"a-spark", title:"A Spark", blurb:"You looked twice at someone who&rsquo;d look back."};
+const ALL_ACH=[ACH_WELCOME,ACH_OOPS,ACH_SPARK]; const achById=(id)=>ALL_ACH.find(a=>a.id===id);
+const DEF={ id:"nico", nm:"Nico", ti:"the Opener", gift:"the approach", datingOpenTo:["she","they"],
+  appearance:"The oxblood jacket stays open no matter the weather — he wears it like a dare. Lean, wired, never quite seated; dark eyes that find the door, then you, then the angle between. Everything about him says he&rsquo;s already moving.",
+  firstImpression:"All forward motion — oxblood jacket he never zips, eyes that already found your opening. He clocks every door in the place; tonight he clocked you.",
+  wv:"is already on you — leaning off a barstool like the night owes him something, eyes on the door, then on you",
+  wvAfter:"is still angled your way, the read already behind him — easy now, like you&rsquo;ve met before",
+  onyou:"He&rsquo;s the one who clocks every door — and right now, you. He won&rsquo;t chase. He&rsquo;s waiting to see if you move.",
+  thought:"No more waiting for the right moment. There&rsquo;s never a right moment.",
+  action:"you catch his eye, already scanning the room",
+  post:"He catches you thinking it — of course he does. &ldquo;There it is,&rdquo; he says, like he&rsquo;s been waiting." };
+const ALT=[
+  {id:"sloane",nm:"Sloane",ti:"the Reader",gift:"reading the room",datingOpenTo:["he","they"],appearance:"The stillest thing at the rail: a sharp dark bob, a blazer with the sleeves pushed back, a drink she&rsquo;s holding more than drinking. Her eyes do quiet laps of the room and keep what they find. You get the sense she read you before you sat down.",wv:"reads the rail over a drink she hasn&rsquo;t touched",
+   read:"&ldquo;Sloane? Best eyes in the room — better than mine,&rdquo; Nico says. &ldquo;She&rsquo;ll teach you to read it instead of rush it. Slower. Sticks harder.&rdquo;",
+   action:"ask the one reading the room what she sees", post:"She doesn&rsquo;t look over. &ldquo;You&rsquo;ve been replaying it for ten minutes. Want to know what you actually missed?&rdquo;"},
+  {id:"wes",nm:"Wes",ti:"the Ghostwriter",gift:"the right words",datingOpenTo:["she","they"],appearance:"Glasses, an untucked shirt, ink worried into his fingers. The napkin in front of him is more crossings-out than words. He looks up like he&rsquo;s surfacing from a sentence — that half-smile of someone who always lives one draft behind the moment.",wv:"drafts something he won&rsquo;t send on a napkin full of cross-outs",
+   read:"&ldquo;Wes. If the words are what kill you, he&rsquo;s your man,&rdquo; Nico says. &ldquo;I&rsquo;d just say stop drafting and go — but he&rsquo;s not wrong either.&rdquo;",
+   action:"drift toward the guy with the napkin and the cross-outs", post:"He slides a fresh napkin toward you. &ldquo;Then we write it down before the moment, not after.&rdquo;"},
+  {id:"mara",nm:"Mara",ti:"the Anchor",gift:"steadying first",datingOpenTo:["she","he","they"],appearance:"She brought her own thermos to a bar, and somehow that tells you everything. A soft cardigan, greying curls slipping loose, both hands warming around something. The back booth is hers, and the calm there is the real kind — she isn&rsquo;t waiting on anyone.",wv:"holds the back booth, both hands around a coffee she brought in herself",
+   read:"&ldquo;Mara. Running on empty? Start there,&rdquo; Nico says, quieter. &ldquo;She&rsquo;ll get you steady before I get you moving. No shame in it.&rdquo;",
+   action:"take the seat across from the woman who isn&rsquo;t going anywhere", post:"She nudges the chair out with her foot before you ask. &ldquo;Sit. You don&rsquo;t have to say anything yet.&rdquo;"},
+  // ── PEERS (not your corner): the real people the coaches ready you for. Romanceable; oriented. Nico the wingman points you at THEM, never himself. ──
+  {id:"remy",nm:"Remy",ti:"the Regular",datingOpenTo:["she","they"],romanceableByPlayer:true,
+   appearance:"A soda going flat, a paperback soft at the spine, the loose posture of someone who&rsquo;s a regular and at peace with it. Open face, a smile that takes its time. They turn up every week — not for the crowd, you&rsquo;d guess, but on the chance the night becomes something.",
+   firstImpression:"Soda, no ice, a paperback going soft at the spine. Here every week — not for the room, you suspect, but in case the room finally says something worth staying for.",
+   wv:"nurses a soda at the end of the rail, here every week, working up to the same thing you are",
+   read:"&ldquo;Remy?&rdquo; Nico almost grins. &ldquo;Not mine to teach you — they&rsquo;re just here, same as you. That&rsquo;s the whole point of all this. Go on. Say something real.&rdquo;",
+   action:"close the gap to the regular at the end of the rail", post:"Remy clocks you coming and doesn&rsquo;t pretend not to. &ldquo;Took you long enough,&rdquo; they say. &ldquo;Sit.&rdquo;"},
+  {id:"joss",nm:"Joss",ti:"the Newcomer",datingOpenTo:["he","they"],romanceableByPlayer:true,
+   appearance:"Dressed a shade too carefully for a Tuesday — like tonight was worth the effort. Coat still on, half-turned to the door, hands unsure where to land. Bright, watchful eyes that keep re-checking whether staying was a mistake.",
+   firstImpression:"Coat still on, one eye on the door. New to this — every part of standing here costs them something, and they&rsquo;re paying it anyway.",
+   wv:"hovers near the door like leaving is still on the table, coat still on",
+   read:"&ldquo;Joss is new — first night, I&rsquo;d bet,&rdquo; Nico says. &ldquo;Not a lesson. Just someone as unsure as you were ten minutes ago. Easier to cross a room together than alone.&rdquo;",
+   action:"catch the newcomer before the door wins", post:"Joss exhales like you just made a decision for both of you. &ldquo;Okay,&rdquo; they say. &ldquo;Okay — hi.&rdquo;"},
+];
+const byId=(id)=> id===DEF.id?DEF:ALT.find(a=>a.id===id);
+// st.start = the pronoun the character calls. DEMO: random (a new player → he guesses).
+// REAL BUILD: a RETURNING player carries their saved pref here, so he reads them RIGHT → they just "Let him continue".
+const st={ name:"", pron:"name", idDone:false, resolveNote:"", chosen:null, start:PRONS[Math.floor(Math.random()*3)], mechanics:[], achievements:[], welcomed:false, romanceOn:true, romanceIntroed:false, _afterMech:null };
+// EVERYONE has an orientation (datingOpenTo) as a character trait — free depth, kept low-key (never a "preference" label).
+// ROMANCEABLE-BY-PLAYER is a SEPARATE archetype gate: only PEERS / Partner-type leads, NEVER a Coach/Mentor/Guide
+// (dating the coach inverts the campaign + the anti-dependency moat). The romanceable peer IS one of the "real people"
+// the coach readies you for — and the arc is PRACTICE that ends secure/independent, so romance REINFORCES the moat.
+// HONESTY (Gemini-vetted fixes): orientations are authored from CHARACTER truth, NOT engineered to match every player —
+// coverage is NOT guaranteed per pronoun (engineering a match for all = playersexual). name-only (gender withheld) → no
+// presumption: a heart shows only from someone open regardless, which a given campaign may simply NOT have (honest gap).
+// Romance is opt-in AND globally toggleable (st.romanceOn) so aro/ace/just-here-to-play players never face a heart.
+// The signal is just the NAME in red (open to you) — a door, not a slot/heart-to-collect: it never aggregates into a count (anti-FOMO floor).
+function romanceable(c){ if(!st.romanceOn) return false; if(!c.romanceableByPlayer) return false; const o=c.datingOpenTo||[]; if(!o.length) return false; return st.pron==="name" ? o.length>=3 : o.includes(st.pron); }
+
+function renderTop(){ const n=st.name.trim();
+  const pron=["he","she","they"].includes(st.pron)?` <span class="pron">(${st.pron})</span>`:"";
+  const bag=st.mechanics.length?`<button class="bag" onclick="openBag(event,this)" title="mechanics unlocked">🎒 <b>${st.mechanics.length}</b></button>`:"";
+  // like the 🎒 mechanics bag: a 🏆 that collects unlocked achievements; tap → the list, tap an item → its modal.
+  const achv=st.achievements.length?`<button class="bag" onclick="openAchList(event,this)" title="achievements unlocked">🏆 <b>${st.achievements.length}</b></button>`:"";
+  // explicit romance opt-out (aro/ace/just-here-to-play): OFF makes every name neutral again, no questions asked.
+  const rom=`<button class="romtog ${st.romanceOn?"on":""}" onclick="st.romanceOn=!st.romanceOn;render()" title="${st.romanceOn?"romance on — open names show in red":"romance off — hidden"}" aria-label="toggle romance">romance ${st.romanceOn?"on":"off"}</button>`;
+  document.getElementById("topbar").innerHTML=`<div class="toprow">
+    <div class="topright">${rom}${achv}${bag}<button class="namebadge" onclick="openName(event,this)" title="hold to change your name">You are <b>${n||"you"}</b>${pron} <span class="ed">✎</span></button></div></div>`; }
+function render(){ renderTop();
+  const body = st.chosen ? bridge() : (st.idDone ? phase2() : phase1());
+  document.getElementById("board").innerHTML = `<div class="phone">${body}</div>`; highlightChanges(); }
+// the What-Changes matrix lives outside #board (static) — just toggle the active row to track the live state.
+function highlightChanges(){
+  document.querySelectorAll(".ctab tr[data-pron]").forEach(r=>r.classList.toggle("active", r.dataset.pron===st.pron));
+  document.querySelectorAll(".ctab tr[data-rom]").forEach(r=>r.classList.toggle("active", r.dataset.rom===(st.romanceOn?"on":"off")));
+}
+
+function sceneHead(){ return `<div class="eyebrow">${CAMP.eyebrow}</div>
+  <div class="pull"><span class="l">What you walked in with</span><p>${PULL}</p></div><p class="env">${ENV}</p>`; }
+function phase1(){ const w=STARTWORD[st.start];
+  return `${sceneHead()}
+    <p class="beat"><span class="char" onclick="openFirstImpression(event,this)">Nico</span> clocks you and the read&rsquo;s already coming — that look he gets right before he calls it. &ldquo;There <span class="pron-cut">${w}</span><span class="cut">—&rdquo;</span></p>
+    <div class="ta">
+      <button class="tachoice" onclick="onActually(event,this)">&ldquo;Actually—&rdquo;<span class="s">cut him off before he finishes</span></button>
+      <button class="tachoice" onclick="onLetContinue(event)">Let him continue<span class="s">let his read stand</span></button>
+    </div>
+    <button class="reroll" onclick="st.start=PRONS[(PRONS.indexOf(st.start)+1)%3];render()">↻ reroll his guess (demo: ${PRONS.join(" / ")} · a returning player carries their saved pref here)</button>`; }
+function phase2(){ return `${sceneHead()}
+  ${st.resolveNote?`<p class="beat">${st.resolveNote}</p>`:""}
+  <p class="woven">Around you: ${[DEF,...ALT].map(c=>`<span class="char${romanceable(c)?" rom":""}" onclick="openChar(event,this,'${c.id}')">${c.nm}</span> ${c.wvAfter||c.wv}`).join("; ")}.</p>
+  <p style="font-size:13.5px;color:var(--soft);font-style:italic;margin:10px 0 14px">One of them is the one you walk toward first tonight. The others don&rsquo;t go anywhere.</p>
+  <button class="mainbtn" onclick="choose('${DEF.id}')"><div class="th">&ldquo;${DEF.thought}&rdquo;</div><div class="ac">${DEF.action}</div></button>`; }
+function bridge(){ const h=byId(st.chosen);
+  return `<div class="bridge"><p class="post">${h.post}</p>
+    <div class="clab">CHAPTER ONE</div><div class="ctitle">${h.ti}</div><div class="crule"></div>
+    <div class="ccredit">${h.nm}&rsquo;s title becomes your first chapter</div>
+    <a class="begin" href="#" onclick="return false">BEGIN ›</a><button class="back" onclick="st.chosen=null;render()">← step back</button></div>`; }
+window.choose=(id)=>{ st.chosen=id; closePop(); render(); };
+
+// ── bottom-sheet modals (mechanic / portrait / achievement) + the achievement record ──
+const mech=document.getElementById("mech"), art=document.getElementById("art"), ach=document.getElementById("ach");
+function recordAch(a){ if(!st.achievements.find(x=>x.id===a.id)) st.achievements.push(a); renderTop(); }
+// the achievement-unlocked title that sits at the FOOT of a popup or mechanic; tap → the achievement modal.
+function achFoot(a){ return `<button class="achfoot" onclick="event.stopPropagation();openAchievement('${a.id}')">🏆 achievement unlocked · <b>${a.title}</b> →</button>`; }
+function unlockMechanic(m, a){ if(!st.mechanics.find(x=>x.id===m.id)) st.mechanics.push(m); if(a) recordAch(a);
+  mech.innerHTML=`<div class="card"><button class="mclose" onclick="closeMech()" aria-label="close">✕</button><div class="mlab">⚙ mechanic unlocked</div><div class="mtitle">${m.title}</div><p class="mtext">${m.text}</p><button class="mbtn" onclick="closeMech()">got it</button>${a?achFoot(a):""}</div>`;
+  mech.style.display="flex"; renderTop(); }
+// got it → close + CONTINUE to whatever was next (the selections), as if the popup never happened.
+// defer one tick so the click finishing its bubble (which would closePop) lands BEFORE the next popover opens.
+window.closeMech=()=>{ mech.style.display="none"; const f=st._afterMech; st._afterMech=null; if(f) setTimeout(f,0); };
+// the achievement item modal — based on the mechanic sheet; layers ABOVE it (z 95), so closing returns you to the mechanic.
+window.openAchievement=(id)=>{ const a=achById(id); if(!a) return; ach.innerHTML=`<div class="card"><button class="mclose" onclick="closeAch()" aria-label="close">✕</button><div class="mlab">🏆 achievement unlocked</div><div class="mtitle">${a.title}</div><p class="mtext">${a.blurb}</p><button class="mbtn" onclick="closeAch()">got it</button></div>`; ach.style.display="flex"; };
+window.closeAch=()=>{ ach.style.display="none"; };
+// fires the FIRST time you engage the read (either path): the onboarding mechanic, with the welcome achievement at its FOOT, then continue.
+function welcomeOnce(thenFn){ if(st.welcomed){ thenFn(); return; }
+  st.welcomed=true; st._afterMech=thenFn; unlockMechanic(MECH_WELCOME, ACH_WELCOME); }
+
+// ── identity beat ──
+window.onActually=(e,el)=>{ e.stopPropagation(); welcomeOnce(()=>showPronounPopover(el)); };
+window.onLetContinue=(e)=>{ e.stopPropagation(); welcomeOnce(justContinue); };
+function showPronounPopover(el){
+  const order=[["he","&ldquo;He.&rdquo;"],["she","&ldquo;She.&rdquo;"],["they","&ldquo;They.&rdquo;"],["name","&ldquo;Just my name&rsquo;s fine.&rdquo;"]];
+  pop.innerHTML=order.filter(([p])=>p!==st.start).map(([p,l])=>`<button class="dchoice" onclick="setPron('${p}')">${l}</button>`).join("")
+    +`<button class="dchoice cont" onclick="justContinue()">(just continue…)</button>`;
+  pop.dataset.k="id"; place(el); }
+// correcting him (a different pronoun) → the oops achievement + the ice-breaker inside the popover.
+window.setPron=(p)=>{ st.pron=p; recordAch(ACH_OOPS);
+  pop.innerHTML=`<p class="read">&ldquo;${SETACK[p]}&rdquo; He files it like it&rsquo;s nothing, because to him it is. &ldquo;First thing I got right tonight,&rdquo; he adds, dry. &ldquo;Give me the night — there&rsquo;ll be more.&rdquo; And just like that, the standing-at-the-door feeling is gone.</p><button class="dchoice" onclick="finishId()">go on</button>${achFoot(ACH_OOPS)}`; };
+window.finishId=()=>{ st.idDone=true; closePop(); render(); };
+// accept the read he started — no post-message.
+window.justContinue=()=>{ st.pron=st.start; st.idDone=true; closePop(); render(); };
+
+// ── popovers ──
+const pop=document.getElementById("pop");
+function place(anchor){ const r=anchor.getBoundingClientRect(); pop.style.display="block";
+  let left=r.left+window.scrollX, top=r.bottom+window.scrollY+6;
+  left=Math.min(left, window.scrollX+document.documentElement.clientWidth-pop.offsetWidth-10);
+  if(top+pop.offsetHeight>window.scrollY+window.innerHeight-6) top=Math.max(window.scrollY+8, r.top+window.scrollY-pop.offsetHeight-6);
+  pop.style.left=Math.max(8,left)+"px"; pop.style.top=top+"px"; }
+window.openBag=(e,el)=>{ e.stopPropagation(); pop.innerHTML=`<div class="ph">mechanics · ${st.mechanics.length}</div>${st.mechanics.map(m=>`<div class="bagitem"><b>${m.title}</b><div>${m.text}</div></div>`).join("")}`; pop.dataset.k="bag"; place(el); };
+window.openAchList=(e,el)=>{ e.stopPropagation(); pop.innerHTML=`<div class="ph">achievements · ${st.achievements.length}</div>${st.achievements.map(a=>`<button class="bagach" onclick="event.stopPropagation();openAchievement('${a.id}')"><b>${a.title}</b><div>${a.blurb}</div></button>`).join("")}`; pop.dataset.k="achlist"; place(el); };
+
+// ── character popovers: a quiet name·title byline (RED for a romanceable peer; no heart icon) + a "?" → their PORTRAIT sheet ──
+function charHead(id){ const c=byId(id);
+  return `<span class="who${romanceable(c)?" rom":""}">${c.nm} · ${c.ti}</span><button class="qbtn" onclick="event.stopPropagation();openAppearance('${id}')" title="what they look like" aria-label="appearance">?</button>`; }
+function charPopHTML(id){ const c=byId(id);
+  const body = id===DEF.id ? `<p class="read">${DEF.onyou}</p>` : `<p class="read">${c.read}</p><button class="pmove" onclick="choose('${id}')">→ ${c.action}<span class="sub">walk toward ${c.nm}, ${c.ti}</span></button>`;
+  return `<div class="ph">${charHead(id)}</div>${body}`; }
+function firstImprHTML(){ return `<div class="ph">${charHead(DEF.id)}</div><p class="read">${DEF.firstImpression}</p>`; }
+window.openFirstImpression=(e,el)=>{ e.stopPropagation(); pop.innerHTML=firstImprHTML(); pop.dataset.k="fi"; place(el); };
+window.openChar=(e,el,id)=>{ e.stopPropagation(); const c=byId(id);
+  // tapping a ROMANCEABLE name (first time) unlocks the romance mechanic (+ "A Spark" at its foot), then the read.
+  if(romanceable(c) && !st.romanceIntroed){ st.romanceIntroed=true; st._afterMech=()=>showCharPop(el,id); unlockMechanic(MECH_ROMANCE, ACH_SPARK); return; }
+  showCharPop(el,id); };
+function showCharPop(el,id){ pop.innerHTML=charPopHTML(id); pop.dataset.k="char"; place(el); }
+// the "?" → a PORTRAIT bottom-sheet: an additional popup OUTSIDE the char popover (which stays open behind it). text-first; the seed of a character gallery.
+window.openAppearance=(id)=>{ const c=byId(id); art.innerHTML=`<div class="card"><button class="mclose" onclick="closeArt()" aria-label="close">✕</button><div class="mlab">▢ portrait · ${c.nm}, ${c.ti}</div><div class="portrait">${c.appearance}</div><div class="pm2">art-facing impression — the seed of a character gallery</div></div>`; art.style.display="flex"; };
+window.closeArt=()=>{ art.style.display="none"; };
+window.openName=(e,el)=>{ e.stopPropagation();
+  pop.innerHTML=`<div class="ph">your name — set once, used everywhere</div><input class="namefield" id="npi" value="${st.name}" placeholder="your name (optional)"/><div class="pm">blank → the story just says &ldquo;you.&rdquo;</div>`;
+  pop.dataset.k="name"; place(el); const i=document.getElementById("npi"); i.oninput=()=>{ st.name=i.value; renderTop(); const j=document.getElementById("npi"); if(j){j.focus();j.setSelectionRange(j.value.length,j.value.length);} }; i.focus(); };
+function closePop(){ pop.style.display="none"; pop.dataset.k=""; }
+document.addEventListener("click",(e)=>{ const t=e.target;
+  if(mech.contains(t)||art.contains(t)||ach.contains(t)) return; // the bottom sheets manage their own close
+  if(!pop.contains(t) && !t.closest(".namebadge,.char,.tachoice,.dchoice,.bag,.qbtn,.achfoot,.bagach")) closePop(); });
+
+render();
+</script>
+</body>
+</html>

@@ -7,7 +7,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { FandomShell } from "../../_components/FandomShell";
-import { ShareCard, SKINS, campaignCards, campaignDefaultSkin, genreLensCards } from "../../cards/share-card";
 import { CampaignTabs, type ViewRow, type ViewCoach, type ViewMetrics, type ViewAudit } from "./CampaignTabs";
 import { DayDiagram } from "./DayDiagram";
 import { CopyForLLM } from "../../_components/CopyForLLM";
@@ -410,32 +409,6 @@ export default async function CampaignDaysPage({ params }: { params: Promise<{ i
           </div>
         ) : null;
       })()}
-
-      {/* ── Shareable cards (the viral moments, this campaign's skin) ── */}
-      <div className="border border-[#a2b1c2] bg-white p-3 mb-6">
-        <div className="font-sans text-[11px] uppercase tracking-[0.16em] text-[#54595d] mb-1">
-          ★ Shareable cards <span className="text-margin-ink normal-case">· the funny, screenshot-worthy moments — {SKINS[campaignDefaultSkin(id)].label} skin</span>
-        </div>
-        <p className="text-[12px] text-ink-soft mb-3 leading-[1.5]">
-          The viral moments of {c.title} as the one shareable Card (funny face, never stats). Theme-skinnable +
-          genre-lens variants on the <Link href="/cards" className="text-[#0645ad] hover:underline">Cards</Link> page.
-        </p>
-        <div className="flex gap-3 flex-wrap">
-          {campaignCards(id).map((card, i) => (
-            <ShareCard key={i} skin={campaignDefaultSkin(id)} campaign={c.title} c={card} />
-          ))}
-        </div>
-        {genreLensCards(id).length > 0 && (
-          <>
-            <div className="font-sans text-[10px] uppercase tracking-[0.12em] text-[#8a6d0b] mt-4 mb-2">the genre lens · a moment retold in an Elseworld vibe (non-canon remix, text only)</div>
-            <div className="flex gap-3 flex-wrap">
-              {genreLensCards(id).slice(0, 3).map((g, i) => (
-                <ShareCard key={i} skin={g.skin} campaign={c.title} c={g.c} />
-              ))}
-            </div>
-          </>
-        )}
-      </div>
 
       {/* ── Views (Events · Flow · Sheet · Kanban · Metrics · Audit) ── */}
       <CampaignTabs

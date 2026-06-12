@@ -1,0 +1,28 @@
+// Gemini SET-LEVEL 2nd-opinion on the FINALE: D57 + D59 + D60 (the spine's last beats). Key inline-env ONLY.
+const KEY = process.env.GEMINI_API_KEY;
+if (!KEY) { console.error("set GEMINI_API_KEY"); process.exit(1); }
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+async function gemini(p, model = "gemini-flash-latest") {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${KEY}`;
+  for (let t = 0; t < 4; t++) {
+    const r = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ contents: [{ parts: [{ text: p }] }], generationConfig: { temperature: 0.6, maxOutputTokens: 2600, thinkingConfig: { thinkingBudget: 0 } } }) });
+    if (r.ok) return (await r.json())?.candidates?.[0]?.content?.parts?.[0]?.text ?? "(empty)";
+    if ((r.status === 429 || r.status === 503) && t < 3) { await sleep((t + 1) * 9000); continue; }
+    if (model === "gemini-flash-latest") return gemini(p, "gemini-2.5-flash");
+    return `__ERR__ ${r.status}`;
+  }
+}
+const P = `Senior narrative director — HARD set-level 2nd opinion on the FINALE of a 60-day arc: 3 beats (D57, D59, D60). This is the ending; get it right. 2nd-person faceless-MC life-RPG; coaches who make themselves OBSOLETE (anti-dependency moat — every goodbye is secure-attachment, door-open, NEVER guilt/FOMO/streak-shame). Quote specifics, disagree, rank fixes. Context: all four coaches have graduated by now (Hana LEFT/reachable via an "Echo"; Kenji STAYS as a peer; Mei STAYS as the player's "herald"; Sam, the narrating guide-voice, went QUIET at D58 — "you read the room before I finish the sentence; the narration's yours now"). There's a fifth figure, Wren (gender ⚲), the building's archivist/keeper-of-discards, a ghost-at-the-edges for 50 days, revealed at D40. The beats (all M0, grant nothing):
+
+- D57 (Sam): his last full day as the narrating voice — the player keeps reading the room a half-beat AHEAD of Sam's narration; Sam notices, dry and proud ("I'm the voice you BORROWED while you learned to hear it yourself... the job is to go quiet the day you can read the room without me"). Runs up to D58 (his graduation) without spending it.
+- D59 (Mei-anchored, but ranges the whole squad): the first full day AFTER Sam went quiet — the UNSPOKEN dwell. No narrator voice (the player reads the building themselves now). Pure shorthand: Mei's corner set (feed, no word), Kenji's single nod at a closed ledger column, Hana's warm faded bench (the player taps it, doesn't message — "its own hello"), a page turning in the archive (Wren). "Nothing needs saying because everything's been said and the rest is just living it — that's not the credits, that's the part the lessons were FOR." NOT a second climax.
+- D60 (Wren): THE CAPSTONE / last beat of the spine. TWO quiet things: (a) the silent dividend — the player sits across from Wren's overflow pile and sorts it WITHOUT being asked; they work the same pile from opposite ends, meet in the middle, neither says a word; when done Wren slides half the kept pile back to the player's side, wordless. The run's oldest mystery ends not in a reveal but a shared, ordinary, silent afternoon of keeping. (b) the TAVERN DOOR (the first expansion threshold) APPEARS on the map's far edge, lit from the other side — and CRUCIALLY nobody points at it, nobody onboards the player ("I don't keep that place, I can't onboard you into it, nobody can; go when you want, on your own feet; the door's not going anywhere"). Door-open, no timer, no "new content!" nag. The ending's thesis: you were onboarded by a voice that's gone; the next place, you walk into yourself.
+
+Critique the FINALE as a SET, hard:
+1. D60 ANTICLIMAX RISK — the spine's LAST beat is two people silently sorting a pile of paper. Is "ending on a wordless shared chore" earned, resonant restraint — or is it an ANTICLIMAX / a damp finale that under-delivers on 60 days? Does it need ONE more degree of weight/payoff to land as a capstone, or would any added weight betray the Unspoken silence? Where's the line?
+2. THE TAVERN DOOR / ANTI-FOMO — does "a lit door appears at the map's edge, nobody points at it, go when you want" successfully thread the needle (a genuine forward horizon WITHOUT a retention hook), or does ANY visible "next content" door at the end inevitably function as a sequel-tease / FOMO no matter how it's framed? Is Wren's "I can't onboard you, go on your own feet" the right move, or does it protest-too-much (the pink-elephant risk — by disclaiming the hook, do you flag it)?
+3. SILENCE FATIGUE — D59 AND D60 are BOTH "the beauty of wordless shorthand / nothing needs saying" beats, back to back, ending the run. Is two Unspoken-silence beats in a row the right dwell, or one too many of the same note (does D60's silent-pile land weaker because D59 already did "the squad in shorthand")? How to differentiate the two silences?
+4. D57 — is "the player outpaces the narration, the guide goes obsolete" a satisfying penultimate note, or too on-the-nose a statement of the game's thesis right before the finale (the game explaining its own design — Sam articulating "the job is to go quiet")?
+5. THE WHOLE ENDING'S SHAPE — D58 (Sam quiet, last reveal) → D59 (silence) → D60 (silence + door). Is that a satisfying descent into quiet, or does the run END too soft — no final image with enough punch to be the thing a player remembers? What's the single image a player should leave with, and do these beats deliver it?
+6. Biggest risk across the finale + the single highest-leverage fix. Rank the top 3 fixes.`;
+console.log(await gemini(P));

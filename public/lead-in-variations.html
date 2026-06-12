@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Lead-In — motif &amp; vibe-driven intro (Scene Board)</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f2ebdd;--ink:#2a2a26;--forest:#2d4a2b;--red:#b81f1c;--soft:#6f6a5c;--line:#cdc2a8;--gold:#9a7b1f;
+  --scenebg:#fffaf0;--sceneborder:var(--ink);--accent:var(--gold);--charc:var(--forest);}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Lora,Georgia,serif;font-size:16px;line-height:1.55;padding:18px 14px 90px;max-width:760px;margin:0 auto}
+/* per-vibe environment tints — the room ties to the campaign's vibe */
+body.env-place{--scenebg:#fffaf0;--sceneborder:#2a2a26;--accent:#9a7b1f;--charc:#2d4a2b}
+body.env-hearth{--scenebg:#fbf2e2;--sceneborder:#6b4f2a;--accent:#b5732a;--charc:#7a4f1d}
+body.env-rite{--scenebg:#eef2ee;--sceneborder:#2d4a3a;--accent:#3f7d5a;--charc:#26543c}
+body.env-dream{--scenebg:#f3eef6;--sceneborder:#3a2c4a;--accent:#7b5ea8;--charc:#5a3d86}
+h1{font-family:Anton,Impact,sans-serif;font-weight:400;letter-spacing:.5px;font-size:27px;margin:0 0 3px}
+.sub{color:var(--soft);font-size:13px;margin:0 0 10px}
+.sub code{background:#00000010;padding:0 3px}
+.legend{border:1px solid var(--line);background:#00000006;padding:8px 12px;margin:0 0 14px;font-size:12px;color:#46443b}
+.legend b{font-family:JetBrains Mono,monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.legend .row{margin-top:4px}
+.bar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:8px 0;margin-bottom:16px;position:sticky;top:0;background:var(--paper);z-index:20}
+.bar b{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--soft);margin-right:2px}
+.seg{font:inherit;font-size:12px;padding:4px 10px;border:1px solid var(--line);background:transparent;color:#0645ad;cursor:pointer}
+.seg.on{background:var(--forest);color:var(--paper);border-color:var(--forest)}
+.seg .g{margin-left:4px}
+.cap{font-size:12px;color:var(--soft);font-style:italic;margin:0 0 12px;border-left:2px solid var(--line);padding-left:9px}
+.scene{border:1.8px solid var(--sceneborder);background:var(--scenebg);padding:18px 20px 16px;box-shadow:4px 4px 0 #0000000f}
+.motif{font-family:JetBrains Mono,monospace;font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin:0 0 12px;border-bottom:1px dotted var(--line);padding-bottom:7px}
+.problem{border:1.5px dashed var(--red);background:#b81f1c0a;padding:9px 12px;margin:0 0 16px}
+.problem .plab{font-family:JetBrains Mono,monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:3px}
+.problem .ptxt{font-size:14.5px;font-style:italic;color:#5a2422}
+.char{color:var(--charc);font-weight:600;border-bottom:1.5px dotted var(--charc);cursor:help}
+.hint{font-size:11px;color:var(--soft);font-style:italic}
+#pop{position:fixed;z-index:60;max-width:330px;background:var(--ink);color:var(--paper);padding:11px 13px;border:1px solid #000;box-shadow:3px 3px 0 #00000033;display:none;font-size:14px;line-height:1.45}
+#pop .lab{font-family:JetBrains Mono,monospace;font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;color:#c9b98a;display:block;margin-bottom:5px}
+#pop .v{font-style:italic}
+#pop .meta{font-size:12px;margin-top:8px;color:#d7cdb0;line-height:1.45}
+#pop .mk{font-family:JetBrains Mono,monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;padding:1px 5px;margin-right:5px;border:1px solid;white-space:nowrap}
+#pop .mk.echo{color:#9fd0e6;border-color:#9fd0e655}#pop .mk.knot{color:#e6b89f;border-color:#e6b89f55}
+#pop .who{font-size:10px;color:#a59c84;margin-top:7px;border-top:1px solid #ffffff1f;padding-top:5px}
+#pop .who .gift{color:#d8c98f}
+.youdecide{font-family:Anton;font-size:14px;letter-spacing:.5px;color:var(--charc);margin:18px 0 8px;text-transform:uppercase}
+.act{display:block;width:100%;text-align:left;font:inherit;font-size:15px;font-style:italic;background:transparent;border:1.5px solid var(--line);padding:11px 14px;margin:0 0 8px;cursor:pointer;color:var(--ink);transition:all .12s}
+.act:hover{border-color:var(--charc);background:#00000008;transform:translateX(2px)}
+.act .arrow{color:var(--accent);font-weight:600;font-style:normal}
+.castrow{display:flex;flex-direction:column;margin:4px 0 4px;border-top:1px solid var(--line)}
+.castcard{display:flex;gap:11px;align-items:flex-start;padding:11px 2px;border-bottom:1px solid var(--line)}
+.castcard .spk{flex:none;width:30px;height:30px;border:1.5px solid var(--charc);color:var(--charc);background:transparent;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.castcard .spk:hover{background:var(--charc);color:var(--scenebg)}
+.castcard .look{font-size:14px;color:#3a382f}
+.castcard .nm{font-weight:600;color:var(--charc)}
+.castcard .ti{font-style:italic;color:var(--soft);font-size:12px}
+.cluster{margin:8px 0 2px}
+.clabel{font-family:JetBrains Mono,monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+#story{position:fixed;inset:0;background:#1b1a17f2;z-index:80;display:none;align-items:center;justify-content:center;padding:24px}
+#story .inner{max-width:560px;text-align:center;color:#e7e0cf}
+#story .post{font-size:17px;line-height:1.6;font-style:italic;opacity:0;transition:opacity .8s;margin-bottom:30px}
+#story .post.show{opacity:1}
+#story .daywrap{opacity:0;transform:translateY(8px);transition:all .7s}#story .daywrap.show{opacity:1;transform:none}
+#story .dlabel{font-family:JetBrains Mono,monospace;font-size:11px;letter-spacing:.4em;color:#a59c84}
+#story .tcredit{font-family:JetBrains Mono,monospace;font-size:9.5px;letter-spacing:.14em;color:#8a826e;margin-top:8px}
+#story .dtitle{font-family:Anton;font-size:38px;letter-spacing:1px;color:var(--tcol,#e6c558);margin:4px 0 2px;line-height:1.05;text-transform:capitalize}
+#story .begins{font-size:12px;color:#8a826e;letter-spacing:.1em;margin-top:18px}
+#story .back{margin-top:26px;font:inherit;font-size:13px;background:transparent;border:1px solid #5a5446;color:#b8b09a;padding:6px 14px;cursor:pointer}
+.foot{font-size:11.5px;color:var(--soft);margin-top:24px;border-top:1px solid var(--line);padding-top:10px}
+</style>
+</head>
+<body class="env-place">
+<h1>Lead-In — the Scene Board</h1>
+<p class="sub">Presentation locked to the <b>Scene Board</b>. You arrive carrying a <b>problem</b> (what the campaign fixes →
+<i>the agents it unlocks</i>) into an environment <b>generated from the motif AND fit to the campaign's vibe</b>. The helpers are
+present — <b>hold/tap a name to lean in</b> for a glimpse of their answer + a meta beat (<b>↩ echo</b> / <b>◈ their knot</b>); your
+<b>monologue</b> → post → the <b>Day-1 title is that helper's own title</b>.</p>
+
+<div class="legend"><b>Environment ↔ vibe — the room must fit the campaign</b>
+  <div class="row">🏠 <b style="color:#9a7b1f">place</b> (realistic) · 🔥 <b style="color:#b5732a">hearth</b> (cozy) · ⛩ <b style="color:#3f7d5a">rite</b> (vibrant) · 🌙 <b style="color:#7b5ea8">dream</b> (vibrant only — never a realistic campaign).</div>
+  <div class="row" style="color:var(--soft)">Future types to draw on when building: a <i>memory</i> you re-enter · a <i>vision</i> · a <i>waiting-room threshold</i> · a <i>storybook spread</i>. Switch campaign to see the room change with the vibe.</div>
+</div>
+
+<div class="bar"><b>Campaign</b><span id="camps"></span></div>
+
+<p class="cap" id="cap"></p>
+<div id="scene"></div>
+
+<div id="pop"></div>
+<div id="story"><div class="inner">
+  <div class="post" id="spost"></div>
+  <div class="daywrap" id="sday"><div class="dlabel">DAY 1</div><div class="dtitle" id="sdtitle"></div>
+    <div class="tcredit" id="stcredit"></div><div class="begins">— the story begins —</div></div>
+  <button class="back" onclick="closeStory()">← step back</button>
+</div></div>
+
+<p class="foot">Narration stays 2nd-person; the selected <b>monologue</b> is the only first-person beat. The environment <b>type
+ties to the vibe</b> — dream lives only on vibrant/fantastical campaigns; realistic ones get a real place; cozy gets a hearth.
+The Far Shore is our dream example (a concept). Tell me which campaigns to author for real and I'll write the plan.</p>
+
+<script>
+const TYPES = {place:{g:'🏠',vibe:'realistic'},hearth:{g:'🔥',vibe:'cozy'},rite:{g:'⛩',vibe:'vibrant'},dream:{g:'🌙',vibe:'vibrant'}};
+const TCOL = {place:'#e6c558',hearth:'#e0a36a',rite:'#79c79b',dream:'#b79cf0'};
+const LEAN = {overheard:n=>`you catch ${n} mid-help`,spoken:n=>`${n}, already reading you`,clipped:n=>`${n}, barely looking up`,room:n=>`the place answers for ${n}`};
+// One environment per campaign, its TYPE chosen to fit the vibe. cast: look + glimpse(framed by lean) + gift + meta. monologue → that helper's title.
+const CAMPAIGNS = {
+  wingman:{label:"The Wingman",kind:"built · has lead-in",clusters:[{label:'Working the floor together',members:['nico','sloane']},{label:'Drafting in the corner',members:['wes']},{label:'Holding the back booth',members:['mara']}],
+    env:{type:'place',motif:"Wingman · the corner — the people in your corner between rounds",lean:'overheard',
+      text:"You are in a bar you didn't pick — low light, a muted game over the bottles, a Tuesday crowd of regulars and no occasion. What you walked in with is still right there in your chest.",
+      cast:[
+        {id:'nico',name:'Nico',title:'the Opener',gift:'the approach',look:"leaning off a barstool like the night already owes him something — oxblood jacket he never zips, eyes already on the door you came through.",glimpse:"“—you're waiting for a perfect opening,” he's telling some kid by the taps. “It's not coming. Three seconds. Go before your brain gets a vote.”",meta:{kind:'knot',text:"The Opener opens every door and stays past none. Worth asking, later, what he's outrunning."}},
+        {id:'mara',name:'Mara',title:'the Anchor',gift:'steadying first',look:"in the back booth, both hands around a coffee she brought in herself, watching the room like she has all night and no stake in it.",glimpse:"“—you didn't blow it,” she's saying, quiet. “You showed up running on empty. Sit. We start from there.”",meta:{kind:'knot',text:"She's the calm the whole room borrows. No one's thought to ask who she borrows it from."}},
+        {id:'sloane',name:'Sloane',title:'the Reader',gift:'reading the room',look:"at the rail, reading the whole room over a drink she hasn't touched — already clocked you clocking everyone else.",glimpse:"“—that wasn't a no,” she tells someone. “You misread the exchange. Three tells. I can teach you to see them.”",meta:{kind:'echo',text:"“That's not a mixed signal. You know that.” You'll hear it again — the night you're the one who needs it said to you."}},
+        {id:'wes',name:'Wes',title:'the Ghostwriter',gift:'the right words',look:"hunched over a napkin full of cross-outs, drafting something to someone he probably won't send.",glimpse:"“—delete that,” he says to a phone that isn't his. “It's not what you feel, it's what you send. Draft it with me first.”",meta:{kind:'echo',text:"The napkin he won't send? You read what's on it eventually. That day's a way off."}},
+      ],
+      actions:[
+        {id:'nico',monologue:"No more waiting for the right moment. There's never a right moment.",post:"He catches you thinking it — of course he does. “There it is,” he says, like he's been waiting. He hasn't. He just always looks like that."},
+        {id:'mara',monologue:"Maybe I just need to sit down before I try to fix anything.",post:"She nudges the chair out with her foot before you ask. “Sit. You don't have to say anything yet.” The door stops mattering for a second."},
+        {id:'sloane',monologue:"I always think I read it right. Then I'm wrong. What am I missing?",post:"She doesn't look over. “You've been replaying it for ten minutes,” she says. “Want to know what you actually missed?” You do."},
+        {id:'wes',monologue:"I knew exactly what to say. Two hours too late, in the shower.",post:"He slides a fresh napkin toward you. “Then we write it down before the moment, not after. Draft one.”"},
+      ]}},
+
+  lifeops:{label:"Life Ops",kind:"built · refresh",clusters:[{label:'The ones who push',members:['hana','kenji']},{label:'The ones who keep you whole',members:['mei','sam']}],
+    env:{type:'place',motif:"Life Ops · the party that shows up — body, money, food, the whole operation",lean:'spoken',
+      text:"You're at a long kitchen table that isn't yours — warm light, a whiteboard with your name at the top and four chairs that are somehow already full. The mess you've been avoiding is up there in someone else's neat handwriting.",
+      cast:[
+        {id:'hana',name:'Hana',title:'the Iron Monk',gift:'the body',look:"already in motion — stretching against the counter, watching you the way a coach watches a recruit who hasn't committed yet.",glimpse:"“You don't need a plan,” she says before you sit. “You need to start before the plan. 5 AM. I'll be there whether you are.”",meta:{kind:'knot',text:"She runs from something at 5 AM too. She's never once said what."}},
+        {id:'kenji',name:'Kenji',title:'the Auditor',gift:'the money',look:"a ledger open in front of him, your name already on the first line, reading the room and the receipts in one glance.",glimpse:"“Your spending has a paper trail,” he says, not unkindly. “And now it has a witness. Sit. We read it together.”",meta:{kind:'echo',text:"“And a witness.” He'll say it again the day the number finally scares you straight."}},
+        {id:'mei',name:'Mei',title:'the Field Medic',gift:'the fuel',look:"guarding the kitchen like a triage tent, already deciding what you've been eating just by looking at you.",glimpse:"“You will not fix your life on gas-station coffee,” she says. “Sit. Eat something real first. Then we talk.”",meta:{kind:'knot',text:"She feeds everyone. You'll wonder, later, who cooks for her."}},
+        {id:'sam',name:'Sam',title:'the Archivist',gift:'the system',look:"the quiet one at the end, a worn binder closed under both hands, here to explain the parts no one else will.",glimpse:"“Someone needs to explain the buttons,” he says, almost apologizing. “That's me. Start anywhere. I'll keep the record.”",meta:{kind:'echo',text:"He keeps the record of everything. The day you go back and read it is the day it all adds up."}},
+      ],
+      actions:[
+        {id:'hana',monologue:"If I wait until I'm ready I'll wait forever. Just start.",post:"She's already by the door with your name on her list. “There it is. 5 AM. Don't make me come get you.”"},
+        {id:'kenji',monologue:"I've been avoiding the numbers for months. Time to actually look.",post:"He turns the ledger toward you. “Then we look together. It's always worse in the dark than on the page.”"},
+        {id:'mei',monologue:"I can't keep running on empty.",post:"A plate is already in front of you. “Good. Start there. The rest is just the next plate.”"},
+        {id:'sam',monologue:"I don't even know where to begin.",post:"He opens the binder to a blank page. “Page one, then. We'll fill it as we go.”"},
+      ]}},
+
+  longhunt:{label:"The Long Hunt",kind:"built · refresh · romance",clusters:[{label:'Oath at the cold window',members:['roan']},{label:'The warm side of the lodge',members:['hearth','tracker']}],
+    env:{type:'place',motif:"The Long Hunt · the oath-bond — the coldest, best partner, and the long climb to thaw",lean:'clipped',
+      text:"The lodge common room, night one — woodsmoke, wet boots drying by the stove, a board of names where yours has just been chalked in at the bottom. Three hunters look up. One of them is going to be your oath.",
+      cast:[
+        {id:'roan',name:'Roan',title:'the Best on the Rope',gift:'the long climb',look:"by the cold window, not the fire — checking a coil of rope he doesn't need to, already decided about you.",glimpse:"“Hands out,” he says, the first thing, no greeting. “Let me see the knots before the dark does. If you live, we'll talk.”",meta:{kind:'knot',text:"The lodge's best, and the coldest. No one's asked why the two go together for him."}},
+        {id:'hearth',name:'the Hearthwarden',title:'the Hearthwarden',gift:'a place to land',look:"at the stove, ladling something hot — the only warm thing in the room, and aware of it.",glimpse:"“Sit by the fire, not the window,” she says. “Whatever oathed you here can wait until you've eaten.”",meta:{kind:'echo',text:"“Sit by the fire, not the window.” You'll remember it the night you finally choose which one you are."}},
+        {id:'tracker',name:'the Far-Walker',title:'the Far-Walker',gift:'the way through',look:"spreading a map with no edges, tracing a route into country the others won't name.",glimpse:"“The others hunt the valley,” he says. “I go past it. Oath to me and you'll see what's actually out there.”",meta:{kind:'knot',text:"He's walked further than anyone and come back alone every time. He'd never call that a problem."}},
+      ],
+      actions:[
+        {id:'roan',monologue:"I didn't come here to be kept safe. Give me the hard one.",post:"He doesn't smile. He just hands you the rope. “Then tie in. We leave before light.” It's the warmest thing he'll say for a while."},
+        {id:'hearth',monologue:"Before any of this — I just need somewhere that isn't cold.",post:"She pulls a chair to the stove. “Then start here. The hunt keeps. You don't, if you freeze first.”"},
+        {id:'tracker',monologue:"I didn't come this far to walk the same valley as everyone else.",post:"He rolls the map toward you. “Good. Then you're mine. We go where the names run out.”"},
+      ]}},
+
+  greenroom:{label:"The Greenroom",kind:"concept · cast TBD",clusters:[{label:'The ones who shape the act',members:['producer','coach']},{label:'The one who opens the door',members:['sm']}],
+    env:{type:'place',motif:"The Greenroom · stage-ready — one open mic at a time, the nerve before the lights",lean:'overheard',
+      text:"The greenroom behind a half-empty bar's tiny stage — string lights, a couch that's seen things, a setlist taped to a cracked mirror. Out front an open mic is dying. Back here, three people decide if you go on.",
+      cast:[
+        {id:'producer',name:'the Producer',title:'the Burnt-Out Producer',gift:'the set',look:"slumped on the couch like the couch won — but the eyes are still working the room, still casting.",glimpse:"“—stop apologizing between songs,” he's telling some kid. “The set is the apology. Just play it.” Then his eyes find you.",meta:{kind:'knot',text:"He made stars, then stopped. No one backstage asks what made him quit the lights."}},
+        {id:'coach',name:'the Coach',title:'the Vocal Coach',gift:'the voice',look:"warming someone up scaleward in the corner, shaping a sound out of the air with both hands.",glimpse:"“—it's not louder, it's truer,” she says. “Sing the line you're scared of like you've already survived it.”",meta:{kind:'echo',text:"“Sing the line you're scared of.” You'll do exactly that — the night it stops being a line and starts being yours."}},
+        {id:'sm',name:'the Stage Manager',title:'the Stage Manager',gift:'the nerve',look:"headset on, clipboard cocked — the calm in the chaos who decides when the door opens.",glimpse:"“You're up in three,” she says, to you, like it's already decided. “Nerves are just the body getting ready. Breathe. Go when I point.”",meta:{kind:'knot',text:"She gets everyone onto the stage and has never once stood on one. You'll wonder why."}},
+      ],
+      actions:[
+        {id:'producer',monologue:"No more apologizing for taking up the room. Just play it.",post:"He sits up an inch — for him, a standing ovation. “There it is. Set list's on the mirror. Don't talk between songs.”"},
+        {id:'coach',monologue:"I want to sing the line I'm actually scared of.",post:"She turns from the scales. “Finally. Come here. We make the scary one the strong one first.”"},
+        {id:'sm',monologue:"If I think about it any longer I'll bail. Just point me at the door.",post:"She checks her watch and almost smiles. “My kind of act. Three minutes. Breathe. I'll point.”"},
+      ]}},
+
+  hearth:{label:"The Hearth",kind:"concept · cast TBD",clusters:[{label:'Keeping the fire',members:['keeper','cook']},{label:'By the window',members:['listener']}],
+    env:{type:'hearth',motif:"The Hearth · the gentle life — somewhere warm to land when everything's too loud",lean:'spoken',
+      text:"A low room that smells like woodsmoke and something baking — a fire that's been kept a long time, a kettle just starting, chairs worn soft by people who stayed. No one here is in a hurry. For once, neither is the night.",
+      cast:[
+        {id:'keeper',name:'the Hearthkeeper',title:'the Hearthkeeper',gift:'a place to land',look:"tending the fire without looking, the way you tend something you love — already set a chair near the warm side for you.",glimpse:"“You don't have to earn the chair,” she says. “It's already yours. Sit. The kettle's almost there.”",meta:{kind:'knot',text:"She keeps everyone's fire lit. The night someone keeps hers is a long way off — but it's coming."}},
+        {id:'cook',name:'the Quiet Cook',title:'the Quiet Cook',gift:'something warm',look:"at the stove, not performing it — just making enough, the way they always make enough, for whoever walks in.",glimpse:"“There's a bowl with your name on it,” they say, not asking. “Eat slow. Nothing here needs you to rush.”",meta:{kind:'echo',text:"“Nothing here needs you to rush.” You'll need to hear it again the day the loud world tries to follow you in."}},
+        {id:'listener',name:'the One Who Listens',title:'the One Who Listens',gift:'being heard',look:"in the soft chair by the window, a book closed on one finger, ready to put it down the second you want to talk.",glimpse:"“You can say it or not say it,” she offers. “Both are allowed here. I'm not going anywhere either way.”",meta:{kind:'knot',text:"She holds everyone's hard nights. You'll wonder, eventually, where she sets hers down."}},
+      ],
+      actions:[
+        {id:'keeper',monologue:"I think I just need to stop, for tonight. Is that okay?",post:"She's already pulled the chair closer to the warm side. “More than okay. Sit. The world can knock; we won't answer it yet.”"},
+        {id:'cook',monologue:"I can't remember the last time I ate something slow.",post:"A bowl is in your hands before you finish. “Then this is the first. Slow. There's more if you want it.”"},
+        {id:'listener',monologue:"There's a thing I haven't said out loud to anyone.",post:"She sets the book down, all the way. “Then here's the safest place to try it. Whenever you're ready. Or not tonight. Both keep.”"},
+      ]}},
+
+  sect:{label:"The Sect",kind:"concept · cast TBD",clusters:[{label:'The high step',members:['master']},{label:'The ones who keep the gate',members:['senior','keeper']}],
+    env:{type:'rite',motif:"The Sect · the last disciple — the forms, the cold master, the long climb of the ranks",lean:'spoken',
+      text:"The outer courtyard at first light — stone cold under your knees, mist still in the pines, the mountain holding its breath. Three figures move through the morning, slow as a held form. You are the only one who shouldn't be here yet.",
+      cast:[
+        {id:'master',name:'the Master',title:'the Cold Master',gift:'the forms',look:"the still one on the high step, moving through a form so slowly it looks like he isn't moving at all.",glimpse:"“You want the forms,” he says without turning. “The forms want to know if you'll still be here when they're hard. Show me at dawn. Every dawn.”",meta:{kind:'knot',text:"The sect's strongest, and the most alone. They say his own master left him something he's never forgiven."}},
+        {id:'senior',name:'the Senior',title:'the Senior Disciple',gift:'the ranks',look:"sweeping the courtyard with a discipline that's clearly both a punishment and a pride, watching you sideways.",glimpse:"“He won't say it, so I will,” she mutters. “Sweep first. Climb second. Everyone here started with the broom.”",meta:{kind:'echo',text:"“Everyone started with the broom.” She'll hand you hers the day you're ready to climb past her — and mean it."}},
+        {id:'keeper',name:'the Gatekeeper',title:'the Gatekeeper',gift:'the threshold',look:"at the courtyard's edge, the one who decides who stays past breakfast, a ledger of names in hand.",glimpse:"“Names cost here,” he says. “You don't have one yet. Earn the morning and I'll write you in.”",meta:{kind:'knot',text:"He's turned away more talent than he's kept. He keeps a private list of the ones he was wrong about."}},
+      ],
+      actions:[
+        {id:'master',monologue:"I'll still be here when it's hard. That's the whole point.",post:"The form pauses. “Then take the low stance. Dawn. We'll see what 'still here' costs you.”"},
+        {id:'senior',monologue:"Fine. Hand me the broom. I'll out-sweep all of them.",post:"She tosses it before you finish the thought. “Now you're talking. Corner to corner. I'll time you.”"},
+        {id:'keeper',monologue:"I came with no name. I'll leave with one they remember.",post:"He dips the brush over the register. “Bold, for a stray. Earn the morning and I'll write the first stroke.”"},
+      ]}},
+
+  farshore:{label:"The Far Shore",kind:"concept · cast TBD",clusters:[{label:'At the waterline',members:['guide','ferry']},{label:'Facing home',members:['stayed']}],
+    env:{type:'dream',motif:"The Far Shore · the edge of the map — the guide who walks you out, then steps back",lean:'room',
+      text:"You're on a shore that shouldn't exist — the edge of every map you've trusted, tide going out over sand that remembers your footprints before you make them. Three figures wait where the water starts. One has been waiting a long time.",
+      cast:[
+        {id:'guide',name:'the Old Guide',title:'the Old Guide',gift:'the way',look:"leaning on a staff at the waterline, looking out, not back — already half-stepped aside.",glimpse:"“I can walk you to the edge,” he says, gentle. “Not past it. The rest of the map is the part you draw. That's the whole point of me.”",meta:{kind:'knot',text:"Every traveler he's walked here, he's watched go on without him. He calls it the job. It costs him every time."}},
+        {id:'ferry',name:'the Ferryman',title:'the Ferryman',gift:'the crossing',look:"standing in a boat that's somehow already where you're looking, patient as the tide.",glimpse:"“I only take you across the parts you've made peace with,” he says. “The rest you wade. Decide what you're carrying first.”",meta:{kind:'echo',text:"“Decide what you're carrying.” You'll set something down on this shore that you've hauled for years."}},
+        {id:'stayed',name:'the One Who Stayed',title:'the One Who Stayed',gift:'the anchor home',look:"sitting where the sand is still warm — the only one facing inland, toward the life you'd be leaving.",glimpse:"“Not everyone has to cross,” she says, no judgment. “Some maps are big enough at home. Sit. Be sure before the tide decides for you.”",meta:{kind:'knot',text:"She reached the shore once and turned back. She's never said whether she regrets it."}},
+      ],
+      actions:[
+        {id:'guide',monologue:"If the rest of the map is mine to draw — then give me the pen.",post:"He steps aside before you finish, and the horizon opens like it was waiting. “There it is. From here you lead. I'll watch from the edge.”"},
+        {id:'ferry',monologue:"I'm ready to put down what I've been carrying and cross.",post:"The boat steadies. “Then set it on the sand. It'll keep, if you ever come back for it. Most don't need to.”"},
+        {id:'stayed',monologue:"Maybe being ready means knowing I don't have to cross tonight.",post:"She makes room on the warm sand. “Wisest thing anyone's said on this beach. Sit. The tide keeps. So do you.”"},
+      ]}},
+};
+
+let camp='wingman';
+const C = () => CAMPAIGNS[camp];
+const E = () => C().env;
+const byId = id => E().cast.find(c=>c.id===id);
+const chip = c => `<span class="char" data-id="${c.id}">${c.name}</span>`;
+
+function renderScene(){
+  const e=E(), t=TYPES[e.type];
+  document.body.className = 'env-'+e.type;
+  const ids=new Set(e.cast.map(c=>c.id));
+  const cls=(C().clusters||[]).filter(cl=>cl.members.some(m=>ids.has(m)));
+  const groups=(cls.length?cls:[{label:'In the room',members:[...ids]}]).map(cl=>
+    `<div class="cluster"><div class="clabel">${cl.label}</div><div class="castrow">${cl.members.filter(m=>ids.has(m)).map(id=>{const c=byId(id);
+      return `<div class="castcard"><button class="spk" data-id="${c.id}" title="lean in">♪</button>
+        <div class="look"><span class="nm char" data-id="${c.id}">${c.name}</span> <span class="ti">${c.title} · ${c.gift}</span><br>${c.look}</div></div>`;}).join("")}</div></div>`).join("");
+  document.getElementById('scene').innerHTML = `<div class="scene">
+    <div class="motif">${t.g} ${e.type} · ${t.vibe} vibe — ${e.motif}</div>
+    <div class="problem"><span class="plab">What you walked in with</span><span class="ptxt">${C().problem}</span></div>
+    <p>${e.text}</p>
+    <p style="margin:14px 0 6px" class="hint">The ones who could help, arranged by <b>who they are to each other</b>. <b>Tap ♪ to lean in</b>:</p>
+    ${groups}
+    <div class="youdecide">Your head goes —</div>
+    ${e.actions.map(a=>`<button class="act" data-act="${a.id}">“${a.monologue}” <span class="arrow">›</span></button>`).join("")}
+  </div>`;
+  document.getElementById('cap').textContent = `${C().label} (${C().kind}) — ${t.g} ${e.type} environment, ${t.vibe} vibe.`;
+}
+
+const pop = document.getElementById('pop');
+function showPop(el){
+  const c = byId(el.dataset.id); if(!c) return;
+  const mk = c.meta.kind==='echo' ? '↩ campaign echo' : '◈ their own knot';
+  pop.innerHTML = `<span class="lab">lean in — ${LEAN[E().lean](c.name)}</span><span class="v">${c.glimpse}</span>`+
+    `<div class="meta"><span class="mk ${c.meta.kind}">${mk}</span>${c.meta.text}</div>`+
+    `<div class="who">${c.name} · ${c.title} — what they'd unlock: <span class="gift">${c.gift}</span></div>`;
+  const r = el.getBoundingClientRect(); pop.style.display='block';
+  let top=r.bottom+8,left=Math.min(r.left,window.innerWidth-346);
+  if(top+pop.offsetHeight>window.innerHeight-8) top=Math.max(8,r.top-pop.offsetHeight-8);
+  pop.style.top=top+'px'; pop.style.left=Math.max(8,left)+'px';
+}
+function hidePop(){pop.style.display='none';pop.dataset.cur='';}
+document.addEventListener('mouseover',e=>{const t=e.target.closest('[data-id]');if(t)showPop(t);});
+document.addEventListener('mouseout',e=>{if(e.target.closest('[data-id]'))hidePop();});
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-id]');
+  if(t){ if(pop.style.display==='block'&&pop.dataset.cur===t.dataset.id){hidePop();} else {showPop(t);pop.dataset.cur=t.dataset.id;} return; }
+  const a=e.target.closest('[data-act]'); if(a){openStory(a.dataset.act); return;}
+  const cb=e.target.closest('[data-camp]'); if(cb){camp=cb.dataset.camp;renderCamps();renderScene();}
+});
+
+function openStory(id){
+  const a=E().actions.find(x=>x.id===id); if(!a) return; const c=byId(id); hidePop();
+  document.getElementById('spost').textContent=a.post;
+  document.getElementById('sdtitle').textContent=c.title;
+  document.getElementById('stcredit').textContent=`— ${c.name}'s title becomes your first chapter —`;
+  const postEl=document.getElementById('spost'),day=document.getElementById('sday'),ov=document.getElementById('story');
+  postEl.classList.remove('show'); day.classList.remove('show');
+  ov.style.setProperty('--tcol', TCOL[E().type]); ov.style.display='flex';
+  setTimeout(()=>postEl.classList.add('show'),60); setTimeout(()=>day.classList.add('show'),1300);
+}
+function closeStory(){document.getElementById('story').style.display='none';}
+
+function renderCamps(){
+  document.getElementById('camps').innerHTML = Object.entries(CAMPAIGNS).map(([k,c])=>
+    `<button class="seg ${k===camp?'on':''}" data-camp="${k}">${c.label}<span class="g">${TYPES[c.env.type].g}</span></button>`).join("");
+}
+renderCamps(); renderScene();
+</script>
+</body>
+</html>

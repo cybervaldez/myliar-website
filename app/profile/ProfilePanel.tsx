@@ -2,7 +2,7 @@
 
 // The companion profile — a signed-in player's own progress + activity on the
 // web. Sign-in gate (Google/Apple) for guests; private self-view otherwise.
-// docs/design/guest-claim.md.
+// docs/design/auth-model.md (PART 2).
 
 import { useEffect, useState } from "react";
 import {

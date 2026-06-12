@@ -17,6 +17,7 @@ import {
   wingmanDays,
   wingmanDay,
   wingmanCoachById,
+  humanizeLexicon,
   type MainlineChoice,
 } from "../../wiki-data";
 import { contentHash } from "../../../lib/codex";
@@ -84,16 +85,16 @@ function ChoiceBlock({ c, day, eventId }: { c: MainlineChoice; day: number; even
           {c.itemDrop && " · ★ ITEM"}
         </span>
       </div>
-      <p className="text-[14.5px] text-ink mt-2 leading-[1.4]">{c.label}</p>
+      <p className="text-[14.5px] text-ink mt-2 leading-[1.4]">{humanizeLexicon(c.label)}</p>
       <DeltaPills delta={c.delta} />
       {c.reactionText && (
         <p className="text-[13.5px] italic text-ink-soft mt-2 leading-[1.45] border-l-2 border-margin-ink/40 pl-2">
-          {c.reactionText}
+          {humanizeLexicon(c.reactionText)}
         </p>
       )}
       {c.reactionTextOnCritFail && (
         <p className="text-[13px] italic text-spot-red mt-1.5 leading-[1.45] border-l-2 border-spot-red/50 pl-2">
-          crit-fail: {c.reactionTextOnCritFail}
+          crit-fail: {humanizeLexicon(c.reactionTextOnCritFail)}
         </p>
       )}
       {c.itemDrop && (
@@ -211,7 +212,7 @@ export default async function WingmanDayPage({
                 </span>
               )}
             </SectionHead>
-            <p className="text-[15px] leading-[1.6] text-ink mb-3">{ev.scenario}</p>
+            <p className="text-[15px] leading-[1.6] text-ink mb-3">{humanizeLexicon(ev.scenario)}</p>
             <div className="space-y-2">
               {ev.choices.map((c) => (
                 <ChoiceBlock key={c.id} c={c} day={d.globalDayIndex} eventId={ev.id} />
@@ -252,7 +253,7 @@ export default async function WingmanDayPage({
         <>
           <SectionHead>Closing hook → tomorrow</SectionHead>
           <p className="border-l-[3px] border-spot-red pl-4 font-body italic text-[15px] text-ink leading-[1.5]">
-            {d.closingHook}
+            {humanizeLexicon(d.closingHook)}
           </p>
         </>
       )}

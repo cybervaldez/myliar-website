@@ -1,5 +1,5 @@
 // The web companion — your app progress + wiki activity + shared worlds, on the
-// web, for the account you signed in with. docs/design/guest-claim.md.
+// web, for the account you signed in with. docs/design/auth-model.md (PART 2).
 
 import Link from "next/link";
 import parity from "../lib/parity.generated.json";
