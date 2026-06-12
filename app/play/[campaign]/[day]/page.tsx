@@ -13,7 +13,7 @@ export default async function PlayDayPage({
   searchParams,
 }: {
   params: Promise<{ campaign: string; day: string }>;
-  searchParams: Promise<{ e?: string; p?: string; seed?: string; id?: string; vibe?: string; td?: string; nm?: string; leadIn?: string; hf?: string }>;
+  searchParams: Promise<{ e?: string; p?: string; seed?: string; id?: string; vibe?: string; nm?: string; leadIn?: string; hf?: string }>;
 }) {
   const { campaign, day } = await params;
   const sp = await searchParams;
@@ -53,7 +53,7 @@ export default async function PlayDayPage({
         <Link href="/" style={{ color: "var(--forest)" }}>← site</Link>
         {"   ·   ⌂ home (below) returns to the front door; the URL is the path — share it to replay this exact run."}
       </p>
-      <PlayRunner meta={{ campaign, ...rest }} days={days} di={di} e={sp.e ?? "intro"} pathStr={sp.p ?? ""} seed={sp.seed ?? ""} vitals={vitals} relThresholds={relThresholds} relNames={relNames} critBonusById={critBonusById} castPassives={castPassives} castLite={castLite} version={version} openingHook={openingHook} lockedPrefs={{ id: sp.id ?? "", vibe: sp.vibe ?? "", td: sp.td ?? "", nm: sp.nm ?? "", leadIn: sp.leadIn ?? "", hf: sp.hf ?? "" }} />
+      <PlayRunner meta={{ campaign, ...rest }} days={days} di={di} e={sp.e ?? "intro"} pathStr={sp.p ?? ""} seed={sp.seed ?? ""} vitals={vitals} relThresholds={relThresholds} relNames={relNames} critBonusById={critBonusById} castPassives={castPassives} castLite={castLite} version={version} openingHook={openingHook} lockedPrefs={{ id: sp.id ?? "", vibe: sp.vibe ?? "", nm: sp.nm ?? "", leadIn: sp.leadIn ?? "", hf: sp.hf ?? "" }} />
     </main>
   );
 }

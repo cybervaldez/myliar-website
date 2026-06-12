@@ -1544,6 +1544,96 @@
       "hidden": true
     },
     {
+      "id": "walked-mei",
+      "title": "Walked Toward Mei",
+      "blurb": "At the door, you walked toward Mei first (Life Ops).",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "common",
+      "hidden": true
+    },
+    {
+      "id": "walked-kenji",
+      "title": "Walked Toward Kenji",
+      "blurb": "At the door, you walked toward Kenji first (Life Ops).",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "common",
+      "hidden": true
+    },
+    {
+      "id": "walked-sam",
+      "title": "Walked Toward Sam",
+      "blurb": "At the door, you walked toward Sam first (Life Ops).",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "common",
+      "hidden": true
+    },
+    {
+      "id": "walked-mara",
+      "title": "Walked Toward Mara",
+      "blurb": "At the door, you walked toward Mara first (the Wingman).",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "common",
+      "hidden": true
+    },
+    {
+      "id": "walked-sloane",
+      "title": "Walked Toward Sloane",
+      "blurb": "At the door, you walked toward Sloane first (the Wingman).",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "common",
+      "hidden": true
+    },
+    {
+      "id": "walked-wes",
+      "title": "Walked Toward Wes",
+      "blurb": "At the door, you walked toward Wes first (the Wingman).",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "common",
+      "hidden": true
+    },
+    {
+      "id": "walked-remy",
+      "title": "Walked Toward Remy",
+      "blurb": "At the door, you walked toward Remy first (the Wingman).",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "common",
+      "hidden": true
+    },
+    {
+      "id": "walked-zohra",
+      "title": "Walked Toward Zohra",
+      "blurb": "At the door, you walked toward Zohra first (the Night Market).",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "common",
+      "hidden": true
+    },
+    {
+      "id": "walked-lin",
+      "title": "Walked Toward Lin",
+      "blurb": "At the door, you walked toward Lin first (the Night Market).",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "common",
+      "hidden": true
+    },
+    {
+      "id": "walked-edda",
+      "title": "Walked Toward Edda",
+      "blurb": "At the door, you walked toward Edda first (the Night Market).",
+      "category": "milestone",
+      "critBonusPct": 0,
+      "rarity": "common",
+      "hidden": true
+    },
+    {
       "id": "nm-tend-push",
       "title": "Push Me, Gently",
       "blurb": "You asked the row to keep one rung ahead of you.",
@@ -2527,7 +2617,26 @@
                 "emotion": "neutral"
               }
             ],
-            "scenarioVariants": [],
+            "scenarioVariants": [
+              {
+                "unlockIf": [
+                  "walked-mei"
+                ],
+                "scenario": "5:02 AM. Before any phone: a container on your doorstep, still warm — rice and eggs, a note in a brisk hand. \"Eat first. She calls at 5:14. You'll want the rice. — M.\" You are exactly one bite in when it happens. 5:14 AM. Your phone bypasses silent. An UNKNOWN NUMBER, wall of text in all caps demanding your numbers before you collapsed last night: \"THE NUMBERS YOUR BODY LOGGED WHILE YOU SLEPT. WATER LEVELS BEFORE LIGHTS-OUT. NOW.\" Below the text, a pinned location — Hana, already at the [track], small figure on the outdoor grass beside her [bench]. The portal frame is the [bleachers] behind her. She's been awake long enough to be impatient."
+              },
+              {
+                "unlockIf": [
+                  "walked-kenji"
+                ],
+                "scenario": "5:09 AM. A calendar invite arrives first, ruled and exact: \"INTAKE — 5:14 AM. The body's column reports before mine. Answer the phone; it's cheaper than her doorbell. — K.\" 5:14 AM, to the minute. Your phone bypasses silent. An UNKNOWN NUMBER, wall of text in all caps demanding your numbers before you collapsed last night: \"THE NUMBERS YOUR BODY LOGGED WHILE YOU SLEPT. WATER LEVELS BEFORE LIGHTS-OUT. NOW.\" Below the text, a pinned location — Hana, already at the [track], small figure on the outdoor grass beside her [bench]. The portal frame is the [bleachers] behind her. She's been awake long enough to be impatient."
+              },
+              {
+                "unlockIf": [
+                  "walked-sam"
+                ],
+                "scenario": "5:13 AM. One text, mild as the hour isn't: \"Page one starts loud. It's supposed to. I'm logging it either way. — S.\" Sixty seconds later: 5:14 AM. Your phone bypasses silent. An UNKNOWN NUMBER, wall of text in all caps demanding your numbers before you collapsed last night: \"THE NUMBERS YOUR BODY LOGGED WHILE YOU SLEPT. WATER LEVELS BEFORE LIGHTS-OUT. NOW.\" Below the text, a pinned location — Hana, already at the [track], small figure on the outdoor grass beside her [bench]. The portal frame is the [bleachers] behind her. She's been awake long enough to be impatient."
+              }
+            ],
             "youSee": "",
             "revealsVitals": [],
             "bpmShift": "",
@@ -10803,7 +10912,32 @@
               }
             ],
             "memoryWrites": [],
-            "scenarioVariants": [],
+            "scenarioVariants": [
+              {
+                "unlockIf": [
+                  "walked-mara"
+                ],
+                "scenario": "Friday, late, [the floor] — and you almost didn't come, except the stool nearest the door was somehow held, and Mara didn't make a thing of it. \"He's about to find you,\" she says, mild, eyes on the room. \"That's not a warning. It's a forecast.\" A bar's worth of noise, and a someone across it you clocked four minutes ago and have been pointedly not-looking-at ever since. A voice, warm and pitched right under the bass so you can actually hear it: \"Hey. You've been holding that drink like a hostage. You've got about two seconds before 'later' turns into 'never.' So. Go.\""
+              },
+              {
+                "unlockIf": [
+                  "walked-sloane"
+                ],
+                "scenario": "Friday, late, [the floor] — Sloane hasn't looked at you once and has somehow read your whole night anyway. \"Ten seconds,\" she says to her glass. \"He clocked you at the door.\" A bar's worth of noise, and a someone across it you clocked four minutes ago and have been pointedly not-looking-at ever since. A voice, warm and pitched right under the bass so you can actually hear it: \"Hey. You've been holding that drink like a hostage. You've got about two seconds before 'later' turns into 'never.' So. Go.\""
+              },
+              {
+                "unlockIf": [
+                  "walked-wes"
+                ],
+                "scenario": "Friday, late, [the floor] — a fresh napkin lands by your elbow with nine words on it in Wes's hand: a first line, yours if you want it. \"Or improvise,\" he says, already looking past you. \"Incoming.\" A bar's worth of noise, and a someone across it you clocked four minutes ago and have been pointedly not-looking-at ever since. A voice, warm and pitched right under the bass so you can actually hear it: \"Hey. You've been holding that drink like a hostage. You've got about two seconds before 'later' turns into 'never.' So. Go.\""
+              },
+              {
+                "unlockIf": [
+                  "walked-remy"
+                ],
+                "scenario": "Friday, late, [the floor] — Remy catches your reflection in the mirror column and tips her chin: the bit's already half off your face, which from her counts as a standing ovation. \"Hold that,\" she says. \"Company's coming.\" A bar's worth of noise, and a someone across it you clocked four minutes ago and have been pointedly not-looking-at ever since. A voice, warm and pitched right under the bass so you can actually hear it: \"Hey. You've been holding that drink like a hostage. You've got about two seconds before 'later' turns into 'never.' So. Go.\""
+              }
+            ],
             "youSee": "Nico's already off the stool, eyes scanning the room for your opening before you've even found it. His hair's tousled like he ran here — because he sort of did.",
             "revealsVitals": [
               "nico:eyes",
@@ -17187,7 +17321,26 @@
               }
             ],
             "memoryWrites": [],
-            "scenarioVariants": [],
+            "scenarioVariants": [
+              {
+                "unlockIf": [
+                  "walked-zohra"
+                ],
+                "scenario": "Zohra walks you down the row herself, crate on hip, pricing the world as she goes — \"underpriced by the second night, everyone is; then we fix the number\" — and deposits you at the end like a delivery she fully intends to invoice. Dusk takes the row one lantern at a time, and yours is the dark one at the end. The shutter is stuck the way things get stuck when nobody has wanted them in a while. A small man with singe-marks on both cuffs is already there, looking at your cold lantern like it's an old acquaintance."
+              },
+              {
+                "unlockIf": [
+                  "walked-lin"
+                ],
+                "scenario": "You come down the row with Lin's second cup still warm in your hands — they walked the whole length of the lanterns beside you without once making it a procession — and stop where they stop: the dark stall at the end. \"The quiet side of yours,\" they say, and leave the cup with you. Dusk takes the row one lantern at a time, and yours is the dark one at the end. The shutter is stuck the way things get stuck when nobody has wanted them in a while. A small man with singe-marks on both cuffs is already there, looking at your cold lantern like it's an old acquaintance."
+              },
+              {
+                "unlockIf": [
+                  "walked-edda"
+                ],
+                "scenario": "Edda marches you down the row with the burnt-edged loaf half-eaten in your hand — \"eat it walking\" — and points her chin at the end of the line. \"Yours. Wick first; that's his department.\" Dusk takes the row one lantern at a time, and yours is the dark one at the end. The shutter is stuck the way things get stuck when nobody has wanted them in a while. A small man with singe-marks on both cuffs is already there, looking at your cold lantern like it's an old acquaintance."
+              }
+            ],
             "youSee": "he carries the wick-trimmer the way other people carry keys — like the night doesn't start without it.",
             "revealsVitals": [
               "tam:trimmer"
@@ -23069,6 +23222,6 @@
   },
   "version": {
     "runId": "run-005",
-    "contentHash": "c13f558e5725"
+    "contentHash": "a64217e1a302"
   }
 }

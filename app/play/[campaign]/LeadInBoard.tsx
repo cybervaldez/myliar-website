@@ -59,13 +59,11 @@ type Pop =
   | { kind: "char"; id: string; x: number; y: number }
   | { kind: "name"; x: number; y: number };
 
-export default function LeadInBoard({ leadIn, cast, startHref, dayUnit, firstDayTitle, pron, onPron, nm, onNm, td, onTd, onHf, reservedNames }: {
+export default function LeadInBoard({ leadIn, cast, startHref, dayUnit, firstDayTitle, pron, onPron, nm, onNm, onHf, reservedNames }: {
   leadIn: LeadInData; cast: CastLite[]; startHref: string;
   dayUnit?: string; firstDayTitle?: string; // the TRUE Day-1 unit + episode title (§10: the bridge never promises a chapter the run doesn't open)
   pron?: string | null; onPron?: (k: string) => void;
   nm?: string; onNm?: (v: string) => void;
-  td?: string; // the live names-show pick — the board honors it the beat AFTER asking (the Iron Monk rule)
-  onTd?: (k: string) => void;
   onHf?: (flag: string) => void; // the "what are you here for?" pick (the flag id rides the run URL)
   reservedNames?: string[]; // cast + story-significant names → the gentle free-name collision note
 }) {
@@ -77,7 +75,6 @@ export default function LeadInBoard({ leadIn, cast, startHref, dayUnit, firstDay
   const [correcting, setCorrecting] = useState(false);
   const [ownAck, setOwnAck] = useState<string | null>(null);
   const [nameAsking, setNameAsking] = useState(false); // re-run R11: the P2 name-ask intermediate state
-  const [titleAskDone, setTitleAskDone] = useState(!leadIn.titleAsk);
   // the "what are you here for?" beat: null = unanswered; "" = the quiet skip; else the picked post
   const [hfPost, setHfPost] = useState<string | null>(null);
   // the juice
@@ -91,11 +88,10 @@ export default function LeadInBoard({ leadIn, cast, startHref, dayUnit, firstDay
   const byId = (id: string) => cast.find((c) => c.id === id);
   const nameOf = (id: string) => byId(id)?.name ?? id;
   const titleOf = (id: string) => byId(id)?.titles?.[0] ?? byId(id)?.title ?? "your lead";
-  // every cast LABEL on the board routes through the names-show pick — the titleAsk's
-  // own surface must be the FIRST to honor it (the Iron Monk rule, 2026-06-12: picking
-  // "the Iron Monk" then reading "Hana, the Iron Monk" on the next beat breaks the pref).
-  const labelOf = (id: string) =>
-    td === "title" ? titleOf(id) : td === "name" ? nameOf(id) : `${nameOf(id)}, ${titleOf(id)}`;
+  // TITLE SUNSET (owner rule, 2026-06-12): titles are STORY details, never a display
+  // pref — every walk/board label uses the NAME; titles surface in-fiction (the
+  // agent-role line) and on the cast sheet, not as chrome.
+  const labelOf = (id: string) => nameOf(id);
 
   const helperIds = new Set(leadIn.helpers.map((h) => h.id));
   const chosenAction = chosen ? leadIn.actions.find((a) => a.helperId === chosen) : null;
@@ -207,7 +203,7 @@ export default function LeadInBoard({ leadIn, cast, startHref, dayUnit, firstDay
           return (
             <>
               <div style={{ display: "flex", alignItems: "center", gap: 7, fontFamily: "var(--theme-body)", fontSize: 8.5, letterSpacing: ".12em", textTransform: "uppercase", color: "#c9b98a", marginBottom: 7 }}>
-                <span style={{ flex: 1, lineHeight: 1.3 }}>{td === "title" ? titleOf(id) : td === "name" ? nameOf(id) : <>{nameOf(id)} · {titleOf(id)}</>}</span>
+                <span style={{ flex: 1, lineHeight: 1.3 }}>{nameOf(id)} · {titleOf(id)}</span>
                 {c?.appearance && (
                   <button onClick={(e) => { e.stopPropagation(); setSheet({ kind: "portrait", name: nameOf(id), title: titleOf(id), text: c.appearance! }); }}
                     title="what they look like" aria-label="appearance"
@@ -474,28 +470,7 @@ export default function LeadInBoard({ leadIn, cast, startHref, dayUnit, firstDay
   }
 
   // ── PHASE 1.5: the names-show micro-beat (§3.5 — the lead introduces themselves) ──
-  if (!titleAskDone && leadIn.titleAsk && defaultId) {
-    const pick = (k: string) => { onTd?.(k); setTitleAskDone(true); };
-    return wrap(
-      <div>
-        {sceneHead}
-        <div style={{ borderLeft: "2px solid var(--forest)", paddingLeft: 11, margin: "10px 0" }}>
-          <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--ink)", margin: 0 }}>{leadIn.titleAsk}</p>
-        </div>
-        <div style={{ margin: "6px 0 0" }}>
-          <button onClick={() => pick("name")} style={{ ...S.ta, color: "var(--ink)" }}>
-            <span style={S.gold}>&gt; </span>&ldquo;{nameOf(defaultId)}.&rdquo;
-          </button>
-          <button onClick={() => pick("title")} style={{ ...S.ta, color: "var(--ink)" }}>
-            <span style={S.gold}>&gt; </span>&ldquo;{titleOf(defaultId)}.&rdquo;
-          </button>
-          <button onClick={() => pick("both")} style={{ ...S.ta, color: "var(--ink)" }}>
-            <span style={S.gold}>&gt; </span>&ldquo;Both work.&rdquo;
-          </button>
-        </div>
-      </div>
-    );
-  }
+  // (the titleAsk names-show beat was SUNSET 2026-06-12 — titles are story, not a pref)
 
   // ── PHASE 2: the woven Scene Board (§4 — the sketch shape) ──
   // playtest fix #11: the separator goes BETWEEN helpers (final "."), never dangling.

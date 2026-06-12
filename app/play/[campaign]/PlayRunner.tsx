@@ -176,10 +176,9 @@ export default function PlayRunner({ meta, days, di, e, pathStr, seed, vitals, r
     if (!id) return "";
     const c = castLite?.find((x) => x.id === id);
     if (!c?.name) return id;
-    if (lockedPrefs?.td === "title" && c.title) return c.title;
-    if (lockedPrefs?.td === "both" && c.title) return `${c.name}, ${c.title}`;
+    // TITLE SUNSET (2026-06-12): labels are NAMES; titles live in the story + sheet.
     return c.name;
-  }, [castLite, lockedPrefs?.td]);
+  }, [castLite]);
   // The committed Chaotic Line per event (chaotic → input → continue): the picked
   // chaotic choice doesn't resolve until the player locks in their line; the line is
   // then woven into the outcome. Local/ephemeral (UGC, not part of the URL path).
@@ -241,6 +240,9 @@ export default function PlayRunner({ meta, days, di, e, pathStr, seed, vitals, r
   // parity); the full per-helper prologue stays the tracked authoring gap. `leadIn`
   // rides the opaque lockedPrefs map, so it propagates across every step URL.
   if (lockedPrefs?.leadIn) relByChar[lockedPrefs.leadIn] = 2;
+  // The ROUTED COLD OPEN (the Mei→Hana rule): the walked lead's flag lets Day-1's
+  // first scene proceed from the door's path pick (scenarioVariants on walked-<id>).
+  if (lockedPrefs?.leadIn) granted.add(`walked-${lockedPrefs.leadIn}`);
   // The DOOR-GRANTED tendency flag ("what are you here for?" — prefs-as-hooks):
   // the gate-intake pick carries the flag id itself (e.g. nm-tend-push), seeded
   // before LANTERN 1 so the register variants resolve from the first night.

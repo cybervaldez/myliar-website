@@ -24,7 +24,7 @@ export type FrontDoorProps = {
   castNames?: string[]; // cast + story-significant names — filters preset COLLISIONS; free-typed matches get the gentle note
   leadIn?: LeadInData | null; // the motif-driven Scene Board opening (convergent-origins.md)
   leadInCast?: CastLite[]; // cast id/name/titles — the Scene Board resolves the helper name + Day-1 title
-  locked?: { id: string; vibe: string; td: string; nm: string; hf?: string } | null;
+  locked?: { id: string; vibe: string; nm: string; hf?: string } | null;
   resume?: string | null;
 };
 
@@ -40,11 +40,7 @@ const ID_OPTS: IdOpt[] = [
 // Deliberately gender-AMBIGUOUS — a neutral name lifts the gender-politics friction:
 // the name never forces a read, so it + the pronouns are the player's to set freely.
 const NAME_OPTS = ["Alex", "Sam", "Jordan", "Riley", "Quinn", "Sky", "Casey", "Avery"];
-const TD_OPTS = [
-  { key: "title", label: "Title", ex: (n: string, t: string) => t },
-  { key: "both", label: "Name + Title", ex: (n: string, t: string) => `${n}, ${t}` },
-  { key: "name", label: "Just the name", ex: (n: string, t: string) => n },
-];
+// (TD_OPTS removed — the names-show pref was SUNSET 2026-06-12: titles are story details)
 // The 6 real cultural-vibe bands (lib/player_prefs.dart) — a SILENT shape on
 // live-generated content, never the authored story. Each shows what it actually tints.
 const VIBE_OPTS: { key: string; label: string; note: string; sample: string }[] = [
@@ -97,7 +93,6 @@ export default function FrontDoor(props: FrontDoorProps) {
   const nameOpts = NAME_OPTS.filter((n) => !(castNames ?? []).some((c) => c.toLowerCase() === n.toLowerCase()));
   const [id, setId] = useState(locked?.id ?? "");
   const [vibe, setVibe] = useState(locked?.vibe ?? "");
-  const [td, setTd] = useState(locked?.td ?? "");
   const [hf, setHf] = useState(locked?.hf ?? ""); // the "what are you here for?" flag id (the gate-intake beat)
   const [nm, setNm] = useState(locked?.nm ?? "");
   const sel = ID_OPTS.find((o) => o.key === id);
@@ -112,7 +107,7 @@ export default function FrontDoor(props: FrontDoorProps) {
   // and a name takes a SINGULAR verb. See docs/design/research-identity-templating.md §grammar.
   const refClause = curOpt.key === "name" ? `There goes ${sampleName}` : `There ${curOpt.subj} ${curOpt.verb}`;
   const startHref = `/play/${campaign}/${firstDay}?seed=${seed}`
-    + (id ? `&id=${id}` : "") + (nm ? `&nm=${encodeURIComponent(nm)}` : "") + (td ? `&td=${td}` : "") + (vibe ? `&vibe=${vibe}` : "") + (hf ? `&hf=${hf}` : "");
+    + (id ? `&id=${id}` : "") + (nm ? `&nm=${encodeURIComponent(nm)}` : "") + (vibe ? `&vibe=${vibe}` : "") + (hf ? `&hf=${hf}` : "");
   const unit = dayUnit.toLowerCase();
 
   // ── THE FRONT DOOR IS THE SKETCH (frontdoor-ux-variations.html, owner-locked): when a
@@ -134,7 +129,6 @@ export default function FrontDoor(props: FrontDoorProps) {
           dayUnit={dayUnit} firstDayTitle={firstDayTitle}
           pron={id || null} onPron={(k) => setId(k)}
           nm={nm} onNm={(v) => setNm(v)}
-          td={td} onTd={(k) => setTd(k)}
           onHf={(flag) => setHf(flag)}
         />
       </section>
@@ -187,7 +181,7 @@ export default function FrontDoor(props: FrontDoorProps) {
           <p style={{ margin: 0, fontSize: 14 }}>
             {locked.nm ? <><b>{locked.nm}</b> · </> : null}
             {ID_OPTS.find((o) => o.key === locked.id)?.label ?? "name-only"}
-            {locked.td ? <> · names shown as <b>{TD_OPTS.find((t) => t.key === locked.td)?.label}</b></> : null}
+            
             {locked.vibe ? <> · vibe <b>{VIBE_OPTS.find((v) => v.key === locked.vibe)?.label ?? locked.vibe}</b></> : null}{locked.hf ? <> · here for <b>&ldquo;{leadIn?.hereForOptions?.find((o) => o.flag === locked.hf)?.line ?? "your answer at the gate"}&rdquo;</b></> : null}.
           </p>
           <p style={{ margin: "6px 0 0", fontSize: 12, color: "var(--ink-soft)" }}>Preferences are fixed once a run starts (so the mechanics don’t break). Reset to change them.</p>
@@ -213,12 +207,7 @@ export default function FrontDoor(props: FrontDoorProps) {
             {romance && <p style={{ margin: "4px 0 0", fontSize: 12, color: "var(--ink-soft)" }}>Romance, if you steer toward it, is set in the story — never by a label here.</p>}
           </div>
 
-          <GateHead sub="How the cast’s names + titles read to you — they all earn evocative titles.">HOW SHOULD NAMES SHOW?</GateHead>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
-            {TD_OPTS.map((t) => <button key={t.key} onClick={() => setTd(t.key)} style={pillStyle(td === t.key, true)}>{t.label}</button>)}
-            {td && <span style={{ fontSize: 13, color: "var(--ink-soft)", fontStyle: "italic" }}>↳ e.g. “{TD_OPTS.find((t) => t.key === td)!.ex(exName, exTitle)}”</span>}
-          </div>
-
+          {/* the names-show pref was SUNSET (2026-06-12): titles are story details, never chrome */}
           <GateHead sub="A quiet shape on the worlds you BUILD + the game’s live-written atmosphere — never the written campaign, never the coaches’ locked voices, and the game never names it. Optional.">THE WORLD’S FLAVOR</GateHead>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             {VIBE_OPTS.map((v) => <button key={v.key} onClick={() => setVibe(v.key)} style={pillStyle(vibe === v.key, true)}>{v.label}</button>)}
@@ -237,7 +226,7 @@ export default function FrontDoor(props: FrontDoorProps) {
       ) : (
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center", borderTop: "2px solid var(--ink-soft)", paddingTop: 16, marginTop: 22 }}>
           <Link href={startHref} style={{ fontFamily: "var(--theme-display)", fontSize: 16, padding: "10px 22px", background: "var(--forest)", color: "var(--paper)", textDecoration: "none", border: "2px solid var(--ink)" }}>▶ START — lock it in</Link>
-          <span style={{ fontSize: 12, color: "var(--margin-ink)", fontStyle: "italic" }}>{id || nm || td || vibe ? "your picks lock for this run; Home returns here, Reset starts over." : "or just start — name-only, neutral."}</span>
+          <span style={{ fontSize: 12, color: "var(--margin-ink)", fontStyle: "italic" }}>{id || nm || vibe ? "your picks lock for this run; Home returns here, Reset starts over." : "or just start — name-only, neutral."}</span>
         </div>
       )}
     </section>

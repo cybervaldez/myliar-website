@@ -21,7 +21,7 @@ export default async function PlayLanding({
   params, searchParams,
 }: {
   params: Promise<{ campaign: string }>;
-  searchParams: Promise<{ id?: string; vibe?: string; td?: string; nm?: string; hf?: string; resume?: string }>;
+  searchParams: Promise<{ id?: string; vibe?: string; nm?: string; hf?: string; resume?: string }>;
 }) {
   const { campaign } = await params;
   const sp = await searchParams;
@@ -46,8 +46,8 @@ export default async function PlayLanding({
   const castNames = cast.map((c) => c.name).filter((n): n is string => !!n);
   const reservedNames = [...castNames, ...((cm as unknown as { storyNames?: string[] })?.storyNames ?? [])];
   const seed = Math.floor(Math.random() * 1e9).toString(36); // a fresh run's dice seed
-  const locked = sp.id || sp.vibe || sp.td || sp.nm || sp.hf
-    ? { id: sp.id ?? "", vibe: sp.vibe ?? "", td: sp.td ?? "", nm: sp.nm ?? "", hf: sp.hf ?? "" } : null;
+  const locked = sp.id || sp.vibe || sp.nm || sp.hf
+    ? { id: sp.id ?? "", vibe: sp.vibe ?? "", nm: sp.nm ?? "", hf: sp.hf ?? "" } : null;
 
   return (
     <main style={{ maxWidth: 720, margin: "0 auto", padding: "20px 16px 64px" }}>
