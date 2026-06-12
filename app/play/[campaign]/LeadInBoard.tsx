@@ -59,11 +59,12 @@ type Pop =
   | { kind: "char"; id: string; x: number; y: number }
   | { kind: "name"; x: number; y: number };
 
-export default function LeadInBoard({ leadIn, cast, startHref, dayUnit, firstDayTitle, pron, onPron, nm, onNm, onTd, onHf, reservedNames }: {
+export default function LeadInBoard({ leadIn, cast, startHref, dayUnit, firstDayTitle, pron, onPron, nm, onNm, td, onTd, onHf, reservedNames }: {
   leadIn: LeadInData; cast: CastLite[]; startHref: string;
   dayUnit?: string; firstDayTitle?: string; // the TRUE Day-1 unit + episode title (§10: the bridge never promises a chapter the run doesn't open)
   pron?: string | null; onPron?: (k: string) => void;
   nm?: string; onNm?: (v: string) => void;
+  td?: string; // the live names-show pick — the board honors it the beat AFTER asking (the Iron Monk rule)
   onTd?: (k: string) => void;
   onHf?: (flag: string) => void; // the "what are you here for?" pick (the flag id rides the run URL)
   reservedNames?: string[]; // cast + story-significant names → the gentle free-name collision note
@@ -90,6 +91,11 @@ export default function LeadInBoard({ leadIn, cast, startHref, dayUnit, firstDay
   const byId = (id: string) => cast.find((c) => c.id === id);
   const nameOf = (id: string) => byId(id)?.name ?? id;
   const titleOf = (id: string) => byId(id)?.titles?.[0] ?? byId(id)?.title ?? "your lead";
+  // every cast LABEL on the board routes through the names-show pick — the titleAsk's
+  // own surface must be the FIRST to honor it (the Iron Monk rule, 2026-06-12: picking
+  // "the Iron Monk" then reading "Hana, the Iron Monk" on the next beat breaks the pref).
+  const labelOf = (id: string) =>
+    td === "title" ? titleOf(id) : td === "name" ? nameOf(id) : `${nameOf(id)}, ${titleOf(id)}`;
 
   const helperIds = new Set(leadIn.helpers.map((h) => h.id));
   const chosenAction = chosen ? leadIn.actions.find((a) => a.helperId === chosen) : null;
@@ -201,7 +207,7 @@ export default function LeadInBoard({ leadIn, cast, startHref, dayUnit, firstDay
           return (
             <>
               <div style={{ display: "flex", alignItems: "center", gap: 7, fontFamily: "var(--theme-body)", fontSize: 8.5, letterSpacing: ".12em", textTransform: "uppercase", color: "#c9b98a", marginBottom: 7 }}>
-                <span style={{ flex: 1, lineHeight: 1.3 }}>{nameOf(id)} · {titleOf(id)}</span>
+                <span style={{ flex: 1, lineHeight: 1.3 }}>{td === "title" ? titleOf(id) : td === "name" ? nameOf(id) : <>{nameOf(id)} · {titleOf(id)}</>}</span>
                 {c?.appearance && (
                   <button onClick={(e) => { e.stopPropagation(); setSheet({ kind: "portrait", name: nameOf(id), title: titleOf(id), text: c.appearance! }); }}
                     title="what they look like" aria-label="appearance"
@@ -226,7 +232,7 @@ export default function LeadInBoard({ leadIn, cast, startHref, dayUnit, firstDay
                       <button onClick={() => { setPop(null); setChosen(id); }}
                         style={{ display: "block", width: "100%", textAlign: "left", font: "inherit", fontSize: 13.5, padding: "9px 11px", background: "var(--spot-red)", color: "#fff", border: "1px solid #000", cursor: "pointer", marginTop: 8 }}>
                         → &ldquo;{actionOf(id)!.monologue}&rdquo;
-                        <span style={{ display: "block", fontSize: 10.5, opacity: 0.8, marginTop: 2 }}>walk toward {nameOf(id)}, {titleOf(id)}</span>
+                        <span style={{ display: "block", fontSize: 10.5, opacity: 0.8, marginTop: 2 }}>walk toward {labelOf(id)}</span>
                       </button>
                     )}
                   </>)}
@@ -524,7 +530,7 @@ export default function LeadInBoard({ leadIn, cast, startHref, dayUnit, firstDay
         <button onClick={() => setChosen(defaultId)}
           style={{ display: "block", width: "100%", textAlign: "left", background: "var(--paper-shade)", border: "2px solid var(--forest)", padding: "13px 15px", cursor: "pointer", boxShadow: "3px 3px 0 rgba(45,74,43,.15)" }}>
           <span style={{ display: "block", fontSize: 15, fontStyle: "italic", color: "var(--ink)" }}>&ldquo;{defaultAction.monologue}&rdquo;</span>
-          <span style={{ display: "block", fontSize: 13, color: "var(--forest)", marginTop: 6, fontWeight: 600 }}>▶ walk toward {nameOf(defaultId)}, {titleOf(defaultId)}</span>
+          <span style={{ display: "block", fontSize: 13, color: "var(--forest)", marginTop: 6, fontWeight: 600 }}>▶ walk toward {labelOf(defaultId)}</span>
         </button>
       ) : (
         <div>

@@ -134,7 +134,7 @@ export default function FrontDoor(props: FrontDoorProps) {
           dayUnit={dayUnit} firstDayTitle={firstDayTitle}
           pron={id || null} onPron={(k) => setId(k)}
           nm={nm} onNm={(v) => setNm(v)}
-          onTd={(k) => setTd(k)}
+          td={td} onTd={(k) => setTd(k)}
           onHf={(flag) => setHf(flag)}
         />
       </section>
