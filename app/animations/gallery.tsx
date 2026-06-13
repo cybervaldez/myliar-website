@@ -1069,30 +1069,39 @@ export default function AnimationGallery() {
       </Section>
 
       <Section
-        title="EMOTION RANGE — the mood of a line  ★NEW"
-        note="The voice-motion LAYER that carries feeling (voice-motion.md §emotion). The per-character preset above is HOW a character habitually moves; the EMOTION is how they FEEL saying THIS line — and it drives the visible motion. Twelve emotions, each a distinct kinetic verb (the per-word stagger turns it into a wave): shout bursts big + snaps down, laugh bobs + wobbles, smile rises warm, whisper fades faded-italic, sad sinks, angry shakes hard, sigh exhales, wry tilts-and-rights, deadpan is the flat null. A dialogue line carries an emotion tag (`[shout]`, `[laugh]`…); untagged keeps the character's own preset entry. Reduced-motion collapses all to instant."
+        title="EMOTION RANGE — text that carries the feeling  ★NEW"
+        note="The voice-motion LAYER that makes dialogue ACT (voice-motion.md §emotion) — VN / Phoenix-Wright energy, where the text animation IS the emotion. Three modes: per-WORD (smile rises, sad sinks, wry smirks), per-LETTER for the big ones — shock punches every letter in huge and shakes it (the 'WHAAAAT?!' gasp), angry judders, excited springs up letter by letter, laugh bobs in a wave, nervous trembles — and whole-LINE jolt (declare = the 'OBJECTION!' desk-slam). A line carries an emotion tag (`[shock]`, `[declare]`…); untagged keeps the character's own preset entry. Reduced-motion → instant."
       >
         <Demo
-          title="The same line, all twelve emotions"
-          spec="each emotion = one CSS keyframe verb + a pace multiplier; the per-word stagger makes it ripple. shout/angry pace ~0.6× (clipped); whisper/sad/sigh ~1.5× (drawn out); laugh wobbles ±5°; angry shakes ±2.6px; smile/excited overshoot up"
-          flutter="VoiceMotionSpec gains an `emotion` field per line; the renderer picks the emotion curve (em-* keyframe) over the preset entry, keeps the preset's unit/pace as the beat"
+          title="Every emotion, on a line that fits it"
+          spec="word-mode = per-word keyframe; letter-mode (eml-*) = per-CHARACTER stagger (the shakes/waves — shock scales 2.4× + rotates ±11°, angry ±5px, excited springs from .45→1.25 scale); line-mode (emc-declare) = the whole line jolts ±8px while words pop. Hit replay-all"
+          flutter="VoiceMotionSpec gains `emotion` + `mode`; the renderer splits by letter for the dramatic ones, shakes the container for declare, else per word — preset unit/pace stays the beat"
         >
-          <EmotionGallery sample="I told you it would work." />
+          <EmotionGallery />
+        </Demo>
+
+        <Demo
+          title="The big VN beats — drama in three lines"
+          spec="shock = per-letter punch-and-shake · declare = the line desk-slams · angry = per-letter judder. These are the 'WHAAAT?! / OBJECTION! / you did WHAT' moments — the text doing the acting"
+          flutter="same engine; these read as letter-mode + line-mode at full amplitude"
+        >
+          <div className="vm-row" style={{ marginBottom: 14 }}><span className="vm-text" style={{ fontSize: 26 }}><EmoLine text="WHAAAAT?!" emotion="shock" /></span></div>
+          <div className="vm-row" style={{ marginBottom: 14 }}><span className="vm-text" style={{ fontSize: 22 }}><EmoLine text="OBJECTION! That’s not what happened." emotion="declare" /></span></div>
+          <div className="vm-row"><span className="vm-text" style={{ fontSize: 20 }}><EmoLine text="You did WHAT with my ledger?" emotion="angry" /></span></div>
         </Demo>
 
         <Demo
           title="Emotion × character — the crew, each in a different mood"
-          spec="emotion drives the motion; the character preset still sets the rhythm (unit + pace). Hana SHOUTS in DRILL pace; Mei SMILES in SERVICE phrasing; Nico is EXCITED; Sloane reads WRY; Roan SIGHS slow"
+          spec="emotion drives the motion; the character preset still sets the rhythm. Hana SHOUTS, Nico is EXCITED (letters spring), Sloane reads WRY, the newcomer is NERVOUS (trembling), Roan SIGHS, Edda DEADPANS"
           flutter="emotion overlays the preset: same `[emotion]` tag, different base rhythm per character"
         >
-          <div className="vm-row"><span className="vm-who">Hana · shout</span><span className="vm-text"><EmoLine text="THAT’S the rep. Do it again." emotion="shout" unit="word" basePace={70} /></span></div>
+          <div className="vm-row"><span className="vm-who">Hana · shout</span><span className="vm-text"><EmoLine text="THAT’S the rep. Do it AGAIN." emotion="shout" unit="word" basePace={70} /></span></div>
           <div className="vm-row"><span className="vm-who">Mei · smile</span><span className="vm-text"><EmoLine text="Sit. I made too much again." emotion="smile" unit="phrase" basePace={260} /></span></div>
-          <div className="vm-row"><span className="vm-who">Nico · excited</span><span className="vm-text"><EmoLine text="You did it — you actually did it!" emotion="excited" unit="word" basePace={150} /></span></div>
+          <div className="vm-row"><span className="vm-who">Nico · excited</span><span className="vm-text"><EmoLine text="You ACTUALLY did it!" emotion="excited" /></span></div>
           <div className="vm-row"><span className="vm-who">Sloane · wry</span><span className="vm-text"><EmoLine text="That’s not a maybe. You know it isn’t." emotion="wry" unit="word" basePace={105} /></span></div>
-          <div className="vm-row"><span className="vm-who">Nervous newcomer · nervous</span><span className="vm-text"><EmoLine text="I — I rehearsed this part, I swear." emotion="nervous" unit="word" basePace={130} /></span></div>
+          <div className="vm-row"><span className="vm-who">Nervous newcomer · nervous</span><span className="vm-text"><EmoLine text="I— I rehearsed this part…" emotion="nervous" /></span></div>
           <div className="vm-row"><span className="vm-who">Roan · sigh</span><span className="vm-text"><EmoLine text="Again. Slower. We have all night." emotion="sigh" unit="pair" basePace={120} /></span></div>
           <div className="vm-row"><span className="vm-who">Edda · deadpan</span><span className="vm-text"><EmoLine text="Burnt edge. Best flavor. Full price." emotion="deadpan" unit="phrase" basePace={300} /></span></div>
-          <div className="vm-row"><span className="vm-who">A hard night · sad</span><span className="vm-text"><EmoLine text="I didn’t think it would be this quiet." emotion="sad" unit="word" basePace={140} /></span></div>
         </Demo>
       </Section>
 

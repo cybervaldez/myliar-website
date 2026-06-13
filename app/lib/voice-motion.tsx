@@ -116,22 +116,30 @@ export function VoiceRow({ who, preset, text }: { who: string; preset: string; t
 // the preset still sets the unit/pace (its rhythm). A line carries an emotion tag
 // (`[shout]`, `[laugh]`, …); untagged = "say", which keeps the preset's own entry. ──
 export type Emotion =
-  | "say" | "shout" | "laugh" | "smile" | "whisper" | "excited"
-  | "nervous" | "sad" | "angry" | "sigh" | "wry" | "deadpan";
+  | "say" | "shout" | "shock" | "angry" | "excited" | "laugh" | "nervous"
+  | "smile" | "whisper" | "sad" | "heartbroken" | "sigh" | "wry" | "deadpan" | "declare";
 
-export const EMO: Record<Emotion, { label: string; glyph: string; entry: string; paceMul: number; bold?: boolean; accent?: boolean; note: string }> = {
-  say:     { label: "Say",     glyph: "•",  entry: "em-say",     paceMul: 1,    note: "neutral — an even pop, no flourish" },
-  shout:   { label: "Shout",   glyph: "❗", entry: "em-shout",   paceMul: 0.6,  bold: true, accent: true, note: "words burst in big and snap down — loud, fast, red" },
-  laugh:   { label: "Laugh",   glyph: "↑↓", entry: "em-laugh",   paceMul: 0.8,  note: "each word bobs + wobbles — the line ripples like a chuckle" },
-  smile:   { label: "Smile",   glyph: "◡",  entry: "em-smile",   paceMul: 1.1,  note: "a gentle warm rise — soft, unhurried, fond" },
-  whisper: { label: "Whisper", glyph: "…",  entry: "em-whisper", paceMul: 1.4,  note: "slow, faded, italic — said under the breath" },
-  excited: { label: "Excited", glyph: "✦",  entry: "em-excited", paceMul: 0.7,  note: "springy overshoot — can barely hold it in" },
-  nervous: { label: "Nervous", glyph: "≈",  entry: "em-nervous", paceMul: 1.15, note: "a small tremble that steadies — hesitant" },
-  sad:     { label: "Sad",     glyph: "↓",  entry: "em-sad",     paceMul: 1.5,  note: "words sink and fade — heavy, low" },
-  angry:   { label: "Angry",   glyph: "✖",  entry: "em-angry",   paceMul: 0.55, bold: true, accent: true, note: "hard sharp shake — clipped, bold, red" },
-  sigh:    { label: "Sigh",    glyph: "~",  entry: "em-sigh",     paceMul: 1.5,  note: "a long exhale — rises then settles, trailing" },
-  wry:     { label: "Wry",     glyph: "◞",  entry: "em-wry",      paceMul: 1.05, note: "a tilt-and-right — the smirk in the voice" },
-  deadpan: { label: "Deadpan", glyph: "—",  entry: "em-deadpan",  paceMul: 0.9,  note: "instant, flat, zero motion — the comedic null" },
+// mode: "word" = per-word · "letter" = per-character (the dramatic VN/Phoenix-Wright
+// shakes + waves) · "line" = the whole line jolts (a screen-shake) while words pop.
+type EmoMode = "word" | "letter" | "line";
+type EmoSpec = { label: string; glyph: string; entry: string; mode: EmoMode; paceMul: number; letterPace?: number; bold?: boolean; accent?: boolean; sample: string; note: string };
+
+export const EMO: Record<Emotion, EmoSpec> = {
+  say:        { label: "Say",        glyph: "•",   entry: "em-say",      mode: "word",   paceMul: 1,    sample: "I told you it would work.",        note: "neutral — an even pop, no flourish" },
+  shout:      { label: "Shout",      glyph: "❗",  entry: "em-shout",    mode: "word",   paceMul: 0.55, bold: true, accent: true, sample: "GET UP. We are NOT done.", note: "each word SLAMS in big and snaps down — loud, red" },
+  shock:      { label: "Shock",      glyph: "⁉",  entry: "eml-shock",   mode: "letter", paceMul: 1, letterPace: 22, bold: true, accent: true, sample: "WHAAAAT?!", note: "every letter punches in huge and shakes — the Phoenix-Wright gasp" },
+  angry:      { label: "Angry",      glyph: "✖",   entry: "eml-angry",   mode: "letter", paceMul: 1, letterPace: 16, bold: true, accent: true, sample: "You did WHAT with my ledger?", note: "the whole word judders side to side — hard, red" },
+  excited:    { label: "Excited",    glyph: "✦",   entry: "eml-excited", mode: "letter", paceMul: 1, letterPace: 24, sample: "You did it — you ACTUALLY did it!", note: "letters spring up one after another — a rising cheer" },
+  laugh:      { label: "Laugh",      glyph: "↑↓",  entry: "eml-laugh",   mode: "letter", paceMul: 1, letterPace: 26, sample: "Ha — no. Absolutely not. Hah!", note: "letters bob + wobble in a wave — a real laugh" },
+  nervous:    { label: "Nervous",    glyph: "≈",   entry: "eml-nervous", mode: "letter", paceMul: 1, letterPace: 30, sample: "I— I rehearsed this part, I swear…", note: "the letters tremble and sweat, then steady" },
+  smile:      { label: "Smile",      glyph: "◡",   entry: "em-smile",    mode: "word",   paceMul: 1.1,  sample: "There you are. I made too much again.", note: "a gentle warm rise — soft, fond" },
+  whisper:    { label: "Whisper",    glyph: "…",   entry: "em-whisper",  mode: "word",   paceMul: 1.45, sample: "(don't tell the others I said so.)", note: "slow, faded, italic — under the breath" },
+  sad:        { label: "Sad",        glyph: "↓",   entry: "em-sad",      mode: "word",   paceMul: 1.5,  sample: "I didn't think it would be this quiet.", note: "words sink and fade — heavy, low" },
+  heartbroken:{ label: "Heartbroken",glyph: "💔→", entry: "eml-heart",   mode: "letter", paceMul: 1, letterPace: 30, sample: "…oh. You're not coming back.", note: "letters droop and tremble as they fall — the break" },
+  sigh:       { label: "Sigh",       glyph: "~",   entry: "em-sigh",     mode: "word",   paceMul: 1.5,  sample: "Again. Slower. We have all night.", note: "a long exhale — rises then settles, trailing" },
+  wry:        { label: "Wry",        glyph: "◞",   entry: "em-wry",      mode: "word",   paceMul: 1.05, sample: "That's not a maybe. You know it isn't.", note: "a tilt-and-right — the smirk in the voice" },
+  deadpan:    { label: "Deadpan",    glyph: "—",   entry: "em-deadpan",  mode: "word",   paceMul: 0.9,  sample: "Burnt edge. Best flavor. Full price.", note: "instant, flat, zero motion — the comedic null" },
+  declare:    { label: "Declare",    glyph: "‼",   entry: "emc-declare", mode: "line",   paceMul: 0.5,  bold: true, accent: true, sample: "OBJECTION! That's not what happened.", note: "the whole line jolts like a desk-slam — the big call-out" },
 };
 
 const EMO_KEYS = Object.keys(EMO) as Emotion[];
@@ -145,44 +153,72 @@ export function parseEmotion(line: string): { emotion: Emotion; text: string } {
   return { emotion: "say", text: line };
 }
 
-/** A line rendered in an EMOTION, on a base rhythm (unit + pace from the character
- *  preset, or the defaults). Emotion is the visible motion; the rhythm is the beat. */
+/** A line rendered in an EMOTION. Word-mode = per word; letter-mode = per character
+ *  (the dramatic shakes/waves); line-mode = the whole line jolts while words pop.
+ *  Emotion is the visible motion; the rhythm (unit/pace) is the character's beat. */
 export function EmoLine({ text, emotion, unit = "word", basePace = 120 }: {
   text: string; emotion: Emotion; unit?: VMSpec["unit"]; basePace?: number;
 }) {
   const e = EMO[emotion] ?? EMO.say;
+  const tone = `${e.bold ? " vm-emo-bold" : ""}${e.accent ? " vm-emo-accent" : ""}`;
+
+  if (e.mode === "letter") {
+    const chars = [...text];
+    const lp = e.letterPace ?? 26;
+    let t = 60;
+    return (
+      <span className={`vm-stage${tone}`}>
+        {chars.map((c, i) => {
+          if (c === " ") return <span key={i}> </span>;
+          const d = t; t += lp;
+          return <span key={i} className={`vm-letter ${e.entry}`} style={{ animationDelay: `${d}ms` }}>{c}</span>;
+        })}
+      </span>
+    );
+  }
+
+  if (e.mode === "line") {
+    const units = vmUnits(text, unit);
+    let t = 70;
+    return (
+      <span className={`vm-stage ${e.entry}${tone}`}>
+        {units.map((u, i) => {
+          const d = t; t += basePace * e.paceMul;
+          return <span key={i} className="vm-unit em-popquick" style={{ animationDelay: `${d}ms` }}>{u} </span>;
+        })}
+      </span>
+    );
+  }
+
   const units = vmUnits(text, unit);
   let t = 100;
   return (
     <span className="vm-stage">
       {units.map((u, i) => {
-        const d = t;
-        t += basePace * e.paceMul;
-        const cls = `vm-unit ${e.entry}${e.bold ? " vm-emo-bold" : ""}${e.accent ? " vm-emo-accent" : ""}`;
-        return <span key={i} className={cls} style={{ animationDelay: `${d}ms` }}>{u} </span>;
+        const d = t; t += basePace * e.paceMul;
+        return <span key={i} className={`vm-unit ${e.entry}${tone}`} style={{ animationDelay: `${d}ms` }}>{u} </span>;
       })}
     </span>
   );
 }
 
-/** The EMOTION RANGE gallery — one sample line played in every emotion, side by
- *  side, with a replay-all. Directly answers "show the emotional range." */
-export function EmotionGallery({ sample = "I told you it would work.", preset }: { sample?: string; preset?: string }) {
+/** The EMOTION RANGE gallery — every emotion on a line that FITS it (so the motion
+ *  reads as the feeling), with a replay-all. The VN/Phoenix-Wright range. */
+export function EmotionGallery() {
   const [k, setK] = useState(0);
-  const base = (preset && VM[preset]) || undefined;
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
         <button onClick={() => setK((x) => x + 1)} style={{ fontSize: 11, cursor: "pointer", border: "1px solid var(--ink-soft)", background: "var(--paper)", padding: "3px 10px", color: "var(--ink)" }}>▶ replay all</button>
       </div>
-      <div key={k} style={{ display: "grid", gap: 8 }}>
+      <div key={k} style={{ display: "grid", gap: 10 }}>
         {EMO_KEYS.map((em) => (
-          <div key={em} style={{ display: "grid", gridTemplateColumns: "92px 1fr", alignItems: "baseline", gap: 10, borderBottom: "1px solid var(--ink-soft)", paddingBottom: 6 }}>
-            <span style={{ fontFamily: "var(--theme-display)", fontSize: 11, letterSpacing: ".1em", color: "var(--spot-red)" }}>
+          <div key={em} style={{ display: "grid", gridTemplateColumns: "108px 1fr", alignItems: "baseline", gap: 10, borderBottom: "1px solid var(--ink-soft)", paddingBottom: 7 }}>
+            <span style={{ fontFamily: "var(--theme-body)", fontWeight: 700, fontSize: 11, letterSpacing: ".08em", color: "var(--spot-red)" }}>
               {EMO[em].glyph} {EMO[em].label.toUpperCase()}
             </span>
-            <span style={{ fontSize: 15.5, lineHeight: 1.7, color: "var(--ink)" }}>
-              <EmoLine text={sample} emotion={em} unit={base?.unit ?? "word"} basePace={base?.pace ?? 120} />
+            <span style={{ fontSize: 17, lineHeight: 1.8, color: "var(--ink)" }}>
+              <EmoLine text={EMO[em].sample} emotion={em} />
             </span>
           </div>
         ))}

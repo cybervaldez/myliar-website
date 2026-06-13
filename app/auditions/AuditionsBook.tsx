@@ -70,7 +70,7 @@ function renderBlocks(md: string) {
     } else if (/^[A-Z][A-Z '&-]+:/.test(b)) {
       const lines = b.split("\n");
       out.push(
-        <div key={k} style={{ margin: "0 0 11px", borderLeft: "2px solid var(--forest)", paddingLeft: 10 }}>
+        <div key={k} style={{ margin: "0 0 11px" }}>
           {lines.map((l, i) => {
             const m = l.match(/^([A-Z][A-Z '&-]+):\s*([\s\S]*)$/);
             if (m) return (
@@ -111,7 +111,7 @@ function PanelReview({ panel }: { panel: PanelArea[] }) {
         </p>
         <div style={{ display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))" }}>
           {panel.map((a) => (
-            <div key={a.area} style={{ borderLeft: "2px solid var(--ink-soft)", paddingLeft: 11 }}>
+            <div key={a.area}>
               <div style={{ fontFamily: "var(--theme-body)", fontSize: 13.5, fontWeight: 700, color: "var(--ink)", marginBottom: 2 }}>{a.area}</div>
               <div style={{ fontSize: 9.5, letterSpacing: ".08em", color: "var(--margin-ink)", textTransform: "uppercase", marginBottom: 5 }}>{a.persona} · {a.team}</div>
               {a.pros.map((p, i) => <p key={`p${i}`} style={{ fontSize: 12.5, lineHeight: 1.5, margin: "0 0 3px", color: "var(--ink)" }}><span style={{ color: "#5a8a3a", fontWeight: 700 }}>+ </span>{p}</p>)}
@@ -133,8 +133,7 @@ const tabLabel = (id: string) => {
 function RoundBook({ round, nested }: { round: Round; nested?: boolean }) {
   const PROMPT = -1;
   const [active, setActive] = useState(0);
-  const [dir, setDir] = useState(1);
-  const go = (i: number) => { setDir(i >= active ? 1 : -1); setActive(i); };
+  const go = (i: number) => setActive(i);
 
   const e = active >= 0 ? round.entries[active] : null;
   const split = e ? splitEntry(e.markdown) : null;
@@ -169,9 +168,9 @@ function RoundBook({ round, nested }: { round: Round; nested?: boolean }) {
         ))}
       </div>
 
-      {/* the page (flips on change) */}
-      <div style={{ borderTop: "1.5px solid var(--ink)", background: "var(--paper)", padding: "16px 16px 18px", perspective: "1600px" }}>
-        <div key={`${round.id}-${active}`} className="audi-flip" style={{ ["--from" as string]: dir > 0 ? "-26deg" : "26deg" }}>
+      {/* the page */}
+      <div style={{ borderTop: "1.5px solid var(--ink)", background: "var(--paper)", padding: "16px 16px 18px" }}>
+        <div key={`${round.id}-${active}`}>
           {e ? (
             <>
               {split!.title && <div style={{ fontFamily: "var(--theme-body)", fontSize: 13, fontWeight: 700, letterSpacing: ".04em", color: "var(--margin-ink)", marginBottom: 10 }}>{split!.title}</div>}
