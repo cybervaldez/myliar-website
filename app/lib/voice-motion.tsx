@@ -4,7 +4,42 @@
 // (docs/design/voice-motion.md). Used by /animations (the prototype gallery)
 // and /auditions (the character audits render their voice lines LIVE).
 // Styles: the vm-* classes in globals.css.
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+// ── LOOPING (the "alternate take") — replay a one-shot reveal on a cycle, for idle /
+// attract surfaces (a front-door tagline, an idle shimmer on a held line) where the
+// in-dialogue one-shot would play once and stop. Each reveal knows its own end time
+// (last unit's delay + the entry keyframe's duration); we re-mount the stage every
+// (end + hold) ms, so the line reveals, holds readable, then plays again. Gated OFF
+// under reduced-motion — the loop is exactly the continuous motion that setting opts
+// out of, so there we render the settled line once. ────────────────────────────────
+const ENTRY_MS: Record<string, number> = {
+  "vm-pop": 300, "vm-drift": 550, "vm-flat": 180, "vm-flatline": 40,
+  "vm-ignite": 800, "vm-stamp": 320, "vm-tick": 260, "vm-surface": 1000,
+  "em-say": 320, "em-shout": 400, "em-smile": 550, "em-whisper": 900,
+  "em-drift": 1100, "em-sad": 1100, "em-sigh": 1150, "em-wry": 520, "em-deadpan": 40,
+  "eml-shock": 620, "eml-angry": 500, "eml-tremble": 1500, "eml-excited": 580,
+  "eml-laugh": 620, "eml-nervous": 850, "eml-heart": 1150,
+  "emc-declare": 550, "em-popquick": 200,
+};
+const tailFor = (entry: string) => ENTRY_MS[entry] ?? 900;
+
+function prefersReducedMotion(): boolean {
+  return typeof window !== "undefined" && !!window.matchMedia
+    && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+/** A key that increments every `periodMs` while `loop` — re-mounting the reveal so it
+ *  replays. Stays 0 (stable, single mount) when not looping or under reduced-motion. */
+function useLoopCycle(loop: boolean, periodMs: number): number {
+  const [c, setC] = useState(0);
+  useEffect(() => {
+    if (!loop || prefersReducedMotion()) return;
+    const id = window.setInterval(() => setC((x) => x + 1), Math.max(600, periodMs));
+    return () => window.clearInterval(id);
+  }, [loop, periodMs]);
+  return c;
+}
 
 export type VMSpec = {
   unit: "word" | "pair" | "phrase" | "sentence";
@@ -27,41 +62,41 @@ export function vmUnits(text: string, unit: VMSpec["unit"]): string[] {
   return out;
 }
 
-export function VMLine({ text, spec }: { text: string; spec: VMSpec }) {
+export function VMLine({ text, spec, loop = false, hold = 1600 }: { text: string; spec: VMSpec; loop?: boolean; hold?: number }) {
   const units = vmUnits(text, spec.unit);
   let t = 120;
-  return (
-    <span className="vm-stage">
-      {units.map((u, i) => {
-        const d = t;
-        let step = spec.pace;
-        if (spec.burst && i < spec.burst) step = spec.pace / 3;
-        if (spec.paired) step = i % 2 === 0 ? 70 : spec.pace;
-        t += step;
-        if (spec.holds && /[.!?—]$/.test(u)) t += spec.pace * spec.holds;
-        const cls =
-          "vm-unit " + spec.entry +
-          (spec.caps && /\b[A-Z]{2,}\b/.test(u) ? " vm-snap" : "") +
-          (spec.weights && /\d|\b(one|two|three|five|ten|eleven)\b/i.test(u) ? " vm-weight" : "");
-        return (
-          <span key={i} className={cls} style={{ animationDelay: `${d}ms` }}>
-            {u}{" "}
-          </span>
-        );
-      })}
-    </span>
-  );
+  const nodes = units.map((u, i) => {
+    const d = t;
+    let step = spec.pace;
+    if (spec.burst && i < spec.burst) step = spec.pace / 3;
+    if (spec.paired) step = i % 2 === 0 ? 70 : spec.pace;
+    t += step;
+    if (spec.holds && /[.!?—]$/.test(u)) t += spec.pace * spec.holds;
+    const cls =
+      "vm-unit " + spec.entry +
+      (spec.caps && /\b[A-Z]{2,}\b/.test(u) ? " vm-snap" : "") +
+      (spec.weights && /\d|\b(one|two|three|five|ten|eleven)\b/i.test(u) ? " vm-weight" : "");
+    return (
+      <span key={i} className={cls} style={{ animationDelay: `${d}ms` }}>
+        {u}{" "}
+      </span>
+    );
+  });
+  const cycle = useLoopCycle(loop, t + tailFor(spec.entry) + hold);
+  return <span key={cycle} className="vm-stage">{nodes}</span>;
 }
 
 // RED PEN (Wes) — one word mid-line struck and replaced: the draft, visible in the voice.
-export function RedPenLine({ before, from, to, after }: { before: string; from: string; to: string; after: string }) {
+export function RedPenLine({ before, from, to, after, loop = false, hold = 1600 }: { before: string; from: string; to: string; after: string; loop?: boolean; hold?: number }) {
   const b = before.split(" "), a = after.split(" ");
   const pace = 110, start = 120;
   const fromD = start + b.length * pace;
   const toD = fromD + 1050;
   const afterD = toD + 380;
+  const end = Math.max(fromD + 1500, afterD + a.length * pace + 300);
+  const cycle = useLoopCycle(loop, end + hold);
   return (
-    <span className="vm-stage">
+    <span key={cycle} className="vm-stage">
       {b.map((w, i) => <span key={"b" + i} className="vm-unit vm-pop" style={{ animationDelay: `${start + i * pace}ms` }}>{w} </span>)}
       <span className="vm-unit vm-strike" style={{ animationDelay: `${fromD}ms` }}>{from} </span>
       <span className="vm-unit vm-pop vm-fix" style={{ animationDelay: `${toD}ms` }}>{to} </span>
@@ -71,12 +106,13 @@ export function RedPenLine({ before, from, to, after }: { before: string; from: 
 }
 
 // STRAIGHT READ (Sloane) — flat even delivery, then the verdict lands whole.
-export function StraightRead({ read, verdict }: { read: string; verdict: string }) {
+export function StraightRead({ read, verdict, loop = false, hold = 1600 }: { read: string; verdict: string; loop?: boolean; hold?: number }) {
   const words = read.split(" ");
   const pace = 105, start = 120;
   const vD = start + words.length * pace + 700;
+  const cycle = useLoopCycle(loop, vD + 150 + hold);
   return (
-    <span className="vm-stage">
+    <span key={cycle} className="vm-stage">
       {words.map((w, i) => <span key={i} className="vm-unit vm-flat" style={{ animationDelay: `${start + i * pace}ms` }}>{w} </span>)}
       <span className="vm-unit vm-verdict" style={{ animationDelay: `${vD}ms` }}>{verdict}</span>
     </span>
@@ -101,11 +137,11 @@ export const VM: Record<string, VMSpec> = {
   "RULED INK":  { unit: "word", pace: 130, entry: "vm-pop", holds: 2.6, weights: true },
 };
 
-export function VoiceRow({ who, preset, text }: { who: string; preset: string; text: string }) {
+export function VoiceRow({ who, preset, text, loop = false }: { who: string; preset: string; text: string; loop?: boolean }) {
   return (
     <div className="vm-row">
       <span className="vm-who">{who} · {preset}</span>
-      <span className="vm-text"><VMLine text={text} spec={VM[preset]} /></span>
+      <span className="vm-text"><VMLine text={text} spec={VM[preset]} loop={loop} /></span>
     </div>
   );
 }
@@ -158,50 +194,48 @@ export function parseEmotion(line: string): { emotion: Emotion; text: string } {
 /** A line rendered in an EMOTION. Word-mode = per word; letter-mode = per character
  *  (the dramatic shakes/waves); line-mode = the whole line jolts while words pop.
  *  Emotion is the visible motion; the rhythm (unit/pace) is the character's beat. */
-export function EmoLine({ text, emotion, unit = "word", basePace = 120 }: {
-  text: string; emotion: Emotion; unit?: VMSpec["unit"]; basePace?: number;
+export function EmoLine({ text, emotion, unit = "word", basePace = 120, loop = false, hold = 1600 }: {
+  text: string; emotion: Emotion; unit?: VMSpec["unit"]; basePace?: number; loop?: boolean; hold?: number;
 }) {
   const e = EMO[emotion] ?? EMO.say;
   const tone = `${e.bold ? " vm-emo-bold" : ""}${e.accent ? " vm-emo-accent" : ""}`;
+
+  let stageClass = "vm-stage";
+  let nodes: React.ReactNode;
+  let end = 0;
 
   if (e.mode === "letter") {
     const chars = [...text];
     const lp = e.letterPace ?? 26;
     let t = 60;
-    return (
-      <span className={`vm-stage${tone}`}>
-        {chars.map((c, i) => {
-          if (c === " ") return <span key={i}> </span>;
-          const d = t; t += lp;
-          return <span key={i} className={`vm-letter ${e.entry}`} style={{ animationDelay: `${d}ms` }}>{c}</span>;
-        })}
-      </span>
-    );
-  }
-
-  if (e.mode === "line") {
+    nodes = chars.map((c, i) => {
+      if (c === " ") return <span key={i}> </span>;
+      const d = t; t += lp;
+      return <span key={i} className={`vm-letter ${e.entry}`} style={{ animationDelay: `${d}ms` }}>{c}</span>;
+    });
+    stageClass = `vm-stage${tone}`;
+    end = t + tailFor(e.entry);
+  } else if (e.mode === "line") {
     const units = vmUnits(text, unit);
     let t = 70;
-    return (
-      <span className={`vm-stage ${e.entry}${tone}`}>
-        {units.map((u, i) => {
-          const d = t; t += basePace * e.paceMul;
-          return <span key={i} className="vm-unit em-popquick" style={{ animationDelay: `${d}ms` }}>{u} </span>;
-        })}
-      </span>
-    );
+    nodes = units.map((u, i) => {
+      const d = t; t += basePace * e.paceMul;
+      return <span key={i} className="vm-unit em-popquick" style={{ animationDelay: `${d}ms` }}>{u} </span>;
+    });
+    stageClass = `vm-stage ${e.entry}${tone}`;
+    end = Math.max(t + tailFor("em-popquick"), tailFor(e.entry));
+  } else {
+    const units = vmUnits(text, unit);
+    let t = 100;
+    nodes = units.map((u, i) => {
+      const d = t; t += basePace * e.paceMul;
+      return <span key={i} className={`vm-unit ${e.entry}${tone}`} style={{ animationDelay: `${d}ms` }}>{u} </span>;
+    });
+    end = t + tailFor(e.entry);
   }
 
-  const units = vmUnits(text, unit);
-  let t = 100;
-  return (
-    <span className="vm-stage">
-      {units.map((u, i) => {
-        const d = t; t += basePace * e.paceMul;
-        return <span key={i} className={`vm-unit ${e.entry}${tone}`} style={{ animationDelay: `${d}ms` }}>{u} </span>;
-      })}
-    </span>
-  );
+  const cycle = useLoopCycle(loop, end + hold);
+  return <span key={cycle} className={stageClass}>{nodes}</span>;
 }
 
 /** The EMOTION RANGE gallery — every emotion on a line that FITS it (so the motion

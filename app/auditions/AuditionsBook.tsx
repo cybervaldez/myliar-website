@@ -220,7 +220,11 @@ function renderBlocks(md: string, ctx: NoteCtx = null) {
 // CARRY-OVER panel (continuity with the concept's picks). The expanded headline; the detail lives
 // in the collapsed sections beneath. Weights per `campaign-master-checklist.md` Phase 0d. ──
 const grade = (s: number) => (s >= 85 ? "#3f8f3f" : s >= 70 ? "#c08a2e" : "var(--spot-red)");
-function Scoreboard({ moments, carryover }: { moments: Moment[]; carryover: CarrySpan[] | null }) {
+
+// the weighted scoreboard math — shared by the Scoreboard headline AND the entry tabs (so a tab's
+// score equals the board's total exactly). AUDIENCE FIT 60% (share of warm reads across all moments
+// × readers) + CARRY-OVER 40% (carried=1 · partial=.5 · strayed=0). Null when there's no data.
+function scoreTotal(moments: Moment[], carryover: CarrySpan[] | null): { total: number; aspects: { key: string; weight: number; score: number; detail: string }[] } | null {
   const reviews = moments.flatMap((m) => m.reviews);
   const pos = reviews.filter((r) => r.polarity === "pos").length;
   const audN = reviews.length;
@@ -232,6 +236,23 @@ function Scoreboard({ moments, carryover }: { moments: Moment[]; carryover: Carr
   if (!aspects.length) return null;
   const tw = aspects.reduce((s, a) => s + a.weight, 0);
   const total = Math.round(aspects.reduce((s, a) => s + a.weight * a.score, 0) / tw);
+  return { total, aspects };
+}
+
+// The score a tab shows — the SAME total the board renders. Numbers the entry's moments by anchor
+// position in the work (matching AnnotatedWork), so a moment whose anchor isn't in the prose is
+// excluded identically. Null when the entry carries no audience/carry-over data.
+function entryTotal(entry: Entry): number | null {
+  const work = splitEntry(entry.markdown).work;
+  const numbered = (entry.moments ?? []).filter((m) => work.indexOf(m.anchor) >= 0);
+  return scoreTotal(numbered, entry.carryover ?? null)?.total ?? null;
+}
+
+function Scoreboard({ moments, carryover }: { moments: Moment[]; carryover: CarrySpan[] | null }) {
+  const sc = scoreTotal(moments, carryover);
+  if (!sc) return null;
+  const { total, aspects } = sc;
+  const co = carryover ?? [];
   const drags = [
     ...co.filter((c) => c.verdict !== "carried").map((c) => `${c.expert.toLowerCase()} ${c.verdict}`),
     ...moments.filter((m) => m.reviews.some((r) => r.polarity === "neg")).map((m) => {
@@ -385,8 +406,8 @@ function RoundBook({ round, nested }: { round: Round; nested?: boolean }) {
 
   const e = active >= 0 ? round.entries[active] : null;
   const split = e ? splitEntry(e.markdown) : null;
-  const tabs: { i: number; label: string }[] = round.entries.map((en, i) => ({ i, label: toneLabel(en.markdown) ?? tabLabel(en.id) }));
-  if (round.prompt) tabs.push({ i: PROMPT, label: "PROMPT" });
+  const tabs: { i: number; label: string; score: number | null }[] = round.entries.map((en, i) => ({ i, label: toneLabel(en.markdown) ?? tabLabel(en.id), score: entryTotal(en) }));
+  if (round.prompt) tabs.push({ i: PROMPT, label: "PROMPT", score: null });
 
   return (
     <div style={{ border: nested ? "none" : "2px solid var(--ink)", background: "var(--paper-shade)" }}>
@@ -411,7 +432,14 @@ function RoundBook({ round, nested }: { round: Round; nested?: boolean }) {
               background: active === t.i ? "var(--paper)" : "transparent",
               color: active === t.i ? (t.i === PROMPT ? "var(--margin-ink)" : "var(--forest)") : "var(--ink-soft)",
             }}>
-            {t.i === PROMPT ? "✎ PROMPT" : t.label}
+            {t.i === PROMPT ? "✎ PROMPT" : (
+              <>
+                {t.label}
+                {t.score != null && (
+                  <span style={{ marginLeft: 6, fontFamily: "var(--theme-display)", fontSize: 12.5, fontWeight: 800, color: grade(t.score) }}>{t.score}</span>
+                )}
+              </>
+            )}
           </button>
         ))}
       </div>

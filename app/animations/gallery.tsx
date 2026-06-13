@@ -126,18 +126,22 @@ function Section({ title, note, children, list }: {
 // ── Themed text reveals ────────────────────────────────────────────────────
 
 // DOS: a terminal types the line out, character by character, cursor trailing.
-export function Typewriter({ text }: { text: string }) {
+// loop = the attract-screen take: type → hold → clear → retype, forever.
+export function Typewriter({ text, loop = false, hold = 1600 }: { text: string; loop?: boolean; hold?: number }) {
   const [n, setN] = useState(0);
   useEffect(() => {
     if (prefersReduced()) { setN(text.length); return; }
-    let i = 0;
-    const id = setInterval(() => {
-      i += 1;
-      setN(i);
-      if (i >= text.length) clearInterval(id);
-    }, 40);
-    return () => clearInterval(id);
-  }, [text]);
+    let i = 0, typeId = 0, holdId = 0;
+    const tick = () => {
+      i += 1; setN(i);
+      if (i >= text.length) {
+        clearInterval(typeId);
+        if (loop) holdId = window.setTimeout(() => { i = 0; setN(0); typeId = window.setInterval(tick, 40); }, hold);
+      }
+    };
+    typeId = window.setInterval(tick, 40);
+    return () => { clearInterval(typeId); clearTimeout(holdId); };
+  }, [text, loop, hold]);
   return (
     <span className="adk-tw">
       {text.slice(0, n)}
@@ -483,16 +487,23 @@ function bpmRevealMs(bpm: number) {
   const t = Math.min(1, Math.max(0, (bpm - 40) / (120 - 40)));
   return Math.round(60 + (16 - 60) * t);
 }
-function BpmLine({ text, bpm }: { text: string; bpm: number }) {
+function BpmLine({ text, bpm, loop = false, hold = 1600 }: { text: string; bpm: number; loop?: boolean; hold?: number }) {
   const ms = bpmRevealMs(bpm);
   const pulses = bpm < 55 || bpm > 90;
   const [n, setN] = useState(0);
   useEffect(() => {
     if (prefersReduced()) { setN(text.length); return; }
-    let i = 0;
-    const id = setInterval(() => { i += 1; setN(i); if (i >= text.length) clearInterval(id); }, ms);
-    return () => clearInterval(id);
-  }, [text, ms]);
+    let i = 0, typeId = 0, holdId = 0;
+    const tick = () => {
+      i += 1; setN(i);
+      if (i >= text.length) {
+        clearInterval(typeId);
+        if (loop) holdId = window.setTimeout(() => { i = 0; setN(0); typeId = window.setInterval(tick, ms); }, hold);
+      }
+    };
+    typeId = window.setInterval(tick, ms);
+    return () => { clearInterval(typeId); clearTimeout(holdId); };
+  }, [text, ms, loop, hold]);
   return (
     <div className="adk-bpmline">
       <span
@@ -1108,6 +1119,52 @@ export default function AnimationGallery() {
           <div className="vm-row"><span className="vm-who">The Nervous Rookie · tremble</span><span className="vm-text"><EmoLine text="I— I rehearsed this part…" emotion="tremble" /></span></div>
           <div className="vm-row"><span className="vm-who">The Gruff Sensei · sigh</span><span className="vm-text"><EmoLine text="Again. Slower. We have all night." emotion="sigh" unit="pair" basePace={120} /></span></div>
           <div className="vm-row"><span className="vm-who">The Blunt Craftsman · deadpan</span><span className="vm-text"><EmoLine text="Burnt edge. Best flavor. Full price." emotion="deadpan" unit="phrase" basePace={300} /></span></div>
+        </Demo>
+      </Section>
+
+      <Section
+        list
+        title="DIALOGUE MOTION — the LOOPING take (idle · attract)  ★NEW"
+        note="An ALTERNATE TAKE on the text reveals: instead of playing ONCE on arrival (the in-dialogue default), the reveal re-fires on a cycle — reveal → hold readable → replay, forever. Same engine, same curve/duration; a loop driver re-mounts the line every (its own reveal length + a hold). For IDLE / ATTRACT surfaces — a front-door tagline that breathes, a held line that keeps catching the eye — never in a live exchange (there the one-shot is right). Reduced-motion STOPS the loop and shows the settled line (the loop is exactly the continuous motion that setting opts out of). Each demo loops on its own; ▶ replay restarts the cycle."
+      >
+        <Demo stack
+          title="VOICE-MOTION — looping, one per family"
+          spec="each character's reveal, re-fired on a cycle (reveal → ~1.6s hold → replay). The loop period is computed per line (its unit count × pace + the entry's keyframe duration + hold), so a long line holds proportionally longer"
+          flutter="re-run the per-unit reveal on a Timer.periodic(revealEnd + hold); gate OFF under reduced-motion (render the settled line once)"
+        >
+          <VoiceRow loop who="The Hot-Blooded Coach" preset="DRILL" text="Up. One more set. The wall’s in your HEAD." />
+          <VoiceRow loop who="The Cool Analyst" preset="LEDGER" text="Three problems. One cause. We start there." />
+          <VoiceRow loop who="The Warm Caretaker" preset="SERVICE" text="Sit. Eat first — the rest can wait." />
+          <VoiceRow loop who="The Gruff Sensei" preset="ROPE" text="Again. Slower. The hand remembers what the head forgets." />
+          <VoiceRow loop who="The Serene Navigator" preset="SURFACE" text="The dark has its own currents. We hold our heading." />
+        </Demo>
+
+        <Demo stack
+          title="EMOTION — looping, the feeling on repeat"
+          spec="emotion reveals replay on the same cycle — the dramatic letter-mode beats (shock/excited/tremble re-stagger per character) and the ambient ones (drift breathes). The hold runs longer than the reveal so the line reads before it re-fires"
+          flutter="same loop driver; letter-mode re-splits per character each cycle"
+        >
+          <div className="vm-row"><span className="vm-who">shock</span><span className="vm-text" style={{ fontSize: 22 }}><EmoLine loop text="WHAAAAT?!" emotion="shock" /></span></div>
+          <div className="vm-row"><span className="vm-who">excited</span><span className="vm-text"><EmoLine loop text="You did it — you ACTUALLY did it!" emotion="excited" /></span></div>
+          <div className="vm-row"><span className="vm-who">tremble</span><span className="vm-text"><EmoLine loop text="Y-you can’t prove that…!" emotion="tremble" /></span></div>
+          <div className="vm-row"><span className="vm-who">drift · ambient</span><span className="vm-text"><EmoLine loop text="…the fog comes in around four, most nights." emotion="drift" unit="phrase" basePace={260} /></span></div>
+        </Demo>
+
+        <Demo
+          title="DOS terminal — looping typewriter"
+          spec="types the line out (40ms/char), holds ~1.6s, clears, retypes — the classic attract-screen loop; the cursor keeps blinking through the hold"
+          flutter="type → hold → reset loop on a Timer; reduced-motion prints the full line, no loop"
+        >
+          <div className="adk-textstage adk-dos-stage"><Typewriter loop text="> YOU ARE STANDING IN FRONT OF A HOUSE." /></div>
+        </Demo>
+
+        <Demo stack
+          title="Scene heartbeat — looping BPM reveal"
+          spec="the BPM-conducted reveal, looping so the two tempos sit side by side: calm (64) reveals slow, no pulse; tense (108) reveals fast and the dot pulses. The reveal pace IS the heartbeat"
+          flutter="same bpm→reveal-ms mapping, re-fired on the type→hold→reset loop"
+        >
+          <BpmLine loop text="So. Same drill as yesterday. You already know the first move." bpm={64} />
+          <BpmLine loop text="So. Same drill as yesterday. You already know the first move." bpm={108} />
         </Demo>
       </Section>
 
