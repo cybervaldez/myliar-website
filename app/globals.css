@@ -394,6 +394,15 @@ a:hover {
 .wr-note-pos .wr-note-n{background:#3f8f3f;}
 .wr-note-neg .wr-note-n{background:#c0392b;}
 .wr-note-tx{flex:1 1 auto;}
+/* THE WHY — a plain ELI5 explanation of WHY the audience reacts that way (felt-understanding
+   made plain; the bridge to the chatbot). Sits under each audience note, set off + quieter. */
+.wr-note-read{display:block;margin-top:6px;padding-left:10px;border-left:2px solid var(--forest);
+  font-size:12.5px;line-height:1.5;color:var(--ink-soft);font-style:italic;}
+.aud-read-lbl{font-style:normal;font-weight:700;font-size:9.5px;letter-spacing:.14em;
+  color:var(--forest);margin-right:5px;}
+/* THE FIX / THE KEEP — the action under THE WHY (red = fix a con, green = keep a pro). */
+.aud-lbl-keep{color:#3f8f3f;}
+.aud-lbl-fix{color:var(--spot-red);}
 
 /* NARRATOR beat on auditions — a fully-italic standalone paragraph (the log/aside voice,
    narrator.md), set off from the prose + the "you" perception. */
@@ -415,4 +424,6 @@ a:hover {
 .aud-pop-x{margin-left:auto;border:none;background:none;font-size:19px;line-height:1;cursor:pointer;color:var(--margin-ink);padding:0 2px;}
 .aud-pop-x:hover{color:var(--ink);}
 .aud-pop-tx{font-size:13.5px;line-height:1.55;color:var(--ink);}
+.aud-pop-read{margin-top:9px;padding-top:9px;border-top:1px dashed var(--ink-soft);
+  font-size:13px;line-height:1.55;color:var(--ink-soft);font-style:italic;}
 

@@ -1,9 +1,11 @@
 "use client";
 
 // /auditions — the book UI. Each round is a "book": entries are TABS you flip
-// between (page-turn animation), shown as a two-page spread — the AUDITION NOTES
-// on the left page, the work on the right — with the review PANEL as a full-width
-// board below. Far less vertical than the old stacked accordions.
+// between (page-turn animation), single column. Reading order is STORY-FIRST: the
+// work + its inline AUDIENCE reactions come first; the author's declared AUDITION
+// NOTES sit in a collapsed disclosure at the BOTTOM (below the audience), so they
+// don't anchor the read — expand to compare experienced-vs-declared. The review
+// PANEL (if any) is the full-width board below that.
 //
 // Font rule (owner, 2026-06-13): theme-display is reserved for SHORT titles only
 // (the page h1 + the round title). All headings/labels/body use theme-body.
@@ -21,8 +23,9 @@ function charName(heading: string): string {
 }
 
 export type PanelArea = { area: string; team: string; persona: string; pros: string[]; cons: string[] };
-export type NoteSpan = { anchor: string; polarity: "pos" | "neg"; author: string; role: string; note: string; n?: number };
-export type Entry = { id: string; markdown: string; panel: PanelArea[] | null; notes: NoteSpan[] | null };
+export type NoteSpan = { anchor: string; polarity: "pos" | "neg"; author: string; role: string; note: string; why?: string; act?: string; n?: number };
+export type CarrySpan = { expert: string; verdict: "carried" | "partial" | "strayed" | "error"; note: string };
+export type Entry = { id: string; markdown: string; panel: PanelArea[] | null; notes: NoteSpan[] | null; carryover?: CarrySpan[] | null };
 export type Round = { id: string; closed: boolean; what: string; outcome: string; entries: Entry[]; prompt: string | null };
 
 // ── inline marks ──────────────────────────────────────────────────────────────
@@ -58,6 +61,16 @@ function NotePopover({ note, onClose }: { note: NoteSpan; onClose: () => void })
         <button className="aud-pop-x" onClick={onClose} aria-label="close">×</button>
       </div>
       <div className="aud-pop-tx">{note.note}</div>
+      {note.why && (
+        <div className="aud-pop-read">
+          <span className="aud-read-lbl">▸ THE WHY</span> {note.why}
+        </div>
+      )}
+      {note.act && (
+        <div className="aud-pop-read">
+          <span className={`aud-read-lbl ${note.polarity === "neg" ? "aud-lbl-fix" : "aud-lbl-keep"}`}>▸ {note.polarity === "neg" ? "THE FIX" : "THE KEEP"}</span> {note.act.replace(/^THE (?:FIX|KEEP)\s*[—–-]\s*/, "")}
+        </div>
+      )}
     </div>
   );
 }
@@ -174,10 +187,55 @@ function renderBlocks(md: string, ctx: NoteCtx = null) {
   return out;
 }
 
+// ── THE SCOREBOARD — the pilot scored on the aspects that matter, with a weighted TOTAL and a
+// summary of what drove it. Computed (reproducible) from the AUDIENCE reviews (fit) + the
+// CARRY-OVER panel (continuity with the concept's picks). The expanded headline; the detail lives
+// in the collapsed sections beneath. Weights per `campaign-master-checklist.md` Phase 0d. ──
+const grade = (s: number) => (s >= 85 ? "#3f8f3f" : s >= 70 ? "#c08a2e" : "var(--spot-red)");
+function Scoreboard({ notes, carryover }: { notes: NoteSpan[]; carryover: CarrySpan[] | null }) {
+  const pos = notes.filter((n) => n.polarity === "pos").length;
+  const neg = notes.filter((n) => n.polarity === "neg").length;
+  const audN = pos + neg;
+  const co = carryover ?? [];
+  const aspects: { key: string; weight: number; score: number; detail: string }[] = [];
+  if (audN) aspects.push({ key: "AUDIENCE FIT", weight: 0.6, score: Math.round((pos / audN) * 100), detail: `${pos}/${audN} reactions warm` });
+  if (co.length) aspects.push({ key: "CARRY-OVER", weight: 0.4, score: Math.round((co.reduce((s, c) => s + (c.verdict === "carried" ? 1 : c.verdict === "partial" ? 0.5 : 0), 0) / co.length) * 100), detail: `${co.filter((c) => c.verdict === "carried").length}/${co.length} concept picks carried` });
+  if (!aspects.length) return null;
+  const tw = aspects.reduce((s, a) => s + a.weight, 0);
+  const total = Math.round(aspects.reduce((s, a) => s + a.weight * a.score, 0) / tw);
+  const drags = [
+    ...co.filter((c) => c.verdict !== "carried").map((c) => `${c.expert.toLowerCase()} ${c.verdict}`),
+    ...notes.filter((n) => n.polarity === "neg").map((n) => `the ${n.role.split(" · ")[0].replace(/^the /i, "")} pushed back`),
+  ];
+  const tone = total >= 85 ? "Strong" : total >= 70 ? "Solid" : "Mixed";
+  return (
+    <div style={{ border: "2px solid var(--ink)", background: "var(--paper-shade)", margin: "4px 0 16px", padding: "12px 15px 13px" }}>
+      <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 11 }}>
+        <span style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".14em", color: "var(--ink)" }}>THE SCOREBOARD</span>
+        <span><b style={{ fontFamily: "var(--theme-display)", fontSize: 27, lineHeight: 1, color: grade(total) }}>{total}</b><span style={{ fontSize: 12, color: "var(--margin-ink)" }}>/100</span></span>
+      </div>
+      {aspects.map((a) => (
+        <div key={a.key} style={{ marginBottom: 8 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12, marginBottom: 3, lineHeight: 1.4 }}>
+            <span><b>{a.key}</b> <span style={{ color: "var(--margin-ink)" }}>· {Math.round(a.weight * 100)}% · {a.detail}</span></span>
+            <b style={{ color: grade(a.score) }}>{a.score}</b>
+          </div>
+          <div style={{ height: 6, background: "var(--ink-soft)", borderRadius: 3 }}>
+            <div style={{ height: 6, width: `${a.score}%`, background: grade(a.score), borderRadius: 3 }} />
+          </div>
+        </div>
+      ))}
+      <p style={{ fontSize: 12, color: "var(--ink-soft)", margin: "9px 0 0", lineHeight: 1.5 }}>
+        <b style={{ color: "var(--ink)" }}>{tone} pilot.</b> {drags.length ? `Drag on the score: ${drags.join("; ")}.` : "No flags — every reader warm and every concept pick carried."} <span style={{ color: "var(--margin-ink)" }}>(Detail in the sections below.)</span>
+      </p>
+    </div>
+  );
+}
+
 // AnnotatedWork — renders the pilot WORK with inline AUDIENCE note badges. Tapping a badge
 // opens a POPOVER below the referenced content and DIMS the rest of the page (distraction-
 // free read; no scroll jump). The numbered list below is the read-all alternative view.
-function AnnotatedWork({ work, notes }: { work: string; notes: NoteSpan[] | null }) {
+function AnnotatedWork({ work, notes, carryover }: { work: string; notes: NoteSpan[] | null; carryover?: CarrySpan[] | null }) {
   const [selected, setSelected] = useState<number | null>(null);
   const numbered: NoteSpan[] = (notes ?? [])
     .map((nt) => ({ nt, pos: work.indexOf(nt.anchor) }))
@@ -190,18 +248,22 @@ function AnnotatedWork({ work, notes }: { work: string; notes: NoteSpan[] | null
       {/* dim backdrop — fade the rest of the page; the lit content + popover sit above it */}
       {selected != null && <div className="aud-dim" onClick={() => setSelected(null)} />}
       {renderBlocks(work, ctx)}
+      {(numbered.length > 0 || (carryover && carryover.length > 0)) && <Scoreboard notes={numbered} carryover={carryover ?? null} />}
       {numbered.length > 0 && (
-        <div className="wr-notes">
-          <div className="wr-notes-hd">▸ THE AUDIENCE — {numbered.length} reactions (tap a badge to spotlight, or read them all here)</div>
+        <details className="wr-notes">
+          <summary className="wr-notes-hd" style={{ cursor: "pointer", listStyle: "none" }}>▸ THE AUDIENCE — {numbered.length} reactions (tap a badge to spotlight, or expand to read them all)</summary>
           {numbered.map((nt) => (
             <div key={nt.n}
               className={`wr-note ${nt.polarity === "neg" ? "wr-note-neg" : "wr-note-pos"} ${selected === nt.n ? "wr-note-on" : ""}`}
               onClick={() => setSelected(selected === nt.n ? null : (nt.n ?? null))}>
               <span className="wr-note-n">{nt.n}</span>
-              <span className="wr-note-tx"><b>{nt.author}</b> <span style={{ color: "var(--margin-ink)" }}>· {nt.role}</span> — {nt.note}</span>
+              <span className="wr-note-tx"><b>{nt.author}</b> <span style={{ color: "var(--margin-ink)" }}>· {nt.role}</span> — {nt.note}
+                {nt.why && <span className="wr-note-read"><span className="aud-read-lbl">▸ THE WHY</span> {nt.why}</span>}
+                {nt.act && <span className="wr-note-read"><span className={`aud-read-lbl ${nt.polarity === "neg" ? "aud-lbl-fix" : "aud-lbl-keep"}`}>▸ {nt.polarity === "neg" ? "THE FIX" : "THE KEEP"}</span> {nt.act.replace(/^THE (?:FIX|KEEP)\s*[—–-]\s*/, "")}</span>}
+              </span>
             </div>
           ))}
-        </div>
+        </details>
       )}
     </>
   );
@@ -233,9 +295,45 @@ function PanelReview({ panel }: { panel: PanelArea[] }) {
   );
 }
 
+// ── the carry-over panel — the concept's PICKS as experts, each judging whether the pilot
+// CARRIES its locked element (carried/partial/strayed). Blind + cross-model; a flag = weak flow. ──
+function CarryOverPanel({ carryover }: { carryover: CarrySpan[] }) {
+  const ico = (v: string) => (v === "carried" ? "✓" : v === "partial" ? "◐" : "✗");
+  const col = (v: string) => (v === "carried" ? "#3f8f3f" : v === "partial" ? "#c08a2e" : "var(--spot-red)");
+  const flags = carryover.filter((c) => c.verdict !== "carried").length;
+  return (
+    <details style={{ border: "1px dashed var(--ink-soft)", background: "var(--paper)", marginTop: 12 }}>
+      <summary style={{ cursor: "pointer", padding: "11px 13px", fontFamily: "var(--theme-body)", fontSize: 12.5, fontWeight: 700, letterSpacing: ".06em", color: "var(--ink-soft)", listStyle: "none" }}>
+        ▸ CARRY-OVER GATE — the concept&apos;s picks check this pilot ({flags ? `${flags} flag${flags > 1 ? "s" : ""}` : "all carried"})
+      </summary>
+      <div style={{ padding: "0 14px 14px" }}>
+        <p style={{ fontSize: 12, color: "var(--margin-ink)", fontStyle: "italic", margin: "0 0 10px" }}>
+          Each concept pick is an expert — does the pilot carry it, or stray? Generated blind + cross-model.
+        </p>
+        {carryover.map((c) => (
+          <div key={c.expert} style={{ display: "flex", gap: 8, marginBottom: 7 }}>
+            <span style={{ color: col(c.verdict), fontWeight: 700, fontSize: 13, minWidth: 14 }}>{ico(c.verdict)}</span>
+            <span style={{ fontSize: 12.5, lineHeight: 1.5 }}>
+              <b style={{ letterSpacing: ".06em" }}>{c.expert}</b>
+              <span style={{ color: col(c.verdict), textTransform: "uppercase", fontSize: 9.5, letterSpacing: ".08em", margin: "0 6px" }}>{c.verdict}</span>
+              <span style={{ color: "var(--ink-soft)" }}>{c.note}</span>
+            </span>
+          </div>
+        ))}
+      </div>
+    </details>
+  );
+}
+
 const tabLabel = (id: string) => {
   const m = id.match(/-([A-Z])$/i);
   return m ? m[1].toUpperCase() : id.replace(/-/g, " ").toUpperCase();
+};
+// Prefer a tab label that says what the entry IS — the leading phrase of "THE TONE — …"
+// (e.g. "Brisk-tender", "Lyrical-hush") — falling back to the A/B/C/D letter.
+const toneLabel = (md: string): string | null => {
+  const m = md.match(/THE TONE\s*[—-]\s*([^.—\n]+)/i);
+  return m ? m[1].trim().toUpperCase() : null;
 };
 
 // ── one round = a book (entry tabs + page-flip spread) ──────────────────────────
@@ -246,7 +344,7 @@ function RoundBook({ round, nested }: { round: Round; nested?: boolean }) {
 
   const e = active >= 0 ? round.entries[active] : null;
   const split = e ? splitEntry(e.markdown) : null;
-  const tabs: { i: number; label: string }[] = round.entries.map((en, i) => ({ i, label: tabLabel(en.id) }));
+  const tabs: { i: number; label: string }[] = round.entries.map((en, i) => ({ i, label: toneLabel(en.markdown) ?? tabLabel(en.id) }));
   if (round.prompt) tabs.push({ i: PROMPT, label: "PROMPT" });
 
   return (
@@ -283,21 +381,28 @@ function RoundBook({ round, nested }: { round: Round; nested?: boolean }) {
           {e ? (
             <>
               {split!.title && <div style={{ fontFamily: "var(--theme-body)", fontSize: 13, fontWeight: 700, letterSpacing: ".04em", color: "var(--margin-ink)", marginBottom: 12 }}>{split!.title}</div>}
-              {/* single column, full width (no spread → no left dead space). Notes
-                  read as the pitch; the work is the audition itself. */}
-              {split!.notes && (
-                <div style={{ marginBottom: 18, padding: "12px 15px", background: "var(--paper-shade)", border: "1px solid var(--ink-soft)" }}>
-                  <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".18em", color: "var(--spot-red)", marginBottom: 8 }}>THE AUDITION NOTES</div>
-                  {renderBlocks(split!.notes)}
-                </div>
-              )}
+              {/* single column, full width. The WORK is the audition — taste it (and the
+                  AUDIENCE reactions) FIRST; the author's declared notes sit collapsed at the
+                  bottom (below the audience) so they don't anchor the read. */}
               {/^##\s/m.test(split!.work) && (
                 <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".18em", color: "var(--forest)", margin: "4px 0 2px" }}>
                   ★ THE AUDITION — tap a dialogue box to hear the next line
                 </div>
               )}
-              <AnnotatedWork work={split!.work} notes={e.notes} />
+              <AnnotatedWork work={split!.work} notes={e.notes} carryover={e.carryover} />
+              {/* THE AUDITION NOTES — moved BELOW the audience, collapsed by default, so the
+                  owner tastes the story + audience reactions first, then expands the author's
+                  declared pitch to compare (the experienced-vs-declared gate). */}
+              {split!.notes && (
+                <details style={{ border: "1px solid var(--ink-soft)", background: "var(--paper-shade)", marginTop: 16 }}>
+                  <summary style={{ cursor: "pointer", padding: "11px 13px", fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".18em", color: "var(--spot-red)", listStyle: "none" }}>
+                    ▸ THE AUDITION NOTES — the author&apos;s declared pitch (tone · why · choices · primer touchpoints)
+                  </summary>
+                  <div style={{ padding: "0 15px 14px" }}>{renderBlocks(split!.notes)}</div>
+                </details>
+              )}
               {e.panel && e.panel.length > 0 && <PanelReview panel={e.panel} />}
+              {e.carryover && e.carryover.length > 0 && <CarryOverPanel carryover={e.carryover} />}
               {/* page-flip arrows */}
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 18, borderTop: "1px solid var(--ink-soft)", paddingTop: 10 }}>
                 <button disabled={active <= 0} onClick={() => go(active - 1)} style={flipBtn(active <= 0)}>◀ prev</button>
