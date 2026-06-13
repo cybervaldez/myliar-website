@@ -26,7 +26,8 @@ export type PanelArea = { area: string; team: string; persona: string; pros: str
 export type Review = { author: string; role: string; polarity: "pos" | "neg"; note: string; why?: string; act?: string };
 export type Moment = { anchor: string; moment?: string; reviews: Review[]; n?: number };
 export type CarrySpan = { expert: string; verdict: "carried" | "partial" | "strayed" | "error"; note: string };
-export type Entry = { id: string; markdown: string; panel: PanelArea[] | null; moments: Moment[] | null; carryover?: CarrySpan[] | null };
+export type LegSpan = { expert: string; verdict: "load-bearing" | "hairline" | "hollow" | "n-a" | "error"; seed: string; note: string };
+export type Entry = { id: string; markdown: string; panel: PanelArea[] | null; moments: Moment[] | null; carryover?: CarrySpan[] | null; feasibility?: LegSpan[] | null };
 export type Round = { id: string; closed: boolean; what: string; outcome: string; entries: Entry[]; prompt: string | null };
 
 // ── inline marks ──────────────────────────────────────────────────────────────
@@ -222,17 +223,22 @@ function renderBlocks(md: string, ctx: NoteCtx = null) {
 const grade = (s: number) => (s >= 85 ? "#3f8f3f" : s >= 70 ? "#c08a2e" : "var(--spot-red)");
 
 // the weighted scoreboard math — shared by the Scoreboard headline AND the entry tabs (so a tab's
-// score equals the board's total exactly). AUDIENCE FIT 60% (share of warm reads across all moments
-// × readers) + CARRY-OVER 40% (carried=1 · partial=.5 · strayed=0). Null when there's no data.
-function scoreTotal(moments: Moment[], carryover: CarrySpan[] | null): { total: number; aspects: { key: string; weight: number; score: number; detail: string }[] } | null {
+// score equals the board's total exactly). THREE legs a pilot stands on: AUDIENCE FIT 45% (share of
+// warm reads) + FEASIBILITY 30% (THE LEGS — load-bearing=1 · hairline=.5 · hollow=0, over the non-n-a
+// mechanics) + CARRY-OVER 25% (carried=1 · partial=.5 · strayed=0). Weights renormalize over whatever
+// data is present (older rounds with no feasibility still score). Null when there's no data at all.
+function scoreTotal(moments: Moment[], carryover: CarrySpan[] | null, feasibility: LegSpan[] | null): { total: number; aspects: { key: string; weight: number; score: number; detail: string }[] } | null {
   const reviews = moments.flatMap((m) => m.reviews);
   const pos = reviews.filter((r) => r.polarity === "pos").length;
   const audN = reviews.length;
   const readers = moments[0]?.reviews.length ?? 0;
   const co = carryover ?? [];
+  const legs = (feasibility ?? []).filter((l) => l.verdict !== "error");
+  const legsScored = legs.filter((l) => l.verdict !== "n-a"); // n-a = off the load path → excluded
   const aspects: { key: string; weight: number; score: number; detail: string }[] = [];
-  if (audN) aspects.push({ key: "AUDIENCE FIT", weight: 0.6, score: Math.round((pos / audN) * 100), detail: `${pos}/${audN} reads warm · ${moments.length} moments × ${readers} readers` });
-  if (co.length) aspects.push({ key: "CARRY-OVER", weight: 0.4, score: Math.round((co.reduce((s, c) => s + (c.verdict === "carried" ? 1 : c.verdict === "partial" ? 0.5 : 0), 0) / co.length) * 100), detail: `${co.filter((c) => c.verdict === "carried").length}/${co.length} concept picks carried` });
+  if (audN) aspects.push({ key: "AUDIENCE FIT", weight: 0.45, score: Math.round((pos / audN) * 100), detail: `${pos}/${audN} reads warm · ${moments.length} moments × ${readers} readers` });
+  if (legsScored.length) aspects.push({ key: "FEASIBILITY", weight: 0.30, score: Math.round((legsScored.reduce((s, l) => s + (l.verdict === "load-bearing" ? 1 : l.verdict === "hairline" ? 0.5 : 0), 0) / legsScored.length) * 100), detail: `${legsScored.filter((l) => l.verdict === "load-bearing").length}/${legsScored.length} mechanics load-bearing${legs.length - legsScored.length ? ` · ${legs.length - legsScored.length} off-path` : ""}` });
+  if (co.length) aspects.push({ key: "CARRY-OVER", weight: 0.25, score: Math.round((co.reduce((s, c) => s + (c.verdict === "carried" ? 1 : c.verdict === "partial" ? 0.5 : 0), 0) / co.length) * 100), detail: `${co.filter((c) => c.verdict === "carried").length}/${co.length} concept picks carried` });
   if (!aspects.length) return null;
   const tw = aspects.reduce((s, a) => s + a.weight, 0);
   const total = Math.round(aspects.reduce((s, a) => s + a.weight * a.score, 0) / tw);
@@ -241,20 +247,22 @@ function scoreTotal(moments: Moment[], carryover: CarrySpan[] | null): { total: 
 
 // The score a tab shows — the SAME total the board renders. Numbers the entry's moments by anchor
 // position in the work (matching AnnotatedWork), so a moment whose anchor isn't in the prose is
-// excluded identically. Null when the entry carries no audience/carry-over data.
+// excluded identically. Null when the entry carries no audience/carry-over/feasibility data.
 function entryTotal(entry: Entry): number | null {
   const work = splitEntry(entry.markdown).work;
   const numbered = (entry.moments ?? []).filter((m) => work.indexOf(m.anchor) >= 0);
-  return scoreTotal(numbered, entry.carryover ?? null)?.total ?? null;
+  return scoreTotal(numbered, entry.carryover ?? null, entry.feasibility ?? null)?.total ?? null;
 }
 
-function Scoreboard({ moments, carryover }: { moments: Moment[]; carryover: CarrySpan[] | null }) {
-  const sc = scoreTotal(moments, carryover);
+function Scoreboard({ moments, carryover, feasibility }: { moments: Moment[]; carryover: CarrySpan[] | null; feasibility: LegSpan[] | null }) {
+  const sc = scoreTotal(moments, carryover, feasibility);
   if (!sc) return null;
   const { total, aspects } = sc;
   const co = carryover ?? [];
+  const legs = feasibility ?? [];
   const drags = [
-    ...co.filter((c) => c.verdict !== "carried").map((c) => `${c.expert.toLowerCase()} ${c.verdict}`),
+    ...co.filter((c) => c.verdict !== "carried" && c.verdict !== "error").map((c) => `${c.expert.toLowerCase()} ${c.verdict}`),
+    ...legs.filter((l) => l.verdict === "hollow" || l.verdict === "hairline").map((l) => `${l.expert.toLowerCase()} ${l.verdict}`),
     ...moments.filter((m) => m.reviews.some((r) => r.polarity === "neg")).map((m) => {
       const cool = m.reviews.filter((r) => r.polarity === "neg").length;
       return `"${m.moment ?? m.anchor}" cooled ${cool}/${m.reviews.length}`;
@@ -288,7 +296,7 @@ function Scoreboard({ moments, carryover }: { moments: Moment[]; carryover: Carr
 // AnnotatedWork — renders the pilot WORK with inline AUDIENCE note badges. Tapping a badge
 // opens a POPOVER below the referenced content and DIMS the rest of the page (distraction-
 // free read; no scroll jump). The numbered list below is the read-all alternative view.
-function AnnotatedWork({ work, moments, carryover }: { work: string; moments: Moment[] | null; carryover?: CarrySpan[] | null }) {
+function AnnotatedWork({ work, moments, carryover, feasibility }: { work: string; moments: Moment[] | null; carryover?: CarrySpan[] | null; feasibility?: LegSpan[] | null }) {
   const [selected, setSelected] = useState<number | null>(null);
   const numbered: Moment[] = (moments ?? [])
     .map((mt) => ({ mt, pos: work.indexOf(mt.anchor) }))
@@ -302,7 +310,7 @@ function AnnotatedWork({ work, moments, carryover }: { work: string; moments: Mo
       {/* dim backdrop — fade the rest of the page; the lit content + popover sit above it */}
       {selected != null && <div className="aud-dim" onClick={() => setSelected(null)} />}
       {renderBlocks(work, ctx)}
-      {(numbered.length > 0 || (carryover && carryover.length > 0)) && <Scoreboard moments={numbered} carryover={carryover ?? null} />}
+      {(numbered.length > 0 || (carryover && carryover.length > 0) || (feasibility && feasibility.length > 0)) && <Scoreboard moments={numbered} carryover={carryover ?? null} feasibility={feasibility ?? null} />}
       {numbered.length > 0 && (
         <details className="wr-notes">
           <summary className="wr-notes-hd" style={{ cursor: "pointer", listStyle: "none" }}>▸ THE AUDIENCE — {numbered.length} moments × {readers} blind reader perspectives (tap a badge to spotlight, or expand to read them all)</summary>
@@ -387,6 +395,47 @@ function CarryOverPanel({ carryover }: { carryover: CarrySpan[] }) {
   );
 }
 
+// ── THE LEGS — the feasibility panel. The forward-looking counterpart to carry-over: each
+// downstream MECHANIC judges whether the pilot carries enough WEIGHT to build on (load-bearing /
+// hairline / hollow / n-a) and hands its stage a CONCRETE SEED to build from. A gate that is also a
+// handoff — the seeds are the to-do list for the succeeding flow. Blind + cross-model. ──
+function FeasibilityPanel({ feasibility }: { feasibility: LegSpan[] }) {
+  const ico = (v: string) => (v === "load-bearing" ? "▰" : v === "hairline" ? "▱" : v === "n-a" ? "—" : "✗");
+  const col = (v: string) => (v === "load-bearing" ? "#3f8f3f" : v === "hairline" ? "#c08a2e" : v === "n-a" ? "var(--margin-ink)" : "var(--spot-red)");
+  const scored = feasibility.filter((l) => l.verdict !== "n-a" && l.verdict !== "error");
+  const gaps = scored.filter((l) => l.verdict !== "load-bearing").length;
+  const na = feasibility.filter((l) => l.verdict === "n-a").length;
+  return (
+    <details style={{ border: "1px dashed var(--forest)", background: "var(--paper)", marginTop: 12 }}>
+      <summary style={{ cursor: "pointer", padding: "11px 13px", fontFamily: "var(--theme-body)", fontSize: 12.5, fontWeight: 700, letterSpacing: ".06em", color: "var(--forest)", listStyle: "none" }}>
+        ▸ THE LEGS — can the mechanics build on this pilot? ({gaps ? `${gaps} load gap${gaps > 1 ? "s" : ""}` : "all load-bearing"}{na ? ` · ${na} off-path` : ""})
+      </summary>
+      <div style={{ padding: "0 14px 14px" }}>
+        <p style={{ fontSize: 12, color: "var(--margin-ink)", fontStyle: "italic", margin: "0 0 11px" }}>
+          Each downstream mechanic checks the pilot&apos;s WEIGHT and hands its stage a SEED to build from — the forward-looking counterpart to the carry-over gate. Generated blind + cross-model.
+        </p>
+        {feasibility.map((l) => (
+          <div key={l.expert} style={{ marginBottom: 11 }}>
+            <div style={{ display: "flex", gap: 8 }}>
+              <span style={{ color: col(l.verdict), fontWeight: 700, fontSize: 13, minWidth: 14 }}>{ico(l.verdict)}</span>
+              <span style={{ fontSize: 12.5, lineHeight: 1.5 }}>
+                <b style={{ letterSpacing: ".06em" }}>{l.expert}</b>
+                <span style={{ color: col(l.verdict), textTransform: "uppercase", fontSize: 9.5, letterSpacing: ".08em", margin: "0 6px" }}>{l.verdict}</span>
+                <span style={{ color: "var(--ink-soft)" }}>{l.note}</span>
+              </span>
+            </div>
+            {l.seed && (
+              <div style={{ margin: "4px 0 0 22px", fontSize: 11.5, lineHeight: 1.55, color: "var(--ink)", borderLeft: "2px solid var(--forest)", paddingLeft: 9 }}>
+                <span style={{ fontFamily: "var(--theme-body)", fontWeight: 700, fontSize: 9, letterSpacing: ".12em", color: "var(--forest)", marginRight: 6 }}>SEED →</span>{l.seed}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </details>
+  );
+}
+
 const tabLabel = (id: string) => {
   const m = id.match(/-([A-Z])$/i);
   return m ? m[1].toUpperCase() : id.replace(/-/g, " ").toUpperCase();
@@ -458,7 +507,7 @@ function RoundBook({ round, nested }: { round: Round; nested?: boolean }) {
                   ★ THE AUDITION — tap a dialogue box to hear the next line
                 </div>
               )}
-              <AnnotatedWork work={split!.work} moments={e.moments} carryover={e.carryover} />
+              <AnnotatedWork work={split!.work} moments={e.moments} carryover={e.carryover} feasibility={e.feasibility} />
               {/* THE AUDITION NOTES — moved BELOW the audience, collapsed by default, so the
                   owner tastes the story + audience reactions first, then expands the author's
                   declared pitch to compare (the experienced-vs-declared gate). */}
@@ -472,6 +521,7 @@ function RoundBook({ round, nested }: { round: Round; nested?: boolean }) {
               )}
               {e.panel && e.panel.length > 0 && <PanelReview panel={e.panel} />}
               {e.carryover && e.carryover.length > 0 && <CarryOverPanel carryover={e.carryover} />}
+              {e.feasibility && e.feasibility.length > 0 && <FeasibilityPanel feasibility={e.feasibility} />}
               {/* page-flip arrows */}
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 18, borderTop: "1px solid var(--ink-soft)", paddingTop: 10 }}>
                 <button disabled={active <= 0} onClick={() => go(active - 1)} style={flipBtn(active <= 0)}>◀ prev</button>

@@ -206,6 +206,56 @@
        "verdict": "carried",
        "note": "The pilot perfectly establishes the keeper's log as a retrospective, third-person chronicler. The voice is exactly as specified, using the dry language of the manifest to convey a deep, unspoken warmth, as in the final line: 'Logged at full weight.'"
       }
+     ],
+     "feasibility": [
+      {
+       "expert": "VOICE",
+       "verdict": "load-bearing",
+       "seed": "terse & gruff | ROPE | Groundedness, Directness, Quiet Competence",
+       "note": "The Deckhand provides an immediately distinct and sustainable voice for a coach. His lines are short, grounded in the ship's physical reality, and reveal a clear worldview, as in 'Done's done when the bell says. Not before.'"
+      },
+      {
+       "expert": "BOND",
+       "verdict": "load-bearing",
+       "seed": "REL-0 GIFT: An unasked-for cup of cocoa. + RITUAL: Finding your place in the rhythm of the watch.",
+       "note": "The pilot establishes a bond of quiet provision and observation, not instruction. The unasked-for cocoa is a perfect REL-0 gift, and the crew's silent, competent routine creates a clear ritual for the player to learn and join, with the final log entry 'Logged at full weight' providing a clear path for growth."
+      },
+      {
+       "expert": "STRUGGLE",
+       "verdict": "load-bearing",
+       "seed": "The coach, the Keeper, carries the weight of being the impartial chronicler for every soul who makes the crossing, a duty haunted by a single past passenger whose journey they could not record. The player witnesses (never fixes) this as the Keeper's ritual of leaving a single column blank in the log—'the way you'd leave a chair'—and in the moments the Keeper's professional calm breaks when observing the player carry a familiar weight.",
+       "note": "The pilot establishes a clear, unresolved inner struggle for the Keeper. The imagery of the blank column left 'the way you'd leave a chair' and the final log entry 'Carried only themselves. Logged at full weight' create a powerful and specific foundation for a character arc the player can witness."
+      },
+      {
+       "expert": "CAST",
+       "verdict": "load-bearing",
+       "seed": "CAST AFFORDED: The Deckhand, The Cook, The Pilot, The Keeper. FIRST REVEAL: The Deckhand. CG-PEAK CANDIDATE: The Pilot, at the wheel in the dark, her face lit only by the compass.",
+       "note": "The pilot establishes a full, distinct ensemble from the first beat, giving the cast mechanic a rich set of archetypes to build on. The characters are defined by their quiet, professional actions, like the Pilot who 'steered it like a room she knew with the lights off,' providing strong visual and personality hooks."
+      },
+      {
+       "expert": "WORLD",
+       "verdict": "load-bearing",
+       "seed": "SPACES: The Pier (Lamp & Slate), The Deck (Rail & Rope Coils), The Wheelhouse (Compass & Helm), The Galley (Amber Light), The Keeper's Cabin (Logbook). RECURRING OBJECTS: The Chalk Slate, The Keeper's Logbook. PALETTE: Amber, Ink, Darkwater.",
+       "note": "The pilot establishes multiple distinct, textured spaces on and around the ferry, each with its own character. The 'slate with the night's word chalked on it' is a perfect seed for a recurring object that makes a space feel alive."
+      },
+      {
+       "expert": "MINIGAME",
+       "verdict": "load-bearing",
+       "seed": "ENSEMBLE: Performing the rituals of the night's crossing. The player must coordinate their actions (e.g., taking a sounding, trimming a sail, ringing the watch bell) with the timing of the rest of the crew (Pilot, Deckhand, Keeper) to maintain 'CALM WATER' and ensure a smooth passage.",
+       "note": "The pilot is built on the quiet, interlocking rituals of the crew, making it a perfect foundation for a group coordination minigame. The Deckhand's line, 'Done's done when the bell says,' establishes the kind of timed, coordinated action an ENSEMBLE engine requires."
+      },
+      {
+       "expert": "MOTIF",
+       "verdict": "load-bearing",
+       "seed": "MOTIF: The Keeper's Log. TITLE-MOTIF SCHEME: Achievements are named as log entries, e.g., 'Logged: Held the Rail,' 'Logged: Full Weight.' CG/VIRAL SHARE FRAME: A shareable image of a page from the Keeper's log, featuring the player's final, personalized entry: '[Player Name]. Stood the rail the whole way. Carried only [Key Choice]. Logged at full weight.'",
+       "note": "The pilot establishes a powerful and repeatable framing device with the Keeper's log. The final entry, '*Logged at full weight,*' provides a clear, ownable template for naming achievements and designing shareable outcomes."
+      },
+      {
+       "expert": "DESTINATION",
+       "verdict": "load-bearing",
+       "seed": "from 'a passive passenger, defined only by the unspoken \"full weight\" they carry aboard' → to 'the \"cargo\" delivered, the weight set down; an arrival that is an act of will, not just the end of a ride'",
+       "note": "The pilot is built entirely around the vector of a journey, a 'CROSSING.' The final log entry, 'Carried only themselves. Logged at full weight,' provides a powerful and specific thematic destination: a place where this internal cargo is resolved."
+      }
      ]
     },
     {
@@ -406,6 +456,56 @@
        "expert": "NARRATOR",
        "verdict": "carried",
        "note": "The pilot perfectly establishes the Manifest-Keeper's log as a retrospective, third-person narrator. It nails the core concept by contrasting the log's 'dry script' with the unrecorded emotional details, noting that 'The log has no column for such things'."
+      }
+     ],
+     "feasibility": [
+      {
+       "expert": "VOICE",
+       "verdict": "load-bearing",
+       "seed": "cool & precise / LEDGER / observant, detached, wry",
+       "note": "The pilot establishes a distinct and sustainable coach voice through the Keeper's retrospective log. The 'dry script' that notes facts but omits feelings ('The log has no column for such things') provides a strong, characterful foundation for a 60-day chat experience."
+      },
+      {
+       "expert": "BOND",
+       "verdict": "hairline",
+       "seed": "REL-0 GIFT: The gift of a quiet, unjudging passage + RITUAL: The ritual of making the crossing.",
+       "note": "The pilot establishes a powerful REL-0 gift in the crew's silent competence; the narrator notes 'the quiet felt like a kindness.' However, it frames the journey as a final, one-way event, so the reason to return and make 'the crossing' a repeatable ritual must be established by our stage."
+      },
+      {
+       "expert": "STRUGGLE",
+       "verdict": "load-bearing",
+       "seed": "The coach carries the weight of a past they had to abandon, not resolve, which the player witnesses (never fixes) as a fierce, sometimes self-destructive, focus on moving forward and an ingrained reluctance to ever look back.",
+       "note": "The pilot is built entirely around the character's inner struggle, framing the journey as a direct escape from it. The final log entry, noting that 'the passenger finally let their shoulders fall,' provides a clear, physical manifestation of the unresolved weight they carry from the shore they left behind."
+      },
+      {
+       "expert": "CAST",
+       "verdict": "load-bearing",
+       "seed": "CAST: The Deckhand (active), The Galley Cook (glimpsed), The Pilot (silhouette), The Keeper (narrator/off-stage). FIRST REVEAL: The Galley Cook, stepping out of the galley's warm light. CG-PEAK CANDIDATE: A close-up on the Deckhand's hands, showing the story in the three faded colors of waxed thread binding his mooring line.",
+       "note": "The pilot successfully establishes a small, contained ensemble, avoiding the solo-character trap and providing a clear runway for reveals. The detail of the Deckhand's rope with its 'three different, faded colors' is a perfect hook for a distinct character design."
+      },
+      {
+       "expert": "WORLD",
+       "verdict": "load-bearing",
+       "seed": "SPACES: The Dock (a single lamp's circle on wet planks), The Deck (coiled ropes, iron crank, amber lamps), The Rail (worn smooth wood over black water), The Galley (viewed through a salt-grimed window), The Wheelhouse (a silhouette against the sea). RECURRING OBJECTS: Faded, tricolor waxed thread; Worn, smooth hand-polished wood. PALETTE: Amber & Black.",
+       "note": "The pilot provides a strong foundation with multiple distinct, textured spaces. Details like the dock lamp's 'pale, tired circle' and the rail 'worn smooth by a thousand other hands' give the world immediate character and afford clear points of interest for a map."
+      },
+      {
+       "expert": "MINIGAME",
+       "verdict": "load-bearing",
+       "seed": "FLOW: Tying the Mooring Knots",
+       "note": "The pilot establishes a clear, diegetic ritual in the Deckhand's rope-coiling. The description of the rope as 'a story told in knots' provides a strong thematic hook for a FLOW minigame based on tying specific, meaningful patterns."
+      },
+      {
+       "expert": "MOTIF",
+       "verdict": "load-bearing",
+       "seed": "MOTIF: Stories Told in Knots. TITLE-MOTIF SCHEME: Achievements are named as knots or steps in the binding process (e.g., 'The First Thread,' 'The Mooring Knot,' 'A Coil of Amber,' 'The Crossing Splice'). The three faded colors can categorize achievement types. CG/VIRAL SHARE-FRAME: A shareable image displaying the player's unique 'Crossing Knot'—a complex knot woven from threads representing their major achievements, set against the Keeper's manifest. Caption: 'The log records the crossing. The knot remembers the journey.'",
+       "note": "The pilot provides a strong, concrete, and ownable visual motif. The Deckhand's rope, described as 'A story told in knots,' is a perfect anchor for the entire unlock and achievement system."
+      },
+      {
+       "expert": "DESTINATION",
+       "verdict": "load-bearing",
+       "seed": "from 'a passenger defined by the past they are leaving' → to 'an arrival defined by the future they are building'",
+       "note": "The pilot establishes an irreversible forward vector, which is the perfect anchor for a destination. The moment the gangway lifts and 'The choice is gone. There is only the crossing now,' the entire story is aimed toward an arrival point we can now build."
       }
      ]
     },
@@ -608,6 +708,56 @@
        "verdict": "carried",
        "note": "The pilot perfectly establishes the Manifest-Keeper's log as a retrospective, third-person chronicler, fulfilling the element. The log's spare, observational tone, as in \"The getting on board is not,\" correctly contrasts with the unstated warmth found in the main narrative."
       }
+     ],
+     "feasibility": [
+      {
+       "expert": "VOICE",
+       "verdict": "load-bearing",
+       "seed": "terse & gruff | ANCHOR | weary acceptance, understated reassurance, competence",
+       "note": "The pilot establishes a highly distinct and sustainable voice for the Deckhand. The description 'his voice like gravel rolling in a quiet place' and his laconic, meaningful lines like 'That's the hard part done' provide a solid, characterful foundation for the chat engine to build from."
+      },
+      {
+       "expert": "BOND",
+       "verdict": "load-bearing",
+       "seed": "REL-0 GIFT: Unquestioning passage and a place kept for you. RITUAL: The quiet ritual of the crossing.",
+       "note": "The pilot establishes a powerful, non-transactional bond through the Deckhand's quiet acceptance and the potent image of the fifth place at the table, 'kept for no one in particular.' This creates an immediate sense of potential belonging without demanding anything from the player."
+      },
+      {
+       "expert": "STRUGGLE",
+       "verdict": "load-bearing",
+       "seed": "The coach carries the weight of a past departure—someone who is no longer at the table—which the player witnesses (never fixes) as the recurring ritual of the fifth, turned-down bowl, his polishing of a simple stone from a now-distant shore, and his terse observations on the finality of small choices.",
+       "note": "The pilot provides a solid foundation for the coach's inner struggle through the specific, symbolic details of the turned-down bowl and the Deckhand's final line. The narrator's comment that 'The getting on board is not [the same for everyone]' explicitly points to a deep, unresolved internal weight for the coach to carry."
+      },
+      {
+       "expert": "CAST",
+       "verdict": "load-bearing",
+       "seed": "CAST: The Deckhand (weathered, polishes a stone), The Pilot (silhouette in the green-lit wheelhouse), The Manifest Keeper (log writer), The Cook (unseen), The Four Regulars (unseen diners), The Fifth Place (empty setting). FIRST REVEAL: The Pilot, stepping out of the wheelhouse into the light. CG-PEAK CANDIDATE: The first full, detailed view of the Pilot at the controls, face illuminated only by the soft green glow of the instruments.",
+       "note": "The pilot is not a solo act; it immediately establishes a core cast (Deckhand, Pilot) and strongly implies a much deeper ensemble through details like 'the little table was laid for four, and a fifth place at the end,' providing a solid runway for new faces."
+      },
+      {
+       "expert": "WORLD",
+       "verdict": "load-bearing",
+       "seed": "SPACES: The Stone Pier, The Ferry Deck, The Galley, The Wheelhouse. RECURRING OBJECTS: The Fifth Bowl (turned down), The Worn Brass Rail. PALETTE: Worn Salt, Green Glow.",
+       "note": "The pilot provides a strong foundation by establishing a primary location—the ferry—that is itself a navigable world with distinct, textured sub-spaces like the galley and wheelhouse. Objects like 'the little table was laid for four, and a fifth place at the end, its bowl turned down' give these spaces immediate character and history to build on."
+      },
+      {
+       "expert": "MINIGAME",
+       "verdict": "load-bearing",
+       "seed": "TEND: Maintaining the ferry's engine and systems during the crossing.",
+       "note": "The pilot establishes a world of quiet, repetitive work that perfectly suits a TEND minigame. The ferry itself is a character requiring upkeep, from the 'steady heartbeat' of its engine to the Deckhand checking a knot on a line."
+      },
+      {
+       "expert": "MOTIF",
+       "verdict": "load-bearing",
+       "seed": "Central Motif: THE CROSSING IS NOT THE SAME FOR EVERYONE. Title-Motif Scheme: Achievements are named as entries in the Manifest Keeper's log, following the template `[Verb Phrase Describing the Act]`. Examples: `Left the Shore`, `Polished the Stone`, `Answered the Tide`, `Carried Full Weight`. CG/Viral Share-Frame Candidate: 'The Manifest Entry.' A shareable image styled as a page from the keeper's logbook, listing the player's key achievements under the heading 'LOGGED AT FULL WEIGHT.'",
+       "note": "The pilot grounds its motif in the act of 'getting on board,' making the ferry a powerful symbol for a point of no return. The final log entry, 'The getting on board is not [the same for everyone],' provides a perfect, repeatable frame for naming achievements based on the choices and burdens a player carries."
+      },
+      {
+       "expert": "DESTINATION",
+       "verdict": "load-bearing",
+       "seed": "from <a person who has just made the difficult choice to board, leaving their old life on the shore> → to <a person who has completed the crossing and is ready to take the empty seat at the table on the other side>",
+       "note": "The pilot establishes a powerful sense of a one-way journey with a significant, unstated purpose. The narrator's comment that 'The getting on board is not' the same for everyone provides a strong emotional anchor for a destination-focused story about why this character, specifically, had to make this crossing."
+      }
      ]
     },
     {
@@ -809,6 +959,56 @@
        "verdict": "carried",
        "note": "The pilot carries the element perfectly. The italicized log entries establish the specified narrator: a retrospective, third-person Chronicler voice that feels diegetic to the manifest, as in 'Crossed, as they all cross. Logged at full weight, as every line is.'"
       }
+     ],
+     "feasibility": [
+      {
+       "expert": "VOICE",
+       "verdict": "load-bearing",
+       "seed": "terse & gruff: ROPE; leans on weary acceptance & grounded observation",
+       "note": "The Deckhand's voice is immediately distinct and sustainable, rooted in the pilot's core theme of work and repetition. The short, rhythmic lines establish a clear pattern for the chat engine to build from, as in 'Mind the step... It's worn low. They all wear it low.'"
+      },
+      {
+       "expert": "BOND",
+       "verdict": "load-bearing",
+       "seed": "The gift of being logged at full weight, same as all the others + The ritual of returning to the ferry's steady, unchanging crossing.",
+       "note": "The pilot establishes a powerful bond of unconditional inclusion, not through praise, but through treating the player as part of a vast, ancient tradition. The gift is being 'logged at full weight, as every line is,' and the ritual is the crossing itself, providing a stable foundation to return to."
+      },
+      {
+       "expert": "STRUGGLE",
+       "verdict": "load-bearing",
+       "seed": "The coach (the Deckhand) carries the immense, invisible weight of every crossing he's ever witnessed, feeling erased by the endless repetition of his duty, which the player witnesses (never fixes) as his obsessive focus on the worn-out tools of his trade and his habit of speaking in impersonal, proverbial truths that flatten every individual journey into the same one.",
+       "note": "The pilot establishes the coach's struggle not through a single event, but through the overwhelming atmosphere of repetition and the weight of history. The Deckhand's line, 'Ferry's carried heavier. Carried lighter. Carries it the same,' perfectly encapsulates his worldview, where his own identity is subsumed by the endless, unchanging duty of the crossing."
+      },
+      {
+       "expert": "CAST",
+       "verdict": "load-bearing",
+       "seed": "CAST: The Deckhand, The Cook, The Pilot, The Keeper. FIRST NEW FACE: The First Fellow Passenger, who is waiting at the next port of call. CG-PEAK CANDIDATE: A close-up on the Keeper's ancient, weathered face as they turn a page in the logbook, revealing ten thousand identical lines marking previous crossings.",
+       "note": "The pilot establishes a core ensemble of four distinct, archetypal crew members, giving the campaign a solid cast to build from. The ferry setting provides a natural runway for introducing new faces one at a time as fellow passengers."
+      },
+      {
+       "expert": "WORLD",
+       "verdict": "load-bearing",
+       "seed": "SPACES: The Pier of Lamps, The Splicer's Deck, The Keeper's Nook, The Endless Galley. RECURRING OBJECTS: The Worn Step, The Keeper's Logbook. PALETTE: Worn wood, lamplight.",
+       "note": "The pilot provides a strong foundation by defining its spaces through objects worn down by immense repetition. The world itself has a memory, giving us clear, textured areas to build, such as the step where 'ten thousand feet had stepped, into the dip they left'."
+      },
+      {
+       "expert": "MINIGAME",
+       "verdict": "load-bearing",
+       "seed": "ENSEMBLE: Coordinating the crew's ritual tasks (Deckhand's rope, Cook's meal, Pilot's course, Keeper's log) to ensure a smooth crossing.",
+       "note": "The pilot is built on ancient, interlocking rituals performed by a dedicated crew (Deckhand, Cook, Pilot, Keeper), providing a solid foundation for a minigame about coordinating their collective effort to complete the crossing 'as it is always made'."
+      },
+      {
+       "expert": "MOTIF",
+       "verdict": "load-bearing",
+       "seed": "MOTIF: The Ten Thousand Before / The Worn Path. TITLE-MOTIF SCHEME: Achievements are named as collective, historical actions. Template: '[Verb-past-tense] the [Noun]' (e.g., 'Wore the Step Low,' 'Spliced the Rope Pale,' 'Filled the Log'). CG/VIRAL SHARE-FRAME: The Keeper's logbook, open. A hand draws one fresh line below ten thousand others, with the caption 'Logged at full weight.'",
+       "note": "The pilot is built entirely on the repeatable, tangible motif of accumulated history, giving us a strong, concrete system for naming achievements and designing shareable moments. The image of stepping 'into the dip they left' is a perfect foundation for our entire system."
+      },
+      {
+       "expert": "DESTINATION",
+       "verdict": "hairline",
+       "seed": "from 'One of ten thousand anonymous passengers on an endless, ritual crossing' → to 'The final passenger, arriving at the place where the ferry's journey ends forever.'",
+       "note": "The pilot powerfully establishes a journey that 'is always made,' but gives no hint of a destination, which my stage must invent. Without a defined endpoint, the cyclical nature of the crossing becomes a closed loop with no forward momentum."
+      }
      ]
     }
    ],
@@ -825,21 +1025,24 @@
      "markdown": "# CONCEPT — The Cloudhouse Observatory\n\n## THE WORLD\nThe Cloudhouse Observatory is a soft-lit sky station moored above a ring of sleeping hills, open from first dusk until the last blue before morning. Its rooms are domes, gantries, rain-glass halls, kite decks, bell balconies, and quiet stairwells where clouds drift close enough to touch. Nothing here is in danger; the stakes are inner weather made visible. Some nights the sky is all fog, some nights every star seems to be watching, and some nights the wind will not lift a kite unless the first knot is tied anyway. Players walk in when the day has felt too loud, too blank, too crowded, or too unfinished. The Cloudhouse does not ask them to become grand. It asks them to read one patch of sky, make one mark, send one signal, and let a rough little constellation count.\n\n## THE GIFT\nAt REL 0, the player receives the Weather Glass: a pocket lens that turns the night’s sky into a tiny personal forecast. It is useful before anyone knows the player’s name. Each Forecast offers one “sky move” in plain world terms: light the wick, choose the first knot, polish one pane, ring the small bell, close the map with a crooked star. The Glass keeps a Cloud Atlas of every sky the player has crossed, so even bare-minimum nights leave proof. As bonds rise, the Glass becomes less directive and more reflective: fewer instructions, more remembered skies, until it rests mostly silent as an album of weather the player can now read without it.\n\n## WHO THIS IS FOR\nInternally, this is for players with anxiety, low confidence/self-worth, and ADHD-pattern struggles around initiation, follow-through, rejection sensitivity, visibility, imperfect completion, and valuing their own work. The world externalizes emotional state as weather without naming pathology. “Starting” becomes launch conditions. “Self-worth” becomes legitimate light. “Facing people” becomes signaling across distance. “Finishing imperfect” becomes closing a star map even when the lines wobble. The campaign is designed to reduce dependency: the more the player practices, the less the artifact and cast speak first. \n\n## THE CAST SKETCH\n- **Beginning lane × brisk, bright temperament × the craft of first lift × red kite spool.** This coach works the open kite deck and believes wind is discovered after the string is in hand. They do not praise grand vows; they praise the first peg in the floor, the ugly knot that holds, the launch that rises three inches. Their scenes turn “not ready” into “tethered enough.”\n\n- **Value lane × warm, grave temperament × the craft of keeping light × brass sun-mirror.** This coach tends the heliograph room, where even dim skies are angled until they shine somewhere. They teach the player to stop treating their own glow as an accident. Their scenes ask for one kept ember, one named contribution, one pane polished because it already matters.\n\n- **Facing-others lane × candid, playful temperament × the craft of signals × blue handbell.** This coach lives between balconies, bells, flags, and reply-lamps. They are not pushy; they simply refuse to make distance mystical. A tiny ring is allowed. A short flag is allowed. A reply is not a verdict from the heavens; it is weather from another tower.\n\n- **Rough-finish lane × wry, tender temperament × the craft of closing charts × silver star-pin.** This coach archives the maps no one would call flawless: smeared ink, odd constellations, crooked margins. They teach that an open chart can haunt a room, while a closed chart can become floorboards for the next night. Their scenes end with a pin through the corner: not perfect, but placed.\n\n## THE MOTIF SET\n**dayUnit:** Forecast. Each Forecast changes sky color, cloud texture, balcony wind, available room, and the shape of the Weather Glass card.\n\n**4 stat skins:** STR = **Lift** · INT = **Chart** · GLD = **Gleam** · CHR = **Signal**\n\n**title motif:** Weather-keeper titles. The player is addressed by earned skywork titles, not ranks of power: Dewhand, Kitehand, Bellkeep, Starward. Titles appear on telescope tags, stair plaques, atlas tabs, and how the cast greets the player.\n\n**4-rung ladder sketch:**  \n1. **Dewhand** — notices one sky and marks it. Surfaces: dew beads, pale ink, small glass cards.  \n2. **Kitehand** — launches before the wind is perfect. Surfaces: ribbon tails, red string, deck chalk.  \n3. **Bellkeep** — sends and receives small signals. Surfaces: reply-lamps, blue bells, balcony flags.  \n4. **Starward** — closes rough maps and trusts the next sky. Surfaces: pinned charts, gold star holes, quiet domes.\n\n**battles on/off + why:** Battles off. The Cloudhouse has fronts, not foes. A front is crossed through a small visible act: tying a knot, ringing a bell, angling a mirror, pinning a chart. No one is defeated, and no part of the player is treated like an enemy.\n\n## THE OPEN SEAT\nThe North Ocularium has five telescope cradles. Four are fitted to the keepers who tend the Cloudhouse; the fifth is always empty, polished, and turned toward a changing patch of sky. It is not a memorial and not a missing-person ache. The plaque reads: **Visiting Skykeeper — seat held for the one reading tonight.** When the player sits there, the room adjusts: the Weather Glass docks beside the scope, the current Forecast casts across the dome, and the atlas opens to a blank page. If the player leaves, the Cloudhouse continues its gentle rounds. The invitation remains, never needy, never accusing.\n\n## THE METRICS CARD\nCozy 4/5 · Type: Coach→Graduation · Length: 6–8 weeks · Genre: Cozy sky-observatory life JRPG · Age: 13+\n",
      "panel": null,
      "moments": null,
-     "carryover": null
+     "carryover": null,
+     "feasibility": null
     },
     {
      "id": "concept-B",
      "markdown": "# CONCEPT — The Lighthouse at World's End\n## THE WORLD (one paragraph — the place, its hours, why this audience walks in)\nThe Lighthouse at World's End stands on a lone, mossy islet, a tower of white stone against a sky of soft blues and bruised purples. It is a place outside of time, its operations governed not by the clock but by the turning of the tides and the fading of the light. It isn't a destination for travelers, but a fixture for those already at sea, a steady presence in the vast, quiet expanse. Players arrive by a small, self-piloted skiff, drawn not by a quest but by a quiet need for a fixed point in a rolling fog. They come seeking clarity, a respite from the overwhelming featurelessness of the open water, and a chance to learn how to tend a light of their own.\n\n## THE GIFT (what the player keeps forever, valuable from night one)\nThe player is given a **Wayfinder's Lens**, a small, beautifully crafted disc of polished crystal and brass that fits in the palm of their hand. When held up, it doesn't magnify the world, but instead simplifies it. Looking through it at a cluttered desk, a daunting list, or a complex situation causes everything to fade into a soft blur except for a single, clear point of action—the next indicated step. It is a tool for finding the beginning of a thread in a tangled knot, its value immediate and independent of any bond with the keepers.\n\n## WHO THIS IS FOR (the audience mapping, in design language — this section is internal, clinical words allowed HERE only)\nThis campaign is engineered for players wrestling with the internal \"fog\" of anxiety, the inertia and overwhelm of executive dysfunction (ADHD-pattern struggles), and the low visibility of poor self-worth. The world's metaphors map directly:\n*   **Anxiety/Overwhelm:** The omnipresent, rolling Fog that obscures the path forward and makes the world feel vast and threatening.\n*   **Task Initiation (ADHD):** The challenge of striking the flint and lighting the great lamp—a massive, multi-step process that feels impossible to begin.\n*   **Perfectionism/Finishing (ADHD):** The constant, imperfect work of maintaining an old stone tower against the sea. A \"good enough\" patch is better than letting the water in. This lane is about accepting that the work is never truly \"done,\" and that's okay.\n*   **Low Self-Worth/Imposter Syndrome:** The fear that your own light isn't bright enough, or that you're just \"playing\" at being a keeper and don't deserve the title.\n*   **Social Anxiety:** The act of \"signaling\" other ships—learning to send and interpret messages without fear of collision or misinterpretation.\n\n## THE CAST SKETCH (4 nameless coaches: lane × temperament × the craft they hand over × one signature object each)\n*   **The Lampwright (Starting):** A Meticulous & Gentle soul who tends the great Fresnel lens and its colossal oil lamp. They are infinitely patient, understanding that the most important flame is often the hardest to light. They teach the art of preparation, of finding the spark, and of coaxing a fragile flicker into a steady blaze. **Agent side:** Finds the single, smallest piece of dry kindling when you show it a daunting pile of logs. **Signature Object:** A heavy, polished-brass oil can with a long, elegant spout.\n*   **The Chronicler (Self-Worth):** An Archivist & Affirming keeper who maintains the lighthouse's centuries-old logs. They see the profound value in every tide, every passing ship, every storm weathered. They teach the player to record their own journey, reframing smudges and crossed-out entries not as failures, but as part of a story worth telling. **Agent side:** Rewrites your described \"failure\" as a \"Storm Weathered\" entry for the ship's log. **Signature Object:** A massive, leather-bound logbook filled with spidery script and marginalia.\n*   **The Watchkeeper (Facing People):** A Vigilant & Steady presence, always seen silhouetted in the topmost gallery, spyglass in hand. They are a master of observation and interpretation, reading the \"tells\" of the weather and the intentions of distant ships. They teach the craft of seeing and being seen from a safe distance, of signaling clearly, and of navigating shared waters. **Agent side:** Scans your drafted message for confusing signals or risks of collision. **Signature Object:** A brass-and-wood spyglass, worn smooth with use.\n*   **The Tidewright (Finishing Imperfect):** A Pragmatic & Grounded individual who handles the endless, messy work of the tower itself—patching mortar, mending ropes, and clearing sea-wrack after a storm. They are a master of the \"good enough\" fix, championing function over form. They teach the art of completion, of knowing when a job is done for now, and the quiet satisfaction of a working repair. **Agent side:** Determines if your described repair is \"seaworthy for now\" when you're stuck trying to make it perfect. **Signature Object:** A neatly coiled length of thick, salt-stiffened rope.\n\n## THE MOTIF SET (dayUnit · 4 stat skins ≤8 chars each mapped to STR/INT/GLD/CHR · the title motif · a 4-rung ladder sketch · battles on/off + why)\n*   **dayUnit:** Tide\n*   **Stat Skins:**\n    *   STR → FOCUS (Mental fortitude)\n    *   INT → INSIGHT (Clarity of perception)\n    *   GLD → BEACONS (Landmarks of progress lit)\n    *   CHR → SIGNAL (Ability to be understood)\n*   **Title Motif:** `[Rank] Keeper` (e.g., Novice Keeper, Tide Keeper, Lantern Keeper, First Keeper)\n*   **Ladder Sketch (The Keeper's Path):**\n    1.  *Polishing the Glass:* Learning to see your own situation clearly.\n    2.  *Trimming the Wick:* Learning what feeds your inner flame and what snuffs it out.\n    3.  *Reading the Charts:* Learning to plot a course through difficult waters.\n    4.  *Taking the Watch:* Becoming a reliable guide for yourself.\n*   **Battles:** OFF. A lighthouse's purpose is to avert disaster, not to engage in combat. The challenges are environmental and internal: navigating the fog, resisting the pull of the riptide, and keeping the light steady through the storm. Progress is measured by observation and consistency, not conflict.\n\n## THE OPEN SEAT (what stands vacant, one paragraph)\nThe lighthouse is built for a crew of five, but for a long time, has been run by a capable, if slightly over-stretched, crew of four. The fifth post, that of the **Sky-Watcher**, has stood open. This role is not about the immediate, practical concerns of the sea, but about observing the stars, tracking the constellations, and understanding the grander, celestial patterns that influence the world below. The keepers manage the day-to-day without a Sky-Watcher, but they miss the perspective and context it brings. The seat is an invitation to join a functioning team and contribute a unique view, adding a layer of wonder and foresight rather than fixing a critical flaw.\n\n## THE METRICS CARD (Cozy n/5 · Type: Coach→Graduation · Length · Genre · Age)\n*   **Cozy:** 4/5 (The setting is isolated and sometimes stormy, but the core loop inside the tower is safe, warm, and repetitive.)\n*   **Type:** Coach→Graduation\n*   **Length:** Medium-Long\n*   **Genre:** Maritime Solitude / Gentle Duty\n*   **Age:** Teen+\n",
      "panel": null,
      "moments": null,
-     "carryover": null
+     "carryover": null,
+     "feasibility": null
     },
     {
      "id": "concept-C",
      "markdown": "# CONCEPT — The Last Ferry\n\n## THE WORLD\nA small night ferry that crosses the same dark strait, every night, in exactly the time it takes — no schedule posted, because the ferry leaves when the lamps are lit and arrives when the crossing is done. The crew of four has run it for years: deckhand, pilot, galley, and the keeper of the manifest. People ride it because the day side of the water didn't go their way, and the crossing is the one hour nobody can ask anything more of them. The ferry doesn't go anywhere new. That was never the point. The point is that it goes, every night, gently, and comes back — and that there has always been one bunk in the crew cabin with no name on its plate.\n\n## THE GIFT\nThe craft of crossings: how to leave a day behind without finishing it, how to do one watch's worth of work and call it a night honestly, how to stand at a rail next to a stranger without rehearsing, and how to read your own logbook without flinching. The ferry teaches that a day is a shore, not a verdict — you can always put water between yourself and it, and the water works the same from night one, before the crew knows your name.\n\n## WHO THIS IS FOR\nThe same seed audience as the Night Market cell: anxiety (the crossing is the contained hour — bounded, repeatable, no ambush), low self-worth (the manifest-keeper's lane: what you carried counts, including the trips where you only carried yourself), and ADHD-pattern struggles (the watch system: one watch, one task, the bell ends it whether it's done or not — finishing-imperfect built into the world's clock). Starting is reframed as boarding: you don't have to know the destination; you have to step on before the gangway lifts — and the gangway is lifted FOR you by the world, every night, which externalizes initiation until the player internalizes it.\n\n## THE CAST SKETCH\n- **The DECKHAND** (starting · gruff-warm): teaches boarding, lines, and the first cast-off — \"the rope doesn't care if you're ready; it cares if you're holding it.\" Signature object: a mooring line whose end is whipped in three different colors, one per decade. **Agent side:** paste him the thing you keep not starting and he hands back the gangway version — the first ten minutes as one plain instruction — and rings the bell when the watch is up.\n- **The PILOT** (facing the dark · serene): stands the wheel through the unlit middle of the strait and teaches the counter-craft of this world — talking to someone when neither of you can see the other's face. Signature object: a compass that's a half-degree off, corrected for by hand every crossing, never repaired. **Agent side:** bring her the conversation you're dreading and she stands the unlit middle of it with you — plays the other voice, corrects your heading by hand, until your words hold their course.\n- **The COOK** (finishing imperfect · blunt-fond): one pot, one galley, whatever's aboard — the meal happens every crossing and is never the meal she planned. Signature object: a dented ladle hung on the good hook. **Agent side:** show her the half-done thing you're ashamed of and she plates it — what it already is, what to stop adding, and when to call it served.\n- **The MANIFEST-KEEPER** (self-worth · dry-precise): logs every crossing — cargo, weather, who rode and what they carried — and teaches the till-craft of this world: your column in the book is written in the same ink as everyone else's. Signature object: the manifest itself, ribboned at one old page nobody's seen him open. **Agent side:** paste him your week and he enters it in the manifest's ink — every carry logged at its true weight, including the ones you'd have left off the page.\n\n## THE MOTIF SET\n- **dayUnit: CROSSING** (\"CROSSING 12\") — the night IS the unit; it ends at the far shore, always.\n- **statAxes:** STR→BALLAST (what you can carry steady) · INT→HEADING (one course at a time) · GLD→MANIFEST (what your carry is worth, written down) · CHR→THE RAIL (standing next to people).\n- **Title motif: the LOG ENTRY** — each night titled like a line from the ship's log (\"Calm Water, No Cargo\", \"The Fog Held Until Four\").\n- **Ladder sketch:** Passenger → Regular crossing → Knows the bunk's empty → Stands a watch → … → Unspoken.\n- **Battles OFF** — the quiet roll; the strait is weather, never an enemy.\n\n## THE OPEN SEAT\nThe unnamed bunk in the crew cabin, and the fourth watch nobody stands — the crew runs the ferry whole with three watches and has for years; the fourth is kept in the rotation anyway, marked on the board with a dash. The ferry does not need a fourth hand. It keeps room for one, the way the galley cooks for five and the manifest rules a blank column every single night.\n\n## THE METRICS CARD\nCozy 4/5 · Type: Coach→Graduation · Length: Standard (~25 crossings) · Genre: cozy maritime slice-of-life (night-ferry iyashikei) · Age: All Ages\n",
      "panel": null,
      "moments": null,
-     "carryover": null
+     "carryover": null,
+     "feasibility": null
     }
    ],
    "prompt": "THE PROMPT — blind round-1 (CONCEPT FLAVORS, the night-market slate cell)\n=========================================================================\nThis is the concept brief every entry in this folder was generated from\n(one author per entry; same brief, no per-author edits). Claude's entry\nused this same brief authored in-loop. To generate your own variation,\npaste everything below the line into any model.\n\nREV NOTE (2026-06-12): THE AGENT SIDE element (in THE CAST SKETCH +\npre-flight check 7) was added to the brief AFTER round-1 was generated;\nentries showing \"**Agent side:**\" lines were revised by their own\nauthors; concept-A was never revised — its author (the OpenAI pool) was\nretired on cost before the revision ran, and the validator never patches\nanother author's entry. (Round decided 2026-06-12: concept-C picked.)\n=========================================================================\n\nYou are a CONCEPT AUTHOR for the life-RPG \"My Life is an RPG\" — real-life coaching wearing an honest JRPG skin; characters live in the player's phone; the bond deepens AS the player needs it less (coaches make themselves unneeded — the moat).\n\nTHE SEED (the audience): players dealing with anxiety, low confidence/self-worth, and ADHD-pattern struggles (starting things, finishing imperfect things, facing people, valuing their own work). THOSE CLINICAL WORDS NEVER SHIP — the campaign talks around them entirely in its world's own vocabulary.\n\nTHE ASSIGNMENT: author YOUR OWN campaign concept for this audience — an ALTERNATIVE world competing for the same slot. The current occupant of this cell is \"The Night Market\" (a lantern-lit cozy-commerce bazaar; the row's four elders coach starting/worth/the counter/finishing-imperfect). Your concept must be a genuinely DIFFERENT world — NOT a market/bazaar/shop row — and must not duplicate the rest of the slate (an office life-ops squad · a boxing-gym dating corner · a dark-fantasy hunters' lodge · a hearth/rest home · a craft workshop · a team bench · a stage greenroom · a recovery road · a sect/monastery · a frontier wayhouse · a council table · a spine/backbone world).\n\nHARD RULES (the moat — fixed): coach campaign, NO romance, no romanceable NPC · 4 coaches, each a distinct real-life lane (starting · self-worth · facing people · finishing imperfect — or your own honest mapping of the seed) × distinct temperament · the GIFT must be valuable at REL 0, before any relationship · grows-with-you (the world coaches the player toward not needing it; no dependency shapes; nobody waits for a savior) · cozy floor ≥2 (gentle world, real internal stakes, zero peril) · NO clinical/wellness/productivity/app words anywhere player-facing · zero real-world IP/franchise names · the world must have ONE open seat (an MC-shaped vacancy, an invitation not a wound) · motifs must be REAL differences (a day-unit, stat skins, a title motif, a ladder skin that each change actual surfaces).\n\nOUTPUT (markdown, ~600-900 words, exactly these sections):\n# CONCEPT — <your world's name>\n## THE WORLD (one paragraph — the place, its hours, why this audience walks in)\n## THE GIFT (what the player keeps forever, valuable from night one)\n## WHO THIS IS FOR (the audience mapping, in design language — this section is internal, clinical words allowed HERE only)\n## THE CAST SKETCH (4 nameless coaches: lane × temperament × the craft they hand over × one signature object × THE AGENT SIDE — what this coach's live-chat half DOES for the player from day one, in one plain sentence: the recurring real-life service the chatbot performs, e.g. \"audits the week's spending when you paste it\" / \"drafts the message you can't start\" — concrete, usable at REL 0, never vague companionship)\n## THE MOTIF SET (dayUnit · 4 stat skins ≤8 chars each mapped to STR/INT/GLD/CHR · the title motif · a 4-rung ladder sketch · battles on/off + why)\n## THE OPEN SEAT (what stands vacant, one paragraph)\n## THE METRICS CARD (Cozy n/5 · Type: Coach→Graduation · Length · Genre · Age)\n\nPRE-FLIGHT SELF-VERIFY (silently, before emitting): (1) zero clinical/wellness/productivity words outside WHO THIS IS FOR; (2) zero franchise names; (3) not a market/shop and not any listed slate world; (4) every stat skin ≤8 chars; (5) the open seat reads as invitation, not a wound only the player heals; (6) each coach's signature object is a renderable physical thing; (7) every coach has an AGENT SIDE sentence naming a concrete recurring service — if a coach's agent side reads as vague companionship, rewrite it until it is a service. Emit only the final document.\n"
