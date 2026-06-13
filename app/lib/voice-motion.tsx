@@ -116,8 +116,8 @@ export function VoiceRow({ who, preset, text }: { who: string; preset: string; t
 // the preset still sets the unit/pace (its rhythm). A line carries an emotion tag
 // (`[shout]`, `[laugh]`, …); untagged = "say", which keeps the preset's own entry. ──
 export type Emotion =
-  | "say" | "shout" | "shock" | "angry" | "excited" | "laugh" | "nervous"
-  | "smile" | "whisper" | "sad" | "heartbroken" | "sigh" | "wry" | "deadpan" | "declare";
+  | "say" | "shout" | "shock" | "angry" | "tremble" | "excited" | "laugh" | "nervous"
+  | "smile" | "whisper" | "drift" | "sad" | "heartbroken" | "sigh" | "wry" | "deadpan" | "declare";
 
 // mode: "word" = per-word · "letter" = per-character (the dramatic VN/Phoenix-Wright
 // shakes + waves) · "line" = the whole line jolts (a screen-shake) while words pop.
@@ -129,11 +129,13 @@ export const EMO: Record<Emotion, EmoSpec> = {
   shout:      { label: "Shout",      glyph: "❗",  entry: "em-shout",    mode: "word",   paceMul: 0.55, bold: true, accent: true, sample: "GET UP. We are NOT done.", note: "each word SLAMS in big and snaps down — loud, red" },
   shock:      { label: "Shock",      glyph: "⁉",  entry: "eml-shock",   mode: "letter", paceMul: 1, letterPace: 22, bold: true, accent: true, sample: "WHAAAAT?!", note: "every letter punches in huge and shakes — the Phoenix-Wright gasp" },
   angry:      { label: "Angry",      glyph: "✖",   entry: "eml-angry",   mode: "letter", paceMul: 1, letterPace: 16, bold: true, accent: true, sample: "You did WHAT with my ledger?", note: "the whole word judders side to side — hard, red" },
+  tremble:    { label: "Tremble",    glyph: "〜",  entry: "eml-tremble", mode: "letter", paceMul: 1, letterPace: 20, sample: "Y-you can't prove that…!", note: "every letter keeps SHAKING — terror / breaking down (the held VN tremble)" },
   excited:    { label: "Excited",    glyph: "✦",   entry: "eml-excited", mode: "letter", paceMul: 1, letterPace: 24, sample: "You did it — you ACTUALLY did it!", note: "letters spring up one after another — a rising cheer" },
   laugh:      { label: "Laugh",      glyph: "↑↓",  entry: "eml-laugh",   mode: "letter", paceMul: 1, letterPace: 26, sample: "Ha — no. Absolutely not. Hah!", note: "letters bob + wobble in a wave — a real laugh" },
   nervous:    { label: "Nervous",    glyph: "≈",   entry: "eml-nervous", mode: "letter", paceMul: 1, letterPace: 30, sample: "I— I rehearsed this part, I swear…", note: "the letters tremble and sweat, then steady" },
   smile:      { label: "Smile",      glyph: "◡",   entry: "em-smile",    mode: "word",   paceMul: 1.1,  sample: "There you are. I made too much again.", note: "a gentle warm rise — soft, fond" },
   whisper:    { label: "Whisper",    glyph: "…",   entry: "em-whisper",  mode: "word",   paceMul: 1.45, sample: "(don't tell the others I said so.)", note: "slow, faded, italic — under the breath" },
+  drift:      { label: "Drift",      glyph: "≈→",  entry: "em-drift",    mode: "word",   paceMul: 1.6,  sample: "…the fog comes in around four, most nights.", note: "words drift in slow and soft — a far-off, dreamy aside" },
   sad:        { label: "Sad",        glyph: "↓",   entry: "em-sad",      mode: "word",   paceMul: 1.5,  sample: "I didn't think it would be this quiet.", note: "words sink and fade — heavy, low" },
   heartbroken:{ label: "Heartbroken",glyph: "💔→", entry: "eml-heart",   mode: "letter", paceMul: 1, letterPace: 30, sample: "…oh. You're not coming back.", note: "letters droop and tremble as they fall — the break" },
   sigh:       { label: "Sigh",       glyph: "~",   entry: "em-sigh",     mode: "word",   paceMul: 1.5,  sample: "Again. Slower. We have all night.", note: "a long exhale — rises then settles, trailing" },
@@ -259,6 +261,33 @@ export function AuditionVoice({ lines, preset }: { lines: string[]; preset: stri
             </p>
           );
         })}
+      </div>
+    </div>
+  );
+}
+
+// ── VN DIALOG BOX — the auditions surface as a visual-novel / Phoenix-Wright
+// dialogue box: a nameplate tab + a chunky text box, the character "performing"
+// their lines one at a time (tap to advance) in their voice-motion + emotion.
+export function VNDialog({ name, lines, preset }: { name: string; lines: string[]; preset?: string }) {
+  const [idx, setIdx] = useState(0);
+  const [k, setK] = useState(0);
+  const spec = (preset && VM[preset]) || VM["COIL"] || { unit: "word" as const, pace: 110, entry: "vm-pop" };
+  const advance = () => { setIdx((i) => (i + 1) % lines.length); setK((x) => x + 1); };
+  const { emotion, text } = parseEmotion(lines[idx] ?? "");
+  return (
+    <div className="vn-box" onClick={advance} role="button" tabIndex={0}
+      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") advance(); }}>
+      <span className="vn-name">{name}</span>
+      <div className="vn-text" key={k}>
+        {emotion !== "say" && <span className="vn-emo">{EMO[emotion].glyph} {EMO[emotion].label}</span>}
+        {emotion === "say"
+          ? <VMLine text={text} spec={spec} />
+          : <EmoLine text={text} emotion={emotion} unit={spec.unit} basePace={spec.pace} />}
+      </div>
+      <div className="vn-foot">
+        <span>{preset && VM[preset] ? preset : "—"}</span>
+        <span>{idx + 1} / {lines.length} · tap to continue ▸</span>
       </div>
     </div>
   );

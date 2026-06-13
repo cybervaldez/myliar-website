@@ -10,7 +10,15 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { AuditionVoice } from "../lib/voice-motion";
+import { VNDialog } from "../lib/voice-motion";
+
+// pull a display name from a "## THE DECKHAND — "Silas"" heading: the proposed
+// name (in quotes) if present, else the role text.
+function charName(heading: string): string {
+  const q = heading.match(/[""]([^""]+)[""]/) || heading.match(/"([^"]+)"/);
+  if (q) return q[1];
+  return heading.replace(/^##\s*/, "").replace(/—.*$/, "").trim();
+}
 
 export type PanelArea = { area: string; team: string; persona: string; pros: string[]; cons: string[] };
 export type Entry = { id: string; markdown: string; panel: PanelArea[] | null };
@@ -47,10 +55,11 @@ function renderBlocks(md: string) {
   const blocks = md.split(/\n\n+/).map((b) => b.trim()).filter(Boolean);
   const out: React.ReactNode[] = [];
   let k = 0;
+  let curChar = "the cast"; // tracks the current `## ` character for VN nameplates
   for (let bi = 0; bi < blocks.length; bi++) {
     const b = blocks[bi];
     k++;
-    // VOICE block → animated, in the declared preset (and per-line emotion tags).
+    // VOICE block → a VN dialog box, the character performing their lines.
     if (/^\*{0,2}VOICE:?\*{0,2}\s*$/m.test(b.split("\n")[0]) && b.includes("\n")) {
       const lines = b.split("\n").slice(1)
         .map((l) => l.replace(/^[-*•]\s*/, "").replace(/^"|"$/g, "").replace(/\*\*/g, "").trim())
@@ -59,10 +68,11 @@ function renderBlocks(md: string) {
       for (let j = bi + 1; j < Math.min(bi + 3, blocks.length); j++) {
         if (/VOICE-MOTION/.test(blocks[j])) { preset = blocks[j].match(VM_PRESET_RE)?.[1] ?? ""; break; }
       }
-      if (lines.length > 0) { out.push(<AuditionVoice key={k} lines={lines} preset={preset || "COIL"} />); continue; }
+      if (lines.length > 0) { out.push(<VNDialog key={k} name={curChar} lines={lines} preset={preset || "COIL"} />); continue; }
     }
     if (b.startsWith("## ")) {
-      out.push(<h4 key={k} style={{ fontFamily: "var(--theme-body)", fontSize: 17, fontWeight: 700, lineHeight: 1.25, margin: "22px 0 8px", color: "var(--forest)", borderBottom: "1px solid var(--ink-soft)", paddingBottom: 5 }}>{em(b.slice(3))}</h4>);
+      curChar = charName(b);
+      out.push(<h4 key={k} style={{ fontFamily: "var(--theme-body)", fontSize: 18, fontWeight: 700, lineHeight: 1.25, margin: "24px 0 8px", color: "var(--forest)", borderBottom: "1px solid var(--ink-soft)", paddingBottom: 5 }}>{em(b.slice(3))}</h4>);
     } else if (b.startsWith("# ")) {
       out.push(<h3 key={k} style={{ fontFamily: "var(--theme-body)", fontSize: 20, fontWeight: 700, lineHeight: 1.2, margin: "16px 0 10px", color: "var(--ink)" }}>{em(b.slice(2))}</h3>);
     } else if (b === "---") {
@@ -173,18 +183,21 @@ function RoundBook({ round, nested }: { round: Round; nested?: boolean }) {
         <div key={`${round.id}-${active}`}>
           {e ? (
             <>
-              {split!.title && <div style={{ fontFamily: "var(--theme-body)", fontSize: 13, fontWeight: 700, letterSpacing: ".04em", color: "var(--margin-ink)", marginBottom: 10 }}>{split!.title}</div>}
-              <div className={split!.notes ? "audi-spread" : ""}>
-                {split!.notes && (
-                  <div className="audi-page-l">
-                    <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".18em", color: "var(--spot-red)", marginBottom: 8 }}>THE AUDITION NOTES</div>
-                    {renderBlocks(split!.notes)}
-                  </div>
-                )}
-                <div className={split!.notes ? "audi-page-r" : ""}>
-                  {renderBlocks(split!.work)}
+              {split!.title && <div style={{ fontFamily: "var(--theme-body)", fontSize: 13, fontWeight: 700, letterSpacing: ".04em", color: "var(--margin-ink)", marginBottom: 12 }}>{split!.title}</div>}
+              {/* single column, full width (no spread → no left dead space). Notes
+                  read as the pitch; the work is the audition itself. */}
+              {split!.notes && (
+                <div style={{ marginBottom: 18, padding: "12px 15px", background: "var(--paper-shade)", border: "1px solid var(--ink-soft)" }}>
+                  <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".18em", color: "var(--spot-red)", marginBottom: 8 }}>THE AUDITION NOTES</div>
+                  {renderBlocks(split!.notes)}
                 </div>
-              </div>
+              )}
+              {/^##\s/m.test(split!.work) && (
+                <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".18em", color: "var(--forest)", margin: "4px 0 2px" }}>
+                  ★ THE AUDITION — tap a dialogue box to hear the next line
+                </div>
+              )}
+              {renderBlocks(split!.work)}
               {e.panel && e.panel.length > 0 && <PanelReview panel={e.panel} />}
               {/* page-flip arrows */}
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 18, borderTop: "1px solid var(--ink-soft)", paddingTop: 10 }}>

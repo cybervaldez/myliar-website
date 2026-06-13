@@ -18,8 +18,8 @@ function prefersReduced(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-function Demo({ title, spec, flutter, children }: {
-  title: string; spec: string; flutter: string; children: React.ReactNode;
+function Demo({ title, spec, flutter, children, stack }: {
+  title: string; spec: string; flutter: string; children: React.ReactNode; stack?: boolean;
 }) {
   const [k, setK] = useState(0);
   return (
@@ -28,7 +28,8 @@ function Demo({ title, spec, flutter, children }: {
         <b>{title}</b>
         <button className="adk-replay" onClick={() => setK((x) => x + 1)}>▶ replay</button>
       </div>
-      <div className="adk-stage" key={k}>{children}</div>
+      {/* stack = vertical, full-width, left-aligned (dialogue lines, not centered art) */}
+      <div className={stack ? "adk-stage adk-stage-stack" : "adk-stage"} key={k}>{children}</div>
       <div className="adk-spec">{spec}</div>
       <div className="adk-flutter">Flutter: {flutter}</div>
     </div>
@@ -950,88 +951,89 @@ export default function AnimationGallery() {
           </div>
         </Demo>
 
-        <Demo
-          title="L2 · VOICE-MOTION — Life Ops, the squad"
-          spec="DRILL word·70ms even + caps-snap (counted reps, snap-still) · LEDGER word·125ms + pen-lift holds at [.—], numbers weight-settle · SERVICE phrase·260ms drift (plated in portions) · NARRATOR sentence·620ms drift (page-lines)"
-          flutter="VoiceMotionSpec{unit, paceMs, rhythm, entry, emphasis, settle} on the locked sheet; renderer splits by unit + schedules per-unit AnimatedOpacity/Transform; holds = scheduler delays at [.!?—]"
+        <Demo stack
+          title="L2 · VOICE-MOTION — the ENERGETIC type (hot-blooded shonen)"
+          spec="DRILL word·70ms even + caps-snap (counted reps) · COUNT-IN front-burst (first 4 words at pace/3, then relaxes — out of the gate fast, then walks). Inspirations: the sports-anime captain, the hero-academy mentor, early-Naruto bravado"
+          flutter="VoiceMotionSpec{unit, paceMs, rhythm, entry, emphasis, settle} keyed by ARCHETYPE not name; a character just picks a preset"
         >
-          <VoiceRow who="Hana" preset="DRILL" text="Up. Laps first. The board can wait — YOU can’t." />
-          <VoiceRow who="Kenji" preset="LEDGER" text="Eleven line items. Ten reconciled. We talk after breakfast." />
-          <VoiceRow who="Mei" preset="SERVICE" text="Sit. Eat while it’s hot — the lecture can share the plate." />
-          <VoiceRow who="Sam" preset="NARRATOR" text="The kitchen went quiet. That’s how the good chapters start." />
+          <VoiceRow who="The Hot-Blooded Coach" preset="DRILL" text="Up. One more set. The wall’s in your HEAD." />
+          <VoiceRow who="The Brash Hype-Man" preset="COUNT-IN" text="THREE, two, one — see? Easy. Told you." />
         </Demo>
 
-        <Demo
-          title="L2 · VOICE-MOTION — The Wingman, the corner"
-          spec="COUNT-IN front-burst (first 4 words at pace/3, then relaxes — the first ten seconds are his) · RED PEN strike-revise mid-line (the draft visible) · STRAIGHT READ flat-even, then the verdict lands WHOLE after a hold · ANCHOR damped phrase drift — never jitters, even on a shout"
-          flutter="burst = first-N units at pace/3 · strike = struck style keyframe + replacement unit · verdict = full-line instant after hold · damped = drift with zero overshoot"
+        <Demo stack
+          title="L2 · VOICE-MOTION — the COOL & PRECISE type (Ace-Attorney cool)"
+          spec="LEDGER word·125ms + pen-lift holds, numbers weight-settle · RULED INK precise word·130ms · RED PEN strike-revise mid-line (the draft visible) · STRAIGHT READ flat-even, then the verdict lands WHOLE. Inspirations: the prosecutor (Edgeworth), the calculating mind (L), the blunt detective"
+          flutter="strike = struck-style keyframe + replacement unit · verdict = full-line instant after hold"
         >
-          <VoiceRow who="Nico" preset="COUNT-IN" text="THREE, two, one — see? The hard part was over before you counted." />
-          <div className="vm-row"><span className="vm-who">Wes · RED PEN</span><span className="vm-text"><RedPenLine before="Tell her you’re" from="nervous." to="glad you came." after="Send it before you edit the glad out." /></span></div>
-          <div className="vm-row"><span className="vm-who">Sloane · STRAIGHT READ</span><span className="vm-text"><StraightRead read="He looked back twice on the way out." verdict="That’s not a maybe." /></span></div>
-          <VoiceRow who="Mara" preset="ANCHOR" text="Breathe. The room isn’t going anywhere. Neither am I." />
+          <VoiceRow who="The Cool Analyst" preset="LEDGER" text="Three problems. One cause. We start there." />
+          <VoiceRow who="The Meticulous Keeper" preset="RULED INK" text="Noted. Filed. Nothing leaves this desk unrecorded." />
+          <div className="vm-row"><span className="vm-who">The Perfectionist Editor · RED PEN</span><span className="vm-text"><RedPenLine before="Tell her you’re" from="nervous." to="glad you came." after="Send it before you edit the glad out." /></span></div>
+          <div className="vm-row"><span className="vm-who">The Deadpan Truth-Teller · STRAIGHT READ</span><span className="vm-text"><StraightRead read="He looked back twice on the way out." verdict="That’s not a maybe." /></span></div>
         </Demo>
 
-        <Demo
-          title="L2 · VOICE-MOTION — The Long Hunt, the lodge"
-          spec="ROPE pair·95ms with LONG holds (3.2× at clause ends) — terse lengths of rope, paid out and tied off. The WARMTH DIAL: high REL softens the holds, never the length"
-          flutter="pair unit = words two at a time; holds multiplier on the sheet; REL warmth maps holds × (1 − warmth)"
+        <Demo stack
+          title="L2 · VOICE-MOTION — the WARM & COZY type (slice-of-life caretaker)"
+          spec="SERVICE phrase·260ms drift (plated in portions) · KINDLE word·230ms IGNITE (each word brightens like a wick taking) · TWO CUPS paired phrases · LADLE phrase·210ms percussive TICK. Inspirations: the Ghibli kitchen, the gentle elder, the soft-spoken tea host"
+          flutter="ignite = brightness keyframe · paired = alternating 70ms/pace · tick = translateY dip"
         >
-          <VoiceRow who="Roan" preset="ROPE" text="Again. Slower. The rope remembers — make it remember right." />
+          <VoiceRow who="The Warm Caretaker" preset="SERVICE" text="Sit. Eat first — the rest can wait." />
+          <VoiceRow who="The Patient Elder" preset="KINDLE" text="One small flame. Then the next. That’s all it takes." />
+          <VoiceRow who="The Quiet Host" preset="TWO CUPS" text="Two cups. Sit a while. The question can keep." />
+          <VoiceRow who="The Brisk Cook" preset="LADLE" text="Hot and ready. Don’t let it go cold." />
         </Demo>
 
-        <Demo
-          title="L2 · VOICE-MOTION — The Night Market, the row"
-          spec="KINDLE word·230ms IGNITE (each word brightens in like a wick taking) · CHALK word·150ms STAMP (presses in, corrects a hair upward — the re-chalked price) · TWO CUPS paired phrases (the second arrives just after the first) · FULL PRICE whole phrases, flat, no ornament"
-          flutter="ignite = brightness/saturate keyframe · stamp = scale 1.25→.96→1 + translateY −1px · paired = alternating 70ms/pace · flatline = opacity step per phrase"
+        <Demo stack
+          title="L2 · VOICE-MOTION — the TERSE & GRUFF type (cold-warm mentor)"
+          spec="ROPE pair·95ms with LONG holds (3.2× at clause ends) · COIL pair·165ms work-rhythm · FULL PRICE whole phrases, flat, no ornament · CHALK word·150ms STAMP (corrects a hair upward). Inspirations: the hardass sensei (Jiraiya), the gruff veteran, the stern shopkeeper"
+          flutter="holds multiplier on the sheet; the WARMTH DIAL softens the holds at high REL, never the length"
         >
-          <VoiceRow who="Tam" preset="KINDLE" text="One wick. Then the next. The row lights itself, once it’s started." />
-          <VoiceRow who="Zohra" preset="CHALK" text="Full price. The work was full work — the number says so." />
-          <VoiceRow who="Lin" preset="TWO CUPS" text="Two cups. One question. Drink first — the counter has two sides." />
-          <VoiceRow who="Edda" preset="FULL PRICE" text="Burnt edge. Best flavor. Full price." />
+          <VoiceRow who="The Gruff Sensei" preset="ROPE" text="Again. Slower. The hand remembers what the head forgets." />
+          <VoiceRow who="The Steady Workhand" preset="COIL" text="Hold it taut. Eyes on the line. Good." />
+          <VoiceRow who="The Blunt Craftsman" preset="FULL PRICE" text="Rough edge. Honest work. Full price." />
+          <VoiceRow who="The Firm Appraiser" preset="CHALK" text="That’s underpriced. The work was real — so’s the number." />
         </Demo>
 
-        <Demo
-          title="L2 · VOICE-MOTION — The Last Ferry crew (pilot-A: brisk-tender)"
-          spec="COIL pair·165ms work-rhythm (loop over loop, warm settle) · SURFACE sentence·950ms fades up from dark, the way the far shore arrives · LADLE phrase·210ms percussive TICK (the ladle on the pot — punctuation, not anger) · RULED INK word·130ms pen-lift holds, logged things weight-settle"
-          flutter="surface = opacity + blur keyframe · tick = translateY dip .26s · ruled ink = the LEDGER family with weights on cargo nouns"
+        <Demo stack
+          title="L2 · VOICE-MOTION — the SERENE & WRY type (contemplative / narrator)"
+          spec="SURFACE sentence·950ms fades up from the dark (the far shore arriving) · ANCHOR damped phrase drift, never jitters · NARRATOR sentence·620ms drift (page-lines). Inspirations: the calm navigator, the unflappable senpai, the visual-novel narrator"
+          flutter="surface = opacity + blur keyframe; damped = drift with zero overshoot"
         >
-          <VoiceRow who="The Deckhand" preset="COIL" text="Hold that taut. Eyes on me. The rope doesn’t care if you’re ready." />
-          <VoiceRow who="The Pilot" preset="SURFACE" text="Fog on the tide. The dark has its own currents. Heading’s good." />
-          <VoiceRow who="The Cook" preset="LADLE" text="Stew’s on. Five bowls. Eat it or don’t." />
-          <VoiceRow who="The Keeper" preset="RULED INK" text="One passenger. Three crates. Logged at true weight — all of it." />
+          <VoiceRow who="The Serene Navigator" preset="SURFACE" text="The dark has its own currents. We hold our heading." />
+          <VoiceRow who="The Unflappable Senpai" preset="ANCHOR" text="Breathe. The room isn’t going anywhere. Neither am I." />
+          <VoiceRow who="The Wry Narrator" preset="NARRATOR" text="And so the quiet ones surprised everybody. As they do." />
         </Demo>
 
-        <Demo
+        <Demo stack
           title="L3 · EMOTION — every emotion, on a line that fits it"
-          spec="word-mode = per-word keyframe; letter-mode (eml-*) = per-CHARACTER stagger (the shakes/waves — shock scales 2.4× + rotates ±11°, angry ±5px, excited springs from .45→1.25 scale); line-mode (emc-declare) = the whole line jolts ±8px while words pop. Hit replay-all"
-          flutter="VoiceMotionSpec gains `emotion` + `mode`; the renderer splits by letter for the dramatic ones, shakes the container for declare, else per word — preset unit/pace stays the beat"
+          spec="word-mode = per-word keyframe; letter-mode (eml-*) = per-CHARACTER stagger (shock scales 2.4× + rotates ±11°, angry ±5px, tremble = a SUSTAINED shake, excited springs .45→1.25); line-mode (emc-declare) = the whole line jolts ±8px. Hit replay-all"
+          flutter="VoiceMotionSpec gains `emotion` + `mode`; the renderer splits by letter for the dramatic ones, shakes the container for declare, else per word"
         >
           <EmotionGallery />
         </Demo>
 
-        <Demo
+        <Demo stack
           title="L3 · EMOTION — the big VN beats (WHAAAT?! / OBJECTION! / you did WHAT)"
-          spec="shock = per-letter punch-and-shake · declare = the line desk-slams · angry = per-letter judder. These are the 'WHAAAT?! / OBJECTION! / you did WHAT' moments — the text doing the acting"
-          flutter="same engine; these read as letter-mode + line-mode at full amplitude"
+          spec="shock = per-letter punch-and-shake · declare = the line desk-slams · angry = per-letter judder · tremble = the held breakdown shake. The text doing the acting"
+          flutter="same engine; letter-mode + line-mode at full amplitude"
         >
           <div className="vm-row" style={{ marginBottom: 14 }}><span className="vm-text" style={{ fontSize: 26 }}><EmoLine text="WHAAAAT?!" emotion="shock" /></span></div>
           <div className="vm-row" style={{ marginBottom: 14 }}><span className="vm-text" style={{ fontSize: 22 }}><EmoLine text="OBJECTION! That’s not what happened." emotion="declare" /></span></div>
-          <div className="vm-row"><span className="vm-text" style={{ fontSize: 20 }}><EmoLine text="You did WHAT with my ledger?" emotion="angry" /></span></div>
+          <div className="vm-row" style={{ marginBottom: 14 }}><span className="vm-text" style={{ fontSize: 20 }}><EmoLine text="You did WHAT with my ledger?" emotion="angry" /></span></div>
+          <div className="vm-row"><span className="vm-text" style={{ fontSize: 20 }}><EmoLine text="Y-you can’t prove that…!" emotion="tremble" /></span></div>
         </Demo>
 
-        <Demo
-          title="L3 · EMOTION × character — the crew, each in a different mood"
-          spec="emotion drives the motion; the character preset still sets the rhythm. Hana SHOUTS, Nico is EXCITED (letters spring), Sloane reads WRY, the newcomer is NERVOUS (trembling), Roan SIGHS, Edda DEADPANS"
-          flutter="emotion overlays the preset: same `[emotion]` tag, different base rhythm per character"
+        <Demo stack
+          title="L3 · EMOTION × archetype — the same range, different personalities"
+          spec="emotion drives the motion; the archetype's preset still sets the rhythm. The hot-blood SHOUTS, the hype-man is EXCITED, the deadpan reads WRY, the rookie TREMBLES, the sensei SIGHS, the craftsman DEADPANS"
+          flutter="emotion overlays the preset: same `[emotion]` tag, any character can wear any archetype"
         >
-          <div className="vm-row"><span className="vm-who">Hana · shout</span><span className="vm-text"><EmoLine text="THAT’S the rep. Do it AGAIN." emotion="shout" unit="word" basePace={70} /></span></div>
-          <div className="vm-row"><span className="vm-who">Mei · smile</span><span className="vm-text"><EmoLine text="Sit. I made too much again." emotion="smile" unit="phrase" basePace={260} /></span></div>
-          <div className="vm-row"><span className="vm-who">Nico · excited</span><span className="vm-text"><EmoLine text="You ACTUALLY did it!" emotion="excited" /></span></div>
-          <div className="vm-row"><span className="vm-who">Sloane · wry</span><span className="vm-text"><EmoLine text="That’s not a maybe. You know it isn’t." emotion="wry" unit="word" basePace={105} /></span></div>
-          <div className="vm-row"><span className="vm-who">Nervous newcomer · nervous</span><span className="vm-text"><EmoLine text="I— I rehearsed this part…" emotion="nervous" /></span></div>
-          <div className="vm-row"><span className="vm-who">Roan · sigh</span><span className="vm-text"><EmoLine text="Again. Slower. We have all night." emotion="sigh" unit="pair" basePace={120} /></span></div>
-          <div className="vm-row"><span className="vm-who">Edda · deadpan</span><span className="vm-text"><EmoLine text="Burnt edge. Best flavor. Full price." emotion="deadpan" unit="phrase" basePace={300} /></span></div>
+          <div className="vm-row"><span className="vm-who">The Hot-Blooded Coach · shout</span><span className="vm-text"><EmoLine text="THAT’S the rep. Do it AGAIN." emotion="shout" unit="word" basePace={70} /></span></div>
+          <div className="vm-row"><span className="vm-who">The Warm Caretaker · smile</span><span className="vm-text"><EmoLine text="There you are. I made too much again." emotion="smile" unit="phrase" basePace={260} /></span></div>
+          <div className="vm-row"><span className="vm-who">The Brash Hype-Man · excited</span><span className="vm-text"><EmoLine text="You ACTUALLY did it!" emotion="excited" /></span></div>
+          <div className="vm-row"><span className="vm-who">The Deadpan Truth-Teller · wry</span><span className="vm-text"><EmoLine text="That’s not a maybe. You know it isn’t." emotion="wry" unit="word" basePace={105} /></span></div>
+          <div className="vm-row"><span className="vm-who">The Nervous Rookie · tremble</span><span className="vm-text"><EmoLine text="I— I rehearsed this part…" emotion="tremble" /></span></div>
+          <div className="vm-row"><span className="vm-who">The Gruff Sensei · sigh</span><span className="vm-text"><EmoLine text="Again. Slower. We have all night." emotion="sigh" unit="pair" basePace={120} /></span></div>
+          <div className="vm-row"><span className="vm-who">The Blunt Craftsman · deadpan</span><span className="vm-text"><EmoLine text="Burnt edge. Best flavor. Full price." emotion="deadpan" unit="phrase" basePace={300} /></span></div>
         </Demo>
       </Section>
 
@@ -1323,6 +1325,8 @@ export const CSS = `
 .adk-replay{font-size:11px;border:1px solid var(--margin-ink);background:var(--paper);color:var(--ink-soft);padding:3px 8px;cursor:pointer;}
 .adk-replay:hover{border-color:var(--ink);}
 .adk-stage{min-height:120px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:14px;background:var(--paper);}
+.adk-stage-stack{display:block;text-align:left;}
+.adk-stage-stack>*{width:100%;}
 .adk-spec{font-size:11px;color:var(--ink-soft);padding:7px 12px 2px;font-family:ui-monospace,monospace;}
 .adk-flutter{font-size:10px;color:var(--margin-ink);padding:0 12px 8px;font-family:ui-monospace,monospace;}
 
