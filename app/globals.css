@@ -330,3 +330,17 @@ a:hover {
   .em-say,.em-shout,.em-laugh,.em-smile,.em-whisper,.em-excited,.em-nervous,.em-sad,.em-angry,.em-sigh,.em-wry,.em-deadpan{animation-duration:.001s !important;}
 }
 
+/* ── /auditions — the book UI: page-flip + two-page spread ─────────────────── */
+.audi-flip{animation:audi-flip .46s cubic-bezier(.2,.7,.3,1) both;transform-origin:left center;backface-visibility:hidden;}
+@keyframes audi-flip{
+  0%{opacity:0;transform:rotateY(var(--from,-26deg));}
+  100%{opacity:1;transform:rotateY(0);}
+}
+.audi-spread{display:grid;gap:20px;}
+@media (min-width:760px){
+  .audi-spread{grid-template-columns:5fr 7fr;gap:0;}
+  .audi-page-l{border-right:1px solid var(--ink-soft);padding-right:22px;}
+  .audi-page-r{padding-left:24px;}
+}
+@media (prefers-reduced-motion: reduce){ .audi-flip{animation-duration:.001s;} }
+
