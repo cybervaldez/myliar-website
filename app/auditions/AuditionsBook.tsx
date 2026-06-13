@@ -37,38 +37,56 @@ function em(s: string) {
 // ── AUDIENCE span-anchored notes — a numbered badge after a verbatim anchor, green
 // (lands for me) / red (pushes me away); each carries a TARGET-AUDIENCE persona's
 // reaction (the concept's WHO-THIS-IS-FOR reads the pilot, since the reader judges tone).
-type NoteCtx = { notes: NoteSpan[]; consumed: Set<number>; onBadge: (n: number) => void } | null;
+type NoteCtx = { notes: NoteSpan[]; consumed: Set<number>; onBadge: (n: number | null) => void; selected: number | null } | null;
 
-function NoteBadge({ note, onClick }: { note: NoteSpan; onClick: () => void }) {
+function NoteBadge({ note, active, onClick }: { note: NoteSpan; active: boolean; onClick: () => void }) {
   return (
     <button onClick={(e) => { e.stopPropagation(); onClick(); }}
-      className={`wr-badge ${note.polarity === "neg" ? "wr-badge-neg" : "wr-badge-pos"}`}
+      className={`wr-badge ${note.polarity === "neg" ? "wr-badge-neg" : "wr-badge-pos"}${active ? " wr-badge-on" : ""}`}
       title={`${note.author} (${note.role}): ${note.note}`}>{note.n}</button>
   );
 }
 
-// em() + inline note badges: split the text at each note's anchor-end and drop a
-// numbered badge there (anchors are verbatim substrings; consumed once per entry).
-function inlineEm(text: string, ctx: NoteCtx): React.ReactNode {
-  if (!ctx || ctx.notes.length === 0) return em(text);
+// The in-place popover — a card BELOW the referenced content with the note; the page
+// dims around it (distraction-free read). The bottom list stays as the read-all view.
+function NotePopover({ note, onClose }: { note: NoteSpan; onClose: () => void }) {
+  return (
+    <div className={`aud-pop ${note.polarity === "neg" ? "aud-pop-neg" : "aud-pop-pos"}`} onClick={(e) => e.stopPropagation()}>
+      <div className="aud-pop-hd">
+        <span className="wr-note-n">{note.n}</span>
+        <span className="aud-pop-by"><b>{note.author}</b> · {note.role}</span>
+        <button className="aud-pop-x" onClick={onClose} aria-label="close">×</button>
+      </div>
+      <div className="aud-pop-tx">{note.note}</div>
+    </div>
+  );
+}
+
+// em() + inline note badges: split the text at each note's anchor-end and drop a numbered
+// badge there. Returns the nodes AND the SELECTED note iff its anchor is in this block (so
+// the caller can light the block + render the popover below it).
+function inlineEm(text: string, ctx: NoteCtx): { nodes: React.ReactNode; sel: NoteSpan | null } {
+  if (!ctx || ctx.notes.length === 0) return { nodes: em(text), sel: null };
   const hits: { note: NoteSpan; end: number }[] = [];
   for (const note of ctx.notes) {
     if (note.n == null || ctx.consumed.has(note.n)) continue;
     const i = text.indexOf(note.anchor);
     if (i >= 0) hits.push({ note, end: i + note.anchor.length });
   }
-  if (hits.length === 0) return em(text);
+  if (hits.length === 0) return { nodes: em(text), sel: null };
   hits.sort((a, b) => a.end - b.end);
-  hits.forEach((h) => ctx.consumed.add(h.note.n!));
+  let sel: NoteSpan | null = null;
+  hits.forEach((h) => { ctx.consumed.add(h.note.n!); if (h.note.n === ctx.selected) sel = h.note; });
   const out: React.ReactNode[] = [];
   let cursor = 0;
   hits.forEach((h, k) => {
     out.push(<span key={"s" + k}>{em(text.slice(cursor, h.end))}</span>);
-    out.push(<NoteBadge key={"b" + k} note={h.note} onClick={() => ctx.onBadge(h.note.n!)} />);
+    out.push(<NoteBadge key={"b" + k} note={h.note} active={h.note.n === ctx.selected}
+      onClick={() => ctx.onBadge(h.note.n === ctx.selected ? null : h.note.n!)} />);
     cursor = h.end;
   });
   out.push(<span key="sEnd">{em(text.slice(cursor))}</span>);
-  return out;
+  return { nodes: out, sel };
 }
 
 const VM_PRESET_RE = /\b(DRILL|LEDGER|SERVICE|NARRATOR|COUNT-IN|RED PEN|STRAIGHT READ|MIRROR|ANCHOR|ROPE|KINDLE|CHALK|TWO CUPS|FULL PRICE|COIL|SURFACE|LADLE|RULED INK)\b/;
@@ -111,9 +129,9 @@ function renderBlocks(md: string, ctx: NoteCtx = null) {
     }
     if (b.startsWith("## ")) {
       curChar = charName(b);
-      out.push(<h4 key={k} style={{ fontFamily: "var(--theme-body)", fontSize: 18, fontWeight: 700, lineHeight: 1.25, margin: "24px 0 8px", color: "var(--forest)", borderBottom: "1px solid var(--ink-soft)", paddingBottom: 5 }}>{inlineEm(b.slice(3), ctx)}</h4>);
+      out.push(<h4 key={k} style={{ fontFamily: "var(--theme-body)", fontSize: 18, fontWeight: 700, lineHeight: 1.25, margin: "24px 0 8px", color: "var(--forest)", borderBottom: "1px solid var(--ink-soft)", paddingBottom: 5 }}>{inlineEm(b.slice(3), ctx).nodes}</h4>);
     } else if (b.startsWith("# ")) {
-      out.push(<h3 key={k} style={{ fontFamily: "var(--theme-body)", fontSize: 20, fontWeight: 700, lineHeight: 1.2, margin: "16px 0 10px", color: "var(--ink)" }}>{inlineEm(b.slice(2), ctx)}</h3>);
+      out.push(<h3 key={k} style={{ fontFamily: "var(--theme-body)", fontSize: 20, fontWeight: 700, lineHeight: 1.2, margin: "16px 0 10px", color: "var(--ink)" }}>{inlineEm(b.slice(2), ctx).nodes}</h3>);
     } else if (b === "---") {
       out.push(<hr key={k} style={{ border: "none", borderTop: "1px solid var(--ink-soft)", margin: "16px 0" }} />);
     } else if (/^[A-Z][A-Z '&-]+:/.test(b)) {
@@ -144,16 +162,21 @@ function renderBlocks(md: string, ctx: NoteCtx = null) {
       // a fully-italic standalone paragraph = a NARRATOR beat (the log / aside voice,
       // narrator.md) — styled distinct from the prose + the "you" perception; badges
       // still insert (the * is stripped, so inlineEm runs on plain text).
-      out.push(<p key={k} className="aud-narr">{inlineEm(b.slice(1, -1), ctx)}</p>);
+      const rn = inlineEm(b.slice(1, -1), ctx);
+      out.push(<p key={k} className={"aud-narr" + (rn.sel ? " aud-lit" : "")}>{rn.nodes}</p>);
+      if (rn.sel && ctx) out.push(<NotePopover key={k + "p"} note={rn.sel} onClose={() => ctx.onBadge(null)} />);
     } else {
-      out.push(<p key={k} style={{ fontSize: 15, lineHeight: 1.75, margin: "0 0 13px", color: "var(--ink)" }}>{inlineEm(b, ctx)}</p>);
+      const rp = inlineEm(b, ctx);
+      out.push(<p key={k} className={rp.sel ? "aud-lit" : undefined} style={{ fontSize: 15, lineHeight: 1.75, margin: "0 0 13px", color: "var(--ink)" }}>{rp.nodes}</p>);
+      if (rp.sel && ctx) out.push(<NotePopover key={k + "p"} note={rp.sel} onClose={() => ctx.onBadge(null)} />);
     }
   }
   return out;
 }
 
-// AnnotatedWork — renders the pilot WORK with inline AUDIENCE note badges and
-// a numbered notes list below it (badge → highlights + scrolls to its note).
+// AnnotatedWork — renders the pilot WORK with inline AUDIENCE note badges. Tapping a badge
+// opens a POPOVER below the referenced content and DIMS the rest of the page (distraction-
+// free read; no scroll jump). The numbered list below is the read-all alternative view.
 function AnnotatedWork({ work, notes }: { work: string; notes: NoteSpan[] | null }) {
   const [selected, setSelected] = useState<number | null>(null);
   const numbered: NoteSpan[] = (notes ?? [])
@@ -161,22 +184,19 @@ function AnnotatedWork({ work, notes }: { work: string; notes: NoteSpan[] | null
     .filter((x) => x.pos >= 0)
     .sort((a, b) => a.pos - b.pos)
     .map((x, i) => ({ ...x.nt, n: i + 1 }));
-  const onBadge = (n: number) => {
-    setSelected(n);
-    const el = typeof document !== "undefined" ? document.getElementById(`wr-note-${n}`) : null;
-    if (el) el.scrollIntoView({ block: "center", behavior: "smooth" });
-  };
-  const ctx: NoteCtx = numbered.length ? { notes: numbered, consumed: new Set<number>(), onBadge } : null;
+  const ctx: NoteCtx = numbered.length ? { notes: numbered, consumed: new Set<number>(), onBadge: setSelected, selected } : null;
   return (
     <>
+      {/* dim backdrop — fade the rest of the page; the lit content + popover sit above it */}
+      {selected != null && <div className="aud-dim" onClick={() => setSelected(null)} />}
       {renderBlocks(work, ctx)}
       {numbered.length > 0 && (
         <div className="wr-notes">
-          <div className="wr-notes-hd">▸ THE AUDIENCE — {numbered.length} reactions (who this is for · tap a badge)</div>
+          <div className="wr-notes-hd">▸ THE AUDIENCE — {numbered.length} reactions (tap a badge to spotlight, or read them all here)</div>
           {numbered.map((nt) => (
-            <div key={nt.n} id={`wr-note-${nt.n}`}
+            <div key={nt.n}
               className={`wr-note ${nt.polarity === "neg" ? "wr-note-neg" : "wr-note-pos"} ${selected === nt.n ? "wr-note-on" : ""}`}
-              onClick={() => setSelected(nt.n ?? null)}>
+              onClick={() => setSelected(selected === nt.n ? null : (nt.n ?? null))}>
               <span className="wr-note-n">{nt.n}</span>
               <span className="wr-note-tx"><b>{nt.author}</b> <span style={{ color: "var(--margin-ink)" }}>· {nt.role}</span> — {nt.note}</span>
             </div>

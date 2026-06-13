@@ -400,3 +400,19 @@ a:hover {
 .aud-narr{font-style:italic;color:var(--margin-ink);border-left:2px solid var(--ink-soft);padding-left:13px;margin:2px 0 14px;font-size:14.5px;line-height:1.75;}
 .aud-narr .wr-badge{font-style:normal;}
 
+/* the popover spotlight: tap a badge → dim the page, light the referenced paragraph, show
+   the note in a card BELOW it (distraction-free; no scroll jump). */
+.wr-badge-on{outline:2px solid var(--ink);outline-offset:1px;}
+.aud-dim{position:fixed;inset:0;background:rgba(26,22,15,.55);z-index:50;cursor:zoom-out;animation:audfade .14s ease;}
+@keyframes audfade{from{opacity:0}to{opacity:1}}
+.aud-lit{position:relative;z-index:55;background:var(--paper);box-shadow:0 0 0 9px var(--paper);border-radius:2px;}
+.aud-pop{position:relative;z-index:55;margin:9px 0 15px;border:1.5px solid var(--ink);border-left-width:4px;background:var(--paper);box-shadow:5px 5px 0 rgba(0,0,0,.18);padding:11px 13px;animation:audpop .15s ease;}
+@keyframes audpop{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+.aud-pop-pos{border-left-color:#3f8f3f;}
+.aud-pop-neg{border-left-color:#c0392b;}
+.aud-pop-hd{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.aud-pop-by{font-size:11px;color:var(--margin-ink);}
+.aud-pop-x{margin-left:auto;border:none;background:none;font-size:19px;line-height:1;cursor:pointer;color:var(--margin-ink);padding:0 2px;}
+.aud-pop-x:hover{color:var(--ink);}
+.aud-pop-tx{font-size:13.5px;line-height:1.55;color:var(--ink);}
+
