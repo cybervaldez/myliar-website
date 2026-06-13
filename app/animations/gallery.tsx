@@ -126,22 +126,18 @@ function Section({ title, note, children, list }: {
 // ── Themed text reveals ────────────────────────────────────────────────────
 
 // DOS: a terminal types the line out, character by character, cursor trailing.
-// loop = the attract-screen take: type → hold → clear → retype, forever.
-export function Typewriter({ text, loop = false, hold = 1600 }: { text: string; loop?: boolean; hold?: number }) {
+export function Typewriter({ text }: { text: string }) {
   const [n, setN] = useState(0);
   useEffect(() => {
     if (prefersReduced()) { setN(text.length); return; }
-    let i = 0, typeId = 0, holdId = 0;
-    const tick = () => {
-      i += 1; setN(i);
-      if (i >= text.length) {
-        clearInterval(typeId);
-        if (loop) holdId = window.setTimeout(() => { i = 0; setN(0); typeId = window.setInterval(tick, 40); }, hold);
-      }
-    };
-    typeId = window.setInterval(tick, 40);
-    return () => { clearInterval(typeId); clearTimeout(holdId); };
-  }, [text, loop, hold]);
+    let i = 0;
+    const id = setInterval(() => {
+      i += 1;
+      setN(i);
+      if (i >= text.length) clearInterval(id);
+    }, 40);
+    return () => clearInterval(id);
+  }, [text]);
   return (
     <span className="adk-tw">
       {text.slice(0, n)}
@@ -487,23 +483,16 @@ function bpmRevealMs(bpm: number) {
   const t = Math.min(1, Math.max(0, (bpm - 40) / (120 - 40)));
   return Math.round(60 + (16 - 60) * t);
 }
-function BpmLine({ text, bpm, loop = false, hold = 1600 }: { text: string; bpm: number; loop?: boolean; hold?: number }) {
+function BpmLine({ text, bpm }: { text: string; bpm: number }) {
   const ms = bpmRevealMs(bpm);
   const pulses = bpm < 55 || bpm > 90;
   const [n, setN] = useState(0);
   useEffect(() => {
     if (prefersReduced()) { setN(text.length); return; }
-    let i = 0, typeId = 0, holdId = 0;
-    const tick = () => {
-      i += 1; setN(i);
-      if (i >= text.length) {
-        clearInterval(typeId);
-        if (loop) holdId = window.setTimeout(() => { i = 0; setN(0); typeId = window.setInterval(tick, ms); }, hold);
-      }
-    };
-    typeId = window.setInterval(tick, ms);
-    return () => { clearInterval(typeId); clearTimeout(holdId); };
-  }, [text, ms, loop, hold]);
+    let i = 0;
+    const id = setInterval(() => { i += 1; setN(i); if (i >= text.length) clearInterval(id); }, ms);
+    return () => clearInterval(id);
+  }, [text, ms]);
   return (
     <div className="adk-bpmline">
       <span
@@ -1124,47 +1113,42 @@ export default function AnimationGallery() {
 
       <Section
         list
-        title="DIALOGUE MOTION — the LOOPING take (idle · attract)  ★NEW"
-        note="An ALTERNATE TAKE on the text reveals: instead of playing ONCE on arrival (the in-dialogue default), the reveal re-fires on a cycle — reveal → hold readable → replay, forever. Same engine, same curve/duration; a loop driver re-mounts the line every (its own reveal length + a hold). For IDLE / ATTRACT surfaces — a front-door tagline that breathes, a held line that keeps catching the eye — never in a live exchange (there the one-shot is right). Reduced-motion STOPS the loop and shows the settled line (the loop is exactly the continuous motion that setting opts out of). Each demo loops on its own; ▶ replay restarts the cycle."
+        title="LOOPING MOTION — the sustained take (shake · tremble · bob · wave)  ★NEW"
+        note="An ALTERNATE TAKE on the emotion layer: instead of the motion playing ONCE on arrival then settling still (the in-line default), the emotion's signature motion SUSTAINS — the shake keeps shaking, the tremble keeps trembling, the laugh keeps bobbing. The line fades in once, then each letter (or word) oscillates forever; a per-letter phase turns a bob into a traveling wave. For a HELD beat that should keep moving — a nervous line still trembling while you read it, a drifting aside that keeps floating. This is the MOTION looping, NOT the reveal re-running. Reduced-motion stops it dead (sustained motion is exactly what that setting opts out of)."
       >
         <Demo stack
-          title="VOICE-MOTION — looping, one per family"
-          spec="each character's reveal, re-fired on a cycle (reveal → ~1.6s hold → replay). The loop period is computed per line (its unit count × pace + the entry's keyframe duration + hold), so a long line holds proportionally longer"
-          flutter="re-run the per-unit reveal on a Timer.periodic(revealEnd + hold); gate OFF under reduced-motion (render the settled line once)"
+          title="The kinetic loops (per-letter) — shake · judder · tremble · bob · wave"
+          spec="each letter runs an INFINITE keyframe (vlp-shake / judder / tremble / bob / wave); the per-letter animation-delay phases them — 0 = a unison judder, a stagger = a traveling wave. Amplitude kept small (±1–3px) so it reads as energy, not noise"
+          flutter="an infinite AnimationController (repeat(reverse: true)) driving a per-letter Transform; phase by letter index; stop under reduced-motion"
         >
-          <VoiceRow loop who="The Hot-Blooded Coach" preset="DRILL" text="Up. One more set. The wall’s in your HEAD." />
-          <VoiceRow loop who="The Cool Analyst" preset="LEDGER" text="Three problems. One cause. We start there." />
-          <VoiceRow loop who="The Warm Caretaker" preset="SERVICE" text="Sit. Eat first — the rest can wait." />
-          <VoiceRow loop who="The Gruff Sensei" preset="ROPE" text="Again. Slower. The hand remembers what the head forgets." />
-          <VoiceRow loop who="The Serene Navigator" preset="SURFACE" text="The dark has its own currents. We hold our heading." />
+          <div className="vm-row"><span className="vm-who">shock · shake</span><span className="vm-text" style={{ fontSize: 22 }}><EmoLine loop text="WHAAAAT?!" emotion="shock" /></span></div>
+          <div className="vm-row"><span className="vm-who">angry · judder</span><span className="vm-text" style={{ fontSize: 20 }}><EmoLine loop text="You did WHAT with my ledger?" emotion="angry" /></span></div>
+          <div className="vm-row"><span className="vm-who">tremble</span><span className="vm-text" style={{ fontSize: 20 }}><EmoLine loop text="Y-you can’t prove that…!" emotion="tremble" /></span></div>
+          <div className="vm-row"><span className="vm-who">nervous</span><span className="vm-text"><EmoLine loop text="I— I rehearsed this part, I swear…" emotion="nervous" /></span></div>
+          <div className="vm-row"><span className="vm-who">excited · bob-wave</span><span className="vm-text"><EmoLine loop text="You did it — you ACTUALLY did it!" emotion="excited" /></span></div>
+          <div className="vm-row"><span className="vm-who">laugh · wave</span><span className="vm-text"><EmoLine loop text="Ha — no. Absolutely not. Hah!" emotion="laugh" /></span></div>
         </Demo>
 
         <Demo stack
-          title="EMOTION — looping, the feeling on repeat"
-          spec="emotion reveals replay on the same cycle — the dramatic letter-mode beats (shock/excited/tremble re-stagger per character) and the ambient ones (drift breathes). The hold runs longer than the reveal so the line reads before it re-fires"
-          flutter="same loop driver; letter-mode re-splits per character each cycle"
+          title="The ambient loops (per-word) — float · sway · breathe · pulse"
+          spec="gentler, slower keyframes (vlp-float / sway / breathe / pulse) on whole words with long periods (1.1–3s), so they idle rather than agitate — the quiet emotions that should still breathe while held on screen"
+          flutter="same infinite controller; per-word Transform / Opacity at a long slow duration"
         >
-          <div className="vm-row"><span className="vm-who">shock</span><span className="vm-text" style={{ fontSize: 22 }}><EmoLine loop text="WHAAAAT?!" emotion="shock" /></span></div>
-          <div className="vm-row"><span className="vm-who">excited</span><span className="vm-text"><EmoLine loop text="You did it — you ACTUALLY did it!" emotion="excited" /></span></div>
-          <div className="vm-row"><span className="vm-who">tremble</span><span className="vm-text"><EmoLine loop text="Y-you can’t prove that…!" emotion="tremble" /></span></div>
-          <div className="vm-row"><span className="vm-who">drift · ambient</span><span className="vm-text"><EmoLine loop text="…the fog comes in around four, most nights." emotion="drift" unit="phrase" basePace={260} /></span></div>
-        </Demo>
-
-        <Demo
-          title="DOS terminal — looping typewriter"
-          spec="types the line out (40ms/char), holds ~1.6s, clears, retypes — the classic attract-screen loop; the cursor keeps blinking through the hold"
-          flutter="type → hold → reset loop on a Timer; reduced-motion prints the full line, no loop"
-        >
-          <div className="adk-textstage adk-dos-stage"><Typewriter loop text="> YOU ARE STANDING IN FRONT OF A HOUSE." /></div>
+          <div className="vm-row"><span className="vm-who">drift · float</span><span className="vm-text"><EmoLine loop text="…the fog comes in around four, most nights." emotion="drift" unit="phrase" /></span></div>
+          <div className="vm-row"><span className="vm-who">sigh · breathe</span><span className="vm-text"><EmoLine loop text="Again. Slower. We have all night." emotion="sigh" /></span></div>
+          <div className="vm-row"><span className="vm-who">whisper · breathe</span><span className="vm-text"><EmoLine loop text="(don’t tell the others I said so.)" emotion="whisper" /></span></div>
+          <div className="vm-row"><span className="vm-who">sad · sway</span><span className="vm-text"><EmoLine loop text="I didn’t think it would be this quiet." emotion="sad" /></span></div>
+          <div className="vm-row"><span className="vm-who">smile · float</span><span className="vm-text"><EmoLine loop text="There you are. I made too much again." emotion="smile" /></span></div>
+          <div className="vm-row"><span className="vm-who">shout · pulse</span><span className="vm-text"><EmoLine loop text="GET UP. We are NOT done." emotion="shout" /></span></div>
         </Demo>
 
         <Demo stack
-          title="Scene heartbeat — looping BPM reveal"
-          spec="the BPM-conducted reveal, looping so the two tempos sit side by side: calm (64) reveals slow, no pulse; tense (108) reveals fast and the dot pulses. The reveal pace IS the heartbeat"
-          flutter="same bpm→reveal-ms mapping, re-fired on the type→hold→reset loop"
+          title="One-shot vs looping — the same line, both takes"
+          spec="TOP plays the tremble once on arrival, then settles still (the in-dialogue default); BOTTOM keeps trembling (the sustained take). Same emotion, two uses — pick by surface. Hit ▶ replay to watch the one-shot arrive again"
+          flutter="one-shot = iteration 1, fill forwards · loop = a one-time fade-in, then iteration infinite (reverse)"
         >
-          <BpmLine loop text="So. Same drill as yesterday. You already know the first move." bpm={64} />
-          <BpmLine loop text="So. Same drill as yesterday. You already know the first move." bpm={108} />
+          <div className="vm-row"><span className="vm-who">one-shot</span><span className="vm-text" style={{ fontSize: 19 }}><EmoLine text="Y-you can’t prove that…!" emotion="tremble" /></span></div>
+          <div className="vm-row"><span className="vm-who">looping</span><span className="vm-text" style={{ fontSize: 19 }}><EmoLine loop text="Y-you can’t prove that…!" emotion="tremble" /></span></div>
         </Demo>
       </Section>
 
