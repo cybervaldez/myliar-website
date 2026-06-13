@@ -11,51 +11,158 @@
      "id": "pilot-a",
      "markdown": "THE AUDITION NOTES:\nTHE TONE — Brisk-tender. Hands that know the work; the care arrives as a thing DONE, never a thing said.\nWHY THIS WAY — This reader rehearses, over-explains, braces to be asked for a performance — treats every room as a test they could fail. So the deck asks for nothing: the work is plain and observable, and every kindness is an action that needs no reply, so there is nothing here to get wrong. The BELL, not the reader, ends the watch — finishing-imperfect is built into the world's clock, which lets the one who can never call a thing \"done\" off the hook by something outside themselves. The risk in brisk is cold; the guard against it is that the warmth lives in the doing (the cup, the kept bunk) and the log says outright what the deck never will.\nTHE CHOICES —\n1. **Care as ACTION, not speech** — the cup set down and walked away from; the line already flaked for your hands. Warmth you can't be expected to answer.\n2. **The bell ends the watch** — the clock decides, not you; staged the first night so the rule lands early.\n3. **No name, no reason asked** — no one requests either; the manifest logs you anyway, at true weight, including the night you only carried yourself.\nPRIMER TOUCHPOINTS — what this pilot is a worked example of (`storybuilding-primer.md`): §3 WITNESS-NOT-FIXER + holding-space (care as a thing done, no reply asked) and the gift-at-REL-0 (the cup, night one); \"logged at full weight\" = felt-understanding · §2.5 objects-as-subtext (the tin cup; the blank column left \"the way you'd leave a chair\") · §3.7 the subtext gap (\"Hold the rail, not the rope. Rope's got somewhere to be.\" — care, never named) · §3.5 the cast as role-monikers + the un-imposed name (no name asked — yours to keep) · §3.6 one face foregrounded (the Deckhand), the rest glimpsed (Cook · Pilot · Keeper) · §2 the Chronicler narrator (the manifest, entered after) · §5 no-fail-punish (the bell ends the watch, done or not).\n---\n*From the manifest, CROSSING 1 — entered after, in the same ink as every other line: lamps lit at the usual hour; one aboard, no cargo declared. The new ones never know the bunk's already made.*\n\nThe pier had one lamp and a slate with the night's word chalked on it — CALM WATER. Last night's was already wiped clean.\n\nThe DECKHAND was at the rail, flaking a line into a coil that would pay out without a snag. He didn't look up until your shoe found the gangway.\n\n\"Hold the rail, not the rope,\" he said. \"Rope's got somewhere to be.\"\n\nYou held the rail. He waited the half-second it took your weight to commit — then threw the lever. The ramp came up behind you with a sound like a held breath let go. You were aboard before you'd quite decided to be.\n\nHe nodded once, the way you'd nod at a job done right, and went back to the line.\n\nAn amber square opened down the deck — the galley. The COOK set a tin cup on the rail beside you, steam coming off it, and was gone before you found a word. Cocoa, near enough. You hadn't asked. No one had asked you anything.\n\nAt the wheel, half-seen, the PILOT thumbed the compass a degree and held it there — a motion worn smooth by ten thousand nights. The strait ahead was all dark. She steered it like a room she knew with the lights off.\n\nA bell rang once, forward. Not loud. In the cabin light the KEEPER drew a line in a long book and left the column beside it blank — the way you'd leave a chair.\n\n\"That's the watch,\" the Deckhand said, to no one in particular. \"Done's done when the bell says. Not before.\"\n\nThe shore slid back. Nobody asked you to do anything about it.\n\n*The keeper's hand, last, in the same ink as the cargo that mattered: Stood the rail the whole way. Carried only themselves. Logged at full weight.*\n",
      "panel": null,
-     "notes": [
+     "moments": [
       {
        "anchor": "until your shoe found the gangway.",
-       "polarity": "neg",
-       "author": "The one who can't start",
-       "role": "anxiety · the contained hour",
-       "note": "He doesn't look at me until I'm already on the ramp. On a bad night I read that as 'you don't count until you've committed' — and committing is the exact thing I can't do. I almost didn't step on.",
-       "why": "Someone this anxious is watching for any sign they're not wanted. When the deckhand only looks up after they've stepped on, it can feel like 'I didn't matter to him until I proved myself' — and taking that step is the very thing that's hardest for them. So a moment meant to be calm reads as a tiny test they're already failing.",
-       "act": "THE FIX — have him clock them a beat BEFORE the step (a nod toward the rail, a low 'come aboard'), so the welcome arrives first and the step is just accepting it, not earning it."
+       "moment": "The deckhand only looks up once you've stepped on",
+       "reviews": [
+        {
+         "author": "The one who can't start",
+         "role": "anxiety · the contained hour",
+         "polarity": "neg",
+         "note": "I feel a little put on the spot, like I have to prove I'm serious about getting on board before he'll even look at me. It makes me feel like my presence isn't confirmed until I take the risk first.",
+         "why": "A reader who feels they can't initiate things and needs others to act for them will feel tested by this moment. The deckhand's withheld attention until the reader commits feels like a judgment, reinforcing a sense of not being important enough to be welcomed without first proving their intent.",
+         "act": "THE FIX — The DECKHAND was at the rail, flaking a line... He looked up as you approached, not waiting for your shoe to find the gangway, and gestured with his chin. 'Mind the rail.'"
+        },
+        {
+         "author": "The one who carries it all",
+         "role": "low self-worth · the manifest",
+         "polarity": "pos",
+         "note": "This is a relief. He's not watching me, waiting for me to be a problem. I'm just part of the workflow, and I only become relevant when it's my turn to act.",
+         "why": "A person who feels like a burden is often hyper-aware of being watched and judged. The deckhand's focus on his task, rather than the arriving person, removes the social pressure to perform or apologize for their existence.",
+         "act": "THE KEEP — The impersonality of it. The focus is on the action (foot on gangway), not the person. He isn't cold or hostile, just focused on his work."
+        },
+        {
+         "author": "The one who can't call it done",
+         "role": "ADHD · the watch",
+         "polarity": "pos",
+         "note": "I like this because my action caused a reaction. It's a clear beat, not just mood. I'm not just floating here; my presence has registered.",
+         "why": "A reader who struggles to feel 'started' or 'finished' appreciates clear, external triggers. The deckhand's reaction is a direct consequence of the character's action, providing a solid, tangible moment that grounds them in the scene.",
+         "act": "THE KEEP — The direct cause-and-effect. The player's physical action is what makes the world notice them. It's a solid, grounding interaction."
+        },
+        {
+         "author": "The one who rehearses",
+         "role": "social · the rail",
+         "polarity": "pos",
+         "note": "This is a relief. I wasn't being watched while I was still hesitant on the shore; the attention only came after my foot was already on the gangway.",
+         "why": "For someone who dreads being the center of attention, being observed before committing to an action is highly stressful. The deckhand's focus on the action itself, not the person deciding, removes the pressure of performance.",
+         "act": "THE KEEP — The feeling of being noticed for a functional reason (boarding) rather than being socially scrutinized before I've even arrived."
+        }
+       ]
       },
       {
        "anchor": "Rope's got somewhere to be.",
-       "polarity": "pos",
-       "author": "The one who rehearses",
-       "role": "social · the rail",
-       "note": "He told me what to do with my hands and didn't wait for an answer. Nothing to say back, nothing to get wrong. I could breathe — there was no line for me to rehearse.",
-       "why": "This person braces for every conversation, planning what to say so they don't get it wrong. Here the deckhand just tells them what to do and doesn't wait for a reply — so there's nothing to answer and nothing to mess up. That's why they finally relax: for once there's no line to prepare.",
-       "act": "THE KEEP — the line that needs no answer is the whole gift. If a rewrite turns it into a question ('first crossing?'), the breathing room is gone — keep every early crew line reply-optional."
+       "moment": "An instruction that needs no reply",
+       "reviews": [
+        {
+         "author": "The one who can't start",
+         "role": "anxiety · the contained hour",
+         "polarity": "pos",
+         "note": "I like this. He's not telling me what to do because I'm a problem, he's just stating how things work here. The rope has a job, and I'm just being told to stay out of its way, which is a relief.",
+         "why": "For someone who has had a day of demands and failures, an impersonal, fact-based instruction is a relief. It is not a personal critique or another task they have to perform correctly; it is just information about how things operate in this space, which requires no emotional energy to process.",
+         "act": "THE KEEP — The instruction must remain impersonal and about the world, not about the reader's competence. It's a rule of the space, not a judgment on the person."
+        },
+        {
+         "author": "The one who carries it all",
+         "role": "low self-worth · the manifest",
+         "polarity": "pos",
+         "note": "This is good, clear direction. It tells me the rule of this place and why it exists, and the reason has nothing to do with me being a nuisance or getting in the way.",
+         "why": "For someone who measures their worth by their ability to be useful, a clear, impersonal instruction is a gift. It provides a simple way to succeed without the emotional labor of interpreting social cues or feeling like a failure.",
+         "act": "THE KEEP — The functional, non-judgmental reason given for the instruction. It's about the rope's job, not the person's incompetence."
+        },
+        {
+         "author": "The one who can't call it done",
+         "role": "ADHD · the watch",
+         "polarity": "pos",
+         "note": "This is a relief. It's a closed statement that gives me a clear, simple thing to do without asking for a conversation. I don't have to wonder about the rules here.",
+         "why": "For a reader whose attention wanders, ambiguous social cues are draining. This line is the opposite: a self-contained instruction and reason. It provides a defined action without opening up an endless tree of possible replies.",
+         "act": "THE KEEP — The finality of the statement. It's a complete thought that doesn't invite a response. It sets a rule and moves on, which is very calming."
+        },
+        {
+         "author": "The one who rehearses",
+         "role": "social · the rail",
+         "polarity": "pos",
+         "note": "I like this instruction. It's a clear rule that explains itself and doesn't ask me to reply or acknowledge that I've understood.",
+         "why": "A person who rehearses everything they say feels immense pressure in unscripted conversations. Phrasing a command as a statement of fact about an object removes the need for a social response, which is a great comfort.",
+         "act": "THE KEEP — The impersonal, factual nature of the instruction. It's a reason given freely, not one I have to ask for or perform understanding of."
+        }
+       ]
       },
       {
        "anchor": "and was gone before you found a word.",
-       "polarity": "pos",
-       "author": "The one who carries it all",
-       "role": "low self-worth · the manifest",
-       "note": "Someone did something for me and walked off before I could deflect it. I didn't have to earn the cup or thank it right. First time that's felt okay instead of like a debt.",
-       "why": "Someone who feels like a burden turns every kindness into a debt they now owe. The cook sets the cup down and leaves before they can even say thanks — so there's no debt to repay, just a warm thing that happened. That's why it lands: it's the first kindness that didn't come with a bill.",
-       "act": "THE KEEP — the cook LEAVING before thanks is the trick. If a revision lets her linger or wait for a reply, the no-debt magic dies — protect the walk-away."
+       "moment": "The cook sets down the cup and leaves before you can thank her",
+       "reviews": [
+        {
+         "author": "The one who can't start",
+         "role": "anxiety · the contained hour",
+         "polarity": "pos",
+         "note": "This is a huge relief. Someone did something kind for me, and I don't have to do anything back, not even say thank you. I can just accept it, and that feels like a gift in itself.",
+         "why": "A person who is exhausted by social obligations and feels unequal to them will experience this as pure grace. The act of kindness is given freely, without the attached burden of having to perform gratitude, which allows them to simply receive it without feeling like they've failed another social test.",
+         "act": "THE KEEP — The interaction must remain non-transactional. The cook's immediate departure is essential because it removes the opportunity, and thus the obligation, for the reader to respond."
+        },
+        {
+         "author": "The one who carries it all",
+         "role": "low self-worth · the manifest",
+         "polarity": "neg",
+         "note": "This makes me deeply anxious. Someone did something for me without being asked, and now I owe them. I didn't even get to say thank you, so now I'm rude on top of being indebted.",
+         "why": "A person who sees every kindness as a debt is immediately put on the back foot by an anonymous, unprompted gift. The inability to even say 'thank you' compounds the anxiety, as the first and simplest step of repayment is denied, creating an immediate, unresolved social obligation.",
+         "act": "THE FIX — The Cook sets the tin cup on the rail, catches the character's eye for a half-second, and gives a small, almost imperceptible nod before turning away."
+        },
+        {
+         "author": "The one who can't call it done",
+         "role": "ADHD · the watch",
+         "polarity": "neg",
+         "note": "This makes me a little anxious. I was given something, so now I have a social obligation to say thanks, but the chance is gone. It's a tiny, unfinished task stuck in my head.",
+         "why": "A reader who needs external signals to feel 'done' can be unsettled by broken social rhythms. The impulse to give thanks is created and then immediately cut off, leaving a small, unresolved mental loop. It feels less like a gift and more like a dropped beat.",
+         "act": "THE FIX — Have the cook make a small, clear gesture that closes the loop. 'The COOK set a tin cup on the rail beside you and gave a slight shake of the head as if to wave off a word you hadn't said yet. Then she was gone.'"
+        },
+        {
+         "author": "The one who rehearses",
+         "role": "social · the rail",
+         "polarity": "pos",
+         "note": "This is perfect. It's a kindness offered without the tax of having to immediately perform the right words of gratitude.",
+         "why": "For someone who fears being put on the spot, even a simple 'thank you' can feel like a high-stakes performance. By leaving before a word can be found, the cook removes that social burden entirely.",
+         "act": "THE KEEP — The space to receive a kindness without the immediate obligation for a social transaction. The gesture is a gift, not an exchange."
+        }
+       ]
       },
       {
        "anchor": "Done's done when the bell says. Not before.",
-       "polarity": "pos",
-       "author": "The one who can't call it done",
-       "role": "ADHD · the watch",
-       "note": "The BELL decides, not me. I never get to feel finished — and here the clock takes that off my hands. I exhaled reading it.",
-       "why": "People like this can never tell themselves 'okay, that's enough for today' — their brain just won't sign off, so the day feels unfinished no matter what. When the bell decides instead of them, it's permission they could never give themselves. The exhale is them finally being let off a hook they can't unhook on their own.",
-       "act": "THE KEEP — the bell (not the player) has to be the one that ends the watch. If a rewrite lets them ring it or decide they're done, the off-the-hook relief is gone — keep the call out of their hands."
-      },
-      {
-       "anchor": "Logged at full weight.",
-       "polarity": "pos",
-       "author": "The one who carries it all",
-       "role": "low self-worth · the manifest (on the narrator)",
-       "note": "The log clocked me. 'Carried only themselves. Logged at full weight.' Even the night I brought nothing but myself, the book wrote me in at the same weight as real cargo — and it told ME, not the page. I read it twice.",
-       "why": "Someone who feels they only count by what they get done hears the logbook record them at 'full weight' on a night they brought nothing but themselves — and it's said TO them, not just filed away. That's why they read it twice: it's the difference between being a line in a ledger and being actually noticed.",
-       "act": "THE KEEP — keep it TOLD to them, and keep it rare. A log that blesses every night becomes wallpaper; a log that only files the entry without telling them is a receipt, not a witness. The 'told, once' is the weight."
+       "moment": "The bell ends the watch, not you",
+       "reviews": [
+        {
+         "author": "The one who can't start",
+         "role": "anxiety · the contained hour",
+         "polarity": "pos",
+         "note": "I feel a sense of peace hearing this. It means there's a rule for when things are finished that has nothing to do with me or how I feel. The bell decides, and that's that.",
+         "why": "For a reader who feels overwhelmed and unable to bring things to a successful conclusion, the idea of an external, impersonal arbiter of 'doneness' is deeply comforting. It removes the pressure of having to decide for themselves when something is complete, a task they feel they have failed at all day.",
+         "act": "THE KEEP — The finality must come from an impersonal, external source. The power of the moment is that completion isn't a feeling or a personal judgment, but an objective event announced by the bell."
+        },
+        {
+         "author": "The one who carries it all",
+         "role": "low self-worth · the manifest",
+         "polarity": "pos",
+         "note": "I feel a sense of relief wash over me. The idea that something outside of me gets to decide when I'm finished, that it's not my own endless judgment call, is a fantasy.",
+         "why": "For a person whose worth is tied to their output and who may never feel they've done enough, the concept of an external, impersonal arbiter of 'done' is profoundly freeing. It removes the internal pressure to constantly work and the guilt of stopping.",
+         "act": "THE KEEP — The finality and authority of the statement. It's presented as an incontrovertible law of this place, not a suggestion or a personal philosophy."
+        },
+        {
+         "author": "The one who can't call it done",
+         "role": "ADHD · the watch",
+         "polarity": "pos",
+         "note": "This is exactly what I need. It's not my job to decide when things are finished; there's an external system, a bell, that makes the decision for me. It's an immense relief.",
+         "why": "This directly addresses the core need of a reader who can never feel finished. The line explicitly states that completion is determined by an external, objective signal, not by internal feeling. This provides a profound sense of relief and structure.",
+         "act": "THE KEEP — The explicit statement of this philosophy. This line is the thesis statement for this reader's comfort, promising a world with clear rhythms and defined endings."
+        },
+        {
+         "author": "The one who rehearses",
+         "role": "social · the rail",
+         "polarity": "pos",
+         "note": "I find this incredibly reassuring. There's an external system for things being 'done' and it has nothing to do with my own feelings or judgment.",
+         "why": "A person who dreads having to provide a reason for their actions is freed by an objective, external authority. The bell makes the decision, so there is no need to invent or defend a personal justification for stopping work.",
+         "act": "THE KEEP — The absolute, impersonal authority that decides when something is finished. It removes the burden of personal judgment."
+        }
+       ]
       }
      ],
      "carryover": [
@@ -105,51 +212,158 @@
      "id": "pilot-b",
      "markdown": "THE AUDITION NOTES:\nTHE TONE — Lyrical-hush. The quiet hum after the day's ringing — a held breath let go into the dark; a space, not a voice.\nWHY THIS WAY — The one this is for comes to the water carrying the day's noise. They don't need a story that tries to shout over it; they need a quiet room for the ringing to fade. This Lyrical-Hush tone is that room. It makes no demands. For the one who rehearses every word, it offers a silence they don't have to fill. For the one who carries more than they admit, it describes the cold of the rail and the weight of the dark, letting the world echo what they feel without asking them to name it. The risk is slowness; the promise is stillness.\nTHE CHOICES — \n1.  **The Unspoken Welcome.** The first interaction is non-verbal. The Deckhand doesn't ask for a ticket or a name; he sees you, acknowledges you with a slight tip of his chin, and does his work. His competence is the welcome, respecting the player's exhaustion and reluctance to perform.\n2.  **The World Breathes First.** The player takes one action: stepping aboard. The world does the rest. The Deckhand raises the gangway, the engine hums to life, the lamps light themselves. This externalizes initiation, lifting the burden of *starting* from the one who feels they cannot begin.\n3.  **Objects as History.** The story is in the ferry's worn surfaces. The Deckhand's rope isn't just a rope; its differently-colored whipping is a quiet testament to decades of service, a story the player can see but doesn't have to decode. The world has history, and is stable.\nPRIMER TOUCHPOINTS — \n§1 The Open Question (a quiet hook): The tri-colored whipping on the mooring line; the reason for the crossing itself.\n§2 The Chronicler Firewall: The italicized log entries are the Keeper's retrospective record, narrating the unseen meaning (\"the carry was the passenger themselves\"), not live action.\n§2.5 Environmental Storytelling: The Deckhand's mooring line, with its end whipped in three different colors, suggests long history without exposition.\n§3 Holding Space / Gift at REL 0: The ferry crossing itself is the gift—a contained hour that asks nothing. The crew's silent presence holds space without trying to fix.\n§3.6 One New Face at a Time: The Deckhand is the only foregrounded character; the Cook, Pilot, and Keeper are brief, establishing glimpses in the periphery.\n§5 Cozy Framework / Contained World: The ferry deck becomes a small, safely-lit island in the dark—a bounded, low-ambush loop that is the core of the soothing experience.\n---\n*The manifest would record it later, in the Keeper’s dry script: the tide, the turn of the wind, and one passenger. The space for cargo was left blank; the carry was the passenger themselves.*\n\nThe air at the dock is heavy with salt and the day you left behind. A single lamp throws a pale, tired circle on the wet planks. You stand at its edge.\n\nThe ferry waits, a dark shape against a darker sky. It makes no sound.\n\nYour feet find the gangway. It’s just wood. It holds. You don't look back at the shore.\n\nOn deck, a man is coiling a heavy mooring line, his movements practiced and sure. The Deckhand. He doesn’t look up, but he knows you are there. You see the end of the rope in his hands, its fibers bound tight with waxed thread of three different, faded colors. A story told in knots.\n\nHe finishes, lays the coil in its place, and only then does he meet your eye. A slight tip of his chin. It is enough. He moves to the iron crank, and the chain rattles, loud in the quiet. The gangway lifts. A foot of black water opens between the ferry and the land.\n\nThe choice is gone. There is only the crossing now.\n\nA low thrum starts deep inside the boat. Through a salt-grimed window, you glimpse a figure moving in the galley’s warm light. Another, a silhouette at the wheel, gazes out into the starless night.\n\nThe deck lamps flicker on, one by one, casting a soft, amber glow that doesn't touch the water. You find a place at the rail. The wood is cold, worn smooth by a thousand other hands. The shore is a memory. The air is clean.\n\n*He didn't write that the passenger finally let their shoulders fall, or that the quiet felt like a kindness. The log has no column for such things. It only records that the crossing was made, and that was the part that counted.*\n",
      "panel": null,
-     "notes": [
+     "moments": [
       {
        "anchor": "It holds.",
-       "polarity": "pos",
-       "author": "The one who can't start",
-       "role": "anxiety · the contained hour",
-       "note": "I only had to do one thing — step on. 'It's just wood. It holds.' Nothing bigger was asked of me, and that one step is the only size I had in me tonight.",
-       "why": "When everything feels too big to begin, even one step is daunting. Here all they have to do is step on, and the boat simply holds them — solid, no catch. That one tiny, safe action is the only size they could manage tonight, so it's a relief that nothing more is asked of them.",
-       "act": "THE KEEP — keep the ask at exactly one step, and let 'it holds' land as a felt beat. If a rewrite asks for a second action or lets the step pass unmarked, the one thing they could manage tonight disappears."
+       "moment": "One step, and the boat holds you",
+       "reviews": [
+        {
+         "author": "The one who can't start",
+         "role": "anxiety · the contained hour",
+         "polarity": "neg",
+         "note": "I have to be the one to step onto it first? I almost couldn't. The fact that it holds is a relief, but I hate that I had to test it myself.",
+         "why": "This reader feels like they can't take the first step; they need to be helped or invited into a space. Being required to trust their own weight on the gangway before any commitment is made from the other side feels like another test on a day full of them.",
+         "act": "THE FIX — Have the Deckhand lower the gangway with a solid thud, a clear invitation. When your feet find the wood, then it holds."
+        },
+        {
+         "author": "The one who carries it all",
+         "role": "low self-worth · the manifest",
+         "polarity": "pos",
+         "note": "I'm so used to testing my footing, expecting things to give way under my own weight. That simple, declarative statement, 'It holds,' makes me feel a small, physical sense of relief because I don't owe it anything.",
+         "why": "For someone who feels like a physical and emotional burden, the confirmation that they are supported without any fuss is a quiet, profound relief. It's an objective reality, not a subjective kindness that would create a sense of debt.",
+         "act": "THE KEEP — The simplicity and factualness. It's not 'it holds you,' just 'It holds.' It's an impersonal statement of fact, which is safe and doesn't create an obligation."
+        },
+        {
+         "author": "The one who can't call it done",
+         "role": "ADHD · the watch",
+         "polarity": "pos",
+         "note": "Okay, good. It's a simple, physical fact that I can trust. I don't have to worry about this one small thing anymore; I can just move on.",
+         "why": "A reader who can't feel finished is soothed by small, certain closures. This statement confirms a single, physical fact, checking a box and allowing their brain to stop worrying about that specific variable.",
+         "act": "THE KEEP — The simple, declarative finality. It's a moment of physical certainty that acts as an anchor in an otherwise moody and uncertain atmosphere."
+        },
+        {
+         "author": "The one who rehearses",
+         "role": "social · the rail",
+         "polarity": "pos",
+         "note": "I feel a quiet relief. The ground is literally solid beneath my feet, and it asks nothing of me.",
+         "why": "For someone who feels perpetually on uncertain ground socially, a simple, physical certainty is deeply calming. The world just works, and they don't have to do anything to make it happen.",
+         "act": "THE KEEP — The simplicity and finality of the statement. It's a physical fact, not an emotional or social one."
+        }
+       ]
       },
       {
        "anchor": "A slight tip of his chin. It is enough.",
-       "polarity": "pos",
-       "author": "The one who rehearses",
-       "role": "social · the rail",
-       "note": "He welcomed me without a word I had to answer — a tip of the chin and back to work. No opening line to rehearse, no face to perform. I could just be there.",
-       "why": "This person dreads the opening of any conversation — the part where they have to perform. A welcome that's just a nod means there's nothing to say back, so nothing to get wrong. That's why they feel they can simply be there, instead of bracing to be 'on'.",
-       "act": "THE KEEP — keep the welcome wordless and unmistakably warm. If a rewrite adds a line he expects an answer to, the no-performance relief is gone — the nod has to carry it alone."
+       "moment": "A wordless welcome — a nod, nothing to answer",
+       "reviews": [
+        {
+         "author": "The one who can't start",
+         "role": "anxiety · the contained hour",
+         "polarity": "pos",
+         "note": "I feel seen, but not questioned. He doesn't need me to say anything back, which is a relief because I don't have the words right now.",
+         "why": "A reader who feels like they 'don't count' needs acknowledgement without pressure. A small, non-verbal sign that they are registered and accepted, without requiring them to perform a social response, feels safe and respectful.",
+         "act": "THE KEEP — The gesture must remain wordless and undemanding. Any verbal greeting or question would shatter the feeling of being allowed to simply exist without performing."
+        },
+        {
+         "author": "The one who carries it all",
+         "role": "low self-worth · the manifest",
+         "polarity": "pos",
+         "note": "This feels safe. It's an acknowledgement without a demand for a response, so I don't have to perform or worry I'm not giving back enough. I'm just here, and that's okay.",
+         "why": "A person who sees every kindness as a debt is exhausted by social interactions that require performance or reciprocation. A minimal, non-verbal acknowledgement is a gift because it recognizes their presence without placing any social burden on them.",
+         "act": "THE KEEP — The minimalism of the interaction. He finishes his work first, then gives a nod. It's a quiet, self-contained gesture that asks for nothing in return."
+        },
+        {
+         "author": "The one who can't call it done",
+         "role": "ADHD · the watch",
+         "polarity": "pos",
+         "note": "This is a relief. I don't have to perform or figure out what to say. The entire social interaction is contained and completed without requiring anything from me.",
+         "why": "For a mind that endlessly replays social encounters, an interaction that is explicitly defined as complete and sufficient is a gift. It closes a loop for the reader without them needing to do any work.",
+         "act": "THE KEEP — The explicit permission to not engage further. The phrase 'It is enough' closes the social loop and lets the reader's mind rest."
+        },
+        {
+         "author": "The one who rehearses",
+         "role": "social · the rail",
+         "polarity": "pos",
+         "note": "This is the perfect greeting. He sees me, he acknowledges me, and then he moves on, requiring nothing back.",
+         "why": "This kind of person dreads social performance. A non-verbal acknowledgement that doesn't open a conversation is the most comfortable and welcome kind of greeting imaginable.",
+         "act": "THE KEEP — The fact that the interaction is non-verbal and requires no response. It provides acknowledgement without creating a social obligation."
+        }
+       ]
       },
       {
        "anchor": "The choice is gone. There is only the crossing now.",
-       "polarity": "neg",
-       "author": "The one who can't start",
-       "role": "anxiety · the contained hour",
-       "note": "I know it's meant kindly — the decision lifted off me. But 'the choice is gone' read as losing control, and that's the exact thing I came out here to set down. It tightened me for a second.",
-       "why": "Their core fear is feeling out of control. So even though the line is trying to comfort — the decision's been lifted off them — the words 'the choice is gone' poke that exact bruise. It reads as something being taken from them, which is the scary feeling, not the safe one. That's why it tightens them up instead of soothing them.",
-       "act": "THE FIX — let the world HOLD the choice, not take it — try 'the deciding's done; the boat has it now.' Same relief, nothing wrenched away."
-      },
-      {
-       "anchor": "The air is clean.",
-       "polarity": "neg",
-       "author": "The one who can't call it done",
-       "role": "ADHD · the watch",
-       "note": "It's lovely and I drifted right off it. By the end nothing was happening that I could DO — my attention was on the far shore before the crossing was. I needed one small thing to put my hands on.",
-       "why": "A wandering mind needs something to hold onto. By the end of the scene it's all pretty mood and nothing actually happening — so their attention floats off to the far shore before the scene's even over. That's why they slide off the page: there's nothing left for their hands or eyes to do.",
-       "act": "THE FIX — drop one tiny thing to DO (or a quiet 'what's next?') into the final third — a hand finding the cold rail, a light catching — so there's a handhold before attention drifts, without breaking the calm."
+       "moment": "The choice is taken once you're aboard",
+       "reviews": [
+        {
+         "author": "The one who can't start",
+         "role": "anxiety · the contained hour",
+         "polarity": "pos",
+         "note": "Thank god. I don't have to decide anything anymore; it's been decided for me and I can't mess it up or change my mind. I can just let go.",
+         "why": "This reader is exhausted by their own agency and the failures of the day. Having the choice and the escape route removed by an external force is a profound relief, creating the bounded, safe experience they desperately need.",
+         "act": "THE KEEP — The finality and passivity of this moment is essential. It's the lock turning in the door of a quiet room; it must feel like something being done *to* the reader, not *by* them."
+        },
+        {
+         "author": "The one who carries it all",
+         "role": "low self-worth · the manifest",
+         "polarity": "neg",
+         "note": "I feel a spike of panic here. Being trapped on this boat means I can't escape the feeling of being a burden, of being useless cargo. The lack of choice just amplifies my powerlessness.",
+         "why": "For someone who measures their worth by what they do, being trapped in a situation where they can only *be* and not *do* is intensely uncomfortable. The removal of agency, even the agency to flee, makes them feel like an object being transported, magnifying their sense of being a useless weight.",
+         "act": "THE FIX — Reframe it from finality to process. Instead of 'The choice is gone,' try something like: 'The choice is behind you. The ferry moves forward, and you move with it.'"
+        },
+        {
+         "author": "The one who can't call it done",
+         "role": "ADHD · the watch",
+         "polarity": "pos",
+         "note": "Thank god. The decision is made and the path is set. My brain can finally stop working because there's nothing left for it to do but be carried along.",
+         "why": "For a person who can never feel 'done,' the removal of choice is a profound comfort. It's the ultimate 'it's over now,' forcibly stopping the mental process of evaluating options and allowing them to rest.",
+         "act": "THE KEEP — The absolute, external finality. It's a clear signal that a phase has ended and a new one, with a single, unchangeable path, has begun."
+        },
+        {
+         "author": "The one who rehearses",
+         "role": "social · the rail",
+         "polarity": "pos",
+         "note": "A huge weight just lifted off my shoulders. I don't have to decide anything anymore; I just have to be here.",
+         "why": "For a person who overthinks every action, the removal of choice can be a profound relief. It allows them to stop rehearsing and simply exist in the moment, relinquishing the anxiety of control.",
+         "act": "THE KEEP — The sense of finality and release from responsibility. It frames the journey as a passive state, which is a comfort."
+        }
+       ]
       },
       {
        "anchor": "and that was the part that counted.",
-       "polarity": "pos",
-       "author": "The one who carries it all",
-       "role": "low self-worth · the manifest (on the narrator)",
-       "note": "Someone kept the record whether I performed being there or not — 'the crossing was made, and that was the part that counted.' I didn't have to earn the entry. That settled something.",
-       "why": "Someone who feels they have to perform just to deserve a spot hears that the record gets kept whether or not they put on a show. That means they don't have to earn their place — and being let off that constant effort is why something quietly settles in them.",
-       "act": "THE KEEP — keep the record-kept-regardless beat, and give it a touch more room. If the prose around it stays too still it floats past — let one line land on 'counted' so it doesn't slip by unfelt."
+       "moment": "The log keeps it whether you perform being there or not",
+       "reviews": [
+        {
+         "author": "The one who can't start",
+         "role": "anxiety · the contained hour",
+         "polarity": "pos",
+         "note": "My presence is enough. I don't have to feel a certain way or do a certain thing for this to be real and valid.",
+         "why": "Someone who feels their efforts aren't enough and that they don't 'count' is relieved by an external system that validates their simple existence. The log confirms that the act of being present is the only metric that matters, removing the pressure to perform.",
+         "act": "THE KEEP — The focus on the objective, external record. It's a promise that the reader's internal state won't be judged, and their simple act of showing up is what's important."
+        },
+        {
+         "author": "The one who carries it all",
+         "role": "low self-worth · the manifest",
+         "polarity": "neg",
+         "note": "This feels like a platitude, something nice that isn't true for me. I can't believe that just making the crossing is enough; my own value has never been measured that way, so this feels like a dismissal of the real effort it takes to just exist.",
+         "why": "Someone whose self-worth is tied to production cannot easily accept that their mere presence is sufficient. A statement like this, meant to be comforting, can feel unbelievable because it contradicts their deepest core belief. It's too much grace, too soon.",
+         "act": "THE FIX — Make it about the log's function, not the passenger's value. 'The log has no column for such things. It only records that a crossing was made; the ferry fulfilled its function.'"
+        },
+        {
+         "author": "The one who can't call it done",
+         "role": "ADHD · the watch",
+         "polarity": "pos",
+         "note": "This feels freeing. It doesn't matter how I feel or if my mind is wandering; the important part is being recorded externally. I don't have to worry if I'm having the 'right' experience.",
+         "why": "A reader whose attention wanders can feel anxious about not being properly engaged. This line validates the physical act over the internal state, taking the pressure off them to perform a certain feeling.",
+         "act": "THE KEEP — The official confirmation that the external event is what matters. It separates the physical journey from the passenger's internal state and affirms that the journey itself is enough."
+        },
+        {
+         "author": "The one who rehearses",
+         "role": "social · the rail",
+         "polarity": "pos",
+         "note": "This feels like a promise that I don't have to perform or explain myself to matter. Just showing up is enough.",
+         "why": "Someone who dreads being asked for a reason is comforted by the idea that their simple presence is sufficient. The external world records the fact of their journey, not the quality of their performance during it.",
+         "act": "THE KEEP — The validation that the physical act of being present is what matters, not the internal state or outward performance. It separates existence from justification."
+        }
+       ]
       }
      ],
      "carryover": [
@@ -199,51 +413,158 @@
      "id": "pilot-c",
      "markdown": "THE AUDITION NOTES:\nTHE TONE — Warm-wry. Come in out of the weather — the kettle's on, the tea's in the tin; nobody's going to ask why you're here.\nWHY THIS WAY — This reader arrives braced, expecting to be asked for something they don't have—a reason, a plan, a cheerful face. The WARM-WRY tone is a quiet refusal to demand anything. It offers presence without pressure, a form of respect for the player's exhaustion. Its deadpan warmth is a shield against the kind of forced sentimentality that would make a guarded person retreat. It doesn't offer a hand to hold; it points to a dry seat out of the wind and trusts you'll take it when you're ready.\nTHE CHOICES — \n1. **A Welcome of Fact, not Feeling:** The Deckhand doesn't say \"welcome,\" he says \"Tide's turning.\" It's an observation about the world that doubles as an instruction, externalizing the need for a decision and making the act of boarding a simple response to a natural rhythm, not a personal trial.\n2. **The Hook is Held, Not Shown:** The central mystery isn't a prepared absence (like an empty bunk), but a present, personal object—the stone the Deckhand carries. It makes the hook about a person's inner world, not just the ship's architecture, promising a story of character over plot.\n3. **The Narrator as Witness to the Unspoken:** The Keeper's log frames the crossing by recording the subtext of the night—noting the player's hesitation on the pier and the ambiguity in the Deckhand's parting words. It establishes the narrator's role as the one who sees the internal weight, not just the external action.\nPRIMER TOUCHPOINTS — \n- §1 The Open Question: The smooth, grey stone the Deckhand palms but never throws is a tangible question planted in the first scene.\n- §2 The Chronicler Firewall / Narrator: The opening and closing log entries are retrospective, third-person records (\"Stood the pier awhile... Logged at full weight\"), narrating the unseen meaning, not the seen action.\n- §2.5 Environmental Storytelling: The brass rail worn smooth by hands, the smell of stock from the galley—the ship's life is told through sensory details of its routine.\n- §3 Gift at REL 0 / Holding Space: The crossing itself is the gift. The crew's non-interference is the form their care takes; the Deckhand watches you board, but doesn't rush or \"help\" you.\n- §3.6 One new face at a time: The Deckhand is the only crew member you speak to; the Cook and Pilot are present only as sensory traces (a smell, a silhouette), staging the cast reveal slowly.\n- §3.7 The Subtext Gap: The Deckhand’s line, \"That's the hard part done,\" is practical on its surface but carries an unspoken understanding of the effort it took just to get on board.\n---\n*The manifest keeper’s entry for the night is spare, as always. Stood the pier awhile. Watched the gulls settle. Boarded before the tide turned. Logged at full weight, as is only proper.*\n\nThe air had gone cold, smelling of salt and rain on stone. At the pier's end, the ferry idled, its engine a steady heartbeat in the dark. It wasn't a vessel for long journeys; it was squat, solid, and looked like it had been repainted a dozen times, always the same colour.\n\nThe Deckhand was leaning against a railing, polishing a small, smooth, grey stone with his thumb. He looked up as you got closer, his face weathered into something that wasn't quite a smile but wasn't a frown either. He didn't ask what you wanted. He just pocketed the stone and nodded at the gangway. \"Tide's turning,\" he said, his voice like gravel rolling in a quiet place. \"So's the gangway.\"\n\nYou stepped on. The metal was cold through the soles of your shoes. From an open galley vent came the warm, savoury smell of simmering stock; through the doorway the little table was laid for four, and a fifth place at the end, its bowl turned down — kept for no one in particular. Ahead, you could see the dark shape of the Pilot in the wheelhouse, a still silhouette against the soft green glow of the instruments. You put a hand on the brass rail leading to the passenger cabin; it was worn smooth, cool and solid from a thousand other hands.\n\nThe Deckhand pulled a lever. With a low hydraulic hiss, the gangway lifted and swung away, leaving a strip of churning black water between you and the shore.\n\n\"Right,\" he said, turning to check a knot on a nearby line. \"That's the hard part done.\" He didn't look at you when he said it.\n\n*The log does not record which hard part he meant. The crossing is the same length for everyone. The getting on board is not.*\n",
      "panel": null,
-     "notes": [
-      {
-       "anchor": "Logged at full weight, as is only proper.",
-       "polarity": "pos",
-       "author": "The one who carries it all",
-       "role": "low self-worth · the manifest (on the narrator)",
-       "note": "The book wrote me in 'at full weight, as is only proper' — like it was never in question. Even the night I brought nothing but myself, I counted as much as cargo. I read it twice.",
-       "why": "Someone who always feels they have to earn their spot hears the book treat their full worth as simply obvious — 'as is only proper' means it was never even in question. That's why it lands so hard: the one thing they can't believe about themselves is stated like plain fact, no fuss.",
-       "act": "THE KEEP — keep it understated. 'As is only proper' lands BECAUSE it's not a big deal. If a rewrite swells it into a speech, the quiet certainty (and the gift) is lost."
-      },
+     "moments": [
       {
        "anchor": "He didn't ask what you wanted.",
-       "polarity": "pos",
-       "author": "The one who rehearses",
-       "role": "social · the rail",
-       "note": "No 'what can I do for you', no question I had to have an answer ready for — he just nodded at the gangway. The pressure to perform a reason for being there simply wasn't there.",
-       "why": "This person shows up braced for questions they'll have to answer. When the deckhand asks nothing and just nods at the boat, there's nothing to defend against. That's why the pressure lifts: no question means no performance, so they don't have to justify why they came.",
-       "act": "THE KEEP — keep him asking nothing. If a later line slips in 'so what brings you out?', the guard goes right back up — protect the no-question welcome all the way through."
+       "moment": "He asks you nothing",
+       "reviews": [
+        {
+         "author": "The one who can't start",
+         "role": "anxiety · the contained hour",
+         "polarity": "pos",
+         "note": "This is a relief. He isn't asking me to justify myself or perform in any way, which is exactly why I came here.",
+         "why": "A reader who feels like they've failed all day doesn't want to be questioned. Being allowed to just arrive without having to explain is a profound comfort that removes all pressure.",
+         "act": "THE KEEP — The unspoken permission. The power is in him seeing the reader, acknowledging them with a nod, and understanding that their presence is reason enough. It's acceptance without interrogation."
+        },
+        {
+         "author": "The one who carries it all",
+         "role": "low self-worth · the manifest",
+         "polarity": "pos",
+         "note": "I feel a small knot in my stomach loosen. I was ready to explain myself, to justify my presence, but he just let me be.",
+         "why": "A person who feels they have to earn their place is always prepared for a test or a question. When that challenge doesn't come, it's a moment of unexpected grace, allowing them to exist without having to immediately prove their worth.",
+         "act": "THE KEEP — The quiet, unquestioning acceptance. The power is in the absence of a demand for justification. Don't add a welcoming smile or a friendly question."
+        },
+        {
+         "author": "The one who can't call it done",
+         "role": "ADHD · the watch",
+         "polarity": "neg",
+         "note": "This makes me anxious because I don't know what's expected of me. The lack of a clear prompt makes my attention start to drift, looking for the next thing to do.",
+         "why": "A reader who needs external cues to feel settled is put on edge by inaction and ambiguity. Without a clear prompt or task, their mind starts searching for one, unable to rest in the quiet moment.",
+         "act": "THE FIX — Give a clear, simple instruction instead of just a look. For example: \"He didn't ask what you wanted. He just pocketed the stone and said, 'Best get on. Tide's turning.'\""
+        },
+        {
+         "author": "The one who rehearses",
+         "role": "social · the rail",
+         "polarity": "pos",
+         "note": "I feel a wave of relief. He isn't going to make me explain myself or justify why I'm here; I can just get on board without having to perform.",
+         "why": "This reader dreads being put on the spot. Being asked a direct question by a stranger in a new place forces a performance they haven't prepared for, so when the Deckhand doesn't ask, it removes that pressure.",
+         "act": "THE KEEP — The silent acceptance. It's crucial that he doesn't ask for a ticket, a name, or a reason, but just sees the character and knows they belong there."
+        }
+       ]
       },
       {
        "anchor": "That's the hard part done.",
-       "polarity": "pos",
-       "author": "The one who can't start",
-       "role": "anxiety · the contained hour",
-       "note": "He called BOARDING the hard part — not the crossing, the getting-on. He saw the small step was the whole mountain for me, and said it sideways, without making me admit it.",
-       "why": "For someone this nervous, just getting on the boat IS the mountain — and nobody ever calls that the hard part out loud. He does, and he doesn't even spell out which hard part he means, so they feel understood without having to admit anything. That's why it lands: seen, but not put on the spot.",
-       "act": "THE KEEP — keep the gap: he names 'the hard part' without saying WHICH. If a rewrite spells it out, being-seen turns into a pat on the head. Don't explain it."
+       "moment": "He calls boarding (not the crossing) the hard part",
+       "reviews": [
+        {
+         "author": "The one who can't start",
+         "role": "anxiety · the contained hour",
+         "polarity": "pos",
+         "note": "I feel completely seen by this. He understands that the hardest part for me was just getting here, just making the choice to step on board.",
+         "why": "For someone who struggles to start things, the act of committing is the biggest battle. This line validates that internal struggle, making the reader feel deeply understood by the character.",
+         "act": "THE KEEP — The validation of the initial step. The line must specifically refer to the act of boarding, not the journey itself. It's this recognition of the difficulty of showing up that lands so powerfully."
+        },
+        {
+         "author": "The one who carries it all",
+         "role": "low self-worth · the manifest",
+         "polarity": "pos",
+         "note": "I feel seen in a way that almost hurts. He understands that just showing up was the real struggle, not the journey itself.",
+         "why": "For someone whose biggest struggle is internal—the decision to participate, to be present, to take up space—having that internal struggle acknowledged by an outsider is incredibly validating. It frames their biggest effort as the real accomplishment.",
+         "act": "THE KEEP — The ambiguity. It's crucial that he's talking about 'the hard part' in a general sense, not specifically to them. It lets a person feel seen without feeling singled out or pitied."
+        },
+        {
+         "author": "The one who can't call it done",
+         "role": "ADHD · the watch",
+         "polarity": "pos",
+         "note": "I feel a real sense of relief at this line. It's a clear signal that one phase is complete, and now we can move on to the next beat of the story.",
+         "why": "For a reader who struggles to feel 'finished', a character explicitly stating that a task is complete provides a welcome external validation. It sets a clear boundary, closes a loop, and allows their attention to move forward.",
+         "act": "THE KEEP — The feeling of an official, completed step. The line marks a clear transition from the task of 'boarding' to the state of 'crossing', which provides a satisfying rhythm and forward momentum."
+        },
+        {
+         "author": "The one who rehearses",
+         "role": "social · the rail",
+         "polarity": "pos",
+         "note": "I feel seen. He understands that just showing up, just committing to getting on board, was the biggest hurdle for me.",
+         "why": "For someone who finds new situations difficult, the act of arrival is the most anxiety-inducing part. This line validates that feeling, suggesting the hardest part isn't the physical journey but the internal effort it took just to get on the boat.",
+         "act": "THE KEEP — The validation that 'getting on board' is the actual challenge. It reframes the difficulty away from the external journey and onto the internal one, which is where this reader lives."
+        }
+       ]
       },
       {
        "anchor": "He didn't look at you when he said it.",
-       "polarity": "neg",
-       "author": "The one who carries it all",
-       "role": "low self-worth · the rail",
-       "note": "He looked away as he said the kind thing, and on a bad night my first read was 'he can't even look at me — did I get something wrong?' I know that's mine to carry, but it pinched before the warmth landed.",
-       "why": "Someone braced for rejection reads everything for a brush-off. He looks away to give them room — but to them, looking away first reads as 'he can't even look at me — did I do something wrong?' The kindness is real, but it arrives a second late, after the sting. That's why a warm moment pinches before it warms.",
-       "act": "THE FIX — give one beat of plain warmth just before he looks away (a half-smile, a 'good'), so there's something to hold when the looking-away could read as a brush-off."
+       "moment": "He looks away as he says the kind thing",
+       "reviews": [
+        {
+         "author": "The one who can't start",
+         "role": "anxiety · the contained hour",
+         "polarity": "pos",
+         "note": "I'm grateful he looked away. He said something kind and then gave me the space to absorb it without making me feel pressured to respond or perform gratitude.",
+         "why": "A reader who feels raw might find direct eye contact after a moment of kindness to be overwhelming, like a demand for a response. By looking away, the character offers the kindness without expecting anything in return.",
+         "act": "THE KEEP — The gift of space. The kindness is offered and then the Deckhand's attention immediately moves to a neutral, physical task. This prevents the moment from becoming an intense interaction that demands an emotional reply."
+        },
+        {
+         "author": "The one who carries it all",
+         "role": "low self-worth · the manifest",
+         "polarity": "pos",
+         "note": "This makes his kindness bearable. Because he isn't looking at me, I don't feel pressured to react or perform gratitude; I can just let the words land without owing anything in return.",
+         "why": "A person who sees kindness as a debt is uncomfortable with direct, face-to-face emotional offerings because they demand an immediate emotional repayment. When the kind act is done without eye contact, it becomes less of a direct gift and more of a neutral observation they can accept without feeling indebted.",
+         "act": "THE KEEP — The casual, indirect delivery. The kindness is offered without demanding a witness or a receipt. It's a gift that can be pocketed without thanks."
+        },
+        {
+         "author": "The one who can't call it done",
+         "role": "ADHD · the watch",
+         "polarity": "neg",
+         "note": "This undoes the satisfying finality of the previous line for me. It makes the moment feel unfinished and ambiguous again, and my brain starts trying to solve the subtext instead of just moving on.",
+         "why": "This reader needs clear signals to feel grounded. When a character's words offer a clear beat of completion but their actions immediately introduce ambiguity, it creates a dissonance that is unsettling and prevents their brain from signing off on the moment.",
+         "act": "THE FIX — Make the action match the finality of the words. For example: \"He gave the knot a final, satisfying tug before looking at you. 'Right,' he said. 'That's the hard part done.'\""
+        },
+        {
+         "author": "The one who rehearses",
+         "role": "social · the rail",
+         "polarity": "pos",
+         "note": "This is perfect. He gives me this bit of kindness but doesn't demand I perform gratitude for it, letting me just receive it quietly.",
+         "why": "This reader fears the social obligation that comes with direct eye contact during a moment of kindness. Looking away removes the demand for an immediate, visible reaction, allowing them to accept the comfort without the stress of a social exchange.",
+         "act": "THE KEEP — The lack of eye contact. It turns a potentially transactional moment of comfort into a quiet, un-demanding observation that the character can simply absorb without having to respond."
+        }
+       ]
       },
       {
-       "anchor": "a steady heartbeat in the dark",
-       "polarity": "pos",
-       "author": "The one who can't call it done",
-       "role": "ADHD · the watch",
-       "note": "The engine as 'a steady heartbeat in the dark' gave me something regular to lock onto. A reliable rhythm is the one thing that holds my attention when my own won't.",
-       "why": "A mind that won't sit still latches onto rhythm from outside itself. The engine's steady thump is a beat to hang onto — the regularity their own focus can't supply. That's why it holds them: the world is keeping time so they don't have to.",
-       "act": "THE KEEP — keep the engine-beat and bring it BACK at least once more. A rhythm only works as a handhold if it recurs — one mention and it's just a detail, not something to hold."
+       "anchor": "Logged at full weight, as is only proper.",
+       "moment": "The log counts you fully, as a matter of course",
+       "reviews": [
+        {
+         "author": "The one who can't start",
+         "role": "anxiety · the contained hour",
+         "polarity": "pos",
+         "note": "This makes me feel solid and real. It's not someone's opinion, it's an objective fact in a log: I count, fully. The phrase 'as is only proper' feels like a law of nature that includes me.",
+         "why": "For a reader who feels they 'don't count,' this is external, impersonal validation. It's not charity from a person, which can be mistrusted, but a formal, procedural acknowledgement of their full weight, which feels undeniable.",
+         "act": "THE KEEP — The impersonal authority of the statement. The power comes from this being a rule, a matter of course, not a personal favor. It's the system itself that affirms the reader's worth."
+        },
+        {
+         "author": "The one who carries it all",
+         "role": "low self-worth · the manifest",
+         "polarity": "neg",
+         "note": "My chest tightens at this. Being counted as whole and sufficient just for arriving feels like a standard I can't meet, a debt I've already incurred by being here.",
+         "why": "For a person who measures their worth by what they produce, being declared 'full weight' simply for existing is an unbelievable concept. It feels like an overpayment, an unearned grace that creates immediate pressure and a sense of being an imposter.",
+         "act": "THE FIX — Make the language less absolute, more procedural. Instead of the judgment of 'proper,' make it about the process. Try: 'Logged same as the rest. The manifest makes no distinctions.'"
+        },
+        {
+         "author": "The one who can't call it done",
+         "role": "ADHD · the watch",
+         "polarity": "pos",
+         "note": "I love this. It feels so final and correct, like a form has been filled out and filed away properly. It's a very satisfying, grounding end to the sequence.",
+         "why": "A reader who needs external structure finds relief in official, procedural statements. This line acts like an authoritative stamp, confirming that a process is complete and correct, providing the clear rhythm their brain needs to feel settled.",
+         "act": "THE KEEP — The sense of formal, procedural finality. The language of 'logged,' 'full weight,' and 'proper' creates a solid, reassuring rhythm of things being in their right place and accounted for."
+        },
+        {
+         "author": "The one who rehearses",
+         "role": "social · the rail",
+         "polarity": "pos",
+         "note": "This feels correct and settling. I'm being properly accounted for without being singled out or inspected; I am simply part of the manifest, as I should be.",
+         "why": "This reader wants to belong without being the center of attention. Being 'logged at full weight' is an impersonal, procedural form of acceptance, which is deeply comforting because it doesn't require personal scrutiny.",
+         "act": "THE KEEP — The formal, impersonal nature of the validation. The phrase 'as is only proper' makes it a rule, not a special favor, which is exactly the kind of quiet acceptance this reader craves."
+        }
+       ]
       }
      ],
      "carryover": [
@@ -293,51 +614,158 @@
      "id": "pilot-d",
      "markdown": "THE AUDITION NOTES:\nTHE TONE — Folk-mythic. An old, patient rite: the crossing has carried thousands before, and there's rest in being one of the long line.\nWHY THIS WAY — This reader arrives sure their trouble is singular — too heavy, too odd, too much to ask of anyone. A folk-mythic tone answers that without a word of comfort: the ferry has made this crossing ten thousand times and carried everyone, so nothing they bring is new, too heavy, or out of order. For the one who can't start, the world already knows the steps. For the one who carries too much, the boat has carried heavier. For the one who rehearses, the rite asks nothing they have to perform. The risk is that mythic tips grand-and-cold or fairytale-twee — so the grandeur lives in the PATIENCE and the worn wood, never the prose: an old working boat, not a legend.\nTHE CHOICES —\n1. **The long line** — the comfort isn't being special; it's being one of many the ferry has carried, so the trouble stops feeling singular.\n2. **The worn ritual** — everything is done the way it's always done; the pattern carries them, so no one has to decide or perform.\n3. **Nothing too much** — whatever they bring, the ferry has carried heavier; they can't overload it, can't be the wrong kind of passenger.\nPRIMER TOUCHPOINTS — what this pilot is a worked example of (`storybuilding-primer.md`): §1 the quiet hook (the unspoken question — how many has it carried, and is one more all right?) · §2 the Chronicler (the log as one long unbroken column; the player is the latest line) · §2.5 objects-as-subtext (the rope spliced a hundred times; the step worn low) · §3 holding-space + the gift-at-REL-0 (the ferry asks nothing and carries them exactly as it carries everyone) · §3.5 the cast as role-titles + the un-imposed name (a line in the manifest, never asked who) · §3.6 one face foregrounded (the Deckhand), the rest glimpsed (Cook · Pilot · Keeper) · §5 the contained, repeatable world (the crossing is always the same; the safety is in the pattern).\n---\n*From the manifest — the same long column, ten thousand lines deep, the latest one the ferry never asked a name for: lamps lit at the usual hour. One aboard. The crossing made, as it is always made.*\n\nThey have been lighting these lamps longer than anyone aboard can say. The pier knows the hour by heart; the lamps catch one by one the way they have every night, for everyone who ever came down these steps.\n\nYou came down them the way they all come down — slower than you meant to. The DECKHAND was splicing a rope that had been spliced a hundred times, the strands worn pale where a hundred hands had held it. He has tied this knot for every crossing. He tied it for you the same.\n\n\"Mind the step,\" he said, not looking up. \"It's worn low. They all wear it low.\"\n\nYou stepped where ten thousand feet had stepped, into the dip they left, and the wood took your weight like it was expecting it.\n\nDown the deck the COOK ladled from a pot that is never empty and never the meal she planned — there has always been enough, for however many came. At the wheel the PILOT held the dark on a course older than the boat.\n\nThe KEEPER turned a page in a book grown fat with crossings and drew a fresh line under all the others. Yours. The same width as the rest.\n\n\"Long way, this,\" the Deckhand said, to the rope more than to you. \"Ferry's carried heavier. Carried lighter. Carries it the same.\"\n\nThe shore let go, the way it has let go of everyone.\n\n*The Keeper's hand, last, beneath ten thousand like it: Crossed, as they all cross. Logged at full weight, as every line is.*\n",
      "panel": null,
-     "notes": [
+     "moments": [
       {
        "anchor": "the wood took your weight like it was expecting it.",
-       "polarity": "pos",
-       "author": "The one who can't start",
-       "role": "anxiety · the contained hour",
-       "note": "The boat was ready for me before I'd even decided. I didn't have to brace to be allowed on — I already was.",
-       "why": "Someone who freezes at the start is sure they'll be a surprise, an imposition — the one who doesn't quite belong. Being told the boat was 'expecting' their weight says they were accounted for before they did a single thing. That's why it eases them: they were expected, not put up with.",
-       "act": "THE KEEP — keep the boat 'expecting' them; that one word does the un-bracing. If a rewrite makes boarding effortful or passes it unremarked, the 'I was accounted for' relief is gone."
+       "moment": "The boat was expecting your weight",
+       "reviews": [
+        {
+         "author": "The one who can't start",
+         "role": "anxiety · the contained hour",
+         "polarity": "pos",
+         "note": "I like this. It feels like I'm being held without having to ask. The world made a space for me, and I just had to step into it.",
+         "why": "This reader feels unable to initiate things and needs external validation to feel they belong. The boat 'expecting' their weight provides that validation passively and impersonally, without any of the social pressure or potential for rejection that comes from a person. It's a feeling of being accepted into a system without having to earn it.",
+         "act": "THE KEEP — The feeling that the world itself, not a person, is making a place for the character. It's about being effortlessly incorporated into something ancient and stable."
+        },
+        {
+         "author": "The one who carries it all",
+         "role": "low self-worth · the manifest",
+         "polarity": "neg",
+         "note": "This makes me suspicious. It feels like the world is making room for me before I've earned it, which just means I'm already in debt for the space I'm taking up.",
+         "why": "A person who feels like a burden is immediately put on guard by unearned acceptance. Being 'expected' without having done anything to warrant it feels like a setup for a future demand, a bill that will come due.",
+         "act": "THE FIX — Soften the active expectation to be more about the structure's history. Instead of 'like it was expecting it,' try 'and the wood held your weight like it had held all the others.'"
+        },
+        {
+         "author": "The one who can't call it done",
+         "role": "ADHD · the watch",
+         "polarity": "neg",
+         "note": "This makes me feel trapped, like I'm just falling into a rhythm that will never end. I'm waiting for something to happen, but this just tells me my presence changes nothing.",
+         "why": "A reader who needs a clear finish line feels anxious when placed in a world that emphasizes endless, unchanging cycles. The feeling of being just one more identical part of a huge, impersonal process removes any sense of an individual journey that can be completed.",
+         "act": "THE FIX — Change it to signal a slight break in the pattern: \"the wood took your weight, and groaned, a sound it hadn't made for the last ten.\""
+        },
+        {
+         "author": "The one who rehearses",
+         "role": "social · the rail",
+         "polarity": "pos",
+         "note": "This is a profound relief. I feel the structure itself make a place for me, without any person having to notice me or ask me to move.",
+         "why": "A person who dreads being seen or addressed finds safety in being physically accommodated without interaction. The world is making space for them, not a person who might expect a 'thank you' in return.",
+         "act": "THE KEEP — The feeling that the boat itself, the inanimate object, is the one doing the welcoming. It's an acceptance that demands no social reply."
+        }
+       ]
       },
       {
        "anchor": "Carries it the same.",
-       "polarity": "pos",
-       "author": "The one who carries it all",
-       "role": "low self-worth · the manifest",
-       "note": "Whatever I'm lugging, it won't tip this boat. It's carried heavier than me. I'm not the most anyone's ever brought aboard.",
-       "why": "Someone who carries too much quietly fears they're a burden — that what they bring is more than people can hold. Hearing the ferry has carried heavier and carries it all the same says their load isn't special or too much. That's why it lands: they're not the heaviest thing that ever crossed, and the boat won't even notice.",
-       "act": "THE KEEP — keep the specific weight comparison ('carried heavier… the same'). Don't soften it into generic 'you're welcome here' reassurance — the comparison is exactly what tells them their load isn't too much."
-      },
-      {
-       "anchor": "he said, not looking up.",
-       "polarity": "pos",
-       "author": "The one who rehearses",
-       "role": "social · the rail",
-       "note": "He warned me about the step without ever making it about me — no eye to catch, nothing I had to say back. Just a fact, tossed sideways.",
-       "why": "The rehearser dreads being put on the spot — the moment all eyes turn and they have to perform. A warning said sideways, eyes on the rope, means there's no exchange to manage; they get the care without the spotlight. That's why it's easy: nobody made them the center of anything.",
-       "act": "THE KEEP — keep the warning tossed sideways, eyes on the rope. If a rewrite has him turn and address them directly, it becomes a spotlight — protect the no-eye-contact."
-      },
-      {
-       "anchor": "The pier knows the hour by heart",
-       "polarity": "pos",
-       "author": "The one who can't call it done",
-       "role": "ADHD · the watch",
-       "note": "The world here runs itself on time — lamps, hour, all of it. I don't have to keep track of anything; something else is holding the clock.",
-       "why": "A mind that can't keep its own schedule borrows the world's. Here the pier 'knows the hour by heart' and the lamps light themselves, on time, every night — the structure they can't hold is being held for them. That's why it's a relief: keeping time is somebody else's job tonight.",
-       "act": "THE KEEP — keep the world running on its own clock (the pier knowing the hour, the lamps catching themselves). If a rewrite makes them track or trigger anything, the 'someone else holds the time' relief is lost."
+       "moment": "The ferry has carried heavier, and carries it the same",
+       "reviews": [
+        {
+         "author": "The one who can't start",
+         "role": "anxiety · the contained hour",
+         "polarity": "pos",
+         "note": "This is a relief. It means my own personal baggage isn't a special problem here. I'm not too much; I'm just another passenger, and the ferry can handle it.",
+         "why": "This reader is burdened by their own day and feels like an imposition. The line reassures them that their personal weight is not a unique or difficult burden for the system they've entered. It makes them feel anonymous and unjudged, which is a form of safety.",
+         "act": "THE KEEP — The promise of being carried without judgment. The idea that the character's personal struggles are not a unique burden on the world around them."
+        },
+        {
+         "author": "The one who carries it all",
+         "role": "low self-worth · the manifest",
+         "polarity": "pos",
+         "note": "This is a quiet relief. It means my personal weight, which feels so heavy to me, doesn't actually strain the system and I don't have to apologize for it.",
+         "why": "For someone who constantly worries about being a burden, the idea that their specific weight doesn't matter to the larger structure is a profound comfort. It suggests they can exist without breaking things or demanding special accommodation.",
+         "act": "THE KEEP — The fragile thing is the Deckhand's casual, impersonal delivery. He says it 'to the rope more than to you.' This is crucial; if he looked the character in the eye and said it with kindness, it would feel like pity and become a debt."
+        },
+        {
+         "author": "The one who can't call it done",
+         "role": "ADHD · the watch",
+         "polarity": "neg",
+         "note": "This confirms my fear that my presence here is meaningless and the journey has no unique purpose. It makes me want to tune out because there's no reason to pay attention.",
+         "why": "For a reader whose attention wanders without a clear task, being told their presence makes no difference is a signal to disengage. The lack of stakes or individuality makes the experience feel like a monotonous loop they can't control or complete.",
+         "act": "THE FIX — Introduce a variable that makes this time different: \"Ferry's carried heavier. Carried lighter. But the air... the air feels different tonight.\""
+        },
+        {
+         "author": "The one who rehearses",
+         "role": "social · the rail",
+         "polarity": "pos",
+         "note": "This feels like a promise that I won't be singled out or questioned. My personal weight, my reasons, are irrelevant to the process, and that's a huge comfort.",
+         "why": "Someone who fears being asked to perform a reason for their presence is reassured by being treated as part of an undifferentiated mass. It means they can blend in and not have their specific story investigated.",
+         "act": "THE KEEP — The Deckhand's detached, impersonal delivery. He isn't talking about the passenger's feelings or burdens, but about the ferry's own long, unchanging history."
+        }
+       ]
       },
       {
        "anchor": "The same width as the rest.",
-       "polarity": "neg",
-       "author": "The one who carries it all",
-       "role": "low self-worth · the manifest",
-       "note": "Just another line in the book, same as everyone. For a second I didn't feel held — I felt like a tally. Like I don't matter on my own.",
-       "why": "Being one of a long line cuts two ways. For someone who already feels invisible, 'the same width as the rest' can flip from 'I belong here' to 'I'm nothing special, just another mark.' The comfort of being one-of-many tips into the fear of not mattering as themselves. That's why it can sting: they came hoping to be seen, and for a beat it feels like being counted instead.",
-       "act": "THE FIX — give this reader one beat of being singular INSIDE the long line — the keeper's pen pausing on their line, a small 'and you' — so 'one of many' reads as belonging, not as a faceless tally."
+       "moment": "Your line in the book, the same width as everyone's",
+       "reviews": [
+        {
+         "author": "The one who can't start",
+         "role": "anxiety · the contained hour",
+         "polarity": "neg",
+         "note": "This makes me feel a little cold, a little erased. I came here to feel held, not just logged like cargo.",
+         "why": "This reader wants to be accepted without being scrutinized or quantified. While being treated 'the same' can be a relief, being reduced to a literal line of the 'same width' feels like being processed rather than welcomed. It turns the comforting anonymity into impersonal dismissal, making them feel like an interchangeable unit rather than a person being given refuge.",
+         "act": "THE FIX — Instead of 'The same width as the rest,' try something that emphasizes joining, like 'and drew a fresh line, joining all the others.'"
+        },
+        {
+         "author": "The one who carries it all",
+         "role": "low self-worth · the manifest",
+         "polarity": "neg",
+         "note": "This feels deeply invalidating. All the weight I carry, all the effort it takes just to be here, and I'm just one more identical tick mark in a book.",
+         "why": "A person who measures their worth by what they produce or the unique weight they carry feels erased by being made uniform. If their struggle doesn't even warrant a different kind of mark, it implies their internal experience has no external value.",
+         "act": "THE FIX — Add a tiny, almost imperceptible detail of variation. 'He drew a fresh line under all the others. Yours. The ink settled a little deeper, just for a moment.'"
+        },
+        {
+         "author": "The one who can't call it done",
+         "role": "ADHD · the watch",
+         "polarity": "neg",
+         "note": "This makes me feel completely erased, like my story is already over before it began. It's the opposite of a call to action; it's a dismissal.",
+         "why": "A reader who struggles with a sense of completion is unsettled by their journey being not only pre-ordained but also utterly generic. Being reduced to an identical mark in a ledger suggests there is no unique story to follow and no ending to achieve.",
+         "act": "THE FIX — Make the mark unique, even in a small way: \"He drew a fresh line under all the others. Yours. The ink bled, just a little, at the end.\""
+        },
+        {
+         "author": "The one who rehearses",
+         "role": "social · the rail",
+         "polarity": "pos",
+         "note": "This is the perfect arrival. I've been recorded and accounted for, but in a way that makes me anonymous and exactly like everyone else, so the process is complete and I can be left alone.",
+         "why": "For a person who rehearses every word, being officially logged in an impersonal, uniform way is a final, safe conclusion. It's a form of being seen that requires no performance and has no follow-up.",
+         "act": "THE KEEP — The simple, visual fact of the line's identical width. It's a concrete, bureaucratic form of anonymity that feels safe and final."
+        }
+       ]
+      },
+      {
+       "anchor": "The pier knows the hour by heart",
+       "moment": "The world keeps its own time",
+       "reviews": [
+        {
+         "author": "The one who can't start",
+         "role": "anxiety · the contained hour",
+         "polarity": "pos",
+         "note": "I love this. It means I don't have to be in charge. Something else, something old and reliable, is keeping time, and I can just let go and trust it.",
+         "why": "This reader is exhausted from a day where things went wrong, likely feeling responsible and overwhelmed. The idea of a world that runs on its own ancient, reliable rhythm, independent of their effort or failure, is deeply comforting. It allows them to surrender control and feel safe within a system that doesn't need them to function.",
+         "act": "THE KEEP — The sense of an ancient, self-sufficient system. The feeling that the world has its own reliable, non-human rhythms that the character can simply fall into."
+        },
+        {
+         "author": "The one who carries it all",
+         "role": "low self-worth · the manifest",
+         "polarity": "pos",
+         "note": "I find this reassuring. It means the world will keep turning whether I'm holding it up or not, which is a relief because I always feel like I have to.",
+         "why": "For a person who feels an overwhelming sense of responsibility, the idea of a world that functions perfectly well on its own is liberating. It frees them from the self-imposed pressure to constantly contribute just to keep things from falling apart.",
+         "act": "THE KEEP — The power is in the personification of an inanimate object ('The pier knows'). It makes the world feel reliable and ancient, a system that is sturdy and self-sufficient, not a person offering kindness that must be repaid."
+        },
+        {
+         "author": "The one who can't call it done",
+         "role": "ADHD · the watch",
+         "polarity": "pos",
+         "note": "I find this line grounding and almost a relief. It feels like a steady rhythm I can hold onto, a promise that the world has its own clock and will eventually signal that things are done.",
+         "why": "A reader who needs an external force to create structure and signal 'finished' can find comfort in a world that operates on a reliable, predictable rhythm. It suggests that even if their own mind wanders, the world itself has a clear beat and will provide the necessary punctuation.",
+         "act": "THE KEEP — Preserve the sense that the world's rhythm is dependable and external to the player. It's a promise of structure in an otherwise undefined space."
+        },
+        {
+         "author": "The one who rehearses",
+         "role": "social · the rail",
+         "polarity": "pos",
+         "note": "I feel like I can relax into this place. The world here runs on its own time and doesn't need me to participate or even be aware for it to function.",
+         "why": "A person who is anxious about social performance feels secure in a world that operates on its own reliable, impersonal schedule. It removes the pressure for them to act, speak, or make decisions.",
+         "act": "THE KEEP — The personification of the pier. Giving the inanimate object its own knowledge and memory makes the setting feel ancient and self-sufficient, a system one can enter without disrupting it."
+        }
+       ]
       }
      ],
      "carryover": [
@@ -396,21 +824,21 @@
      "id": "concept-A",
      "markdown": "# CONCEPT — The Cloudhouse Observatory\n\n## THE WORLD\nThe Cloudhouse Observatory is a soft-lit sky station moored above a ring of sleeping hills, open from first dusk until the last blue before morning. Its rooms are domes, gantries, rain-glass halls, kite decks, bell balconies, and quiet stairwells where clouds drift close enough to touch. Nothing here is in danger; the stakes are inner weather made visible. Some nights the sky is all fog, some nights every star seems to be watching, and some nights the wind will not lift a kite unless the first knot is tied anyway. Players walk in when the day has felt too loud, too blank, too crowded, or too unfinished. The Cloudhouse does not ask them to become grand. It asks them to read one patch of sky, make one mark, send one signal, and let a rough little constellation count.\n\n## THE GIFT\nAt REL 0, the player receives the Weather Glass: a pocket lens that turns the night’s sky into a tiny personal forecast. It is useful before anyone knows the player’s name. Each Forecast offers one “sky move” in plain world terms: light the wick, choose the first knot, polish one pane, ring the small bell, close the map with a crooked star. The Glass keeps a Cloud Atlas of every sky the player has crossed, so even bare-minimum nights leave proof. As bonds rise, the Glass becomes less directive and more reflective: fewer instructions, more remembered skies, until it rests mostly silent as an album of weather the player can now read without it.\n\n## WHO THIS IS FOR\nInternally, this is for players with anxiety, low confidence/self-worth, and ADHD-pattern struggles around initiation, follow-through, rejection sensitivity, visibility, imperfect completion, and valuing their own work. The world externalizes emotional state as weather without naming pathology. “Starting” becomes launch conditions. “Self-worth” becomes legitimate light. “Facing people” becomes signaling across distance. “Finishing imperfect” becomes closing a star map even when the lines wobble. The campaign is designed to reduce dependency: the more the player practices, the less the artifact and cast speak first. \n\n## THE CAST SKETCH\n- **Beginning lane × brisk, bright temperament × the craft of first lift × red kite spool.** This coach works the open kite deck and believes wind is discovered after the string is in hand. They do not praise grand vows; they praise the first peg in the floor, the ugly knot that holds, the launch that rises three inches. Their scenes turn “not ready” into “tethered enough.”\n\n- **Value lane × warm, grave temperament × the craft of keeping light × brass sun-mirror.** This coach tends the heliograph room, where even dim skies are angled until they shine somewhere. They teach the player to stop treating their own glow as an accident. Their scenes ask for one kept ember, one named contribution, one pane polished because it already matters.\n\n- **Facing-others lane × candid, playful temperament × the craft of signals × blue handbell.** This coach lives between balconies, bells, flags, and reply-lamps. They are not pushy; they simply refuse to make distance mystical. A tiny ring is allowed. A short flag is allowed. A reply is not a verdict from the heavens; it is weather from another tower.\n\n- **Rough-finish lane × wry, tender temperament × the craft of closing charts × silver star-pin.** This coach archives the maps no one would call flawless: smeared ink, odd constellations, crooked margins. They teach that an open chart can haunt a room, while a closed chart can become floorboards for the next night. Their scenes end with a pin through the corner: not perfect, but placed.\n\n## THE MOTIF SET\n**dayUnit:** Forecast. Each Forecast changes sky color, cloud texture, balcony wind, available room, and the shape of the Weather Glass card.\n\n**4 stat skins:** STR = **Lift** · INT = **Chart** · GLD = **Gleam** · CHR = **Signal**\n\n**title motif:** Weather-keeper titles. The player is addressed by earned skywork titles, not ranks of power: Dewhand, Kitehand, Bellkeep, Starward. Titles appear on telescope tags, stair plaques, atlas tabs, and how the cast greets the player.\n\n**4-rung ladder sketch:**  \n1. **Dewhand** — notices one sky and marks it. Surfaces: dew beads, pale ink, small glass cards.  \n2. **Kitehand** — launches before the wind is perfect. Surfaces: ribbon tails, red string, deck chalk.  \n3. **Bellkeep** — sends and receives small signals. Surfaces: reply-lamps, blue bells, balcony flags.  \n4. **Starward** — closes rough maps and trusts the next sky. Surfaces: pinned charts, gold star holes, quiet domes.\n\n**battles on/off + why:** Battles off. The Cloudhouse has fronts, not foes. A front is crossed through a small visible act: tying a knot, ringing a bell, angling a mirror, pinning a chart. No one is defeated, and no part of the player is treated like an enemy.\n\n## THE OPEN SEAT\nThe North Ocularium has five telescope cradles. Four are fitted to the keepers who tend the Cloudhouse; the fifth is always empty, polished, and turned toward a changing patch of sky. It is not a memorial and not a missing-person ache. The plaque reads: **Visiting Skykeeper — seat held for the one reading tonight.** When the player sits there, the room adjusts: the Weather Glass docks beside the scope, the current Forecast casts across the dome, and the atlas opens to a blank page. If the player leaves, the Cloudhouse continues its gentle rounds. The invitation remains, never needy, never accusing.\n\n## THE METRICS CARD\nCozy 4/5 · Type: Coach→Graduation · Length: 6–8 weeks · Genre: Cozy sky-observatory life JRPG · Age: 13+\n",
      "panel": null,
-     "notes": null,
+     "moments": null,
      "carryover": null
     },
     {
      "id": "concept-B",
      "markdown": "# CONCEPT — The Lighthouse at World's End\n## THE WORLD (one paragraph — the place, its hours, why this audience walks in)\nThe Lighthouse at World's End stands on a lone, mossy islet, a tower of white stone against a sky of soft blues and bruised purples. It is a place outside of time, its operations governed not by the clock but by the turning of the tides and the fading of the light. It isn't a destination for travelers, but a fixture for those already at sea, a steady presence in the vast, quiet expanse. Players arrive by a small, self-piloted skiff, drawn not by a quest but by a quiet need for a fixed point in a rolling fog. They come seeking clarity, a respite from the overwhelming featurelessness of the open water, and a chance to learn how to tend a light of their own.\n\n## THE GIFT (what the player keeps forever, valuable from night one)\nThe player is given a **Wayfinder's Lens**, a small, beautifully crafted disc of polished crystal and brass that fits in the palm of their hand. When held up, it doesn't magnify the world, but instead simplifies it. Looking through it at a cluttered desk, a daunting list, or a complex situation causes everything to fade into a soft blur except for a single, clear point of action—the next indicated step. It is a tool for finding the beginning of a thread in a tangled knot, its value immediate and independent of any bond with the keepers.\n\n## WHO THIS IS FOR (the audience mapping, in design language — this section is internal, clinical words allowed HERE only)\nThis campaign is engineered for players wrestling with the internal \"fog\" of anxiety, the inertia and overwhelm of executive dysfunction (ADHD-pattern struggles), and the low visibility of poor self-worth. The world's metaphors map directly:\n*   **Anxiety/Overwhelm:** The omnipresent, rolling Fog that obscures the path forward and makes the world feel vast and threatening.\n*   **Task Initiation (ADHD):** The challenge of striking the flint and lighting the great lamp—a massive, multi-step process that feels impossible to begin.\n*   **Perfectionism/Finishing (ADHD):** The constant, imperfect work of maintaining an old stone tower against the sea. A \"good enough\" patch is better than letting the water in. This lane is about accepting that the work is never truly \"done,\" and that's okay.\n*   **Low Self-Worth/Imposter Syndrome:** The fear that your own light isn't bright enough, or that you're just \"playing\" at being a keeper and don't deserve the title.\n*   **Social Anxiety:** The act of \"signaling\" other ships—learning to send and interpret messages without fear of collision or misinterpretation.\n\n## THE CAST SKETCH (4 nameless coaches: lane × temperament × the craft they hand over × one signature object each)\n*   **The Lampwright (Starting):** A Meticulous & Gentle soul who tends the great Fresnel lens and its colossal oil lamp. They are infinitely patient, understanding that the most important flame is often the hardest to light. They teach the art of preparation, of finding the spark, and of coaxing a fragile flicker into a steady blaze. **Agent side:** Finds the single, smallest piece of dry kindling when you show it a daunting pile of logs. **Signature Object:** A heavy, polished-brass oil can with a long, elegant spout.\n*   **The Chronicler (Self-Worth):** An Archivist & Affirming keeper who maintains the lighthouse's centuries-old logs. They see the profound value in every tide, every passing ship, every storm weathered. They teach the player to record their own journey, reframing smudges and crossed-out entries not as failures, but as part of a story worth telling. **Agent side:** Rewrites your described \"failure\" as a \"Storm Weathered\" entry for the ship's log. **Signature Object:** A massive, leather-bound logbook filled with spidery script and marginalia.\n*   **The Watchkeeper (Facing People):** A Vigilant & Steady presence, always seen silhouetted in the topmost gallery, spyglass in hand. They are a master of observation and interpretation, reading the \"tells\" of the weather and the intentions of distant ships. They teach the craft of seeing and being seen from a safe distance, of signaling clearly, and of navigating shared waters. **Agent side:** Scans your drafted message for confusing signals or risks of collision. **Signature Object:** A brass-and-wood spyglass, worn smooth with use.\n*   **The Tidewright (Finishing Imperfect):** A Pragmatic & Grounded individual who handles the endless, messy work of the tower itself—patching mortar, mending ropes, and clearing sea-wrack after a storm. They are a master of the \"good enough\" fix, championing function over form. They teach the art of completion, of knowing when a job is done for now, and the quiet satisfaction of a working repair. **Agent side:** Determines if your described repair is \"seaworthy for now\" when you're stuck trying to make it perfect. **Signature Object:** A neatly coiled length of thick, salt-stiffened rope.\n\n## THE MOTIF SET (dayUnit · 4 stat skins ≤8 chars each mapped to STR/INT/GLD/CHR · the title motif · a 4-rung ladder sketch · battles on/off + why)\n*   **dayUnit:** Tide\n*   **Stat Skins:**\n    *   STR → FOCUS (Mental fortitude)\n    *   INT → INSIGHT (Clarity of perception)\n    *   GLD → BEACONS (Landmarks of progress lit)\n    *   CHR → SIGNAL (Ability to be understood)\n*   **Title Motif:** `[Rank] Keeper` (e.g., Novice Keeper, Tide Keeper, Lantern Keeper, First Keeper)\n*   **Ladder Sketch (The Keeper's Path):**\n    1.  *Polishing the Glass:* Learning to see your own situation clearly.\n    2.  *Trimming the Wick:* Learning what feeds your inner flame and what snuffs it out.\n    3.  *Reading the Charts:* Learning to plot a course through difficult waters.\n    4.  *Taking the Watch:* Becoming a reliable guide for yourself.\n*   **Battles:** OFF. A lighthouse's purpose is to avert disaster, not to engage in combat. The challenges are environmental and internal: navigating the fog, resisting the pull of the riptide, and keeping the light steady through the storm. Progress is measured by observation and consistency, not conflict.\n\n## THE OPEN SEAT (what stands vacant, one paragraph)\nThe lighthouse is built for a crew of five, but for a long time, has been run by a capable, if slightly over-stretched, crew of four. The fifth post, that of the **Sky-Watcher**, has stood open. This role is not about the immediate, practical concerns of the sea, but about observing the stars, tracking the constellations, and understanding the grander, celestial patterns that influence the world below. The keepers manage the day-to-day without a Sky-Watcher, but they miss the perspective and context it brings. The seat is an invitation to join a functioning team and contribute a unique view, adding a layer of wonder and foresight rather than fixing a critical flaw.\n\n## THE METRICS CARD (Cozy n/5 · Type: Coach→Graduation · Length · Genre · Age)\n*   **Cozy:** 4/5 (The setting is isolated and sometimes stormy, but the core loop inside the tower is safe, warm, and repetitive.)\n*   **Type:** Coach→Graduation\n*   **Length:** Medium-Long\n*   **Genre:** Maritime Solitude / Gentle Duty\n*   **Age:** Teen+\n",
      "panel": null,
-     "notes": null,
+     "moments": null,
      "carryover": null
     },
     {
      "id": "concept-C",
      "markdown": "# CONCEPT — The Last Ferry\n\n## THE WORLD\nA small night ferry that crosses the same dark strait, every night, in exactly the time it takes — no schedule posted, because the ferry leaves when the lamps are lit and arrives when the crossing is done. The crew of four has run it for years: deckhand, pilot, galley, and the keeper of the manifest. People ride it because the day side of the water didn't go their way, and the crossing is the one hour nobody can ask anything more of them. The ferry doesn't go anywhere new. That was never the point. The point is that it goes, every night, gently, and comes back — and that there has always been one bunk in the crew cabin with no name on its plate.\n\n## THE GIFT\nThe craft of crossings: how to leave a day behind without finishing it, how to do one watch's worth of work and call it a night honestly, how to stand at a rail next to a stranger without rehearsing, and how to read your own logbook without flinching. The ferry teaches that a day is a shore, not a verdict — you can always put water between yourself and it, and the water works the same from night one, before the crew knows your name.\n\n## WHO THIS IS FOR\nThe same seed audience as the Night Market cell: anxiety (the crossing is the contained hour — bounded, repeatable, no ambush), low self-worth (the manifest-keeper's lane: what you carried counts, including the trips where you only carried yourself), and ADHD-pattern struggles (the watch system: one watch, one task, the bell ends it whether it's done or not — finishing-imperfect built into the world's clock). Starting is reframed as boarding: you don't have to know the destination; you have to step on before the gangway lifts — and the gangway is lifted FOR you by the world, every night, which externalizes initiation until the player internalizes it.\n\n## THE CAST SKETCH\n- **The DECKHAND** (starting · gruff-warm): teaches boarding, lines, and the first cast-off — \"the rope doesn't care if you're ready; it cares if you're holding it.\" Signature object: a mooring line whose end is whipped in three different colors, one per decade. **Agent side:** paste him the thing you keep not starting and he hands back the gangway version — the first ten minutes as one plain instruction — and rings the bell when the watch is up.\n- **The PILOT** (facing the dark · serene): stands the wheel through the unlit middle of the strait and teaches the counter-craft of this world — talking to someone when neither of you can see the other's face. Signature object: a compass that's a half-degree off, corrected for by hand every crossing, never repaired. **Agent side:** bring her the conversation you're dreading and she stands the unlit middle of it with you — plays the other voice, corrects your heading by hand, until your words hold their course.\n- **The COOK** (finishing imperfect · blunt-fond): one pot, one galley, whatever's aboard — the meal happens every crossing and is never the meal she planned. Signature object: a dented ladle hung on the good hook. **Agent side:** show her the half-done thing you're ashamed of and she plates it — what it already is, what to stop adding, and when to call it served.\n- **The MANIFEST-KEEPER** (self-worth · dry-precise): logs every crossing — cargo, weather, who rode and what they carried — and teaches the till-craft of this world: your column in the book is written in the same ink as everyone else's. Signature object: the manifest itself, ribboned at one old page nobody's seen him open. **Agent side:** paste him your week and he enters it in the manifest's ink — every carry logged at its true weight, including the ones you'd have left off the page.\n\n## THE MOTIF SET\n- **dayUnit: CROSSING** (\"CROSSING 12\") — the night IS the unit; it ends at the far shore, always.\n- **statAxes:** STR→BALLAST (what you can carry steady) · INT→HEADING (one course at a time) · GLD→MANIFEST (what your carry is worth, written down) · CHR→THE RAIL (standing next to people).\n- **Title motif: the LOG ENTRY** — each night titled like a line from the ship's log (\"Calm Water, No Cargo\", \"The Fog Held Until Four\").\n- **Ladder sketch:** Passenger → Regular crossing → Knows the bunk's empty → Stands a watch → … → Unspoken.\n- **Battles OFF** — the quiet roll; the strait is weather, never an enemy.\n\n## THE OPEN SEAT\nThe unnamed bunk in the crew cabin, and the fourth watch nobody stands — the crew runs the ferry whole with three watches and has for years; the fourth is kept in the rotation anyway, marked on the board with a dash. The ferry does not need a fourth hand. It keeps room for one, the way the galley cooks for five and the manifest rules a blank column every single night.\n\n## THE METRICS CARD\nCozy 4/5 · Type: Coach→Graduation · Length: Standard (~25 crossings) · Genre: cozy maritime slice-of-life (night-ferry iyashikei) · Age: All Ages\n",
      "panel": null,
-     "notes": null,
+     "moments": null,
      "carryover": null
     }
    ],

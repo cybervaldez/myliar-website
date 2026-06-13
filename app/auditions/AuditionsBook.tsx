@@ -23,9 +23,10 @@ function charName(heading: string): string {
 }
 
 export type PanelArea = { area: string; team: string; persona: string; pros: string[]; cons: string[] };
-export type NoteSpan = { anchor: string; polarity: "pos" | "neg"; author: string; role: string; note: string; why?: string; act?: string; n?: number };
+export type Review = { author: string; role: string; polarity: "pos" | "neg"; note: string; why?: string; act?: string };
+export type Moment = { anchor: string; moment?: string; reviews: Review[]; n?: number };
 export type CarrySpan = { expert: string; verdict: "carried" | "partial" | "strayed" | "error"; note: string };
-export type Entry = { id: string; markdown: string; panel: PanelArea[] | null; notes: NoteSpan[] | null; carryover?: CarrySpan[] | null };
+export type Entry = { id: string; markdown: string; panel: PanelArea[] | null; moments: Moment[] | null; carryover?: CarrySpan[] | null };
 export type Round = { id: string; closed: boolean; what: string; outcome: string; entries: Entry[]; prompt: string | null };
 
 // ── inline marks ──────────────────────────────────────────────────────────────
@@ -40,37 +41,64 @@ function em(s: string) {
 // ── AUDIENCE span-anchored notes — a numbered badge after a verbatim anchor, green
 // (lands for me) / red (pushes me away); each carries a TARGET-AUDIENCE persona's
 // reaction (the concept's WHO-THIS-IS-FOR reads the pilot, since the reader judges tone).
-type NoteCtx = { notes: NoteSpan[]; consumed: Set<number>; onBadge: (n: number | null) => void; selected: number | null } | null;
+type NoteCtx = { moments: Moment[]; consumed: Set<number>; onBadge: (n: number | null) => void; selected: number | null } | null;
 
-function NoteBadge({ note, active, onClick }: { note: NoteSpan; active: boolean; onClick: () => void }) {
+// the consensus across a moment's blind reviews — all-warm (green), all-cool (red), or split (amber).
+const consensus = (rs: Review[]): "pos" | "neg" | "split" => {
+  const p = rs.filter((r) => r.polarity === "pos").length;
+  return p === rs.length ? "pos" : p === 0 ? "neg" : "split";
+};
+const consClass = (c: string) => (c === "neg" ? "wr-badge-neg" : c === "split" ? "wr-badge-split" : "wr-badge-pos");
+const readerShort = (author: string) => author.replace(/^the one who\s+/i, "").trim();
+
+// One numbered badge per MOMENT, coloured by the readers' CONSENSUS (green all-warm / red
+// all-cool / amber split) — so a split moment reads as contested at a glance, before you open it.
+function NoteBadge({ m, active, onClick }: { m: Moment; active: boolean; onClick: () => void }) {
+  const c = consensus(m.reviews);
+  const warm = m.reviews.filter((r) => r.polarity === "pos").length;
   return (
     <button onClick={(e) => { e.stopPropagation(); onClick(); }}
-      className={`wr-badge ${note.polarity === "neg" ? "wr-badge-neg" : "wr-badge-pos"}${active ? " wr-badge-on" : ""}`}
-      title={`${note.author} (${note.role}): ${note.note}`}>{note.n}</button>
+      className={`wr-badge ${consClass(c)}${active ? " wr-badge-on" : ""}`}
+      title={`${m.moment ?? m.anchor} — ${warm}/${m.reviews.length} readers warm`}>{m.n}</button>
   );
 }
 
-// The in-place popover — a card BELOW the referenced content with the note; the page
-// dims around it (distraction-free read). The bottom list stays as the read-all view.
-function NotePopover({ note, onClose }: { note: NoteSpan; onClose: () => void }) {
+// The in-place popover — a card BELOW the referenced content, TABBED by reader: every
+// WHO-THIS-IS-FOR band reviewed this exact moment BLIND (never seeing the others), so the tabs
+// are independent perspectives. Tab title = the reader + their 🟢/🔴 verdict; the page dims around it.
+function MomentPopover({ m, onClose }: { m: Moment; onClose: () => void }) {
+  const [tab, setTab] = useState(0);
+  const r = m.reviews[tab] ?? m.reviews[0];
+  if (!r) return null;
   return (
-    <div className={`aud-pop ${note.polarity === "neg" ? "aud-pop-neg" : "aud-pop-pos"}`} onClick={(e) => e.stopPropagation()}>
+    <div className="aud-pop aud-pop-tabbed" onClick={(e) => e.stopPropagation()}>
       <div className="aud-pop-hd">
-        <span className="wr-note-n">{note.n}</span>
-        <span className="aud-pop-by"><b>{note.author}</b> · {note.role}</span>
+        <span className="wr-note-n">{m.n}</span>
+        <span className="aud-pop-by"><b>{m.moment ?? "this moment"}</b></span>
         <button className="aud-pop-x" onClick={onClose} aria-label="close">×</button>
       </div>
-      <div className="aud-pop-tx">{note.note}</div>
-      {note.why && (
-        <div className="aud-pop-read">
-          <span className="aud-read-lbl">▸ THE WHY</span> {note.why}
-        </div>
-      )}
-      {note.act && (
-        <div className="aud-pop-read">
-          <span className={`aud-read-lbl ${note.polarity === "neg" ? "aud-lbl-fix" : "aud-lbl-keep"}`}>▸ {note.polarity === "neg" ? "THE FIX" : "THE KEEP"}</span> {note.act.replace(/^THE (?:FIX|KEEP)\s*[—–-]\s*/, "")}
-        </div>
-      )}
+      <div className="aud-pop-tabs">
+        {m.reviews.map((rv, i) => (
+          <button key={i} onClick={() => setTab(i)}
+            className={`aud-tab ${rv.polarity === "neg" ? "aud-tab-neg" : "aud-tab-pos"}${i === tab ? " aud-tab-on" : ""}`}
+            title={`${readerShort(rv.author)} · ${rv.role}`}>
+            {readerShort(rv.author)} {rv.polarity === "neg" ? "🔴" : "🟢"}
+          </button>
+        ))}
+      </div>
+      <div className={`aud-pop-body ${r.polarity === "neg" ? "aud-pop-neg" : "aud-pop-pos"}`}>
+        <div className="aud-pop-tx"><b>{readerShort(r.author)}</b> <span style={{ color: "var(--margin-ink)" }}>· {r.role}</span> — {r.note}</div>
+        {r.why && (
+          <div className="aud-pop-read">
+            <span className="aud-read-lbl">▸ THE WHY</span> {r.why}
+          </div>
+        )}
+        {r.act && (
+          <div className="aud-pop-read">
+            <span className={`aud-read-lbl ${r.polarity === "neg" ? "aud-lbl-fix" : "aud-lbl-keep"}`}>▸ {r.polarity === "neg" ? "THE FIX" : "THE KEEP"}</span> {r.act.replace(/^THE (?:FIX|KEEP)\s*[—–-]\s*/, "")}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -78,24 +106,24 @@ function NotePopover({ note, onClose }: { note: NoteSpan; onClose: () => void })
 // em() + inline note badges: split the text at each note's anchor-end and drop a numbered
 // badge there. Returns the nodes AND the SELECTED note iff its anchor is in this block (so
 // the caller can light the block + render the popover below it).
-function inlineEm(text: string, ctx: NoteCtx): { nodes: React.ReactNode; sel: NoteSpan | null } {
-  if (!ctx || ctx.notes.length === 0) return { nodes: em(text), sel: null };
-  const hits: { note: NoteSpan; end: number }[] = [];
-  for (const note of ctx.notes) {
-    if (note.n == null || ctx.consumed.has(note.n)) continue;
-    const i = text.indexOf(note.anchor);
-    if (i >= 0) hits.push({ note, end: i + note.anchor.length });
+function inlineEm(text: string, ctx: NoteCtx): { nodes: React.ReactNode; sel: Moment | null } {
+  if (!ctx || ctx.moments.length === 0) return { nodes: em(text), sel: null };
+  const hits: { m: Moment; end: number }[] = [];
+  for (const m of ctx.moments) {
+    if (m.n == null || ctx.consumed.has(m.n)) continue;
+    const i = text.indexOf(m.anchor);
+    if (i >= 0) hits.push({ m, end: i + m.anchor.length });
   }
   if (hits.length === 0) return { nodes: em(text), sel: null };
   hits.sort((a, b) => a.end - b.end);
-  let sel: NoteSpan | null = null;
-  hits.forEach((h) => { ctx.consumed.add(h.note.n!); if (h.note.n === ctx.selected) sel = h.note; });
+  let sel: Moment | null = null;
+  hits.forEach((h) => { ctx.consumed.add(h.m.n!); if (h.m.n === ctx.selected) sel = h.m; });
   const out: React.ReactNode[] = [];
   let cursor = 0;
   hits.forEach((h, k) => {
     out.push(<span key={"s" + k}>{em(text.slice(cursor, h.end))}</span>);
-    out.push(<NoteBadge key={"b" + k} note={h.note} active={h.note.n === ctx.selected}
-      onClick={() => ctx.onBadge(h.note.n === ctx.selected ? null : h.note.n!)} />);
+    out.push(<NoteBadge key={"b" + k} m={h.m} active={h.m.n === ctx.selected}
+      onClick={() => ctx.onBadge(h.m.n === ctx.selected ? null : h.m.n!)} />);
     cursor = h.end;
   });
   out.push(<span key="sEnd">{em(text.slice(cursor))}</span>);
@@ -177,11 +205,11 @@ function renderBlocks(md: string, ctx: NoteCtx = null) {
       // still insert (the * is stripped, so inlineEm runs on plain text).
       const rn = inlineEm(b.slice(1, -1), ctx);
       out.push(<p key={k} className={"aud-narr" + (rn.sel ? " aud-lit" : "")}>{rn.nodes}</p>);
-      if (rn.sel && ctx) out.push(<NotePopover key={k + "p"} note={rn.sel} onClose={() => ctx.onBadge(null)} />);
+      if (rn.sel && ctx) out.push(<MomentPopover key={k + "p"} m={rn.sel} onClose={() => ctx.onBadge(null)} />);
     } else {
       const rp = inlineEm(b, ctx);
       out.push(<p key={k} className={rp.sel ? "aud-lit" : undefined} style={{ fontSize: 15, lineHeight: 1.75, margin: "0 0 13px", color: "var(--ink)" }}>{rp.nodes}</p>);
-      if (rp.sel && ctx) out.push(<NotePopover key={k + "p"} note={rp.sel} onClose={() => ctx.onBadge(null)} />);
+      if (rp.sel && ctx) out.push(<MomentPopover key={k + "p"} m={rp.sel} onClose={() => ctx.onBadge(null)} />);
     }
   }
   return out;
@@ -192,20 +220,24 @@ function renderBlocks(md: string, ctx: NoteCtx = null) {
 // CARRY-OVER panel (continuity with the concept's picks). The expanded headline; the detail lives
 // in the collapsed sections beneath. Weights per `campaign-master-checklist.md` Phase 0d. ──
 const grade = (s: number) => (s >= 85 ? "#3f8f3f" : s >= 70 ? "#c08a2e" : "var(--spot-red)");
-function Scoreboard({ notes, carryover }: { notes: NoteSpan[]; carryover: CarrySpan[] | null }) {
-  const pos = notes.filter((n) => n.polarity === "pos").length;
-  const neg = notes.filter((n) => n.polarity === "neg").length;
-  const audN = pos + neg;
+function Scoreboard({ moments, carryover }: { moments: Moment[]; carryover: CarrySpan[] | null }) {
+  const reviews = moments.flatMap((m) => m.reviews);
+  const pos = reviews.filter((r) => r.polarity === "pos").length;
+  const audN = reviews.length;
+  const readers = moments[0]?.reviews.length ?? 0;
   const co = carryover ?? [];
   const aspects: { key: string; weight: number; score: number; detail: string }[] = [];
-  if (audN) aspects.push({ key: "AUDIENCE FIT", weight: 0.6, score: Math.round((pos / audN) * 100), detail: `${pos}/${audN} reactions warm` });
+  if (audN) aspects.push({ key: "AUDIENCE FIT", weight: 0.6, score: Math.round((pos / audN) * 100), detail: `${pos}/${audN} reads warm · ${moments.length} moments × ${readers} readers` });
   if (co.length) aspects.push({ key: "CARRY-OVER", weight: 0.4, score: Math.round((co.reduce((s, c) => s + (c.verdict === "carried" ? 1 : c.verdict === "partial" ? 0.5 : 0), 0) / co.length) * 100), detail: `${co.filter((c) => c.verdict === "carried").length}/${co.length} concept picks carried` });
   if (!aspects.length) return null;
   const tw = aspects.reduce((s, a) => s + a.weight, 0);
   const total = Math.round(aspects.reduce((s, a) => s + a.weight * a.score, 0) / tw);
   const drags = [
     ...co.filter((c) => c.verdict !== "carried").map((c) => `${c.expert.toLowerCase()} ${c.verdict}`),
-    ...notes.filter((n) => n.polarity === "neg").map((n) => `the ${n.role.split(" · ")[0].replace(/^the /i, "")} pushed back`),
+    ...moments.filter((m) => m.reviews.some((r) => r.polarity === "neg")).map((m) => {
+      const cool = m.reviews.filter((r) => r.polarity === "neg").length;
+      return `"${m.moment ?? m.anchor}" cooled ${cool}/${m.reviews.length}`;
+    }),
   ];
   const tone = total >= 85 ? "Strong" : total >= 70 ? "Solid" : "Mixed";
   return (
@@ -235,34 +267,43 @@ function Scoreboard({ notes, carryover }: { notes: NoteSpan[]; carryover: CarryS
 // AnnotatedWork — renders the pilot WORK with inline AUDIENCE note badges. Tapping a badge
 // opens a POPOVER below the referenced content and DIMS the rest of the page (distraction-
 // free read; no scroll jump). The numbered list below is the read-all alternative view.
-function AnnotatedWork({ work, notes, carryover }: { work: string; notes: NoteSpan[] | null; carryover?: CarrySpan[] | null }) {
+function AnnotatedWork({ work, moments, carryover }: { work: string; moments: Moment[] | null; carryover?: CarrySpan[] | null }) {
   const [selected, setSelected] = useState<number | null>(null);
-  const numbered: NoteSpan[] = (notes ?? [])
-    .map((nt) => ({ nt, pos: work.indexOf(nt.anchor) }))
+  const numbered: Moment[] = (moments ?? [])
+    .map((mt) => ({ mt, pos: work.indexOf(mt.anchor) }))
     .filter((x) => x.pos >= 0)
     .sort((a, b) => a.pos - b.pos)
-    .map((x, i) => ({ ...x.nt, n: i + 1 }));
-  const ctx: NoteCtx = numbered.length ? { notes: numbered, consumed: new Set<number>(), onBadge: setSelected, selected } : null;
+    .map((x, i) => ({ ...x.mt, n: i + 1 }));
+  const ctx: NoteCtx = numbered.length ? { moments: numbered, consumed: new Set<number>(), onBadge: setSelected, selected } : null;
+  const readers = numbered[0]?.reviews.length ?? 0;
   return (
     <>
       {/* dim backdrop — fade the rest of the page; the lit content + popover sit above it */}
       {selected != null && <div className="aud-dim" onClick={() => setSelected(null)} />}
       {renderBlocks(work, ctx)}
-      {(numbered.length > 0 || (carryover && carryover.length > 0)) && <Scoreboard notes={numbered} carryover={carryover ?? null} />}
+      {(numbered.length > 0 || (carryover && carryover.length > 0)) && <Scoreboard moments={numbered} carryover={carryover ?? null} />}
       {numbered.length > 0 && (
         <details className="wr-notes">
-          <summary className="wr-notes-hd" style={{ cursor: "pointer", listStyle: "none" }}>▸ THE AUDIENCE — {numbered.length} reactions (tap a badge to spotlight, or expand to read them all)</summary>
-          {numbered.map((nt) => (
-            <div key={nt.n}
-              className={`wr-note ${nt.polarity === "neg" ? "wr-note-neg" : "wr-note-pos"} ${selected === nt.n ? "wr-note-on" : ""}`}
-              onClick={() => setSelected(selected === nt.n ? null : (nt.n ?? null))}>
-              <span className="wr-note-n">{nt.n}</span>
-              <span className="wr-note-tx"><b>{nt.author}</b> <span style={{ color: "var(--margin-ink)" }}>· {nt.role}</span> — {nt.note}
-                {nt.why && <span className="wr-note-read"><span className="aud-read-lbl">▸ THE WHY</span> {nt.why}</span>}
-                {nt.act && <span className="wr-note-read"><span className={`aud-read-lbl ${nt.polarity === "neg" ? "aud-lbl-fix" : "aud-lbl-keep"}`}>▸ {nt.polarity === "neg" ? "THE FIX" : "THE KEEP"}</span> {nt.act.replace(/^THE (?:FIX|KEEP)\s*[—–-]\s*/, "")}</span>}
-              </span>
-            </div>
-          ))}
+          <summary className="wr-notes-hd" style={{ cursor: "pointer", listStyle: "none" }}>▸ THE AUDIENCE — {numbered.length} moments × {readers} blind reader perspectives (tap a badge to spotlight, or expand to read them all)</summary>
+          {numbered.map((mt) => {
+            const c = consensus(mt.reviews);
+            const warm = mt.reviews.filter((r) => r.polarity === "pos").length;
+            return (
+              <div key={mt.n}
+                className={`wr-note ${c === "neg" ? "wr-note-neg" : c === "split" ? "wr-note-split" : "wr-note-pos"} ${selected === mt.n ? "wr-note-on" : ""}`}
+                onClick={() => setSelected(selected === mt.n ? null : (mt.n ?? null))}>
+                <span className="wr-note-n">{mt.n}</span>
+                <span className="wr-note-tx">
+                  <b>{mt.moment ?? mt.anchor}</b> <span style={{ color: "var(--margin-ink)" }}>· {warm}/{mt.reviews.length} readers warm</span>
+                  {mt.reviews.map((r, ri) => (
+                    <span key={ri} className="wr-note-read">
+                      <span className={`aud-read-lbl ${r.polarity === "neg" ? "aud-lbl-fix" : "aud-lbl-keep"}`}>{r.polarity === "neg" ? "🔴" : "🟢"} {readerShort(r.author)}</span> {r.note}
+                    </span>
+                  ))}
+                </span>
+              </div>
+            );
+          })}
         </details>
       )}
     </>
@@ -389,7 +430,7 @@ function RoundBook({ round, nested }: { round: Round; nested?: boolean }) {
                   ★ THE AUDITION — tap a dialogue box to hear the next line
                 </div>
               )}
-              <AnnotatedWork work={split!.work} notes={e.notes} carryover={e.carryover} />
+              <AnnotatedWork work={split!.work} moments={e.moments} carryover={e.carryover} />
               {/* THE AUDITION NOTES — moved BELOW the audience, collapsed by default, so the
                   owner tastes the story + audience reactions first, then expands the author's
                   declared pitch to compare (the experienced-vs-declared gate). */}
