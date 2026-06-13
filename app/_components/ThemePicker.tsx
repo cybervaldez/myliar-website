@@ -1,9 +1,9 @@
 "use client";
 
 // Codex theme picker — the user-facing Display Theme control (Phase 1 of
-// docs/design/theme-system.md). Sets data-pack / data-mode / data-font on
-// <html>; CSS in globals.css re-skins the whole site. Persists to the same
-// `codex-skin` localStorage key the no-FOUC script in layout.tsx reads.
+// docs/design/theme-system.md). Sets data-pack / data-mode on <html> (font is
+// theme-driven — Auto only, as of 2026-06-13); CSS in globals.css re-skins the
+// whole site. Persists to the `codex-skin` key the layout.tsx no-FOUC script reads.
 
 import { useEffect, useState } from "react";
 
@@ -16,13 +16,10 @@ const MODES: [string, string][] = [
   ["light", "☀ Light"],
   ["dark", "🌙 Dark"],
 ];
-const FONTS: [string, string][] = [
-  ["", "Auto"],
-  ["maple", "Maplestory"],
-  ["jua", "Jua"],
-  ["gaegu", "Gaegu"],
-];
 
+// Font is Auto only (the others were removed 2026-06-13 — choice-overload for zero
+// positioning value; the theme + mode toggles carry the look). `font` stays in the
+// skin shape for back-compat with stored skins, always "".
 type Skin = { pack: string; mode: string; font: string };
 
 export default function ThemePicker() {
@@ -31,20 +28,21 @@ export default function ThemePicker() {
 
   useEffect(() => {
     const r = document.documentElement;
+    // Clear any stored non-Auto font so old skins don't keep a removed face.
+    if (r.dataset.font) delete r.dataset.font;
     setSkin({
       pack: r.dataset.pack || "parchment",
       mode: r.dataset.mode || "light",
-      font: r.dataset.font || "",
+      font: "",
     });
   }, []);
 
   function apply(next: Partial<Skin>) {
-    const v = { ...skin, ...next };
+    const v = { ...skin, ...next, font: "" };
     const r = document.documentElement;
     r.dataset.pack = v.pack;
     r.dataset.mode = v.mode;
-    if (v.font) r.dataset.font = v.font;
-    else delete r.dataset.font;
+    delete r.dataset.font;
     setSkin(v);
     try {
       localStorage.setItem("codex-skin", JSON.stringify(v));
@@ -78,15 +76,6 @@ export default function ThemePicker() {
               </button>
             ))}
           </Group>
-          {skin.pack !== "dos" && (
-            <Group label="Font">
-              {FONTS.map(([v, l]) => (
-                <button key={v || "auto"} className={chip(skin.font === v)} onClick={() => apply({ font: v })}>
-                  {l}
-                </button>
-              ))}
-            </Group>
-          )}
           <p className="mt-1 text-[10px] text-margin-ink leading-snug">
             The look only — the words never change.
           </p>

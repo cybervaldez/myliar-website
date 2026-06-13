@@ -1,11 +1,9 @@
 @import "tailwindcss";
 
 /* ── Theme fonts (self-hosted; see docs/design/theme-system.md) ───── */
+/* Maplestory = the Vibrant Realm theme's register font (not a user choice). */
 @font-face{font-family:'Maplestory';src:url('/fonts/Maplestory-Light.woff2') format('woff2');font-weight:300;font-display:swap;}
 @font-face{font-family:'Maplestory';src:url('/fonts/Maplestory-Bold.woff2') format('woff2');font-weight:700;font-display:swap;}
-@font-face{font-family:'Jua';src:url('/fonts/Jua-400.woff2') format('woff2');font-weight:400;font-display:swap;}
-@font-face{font-family:'Gaegu';src:url('/fonts/Gaegu-400.woff2') format('woff2');font-weight:400;font-display:swap;}
-@font-face{font-family:'Gaegu';src:url('/fonts/Gaegu-700.woff2') format('woff2');font-weight:700;font-display:swap;}
 
 /* ── Theme system — 3 packs × light/dark drive the semantic palette ──
    The whole site re-skins because components use semantic tokens
@@ -72,11 +70,6 @@
   --forest:#6fa8be; --forest-dim:#58899c; --spot-red:#e0705f; --margin-ink:#9a9078;
   --panel-radius:0px; --panel-shadow:5px 5px 0 rgba(0,0,0,0.4);
 }
-/* Optional font override (Vibrant/Parchment only; DOS forces mono) */
-:root:not([data-pack="dos"])[data-font="maple"]{--theme-display:'Maplestory',sans-serif;--theme-body:'Maplestory',sans-serif;}
-:root:not([data-pack="dos"])[data-font="jua"]  {--theme-display:'Jua',sans-serif;--theme-body:'Jua',sans-serif;}
-:root:not([data-pack="dos"])[data-font="gaegu"]{--theme-display:'Gaegu',cursive;--theme-body:'Gaegu',cursive;}
-
 /* Tailwind v4 design-token bridge — exposes the palette + fonts as
    utility classes (e.g. bg-paper, text-forest, font-display). The
    --font-* vars are populated by next/font in layout.tsx. */

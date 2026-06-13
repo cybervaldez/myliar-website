@@ -50,7 +50,7 @@ function Spec({ label, value }: { label: string; value?: string }) {
   );
 }
 
-function TitleCard({ t, all }: { t: PlayTitle; all?: PlayTitle[] }) {
+export function TitleCard({ t, all }: { t: PlayTitle; all?: PlayTitle[] }) {
   const [open, setOpen] = useState<string | null>(null);
   const m = t.metrics;
   const g = open && m ? m.characters.find((c) => c.who === open) : null;

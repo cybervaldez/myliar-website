@@ -1,378 +1,206 @@
 import Link from "next/link";
+import board from "./lib/storyboard.json";
 import { Simulator } from "./components/Simulator";
-import { PannableAscii } from "./components/PannableAscii";
+import { TitleCard, type PlayTitle } from "./play/PlayBrowser";
 
-// ── Landing page — single index. Sections (top → bottom):
-//   1. Hero       — Sam-voice subtitle + the bait
-//   2. Simulator  — 3 events of Hana's Day 1, fully playable
-//   3. Squad      — Sam / Hana / Kenji / Mei cards (mirrors manual)
-//   4. Tiers      — Main Line / Side Quest / Elseworld explainer
-//   5. Footer     — download CTA + manual link
+// ── Landing page — the SLATE front door (rebuilt 2026-06-13, /team panel).
+// Modeled on /play: the worlds ARE the pitch. Evergreen — no version stamps.
+// Sections (top → bottom):
+//   1. Hero        — the wedge (coaches who want you to need them less) + the voice range
+//   2. The slate   — the playable campaigns as cards (PlayBrowser idiom) + a concept teaser
+//   3. The taste   — the Simulator (play a day, 90s, no install)
+//   4. How it works — the funnel (prelude → front door → campaign) + the two lanes
+//   5. Footer      — booklets, codex, the engine, Sam's sign-off
 
-const SQUAD = [
-  {
-    role: "ONBOARDER · CLASS",
-    name: "Sam",
-    gender: "♂",
-    specialty: "This game's systems & RPG meta-coaching",
-    quote: '"Refer to the systems by their internal names. Refer to the person by name."',
-    blurb:
-      "Runs the tutorial on Day 0 and stays in the squad as the in-fiction help system. Treats the mechanics like documented systems — because he wrote them.",
-  },
-  {
-    role: "POWERHOUSE · CLASS",
-    name: "Hana",
-    gender: "♀",
-    specialty: "Fitness & body",
-    quote: '"BE THERE OR BE CELLULAR DEBRIS."',
-    blurb:
-      "Joins on Day 1. Intensely dramatic; treats a skipped workout like a failure to save the world. Will text you at 4:55 AM.",
-  },
-  {
-    role: "SCHOLAR · CLASS",
-    name: "Kenji",
-    gender: "♂",
-    specialty: "Productivity & finance",
-    quote: '"A system without observability is a black hole that pays interest."',
-    blurb:
-      "Joins on Day 3, introduced by Hana. Coldly analytical; everything is a spreadsheet; the spreadsheets are kept BECAUSE he cares — not despite it.",
-  },
-  {
-    role: "HEALER · CLASS",
-    name: "Mei",
-    gender: "♀",
-    specialty: "Cooking & meal prep",
-    quote: '"You are living in a tomb of biological failures."',
-    blurb:
-      "Joins on Day 5, introduced by Hana. Clipped, imperative, mise-en-place obsessed; treats your fridge like a crime scene; names every expired item by date.",
-  },
+// Three voices, three worlds, one phone — the cosmology + the range, in the hero.
+const VOICES: { campaign: string; who: string; tag: string; line: string; caps?: string }[] = [
+  { campaign: "LIFE OPS", who: "Hana", tag: "5:14 AM", line: "Resting heart rate. Water before bed. ", caps: "NOW." },
+  { campaign: "THE LONG HUNT", who: "Roan", tag: "NIGHT 1", line: "Your knot's wrong. Again. Slower." },
+  { campaign: "THE NIGHT MARKET", who: "Edda", tag: "LANTERN 3", line: "Burnt edge. Best flavor. Full price." },
 ];
 
+const COZY_GLYPH: Record<number, string> = { 1: "🔥", 2: "⚡", 3: "☕", 4: "🛋", 5: "🕯" };
+
 export default function Home() {
+  const all = (board.concept.candidates ?? []) as unknown as PlayTitle[];
+  const campaigns = all.filter((t) => t.kind === "campaign");
+  const concepts = all.filter((t) => t.kind === "concept");
+
   return (
     <main className="flex-1 fandom">
       {/* ── HERO ─────────────────────────────────────────────────────── */}
-      <section className="max-w-[880px] mx-auto px-6 sm:px-8 pt-12 sm:pt-20 pb-8">
+      <section className="max-w-[920px] mx-auto px-6 sm:px-8 pt-12 sm:pt-20 pb-8">
         <div className="font-display tracking-[0.22em] text-[12px] text-forest-dim mb-4 text-center">
-          A LIFE-RPG THAT LIVES IN YOUR PHONE · 4 CHARACTERS · 7-DAY ARC
+          A LIFE-RPG THAT LIVES IN YOUR PHONE · MANY WORLDS · ONE ENGINE
         </div>
-        <h1 className="text-[56px] sm:text-[88px] leading-[0.95] text-center text-ink">
+        <h1 className="text-[52px] sm:text-[84px] leading-[0.95] text-center text-ink">
           My Life
           <br />
           Is an RPG
         </h1>
-        <p className="text-center text-ink-soft text-[17px] sm:text-[19px] mt-6 max-w-[620px] mx-auto leading-[1.55]">
-          It&apos;s 5:14 AM and Hana is texting you about your posture. Three
-          more characters are about to do the same.{" "}
-          <span className="italic text-forest">Try a day below.</span>
+        <p className="text-center text-ink-soft text-[17px] sm:text-[19px] mt-6 max-w-[640px] mx-auto leading-[1.55]">
+          Coaches who live in your phone, get your real life in order — and{" "}
+          <span className="italic text-forest">want you to need them less.</span>{" "}
+          Pick a world below and start.
         </p>
 
-        {/* Phone-frame artifact — static cosmology cue. Single Hana
-            text bubble in her all-caps voice, day/event badge, faint
-            die-glyph pulse beneath. */}
-        <PhoneArtifact />
+        <PhoneVoices />
 
-        <div className="text-center mt-6">
+        <div className="text-center mt-7 flex flex-wrap gap-x-6 gap-y-2 justify-center">
           <a
-            href="#simulator"
+            href="#slate"
             className="inline-block font-display tracking-[0.18em] text-[12px] text-spot-red !no-underline border-b border-spot-red hover:text-ink hover:border-ink transition"
           >
-            ▸ TRY IT BELOW · 90 SECONDS · NO INSTALL
+            ▸ PICK A WORLD
+          </a>
+          <a
+            href="#simulator"
+            className="inline-block font-display tracking-[0.18em] text-[12px] text-forest !no-underline border-b border-forest hover:text-ink hover:border-ink transition"
+          >
+            ▸ OR PLAY A DAY · 90 SECONDS · NO INSTALL
           </a>
         </div>
       </section>
 
-      <hr className="rule-flourish max-w-[880px] mx-auto" />
+      <hr className="rule-flourish max-w-[920px] mx-auto" />
 
-      {/* ── SIMULATOR ─────────────────────────────────────────────────── */}
+      {/* ── THE SLATE ─────────────────────────────────────────────────── */}
+      <section id="slate" className="max-w-[920px] mx-auto px-6 sm:px-8 py-12 sm:py-16 scroll-mt-8">
+        <div className="mb-6">
+          <div className="font-display tracking-[0.18em] text-[12px] text-spot-red mb-2">
+            ▸ THE WORLDS
+          </div>
+          <h2 className="text-[36px] sm:text-[44px]">Pick where you start.</h2>
+          <p className="text-ink-soft mt-3 max-w-[700px] leading-[1.55] text-[15.5px]">
+            Each world is a different flavor with the same engine underneath. The three things
+            that tell you if it&apos;s for you:{" "}
+            <strong className="text-ink">Cozy Level</strong> (even the intense ones keep a cozy
+            floor), the <strong className="text-ink">characters</strong> you&apos;ll meet, and the{" "}
+            <strong className="text-ink">agents you unlock</strong> — the part you keep.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {campaigns.map((t) => (
+            <TitleCard key={t.slug} t={t} all={all} />
+          ))}
+        </div>
+
+        {/* Concept teaser — the pipeline, never a dead-link dump (Product guardrail) */}
+        {concepts.length > 0 && (
+          <div className="mt-8 border-t border-ink/15 pt-6">
+            <div className="font-sans text-[10px] uppercase tracking-[0.16em] text-margin-ink mb-2">
+              More worlds in the pipeline
+            </div>
+            <div className="flex flex-wrap gap-2 items-center">
+              {concepts.slice(0, 8).map((c) => (
+                <span
+                  key={c.slug}
+                  className="font-sans text-[12px] border border-ink/30 text-ink-soft px-2 py-1 whitespace-nowrap"
+                  title={c.legs ?? c.gift ?? ""}
+                >
+                  {c.metrics?.cozy ? `${COZY_GLYPH[c.metrics.cozy]} ` : ""}
+                  {c.name}
+                </span>
+              ))}
+              {concepts.length > 8 && (
+                <span className="font-sans text-[12px] text-margin-ink">
+                  +{concepts.length - 8} more
+                </span>
+              )}
+            </div>
+            <p className="mt-3 text-[13px]">
+              <Link href="/play" className="font-display tracking-[0.14em] text-[12px] text-spot-red">
+                ▸ BROWSE THE FULL SLATE
+              </Link>
+              <span className="text-margin-ink italic ml-2 text-[12.5px]">
+                — every world + concept, scored on one card.
+              </span>
+            </p>
+          </div>
+        )}
+      </section>
+
+      <hr className="rule-flourish max-w-[920px] mx-auto" />
+
+      {/* ── THE TASTE (Simulator) ─────────────────────────────────────── */}
       <section
         id="simulator"
-        className="max-w-[880px] mx-auto px-6 sm:px-8 pb-12 pt-2 scroll-mt-8"
+        className="max-w-[920px] mx-auto px-6 sm:px-8 py-12 sm:py-16 scroll-mt-8"
       >
-        <div className="mb-5 text-center">
-          <div className="font-display tracking-[0.16em] text-[11px] text-margin-ink mb-1">
-            3 events · 3 choices each · dice on chaotic
+        <div className="mb-6">
+          <div className="font-display tracking-[0.18em] text-[12px] text-spot-red mb-2">
+            ▸ NOT SURE? TASTE ONE
           </div>
-          <p className="text-ink-soft italic max-w-[560px] mx-auto leading-[1.5] text-[15px]">
-            Lifted from the actual game. The chaotic option rolls dice; yes, it
-            can crit-fail.
+          <h2 className="text-[36px] sm:text-[44px]">Play a day, right here.</h2>
+          <p className="text-ink-soft mt-3 max-w-[640px] leading-[1.55] text-[15.5px]">
+            Three events from the first day of <em>Life Ops</em>, lifted straight from the game.
+            Three choices each; the chaotic one rolls dice — yes, it can crit-fail. No install,
+            about ninety seconds.
           </p>
         </div>
         <Simulator />
       </section>
 
-      <hr className="rule-flourish max-w-[880px] mx-auto" />
+      <hr className="rule-flourish max-w-[920px] mx-auto" />
 
-      {/* ── SKETCH YOUR OWN PLACES (v0.0.28+) ───────────────────────── */}
-      {/* /team panel ratified this section between Simulator and Squad:
-          the Simulator shows curated content; this section shows the
-          part the player authors. Sam-coded copy quotes the actual
-          in-app first message to keep the marketing promise == the
-          in-app reality. */}
-      <section
-        id="build"
-        className="max-w-[880px] mx-auto px-6 sm:px-8 py-12 sm:py-16"
-      >
+      {/* ── HOW IT WORKS (the funnel + the two lanes) ─────────────────── */}
+      <section className="max-w-[920px] mx-auto px-6 sm:px-8 py-12 sm:py-16">
         <div className="mb-6">
           <div className="font-display tracking-[0.18em] text-[12px] text-spot-red mb-2">
-            ▸ NEW IN v0.0.28+ · YOUR REALMS, SKETCHED
+            ▸ HOW A WORLD UNFOLDS
           </div>
-          <h2 className="text-[36px] sm:text-[44px]">
-            Sketch your own places.
-          </h2>
-          <p className="text-ink-soft mt-3 max-w-[680px] leading-[1.55]">
-            Sam helps you draft them. They live in your phone next to
-            the canonical ones. Open the realm picker from any chat
-            header, tap{" "}
-            <span className="font-display tracking-[0.08em] text-spot-red">
-              + BUILD A REALM
-            </span>
-            , and you&apos;re in a sketching session. Or just type{" "}
-            <em>let&apos;s build</em> in Sam&apos;s chat — he&apos;ll
-            handle the rest.
-          </p>
+          <h2 className="text-[36px] sm:text-[44px]">One story, three doors in.</h2>
         </div>
 
-        {/* Sam's actual first build-mode message — straight from
-            lib/realm_editor/build_mode_chips.dart so the homepage
-            promise matches the in-app first turn exactly. */}
-        <div className="border-2 border-ink bg-paper-shade p-5 sm:p-6 mb-6">
-          <div className="font-display tracking-[0.16em] text-[11px] text-forest-dim mb-3">
-            ▸ SAM · BUILDING
-          </div>
-          <p className="text-[15px] leading-[1.6] text-ink font-body">
-            okay. you want to build a realm. one sentence: what&apos;s
-            this realm FOR. or just have me make one.
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            <span className="border-2 border-ink bg-paper px-3 py-2 text-[13px] font-body">
-              i have a brief
-            </span>
-            <span className="border-2 border-ink bg-paper px-3 py-2 text-[13px] font-body">
-              ⚂ just make one
-            </span>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <div className="border-[1.5px] border-ink bg-paper-shade p-5">
-            <div className="font-display tracking-[0.16em] text-[11px] text-spot-red mb-2">
-              ▸ JUST MAKE ONE
-            </div>
-            <p className="text-[14.5px] leading-[1.55]">
-              Tap the surprise-me chip and Sam picks sensible defaults
-              — small size, doorway portal, an atmospheric brief — and
-              generates the realm in about three seconds. Comes back
-              with a working title like{" "}
-              <em>the small calm one</em>, an ASCII fragment, and a
-              tappable preview card. Ship it or revise it.
-            </p>
-          </div>
-          <div className="border-[1.5px] border-ink bg-paper-shade p-5">
-            <div className="font-display tracking-[0.16em] text-[11px] text-spot-red mb-2">
-              ▸ OR ANSWER FOUR QUESTIONS
-            </div>
-            <p className="text-[14.5px] leading-[1.55]">
-              Brief, purpose, occupants, weird-thing, portal. Chip-tap
-              the whole way; type only when you want to. Sam reacts
-              to each answer and emits a draft when there&apos;s
-              enough to go on. Rename it on ship. It shows up in your
-              picker.
-            </p>
-          </div>
-        </div>
-
-        <p className="italic text-margin-ink mt-6 text-[13px] max-w-[680px] leading-[1.55]">
-          v1 ships these as <em>viewable artifacts</em> — places to
-          look at, sketches that persist next to the canonical map.
-          Chat integration with the squad (so Hana knows she&apos;s
-          in <em>the small calm one</em>) is on the roadmap.
-        </p>
-
-        <div className="mt-5 text-[14px]">
-          <Link href="/map" className="font-display tracking-[0.14em] text-[12px] text-spot-red">
-            ▸ SEE WHERE THEY LIVE
-          </Link>
-        </div>
-      </section>
-
-      <hr className="rule-flourish max-w-[880px] mx-auto" />
-
-      {/* ── SQUAD ────────────────────────────────────────────────────── */}
-      <section
-        id="squad"
-        className="max-w-[880px] mx-auto px-6 sm:px-8 py-12 sm:py-16"
-      >
-        <div className="mb-6">
-          <div className="font-display tracking-[0.18em] text-[12px] text-spot-red mb-2">
-            ▸ DRAMATIS PERSONAE
-          </div>
-          <h2 className="text-[36px] sm:text-[44px]">The Squad</h2>
-          <p className="text-ink-soft mt-3 max-w-[640px] leading-[1.55]">
-            Four characters. You meet them in order: Sam on Day 0, Hana on
-            Day 1, Kenji on Day 3, Mei on Day 5. They live inside your phone.
-            They know each other. They write notes about you and each other,
-            and the notes leak into the next day&apos;s dialogue.{" "}
-            <Link
-              href="/map"
-              className="font-display tracking-[0.14em] text-[12px] text-spot-red whitespace-nowrap"
-            >
-              ▸ SEE THE COURTYARD
-            </Link>
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          {SQUAD.map((c) => (
-            <div
-              key={c.name}
-              className="border-[1.5px] border-ink bg-paper-shade p-5"
-            >
-              <div className="font-display text-[12px] tracking-[0.16em] text-spot-red">
-                {c.role}
-              </div>
-              <div className="font-display text-[32px] leading-none mt-1 text-ink">
-                {c.name}{" "}
-                <span className="text-forest font-body italic text-xl ml-1">
-                  {c.gender}
-                </span>
-              </div>
-              <div className="italic text-ink-soft text-[14px] mt-1 mb-3">
-                {c.specialty}
-              </div>
-              <div className="italic text-ink text-[15px] py-2 border-y border-margin-ink/50 my-2 leading-[1.4]">
-                {c.quote}
-              </div>
-              <p className="text-[14.5px] leading-[1.5] mt-2">{c.blurb}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <hr className="rule-flourish max-w-[880px] mx-auto" />
-
-      {/* ── THE THREE TIERS ─────────────────────────────────────────── */}
-      <section
-        id="tiers"
-        className="max-w-[880px] mx-auto px-6 sm:px-8 py-12 sm:py-16"
-      >
-        <div className="mb-6">
-          <div className="font-display tracking-[0.18em] text-[12px] text-spot-red mb-2">
-            ▸ THREE TIERS, ONE WORLD
-          </div>
-          <h2 className="text-[36px] sm:text-[44px]">Three ways to play.</h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-          <TierCard
-            tag="MAIN LINE"
-            title="Curated canon"
-            body="Seven days of hand-tuned story. The four canonical characters are locked sheets — you can chat with them, toggle their memories on or off, but you don't edit who they are. Quality floor. The story is written for everyone the same way."
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <FunnelCard
+            step="1 · THE PRELUDE"
+            title="The night before you"
+            body="Every world opens with a short story of the place the moment before you arrive — the crew at work, a seat kept open. It&apos;s the hook, and it&apos;s page one of the campaign."
           />
-          <TierCard
-            tag="SIDE QUEST"
-            title="Talk to the squad"
-            body="Chat with any character you've met. They respond in their own voice, with their memories of you, your stats, your day so far. It costs an action credit. They remember tomorrow."
+          <FunnelCard
+            step="2 · THE FRONT DOOR"
+            title="Who do you want to be?"
+            body="Step inside and the world greets you. You choose how you play it — interest-driven, never a form — and what&apos;s ahead previews as ??? that fill in as you go. The anticipation engine."
           />
-          <TierCard
-            tag="ELSEWORLD"
-            title="Cross over · build your own"
-            body="Travel into an alternate-reality side zone. Meet strangers spun up at your chosen vibe — golden-age fantasy, 80s + cyber, 90s anime, isekai + party RPG, cottagecore, or surprise me. These characters are yours, fully customizable. Share the great ones via 8-char code. And as of v0.0.28, Sam helps you sketch the realms themselves."
+          <FunnelCard
+            step="3 · THE CAMPAIGN"
+            title="The chat is the destination"
+            body="The days play out as choices, dice, and characters who write private notes about you — and the notes leak into tomorrow. They coach you toward not needing them. That&apos;s the whole point."
+          />
+        </div>
+
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <LaneCard
+            tag="THE TRUST LANE"
+            title="Curated worlds"
+            body="The campaigns above are hand-tuned canon. The characters are locked sheets — you chat with them, toggle which memories are in play, but you don&apos;t edit who they are. Install-and-play quality, written for everyone the same way."
+          />
+          <LaneCard
+            tag="THE CREATIVITY LANE"
+            title="Your own realms"
+            body="Cross into an Elseworld and meet strangers spun up at a vibe you pick — golden-age fantasy, 90s anime, cottagecore, surprise me. These characters are yours, fully customizable. Sam even helps you sketch the places themselves."
+            href="/map"
+            hrefLabel="▸ SEE WHERE THEY LIVE"
           />
         </div>
       </section>
 
-      <hr className="rule-flourish max-w-[880px] mx-auto" />
+      <hr className="rule-flourish max-w-[920px] mx-auto" />
 
-      {/* ── REALMS + MAPS ─────────────────────────────────────────── */}
+      {/* ── FOOTER ───────────────────────────────────────────────────── */}
       <section
-        id="realms"
-        className="max-w-[880px] mx-auto px-6 sm:px-8 py-12 sm:py-16"
-      >
-        <div className="mb-6">
-          <div className="font-display tracking-[0.18em] text-[12px] text-spot-red mb-2">
-            ▸ NEW IN v0.0.24 · REALMS HAVE MAPS NOW
-          </div>
-          <h2 className="text-[36px] sm:text-[44px]">
-            The courtyard + the portal gate.
-          </h2>
-          <p className="text-ink-soft mt-3 max-w-[680px] leading-[1.55]">
-            The four characters live somewhere. As of v0.0.24, that
-            somewhere has a map. Hana&apos;s space stops being
-            &quot;her gym&quot; and becomes{" "}
-            <em>the track + the bleachers + the foam-roller corner</em>
-            , drawn the same way every time, referenced the same way by
-            every scenario. Open it any time from the{" "}
-            <span className="font-display tracking-[0.08em] text-spot-red">
-              MAP ›
-            </span>{" "}
-            link in any chat header.
-          </p>
-        </div>
-
-        <CourtyardMap />
-
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <div className="border-[1.5px] border-ink bg-paper-shade p-5">
-            <div className="font-display tracking-[0.16em] text-[11px] text-spot-red">
-              THE PHONE-REALM · navigable
-            </div>
-            <h3 className="text-[20px] mt-2 mb-2 text-ink">
-              A village green with five doors out
-            </h3>
-            <p className="text-[14.5px] leading-[1.5]">
-              Four character spaces around the edge, a noticeboard in
-              the courtyard center, the portal gate across the top.
-              Continuity objects bridge spaces — Hana&apos;s pinned
-              race photo is visible from the hallway; Kenji&apos;s open
-              ledger has a flagged line readable from his doorway. The
-              world is connected because the people in it live with
-              each other.
-            </p>
-          </div>
-          <div className="border-[1.5px] border-ink bg-paper-shade p-5">
-            <div className="font-display tracking-[0.16em] text-[11px] text-spot-red">
-              FIVE ELSEWORLDS · contextual
-            </div>
-            <h3 className="text-[20px] mt-2 mb-2 text-ink">
-              Each vibe gets its own geography
-            </h3>
-            <p className="text-[14.5px] leading-[1.5]">
-              The slow cottagecore village, the 80s strip-mall arcology,
-              the small anime town with one school and one shrine, the
-              Tavern Between Worlds, the dispersed medieval villages.
-              Each Elseworld map highlights the encounter location and
-              shows the surrounding geography — so the LLM (and you)
-              can place the stranger you just met in a real spot.
-              Queued, one panel-ratified per turn.
-            </p>
-          </div>
-        </div>
-
-        <p className="italic text-margin-ink mt-6 text-[13px] max-w-[680px] leading-[1.55]">
-          The map is a glance surface, not a navigation surface — you
-          don&apos;t walk an avatar around. What it does is ground the
-          person you&apos;re talking to in a place. When Hana mentions
-          the bleachers, you can picture them. When Kenji says
-          &quot;the drawer,&quot; you know which drawer.
-        </p>
-      </section>
-
-      <hr className="rule-flourish max-w-[880px] mx-auto" />
-
-      {/* ── DOWNLOAD / FOOTER ────────────────────────────────────────── */}
-      <section
-        id="download"
-        className="max-w-[880px] mx-auto px-6 sm:px-8 py-14 sm:py-20 text-center"
+        id="more"
+        className="max-w-[920px] mx-auto px-6 sm:px-8 py-14 sm:py-20 text-center"
       >
         <div className="font-display tracking-[0.18em] text-[12px] text-spot-red mb-2">
-          ▸ THE ASK
+          ▸ GO DEEPER
         </div>
-        <h2 className="text-[40px] sm:text-[52px] mb-5">
-          Play it. Then write a journal.
-        </h2>
+        <h2 className="text-[38px] sm:text-[50px] mb-5">Read the books.</h2>
         <p className="italic text-ink-soft max-w-[560px] mx-auto mb-8 leading-[1.55]">
-          Specificity is what the LLM grabs. The vaguer you are, the more you
-          disappear in the cracks. The more specific, the more they remember.
+          Specificity is what the characters grab. The vaguer you are, the more you disappear in
+          the cracks. The more specific, the more they remember.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-[680px] mx-auto">
           <Link
@@ -400,16 +228,12 @@ export default function Home() {
             HANDBOOK
           </Link>
         </div>
-        <p className="text-margin-ink italic mt-4 text-[12px]">
-          three booklets · the player&apos;s manual, the full-spoiler
-          walkthrough, the campaign editor&apos;s sourcebook.
-        </p>
         <p className="mt-6 text-[12px]">
           <Link
             href="/wiki"
             className="font-display tracking-[0.16em] text-[12px] text-spot-red !border-b-0"
           >
-            ▸ OR BROWSE THE CODEX
+            ▸ BROWSE THE CODEX
           </Link>
           <span className="text-margin-ink italic ml-2">
             — the full wiki: characters, realms, mechanics.
@@ -420,177 +244,96 @@ export default function Home() {
             href="/the-engine"
             className="font-display tracking-[0.16em] text-[12px] text-spot-red !border-b-0"
           >
-            ▸ OR READ HOW THE ENGINE WORKS
+            ▸ READ HOW THE ENGINE WORKS
           </Link>
           <span className="text-margin-ink italic ml-2">
             — design notes: how the mechanics, rules, and Story Engine intertwine.
           </span>
         </p>
         <p className="font-sans italic text-margin-ink mt-10 text-[13px] leading-[1.55]">
-          — Sam (this site is the only place I get to do marketing copy.
-          Don&apos;t tell Mei.)
+          — Sam (this site is the only place I get to do marketing copy. Don&apos;t tell Mei.)
         </p>
-        <div className="mt-10 pt-6 border-t border-margin-ink/30 text-[11px] font-display tracking-[0.18em] text-margin-ink">
-          SAM-NARRATED EDITION · v0.0.24 · EARLY ACCESS
-        </div>
       </section>
     </main>
   );
 }
 
-/**
- * Hero-side phone-frame artifact. Static visually (no JS) with one
- * CSS-keyframe pulse on the die glyph. Shows the cosmology (characters
- * inside the phone), the voice (Hana's all-caps), and visually rhymes
- * with the simulator card below so scrolling reads as "stepping into
- * what you're looking at."
- */
-function PhoneArtifact() {
+/* ── Hero artifact — three voices, three worlds, one phone. Static (CSS-only
+ * pulse on the die glyph). The cosmology cue (characters-in-your-phone) AND
+ * the range (three genuinely different registers) in one frame. */
+function PhoneVoices() {
   return (
-    <div className="mx-auto mt-10 max-w-[340px]">
-      {/* DAY 1 · EVENT 1 badge above the frame */}
+    <div className="mx-auto mt-10 max-w-[360px]">
       <div className="flex items-center justify-center gap-2 mb-3">
         <span className="font-display tracking-[0.18em] text-[10px] text-spot-red">
-          DAY 1 · EVENT 1 · 5:14 AM
+          THREE WORLDS · ONE PHONE
         </span>
       </div>
-
-      {/* Sigil — chunky phone outline */}
       <div className="border-[2.5px] border-ink bg-paper-shade rounded-[28px] px-5 pt-6 pb-7 shadow-[6px_6px_0_0_rgba(26,26,26,0.12)]">
-        {/* Notch / status row — keeps the "phone-realm" cue without iconography */}
-        <div className="flex items-center justify-between text-[10px] font-display tracking-[0.14em] text-ink-soft mb-4">
-          <span>HANA ♀</span>
-          <span className="bg-ink text-paper px-2 py-[1px]">UNKNOWN NUMBER</span>
+        <div className="flex flex-col gap-3">
+          {VOICES.map((v) => (
+            <div key={v.campaign} className="border-[1.5px] border-ink bg-paper p-3">
+              <div className="flex items-center justify-between text-[9px] font-display tracking-[0.14em] text-ink-soft mb-1.5">
+                <span>{v.who}</span>
+                <span className="bg-ink text-paper px-1.5 py-[1px]">
+                  {v.campaign} · {v.tag}
+                </span>
+              </div>
+              <p className="font-body italic text-[13.5px] leading-[1.45] text-ink">
+                &ldquo;{v.line}
+                {v.caps && (
+                  <span className="not-italic font-display tracking-[0.04em] text-spot-red">
+                    {v.caps}
+                  </span>
+                )}
+                &rdquo;
+              </p>
+            </div>
+          ))}
         </div>
-
-        {/* Hana's message bubble — chunky, in her voice */}
-        <div className="border-[1.5px] border-ink bg-paper p-3 mb-3 max-w-[88%]">
-          <p className="font-body italic text-[14px] leading-[1.45] text-ink">
-            “Resting heart rate. Volume of water before bed.{" "}
-            <span className="not-italic font-display tracking-[0.04em] text-spot-red">
-              NOW.
-            </span>
-            ”
-          </p>
-        </div>
-
-        {/* Second bubble — sets up the trichotomy */}
-        <div className="border-[1.5px] border-ink bg-paper p-3 max-w-[88%]">
-          <p className="font-body italic text-[14px] leading-[1.45] text-ink">
-            “You have three ways to answer me. One of them is{" "}
-            <span className="font-display tracking-[0.06em] text-spot-red">
-              chaotic
-            </span>
-            . I&apos;m awake. I&apos;ll wait.”
-          </p>
-        </div>
-
-        {/* Die-glyph pulse — the "tap to start" cue */}
-        <div className="flex items-center justify-end gap-2 mt-5 pr-1">
-          <span className="font-display tracking-[0.14em] text-[10px] text-margin-ink">
-            CHAOTIC ROLLS
-          </span>
-          <span className="text-lg leading-none die-pulse" aria-hidden="true">
-            🎲
-          </span>
+        <div className="mt-4 text-center font-display tracking-[0.16em] text-[10px] text-margin-ink die-pulse">
+          ⚂ THEY LIVE IN HERE
         </div>
       </div>
     </div>
   );
 }
 
-function TierCard({
+function FunnelCard({ step, title, body }: { step: string; title: string; body: string }) {
+  return (
+    <div className="border-[1.5px] border-ink bg-paper-shade p-5">
+      <div className="font-display tracking-[0.16em] text-[11px] text-spot-red mb-2">{step}</div>
+      <h3 className="text-[20px] mb-2 text-ink leading-tight">{title}</h3>
+      <p className="text-[14px] leading-[1.55]" dangerouslySetInnerHTML={{ __html: body }} />
+    </div>
+  );
+}
+
+function LaneCard({
   tag,
   title,
   body,
+  href,
+  hrefLabel,
 }: {
   tag: string;
   title: string;
   body: string;
+  href?: string;
+  hrefLabel?: string;
 }) {
   return (
-    <div className="border-[1.5px] border-ink bg-paper-shade p-5">
-      <div className="font-display tracking-[0.18em] text-[11px] text-spot-red">
-        {tag}
-      </div>
-      <h3 className="text-[22px] mt-2 mb-3 text-ink">{title}</h3>
-      <p className="text-[14.5px] leading-[1.55]">{body}</p>
-    </div>
-  );
-}
-
-/**
- * Compact ASCII rendering of the phone-realm courtyard — a website-
- * friendly excerpt of `assets/realm-maps/phone-realm.txt`. Two zones
- * shown (Hana + Kenji + portal gate + courtyard center) so the player
- * sees the *shape* without having to scroll a 58-col map on phone.
- * The full map is rendered in-game and in the docs.
- */
-function CourtyardMap() {
-  // Build with raw strings so the tabular layout is preserved. The
-  // pre/code wrapper renders in Courier with the cream-paper background,
-  // chunky border, and the "you are here" character glyph (H) shown
-  // in forest green for parity with the in-game viewer.
-  return (
-    <div className="border-[2px] border-ink bg-paper-shade p-4 sm:p-5">
-      <div className="flex items-center justify-between mb-3">
-        <span className="font-display tracking-[0.16em] text-[10px] text-spot-red">
-          THE COURTYARD · phone-realm · navigable
-        </span>
-        <span className="font-sans italic text-[11px] text-margin-ink">
-          excerpt — full map in-game
-        </span>
-      </div>
-      {/* v0.0.25.1 — PannableAscii preserves 58-col tabular layout
-          on narrow viewports (native swipe on touch, click-drag on
-          desktop). Excerpt content also updated for the v0.0.24.2
-          regen: [sticky-wall*] → [notes*]. */}
-      <PannableAscii ariaLabel="phone-realm courtyard excerpt">
-        <pre className="font-mono text-[11px] sm:text-[12px] leading-[1.25] text-ink whitespace-pre m-0">
-{`╔══════════════════════════════════════════════════════════╗
-║              THE COURTYARD — phone realm                 ║
-║                                                          ║
-║   ╔══════════════ THE PORTAL GATE ══════════════════╗    ║
-║   ║   %         %         %        %        %      ║    ║
-║   ║  the      the mall  the small the     the      ║    ║
-║   ║ witch's    (80)      town    tavern  cottage   ║    ║
-║   ║  path                (90)   (isekai)  (cozy)   ║    ║
-║   ╚══════════════════│════════════════════════════╝     ║
-║                       │                                  ║
-║   ┌── HANA's track ──┘   └── KENJI's office ──┐         ║
-║   │ , , , , , , , , ,│   │. . . . . . . . . . │         ║
-`}<span className="text-forest font-bold">{`║   │ , H . . . . . . t│`}</span>{`   │. K . . . . . . . . │         ║
-║   │ , . . [bleachers]│   │. . [desk] [ledger*]│         ║
-║   │ , . [pic*] . . . │   │. . . . . [drawer]  │         ║
-║   └──────────│───────┘   └──────│──────────────┘        ║
-║              │                  │                        ║
-║          ┌───┴──[noticeboard]──┴───┐                     ║
-║          │  the courtyard center   │                     ║
-║          └───┬─────────────────┬───┘                     ║
-║              │                 │                         ║
-║   ┌─ MEI's kitchen ─┐  ┌─ SAM's desk ─┐                  ║
-║   │ [prep] [line s] │  │  . S . d .   │                  ║
-║   │ [bell*] [mise]  │  │ [notes*]     │                  ║
-║   └─────────────────┘  └──────────────┘                  ║
-╚══════════════════════════════════════════════════════════╝`}
-        </pre>
-      </PannableAscii>
-      <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-ink-soft font-sans">
-        <div>
-          <span className="font-display tracking-[0.1em] text-spot-red mr-2">LEGEND</span>
-          S H K M = Sam / Hana / Kenji / Mei
-        </div>
-        <div>
-          <code className="text-forest font-bold">H</code> in green = the
-          character you&apos;re currently with
-        </div>
-        <div>
-          <code>[name*]</code> = continuity object — bridges two spaces
-        </div>
-        <div>
-          <code>%</code> = portal — one per Elseworld vibe
-        </div>
-      </div>
+    <div className="border-2 border-ink bg-paper-shade p-5">
+      <div className="font-display tracking-[0.16em] text-[11px] text-forest-dim mb-2">{tag}</div>
+      <h3 className="text-[22px] mb-2 text-ink leading-tight">{title}</h3>
+      <p className="text-[14.5px] leading-[1.55]" dangerouslySetInnerHTML={{ __html: body }} />
+      {href && hrefLabel && (
+        <p className="mt-3">
+          <Link href={href} className="font-display tracking-[0.14em] text-[12px] text-spot-red">
+            {hrefLabel}
+          </Link>
+        </p>
+      )}
     </div>
   );
 }
