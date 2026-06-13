@@ -21,7 +21,8 @@ function charName(heading: string): string {
 }
 
 export type PanelArea = { area: string; team: string; persona: string; pros: string[]; cons: string[] };
-export type Entry = { id: string; markdown: string; panel: PanelArea[] | null };
+export type NoteSpan = { anchor: string; polarity: "pos" | "neg"; author: string; role: string; note: string; n?: number };
+export type Entry = { id: string; markdown: string; panel: PanelArea[] | null; notes: NoteSpan[] | null };
 export type Round = { id: string; closed: boolean; what: string; outcome: string; entries: Entry[]; prompt: string | null };
 
 // ── inline marks ──────────────────────────────────────────────────────────────
@@ -31,6 +32,42 @@ function em(s: string) {
     p.startsWith("**") ? <b key={i}>{p.slice(2, -2)}</b>
     : p.startsWith("*") && p.length > 2 ? <i key={i}>{p.slice(1, -1)}</i>
     : p);
+}
+
+// ── WRITERS' ROOM span-anchored notes — a numbered badge after a verbatim anchor,
+// green (positive) / red (negative); each carries a writers-room panelist's note.
+type NoteCtx = { notes: NoteSpan[]; consumed: Set<number>; onBadge: (n: number) => void } | null;
+
+function NoteBadge({ note, onClick }: { note: NoteSpan; onClick: () => void }) {
+  return (
+    <button onClick={(e) => { e.stopPropagation(); onClick(); }}
+      className={`wr-badge ${note.polarity === "neg" ? "wr-badge-neg" : "wr-badge-pos"}`}
+      title={`${note.author} (${note.role}): ${note.note}`}>{note.n}</button>
+  );
+}
+
+// em() + inline note badges: split the text at each note's anchor-end and drop a
+// numbered badge there (anchors are verbatim substrings; consumed once per entry).
+function inlineEm(text: string, ctx: NoteCtx): React.ReactNode {
+  if (!ctx || ctx.notes.length === 0) return em(text);
+  const hits: { note: NoteSpan; end: number }[] = [];
+  for (const note of ctx.notes) {
+    if (note.n == null || ctx.consumed.has(note.n)) continue;
+    const i = text.indexOf(note.anchor);
+    if (i >= 0) hits.push({ note, end: i + note.anchor.length });
+  }
+  if (hits.length === 0) return em(text);
+  hits.sort((a, b) => a.end - b.end);
+  hits.forEach((h) => ctx.consumed.add(h.note.n!));
+  const out: React.ReactNode[] = [];
+  let cursor = 0;
+  hits.forEach((h, k) => {
+    out.push(<span key={"s" + k}>{em(text.slice(cursor, h.end))}</span>);
+    out.push(<NoteBadge key={"b" + k} note={h.note} onClick={() => ctx.onBadge(h.note.n!)} />);
+    cursor = h.end;
+  });
+  out.push(<span key="sEnd">{em(text.slice(cursor))}</span>);
+  return out;
 }
 
 const VM_PRESET_RE = /\b(DRILL|LEDGER|SERVICE|NARRATOR|COUNT-IN|RED PEN|STRAIGHT READ|MIRROR|ANCHOR|ROPE|KINDLE|CHALK|TWO CUPS|FULL PRICE|COIL|SURFACE|LADLE|RULED INK)\b/;
@@ -51,7 +88,8 @@ function splitEntry(md: string): { title: string; notes: string; work: string } 
 }
 
 // ── block renderer (theme-body everywhere; VOICE blocks animate) ────────────────
-function renderBlocks(md: string) {
+// ctx (optional) inserts WRITERS' ROOM note badges into prose + headings.
+function renderBlocks(md: string, ctx: NoteCtx = null) {
   const blocks = md.split(/\n\n+/).map((b) => b.trim()).filter(Boolean);
   const out: React.ReactNode[] = [];
   let k = 0;
@@ -72,9 +110,9 @@ function renderBlocks(md: string) {
     }
     if (b.startsWith("## ")) {
       curChar = charName(b);
-      out.push(<h4 key={k} style={{ fontFamily: "var(--theme-body)", fontSize: 18, fontWeight: 700, lineHeight: 1.25, margin: "24px 0 8px", color: "var(--forest)", borderBottom: "1px solid var(--ink-soft)", paddingBottom: 5 }}>{em(b.slice(3))}</h4>);
+      out.push(<h4 key={k} style={{ fontFamily: "var(--theme-body)", fontSize: 18, fontWeight: 700, lineHeight: 1.25, margin: "24px 0 8px", color: "var(--forest)", borderBottom: "1px solid var(--ink-soft)", paddingBottom: 5 }}>{inlineEm(b.slice(3), ctx)}</h4>);
     } else if (b.startsWith("# ")) {
-      out.push(<h3 key={k} style={{ fontFamily: "var(--theme-body)", fontSize: 20, fontWeight: 700, lineHeight: 1.2, margin: "16px 0 10px", color: "var(--ink)" }}>{em(b.slice(2))}</h3>);
+      out.push(<h3 key={k} style={{ fontFamily: "var(--theme-body)", fontSize: 20, fontWeight: 700, lineHeight: 1.2, margin: "16px 0 10px", color: "var(--ink)" }}>{inlineEm(b.slice(2), ctx)}</h3>);
     } else if (b === "---") {
       out.push(<hr key={k} style={{ border: "none", borderTop: "1px solid var(--ink-soft)", margin: "16px 0" }} />);
     } else if (/^[A-Z][A-Z '&-]+:/.test(b)) {
@@ -102,10 +140,45 @@ function renderBlocks(md: string) {
         </div>
       );
     } else {
-      out.push(<p key={k} style={{ fontSize: 15, lineHeight: 1.75, margin: "0 0 13px", color: "var(--ink)" }}>{em(b)}</p>);
+      out.push(<p key={k} style={{ fontSize: 15, lineHeight: 1.75, margin: "0 0 13px", color: "var(--ink)" }}>{inlineEm(b, ctx)}</p>);
     }
   }
   return out;
+}
+
+// AnnotatedWork — renders the pilot WORK with inline writers-room note badges and
+// a numbered notes list below it (badge → highlights + scrolls to its note).
+function AnnotatedWork({ work, notes }: { work: string; notes: NoteSpan[] | null }) {
+  const [selected, setSelected] = useState<number | null>(null);
+  const numbered: NoteSpan[] = (notes ?? [])
+    .map((nt) => ({ nt, pos: work.indexOf(nt.anchor) }))
+    .filter((x) => x.pos >= 0)
+    .sort((a, b) => a.pos - b.pos)
+    .map((x, i) => ({ ...x.nt, n: i + 1 }));
+  const onBadge = (n: number) => {
+    setSelected(n);
+    const el = typeof document !== "undefined" ? document.getElementById(`wr-note-${n}`) : null;
+    if (el) el.scrollIntoView({ block: "center", behavior: "smooth" });
+  };
+  const ctx: NoteCtx = numbered.length ? { notes: numbered, consumed: new Set<number>(), onBadge } : null;
+  return (
+    <>
+      {renderBlocks(work, ctx)}
+      {numbered.length > 0 && (
+        <div className="wr-notes">
+          <div className="wr-notes-hd">▸ WRITERS&apos; ROOM — {numbered.length} notes (tap a ¹²³ badge)</div>
+          {numbered.map((nt) => (
+            <div key={nt.n} id={`wr-note-${nt.n}`}
+              className={`wr-note ${nt.polarity === "neg" ? "wr-note-neg" : "wr-note-pos"} ${selected === nt.n ? "wr-note-on" : ""}`}
+              onClick={() => setSelected(nt.n ?? null)}>
+              <span className="wr-note-n">{nt.n}</span>
+              <span className="wr-note-tx"><b>{nt.author}</b> <span style={{ color: "var(--margin-ink)" }}>· {nt.role}</span> — {nt.note}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </>
+  );
 }
 
 // ── the review panel — pros/cons by area, full-width board below the spread ─────
@@ -197,7 +270,7 @@ function RoundBook({ round, nested }: { round: Round; nested?: boolean }) {
                   ★ THE AUDITION — tap a dialogue box to hear the next line
                 </div>
               )}
-              {renderBlocks(split!.work)}
+              <AnnotatedWork work={split!.work} notes={e.notes} />
               {e.panel && e.panel.length > 0 && <PanelReview panel={e.panel} />}
               {/* page-flip arrows */}
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 18, borderTop: "1px solid var(--ink-soft)", paddingTop: 10 }}>
