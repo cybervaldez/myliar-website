@@ -266,28 +266,95 @@ export function AuditionVoice({ lines, preset }: { lines: string[]; preset: stri
   );
 }
 
+// ── the VOICE-MOTION RANGE — which emotions read as "in character" for a given
+// archetype. A preset maps to its family; the family names a SIGNATURE range (the
+// emotions surfaced first in the chip strip). The full EMO set stays probe-able —
+// the signature is "their register", not a cage. (Same families as the visual matrix.)
+const FAMILY_OF: Record<string, string> = {
+  "DRILL": "hot", "COUNT-IN": "hot",
+  "LEDGER": "cool", "RULED INK": "cool", "RED PEN": "cool", "STRAIGHT READ": "cool",
+  "SERVICE": "warm", "KINDLE": "warm", "TWO CUPS": "warm", "LADLE": "warm",
+  "ROPE": "terse", "COIL": "terse", "FULL PRICE": "terse", "CHALK": "terse",
+  "SURFACE": "serene", "ANCHOR": "serene", "NARRATOR": "serene",
+};
+const FAMILY_RANGE: Record<string, Emotion[]> = {
+  hot:    ["shout", "excited", "declare", "laugh", "angry"],
+  cool:   ["deadpan", "wry", "declare", "shock", "say"],
+  warm:   ["smile", "sigh", "whisper", "laugh", "say"],
+  terse:  ["deadpan", "wry", "angry", "sigh", "shout"],
+  serene: ["drift", "wry", "whisper", "sad", "smile"],
+};
+const FAMILY_LABEL: Record<string, string> = {
+  hot: "hot-blooded", cool: "cool & precise", warm: "warm & cozy",
+  terse: "terse & gruff", serene: "serene & wry",
+};
+
+/** The emotions a preset reads in first (its archetype signature), then the rest. */
+export function voiceRange(preset?: string): { family: string; signature: Emotion[]; rest: Emotion[] } {
+  const family = (preset && FAMILY_OF[preset]) || "terse";
+  const signature = FAMILY_RANGE[family] ?? FAMILY_RANGE.terse;
+  const rest = EMO_KEYS.filter((e) => !signature.includes(e));
+  return { family, signature, rest };
+}
+
 // ── VN DIALOG BOX — the auditions surface as a visual-novel / Phoenix-Wright
 // dialogue box: a nameplate tab + a chunky text box, the character "performing"
 // their lines one at a time (tap to advance) in their voice-motion + emotion.
+// Below it, the VOICE-MOTION RANGE: chips that replay THIS line in any emotion —
+// the character's own register (their archetype signature) surfaced first, the
+// full range a tap away. The line's authored emotion is the default; a chip
+// overrides it for that replay; advancing the box clears back to the authored one.
 export function VNDialog({ name, lines, preset }: { name: string; lines: string[]; preset?: string }) {
   const [idx, setIdx] = useState(0);
   const [k, setK] = useState(0);
+  const [override, setOverride] = useState<Emotion | null>(null);
+  const [showAll, setShowAll] = useState(false);
   const spec = (preset && VM[preset]) || VM["COIL"] || { unit: "word" as const, pace: 110, entry: "vm-pop" };
-  const advance = () => { setIdx((i) => (i + 1) % lines.length); setK((x) => x + 1); };
-  const { emotion, text } = parseEmotion(lines[idx] ?? "");
+  const advance = () => { setIdx((i) => (i + 1) % lines.length); setOverride(null); setK((x) => x + 1); };
+  const replay = (em: Emotion) => { setOverride(em); setK((x) => x + 1); };
+  const parsed = parseEmotion(lines[idx] ?? "");
+  const emotion = override ?? parsed.emotion;
+  const text = parsed.text;
+  const { family, signature, rest } = voiceRange(preset && VM[preset] ? preset : undefined);
+
+  const Chip = ({ em, kind }: { em: Emotion; kind: "sig" | "more" }) => (
+    <button
+      className={`vn-chip ${kind === "sig" ? "vn-chip-sig" : "vn-chip-more"}${emotion === em ? " vn-chip-on" : ""}`}
+      onClick={(e) => { e.stopPropagation(); replay(em); }}
+      title={EMO[em].note}>
+      {EMO[em].glyph} {EMO[em].label}
+    </button>
+  );
+
   return (
-    <div className="vn-box" onClick={advance} role="button" tabIndex={0}
-      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") advance(); }}>
-      <span className="vn-name">{name}</span>
-      <div className="vn-text" key={k}>
-        {emotion !== "say" && <span className="vn-emo">{EMO[emotion].glyph} {EMO[emotion].label}</span>}
-        {emotion === "say"
-          ? <VMLine text={text} spec={spec} />
-          : <EmoLine text={text} emotion={emotion} unit={spec.unit} basePace={spec.pace} />}
+    <div style={{ margin: "18px 0 14px" }}>
+      <div className="vn-box" onClick={advance} role="button" tabIndex={0} style={{ margin: 0 }}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") advance(); }}>
+        <span className="vn-name">{name}</span>
+        <div className="vn-text" key={k}>
+          {emotion !== "say" && <span className="vn-emo">{EMO[emotion].glyph} {EMO[emotion].label}{override ? " ·try" : ""}</span>}
+          {emotion === "say"
+            ? <VMLine text={text} spec={spec} />
+            : <EmoLine text={text} emotion={emotion} unit={spec.unit} basePace={spec.pace} />}
+        </div>
+        <div className="vn-foot">
+          <span>{preset && VM[preset] ? preset : "—"}</span>
+          <span>{idx + 1} / {lines.length} · tap to continue ▸</span>
+        </div>
       </div>
-      <div className="vn-foot">
-        <span>{preset && VM[preset] ? preset : "—"}</span>
-        <span>{idx + 1} / {lines.length} · tap to continue ▸</span>
+
+      {/* the voice-motion range — replay this line across the emotions */}
+      <div className="vn-range">
+        <div className="vn-range-hd">
+          <span className="vn-range-ttl">▸ VOICE-MOTION RANGE</span>
+          <span className="vn-range-sub">their register: {FAMILY_LABEL[family]} — tap to replay this line in any feeling</span>
+        </div>
+        <div className="vn-chips">
+          {signature.map((em) => <Chip key={em} em={em} kind="sig" />)}
+          {!showAll
+            ? <button className="vn-chip vn-chip-more" onClick={(e) => { e.stopPropagation(); setShowAll(true); }}>＋ full range</button>
+            : rest.map((em) => <Chip key={em} em={em} kind="more" />)}
+        </div>
       </div>
     </div>
   );

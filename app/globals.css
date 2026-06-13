@@ -364,3 +364,16 @@ a:hover {
 .vn-emo{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--spot-red);margin-right:9px;text-transform:uppercase;}
 .vn-foot{display:flex;justify-content:space-between;margin-top:12px;padding-top:7px;border-top:1px dashed var(--ink-soft);font-size:10.5px;letter-spacing:.06em;color:var(--margin-ink);}
 
+/* VOICE-MOTION RANGE — the emotion chip strip under a VN box. Replays the current
+   line in any emotion; the character's archetype-signature emotions surface first. */
+.vn-range{margin:9px 0 14px;}
+.vn-range-hd{display:flex;align-items:baseline;gap:9px;margin-bottom:6px;}
+.vn-range-ttl{font-family:var(--theme-body);font-size:9.5px;font-weight:700;letter-spacing:.18em;color:var(--spot-red);}
+.vn-range-sub{font-size:10px;color:var(--margin-ink);font-style:italic;}
+.vn-chips{display:flex;flex-wrap:wrap;gap:5px;}
+.vn-chip{font-family:var(--theme-body);font-size:11px;font-weight:700;letter-spacing:.03em;padding:3px 9px;cursor:pointer;border:1.5px solid var(--ink-soft);border-radius:13px;background:var(--paper);color:var(--ink-soft);transition:transform .1s,background .1s,color .1s,border-color .1s;line-height:1.3;}
+.vn-chip:hover{transform:translateY(-1px);border-color:var(--ink);color:var(--ink);}
+.vn-chip-sig{border-color:var(--forest);color:var(--forest);}      /* the character's own range */
+.vn-chip-on{background:var(--forest);color:var(--paper);border-color:var(--ink);}  /* playing now */
+.vn-chip-more{border-style:dashed;color:var(--margin-ink);}
+
