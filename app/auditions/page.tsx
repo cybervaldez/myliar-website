@@ -11,8 +11,45 @@ export const metadata = {
   description: "The blind audition rounds: concepts, pilots, character audits. Read the entries anonymized and judge for yourself.",
 };
 
-type Entry = { id: string; markdown: string };
+type PanelArea = { area: string; team: string; persona: string; pros: string[]; cons: string[] };
+type Entry = { id: string; markdown: string; panel: PanelArea[] | null };
 type Round = { id: string; closed: boolean; what: string; outcome: string; entries: Entry[]; prompt: string | null };
+
+// The audition review panel — game designers + storywriters, pros/cons per area.
+function PanelReview({ panel }: { panel: PanelArea[] }) {
+  return (
+    <details style={{ border: "1px dashed var(--forest)", background: "var(--paper)", margin: "10px 0 4px" }}>
+      <summary style={{ cursor: "pointer", padding: "10px 12px", fontFamily: "var(--theme-body)", fontSize: 12, letterSpacing: ".1em", color: "var(--forest)", listStyle: "none" }}>
+        ▸ THE PANEL — game designers + storywriters weigh in ({panel.length} areas)
+      </summary>
+      <div style={{ padding: "2px 14px 14px" }}>
+        <p style={{ fontSize: 11.5, color: "var(--margin-ink)", fontStyle: "italic", margin: "0 0 12px" }}>
+          Advisory pros &amp; cons by area — the panel never ranks or picks; it surfaces, you decide.
+        </p>
+        {panel.map((a) => (
+          <div key={a.area} style={{ margin: "0 0 14px", borderLeft: "2px solid var(--ink-soft)", paddingLeft: 11 }}>
+            <div style={{ fontFamily: "var(--theme-display)", fontSize: 13, color: "var(--ink)", marginBottom: 3 }}>
+              {a.area}
+              <span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, letterSpacing: ".1em", color: "var(--margin-ink)", marginLeft: 7, textTransform: "uppercase" }}>
+                {a.persona} · {a.team}
+              </span>
+            </div>
+            {a.pros.map((p, i) => (
+              <p key={`p${i}`} style={{ fontSize: 13, lineHeight: 1.55, margin: "0 0 2px", color: "var(--ink)" }}>
+                <span style={{ color: "#5a8a3a", fontWeight: 700 }}>+ </span>{p}
+              </p>
+            ))}
+            {a.cons.map((c, i) => (
+              <p key={`c${i}`} style={{ fontSize: 13, lineHeight: 1.55, margin: "0 0 2px", color: "var(--ink-soft)" }}>
+                <span style={{ color: "var(--spot-red)", fontWeight: 700 }}>− </span>{c}
+              </p>
+            ))}
+          </div>
+        ))}
+      </div>
+    </details>
+  );
+}
 
 // Tiny purpose-built renderer (the site's dependency-free pattern): h1/h2, ---,
 // LABEL: paragraphs, "- " bullets, **bold** / *italic*. Unknown blocks fall back
@@ -121,7 +158,10 @@ export default function AuditionsPage() {
                     <summary style={{ cursor: "pointer", padding: "10px 12px", fontFamily: "var(--theme-display)", fontSize: 14, color: "var(--forest)", listStyle: "none" }}>
                       ▸ {e.id.replace(/-/g, " ").toUpperCase()}
                     </summary>
-                    <div style={{ padding: "2px 14px 14px" }}>{renderEntry(e.markdown)}</div>
+                    <div style={{ padding: "2px 14px 14px" }}>
+                      {renderEntry(e.markdown)}
+                      {e.panel && e.panel.length > 0 && <PanelReview panel={e.panel} />}
+                    </div>
                   </details>
                 ))}
                 {r.prompt && (

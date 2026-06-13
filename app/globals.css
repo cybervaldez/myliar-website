@@ -294,5 +294,39 @@ a:hover {
 .vm-verdict{animation-name:vm-flatin;animation-duration:.05s;font-weight:700;}
 
 @keyframes vm-popin{0%{opacity:0;transform:translateY(6px) scale(.8);}100%{opacity:1;transform:none;}}
-@media (prefers-reduced-motion: reduce){.vm-unit{animation-duration:.001s;}}
+
+/* ── EMOTION layer (voice-motion.md §emotion) — per-LINE mood motion that
+   overlays the character baseline. Each emotion is a distinct kinetic verb;
+   the per-word stagger turns it into a wave across the line. ──────────────── */
+.vm-emo-bold{font-weight:800;}
+.vm-emo-accent{color:var(--spot-red);}
+.em-say{animation:em-say .32s cubic-bezier(.34,1.56,.64,1) both;}
+@keyframes em-say{0%{opacity:0;transform:translateY(5px);}100%{opacity:1;transform:none;}}
+.em-shout{animation:em-shout .42s cubic-bezier(.2,1.8,.4,1) both;letter-spacing:.02em;}
+@keyframes em-shout{0%{opacity:0;transform:scale(1.6) translateY(3px);}50%{opacity:1;transform:scale(.92);}72%{transform:scale(1.1) translateY(-1px);}100%{opacity:1;transform:scale(1);}}
+.em-laugh{animation:em-laugh .62s ease both;}
+@keyframes em-laugh{0%{opacity:0;transform:translateY(6px) rotate(-6deg);}30%{opacity:1;transform:translateY(-5px) rotate(5deg);}55%{transform:translateY(2px) rotate(-3deg);}78%{transform:translateY(-2px) rotate(2deg);}100%{opacity:1;transform:none;}}
+.em-smile{animation:em-smile .55s cubic-bezier(.25,.9,.3,1) both;}
+@keyframes em-smile{0%{opacity:0;transform:translateY(8px) scale(.95);}100%{opacity:1;transform:translateY(0) scale(1);}}
+.em-whisper{animation:em-whisper .85s ease both;font-style:italic;}
+@keyframes em-whisper{0%{opacity:0;transform:translateY(-3px);}100%{opacity:.58;transform:none;}}
+.em-excited{animation:em-excited .44s cubic-bezier(.18,2,.4,1) both;}
+@keyframes em-excited{0%{opacity:0;transform:translateY(9px) scale(.68);}58%{opacity:1;transform:translateY(-4px) scale(1.14);}100%{opacity:1;transform:none;}}
+.em-nervous{animation:em-nervous .72s ease-out both;}
+@keyframes em-nervous{0%{opacity:0;transform:translateX(0);}12%{opacity:1;}18%{transform:translateX(-1.3px);}28%{transform:translateX(1.3px);}38%{transform:translateX(-1px);}48%{transform:translateX(.8px);}58%{transform:translateX(-.5px);}100%{opacity:1;transform:none;}}
+.em-sad{animation:em-sad 1s ease both;}
+@keyframes em-sad{0%{opacity:0;transform:translateY(-7px);}100%{opacity:.76;transform:translateY(2px);}}
+.em-angry{animation:em-angry .36s cubic-bezier(.36,.07,.19,.97) both;}
+@keyframes em-angry{0%{opacity:0;transform:translateX(0) scale(1.16);}16%{opacity:1;transform:translateX(-2.6px);}32%{transform:translateX(2.6px);}48%{transform:translateX(-2px);}64%{transform:translateX(1.4px);}100%{opacity:1;transform:none;}}
+.em-sigh{animation:em-sigh 1.1s ease both;}
+@keyframes em-sigh{0%{opacity:0;transform:translateY(4px);}32%{opacity:1;transform:translateY(-3px);}100%{opacity:.7;transform:translateY(0);}}
+.em-wry{animation:em-wry .52s ease both;}
+@keyframes em-wry{0%{opacity:0;transform:rotate(-8deg) translateY(3px);}60%{opacity:1;transform:rotate(3deg);}100%{opacity:1;transform:rotate(0);}}
+.em-deadpan{animation:em-deadpan .04s linear both;}
+@keyframes em-deadpan{0%{opacity:0;}100%{opacity:1;}}
+
+@media (prefers-reduced-motion: reduce){
+  .vm-unit{animation-duration:.001s;}
+  .em-say,.em-shout,.em-laugh,.em-smile,.em-whisper,.em-excited,.em-nervous,.em-sad,.em-angry,.em-sigh,.em-wry,.em-deadpan{animation-duration:.001s !important;}
+}
 
