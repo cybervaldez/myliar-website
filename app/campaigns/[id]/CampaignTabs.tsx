@@ -7,7 +7,6 @@
 // the right call — keeps the static page light). Generic across campaigns.
 
 import { useState, useEffect, useRef, type ReactNode } from "react";
-import { OwnerImageUpload } from "../../_components/OwnerImageUpload";
 
 export type ViewRow = { day: number; coachId: string; coach: string; color: string; type: string; tier: string; unspoken: boolean; sets: string[]; reads: string[]; events: number };
 export type ViewCoach = { id: string; name: string; color: string };
@@ -19,7 +18,7 @@ export type ViewAudit = {
   viralTotal: number; viralBar: number; thinDays: number[];
 };
 
-type Tab = "events" | "flow" | "sheet" | "kanban" | "metrics" | "audit" | "likenesses";
+type Tab = "events" | "flow" | "sheet" | "kanban" | "metrics" | "audit";
 const TABS: { id: Tab; label: string }[] = [
   { id: "events", label: "Events" },
   { id: "flow", label: "Flow ◆" },
@@ -27,7 +26,6 @@ const TABS: { id: Tab; label: string }[] = [
   { id: "kanban", label: "Kanban" },
   { id: "metrics", label: "Metrics" },
   { id: "audit", label: "Audit ✓" },
-  { id: "likenesses", label: "Likenesses" },
 ];
 
 function MermaidFlow({ web, arc, uid }: { web: string; arc: string; uid: string }) {
@@ -289,18 +287,6 @@ export function CampaignTabs({ events, influence, flowWeb, flowArc, rows, coache
                 ? <p className="text-[11px] text-spot-red mt-1.5 leading-[1.5]">⚠ screenshot-thin days (0 designed shareable beats): {audit.thinDays.map((d) => `D${d}`).join(", ")} — front-load a hook.</p>
                 : <p className="text-[11px] text-[#15803d] mt-1.5">Every day carries at least one designed shareable beat ✓</p>}
             </div>
-          </div>
-        )}
-
-        {tab === "likenesses" && (
-          <div>
-            <p className="text-[12px] text-margin-ink mb-3 leading-[1.5]">
-              The cast is <b>name-only on purpose</b> — the descriptions are the brief. Curate the
-              <b> interpretations</b> here: pick a {coaches[0]?.id === "sam" ? "character" : "coach"}, add an
-              optional caption (&ldquo;noir take&rdquo;, &ldquo;cozy&rdquo;), upload. They publish live as a
-              captioned gallery in the in-app character sheet — <i>interpretations, not canon</i>. Owner-only.
-            </p>
-            <OwnerImageUpload targets={coaches.map((c) => ({ id: c.id, label: c.name, mystery: false }))} />
           </div>
         )}
       </div>

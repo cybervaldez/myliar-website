@@ -7,7 +7,6 @@
 
 import { notFound } from "next/navigation";
 import { WikiPage, Infobox, SectionHead, SpoilerTag } from "../../_components/WikiChrome";
-import { FanArtSection } from "../../_components/FanArtSection";
 import { DiscussionThread } from "../../_components/DiscussionThread";
 import { anchors } from "../../../lib/codex";
 import {
@@ -79,7 +78,6 @@ export default async function CharacterPage({ params }: { params: Promise<{ id: 
           The rest of this page is sealed. When the game decides you&apos;ve earned it, the
           name fills in.
         </p>
-        <FanArtSection targetKind="character" targetId={m.id} mystery />
       </WikiPage>
     );
   }
@@ -161,8 +159,6 @@ export default async function CharacterPage({ params }: { params: Promise<{ id: 
           </SpoilerTag>
         </>
       )}
-
-      <FanArtSection targetKind="character" targetId={c.id} />
 
       <div className="mt-6 border-t border-margin-ink/30 pt-3">
         <DiscussionThread anchor={anchors.character(c.id)} anchorLabel={c.name} notesOnly />

@@ -1,4 +1,4 @@
-// The Codex data layer — community discussion + owner notes + fan art + flags.
+// The Codex data layer — community discussion + owner notes + flags (the DISCUSS path).
 // docs/design/companion-wiki.md. Talks to the codex_* backend (migrations 0014–0017)
 // through the Supabase JS client (../wiki/supabaseClient), so the session JWT rides
 // every write and RLS applies by auth.uid(). Reads are public; degrades to no-ops
@@ -60,7 +60,7 @@ export function slugify(s: string): string {
 // ── Anchor scheme — which entity a comment/flag hangs on ────────────────────
 // Product policy (companion-wiki §9): comments live on REFERENCE surfaces only
 // (item / trophy / realm / theme / story / manual). Character pages get owner-notes
-// + fan art, no open threads — enforced in the UI, not the schema.
+// only, no open threads — enforced in the UI, not the schema.
 export const anchors = {
   character: (id: string) => `character:${id}`,
   item: (nameOrId: string) => `item:${slugify(nameOrId)}`,
@@ -202,7 +202,7 @@ export const setNoteStatus = (id: string, status: NoteStatus) =>
 export const hideComment = (id: string) => ownerPatch(id, { hidden: true });
 
 // ── Flags — anyone may report any community content; owner reads the queue ───
-export type FlagTarget = "comment" | "fan_art" | "elseworld";
+export type FlagTarget = "comment" | "elseworld";
 export async function flagContent(targetKind: FlagTarget, targetId: string, reason?: string): Promise<boolean> {
   const c = supabase();
   if (!c) return false;
@@ -234,205 +234,5 @@ export async function dismissFlag(id: string): Promise<boolean> {
   const c = supabase();
   if (!c) return false;
   const { error } = await c.from("codex_flag").delete().eq("id", id);
-  return !error;
-}
-
-// ── Fan art ──────────────────────────────────────────────────────────────────
-export type FanArtKind = "character" | "item";
-export type FanArtTechnique = "hand_drawn" | "ai_assisted" | "mixed";
-export type FanArtStatus = "pending" | "approved" | "featured" | "removed";
-
-export type FanArtSource = "community" | "owner";
-
-export interface FanArt {
-  id: string;
-  created_at: string;
-  target_kind: FanArtKind;
-  target_id: string;
-  derived_from: "appearance" | "mysteryAppearance";
-  image_path: string;
-  artist_name: string;
-  artist_url: string | null;
-  technique: FanArtTechnique;
-  status: FanArtStatus;
-  is_spoiler: boolean;
-  unlock_if: string[];
-  flag_count: number;
-  upload_source: FanArtSource; // 'owner' = a curated interpretation; 'community' = fan art
-  caption: string | null; // owner interpretations — "noir take", "cozy version"
-}
-
-/** Public CDN URL for an approved piece (the bucket is public). */
-export function fanArtUrl(imagePath: string): string {
-  const c = supabase();
-  if (!c) return "";
-  return c.storage.from("fan-art").getPublicUrl(imagePath).data.publicUrl;
-}
-
-/** Approved + featured art for a target (featured first, newest next). The caller
- *  withholds spoiler rows (is_spoiler) until the player's unlock state clears. */
-export async function fetchFanArt(targetKind: FanArtKind, targetId: string): Promise<FanArt[]> {
-  const c = supabase();
-  if (!c) return [];
-  const { data, error } = await c
-    .from("codex_fan_art")
-    .select("*")
-    .eq("target_kind", targetKind)
-    .eq("target_id", targetId)
-    .in("status", ["approved", "featured"])
-    .order("status", { ascending: false }) // 'featured' > 'approved' alphabetically
-    .order("created_at", { ascending: false });
-  return error || !data ? [] : (data as FanArt[]);
-}
-
-export interface NewFanArt {
-  targetKind: FanArtKind;
-  targetId: string;
-  derivedFrom?: "appearance" | "mysteryAppearance";
-  file: File;
-  artistName: string;
-  artistUrl?: string;
-  technique: FanArtTechnique;
-  consent: boolean;
-  isSpoiler?: boolean;
-  unlockIf?: string[];
-}
-
-/** Upload an image to the fan-art bucket (own folder) + insert a pending row.
- *  Owner approval (a status flip) makes it public + in-app. */
-export async function submitFanArt(n: NewFanArt): Promise<{ ok: boolean; error?: string }> {
-  const c = supabase();
-  if (!c) return { ok: false, error: "Submissions aren't configured yet." };
-  if (!n.consent) return { ok: false, error: "Please confirm it's your work to share." };
-  if (!n.artistName.trim()) return { ok: false, error: "Add a name to credit." };
-  const uid = await ensureSession();
-  if (!uid) return { ok: false, error: "Couldn't start a session." };
-  const ext = (n.file.name.split(".").pop() || "png").toLowerCase().replace(/[^a-z0-9]/g, "");
-  const path = `${uid}/${crypto.randomUUID()}.${ext}`;
-  const up = await c.storage.from("fan-art").upload(path, n.file, { upsert: false });
-  if (up.error) return { ok: false, error: up.error.message };
-  const { error } = await c.from("codex_fan_art").insert({
-    target_kind: n.targetKind,
-    target_id: n.targetId,
-    derived_from: n.derivedFrom ?? "appearance",
-    image_path: path,
-    artist_name: n.artistName.trim().slice(0, 60),
-    artist_url: n.artistUrl?.trim().slice(0, 200) || null,
-    technique: n.technique,
-    consent: true,
-    status: "pending",
-    is_spoiler: Boolean(n.isSpoiler),
-    unlock_if: n.unlockIf ?? [],
-    submitted_by: uid,
-  });
-  if (error) {
-    await c.storage.from("fan-art").remove([path]); // roll back the orphaned upload
-    return { ok: false, error: error.message };
-  }
-  return { ok: true };
-}
-
-/** Character targets for the owner image-upload picker (across campaigns). */
-export function characterTargets(): { id: string; label: string; mystery: boolean }[] {
-  const out: { id: string; label: string; mystery: boolean }[] = [];
-  for (const c of parity.squad ?? []) out.push({ id: c.id, label: `${c.name} · Life Ops`, mystery: false });
-  for (const c of parity.wingman?.cast ?? []) out.push({ id: c.id, label: `${c.name} · The Wingman`, mystery: false });
-  for (const c of parity.mysteryRoster ?? []) out.push({ id: c.id, label: `${c.id} · ??? (mystery)`, mystery: true });
-  return out;
-}
-
-export interface NewOwnerImage {
-  targetKind: FanArtKind;
-  targetId: string;
-  derivedFrom?: "appearance" | "mysteryAppearance";
-  file: File;
-  caption?: string;
-  isSpoiler?: boolean;
-  unlockIf?: string[];
-}
-
-/** Owner: upload a curated IMAGE INTERPRETATION. Unlike submitFanArt, this
- *  publishes directly (status 'featured', upload_source 'owner') — no review
- *  queue — and carries an optional caption instead of an artist credit. The
- *  insert is RLS-gated by is_codex_owner(); a non-owner will be rejected. */
-export async function uploadOwnerImage(n: NewOwnerImage): Promise<{ ok: boolean; error?: string }> {
-  const c = supabase();
-  if (!c) return { ok: false, error: "Storage isn't configured yet." };
-  const uid = await currentUserId();
-  if (!uid) return { ok: false, error: "Sign in as the owner first." };
-  const ext = (n.file.name.split(".").pop() || "png").toLowerCase().replace(/[^a-z0-9]/g, "");
-  const path = `${uid}/${crypto.randomUUID()}.${ext}`;
-  const up = await c.storage.from("fan-art").upload(path, n.file, { upsert: false });
-  if (up.error) return { ok: false, error: up.error.message };
-  const caption = n.caption?.trim().slice(0, 80) || null;
-  const { error } = await c.from("codex_fan_art").insert({
-    target_kind: n.targetKind,
-    target_id: n.targetId,
-    derived_from: n.derivedFrom ?? "appearance",
-    image_path: path,
-    artist_name: caption ?? "interpretation", // non-null filler; the app shows the caption
-    technique: "mixed",
-    consent: true,
-    status: "featured",
-    upload_source: "owner",
-    caption,
-    is_spoiler: Boolean(n.isSpoiler),
-    unlock_if: n.unlockIf ?? [],
-    submitted_by: uid,
-    reviewed_by: uid,
-    reviewed_at: new Date().toISOString(),
-  });
-  if (error) {
-    await c.storage.from("fan-art").remove([path]); // roll back the orphaned upload
-    return { ok: false, error: error.message };
-  }
-  return { ok: true };
-}
-
-/** Owner: all curated interpretations for a target (for the management list). */
-export async function fetchOwnerImages(targetKind: FanArtKind, targetId: string): Promise<FanArt[]> {
-  const c = supabase();
-  if (!c) return [];
-  const { data, error } = await c
-    .from("codex_fan_art")
-    .select("*")
-    .eq("target_kind", targetKind)
-    .eq("target_id", targetId)
-    .eq("upload_source", "owner")
-    .order("created_at", { ascending: false });
-  return error || !data ? [] : (data as FanArt[]);
-}
-
-/** Owner: delete a curated interpretation (row + its stored image). */
-export async function deleteOwnerImage(id: string, imagePath: string): Promise<boolean> {
-  const c = supabase();
-  if (!c) return false;
-  const { error } = await c.from("codex_fan_art").delete().eq("id", id);
-  if (error) return false;
-  await c.storage.from("fan-art").remove([imagePath]);
-  return true;
-}
-
-/** Owner: the pending review queue. */
-export async function fetchFanArtQueue(): Promise<FanArt[]> {
-  const c = supabase();
-  if (!c) return [];
-  const { data, error } = await c
-    .from("codex_fan_art")
-    .select("*")
-    .eq("status", "pending")
-    .order("created_at", { ascending: true });
-  return error || !data ? [] : (data as FanArt[]);
-}
-
-/** Owner: approve / feature / remove a submission (RLS-gated by is_codex_owner). */
-export async function moderateFanArt(id: string, status: FanArtStatus, reason?: string): Promise<boolean> {
-  const c = supabase();
-  if (!c) return false;
-  const uid = await currentUserId();
-  const { error } = await c
-    .from("codex_fan_art")
-    .update({ status, reviewed_by: uid, reviewed_at: new Date().toISOString(), reject_reason: reason ?? null })
-    .eq("id", id);
   return !error;
 }
