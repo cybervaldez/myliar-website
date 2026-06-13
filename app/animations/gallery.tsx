@@ -18,6 +18,79 @@ function prefersReduced(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
+// Slug for a section anchor id — strips HTML entities + the ★NEW decoration.
+function slugify(title: string): string {
+  return (
+    title
+      .replace(/&[a-z]+;/g, " ")
+      .replace(/★.*$/, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 48) || "section"
+  );
+}
+
+// Jump-to-section nav — a floating button + panel with scroll-spy. Reads the
+// rendered sections from the DOM (no manual registry to keep in sync).
+function JumpNav() {
+  const [open, setOpen] = useState(false);
+  const [sections, setSections] = useState<{ id: string; label: string }[]>([]);
+  const [active, setActive] = useState("");
+  useEffect(() => {
+    const els = Array.from(document.querySelectorAll<HTMLElement>("section.adk-section[id]"));
+    setSections(
+      els.map((el) => ({
+        id: el.id,
+        label:
+          (el.querySelector(".adk-sec-title")?.textContent ?? el.id)
+            .replace(/\s*★.*$/, "")
+            .trim() || el.id,
+      })),
+    );
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const vis = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (vis[0]) setActive((vis[0].target as HTMLElement).id);
+      },
+      { rootMargin: "-12% 0px -75% 0px" },
+    );
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+  if (sections.length === 0) return null;
+  const activeLabel = sections.find((s) => s.id === active)?.label ?? "Jump to section";
+  return (
+    <>
+      <button className="adk-jump-fab" onClick={() => setOpen((o) => !o)} aria-label="Jump to section">
+        <span className="adk-jump-fab-i">{open ? "✕" : "☰"}</span>
+        <span className="adk-jump-fab-l">{activeLabel}</span>
+      </button>
+      {open && (
+        <>
+          <div className="adk-jump-scrim" onClick={() => setOpen(false)} />
+          <nav className="adk-jump-panel" aria-label="Sections">
+            <div className="adk-jump-hd">JUMP TO SECTION · {sections.length}</div>
+            {sections.map((s, i) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                className={`adk-jump-link${s.id === active ? " adk-jump-on" : ""}`}
+                onClick={() => setOpen(false)}
+              >
+                <span className="adk-jump-n">{i + 1}</span>
+                {s.label}
+              </a>
+            ))}
+          </nav>
+        </>
+      )}
+    </>
+  );
+}
+
 function Demo({ title, spec, flutter, children, stack }: {
   title: string; spec: string; flutter: string; children: React.ReactNode; stack?: boolean;
 }) {
@@ -40,7 +113,7 @@ function Section({ title, note, children, list }: {
   title: string; note?: string; children: React.ReactNode; list?: boolean;
 }) {
   return (
-    <section className="adk-section">
+    <section className="adk-section" id={slugify(title)}>
       <h2 className="adk-sec-title">{title}</h2>
       {note && <p className="adk-sec-note">{note}</p>}
       {/* list = full-width single column (the text-heavy dialogue-motion demos need
@@ -694,6 +767,7 @@ export default function AnimationGallery() {
     <CampaignCtx.Provider value={copy}>
       <style>{CSS}</style>
 
+      <JumpNav />
       <CampaignSkin active={campaign} onPick={setCampaign} />
 
       <Section
@@ -1676,6 +1750,20 @@ export const CSS = `
 .adk-choice-picked{border-color:var(--spot-red);background:var(--paper-shade);transform:translateX(3px);}
 .adk-choice-react{position:relative;margin-top:2px;border-left:3px solid var(--spot-red);background:var(--paper-shade);padding:8px 36px 8px 11px;font-size:13px;line-height:1.5;color:var(--ink);}
 .adk-choice-float{position:absolute;right:11px;top:7px;color:var(--spot-red);font-family:var(--theme-display);font-size:13px;letter-spacing:.04em;}
+
+/* Jump-to-section nav (floating button + panel, scroll-spy) */
+.adk-section{scroll-margin-top:16px;}
+.adk-jump-fab{position:fixed;right:16px;bottom:16px;z-index:50;display:flex;align-items:center;gap:8px;max-width:62vw;padding:9px 13px;border:2px solid var(--ink);border-radius:24px;background:var(--forest);color:var(--paper);font-family:var(--theme-body);font-size:12.5px;font-weight:700;cursor:pointer;box-shadow:3px 3px 0 rgba(0,0,0,.2);}
+.adk-jump-fab:hover{filter:brightness(1.08);}
+.adk-jump-fab-i{font-size:14px;line-height:1;}
+.adk-jump-fab-l{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:44vw;}
+.adk-jump-scrim{position:fixed;inset:0;z-index:49;background:rgba(0,0,0,.28);}
+.adk-jump-panel{position:fixed;right:16px;bottom:64px;z-index:51;width:min(340px,86vw);max-height:70vh;overflow:auto;border:2px solid var(--ink);background:var(--paper);box-shadow:4px 4px 0 rgba(0,0,0,.22);padding:6px 0 8px;}
+.adk-jump-hd{font-family:var(--theme-display);font-size:10px;letter-spacing:.16em;color:var(--spot-red);padding:8px 14px;border-bottom:1px solid var(--ink-soft);position:sticky;top:0;background:var(--paper);}
+.adk-jump-link{display:flex;gap:9px;align-items:baseline;padding:7px 14px;font-family:var(--theme-body);font-size:13px;color:var(--ink);text-decoration:none;line-height:1.35;}
+.adk-jump-link:hover{background:var(--paper-shade);}
+.adk-jump-on{background:var(--paper-shade);color:var(--forest);font-weight:700;box-shadow:inset 3px 0 0 var(--spot-red);}
+.adk-jump-n{flex:none;font-family:var(--theme-display);font-size:10px;color:var(--margin-ink);min-width:16px;}
 
 @media (prefers-reduced-motion: reduce){
   .adk-choice-opt,.adk-choice-react,

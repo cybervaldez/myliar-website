@@ -15,30 +15,30 @@
       {
        "anchor": "until your shoe found the gangway.",
        "polarity": "neg",
-       "author": "Riley",
-       "role": "casual gatekeeper",
-       "note": "The first human moment is him NOT looking at me — brisk-tender's whole risk is reading brisk-COLD on a first night. I wanted one degree of warmth before the instruction, or I might've bounced."
+       "author": "The one who can't start",
+       "role": "anxiety · the contained hour",
+       "note": "He doesn't look at me until I'm already on the ramp. On a bad night I read that as 'you don't count until you've committed' — and committing is the exact thing I can't do. I almost didn't step on."
       },
       {
        "anchor": "Rope's got somewhere to be.",
        "polarity": "pos",
-       "author": "Helena",
-       "role": "fantasy novelist",
-       "note": "Character delivered entirely through a working instruction — no adjectives, all hand. The brisk-tender thesis in a single line."
+       "author": "The one who rehearses",
+       "role": "social · the rail",
+       "note": "He told me what to do with my hands and didn't wait for an answer. Nothing to say back, nothing to get wrong. I could breathe — there was no line for me to rehearse."
       },
       {
        "anchor": "and was gone before you found a word.",
        "polarity": "pos",
-       "author": "Kai",
-       "role": "dating-sim",
-       "note": "Care as an action that demands no reply — the cup set down and walked away from. For a guarded reader, a kindness with nothing to perform back is exactly the way in."
+       "author": "The one who carries it all",
+       "role": "low self-worth · the manifest",
+       "note": "Someone did something for me and walked off before I could deflect it. I didn't have to earn the cup or thank it right. First time that's felt okay instead of like a debt."
       },
       {
        "anchor": "Done's done when the bell says. Not before.",
        "polarity": "pos",
-       "author": "Sara",
-       "role": "VN",
-       "note": "The whole gift on a plate, in the world's own voice — the clock decides, not you. That's the second-session promise landing on page one."
+       "author": "The one who can't call it done",
+       "role": "ADHD · the watch",
+       "note": "The BELL decides, not me. I never get to feel finished — and here the clock takes that off my hands. I exhaled reading it."
       }
      ]
     },
@@ -50,30 +50,30 @@
       {
        "anchor": "It has always been waiting.",
        "polarity": "pos",
-       "author": "Diego",
-       "role": "Zelda",
-       "note": "The world establishes patience before you do anything — a place already holding the door open. Strong silent-world craft."
+       "author": "The one who can't start",
+       "role": "anxiety · the contained hour",
+       "note": "Nothing rushed me. The boat was just there, already patient — for once I wasn't late to something, and no one was watching me arrive."
       },
       {
        "anchor": "spilling a gentle, amber light",
        "polarity": "pos",
-       "author": "Helena",
-       "role": "fantasy novelist",
-       "note": "Sensory over sentiment — the warmth is in the light, never a stated feeling. The prose trusts the reader to feel it."
+       "author": "The one who rehearses",
+       "role": "social · the rail",
+       "note": "Soft light, no one's eyes on me. I could be here without being seen — that's the only way I ever get anywhere new."
       },
       {
        "anchor": "The choice is no longer yours.",
        "polarity": "neg",
-       "author": "Riley",
-       "role": "casual gatekeeper",
-       "note": "For the reader this is FOR, 'the choice is no longer yours' can read as losing control, not the relief of a decision made gently for you. One word off the intended feeling — watch it."
+       "author": "The one who can't start",
+       "role": "anxiety · the contained hour",
+       "note": "'The choice is no longer yours' froze me. I know it's meant as relief — the decision made for me — but my first read was LOSING control, and that's the exact feeling I came here to put down."
       },
       {
        "anchor": "And the crossing begins.",
        "polarity": "neg",
-       "author": "Marcus",
-       "role": "D&D DM",
-       "note": "Gorgeous, but ~280 words and I only WITNESS — I never DO one small thing. Give the player a single act (take the rail, a nod returned) or the hush tips into inert."
+       "author": "The one who can't call it done",
+       "role": "ADHD · the watch",
+       "note": "It's beautiful but nothing happened and I drifted right off the page. I needed one small thing to actually DO, or my attention's already gone before the crossing is."
       }
      ]
     },
@@ -85,30 +85,30 @@
       {
        "anchor": "Like most things.",
        "polarity": "pos",
-       "author": "Sara",
-       "role": "VN",
-       "note": "The joke IS the care — a gap-warning that's secretly about everything. It made me smile in the first ten seconds; that's the hook."
+       "author": "The one who rehearses",
+       "role": "social · the rail",
+       "note": "He made a small joke instead of asking me anything. The pressure just wasn't there — I smiled before I could stop myself, and I didn't have to perform a thing."
       },
       {
        "anchor": "Each light felt like a small, final judgment.",
        "polarity": "neg",
-       "author": "Helena",
-       "role": "fantasy novelist",
-       "note": "This names the feeling outright — and the wry tone everywhere else trusts the reader more. Let the lamps just be lamps; the warmth lands harder left unstated."
+       "author": "The one who carries it all",
+       "role": "low self-worth · the manifest",
+       "note": "'A small, final judgment' — oof. I already feel judged just walking in; the line said my quiet part out loud and made it heavier, before any of the warmth could reach me."
       },
       {
        "anchor": "There now,",
        "polarity": "pos",
-       "author": "Kai",
-       "role": "dating-sim",
-       "note": "Deadpan affection — 'there now' and back to the rope, the matter settled. The warmth under the wry is real and asks nothing back."
+       "author": "The one who can't start",
+       "role": "anxiety · the contained hour",
+       "note": "'There now' — like it was already handled, no fuss. He didn't make me explain why I came. That's the whole reason I could come at all."
       },
       {
        "anchor": "a bunk with no name on its brass plate.",
        "polarity": "pos",
-       "author": "Sara",
-       "role": "VN",
-       "note": "Ends on the open seat — the fifth bowl, the nameless bunk. The promise the whole campaign works toward, planted on the very first crossing."
+       "author": "The one who carries it all",
+       "role": "low self-worth · the manifest",
+       "note": "A seat kept, a bowl filled, a bunk with no name — room held for someone, maybe me, before I'd done a single thing to earn it. I didn't know I needed to see that."
       }
      ]
     }

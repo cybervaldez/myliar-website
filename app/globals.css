@@ -377,7 +377,8 @@ a:hover {
 .vn-chip-on{background:var(--forest);color:var(--paper);border-color:var(--ink);}  /* playing now */
 .vn-chip-more{border-style:dashed;color:var(--margin-ink);}
 
-/* WRITERS' ROOM span-anchored notes on auditions — a numbered inline badge after a
+/* AUDIENCE span-anchored notes on auditions (the concept's WHO-THIS-IS-FOR personas
+   react; wr-* = the audience-notes hooks) — a numbered inline badge after a
    span (green = positive, red = negative) + a notes list below. */
 .wr-badge{display:inline-flex;align-items:center;justify-content:center;min-width:15px;height:15px;padding:0 3px;margin:0 1px 0 2px;font-family:var(--theme-body);font-size:9.5px;font-weight:700;line-height:1;vertical-align:super;border-radius:4px;border:1px solid rgba(0,0,0,.28);cursor:pointer;color:#fff;transform:translateY(-2px);}
 .wr-badge-pos{background:#3f8f3f;}

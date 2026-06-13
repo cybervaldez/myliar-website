@@ -34,8 +34,9 @@ function em(s: string) {
     : p);
 }
 
-// ── WRITERS' ROOM span-anchored notes — a numbered badge after a verbatim anchor,
-// green (positive) / red (negative); each carries a writers-room panelist's note.
+// ── AUDIENCE span-anchored notes — a numbered badge after a verbatim anchor, green
+// (lands for me) / red (pushes me away); each carries a TARGET-AUDIENCE persona's
+// reaction (the concept's WHO-THIS-IS-FOR reads the pilot, since the reader judges tone).
 type NoteCtx = { notes: NoteSpan[]; consumed: Set<number>; onBadge: (n: number) => void } | null;
 
 function NoteBadge({ note, onClick }: { note: NoteSpan; onClick: () => void }) {
@@ -88,7 +89,7 @@ function splitEntry(md: string): { title: string; notes: string; work: string } 
 }
 
 // ── block renderer (theme-body everywhere; VOICE blocks animate) ────────────────
-// ctx (optional) inserts WRITERS' ROOM note badges into prose + headings.
+// ctx (optional) inserts AUDIENCE note badges into prose + headings.
 function renderBlocks(md: string, ctx: NoteCtx = null) {
   const blocks = md.split(/\n\n+/).map((b) => b.trim()).filter(Boolean);
   const out: React.ReactNode[] = [];
@@ -146,7 +147,7 @@ function renderBlocks(md: string, ctx: NoteCtx = null) {
   return out;
 }
 
-// AnnotatedWork — renders the pilot WORK with inline writers-room note badges and
+// AnnotatedWork — renders the pilot WORK with inline AUDIENCE note badges and
 // a numbered notes list below it (badge → highlights + scrolls to its note).
 function AnnotatedWork({ work, notes }: { work: string; notes: NoteSpan[] | null }) {
   const [selected, setSelected] = useState<number | null>(null);
@@ -166,7 +167,7 @@ function AnnotatedWork({ work, notes }: { work: string; notes: NoteSpan[] | null
       {renderBlocks(work, ctx)}
       {numbered.length > 0 && (
         <div className="wr-notes">
-          <div className="wr-notes-hd">▸ WRITERS&apos; ROOM — {numbered.length} notes (tap a ¹²³ badge)</div>
+          <div className="wr-notes-hd">▸ THE AUDIENCE — {numbered.length} reactions (who this is for · tap a badge)</div>
           {numbered.map((nt) => (
             <div key={nt.n} id={`wr-note-${nt.n}`}
               className={`wr-note ${nt.polarity === "neg" ? "wr-note-neg" : "wr-note-pos"} ${selected === nt.n ? "wr-note-on" : ""}`}
