@@ -211,15 +211,17 @@ export function EmotionGallery() {
       <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
         <button onClick={() => setK((x) => x + 1)} style={{ fontSize: 11, cursor: "pointer", border: "1px solid var(--ink-soft)", background: "var(--paper)", padding: "3px 10px", color: "var(--ink)" }}>▶ replay all</button>
       </div>
-      <div key={k} style={{ display: "grid", gap: 10 }}>
+      {/* a LIST (label above, text full-width) — the dramatic lines need the room */}
+      <div key={k} style={{ display: "grid", gap: 12 }}>
         {EMO_KEYS.map((em) => (
-          <div key={em} style={{ display: "grid", gridTemplateColumns: "108px 1fr", alignItems: "baseline", gap: 10, borderBottom: "1px solid var(--ink-soft)", paddingBottom: 7 }}>
-            <span style={{ fontFamily: "var(--theme-body)", fontWeight: 700, fontSize: 11, letterSpacing: ".08em", color: "var(--spot-red)" }}>
+          <div key={em} style={{ borderBottom: "1px solid var(--ink-soft)", paddingBottom: 9 }}>
+            <div style={{ fontFamily: "var(--theme-body)", fontWeight: 700, fontSize: 10.5, letterSpacing: ".1em", color: "var(--spot-red)", marginBottom: 3 }}>
               {EMO[em].glyph} {EMO[em].label.toUpperCase()}
-            </span>
-            <span style={{ fontSize: 17, lineHeight: 1.8, color: "var(--ink)" }}>
+              <span style={{ fontWeight: 400, fontSize: 10, color: "var(--margin-ink)", letterSpacing: 0, marginLeft: 8 }}>{EMO[em].note}</span>
+            </div>
+            <div style={{ fontSize: 18, lineHeight: 1.85, color: "var(--ink)" }}>
               <EmoLine text={EMO[em].sample} emotion={em} />
-            </span>
+            </div>
           </div>
         ))}
       </div>

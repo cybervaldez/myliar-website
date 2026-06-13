@@ -35,14 +35,16 @@ function Demo({ title, spec, flutter, children }: {
   );
 }
 
-function Section({ title, note, children }: {
-  title: string; note?: string; children: React.ReactNode;
+function Section({ title, note, children, list }: {
+  title: string; note?: string; children: React.ReactNode; list?: boolean;
 }) {
   return (
     <section className="adk-section">
       <h2 className="adk-sec-title">{title}</h2>
       {note && <p className="adk-sec-note">{note}</p>}
-      <div className="adk-grid">{children}</div>
+      {/* list = full-width single column (the text-heavy dialogue-motion demos need
+          the horizontal room); default = the auto-fill card grid. */}
+      <div className={list ? "adk-list" : "adk-grid"}>{children}</div>
     </section>
   );
 }
@@ -70,48 +72,9 @@ export function Typewriter({ text }: { text: string }) {
   );
 }
 
-// Vibrant — dialog emotion drives the motion. The line carries an emphasis
-// tag (say / shout / whisper); the theme maps each to a different reveal.
-
-// SAY (normal): words pop in one at a time, properly spaced. CSS stagger via
-// per-word animation-delay, so a Demo replay (remount) restarts it cleanly.
-function WordPop({ text }: { text: string }) {
-  const words = text.split(" ");
-  return (
-    <span className="adk-vibrant">
-      {words.map((w, i) => (
-        <span key={i} className="adk-popword" style={{ animationDelay: `${i * 0.08}s` }}>{w}</span>
-      ))}
-    </span>
-  );
-}
-
-// SHOUT: letter-by-letter — each glyph jitters continuously (a character
-// raising their voice). Spaces preserved so words don't stick.
-function ShoutText({ text }: { text: string }) {
-  const chars = [...text];
-  return (
-    <span className="adk-shout">
-      {chars.map((ch, i) =>
-        ch === " "
-          ? <span key={i} className="adk-sp">&nbsp;</span>
-          : <span key={i} className="adk-shoutchar" style={{ animationDelay: `${(i % 6) * 0.04}s` }}>{ch}</span>
-      )}
-    </span>
-  );
-}
-
-// WHISPER: words drift in softly, slow + faded + italic (an aside).
-function Whisper({ text }: { text: string }) {
-  const words = text.split(" ");
-  return (
-    <span className="adk-whisper">
-      {words.map((w, i) => (
-        <span key={i} className="adk-whisperword" style={{ animationDelay: `${i * 0.11}s` }}>{w}</span>
-      ))}
-    </span>
-  );
-}
+// (The old Vibrant SAY/SHOUT/WHISPER reveal components were folded into the
+// EMOTION layer — voice-motion.tsx EMO/EmoLine — during the 2026-06-13 dialogue-
+// motion consolidation. Their richer successors live in the merged section's L3.)
 
 // ── Character intro — name reveal + earned-title selection ──────────────────
 // REVEALS the locked name + the clearest title, then the player picks how to be
@@ -960,12 +923,13 @@ export default function AnimationGallery() {
       </Section>
 
       <Section
-        title="Text &amp; narration — themed"
-        note="Text reveal is part of a theme's personality, and a line's EMPHASIS (say / shout / whisper) drives it. The theme maps emphasis its own way: DOS types everything; Parchment & Ink stays still and leans on bold/italic; Vibrant Realm animates by emotion."
+        list
+        title="DIALOGUE MOTION — theme · character · emotion  ★NEW"
+        note="One system, three stacked layers (docs/design/voice-motion.md): LAYER 1 — the THEME owns the reveal family (how text appears at all: DOS instant, Parchment typographic, Vibrant animated). LAYER 2 — VOICE-MOTION owns the CHARACTER (pace, rhythm, settle — the voice, kinetic, never sound; locked-sheet canon, auditioned at the character audits). LAYER 3 — the EMOTION owns the line's MOOD (VN / Phoenix-Wright energy: the animation IS the feeling). They compose: theme → character → emotion. (Consolidated 2026-06-13 — the old 'Text & narration' demos folded in; the per-emotion examples now live in Layer 3.)"
       >
         <Demo
-          title="DOS-era — monospace, instant + ASCII"
-          spec="NO motion — a terminal prints at once. Monospace; personality comes from ASCII art (frames/banners), not animation"
+          title="L1 · the THEME reveal family — DOS (instant + ASCII)"
+          spec="NO motion — a terminal prints at once. Monospace; personality comes from ASCII art (frames/banners), not animation. The character preset survives only as punctuation-holds; emotion collapses to instant"
           flutter="ThemePack.textReveal = instant + monospace; lean on ASCII art blocks for character"
         >
           <div className="adk-textstage adk-dos-stage">
@@ -977,9 +941,9 @@ export default function AnimationGallery() {
         </Demo>
 
         <Demo
-          title="Parchment &amp; Ink — instant, bold/italic"
-          spec="NO motion — serious world. Emphasis is typographic: shout → bold, aside → italic. Appears at once"
-          flutter="ThemePack.textReveal = instant → plain Text; emphasis maps to FontWeight.bold / FontStyle.italic"
+          title="L1 · the THEME reveal family — Parchment (typographic) vs Vibrant (animated)"
+          spec="Parchment & Ink stays STILL — emphasis is typographic (shout → bold, aside → italic), appears at once. Vibrant Realm ANIMATES — and that animation is the character preset (Layer 2) carrying the emotion (Layer 3) below"
+          flutter="Parchment: instant Text + FontWeight/FontStyle · Vibrant: the per-unit motion engine (Layers 2-3)"
         >
           <div className="adk-textstage">
             <span className="adk-ink-text">She didn’t raise her voice. <b>Sit down.</b> <i>(she’d only say it once.)</i></span>
@@ -987,36 +951,7 @@ export default function AnimationGallery() {
         </Demo>
 
         <Demo
-          title="Vibrant Realm — SAY (word pop)"
-          spec="words pop in one at a time, spaced (no sticking); bouncy easeOutBack ~340ms, ~80ms stagger"
-          flutter="emphasis=say → per-word AnimationController, pop-in (translateY+scale)"
-        >
-          <div className="adk-textstage"><WordPop text="Same drill. Show me what you’ve got." /></div>
-        </Demo>
-
-        <Demo
-          title="Vibrant Realm — SHOUT (letter shake)"
-          spec="letter-by-letter — each glyph jitters continuously; bold + spot-red. A character raising their voice"
-          flutter="emphasis=shout → per-glyph shake (continuous), bold weight, accent color"
-        >
-          <div className="adk-textstage"><ShoutText text="DROP AND GIVE ME TWENTY!" /></div>
-        </Demo>
-
-        <Demo
-          title="Vibrant Realm — WHISPER (soft drift)"
-          spec="words drift in slow + faded + italic; an aside under the breath"
-          flutter="emphasis=whisper → per-word slow fade, italic, ink-soft color"
-        >
-          <div className="adk-textstage"><Whisper text="(you actually did it.)" /></div>
-        </Demo>
-      </Section>
-
-      <Section
-        title="VOICE-MOTION — per-character dialogue personalities  ★NEW"
-        note="The THIRD text-motion layer (docs/design/voice-motion.md): the THEME owns the reveal family (above) · the EMOTION TAG owns the line (say/shout/whisper) · VOICE-MOTION owns the CHARACTER — pace, rhythm, emphasis, settle: the voice, kinetic (never sound). The preset is locked-sheet canon: AUDITIONED at the character audits (each audit names its preset + voice lines), ratified at canon-lock, rendered wherever the character speaks. Composes UNDER the theme (Rule C): DOS collapses to holds-only, Parchment damps continuous motion, reduced-motion collapses to instant. Emphasis stays sparse (≤1-2 words per line — juice celebrates, never decorates)."
-      >
-        <Demo
-          title="Life Ops — the squad"
+          title="L2 · VOICE-MOTION — Life Ops, the squad"
           spec="DRILL word·70ms even + caps-snap (counted reps, snap-still) · LEDGER word·125ms + pen-lift holds at [.—], numbers weight-settle · SERVICE phrase·260ms drift (plated in portions) · NARRATOR sentence·620ms drift (page-lines)"
           flutter="VoiceMotionSpec{unit, paceMs, rhythm, entry, emphasis, settle} on the locked sheet; renderer splits by unit + schedules per-unit AnimatedOpacity/Transform; holds = scheduler delays at [.!?—]"
         >
@@ -1027,7 +962,7 @@ export default function AnimationGallery() {
         </Demo>
 
         <Demo
-          title="The Wingman — the corner"
+          title="L2 · VOICE-MOTION — The Wingman, the corner"
           spec="COUNT-IN front-burst (first 4 words at pace/3, then relaxes — the first ten seconds are his) · RED PEN strike-revise mid-line (the draft visible) · STRAIGHT READ flat-even, then the verdict lands WHOLE after a hold · ANCHOR damped phrase drift — never jitters, even on a shout"
           flutter="burst = first-N units at pace/3 · strike = struck style keyframe + replacement unit · verdict = full-line instant after hold · damped = drift with zero overshoot"
         >
@@ -1038,7 +973,7 @@ export default function AnimationGallery() {
         </Demo>
 
         <Demo
-          title="The Long Hunt — the lodge"
+          title="L2 · VOICE-MOTION — The Long Hunt, the lodge"
           spec="ROPE pair·95ms with LONG holds (3.2× at clause ends) — terse lengths of rope, paid out and tied off. The WARMTH DIAL: high REL softens the holds, never the length"
           flutter="pair unit = words two at a time; holds multiplier on the sheet; REL warmth maps holds × (1 − warmth)"
         >
@@ -1046,7 +981,7 @@ export default function AnimationGallery() {
         </Demo>
 
         <Demo
-          title="The Night Market — the row"
+          title="L2 · VOICE-MOTION — The Night Market, the row"
           spec="KINDLE word·230ms IGNITE (each word brightens in like a wick taking) · CHALK word·150ms STAMP (presses in, corrects a hair upward — the re-chalked price) · TWO CUPS paired phrases (the second arrives just after the first) · FULL PRICE whole phrases, flat, no ornament"
           flutter="ignite = brightness/saturate keyframe · stamp = scale 1.25→.96→1 + translateY −1px · paired = alternating 70ms/pace · flatline = opacity step per phrase"
         >
@@ -1057,7 +992,7 @@ export default function AnimationGallery() {
         </Demo>
 
         <Demo
-          title="The Last Ferry — the crew (pilot-A canon: brisk-tender)"
+          title="L2 · VOICE-MOTION — The Last Ferry crew (pilot-A: brisk-tender)"
           spec="COIL pair·165ms work-rhythm (loop over loop, warm settle) · SURFACE sentence·950ms fades up from dark, the way the far shore arrives · LADLE phrase·210ms percussive TICK (the ladle on the pot — punctuation, not anger) · RULED INK word·130ms pen-lift holds, logged things weight-settle"
           flutter="surface = opacity + blur keyframe · tick = translateY dip .26s · ruled ink = the LEDGER family with weights on cargo nouns"
         >
@@ -1066,14 +1001,9 @@ export default function AnimationGallery() {
           <VoiceRow who="The Cook" preset="LADLE" text="Stew’s on. Five bowls. Eat it or don’t." />
           <VoiceRow who="The Keeper" preset="RULED INK" text="One passenger. Three crates. Logged at true weight — all of it." />
         </Demo>
-      </Section>
 
-      <Section
-        title="EMOTION RANGE — text that carries the feeling  ★NEW"
-        note="The voice-motion LAYER that makes dialogue ACT (voice-motion.md §emotion) — VN / Phoenix-Wright energy, where the text animation IS the emotion. Three modes: per-WORD (smile rises, sad sinks, wry smirks), per-LETTER for the big ones — shock punches every letter in huge and shakes it (the 'WHAAAAT?!' gasp), angry judders, excited springs up letter by letter, laugh bobs in a wave, nervous trembles — and whole-LINE jolt (declare = the 'OBJECTION!' desk-slam). A line carries an emotion tag (`[shock]`, `[declare]`…); untagged keeps the character's own preset entry. Reduced-motion → instant."
-      >
         <Demo
-          title="Every emotion, on a line that fits it"
+          title="L3 · EMOTION — every emotion, on a line that fits it"
           spec="word-mode = per-word keyframe; letter-mode (eml-*) = per-CHARACTER stagger (the shakes/waves — shock scales 2.4× + rotates ±11°, angry ±5px, excited springs from .45→1.25 scale); line-mode (emc-declare) = the whole line jolts ±8px while words pop. Hit replay-all"
           flutter="VoiceMotionSpec gains `emotion` + `mode`; the renderer splits by letter for the dramatic ones, shakes the container for declare, else per word — preset unit/pace stays the beat"
         >
@@ -1081,7 +1011,7 @@ export default function AnimationGallery() {
         </Demo>
 
         <Demo
-          title="The big VN beats — drama in three lines"
+          title="L3 · EMOTION — the big VN beats (WHAAAT?! / OBJECTION! / you did WHAT)"
           spec="shock = per-letter punch-and-shake · declare = the line desk-slams · angry = per-letter judder. These are the 'WHAAAT?! / OBJECTION! / you did WHAT' moments — the text doing the acting"
           flutter="same engine; these read as letter-mode + line-mode at full amplitude"
         >
@@ -1091,7 +1021,7 @@ export default function AnimationGallery() {
         </Demo>
 
         <Demo
-          title="Emotion × character — the crew, each in a different mood"
+          title="L3 · EMOTION × character — the crew, each in a different mood"
           spec="emotion drives the motion; the character preset still sets the rhythm. Hana SHOUTS, Nico is EXCITED (letters spring), Sloane reads WRY, the newcomer is NERVOUS (trembling), Roan SIGHS, Edda DEADPANS"
           flutter="emotion overlays the preset: same `[emotion]` tag, different base rhythm per character"
         >
@@ -1386,6 +1316,7 @@ export const CSS = `
   border-bottom:2px solid var(--ink);padding-bottom:6px;margin:0 0 4px;}
 .adk-sec-note{font-size:12px;color:var(--ink-soft);margin:0 0 14px;max-width:60ch;line-height:1.5;}
 .adk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;}
+.adk-list{display:grid;grid-template-columns:1fr;gap:18px;}
 .adk-card{border:2px solid var(--ink);background:var(--paper-shade);}
 .adk-head{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1.5px solid var(--ink);}
 .adk-head b{font-family:var(--theme-display);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);}
