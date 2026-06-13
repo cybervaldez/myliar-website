@@ -140,6 +140,11 @@ function renderBlocks(md: string, ctx: NoteCtx = null) {
           ))}
         </div>
       );
+    } else if (b.length > 2 && b.startsWith("*") && b.endsWith("*") && !b.slice(1, -1).includes("*")) {
+      // a fully-italic standalone paragraph = a NARRATOR beat (the log / aside voice,
+      // narrator.md) — styled distinct from the prose + the "you" perception; badges
+      // still insert (the * is stripped, so inlineEm runs on plain text).
+      out.push(<p key={k} className="aud-narr">{inlineEm(b.slice(1, -1), ctx)}</p>);
     } else {
       out.push(<p key={k} style={{ fontSize: 15, lineHeight: 1.75, margin: "0 0 13px", color: "var(--ink)" }}>{inlineEm(b, ctx)}</p>);
     }

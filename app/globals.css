@@ -395,3 +395,8 @@ a:hover {
 .wr-note-neg .wr-note-n{background:#c0392b;}
 .wr-note-tx{flex:1 1 auto;}
 
+/* NARRATOR beat on auditions — a fully-italic standalone paragraph (the log/aside voice,
+   narrator.md), set off from the prose + the "you" perception. */
+.aud-narr{font-style:italic;color:var(--margin-ink);border-left:2px solid var(--ink-soft);padding-left:13px;margin:2px 0 14px;font-size:14.5px;line-height:1.75;}
+.aud-narr .wr-badge{font-style:normal;}
+
