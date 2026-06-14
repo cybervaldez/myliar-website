@@ -18,6 +18,12 @@ const LEG_EXPERTS = Object.keys(D.legs || {});
 const LEG_LABEL: Record<string, string> = { destination: "destination", struggle: "struggle", cast: "cast", motif_title: "motif/title", mechanics: "mechanics" };
 const getLeg = (e: string, i: number) => (D.legs?.[e] || []).find((r) => r.index === i);
 const legColor = (v: string) => (v === "load-bearing" ? "var(--forest)" : v === "hairline" ? "#c08a2e" : "var(--spot-red)");
+// the SCORING SYSTEM (§8.17): panel mean + AGREEMENT (the spread), demand ⟂ supply, traceable
+const spread = (i: number, key: "relate" | "feelsSafe") => { const vs = TARGET.map((p) => get(p, i)?.[key] ?? 0); return Math.max(...vs) - Math.min(...vs); };
+const agree = (s: number) => (s <= 1 ? "agreed" : s <= 2 ? "mixed" : "split");
+const agreeCol = (s: number) => (s <= 1 ? "var(--forest)" : s <= 2 ? "#c08a2e" : "var(--spot-red)");
+const LEGV: Record<string, number> = { "load-bearing": 2, hairline: 1, hollow: 0 };
+const legMean = (i: number) => { const vs = LEG_EXPERTS.map((e) => LEGV[getLeg(e, i)?.canBuild ?? "hollow"]); return vs.length ? vs.reduce((a, b) => a + b, 0) / vs.length : 0; };
 
 const ink = "var(--ink)", soft = "var(--ink-soft)", paper = "var(--paper)", shade = "var(--paper-shade)", forest = "var(--forest)", margin = "var(--margin-ink)", red = "var(--spot-red)";
 
@@ -37,22 +43,33 @@ export default function AuditionsPage() {
       </div>
 
       <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".12em", color: forest, marginBottom: 4 }}>① THE CONCEPT AUDITION — Phase 0c</div>
-      <p style={{ fontSize: 12.5, color: soft, margin: "0 0 16px" }}>Three candidates, read <b>both ways</b> (§8.10): the <b>AUDIENCE</b> (does it resonate? — demand) <i>and</i> the <b>LOOK-AHEAD experts</b> from every succeeding step (could they build on it? — supply). The legs are <b>forward NOTES</b> — suggestions the upcoming steps refer back to, <i>never a veto</i>; the real discovery happens when each step is actually built.</p>
+      <p style={{ fontSize: 12.5, color: soft, margin: "0 0 12px" }}>Three candidates, read <b>both ways</b> (§8.10): the <b>AUDIENCE</b> (does it resonate? — demand) <i>and</i> the <b>LOOK-AHEAD experts</b> from every succeeding step (could they build on it? — supply). The legs are <b>forward NOTES</b> — suggestions the upcoming steps refer back to, <i>never a veto</i>; the real discovery happens when each step is actually built.</p>
+      <div style={{ border: `1px dashed var(--ink-soft)`, background: paper, padding: "9px 12px", fontSize: 11, color: soft, lineHeight: 1.55, margin: "0 0 16px" }}>
+        <b style={{ color: forest }}>HOW IT&apos;S SCORED (§8.17 — not &ldquo;trust me bro&rdquo;)</b> — anchored rubric (relate/safe <b>0–5</b>: 0 not-for-me/ambush · 4 safe-and-for-me · 5 deeply). A <b>panel</b> of 4 audience reviewers + the legs, each with a <b>why</b>. The score is the panel <b>mean</b>; <b>agreement</b> = the spread (<span style={{ color: forest }}>agreed</span> ≤1 · <span style={{ color: "#c08a2e" }}>mixed</span> ≤2 · <span style={{ color: red }}>split</span> &gt;2). Demand (audience) and supply (legs) stay separate. <b>STRONG</b> = relate ≥4 · safe ≥4 · agreement ≥ mixed · repel held · legs buildable. Every number traces to the reviewers below.
+      </div>
 
       {ranked.map(({ c, i }) => {
         const won = c.id === winnerId;
         const thr = get("thrill_seeker", i);
         return (
           <section key={c.id} style={{ border: `2px solid ${won ? forest : "var(--ink-soft)"}`, background: paper, marginBottom: 16, padding: "14px 16px", position: "relative" }}>
-            {won && <span style={{ position: "absolute", top: -10, left: 14, background: forest, color: paper, fontSize: 10, fontWeight: 700, letterSpacing: ".1em", padding: "2px 8px", fontFamily: "var(--theme-body)" }}>★ THE PICK</span>}
+            {won && <span style={{ position: "absolute", top: -10, left: 14, background: forest, color: paper, fontSize: 10, fontWeight: 700, letterSpacing: ".1em", padding: "2px 8px", fontFamily: "var(--theme-body)" }}>★ TOP DEMAND</span>}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
               <div>
                 <div style={{ fontFamily: "var(--theme-body)", fontSize: 11.5, fontWeight: 700, letterSpacing: ".06em", color: soft }}>{c.t1}</div>
                 <div style={{ fontFamily: "var(--theme-display)", fontSize: 22, color: won ? forest : ink }}>{c.t2}</div>
               </div>
-              <div style={{ textAlign: "right", fontSize: 12 }}>
-                <div>relate <b style={{ color: ink }}>{avg(i, "relate")}</b> · safe <b style={{ color: ink }}>{avg(i, "feelsSafe")}</b></div>
-                <div style={{ fontSize: 11, color: margin }}>play {TARGET.filter((p) => get(p, i)?.wouldPlay).length}/4 · thrill repel {thr?.wouldPlay ? <span style={{ color: red }}>tapped ⚠</span> : <span style={{ color: forest }}>held ✓</span>}</div>
+              <div style={{ textAlign: "right", fontSize: 11.5, minWidth: 158 }}>
+                {(() => {
+                  const sr = spread(i, "relate"), ss = spread(i, "feelsSafe"), lm = legMean(i), repelHeld = !thr?.wouldPlay;
+                  const strong = +avg(i, "relate") >= 4 && +avg(i, "feelsSafe") >= 4 && Math.max(sr, ss) <= 2 && repelHeld && lm >= 1;
+                  return (<>
+                    <div>relate <b style={{ color: ink }}>{avg(i, "relate")}</b> <span style={{ color: agreeCol(sr), fontSize: 10 }}>· {agree(sr)}</span></div>
+                    <div>safe <b style={{ color: ink }}>{avg(i, "feelsSafe")}</b> <span style={{ color: agreeCol(ss), fontSize: 10 }}>· {agree(ss)}</span></div>
+                    <div style={{ fontSize: 10.5, color: margin }}>legs <b style={{ color: ink }}>{lm.toFixed(1)}</b>/2 · repel {repelHeld ? <span style={{ color: forest }}>held</span> : <span style={{ color: red }}>tapped</span>}</div>
+                    <div style={{ fontWeight: 700, marginTop: 2, color: strong ? forest : "#c08a2e" }}>{strong ? "✓ strong" : "⚑ flagged"}</div>
+                  </>);
+                })()}
               </div>
             </div>
             <p style={{ fontSize: 12.5, color: ink, margin: "8px 0 4px", lineHeight: 1.5 }}>{c.world}</p>
