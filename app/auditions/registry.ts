@@ -56,12 +56,12 @@ export const PRIMERS: Record<string, { tldr: string; whatFor: string; impact: st
     craft: "Craft (§8.14/§8.15): the setting is the convergence, NOT a coach — it’s a persistent backdrop the player dwells in, never an arc. The stories (own casts) branch off it.",
   },
   pilot: {
-    tldr: "the RANGE — scrub each candidate; the surrounding DYNAMIC RANGE peaks and falls (calm → intense → calm)",
-    whatFor: "Each candidate SET gets its OWN art scrubber. Dragging the dial drives the SURROUNDING ENVIRONMENT through its dynamic range — calm → intense (at ~¾ of the dial) → calm AGAIN (the §8.13 arc: it rises, then RESOLVES home). The two-part title + the coziness follow the arc; the ferry holds throughout (§8.15 — only the weather arcs).",
-    impact: "The fall back to calm is what keeps the intense end SAFE — you always come home. A cohesive set feels like ONE world arcing from calm to storm to calm; an incohesive one breaks somewhere on the arc (or reads as unrelated covers).",
-    howToChoose: "Scrub EACH candidate’s dial — we’re picking by FEEL, not by reading scores. Test the title-FAMILY: the SURROUNDING anchor (line 1, §8.16) holds + one imagery-world across the WHOLE arc; the story-title (line 2) intersects it. Every candidate must stay safe even at the peak.",
-    mechanic: "the SCRUBBER per set — the dial = the surrounding DYNAMIC RANGE (calm → intense at 70-80% → calm again) + the surrounding-environment ASCII + the two-part title. Distinct from the player’s SETTING scrub (§8.15 — which setting/condition).",
-    craft: "Craft: the dynamic range PEAKS AND FALLS — calm → intense (70-80%) → calm again (§8.13, rises then resolves); the SETTING is the invariant through it (§8.15), only the weather arcs.",
+    tldr: "the RANGE — scrub each candidate; the WEATHER runs the §8.13 arc (cozy → the storm-peak → a renewed dawn)",
+    whatFor: "Each candidate is its OWN environment. Dragging the dial runs the surrounding WEATHER through the §8.13 five phases — COZY (calm) → HEIGHTENED (building) → INTENSE (the storm-peak, the MIDDLE) → AFTERMATH (the storm passing) → RENEWAL (a renewed dawn). The two-part title + the phase follow the arc; the WORLD (the ferry) holds throughout (§8.15 — only the weather arcs).",
+    impact: "The resolution (aftermath→renewal) is what makes the storm safe to have happened — you come home to a RENEWED world, not the calm you began in. A cohesive set feels like ONE world arcing through the storm and out; an incohesive one breaks somewhere on the arc.",
+    howToChoose: "Scrub EACH candidate’s dial — we pick by FEEL. The SURROUNDING anchor (line 1, §8.16) holds across the WHOLE arc; the storm-peak stays floor-clipped (weight, never ambush); the resolution lands (a real renewal, not just back-to-start).",
+    mechanic: "the SCRUBBER per environment — the dial = the §8.13 WEATHER arc (cozy → storm-peak at ½ → renewed dawn) + the distinct surrounding ASCII + the two-part title. The WORLD holds (§8.15); the AMPLITUDE of the arc = coziness (the subrange).",
+    craft: "Craft: the §8.13 arc, EXACT — COZY 0-20 · HEIGHTENED 20-40 · INTENSE 40-60 (the peak, the MIDDLE) · AFTERMATH 60-80 · RENEWAL 80-100; the WORLD is the invariant (§8.15), only the WEATHER arcs.",
   },
   destination: {
     tldr: "the ending THIS story walks toward — its own deepest coach (per-story, §8.14: no shared coach)",
@@ -98,7 +98,7 @@ export const PRIMERS: Record<string, { tldr: string; whatFor: string; impact: st
 };
 export const INTRO: Record<string, string> = {
   concept: "The SETTING meets the room — the surrounding world you’d dwell in, not a story. The audience scores whether it feels safe to LIVE in; the hook-capacity legs score how wide a tonal range it can spawn while holding the floor. The picked setting becomes a campaign that spawns its stories.",
-  pilot: "One setting, candidate SETS — each with its OWN art scrubber. Drag a set’s dial and the SURROUNDING ENVIRONMENT runs its dynamic range: calm → intense (~¾) → calm AGAIN (the §8.13 arc — rises, then resolves home), the ferry holding throughout (§8.15). We PICK the most cohesive set by FEEL — scrub each; the fleet’s cohesion scores + the legs are the record below.",
+  pilot: "One setting, candidate dynamic ranges — each its OWN environment. Drag a dial and the surrounding WEATHER runs the §8.13 arc: cozy → the storm-peak (the middle) → a renewed dawn, the WORLD (the ferry) holding throughout (§8.15). We PICK the most cohesive by FEEL — scrub each; the fleet’s cohesion + the arc legs are the record below.",
   destination: "The deepest chat THIS story reaches — the full-REL coach (per-story, §8.14: no shared coach). Authored after a moment is chosen; the path is built backward to it. The fleet asks: does the deepest relationship land?",
 };
 

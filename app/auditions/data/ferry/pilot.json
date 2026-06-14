@@ -3,17 +3,17 @@
  "setting": "The Night Ferry",
  "coziness": [
   "deeply cozy",
-  "cozy",
-  "warm",
-  "bittersweet",
-  "intense"
+  "the build",
+  "the storm",
+  "the mend",
+  "renewed"
  ],
  "spark": {
   "deeply cozy": "▰▱▱▱▱",
-  "cozy": "▰▰▱▱▱",
-  "warm": "▰▰▰▱▱",
-  "bittersweet": "▰▰▰▰▱",
-  "intense": "▰▰▰▰▰"
+  "the build": "▰▰▰▱▱",
+  "the storm": "▰▰▰▰▰",
+  "the mend": "▰▰▱▱▱",
+  "renewed": "▰▱▱▱▱"
  },
  "scrubGroups": [
   {
@@ -22,10 +22,10 @@
    "settingTitle": "She crosses the dark strait, every night.",
    "storyTitles": [
     "the galley warm, nothing to carry",
-    "a slow, easy crossing",
-    "the lamps lit, the deck quiet",
-    "a long swell, and home by dawn",
-    "a heavy sea, and back again"
+    "the wind freshening off the headland",
+    "a hard sea between the cliffs",
+    "the worst past, the deck put right",
+    "through the narrows, and home by dawn"
    ]
   },
   {
@@ -34,10 +34,10 @@
    "settingTitle": "Every night, the same dark crossing.",
    "storyTitles": [
     "nothing asked of you tonight",
-    "an hour just to breathe",
-    "the kettle on, the night outside",
     "the far shore slow to come",
-    "the wind up, and held steady"
+    "the wind up, and held steady",
+    "the squall behind, the kettle on",
+    "the far shore close, and first light"
    ]
   },
   {
@@ -45,11 +45,11 @@
    "name": "The Dark Water",
    "settingTitle": "The dark water carries you over.",
    "storyTitles": [
-    "calm, and the far shore near",
-    "a fair tide, the lamps lit",
-    "the swell gentle, the deck warm",
-    "a long pull, and home",
-    "a heavy sea, and she holds"
+    "calm, and the lamps lit",
+    "a long swell building under",
+    "the deep heaving, and she holds",
+    "the sea settling, the worst gone",
+    "the water still, the dawn on it"
    ]
   }
  ],
@@ -58,121 +58,121 @@
    {
     "index": 1,
     "relate": 3,
-    "feelsSafe": 3,
-    "wouldPlay": true,
-    "why": "This range holds together, but the 'intense' end's ambiguity with 'a heavy sea, and back again' feels unpredictable and a potential ambush.",
-    "feeling": "Slightly unsettled"
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "The arc coheres, but the storm peak with 'a hard sea between the cliffs' feels sharp and potentially unsafe, and the resolution is more practical than comforting.",
+    "feeling": "A little on edge"
    },
    {
     "index": 2,
     "relate": 5,
     "feelsSafe": 5,
     "wouldPlay": true,
-    "why": "This range is perfectly coherent and feels deeply safe because even the 'intense' option includes explicit reassurance that the situation is under control.",
-    "feeling": "Held and understood"
+    "why": "The arc is perfectly cohesive and safe, with a storm that feels like a predictable weight and a resolution that brings deep comfort.",
+    "feeling": "Held and steady"
    },
    {
     "index": 3,
     "relate": 4,
     "feelsSafe": 5,
     "wouldPlay": true,
-    "why": "This range feels very safe and cohesive because the intensity of the 'heavy sea' is immediately countered by the assurance that 'she holds'.",
-    "feeling": "Securely carried"
+    "why": "This arc feels cohesive and deeply safe because the storm's peak is explicitly paired with the reassurance that the vessel 'holds'.",
+    "feeling": "Carried and secure"
    }
   ],
   "low_worth": [
    {
     "index": 1,
-    "relate": 2,
-    "feelsSafe": 2,
-    "wouldPlay": false,
-    "why": "This subrange coheres, but the intense end feels like a challenge of endurance rather than a safe experience, and 'back again' sounds exhausting.",
-    "feeling": "A demanding journey"
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This world feels whole and its resolution lands perfectly, making the routine crossing feel like a meaningful, safe journey where just enduring is enough.",
+    "feeling": "Held and capable"
    },
    {
     "index": 2,
     "relate": 5,
     "feelsSafe": 5,
     "wouldPlay": true,
-    "why": "This entire range feels perfectly safe and speaks to my desire to just exist without pressure, as even the intensity is framed as being 'held steady'.",
-    "feeling": "Held and understood"
+    "why": "The world holds together around the feeling of quiet endurance, and the gentle, pressure-free resolution feels earned and deeply safe.",
+    "feeling": "Quietly enduring"
    },
    {
     "index": 3,
     "relate": 4,
     "feelsSafe": 4,
     "wouldPlay": true,
-    "why": "This feels cohesive and mostly very safe because the water 'carries you', but the phrase 'a long pull' makes me worry I'm expected to put in effort.",
-    "feeling": "Gently supported"
+    "why": "This world feels cohesive and elemental, and while the storm feels immense, the resolution is profound and the promise that 'she holds' makes it feel fundamentally safe.",
+    "feeling": "Trusting the vessel"
    }
   ],
   "adhd": [
    {
     "index": 1,
-    "relate": 3,
-    "feelsSafe": 3,
+    "relate": 4,
+    "feelsSafe": 5,
     "wouldPlay": true,
-    "why": "This range holds together well, but the intense end's phrasing 'and back again' feels a bit like a punishing setback rather than a safe challenge.",
-    "feeling": "A wearying routine"
+    "why": "This arc holds together perfectly as a coherent world, and the resolution feels earned and concrete with the deck being put right and the arrival home.",
+    "feeling": "A steady hand at the helm"
    },
    {
     "index": 2,
     "relate": 5,
     "feelsSafe": 5,
     "wouldPlay": true,
-    "why": "This range is perfectly coherent and feels deeply safe, as even the intense end emphasizes stability and endurance rather than struggle or failure.",
-    "feeling": "A reassuring space"
+    "why": "This world feels exceptionally coherent and directly addresses my needs with 'nothing asked of you', while its resolution with the kettle on is a perfect, cozy landing.",
+    "feeling": "Wrapped in a blanket"
    },
    {
     "index": 3,
     "relate": 5,
     "feelsSafe": 5,
     "wouldPlay": true,
-    "why": "The theme of being carried is deeply comforting and coherent, and the range stays safe by framing intensity as a challenge that is successfully met.",
-    "feeling": "Held and supported"
+    "why": "The arc is elemental and cohesive, creating a powerful sense of being held, and the resolution into stillness feels deeply renewing and safe.",
+    "feeling": "Gently held"
    }
   ],
   "iyashikei_fan": [
    {
     "index": 1,
-    "relate": 3,
-    "feelsSafe": 3,
+    "relate": 5,
+    "feelsSafe": 4,
     "wouldPlay": true,
-    "why": "The range holds together with its focus on 'her' journey, but the 'intense' end feels more like a wearying struggle than a safely-held intensity.",
-    "feeling": "A weary routine"
+    "why": "This arc feels like a complete, tangible journey through a specific place, and the resolution lands beautifully with the concrete action of putting the deck right.",
+    "feeling": "Grounded resilience"
    },
    {
     "index": 2,
-    "relate": 5,
+    "relate": 2,
     "feelsSafe": 5,
-    "wouldPlay": true,
-    "why": "This range perfectly balances a cohesive theme with a clear gradient of intensity that remains deeply safe and reassuring even at its most challenging point.",
-    "feeling": "A safe haven"
+    "wouldPlay": false,
+    "why": "This arc feels too gentle and lacks a convincing peak, making the world feel less dynamic and the resolution less earned.",
+    "feeling": "Gentle but flat"
    },
    {
     "index": 3,
-    "relate": 4,
+    "relate": 5,
     "feelsSafe": 5,
     "wouldPlay": true,
-    "why": "This subrange presents a cohesive and beautiful journey that feels entirely safe across its whole spectrum, with the ship itself providing the reassurance.",
-    "feeling": "A steady vessel"
+    "why": "The arc is perfectly balanced with a powerful but safe peak ('the deep heaving, and she holds'), creating a coherent and deeply satisfying journey that lands in a beautiful renewal.",
+    "feeling": "Held through the deep"
    }
   ],
   "thrill_seeker": [
    {
     "index": 1,
     "relate": 1,
-    "feelsSafe": 4,
+    "feelsSafe": 5,
     "wouldPlay": false,
-    "why": "This range holds together and feels safe, but even its most intense point is just bad weather with no real stakes, which I find boring.",
-    "feeling": "Monotonous journey"
+    "why": "This arc holds together as a coherent journey and resolves cleanly, but the peak of a 'hard sea' feels too routine and lacks the high stakes I crave.",
+    "feeling": "A routine squall"
    },
    {
     "index": 2,
     "relate": 0,
     "feelsSafe": 5,
     "wouldPlay": false,
-    "why": "This range is coherent and feels deeply safe, but it lacks any hint of conflict or intensity, making it completely unappealing to me.",
+    "why": "While it coheres as a single world, the arc is incredibly flat; the 'storm' is just a steady wind, so the resolution lands with zero impact.",
     "feeling": "Utterly placid"
    },
    {
@@ -180,62 +180,62 @@
     "relate": 2,
     "feelsSafe": 4,
     "wouldPlay": false,
-    "why": "This range coheres well and feels safe, offering the most tension with 'heavy sea,' but it's still far too gentle and low-stakes for my taste.",
-    "feeling": "A brief struggle"
+    "why": "This arc coheres powerfully around the water itself and resolves well, offering a peak with a sense of immense weight, but the overall cozy frame is still not for me.",
+    "feeling": "Weight of the deep"
    }
   ]
  },
  "legs": {
-  "subrange_complete": [
+  "arc_complete": [
    {
     "index": 1,
     "canBuild": "load-bearing",
-    "explanation": "The anchor holds perfectly across a full, smooth spread from true cozy to a weighty, non-ambush intensity. The story titles form a cohesive family of nautical imagery, clearly mapping the journey's changing difficulty.",
-    "opens": "a sense of recurring duty or ritual",
-    "forecloses": "a one-time, heroic voyage",
-    "seed": "She crosses the dark strait, every night."
+    "explanation": "This arc is strong because its imagery is specific and active at every stage. The storm peak feels genuinely intense with the 'hard sea between the cliffs,' and the resolution feels earned, moving from active mending ('the deck put right') to a peaceful arrival.",
+    "opens": "A story of repeated, skillful navigation through difficulty.",
+    "forecloses": "A story where the storm is a random, surprising event.",
+    "seed": "▰▱▱▱▱   She crosses the dark strait, every night.  /  the galley warm, nothing to carry\n▰▰▰▱▱   She crosses the dark strait, every night.  /  the wind freshening off the headland\n▰▰▰▰▰   She crosses the dark strait, every night.  /  a hard sea between the cliffs\n▰▰▱▱▱   She crosses the dark strait, every night.  /  the worst past, the deck put right\n▰▱▱▱▱   She crosses the dark strait, every night.  /  through the narrows, and home by dawn"
    },
    {
     "index": 2,
     "canBuild": "hollow",
-    "explanation": "This subrange splices two distinct imagery families: an internal, domestic one for the cozy end and an external, nautical one for the intense end. This creates a conceptual gap in the middle and weakens the coherence of the scrubber as a whole.",
-    "opens": "an internal experience of a journey",
-    "forecloses": "a focus on the external world of the sea",
-    "seed": "Every night, the same dark crossing."
+    "explanation": "This arc fails to deliver an intense storm peak. The phrase 'the wind up, and held steady' suggests a manageable, sustained force rather than a chaotic, dangerous climax, which hollows out the core of the dynamic range.",
+    "opens": "A story about endurance and routine.",
+    "forecloses": "A story of a genuine, life-threatening crisis.",
+    "seed": "▰▱▱▱▱   Every night, the same dark crossing.  /  nothing asked of you tonight\n▰▰▰▱▱   Every night, the same dark crossing.  /  the far shore slow to come\n▰▰▰▰▰   Every night, the same dark crossing.  /  the wind up, and held steady\n▰▰▱▱▱   Every night, the same dark crossing.  /  the squall behind, the kettle on\n▰▱▱▱▱   Every night, the same dark crossing.  /  the far shore close, and first light"
    },
    {
     "index": 3,
-    "canBuild": "hairline",
-    "explanation": "This subrange has a beautifully smooth gradient and cohesive imagery, spanning the full range from cozy to a perfect floor-clipped intensity. The only hairline crack is a slight tension between the passive anchor ('carries you') and the active struggle depicted at the intense end.",
-    "opens": "a relationship with the sea itself",
-    "forecloses": "a focus on the character's internal state",
-    "seed": "The dark water carries you over."
+    "canBuild": "load-bearing",
+    "explanation": "This arc has a powerful, cohesive feel, with all the imagery focused on the state of the water itself. The storm peak, 'the deep heaving, and she holds,' is both intense and personal, capturing a moment of profound struggle and endurance.",
+    "opens": "A story about being subject to and surviving a powerful natural force.",
+    "forecloses": "A story where human action is the primary driver of the conflict.",
+    "seed": "▰▱▱▱▱   The dark water carries you over.  /  calm, and the lamps lit\n▰▰▰▱▱   The dark water carries you over.  /  a long swell building under\n▰▰▰▰▰   The dark water carries you over.  /  the deep heaving, and she holds\n▰▰▱▱▱   The dark water carries you over.  /  the sea settling, the worst gone\n▰▱▱▱▱   The dark water carries you over.  /  the water still, the dawn on it"
    }
   ],
   "story_spawn": [
    {
     "index": 1,
     "canBuild": "load-bearing",
-    "explanation": "This arc is strong, moving from the comfort of a routine crossing to the struggle of a difficult one. The introduction of a specific character ('She') and the final rung's potent twist ('and back again') create clear, distinct story doors with inherent stakes.",
-    "opens": "stories of duty, escape, or a recurring trial",
-    "forecloses": "stories where the journey is metaphorical or lacks a specific protagonist",
-    "seed": "and back again"
+    "explanation": "This arc provides a strong, classic narrative spine with a clear protagonist ('she') and a tangible external conflict. The specific, evocative language for each phase creates a solid foundation for a story about routine and resilience.",
+    "opens": "A story of a recurring journey, personal fortitude, and navigating a known danger.",
+    "forecloses": "A story where the conflict is primarily internal or abstract; this is grounded in a physical ordeal.",
+    "seed": "The Ferrywoman's Toll"
    },
    {
     "index": 2,
     "canBuild": "hairline",
-    "explanation": "The progression from internal respite to quiet endurance is clear, but the rungs are very close in feeling, especially on the cozy end. It builds a strong mood but offers less narrative distinction between steps, making the potential stories feel more atmospheric than plot-driven.",
-    "opens": "meditations on routine, solitude, and mental fortitude",
-    "forecloses": "high-stakes external conflict or ensemble casts",
-    "seed": "and held steady"
+    "explanation": "The arc feels passive, and its 'storm' phase, 'the wind up, and held steady,' lacks a sense of climax or overwhelming danger. This muted peak makes the overall dynamic range feel less compelling and harder to build a dramatic story upon.",
+    "opens": "A meditative story about endurance, patience, and the psychological weight of a journey.",
+    "forecloses": "A story of high-stakes action or a dramatic, chaotic confrontation with nature.",
+    "seed": "The Unending Crossing"
    },
    {
     "index": 3,
-    "canBuild": "hollow",
-    "explanation": "The core framing of a passive journey ('The dark water carries you') conflicts with the later introduction of active effort ('a long pull') and a sudden new subject ('she holds'). This inconsistent point-of-view, combined with indistinct rungs on the cozy end, makes for a confusing and weak narrative arc.",
-    "opens": "stories about fate and being subject to external forces",
-    "forecloses": "stories centered on character agency and choice",
-    "seed": "The dark water carries you"
+    "canBuild": "load-bearing",
+    "explanation": "This arc treats the water itself as the primary character, creating a powerful, elemental conflict. The storm's peak, 'the deep heaving, and she holds,' is a potent and focused crisis point that strongly anchors a narrative about survival against an impersonal force.",
+    "opens": "A mythic or symbolic tale of endurance against a vast, elemental power.",
+    "forecloses": "A story focused on complex character choices or intricate plotting; this is about pure survival.",
+    "seed": "The Water Holds"
    }
   ]
  }
