@@ -250,51 +250,58 @@ function useScrub(initial: number) {
   return { v, bind };
 }
 
-// THE STORY BUILD — the picked story's own page. TWO scrubbers: (1) the world-moment, frozen in time
-// (the art); (2) the SUBRANGE — drag the tone (cozy · warm · intense) and read the story at this moment.
+// THE STORY BUILD — the picked story's own page, ONE scrubber. The track is divided into the scene
+// markers; INSIDE the active segment lives the subrange gradient — so a single drag gives BOTH the
+// world-moment (which segment) AND the tone within it (where in the segment). The art is frozen per
+// world-moment; the story beneath updates as you move within the segment (cozy · warm · intense).
 type Tone = { label: string; text: string };
 type StoryT = { id: string; env: string[]; subrange?: Tone[][] };
 export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] }) {
-  const scene = useScrub(0.0);   // the world-moment (the weather)
-  const tone = useScrub(0.5);    // the subrange (the story's tone) — default the warm middle
-  const ph = phaseOf(scene.v);
-  const variant = VARIANT_OF(story.id);
-  const tones = story.subrange?.[ph] ?? [];
+  const main = useScrub(0.1);                                   // ONE scrub: segment = scene, within = tone
+  const N = Math.max(1, scenes.length);
+  const seg = Math.min(N - 1, Math.floor(main.v * N));          // the world-moment (the segment)
+  const within = clamp(main.v * N - seg, 0, 1);                 // position WITHIN the segment (0..1)
+  const tones = story.subrange?.[seg] ?? [];
   const last = Math.max(1, tones.length - 1);
-  const ti = tones.length ? Math.min(tones.length - 1, Math.round(tone.v * last)) : 0;
+  const ti = tones.length ? Math.min(tones.length - 1, Math.round(within * last)) : 0;
   const beat = tones[ti];
+  const variant = VARIANT_OF(story.id);
+  const sceneDr = (seg + 0.5) / N;                              // FROZEN per world-moment
   const hot = (l?: string) => (l === "intense" ? "var(--spot-red)" : forest);
   return (
     <div>
-      {/* SCRUBBER 1 — the world-moment, frozen: the art (drag to move through the crossing) */}
-      <div {...scene.bind} aria-label="the crossing — drag to scrub the world-moment"
+      {/* ONE scrubber — the art (frozen per world-moment) + a SEGMENTED track. The active segment fills
+          with the subrange gradient (cozy→intense); the handle inside it = the tone. */}
+      <div {...main.bind} aria-label="the crossing — drag; each scene holds its subrange"
         style={{ border: `2px solid ${forest}`, background: paper, padding: "10px 12px 12px", touchAction: "pan-y", cursor: "ew-resize", userSelect: "none", WebkitUserSelect: "none" }}>
-        <pre style={{ ...mono, fontSize: 12.5, color: ink, background: paper, border: `1.5px solid ${ink}`, padding: "8px 6px", margin: 0, textAlign: "center", overflow: "hidden" }}>{art(variant, scene.v).join("\n")}</pre>
-        <div style={{ position: "relative", height: 9, background: shade, border: `1.5px solid ${ink}`, margin: "10px 0 0" }}>
-          <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${scene.v * 100}%`, background: forest }} />
-          {[0.2, 0.4, 0.6, 0.8].map((t) => <div key={t} style={{ position: "absolute", left: `${t * 100}%`, top: -1, bottom: -1, width: 1, background: "var(--ink-soft)" }} />)}
-          <div style={{ position: "absolute", left: `${scene.v * 100}%`, top: -4, width: 5, height: 15, background: ink, transform: "translateX(-50%)", boxShadow: "1px 1px 0 rgba(0,0,0,.2)" }} />
+        <pre style={{ ...mono, fontSize: 12.5, color: ink, background: paper, border: `1.5px solid ${ink}`, padding: "8px 6px", margin: 0, textAlign: "center", overflow: "hidden" }}>{art(variant, sceneDr).join("\n")}</pre>
+        {/* the segmented track: passed = solid · active = the subrange gradient · ahead = muted */}
+        <div style={{ position: "relative", height: 13, margin: "10px 0 0" }}>
+          <div style={{ display: "flex", height: 11, border: `1.5px solid ${ink}` }}>
+            {scenes.map((_, i) => (
+              <div key={i} style={{ flex: 1, borderRight: i < N - 1 ? `1px solid ${ink}` : "none",
+                background: i < seg ? forest : i === seg ? `linear-gradient(90deg, ${forest}, var(--spot-red))` : shade,
+                opacity: i === seg ? 1 : i < seg ? 0.8 : 0.55 }} />
+            ))}
+          </div>
+          <div style={{ position: "absolute", left: `${main.v * 100}%`, top: -3, width: 5, height: 17, background: ink, transform: "translateX(-50%)", boxShadow: "1px 1px 0 rgba(0,0,0,.25)" }} />
         </div>
-        <div style={{ textAlign: "center", fontSize: 9, color: margin, marginTop: 3, letterSpacing: ".03em" }}>↔ the crossing · <span style={{ color: forest, fontWeight: 700 }}>{scenes[ph]}</span>, frozen</div>
+        {/* the scene names under each segment (the active one lit) */}
+        <div style={{ display: "flex", marginTop: 3 }}>
+          {scenes.map((s, i) => <span key={i} style={{ flex: 1, textAlign: "center", fontSize: 8, lineHeight: 1.2, color: i === seg ? forest : margin, fontWeight: i === seg ? 700 : 400, overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis", padding: "0 1px" }}>{s}</span>)}
+        </div>
+        <div style={{ textAlign: "center", fontSize: 9, color: margin, marginTop: 5, letterSpacing: ".03em" }}>↔ drag the crossing · inside each scene, the tone runs <span style={{ color: forest }}>cozy</span> → <span style={{ color: "var(--spot-red)" }}>intense</span></div>
       </div>
-      <div style={{ fontSize: 11, color: soft, fontStyle: "italic", margin: "8px 2px 0", paddingLeft: 4 }}>{story.env[ph]}</div>
 
-      {/* SCRUBBER 2 — the SUBRANGE: drag the tone (the whole box grabs), read the story at this moment */}
+      {/* the world-moment + the story at the current tone */}
+      <div style={{ fontSize: 11, color: soft, fontStyle: "italic", margin: "10px 2px 0", paddingLeft: 2 }}><span style={{ color: forest, fontStyle: "normal", fontWeight: 700, letterSpacing: ".04em" }}>{scenes[seg]}</span> — {story.env[seg]}</div>
       {beat && (
-        <div {...tone.bind} aria-label="the subrange — drag to scrub the tone"
-          style={{ border: `2px solid ${forest}`, background: shade, padding: "11px 13px 13px", marginTop: 12, touchAction: "pan-y", cursor: "ew-resize", userSelect: "none", WebkitUserSelect: "none" }}>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 9 }}>↕ THE SUBRANGE — the story at this moment <span style={{ color: margin, fontWeight: 400 }}>· drag the tone</span></div>
-          {/* the tone bar — gradient + a marker per tone + the handle */}
-          <div style={{ position: "relative", height: 16 }}>
-            <div style={{ position: "absolute", left: 0, right: 0, top: 6, height: 5, background: `linear-gradient(90deg, ${forest}, var(--spot-red))`, opacity: 0.6, border: `1px solid ${ink}` }} />
-            {tones.map((_, i) => <div key={i} style={{ position: "absolute", left: `${(i / last) * 100}%`, top: 3, bottom: 3, width: 1, background: ink, transform: "translateX(-50%)" }} />)}
-            <div style={{ position: "absolute", left: `${(ti / last) * 100}%`, top: 0, width: 7, height: 16, background: ink, transform: "translateX(-50%)", boxShadow: "1px 1px 0 rgba(0,0,0,.25)" }} />
+        <div style={{ border: `2px solid ${hot(beat.label)}`, background: shade, padding: "11px 13px", marginTop: 9 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 7 }}>
+            <span style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: hot(beat.label) }}>↕ {beat.label.toUpperCase()} — the story here</span>
+            <span style={{ fontSize: 9, color: margin }}>{tones.map((t, i) => <span key={i} style={{ color: i === ti ? hot(t.label) : margin, fontWeight: i === ti ? 700 : 400 }}>{i ? " · " : ""}{t.label}</span>)}</span>
           </div>
-          <div style={{ display: "flex", justifyContent: "space-between", fontSize: 9.5, margin: "3px 0 10px" }}>
-            {tones.map((t, i) => <span key={i} style={{ color: i === ti ? hot(t.label) : margin, fontWeight: i === ti ? 700 : 400, letterSpacing: ".04em" }}>{t.label}</span>)}
-          </div>
-          {/* the story at the current tone */}
-          <div style={{ fontSize: 14.5, color: ink, lineHeight: 1.55, minHeight: 68, borderLeft: `3px solid ${hot(beat.label)}`, paddingLeft: 12 }}>{beat.text}</div>
+          <div style={{ fontSize: 14.5, color: ink, lineHeight: 1.55, minHeight: 50 }}>{beat.text}</div>
         </div>
       )}
     </div>
