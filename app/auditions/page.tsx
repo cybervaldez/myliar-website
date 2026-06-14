@@ -7,7 +7,7 @@ import concepts from "./concepts.json";
 export const metadata = { title: "Auditions — restarted from concept", description: "The audition pipeline, restarted from concept with the blind audience-fleet method." };
 
 type Read = { index: number; relate: number; feelsSafe: number; wouldPlay: boolean; expectExperience: string; feeling: string };
-type Leg = { index: number; canBuild: "load-bearing" | "hairline" | "hollow"; opens: string; forecloses: string; seed: string };
+type Leg = { index: number; canBuild: "load-bearing" | "hairline" | "hollow"; explanation: string; opens: string; forecloses: string; seed: string };
 type Data = { concepts: { id: string; t1: string; t2: string; world: string; gift: string }[]; results: Record<string, Read[]>; legs?: Record<string, Leg[]> };
 const D = concepts as Data;
 const TARGET = ["anxious", "low_worth", "adhd", "iyashikei_fan"];
@@ -37,7 +37,7 @@ export default function AuditionsPage() {
       </div>
 
       <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".12em", color: forest, marginBottom: 4 }}>① THE CONCEPT AUDITION — Phase 0c</div>
-      <p style={{ fontSize: 12.5, color: soft, margin: "0 0 16px" }}>Three candidates, judged <b>both ways</b> (§8.10): the <b>AUDIENCE</b> (does it resonate? — demand) <i>and</i> the <b>LOOK-AHEAD experts</b> from every succeeding step (can they build on it? — supply, the legs). A concept the players love but the pipeline can&apos;t build on is a trap.</p>
+      <p style={{ fontSize: 12.5, color: soft, margin: "0 0 16px" }}>Three candidates, read <b>both ways</b> (§8.10): the <b>AUDIENCE</b> (does it resonate? — demand) <i>and</i> the <b>LOOK-AHEAD experts</b> from every succeeding step (could they build on it? — supply). The legs are <b>forward NOTES</b> — suggestions the upcoming steps refer back to, <i>never a veto</i>; the real discovery happens when each step is actually built.</p>
 
       {ranked.map(({ c, i }) => {
         const won = c.id === winnerId;
@@ -65,13 +65,22 @@ export default function AuditionsPage() {
             </div>
             {LEG_EXPERTS.length > 0 && (
               <div style={{ borderTop: `1px solid var(--ink-soft)`, marginTop: 8, paddingTop: 8 }}>
-                <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: margin, fontFamily: "var(--theme-body)", marginBottom: 5 }}>↗ LOOK-AHEAD · CAN THE SUCCEEDING STEPS BUILD ON IT? (the legs — §8.10)</div>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: margin, fontFamily: "var(--theme-body)", marginBottom: 5 }}>↗ FORWARD NOTES — could a later step build on it? <span style={{ fontWeight: 400, fontStyle: "italic" }}>(advisory · suggestions only — the real discovery is downstream)</span></div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 6 }}>
                   {LEG_EXPERTS.map((e) => { const r = getLeg(e, i); if (!r) return null; const col = legColor(r.canBuild); return (
-                    <span key={e} title={`opens: ${r.opens} · forecloses: ${r.forecloses} · seed: ${r.seed}`} style={{ fontSize: 10, border: `1px solid ${col}`, color: col, borderRadius: 4, padding: "1px 7px", fontFamily: "var(--theme-body)", cursor: "help" }}>
+                    <span key={e} style={{ fontSize: 10, border: `1px solid ${col}`, color: col, borderRadius: 4, padding: "1px 7px", fontFamily: "var(--theme-body)" }}>
                       {LEG_LABEL[e]} {r.canBuild === "load-bearing" ? "▰▰" : r.canBuild === "hairline" ? "▰▱" : "▱▱"}
                     </span> ); })}
                 </div>
+                <details style={{ fontSize: 11, color: soft }}>
+                  <summary style={{ cursor: "pointer", color: margin, fontStyle: "italic", listStyle: "none" }}>▸ the notes (why — for the step that builds this)</summary>
+                  <div style={{ marginTop: 5, display: "grid", gap: 5 }}>
+                    {LEG_EXPERTS.map((e) => { const r = getLeg(e, i); if (!r) return null; return (
+                      <div key={e} style={{ lineHeight: 1.45 }}>
+                        <b style={{ color: legColor(r.canBuild) }}>{LEG_LABEL[e]}</b> <span style={{ color: ink }}>{r.explanation}</span> <span style={{ color: margin }}>↳ seed: {r.seed}</span>
+                      </div> ); })}
+                  </div>
+                </details>
               </div>
             )}
           </section>
