@@ -3,7 +3,7 @@
 // reference (how other stories solved this step — the idea bank). Concept resolves to the shared
 // SLATE. Next 16: params async. NOT canon.
 import StepBoard from "../../StepBoard";
-import Scrubber from "../../Scrubber";
+import Scrubber, { StoryBuild } from "../../Scrubber";
 import { star, avg } from "../../score";
 import { CAMPAIGNS, STEP_DEFS, INTRO, PRIMERS, SLATE_STATUS, stepLabel, stepNo, hasStep, stepDataFor, crossRef, allParams, whyPicked } from "../../registry";
 
@@ -20,6 +20,43 @@ export async function generateMetadata({ params }: { params: Promise<{ campaign:
 export default async function CampaignStepPage({ params }: { params: Promise<{ campaign: string; step: string }> }) {
   const { campaign, step } = await params;
   const c = CAMPAIGNS[campaign];
+
+  // THE STORY — the picked range, now being built (not an audition): one story, the crossing scrubber,
+  // and the SUBRANGE shows the BEATS that can live at each world-moment.
+  if (step === "story") {
+    const link = { color: "var(--forest)", fontWeight: 700, textDecoration: "none" } as const;
+    if (!c) return <main style={{ maxWidth: 760, margin: "0 auto", padding: 40 }}><p style={{ color: "var(--margin-ink)" }}>No story for {campaign}. <a href="/auditions" style={link}>↑ the board</a></p></main>;
+    const p = c.steps.pilot as unknown as { scenes: string[]; picked?: string; scrubGroups: { id: string; name: string; settingTitle: string; throughline: string; env: string[]; buildingBlock: string; metaphor?: string; audienceServe?: string; subrange?: { cozy: string; intense: string }[] }[] };
+    const story = p.scrubGroups.find((g) => g.id === p.picked);
+    return (
+      <main style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", fontSize: 12, marginBottom: 4 }}>
+          <a href="/auditions" style={{ color: "var(--margin-ink)", textDecoration: "none" }}>↑ the board</a>
+          <span style={{ fontSize: 10, letterSpacing: ".12em", color: "var(--spot-red)", fontFamily: "var(--theme-body)", fontWeight: 700 }}>NOT CANON</span>
+        </div>
+        <h1 style={{ fontSize: 24, margin: "0 0 2px", color: "var(--ink)" }}>{stepNo("story")} The Story · {c.label}</h1>
+        {!story ? (
+          <p style={{ fontSize: 13, color: "var(--margin-ink)" }}>No range picked yet. <a href={`/auditions/${campaign}/pilot`} style={link}>Pick a range →</a></p>
+        ) : (
+          <>
+            <div style={{ fontFamily: "var(--theme-display)", fontSize: 22, color: "var(--ink)", marginTop: 2 }}>{story.name}{story.metaphor && <span style={{ color: "var(--forest)", fontSize: 16 }}> «{story.metaphor}»</span>}</div>
+            <div style={{ border: "2px dashed var(--forest)", background: "var(--paper-shade)", padding: "10px 14px", margin: "10px 0 14px", fontSize: 11.5, color: "var(--ink)", lineHeight: 1.5 }}>
+              <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: "var(--forest)", marginBottom: 4 }}>↩ CARRIED FROM THE RANGE — the locked spine</div>
+              <div><b>struggle:</b> {story.buildingBlock}</div>
+              {story.audienceServe && <div style={{ color: "var(--ink-soft)", fontStyle: "italic" }}>↳ serves: {story.audienceServe}</div>}
+            </div>
+            <p style={{ fontSize: 12.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: "0 0 14px" }}>{INTRO.story}</p>
+            <StoryBuild story={{ id: story.id, env: story.env, subrange: story.subrange }} scenes={p.scenes} />
+          </>
+        )}
+        <div style={{ display: "flex", justifyContent: "space-between", borderTop: "1px solid var(--ink-soft)", paddingTop: 12, marginTop: 18, fontSize: 13 }}>
+          <a href={`/auditions/${campaign}/pilot`} style={link}>← ② Range</a>
+          <span style={{ color: "var(--margin-ink)" }}>next: the beats per crossing →</span>
+        </div>
+      </main>
+    );
+  }
+
   const sd = c ? stepDataFor(campaign, step) : null;
   if (!c || !sd) return <main style={{ maxWidth: 760, margin: "0 auto", padding: 40 }}><p style={{ color: "var(--margin-ink)" }}>No audition for {campaign} · {step}. <a href="/auditions" style={{ color: "var(--forest)" }}>↑ the board</a></p></main>;
 
@@ -38,7 +75,7 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
     const raw = c.steps.pilot as unknown as { scenes: string[]; picked?: string; scrubGroups: { id: string; name: string; settingTitle: string; storyTitles: string[]; throughline: string; env: string[]; buildingBlock: string; verdict?: string; metaphor?: string; audienceServe?: string; subrange?: { cozy: string; intense: string }[] }[]; worldbuild?: { richest: string; note: string } };
     const rich = raw.worldbuild?.richest, pick = raw.picked;
     const groups = raw.scrubGroups
-      .map((gp, k) => ({ id: gp.id, name: gp.name, settingTitle: gp.settingTitle, storyTitles: gp.storyTitles, throughline: gp.throughline, env: gp.env, buildingBlock: gp.buildingBlock, verdict: gp.verdict, metaphor: gp.metaphor, audienceServe: gp.audienceServe, subrange: gp.subrange, relate: avg(sd.data, k + 1, "relate"), safe: avg(sd.data, k + 1, "feelsSafe"), _s: star(sd.data, k + 1) }))
+      .map((gp, k) => ({ id: gp.id, name: gp.name, settingTitle: gp.settingTitle, storyTitles: gp.storyTitles, throughline: gp.throughline, env: gp.env, buildingBlock: gp.buildingBlock, verdict: gp.verdict, metaphor: gp.metaphor, audienceServe: gp.audienceServe, relate: avg(sd.data, k + 1, "relate"), safe: avg(sd.data, k + 1, "feelsSafe"), _s: star(sd.data, k + 1) }))
       .sort((a, b) => (b.id === pick ? 1 : 0) - (a.id === pick ? 1 : 0) || (b.id === rich ? 1 : 0) - (a.id === rich ? 1 : 0) || b._s - a._s);
     prepend = <Scrubber scenes={raw.scenes} groups={groups} richest={rich} picked={pick} note={raw.worldbuild?.note} />;
   }

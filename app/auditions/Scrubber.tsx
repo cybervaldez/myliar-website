@@ -230,24 +230,62 @@ function OneScrubber({ g, scenes }: { g: Group; scenes: string[] }) {
           </div> ); })}
       </div>
       <div style={{ fontSize: 10, color: soft, fontStyle: "italic", margin: "5px 2px 0", paddingLeft: 16, minHeight: 24 }}><span style={{ color: forest, fontStyle: "normal" }}>{scenes[ph]}</span> — {g.env[ph]}</div>
-      {/* THE SUBRANGE — the story's TONE, a SEPARATE axis from the scene. For the PICKED story it shows
-          the CONTENT each pole can hold at THIS world-moment (cozy even in the storm; intense in the calm). */}
-      <div style={{ marginTop: 9, paddingTop: 8, borderTop: "1px dashed var(--ink-soft)" }}>
-        <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: margin, marginBottom: 4 }}>↕ THE SUBRANGE · {g.subrange ? "what content can live in this moment" : "the story’s tone — a separate dial from the scene"}</div>
-        <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 9, marginBottom: g.subrange ? 5 : 3 }}>
-          <span style={{ color: forest }}>cozy</span>
-          <div style={{ flex: 1, height: 4, background: `linear-gradient(90deg, ${forest}, var(--spot-red))`, opacity: 0.5 }} />
-          <span style={{ color: "var(--spot-red)" }}>intense</span>
+    </div>
+  );
+}
+
+// THE STORY BUILD — the picked story's own page (carried over from the audition scrubber). One story,
+// no tabs, no picking: scrub the crossing (the world-moments) and the SUBRANGE shows the BEATS that can
+// live at each — the cozy ↔ intense content (a tender beat inside the storm, a charged one in the calm).
+type StoryT = { id: string; env: string[]; subrange?: { cozy: string; intense: string }[] };
+export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] }) {
+  const [dr, setDr] = useState(0.0);
+  const box = useRef<HTMLDivElement>(null);
+  const drag = useRef<{ x: number; dr: number } | null>(null);
+  const ph = phaseOf(dr);
+  const variant = VARIANT_OF(story.id);
+  const beat = story.subrange?.[ph];
+  const down = (e: React.PointerEvent) => { box.current?.setPointerCapture(e.pointerId); drag.current = { x: e.clientX, dr }; };
+  const move = (e: React.PointerEvent) => { if (!drag.current || !box.current) return; const w = box.current.offsetWidth || 1; setDr(clamp(drag.current.dr + (e.clientX - drag.current.x) / w, 0, 1)); };
+  const up = (e: React.PointerEvent) => { drag.current = null; try { box.current?.releasePointerCapture(e.pointerId); } catch {} };
+  const key = (e: React.KeyboardEvent) => { if (e.key === "ArrowRight" || e.key === "ArrowUp") { setDr((d) => clamp(d + 0.05, 0, 1)); e.preventDefault(); } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") { setDr((d) => clamp(d - 0.05, 0, 1)); e.preventDefault(); } };
+  return (
+    <div>
+      {/* the world-moment — art + scrub (the surrounding at this point in the crossing) */}
+      <div ref={box} role="slider" aria-label="the crossing — drag to scrub" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(dr * 100)} tabIndex={0}
+        onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} onKeyDown={key}
+        style={{ border: `2px solid ${forest}`, background: paper, padding: "10px 12px 12px", touchAction: "pan-y", cursor: "ew-resize", userSelect: "none", WebkitUserSelect: "none" }}>
+        <pre style={{ ...mono, fontSize: 12.5, color: ink, background: paper, border: `1.5px solid ${ink}`, padding: "8px 6px", margin: 0, textAlign: "center", overflow: "hidden" }}>{art(variant, dr).join("\n")}</pre>
+        <div style={{ position: "relative", height: 9, background: shade, border: `1.5px solid ${ink}`, margin: "10px 0 0" }}>
+          <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${dr * 100}%`, background: forest }} />
+          {[0.2, 0.4, 0.6, 0.8].map((t) => <div key={t} style={{ position: "absolute", left: `${t * 100}%`, top: -1, bottom: -1, width: 1, background: "var(--ink-soft)" }} />)}
+          <div style={{ position: "absolute", left: `${dr * 100}%`, top: -4, width: 5, height: 15, background: ink, transform: "translateX(-50%)", boxShadow: "1px 1px 0 rgba(0,0,0,.2)" }} />
         </div>
-        {g.subrange ? (
-          <div style={{ display: "grid", gap: 4, minHeight: 52 }}>
-            <div style={{ fontSize: 10.5, lineHeight: 1.4, color: soft }}><span style={{ color: forest, fontWeight: 700 }}>◂ cozy</span>  {g.subrange[ph].cozy}</div>
-            <div style={{ fontSize: 10.5, lineHeight: 1.4, color: soft }}><span style={{ color: "var(--spot-red)", fontWeight: 700 }}>intense ▸</span>  {g.subrange[ph].intense}</div>
-          </div>
-        ) : (
-          <div style={{ fontSize: 9.5, color: soft, fontStyle: "italic", lineHeight: 1.45 }}>the scene above is the STAGE; the story can MATCH it or CONTRAST it — a tender beat inside the storm, a charged one in the calm.</div>
-        )}
+        <div style={{ textAlign: "center", fontSize: 9, color: margin, marginTop: 3, letterSpacing: ".03em" }}>↔ drag to move through the crossing</div>
       </div>
+      {/* the surrounding at this moment */}
+      <div style={{ fontSize: 11, color: soft, fontStyle: "italic", margin: "9px 2px 0", paddingLeft: 4 }}><span style={{ color: forest, fontStyle: "normal", fontWeight: 700, letterSpacing: ".04em" }}>{scenes[ph]}</span> — {story.env[ph]}</div>
+      {/* THE BEATS — the main event: what content can live at this moment, cozy ↔ intense */}
+      {beat && (
+        <div style={{ border: `2px solid ${forest}`, background: shade, padding: "11px 13px", marginTop: 11 }}>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 8 }}>↕ WHAT CONTENT CAN LIVE HERE — the subrange (a beat can run with or against the surrounding)</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 9, marginBottom: 9 }}>
+            <span style={{ color: forest, fontWeight: 700 }}>cozy</span>
+            <div style={{ flex: 1, height: 4, background: `linear-gradient(90deg, ${forest}, var(--spot-red))`, opacity: 0.55 }} />
+            <span style={{ color: "var(--spot-red)", fontWeight: 700 }}>intense</span>
+          </div>
+          <div style={{ display: "grid", gap: 10, minHeight: 88 }}>
+            <div style={{ borderLeft: `3px solid ${forest}`, paddingLeft: 10 }}>
+              <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, color: forest, letterSpacing: ".08em" }}>◂ COZY BEAT</div>
+              <div style={{ fontSize: 13.5, color: ink, lineHeight: 1.5 }}>{beat.cozy}</div>
+            </div>
+            <div style={{ borderLeft: `3px solid var(--spot-red)`, paddingLeft: 10 }}>
+              <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, color: "var(--spot-red)", letterSpacing: ".08em" }}>INTENSE BEAT ▸</div>
+              <div style={{ fontSize: 13.5, color: ink, lineHeight: 1.5 }}>{beat.intense}</div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
