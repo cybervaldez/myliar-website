@@ -29,6 +29,56 @@ const NORM: Record<string, (d: { [k: string]: unknown }) => Item[]> = {
   pilot: (d) => (d as { pilots: { id: string; title: string; tone: string; scene: string }[] }).pilots.map((p, k) => ({ key: p.id, idx: k + 1, title: p.title, sub: `tone — ${p.tone}`, body: p.scene })),
   destination: (d) => (d as { destinations: { id: string; title: string; facet: string; sample: string }[] }).destinations.map((x, k) => ({ key: x.id, idx: k + 1, title: x.title, sub: x.facet, body: x.sample })),
 };
+// THE PER-STEP PRIMERS — the collapsible ELI5 at the top of each step page: what the step is FOR,
+// how it IMPACTS the story, how to CHOOSE, + a named CRAFT principle. Grounded by the 2026-06-14
+// deep-research pass (screenwriting/novel/game-narrative craft, adversarially verified): logline =
+// promise/nucleus (not a pass/fail acid test); opening = tonal audition answering 3 silent questions;
+// ending-first reshapes act one; Truby psychological vs moral need; ensemble unified by a THEME (not
+// forced-distinct functions); motif = meaning by repetition. Sources in docs/flavors/concepts/GUIDELINE.md.
+export const PRIMERS: Record<string, { tldr: string; whatFor: string; impact: string; howToChoose: string; craft?: string }> = {
+  concept: {
+    tldr: "the big idea — the world, the gift, and who it’s for; the promise that makes someone pick this off the shelf",
+    whatFor: "The concept is the cover and the logline rolled into one: the setting, the gift you get on night one, and who it’s for. Like a good logline it hooks by what it OFFERS while leaving the ending unspoken — a promise to the player.",
+    impact: "It’s the nucleus everything downstream organizes around — tone, coach, struggle, motif all grow from it. A weak concept can’t be rescued by good writing later; the world you pick here is the soil for all of it.",
+    howToChoose: "Don’t crown the ‘best’ — there’s no single-sentence acid test that proves a premise (the research killed that myth). Pick the one whose AUDIENCE deeply relates AND that the later build-steps can build richly on (load-bearing legs). A high score with a hairline leg is a strong idea carrying a known gem to fix — keep it; the gem is the to-do.",
+    craft: "Craft: a logline is a promise that hooks by withholding the ending — the nucleus the whole story organizes around (it’s not a pass/fail acid test for the idea).",
+  },
+  pilot: {
+    tldr: "the first scene — and the TONE it sets. the taste test.",
+    whatFor: "The pilot is night one: a tiny microcosm of the whole story that must answer three silent questions in the first minutes — what is this, who do I care about, why keep going? — and lock the voice (wry, warm, still) the rest will speak in.",
+    impact: "Tone is a promise. The opening is an audition: if it feels safe and unhurried, the player trusts the story won’t ambush them. You’re allowed deliberate range later — what breaks trust is an UNSIGNALED contradiction of the tone you set here.",
+    howToChoose: "Pick the tone that makes the target audience exhale AND proves the concept’s hardest gem can be FELT, not just claimed. The take with all load-bearing legs is the voice the rest can stand on; a high score that splits the audience is a flag, not a winner.",
+    craft: "Craft: the opening is your audition — a tonal microcosm answering what-is-this / who-do-I-care-about / why-keep-going; only an unsignaled tonal contradiction is off-limits.",
+  },
+  destination: {
+    tldr: "the ending you’re walking toward — the deepest version of the relationship",
+    whatFor: "The destination is the full-REL coach: the last, deepest chat the whole game converges to. We author it FIRST, then build the path backward — because the ending is what gives every earlier beat its meaning.",
+    impact: "The ending reshapes everything before it: once you know where it lands, you plant the setups backward from it. A destination that feels like a duty handed to you (now perform!) repels; one where the coach becomes an EQUAL — a witness, not a boss — is worth the climb.",
+    howToChoose: "Pick the version the audience LONGS for, not the one that sounds impressive. Watch for the trap: a ‘graduation’ that makes the player feel judged or on-the-hook craters relate/safe (the gem flag). The winner makes belonging feel unconditional — cathartic, not hollow.",
+    craft: "Craft: write the ending first — the third-act payoff retroactively reshapes act one; setups are planted backward from where you land.",
+  },
+  struggle: {
+    tldr: "the real-life thing the player quietly works through with the coach",
+    whatFor: "The struggle is the internal conflict — the want-vs-need under the cozy surface. For this audience it’s a PSYCHOLOGICAL one: a weakness that hurts only the player, not others — a letting-go, not a boss fight.",
+    impact: "No struggle, no growth, no earned intimacy. But it has to be shown by how the character RESPONDS, never named as a diagnosis — too sharp and it reads as therapy; too soft and nothing happened.",
+    howToChoose: "Pick the struggle the concept + pilot already seeded (here: leaving a day behind unfinished, ‘logged at full weight’). The right one is felt through the world’s own mechanics and woven in, not labeled.",
+    craft: "Craft: Truby’s psychological need (a weakness that hurts only the hero) suits gentle arcs; authenticity lives in how they respond, never in the diagnosis.",
+  },
+  cast: {
+    tldr: "the other characters — mirrors and foils that reflect the player’s struggle",
+    whatFor: "The cast spreads the story across several characters, unified by one thematic through-line. Each is a mirror or a foil — a different ANGLE on the same struggle the player carries.",
+    impact: "A good cast makes the main bond believable and lets the struggle be seen from sides the coach can’t show. What holds it together is the shared theme, not a roster of forced-different personalities.",
+    howToChoose: "Pick the ensemble unified by one through-line, each a distinct ANGLE on it (the player is a witness, not everyone’s fixer — ≤1 growth arc). Coverage of the audience’s facets beats crowd-pleasers; don’t make characters different just to be different.",
+    craft: "Craft: an ensemble is held together by a thematic through-line, not by forcing each character a unique function; foils/mirrors reflect the protagonist’s inner struggle.",
+  },
+  motif: {
+    tldr: "the recurring pattern — the day-unit, image, and title grammar that make it all rhyme",
+    whatFor: "The motif is the pattern language: the unit a day is counted in (a ‘crossing’), the stat skins, the recurring image, the title shape — the story’s fingerprint.",
+    impact: "Motif is what makes a world feel authored, not assembled — the same chord struck in the title, the mechanics, and the ending. A symbol can appear once; a motif earns its meaning by RECURRING.",
+    howToChoose: "Pick the kernel that’s a REAL difference, not a reskin — one image the day-unit, the stats, AND the title can all genuinely express, and that you’ll place again and again. If it only changes the labels, it isn’t a motif yet.",
+    craft: "Craft: a motif differs from a one-off symbol by RECURRING — its meaning comes from repetition and placement.",
+  },
+};
 export const INTRO: Record<string, string> = {
   concept: "The cover meets the room. Each candidate is shown the way a player meets it — its two-part title, its world, and the gift it gives on night one. The audience scores relate · feels-safe; the look-ahead legs leave forward notes.",
   pilot: "One concept, three tones for the night-one scene. The fleet scores which tone lands — and whether the look-ahead legs can now build the struggle the concept left hairline.",

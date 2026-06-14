@@ -16,8 +16,10 @@ const STATUS: Record<string, { txt: string; col: string }> = {
   available: { txt: "○ in the bank — revivable", col: margin }, retired: { txt: "✕ retired", col: red },
 };
 
-export default function StepBoard({ stepLabel, intro, data, items, carried, status, reference, prev, next }: {
-  stepLabel: string; intro: string; data: StepData; items: Item[];
+export type Primer = { tldr: string; whatFor: string; impact: string; howToChoose: string; craft?: string };
+
+export default function StepBoard({ stepLabel, intro, primer, data, items, carried, status, reference, prev, next }: {
+  stepLabel: string; intro: string; primer?: Primer; data: StepData; items: Item[];
   carried?: { step: string; lines: string[] }[]; status?: Record<string, string>;
   reference?: { campaign: string; label: string; title: string; star: number }[]; prev?: Nav; next?: Nav;
 }) {
@@ -32,7 +34,24 @@ export default function StepBoard({ stepLabel, intro, data, items, carried, stat
         <span style={{ fontSize: 10, letterSpacing: ".12em", color: red, fontFamily: "var(--theme-body)", fontWeight: 700 }}>NOT CANON</span>
       </div>
       <h1 style={{ fontSize: 24, margin: "0 0 4px", color: ink }}>{stepLabel}</h1>
-      <p style={{ fontSize: 12.5, color: soft, lineHeight: 1.55, margin: "0 0 16px" }}>{intro}</p>
+      <p style={{ fontSize: 12.5, color: soft, lineHeight: 1.55, margin: "0 0 12px" }}>{intro}</p>
+
+      {primer && (
+        <details style={{ border: `2px solid ${forest}`, background: shade, margin: "0 0 16px", padding: "0" }}>
+          <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 14px", fontFamily: "var(--theme-body)", fontSize: 11.5, fontWeight: 700, color: forest, letterSpacing: ".02em" }}>
+            ▸ What is this step? — ELI5 <span style={{ color: margin, fontWeight: 400, fontStyle: "italic" }}>· {primer.tldr}</span>
+          </summary>
+          <div style={{ padding: "2px 14px 13px", display: "grid", gap: 8 }}>
+            {([["What it’s for", primer.whatFor], ["How it shapes the story", primer.impact], ["How to pick the right one", primer.howToChoose]] as const).map(([h, body]) => (
+              <div key={h} style={{ fontSize: 12, color: ink, lineHeight: 1.55 }}>
+                <div style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: margin }}>{h.toUpperCase()}</div>
+                {body}
+              </div>
+            ))}
+            {primer.craft && <div style={{ fontSize: 10.5, color: margin, fontStyle: "italic", lineHeight: 1.5, borderTop: `1px solid var(--ink-soft)`, paddingTop: 7 }}>{primer.craft}</div>}
+          </div>
+        </details>
+      )}
 
       {carried && carried.length > 0 && (
         <div style={{ border: `2px dashed ${forest}`, background: shade, padding: "11px 14px", margin: "0 0 14px" }}>

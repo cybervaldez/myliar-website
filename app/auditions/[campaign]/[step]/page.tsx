@@ -3,7 +3,7 @@
 // reference (how other stories solved this step — the idea bank). Concept resolves to the shared
 // SLATE. Next 16: params async. NOT canon.
 import StepBoard from "../../StepBoard";
-import { CAMPAIGNS, STEP_DEFS, INTRO, SLATE_STATUS, stepLabel, stepNo, hasStep, stepDataFor, crossRef, allParams } from "../../registry";
+import { CAMPAIGNS, STEP_DEFS, INTRO, PRIMERS, SLATE_STATUS, stepLabel, stepNo, hasStep, stepDataFor, crossRef, allParams } from "../../registry";
 
 export async function generateStaticParams() {
   return allParams();
@@ -33,6 +33,7 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
     <StepBoard
       stepLabel={`${stepNo(step)} ${stepLabel(step)} · ${c.label}`}
       intro={sd.isSlate ? conceptIntro : (INTRO[step] ?? "")}
+      primer={PRIMERS[step]}
       data={sd.data}
       items={sd.items}
       status={sd.isSlate ? SLATE_STATUS : undefined}

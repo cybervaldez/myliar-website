@@ -3,7 +3,7 @@
 // Picks badged `building`; the unselected `available` (revivable, audition already paid for). A new
 // concept reads this first so it never re-picks a taken setting×destination. NOT canon.
 import StepBoard from "../StepBoard";
-import { SLATE, SLATE_STATUS, INTRO, stepDataFor } from "../registry";
+import { SLATE, SLATE_STATUS, INTRO, PRIMERS, stepDataFor } from "../registry";
 
 export const metadata = { title: "The Slate — every concept (the idea bank)", description: "The master concept ledger: picks + the bank, status-tagged, so future concepts never duplicate a taken setting." };
 
@@ -14,6 +14,7 @@ export default function SlatePage() {
     <StepBoard
       stepLabel="The Slate — every concept"
       intro={`The master ledger of every concept we've auditioned. ${INTRO.concept} Picks AND the unselected stay side by side: the unselected aren't rejects, they're a bank (their auditions paid for), so a future concept never re-picks a taken setting×destination. Open a story from the board to see the path built on its pick.`}
+      primer={PRIMERS.concept}
       data={SLATE}
       items={sd.items}
       status={SLATE_STATUS}
