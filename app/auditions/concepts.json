@@ -1,0 +1,157 @@
+{
+ "concepts": [
+  {
+   "id": "lighthouse",
+   "t1": "The light holds.",
+   "t2": "Tending it, slow and quiet.",
+   "world": "A lone white-stone lighthouse on a mossy islet, in a rolling fog. You come by a small skiff — not for a quest, but for a fixed point — and learn to tend a light of your own.",
+   "gift": "a Wayfinder's Lens: hold it up to a daunting list and everything blurs but the next single step."
+  },
+  {
+   "id": "ferry",
+   "t1": "The kettle's always on.",
+   "t2": "A still, easy crossing.",
+   "world": "A small night ferry that crosses the same dark strait every night, and always comes back. The crossing is the one hour nobody can ask anything more of you.",
+   "gift": "the craft of crossings: how to leave a day behind without finishing it, and call one watch's work a night, honestly."
+  },
+  {
+   "id": "cloudhouse",
+   "t1": "Your seat is kept.",
+   "t2": "Reading one patch of sky.",
+   "world": "A soft-lit sky station moored above sleeping hills. Nothing here is in danger — you read one patch of sky, make one mark, and let a rough little constellation count.",
+   "gift": "a Weather Glass: it turns the night into a tiny personal forecast and offers one gentle sky-move."
+  }
+ ],
+ "results": {
+  "anxious": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like holding onto a single, clear purpose while the overwhelming fog is held at bay.",
+    "feeling": "Grounded purpose"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like a deep, guilt-free exhale at the end of a long day, a truly bounded rest.",
+    "feeling": "Permission to rest"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like being in a warm, quiet room where nothing is asked of me and my small contribution is enough.",
+    "feeling": "Quietly held"
+   }
+  ],
+  "low_worth": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like finally having a tool to make the overwhelming feeling of 'everything' shrink down to just one manageable step.",
+    "feeling": "Capable relief"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like a deep, quiet exhale and practicing the radical act of letting a day's work be enough, even when it's unfinished.",
+    "feeling": "Permission to rest"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like being in a place where my small, quiet presence is enough and my imperfect efforts are counted as valuable.",
+    "feeling": "Gentle belonging"
+   }
+  ],
+  "adhd": [
+   {
+    "index": 1,
+    "relate": 4,
+    "feelsSafe": 2,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like a beautiful but stressful responsibility, offset by a powerful tool for managing my real-life overwhelm.",
+    "feeling": "Anxious hope"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like a gentle, validating ritual that gives me permission to rest without having to finish everything first.",
+    "feeling": "Deeply understood"
+   },
+   {
+    "index": 3,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like a quiet, no-pressure hobby where the smallest effort is enough and my place is always waiting.",
+    "feeling": "Gently welcomed"
+   }
+  ],
+  "iyashikei_fan": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like a quiet, meditative practice of focusing on one important thing at a time amidst the vastness.",
+    "feeling": "Deeply centered"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like a gentle, liminal ritual of letting go of the day's pressures and accepting that rest is productive too.",
+    "feeling": "Quietly relieved"
+   },
+   {
+    "index": 3,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like a whimsical and peaceful act of finding small patterns and beauty in the night sky without any pressure.",
+    "feeling": "Gently observant"
+   }
+  ],
+  "thrill_seeker": [
+   {
+    "index": 1,
+    "relate": 1,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "expectExperience": "Playing this would feel like a painfully slow and solitary chore with no stakes.",
+    "feeling": "Profoundly dull"
+   },
+   {
+    "index": 2,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "expectExperience": "Playing this would feel like being stuck in a repetitive, pointless commute to nowhere.",
+    "feeling": "Oppressively calm"
+   },
+   {
+    "index": 3,
+    "relate": 1,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "expectExperience": "Playing this would feel like watching paint dry in a slightly more scenic location.",
+    "feeling": "Utterly placid"
+   }
+  ]
+ }
+}
