@@ -280,8 +280,8 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
           <div style={{ display: "flex", height: 11, border: `1.5px solid ${ink}` }}>
             {scenes.map((_, i) => (
               <div key={i} style={{ flex: 1, borderRight: i < N - 1 ? `1px solid ${ink}` : "none",
-                background: i < seg ? forest : i === seg ? `linear-gradient(90deg, ${forest}, var(--spot-red))` : shade,
-                opacity: i === seg ? 1 : i < seg ? 0.8 : 0.55 }} />
+                background: i === seg ? `linear-gradient(90deg, ${forest}, var(--spot-red))` : shade,
+                opacity: i === seg ? 1 : i < seg ? 0.75 : 0.4 }} />
             ))}
           </div>
           <div style={{ position: "absolute", left: `${main.v * 100}%`, top: -3, width: 5, height: 17, background: ink, transform: "translateX(-50%)", boxShadow: "1px 1px 0 rgba(0,0,0,.25)" }} />
