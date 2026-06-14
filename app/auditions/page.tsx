@@ -36,6 +36,17 @@ const PLEGS = Object.keys(P.legs || {});
 const getLegP = (e: string, i: number) => (P.legs[e] || []).find((r) => r.index === i);
 const legMeanP = (i: number) => { const v = PLEGS.map((e) => LEGV[getLegP(e, i)?.canBuild ?? "hollow"]); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : 0; };
 const labelize = (s: string) => s.replace(/_/g, " ");
+// ⭐ BUILD-VALUE star — the scores weighted by importance to OUR MECHANICS: the coach (destination),
+// the struggle loop, and the anxiety floor (safe) weigh heaviest; flavor (motif) least. §8.17.
+const SW: Record<string, number> = { feelsSafe: 3, destination: 3, struggle: 3, relate: 2, mechanics: 2, cast: 1.5, cast_voice: 1.5, sustain: 1.5, motif_title: 1 };
+const LEGV01: Record<string, number> = { "load-bearing": 1, hairline: 0.5, hollow: 0 };
+const starScore = (relate: number, safe: number, legs: { key: string; cb: string }[]) => {
+  let num = SW.relate * (relate / 5) + SW.feelsSafe * (safe / 5), den = SW.relate + SW.feelsSafe;
+  for (const { key, cb } of legs) { const w = SW[key] ?? 1; num += w * (LEGV01[cb] ?? 0); den += w; }
+  return Math.round((num / den) * 10) / 2;
+};
+const starStr = (n: number) => "★".repeat(Math.floor(n)) + (n % 1 ? "½" : "") + "☆".repeat(Math.max(0, 5 - Math.ceil(n)));
+const StarLine = ({ s }: { s: number }) => (<div style={{ fontSize: 15, color: "#c08a2e", letterSpacing: 1, marginTop: 1 }}>{starStr(s)} <span style={{ fontSize: 10.5, color: margin, letterSpacing: 0 }}>{s.toFixed(1)} build-value</span></div>);
 
 const ink = "var(--ink)", soft = "var(--ink-soft)", paper = "var(--paper)", shade = "var(--paper-shade)", forest = "var(--forest)", margin = "var(--margin-ink)", red = "var(--spot-red)";
 
@@ -48,6 +59,18 @@ export default function AuditionsPage() {
       <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }}>
         <h1 style={{ fontSize: 25, margin: 0, color: ink }}>Auditions</h1>
         <span style={{ fontSize: 10.5, letterSpacing: ".12em", color: red, fontFamily: "var(--theme-body)", fontWeight: 700 }}>RESTARTED FROM CONCEPT · NOT CANON</span>
+      </div>
+      <div style={{ border: `2px solid ${forest}`, background: paper, padding: "13px 16px", margin: "14px 0 18px" }}>
+        <div style={{ fontFamily: "var(--theme-body)", fontSize: 12.5, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 6 }}>ELI5 — the short version</div>
+        <p style={{ fontSize: 12.5, lineHeight: 1.6, color: ink, margin: "0 0 8px" }}>
+          We&apos;re choosing what cozy game to build, judged two ways: the <b>players who need it</b> (anxious · ADHD · low self-worth) and the <b>team who&apos;d build it</b>. Every idea is genuinely good — so instead of crowning one, we list what each does <span style={{ color: forest, fontWeight: 700 }}>great (↑ reinforce later)</span> and what it&apos;ll <span style={{ color: "#c08a2e", fontWeight: 700 }}>need fixed later (◆ the gem)</span>. The <b style={{ color: "#c08a2e" }}>⭐ build-value</b> is the one-glance score, weighted by what matters most to the actual game: the <b>coach</b>, the <b>struggle loop</b>, and the <b>safety floor</b> weigh heaviest.
+        </p>
+        <ul style={{ fontSize: 12, lineHeight: 1.55, color: ink, margin: "0 0 6px", paddingLeft: 18 }}>
+          <li style={{ marginBottom: 3 }}><b>Cloudhouse ★★★★½</b> &amp; <b>Lighthouse ★★★★½</b> — both excellent and easy to build. Cloudhouse = the <i>safest, gentlest</i> (fix: make the coach an <i>active partner</i>, not a passive fortune-teller). Lighthouse = the <i>most buildable</i> (fix: &ldquo;tending a light&rdquo; reads as a <i>duty</i> to ADHD players — frame it as <i>permission</i>).</li>
+          <li style={{ marginBottom: 3 }}><b>Ferry ★★★★</b> — the <i>crowd favorite</i> (everyone feels &ldquo;finally, permission to rest&rdquo;), but the <i>hardest to build</i> (its whole point is &ldquo;letting go,&rdquo; tricky to make into gameplay). The fix is already found: the <i>&ldquo;logged at full weight&rdquo;</i> ritual.</li>
+          <li><b>The Ferry&apos;s tone:</b> the wry <i>manifest-keeper who logs your day at full weight</i> <b>★★★★★</b> won — it validates you without asking anything back. (The over-warm &ldquo;sit, here&apos;s your bowl&rdquo; version <b>★★★½</b> felt like social pressure.)</li>
+        </ul>
+        <p style={{ fontSize: 11, color: margin, fontStyle: "italic", margin: 0 }}>The full scores, agreement, and reviewer notes are below — this is just the gist.</p>
       </div>
       <div style={{ border: `2px solid ${ink}`, background: shade, padding: "10px 14px", fontSize: 12.5, lineHeight: 1.55, color: ink, margin: "12px 0 22px" }}>
         The old per-step blind auditions are <b>archived</b> (<code>docs/flavors/auditions_deprecated/</code>) — the model changed too much. We <b>restarted from concept</b> with the <b>blind audience fleet</b>: the SAME audience (anxiety · ADHD · low self-worth) judges every step — <i>relate · feels-safe · expectation-fit · the repel-gate</i>. Harness: <code>tools/title-test/</code>.
@@ -67,6 +90,7 @@ export default function AuditionsPage() {
               <div>
                 <div style={{ fontFamily: "var(--theme-body)", fontSize: 11.5, fontWeight: 700, letterSpacing: ".06em", color: soft }}>{c.t1}</div>
                 <div style={{ fontFamily: "var(--theme-display)", fontSize: 22, color: ink }}>{c.t2}</div>
+                <StarLine s={starScore(+avg(i, "relate"), +avg(i, "feelsSafe"), LEG_EXPERTS.map((e) => ({ key: e, cb: getLeg(e, i)?.canBuild ?? "hollow" })))} />
               </div>
               <div style={{ textAlign: "right", fontSize: 11.5, minWidth: 158 }}>
                 {(() => {
@@ -120,7 +144,7 @@ export default function AuditionsPage() {
         return (
           <section key={pl.id} style={{ border: `2px solid var(--ink-soft)`, background: paper, marginBottom: 16, padding: "14px 16px" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
-              <div><div style={{ fontFamily: "var(--theme-display)", fontSize: 20, color: ink }}>{pl.title}</div><div style={{ fontSize: 11, color: margin, fontStyle: "italic" }}>tone: {pl.tone}</div></div>
+              <div><div style={{ fontFamily: "var(--theme-display)", fontSize: 20, color: ink }}>{pl.title}</div><div style={{ fontSize: 11, color: margin, fontStyle: "italic" }}>tone: {pl.tone}</div><StarLine s={starScore(avgP(i, "relate"), avgP(i, "feelsSafe"), PLEGS.map((e) => ({ key: e, cb: getLegP(e, i)?.canBuild ?? "hollow" })))} /></div>
               <div style={{ textAlign: "right", fontSize: 11.5, minWidth: 150 }}>
                 <div>relate <b style={{ color: ink }}>{avgP(i, "relate").toFixed(1)}</b> <span style={{ color: agreeCol(sr), fontSize: 10 }}>· {agree(sr)}</span></div>
                 <div>safe <b style={{ color: ink }}>{avgP(i, "feelsSafe").toFixed(1)}</b> <span style={{ color: agreeCol(ss), fontSize: 10 }}>· {agree(ss)}</span></div>
