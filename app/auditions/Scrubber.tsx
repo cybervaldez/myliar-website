@@ -133,40 +133,50 @@ function ferryArt(dr: number): string[] {
   return grid.map((row) => { let s = row.join(""); if (s.length < COLS) s += " ".repeat(COLS - s.length); else if (s.length > COLS) s = s.slice(0, COLS); return s; });
 }
 
-type Group = { id: string; name: string; settingTitle: string; storyTitles: string[]; relate: number; safe: number };
+type Group = { id: string; name: string; settingTitle: string; storyTitles: string[]; relate: number; safe: number; top?: boolean };
 
-// We're still PICKING — so the scrubber is a candidate switcher (the bench pattern): scrub EACH
-// candidate subrange to compare, then pick the most cohesive. The ferry environment art is shared
-// (it's the setting); the candidates differ in their titles (the surrounding anchor + the subrange).
-export default function Scrubber({ coziness, groups }: { coziness: string[]; groups: Group[] }) {
-  const [gi, setGi] = useState(0); // default = the highest-cohesion candidate (groups are pre-sorted)
-  const [dr, setDr] = useState(0.18);
-  const g = groups[gi] ?? groups[0];
+// THE DYNAMIC RANGE (the surrounding environment), per owner: it PEAKS AND FALLS — calm → intense
+// (70-80%) → calm again (80-100%). The dial drives the environment through that arc; the title +
+// coziness follow it (cozy at the calm ends, intense at the peak). EACH candidate SET gets its OWN
+// art scrubber (we're picking by feel). The ferry is the invariant (§8.15).
+function arc(dr: number): number {
+  if (dr < 0.7) return dr / 0.7;                       // calm → intense, rising over [0, 0.7]
+  if (dr < 0.8) return 1;                              // the intense PEAK, [0.7, 0.8]
+  return Math.max(0, 1 - (dr - 0.8) / 0.2);            // intense → calm again, [0.8, 1.0]
+}
+const safeCol = (s: number) => (s >= 4 ? forest : s >= 3 ? "#c08a2e" : "var(--spot-red)");
+
+function OneScrubber({ g, coziness }: { g: Group; coziness: string[] }) {
+  const [dr, setDr] = useState(0.0);
+  const intensity = arc(dr);
   const n = coziness.length;
-  const stop = Math.min(n - 1, Math.max(0, Math.round(dr * (n - 1))));
-  const safeCol = (s: number) => (s >= 4 ? forest : s >= 3 ? "#c08a2e" : "var(--spot-red)");
+  const stop = Math.min(n - 1, Math.max(0, Math.round(intensity * (n - 1))));
   return (
-    <div style={{ border: `2px solid ${forest}`, background: shade, padding: "14px 14px 16px", margin: "0 0 18px" }}>
-      <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".1em", color: forest, marginBottom: 8 }}>▶ THE SCRUBBER — scrub each candidate, then pick the most cohesive range</div>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 10 }}>
-        {groups.map((x, i) => (
-          <button key={x.id} onClick={() => setGi(i)} style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, padding: "4px 9px", cursor: "pointer", borderRadius: 5, border: `1.5px solid ${i === gi ? forest : "var(--ink-soft)"}`, background: i === gi ? paper : "transparent", color: i === gi ? forest : margin }}>
-            {x.name} <span style={{ fontWeight: 400, color: safeCol(x.safe) }}>· cohesion {x.relate.toFixed(1)}/{x.safe.toFixed(1)}</span>{i === 0 ? " ★" : ""}
-          </button>
-        ))}
+    <div style={{ border: `2px solid ${g.top ? forest : "var(--ink-soft)"}`, background: g.top ? shade : paper, padding: "12px 12px 14px", marginBottom: 12 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
+        <span style={{ fontFamily: "var(--theme-body)", fontSize: 11.5, fontWeight: 700, color: g.top ? forest : ink }}>{g.top ? "★ " : ""}{g.name}</span>
+        <span style={{ fontSize: 10, color: safeCol(g.safe) }}>cohesion {g.relate.toFixed(1)}/{g.safe.toFixed(1)}</span>
       </div>
-      <pre style={{ ...mono, fontSize: 14, color: ink, background: paper, border: `1.5px solid ${ink}`, padding: "10px 6px", margin: 0, textAlign: "center", overflow: "hidden" }}>{ferryArt(dr).join("\n")}</pre>
-      <div style={{ textAlign: "center", margin: "12px 8px 14px", minHeight: 46 }}>
-        <div style={{ fontFamily: "var(--theme-display)", fontSize: 18, color: ink }}>{g.settingTitle}</div>
-        <div style={{ fontSize: 15, fontStyle: "italic", color: soft }}>{g.storyTitles[stop]}</div>
+      <pre style={{ ...mono, fontSize: 12.5, color: ink, background: paper, border: `1.5px solid ${ink}`, padding: "9px 6px", margin: 0, textAlign: "center", overflow: "hidden" }}>{ferryArt(intensity).join("\n")}</pre>
+      <div style={{ textAlign: "center", margin: "9px 8px 11px", minHeight: 44 }}>
+        <div style={{ fontFamily: "var(--theme-display)", fontSize: 17, color: ink }}>{g.settingTitle}</div>
+        <div style={{ fontSize: 14, fontStyle: "italic", color: soft }}>{g.storyTitles[stop]}</div>
         <div style={{ fontSize: 10, color: margin, marginTop: 2, letterSpacing: ".06em" }}>— {coziness[stop]} —</div>
       </div>
-      <div style={{ display: "flex", alignItems: "center", gap: 10, maxWidth: 480, margin: "0 auto" }}>
-        <span style={{ fontSize: 11, color: margin, width: 64, textAlign: "right" }}>deeply cozy</span>
-        <input type="range" min={0} max={1} step={0.01} value={dr} onChange={(e) => setDr(+e.target.value)} aria-label="coziness" style={{ flex: 1, accentColor: forest }} />
-        <span style={{ fontSize: 11, color: margin, width: 44 }}>intense</span>
+      <input type="range" min={0} max={1} step={0.01} value={dr} onChange={(e) => setDr(+e.target.value)} aria-label="dynamic range" style={{ width: "100%", accentColor: forest, display: "block" }} />
+      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 9.5, color: margin, marginTop: 2 }}>
+        <span>calm</span><span>↑ intense (¾)</span><span>calm again</span>
       </div>
-      <div style={{ textAlign: "center", fontSize: 10, color: margin, marginTop: 6, fontStyle: "italic" }}>the surrounding dials calm → storm (just cozy→intense); the ferry holds (§8.15). switch candidates to compare — ★ = the audition’s most cohesive.</div>
+    </div>
+  );
+}
+
+// Each SET its own art scrubber (groups pre-sorted by cohesion; the first is ★).
+export default function Scrubber({ coziness, groups }: { coziness: string[]; groups: Group[] }) {
+  return (
+    <div style={{ margin: "0 0 18px" }}>
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".1em", color: forest, marginBottom: 8 }}>▶ THE SCRUBBERS — drag each candidate’s dial; the surrounding dynamic range PEAKS &amp; FALLS (calm → intense → calm), the ferry holds (§8.15). Scrub each to pick the most cohesive.</div>
+      {groups.map((g, i) => <OneScrubber key={g.id} g={{ ...g, top: i === 0 }} coziness={coziness} />)}
     </div>
   );
 }
