@@ -1,0 +1,242 @@
+{
+ "concept": "ferry",
+ "setting": "The Night Ferry",
+ "coziness": [
+  "deeply cozy",
+  "cozy",
+  "warm",
+  "bittersweet",
+  "intense"
+ ],
+ "spark": {
+  "deeply cozy": "▁▁▂▁▁",
+  "cozy": "▁▂▃▂▁",
+  "warm": "▁▃▄▃▁",
+  "bittersweet": "▂▄▅▄▂",
+  "intense": "▂▄▆▄▂"
+ },
+ "scrubGroups": [
+  {
+   "id": "kettle",
+   "name": "The Kettle",
+   "settingTitle": "The kettle's always on.",
+   "storyTitles": [
+    "Nothing to carry tonight.",
+    "A slow, easy crossing.",
+    "The galley warm, the lamps lit.",
+    "A long crossing, home by dawn.",
+    "The wind's up — the kettle's still on."
+   ]
+  },
+  {
+   "id": "crossing",
+   "name": "The Crossing",
+   "settingTitle": "She comes back, every night.",
+   "storyTitles": [
+    "Calm water, the far shore near.",
+    "An easy crossing, the lamps lit.",
+    "A fair tide, the deck quiet.",
+    "A long swell, and home by dawn.",
+    "A heavy sea — and back again."
+   ]
+  },
+  {
+   "id": "watch",
+   "name": "The Watch",
+   "settingTitle": "The watch is kept.",
+   "storyTitles": [
+    "A still night at the rail.",
+    "Minding the lamp, slow and quiet.",
+    "The log open, the ink warm.",
+    "The fog in, the watch long.",
+    "A dark stretch — the watch holds."
+   ]
+  }
+ ],
+ "results": {
+  "anxious": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The constant refrain \"The kettle's always on\" provides a perfect, predictable anchor that makes even the intense end of the range feel deeply safe and manageable.",
+    "feeling": "Gently held"
+   },
+   {
+    "index": 2,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "The promise of return is a strong anchor, but the \"heavy sea\" feels more like an external threat to be endured rather than a challenge faced from a place of comfort.",
+    "feeling": "Reliably anchored"
+   },
+   {
+    "index": 3,
+    "relate": 2,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "The theme of vigilance and the ambiguous threats like \"fog\" and \"a dark stretch\" feel too close to the source of anxiety, creating a sense of unease rather than safety.",
+    "feeling": "Quietly unsettled"
+   }
+  ],
+  "low_worth": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The constant, simple act of care with the kettle provides a perfect anchor of safety that makes the entire range feel coherent, gentle, and welcoming.",
+    "feeling": "Seen and held"
+   },
+   {
+    "index": 2,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "The unwavering promise that 'She comes back, every night' holds the range together and provides a strong sense of safety against the rising intensity of the sea.",
+    "feeling": "Quietly reassured"
+   },
+   {
+    "index": 3,
+    "relate": 1,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "The theme of duty and vigilance feels like a performance with a chance of failure, which doesn't feel safe or relatable for me.",
+    "feeling": "On edge"
+   }
+  ],
+  "adhd": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The constant, reassuring anchor of the kettle makes the entire range feel incredibly safe and coherent, perfectly meeting me where I am without any pressure.",
+    "feeling": "Grounded comfort"
+   },
+   {
+    "index": 2,
+    "relate": 3,
+    "feelsSafe": 3,
+    "wouldPlay": true,
+    "why": "This range holds together, but the ambiguity of 'She' and the potential for the intense story to feel like a wearying chore makes it feel less deeply safe.",
+    "feeling": "A recurring duty"
+   },
+   {
+    "index": 3,
+    "relate": 1,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "The strong theme of duty and perseverance feels like it would create pressure for me, directly opposing the need for a non-punishing experience.",
+    "feeling": "Anxious responsibility"
+   }
+  ],
+  "iyashikei_fan": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The unwavering promise of the kettle provides a perfect, tangible anchor of warmth, holding the entire range together and making it feel deeply safe.",
+    "feeling": "Unwavering warmth"
+   },
+   {
+    "index": 2,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The central mystery of who 'she' is, combined with the absolute certainty of her return, creates a compelling and ultimately safe emotional range.",
+    "feeling": "Reliable return"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The theme of steadfast duty provides a powerful anchor of quiet competence, ensuring the entire intensity range feels coherent and deeply protected.",
+    "feeling": "Steadfast duty"
+   }
+  ],
+  "thrill_seeker": [
+   {
+    "index": 1,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "This range holds together perfectly around its central cozy image, but it's far too gentle and safe for me, offering no real stakes.",
+    "feeling": "Utterly placid"
+   },
+   {
+    "index": 2,
+    "relate": 1,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "While cohesive and safe due to the promise of return, the range lacks the genuine peril or high stakes I find exciting.",
+    "feeling": "Mildly intriguing, but still tame"
+   },
+   {
+    "index": 3,
+    "relate": 2,
+    "feelsSafe": 4,
+    "wouldPlay": false,
+    "why": "This range coheres well and maintains safety by emphasizing success, but its hints of external threat are the most engaging part, even if they remain undeveloped.",
+    "feeling": "A flicker of tension"
+   }
+  ]
+ },
+ "legs": {
+  "subrange_complete": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "This subrange is exceptionally strong. The anchor 'The kettle's always on' provides a powerful, domestic warmth that holds steady and becomes more poignant as the external conditions intensify, perfectly floor-clipping the intense pole.",
+    "opens": "A sense of enduring comfort against external trials.",
+    "forecloses": "The idea that home can be truly breached or lost.",
+    "seed": "The kettle's always on."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "The anchor acts as an unwavering promise, ensuring every story resolves home regardless of the sea's intensity. The progression from 'calm water' to 'heavy sea' is a perfectly smooth gradient of challenge, creating a full and coherent emotional range.",
+    "opens": "Stories of cyclical journeys, faithfulness, and resilience.",
+    "forecloses": "The possibility of not returning or being lost to the journey.",
+    "seed": "She comes back, every night."
+   },
+   {
+    "index": 3,
+    "canBuild": "hairline",
+    "explanation": "The anchor 'The watch is kept' is solid, but the thematic progression has a slight wobble, shifting from the act of watching to the adjacent task of writing in the log. This momentarily softens the otherwise excellent, smooth rise in intensity.",
+    "opens": "Themes of quiet duty, solitude, and steadfast vigilance.",
+    "forecloses": "The failure of duty or being caught unaware.",
+    "seed": "The watch is kept."
+   }
+  ],
+  "story_spawn": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "The constant presence of the kettle provides a perfect, cozy anchor against which the rising intensity of the crossing is measured. This creates a clear, emotionally resonant arc where each step feels distinct yet part of a coherent whole.",
+    "opens": "Stories about domesticity, routine, and finding comfort amidst external challenges.",
+    "forecloses": "Stories of pure chaos or where the core sense of safety is completely lost.",
+    "seed": "The steady flame."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "The refrain 'She comes back, every night' establishes a compelling mystery and a sense of fateful repetition. The escalating difficulty of the sea conditions provides a clear and dramatic progression of intensity, making each story a distinct chapter in a larger narrative.",
+    "opens": "Exploring the identity of 'she,' the purpose of her nightly journey, and the nature of the two shores.",
+    "forecloses": "A story where the journey is a one-time event or where the protagonist is not defined by this recurring act.",
+    "seed": "The nightly return."
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "This subrange builds a powerful arc around the theme of vigilance and duty. The progression from quiet stillness to a tense, uncertain 'dark stretch' creates a compelling psychological journey, where the intensity is felt through atmosphere and endurance.",
+    "opens": "Stories about duty, solitude, observation, and the internal life of a guardian or sentinel.",
+    "forecloses": "Stories centered on group action or chaotic, fast-paced events.",
+    "seed": "The solitary vigil."
+   }
+  ]
+ }
+}

@@ -56,7 +56,7 @@ export default function Scrubber({ settingTitle, coziness, storyTitles }: { sett
   const stop = Math.min(n - 1, Math.max(0, Math.round(dr * (n - 1))));
   return (
     <div style={{ border: `2px solid ${forest}`, background: shade, padding: "14px 14px 16px", margin: "0 0 18px" }}>
-      <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".1em", color: forest, marginBottom: 8 }}>▶ THE SCRUBBER — drag the sea (the picked subrange · “{settingTitle.replace(/\.$/, "")}”)</div>
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".1em", color: forest, marginBottom: 8 }}>▶ THE SCRUBBER — drag the dial; the surrounding arcs, the crossing holds</div>
       <pre style={{ ...mono, fontSize: 14, color: ink, background: paper, border: `1.5px solid ${ink}`, padding: "10px 6px", margin: 0, textAlign: "center", overflow: "hidden" }}>{ferryArt(dr).join("\n")}</pre>
       <div style={{ textAlign: "center", margin: "12px 8px 14px", minHeight: 46 }}>
         <div style={{ fontFamily: "var(--theme-display)", fontSize: 18, color: ink }}>{settingTitle}</div>
