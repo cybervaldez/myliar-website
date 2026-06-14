@@ -179,7 +179,7 @@ function art(variant: Variant, dr: number): string[] {
   return grid.map((row) => { let s = row.join(""); if (s.length < COLS) s += " ".repeat(COLS - s.length); else if (s.length > COLS) s = s.slice(0, COLS); return s; });
 }
 
-type Group = { id: string; name: string; settingTitle: string; storyTitles: string[]; throughline: string; env: string[]; buildingBlock: string; verdict?: string; relate: number; safe: number; top?: boolean };
+type Group = { id: string; name: string; settingTitle: string; storyTitles: string[]; throughline: string; env: string[]; buildingBlock: string; verdict?: string; metaphor?: string; audienceServe?: string; relate: number; safe: number; top?: boolean };
 
 const VARIANT_OF = (id: string): Variant => (id === "strait" ? "strait" : id === "water" ? "water" : "crossing");
 // the §8.13 arc gauge per phase (rises to the storm-peak, then resolves) — mirrors pilot.json SPARK
@@ -206,6 +206,8 @@ function OneScrubber({ g, scenes }: { g: Group; scenes: string[] }) {
         <span style={{ fontFamily: "var(--theme-body)", fontSize: 11.5, fontWeight: 700, color: forest }}>{g.top ? "★ " : ""}{g.name}</span>
         {g.verdict && <span style={{ fontSize: 9.5, color: g.verdict === "distinct" ? forest : amber, border: `1px solid ${g.verdict === "distinct" ? forest : amber}`, borderRadius: 3, padding: "0 5px" }}>✓ {g.verdict}</span>}
       </div>
+      {/* THE METAPHOR — the step's north-star (the surrounding focus IS the story's core metaphor) */}
+      {g.metaphor && <div style={{ fontFamily: "var(--theme-display)", fontSize: 14, color: forest, margin: "3px 0 0" }}>◆ {g.metaphor}</div>}
       <div style={{ fontSize: 10, fontStyle: "italic", color: soft, margin: "1px 0 7px" }}>↳ {g.throughline}</div>
       <pre style={{ ...mono, fontSize: 11.5, color: ink, background: paper, border: `1.5px solid ${ink}`, padding: "7px 5px", margin: 0, textAlign: "center", overflow: "hidden" }}>{art(variant, dr).join("\n")}</pre>
       {/* slim position read-out (the panel itself is the scrub surface) — fill · phase ticks · handle */}
@@ -246,17 +248,19 @@ function WorldBuilderRead({ groups, richest, note }: { groups: Group[]; richest?
   const minSafe = Math.min(...groups.map((g) => g.safe));
   return (
     <div style={{ border: `2px dashed ${forest}`, background: shade, padding: "11px 14px", margin: "12px 0 0" }}>
-      <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 5 }}>🛠 THE WORLD-BUILDER’S READ — what each hands the next step</div>
-      <div style={{ fontSize: 11, color: ink, lineHeight: 1.5, marginBottom: 7 }}>All three came back <b style={{ color: forest }}>distinct</b> — each through-line carries a different <i>meaning</i>, not just a different picture.</div>
-      <div style={{ display: "grid", gap: 5 }}>
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 5 }}>🛠 THE WORLD-BUILDER’S READ — the METAPHOR each finds (the step’s north-star)</div>
+      <div style={{ fontSize: 11, color: ink, lineHeight: 1.5, marginBottom: 7 }}>This step is about finding the right <b style={{ color: forest }}>metaphor</b> — the surrounding focus IS the story’s core metaphor for healing. All three came back <b style={{ color: forest }}>distinct</b>. The audience (anxiety · low self-worth · ADHD) is carried as <i>context</i> — each metaphor’s healing speaks to one facet:</div>
+      <div style={{ display: "grid", gap: 7 }}>
         {groups.map((g) => (
-          <div key={g.id} style={{ fontSize: 11, color: ink, lineHeight: 1.45, borderLeft: `2px solid ${g.id === richest ? forest : "var(--ink-soft)"}`, paddingLeft: 8 }}>
-            <b style={{ color: g.id === richest ? forest : ink }}>{g.id === richest ? "◆ " : ""}{g.name}</b> <span style={{ color: margin }}>→</span> {g.buildingBlock}
+          <div key={g.id} style={{ fontSize: 11, color: ink, lineHeight: 1.4, borderLeft: `2px solid ${g.id === richest ? forest : "var(--ink-soft)"}`, paddingLeft: 8 }}>
+            <div><b style={{ color: g.id === richest ? forest : ink }}>{g.id === richest ? "◆ " : ""}{g.name}</b> {g.metaphor && <span style={{ color: forest, fontFamily: "var(--theme-display)" }}>«{g.metaphor}»</span>}</div>
+            <div style={{ color: ink }}><span style={{ color: margin }}>→ next step:</span> {g.buildingBlock}</div>
+            {g.audienceServe && <div style={{ color: soft, fontStyle: "italic", fontSize: 10 }}>↳ serves: {g.audienceServe}</div>}
           </div>
         ))}
       </div>
       <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginTop: 8, paddingTop: 6, borderTop: "1px solid var(--ink-soft)", lineHeight: 1.5 }}>
-        ◆ world-builder’s richest-metaphor pick: <b style={{ color: forest }}>{groups.find((g) => g.id === richest)?.name ?? "—"}</b>{note ? ` — ${note}` : ""} · floor clean (the Strait’s storm beat was reworded off framing the world as an antagonist, §8.15) · audience safety held (≥{minSafe.toFixed(1)} all three).
+        ◆ richest metaphor: <b style={{ color: forest }}>{groups.find((g) => g.id === richest)?.name ?? "—"}</b>{note ? ` — ${note}` : ""} · floor clean (§8.15) · audience safety held (≥{minSafe.toFixed(1)} all three).
       </div>
     </div>
   );

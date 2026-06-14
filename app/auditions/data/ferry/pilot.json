@@ -37,7 +37,10 @@
    ],
    "buildingBlock": "a struggle of endurance against a known, external pressure — the Pilot's lens",
    "verdict": "distinct",
-   "floorFlags": []
+   "floorFlags": [],
+   "metaphor": "Pressure as passage",
+   "audienceServe": "Addresses anxiety by framing external pressure as a temporary, survivable channel.",
+   "wbRead": "Implies stories of endurance, with a cast focused on mutual support through constriction."
   },
   {
    "id": "crossing",
@@ -60,7 +63,10 @@
    ],
    "buildingBlock": "a struggle of faith when the destination vanishes — the Manifest-Keeper's lens",
    "verdict": "distinct",
-   "floorFlags": []
+   "floorFlags": [],
+   "metaphor": "Destination as hope",
+   "audienceServe": "Addresses low self-worth by showing that hope remains even when the goal is unseen.",
+   "wbRead": "Implies stories of faith, with a cast focused on holding hope when the destination is lost."
   },
   {
    "id": "water",
@@ -83,7 +89,10 @@
    ],
    "buildingBlock": "a struggle of acceptance against an overwhelming force — the Deckhand's lens",
    "verdict": "distinct",
-   "floorFlags": []
+   "floorFlags": [],
+   "metaphor": "Surrender as support",
+   "audienceServe": "Addresses ADHD patterns by reframing the overwhelming world as a force that carries, not crushes.",
+   "wbRead": "Implies stories of acceptance, with a cast focused on letting go of control within chaos."
   }
  ],
  "results": {
@@ -274,6 +283,6 @@
  },
  "worldbuild": {
   "richest": "water",
-  "note": "The choice of environmental focus (cliffs, shore, or water) fundamentally changes the story's core metaphor for healing."
+  "note": "The richest metaphor reframes the nature of the struggle itself, not just the journey's beginning or end."
  }
 }
