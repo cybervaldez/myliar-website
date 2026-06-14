@@ -34,6 +34,7 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
       stepLabel={`${stepNo(step)} ${stepLabel(step)} · ${c.label}`}
       intro={sd.isSlate ? conceptIntro : (INTRO[step] ?? "")}
       primer={PRIMERS[step]}
+      sourceStudy={c.sourceStudy?.[step]}
       data={sd.data}
       items={sd.items}
       status={sd.isSlate ? SLATE_STATUS : undefined}

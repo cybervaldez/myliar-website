@@ -3,7 +3,7 @@
 // carried-forward look-back, and the cross-story reference. A new story = add one block to CAMPAIGNS
 // (+ its data/<campaign>/<step>.json). Concept is the shared SLATE (the master idea bank) — every
 // campaign's pipeline is born from it. NOT canon.
-import { type Item, type StepData, topOf } from "./score";
+import { type Item, type StepData, type SourceStudy, topOf } from "./score";
 import slate from "./data/concepts.json";
 import ferryPilot from "./data/ferry/pilot.json";
 import ferryDestination from "./data/ferry/destination.json";
@@ -96,6 +96,7 @@ export const CAMPAIGNS: Record<string, {
   label: string; pick: string; blurb: string;
   steps: Record<string, StepData>;
   carried: Record<string, Carried>;
+  sourceStudy?: Record<string, SourceStudy>;
 }> = {
   ferry: {
     label: "The Ferry", pick: "ferry",
@@ -114,6 +115,32 @@ export const CAMPAIGNS: Record<string, {
         { step: "① CONCEPT — THE FERRY", lines: ["the crossing as the day-unit", "◆ gem: a passive struggle (hairline) → must resolve to an internal letting-go"] },
         { step: "② PILOT — “Logged at Full Weight” won (5★, every leg load-bearing)", lines: ["a clear-eyed WITNESS, not a mentor", "the “I log you at full weight” tone turned the struggle gem load-bearing", "↳ seed: the coach witnesses without grading — belonging must never read as social demand"] },
       ],
+    },
+    // §8.18 SOURCE STUDY — verified by the source-study research (2026-06-14, 22 sources, adversarial).
+    // Verdict: no vein beats the Ferry; its iyashikei/keeper vein has the strongest proven track record.
+    sourceStudy: {
+      concept: {
+        vein: "cozy night-transit iyashikei — the KEEPER who witnesses transient strangers (Spiritfarer · Midnight Diner · Mushishi · ARIA). The strongest-evidenced of the three veins; the Ferry pick is validated.",
+        works: [
+          { title: "Spiritfarer", what: "the closest STRUCTURAL analog — a keeper brings transient passengers aboard, fulfills their unfinished business, and releases them (board → witness → depart). The emotional payoff is the GOODBYE, not the systems; the simplest beat (a hug) lands hardest. (One-way departures, though — the Ferry’s nightly RETURN is its own untested bet.)" },
+          { title: "Midnight Diner (Shinya Shokudō)", what: "the PROVEN TEMPLATE for the Ferry’s exact shape: one dish / one guest per night, the keeper a near-silent WITNESS not a mentor, a fixed closing ritual (“Good night” = the logged crossing). This IS the Ferry’s tone." },
+          { title: "Mushishi", what: "proof that a tranquil frame can safely HOLD dark/bittersweet content — the keeper’s clear-eyed, calm witnessing carries “the dark strait” + “a day is a shore, not a verdict” without breaking the soothing frame." },
+          { title: "ARIA", what: "“Nothing really happens, but in a really good way” — ‘nothing happens’ is a FEATURE, not a defect (a water/crossing vibe analog; its undines are tour-guides, not loggers)." },
+          { title: "Coziness (Kitfox / Tanya Short)", what: "Safety · Abundance · Softness + RITUAL — repeated meaningful actions create familiarity; validates the nightly crossing + the log as a warmth ENGINE, not a gimmick." },
+        ],
+        borrow: [
+          "the EPISODIC per-rider vignette (board → witness → depart) over a quiet throughline — Midnight Diner’s exact shape",
+          "concentrate the warmth in the GOODBYE / the gesture, never in the systems (Spiritfarer: the hug, not the management)",
+          "the keeper as near-silent WITNESS who logs “at full weight,” not a mentor",
+          "a tranquil tone can carry the dark strait — Mushishi’s frame holds bittersweet weight without breaking cozy",
+          "no-fail / no-danger / no-time-pressure = “the one hour nobody can ask anything more of you” (Spiritfarer)",
+        ],
+        avoid: [
+          "Spiritfarer’s management/grind busywork — it “loses sight of what it wants to say” and dilutes the farewells; keep the logging ritual LIGHT, never gate warmth behind chores",
+          "framing the dark strait as a contrast-THREAT outside the cozy space (refuted 0-3) — it’s atmospheric, never a threat mechanic",
+          "open bet: the recurring RETURN (vs Spiritfarer’s one-way departure) has no proven analog — watch that perpetual return doesn’t dilute the goodbye payoff",
+        ],
+      },
     },
   },
 };

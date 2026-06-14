@@ -3,7 +3,7 @@
 // solved this same step — the idea bank), then this step's candidates (⭐ build-value · scorecard ·
 // the audience WHY · the legs' forward notes), then prev/next nav. §8.10/§8.17: no pick — strengths
 // reinforce, gems fix.
-import { type Item, type StepData, type Read, TARGET, PLABEL, starStr, reason, avg, spread, legKeys, getLeg, legMean, star } from "./score";
+import { type Item, type StepData, type Read, type SourceStudy, TARGET, PLABEL, starStr, reason, avg, spread, legKeys, getLeg, legMean, star } from "./score";
 
 type Nav = { href: string; label: string } | null;
 
@@ -18,8 +18,8 @@ const STATUS: Record<string, { txt: string; col: string }> = {
 
 export type Primer = { tldr: string; whatFor: string; impact: string; howToChoose: string; mechanic?: string; craft?: string };
 
-export default function StepBoard({ stepLabel, intro, primer, data, items, carried, status, reference, prev, next }: {
-  stepLabel: string; intro: string; primer?: Primer; data: StepData; items: Item[];
+export default function StepBoard({ stepLabel, intro, primer, sourceStudy, data, items, carried, status, reference, prev, next }: {
+  stepLabel: string; intro: string; primer?: Primer; sourceStudy?: SourceStudy; data: StepData; items: Item[];
   carried?: { step: string; lines: string[] }[]; status?: Record<string, string>;
   reference?: { campaign: string; label: string; title: string; star: number }[]; prev?: Nav; next?: Nav;
 }) {
@@ -54,6 +54,26 @@ export default function StepBoard({ stepLabel, intro, primer, data, items, carri
               </div>
             )}
             {primer.craft && <div style={{ fontSize: 10.5, color: margin, fontStyle: "italic", lineHeight: 1.5, borderTop: `1px solid var(--ink-soft)`, paddingTop: 7 }}>{primer.craft}</div>}
+          </div>
+        </details>
+      )}
+
+      {sourceStudy && (
+        <details style={{ border: `2px solid ${amber}`, background: paper, margin: "0 0 16px" }}>
+          <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 14px", fontFamily: "var(--theme-body)", fontSize: 11.5, fontWeight: 700, color: amber, letterSpacing: ".02em" }}>
+            📚 SOURCE STUDY — what made successful stories in this vein work <span style={{ color: margin, fontWeight: 400, fontStyle: "italic" }}>· studied before the summary (§8.18)</span>
+            {sourceStudy.preliminary && <span style={{ marginLeft: 6, fontSize: 9, color: red, border: `1px solid ${red}`, borderRadius: 3, padding: "0 5px" }}>PRELIMINARY · verifying</span>}
+          </summary>
+          <div style={{ padding: "2px 14px 13px", fontSize: 12, color: ink, lineHeight: 1.55 }}>
+            <div style={{ fontSize: 11, color: margin, fontStyle: "italic", marginBottom: 8 }}>the vein: {sourceStudy.vein}</div>
+            <div style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: margin, marginBottom: 4 }}>PRECEDENTS — WHAT MADE EACH WORK</div>
+            <div style={{ display: "grid", gap: 5, marginBottom: 9 }}>
+              {sourceStudy.works.map((w) => (
+                <div key={w.title} style={{ borderLeft: `2px solid ${amber}`, paddingLeft: 8 }}><b>{w.title}</b> — {w.what}</div>
+              ))}
+            </div>
+            <div style={{ fontSize: 11.5, lineHeight: 1.5 }}><span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: forest }}>↳ BORROW</span> {sourceStudy.borrow.join(" · ")}</div>
+            <div style={{ fontSize: 11.5, lineHeight: 1.5, marginTop: 5 }}><span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: red }}>⚠ AVOID</span> {sourceStudy.avoid.join(" · ")}</div>
           </div>
         </details>
       )}
