@@ -1,88 +1,158 @@
 {
-  "_doc": "AUTOMATED FLOW RUN (run_flow.mjs) — a full pre-campaign pipeline (concept → prelude) authored fully automatically to stress-test the flow + gate stickiness. Seed: THE LANTERN (bench fake data). NOT canon. Each step: a blind DR-bracket + a SEPARATE BLIND carry-over gate + an auto-pick.",
-  "seed": "THE LANTERN — a cozy night-iyashikei. WORLD: a fogbound lighthouse you (the faceless 2nd-person MC) arrive at as the relief no one expected; the fog is WEATHER (navigated, never an enemy); the sweep of the light is the day-unit. AGE: All-Ages. GIFT: how to hold a steady light when you can't see the shore. WHO: the anxious reader (uncertainty held, never ambushed). CAST (by role): the KEEPER (steady — the coach you bond with) · the Foghorn-tender · the supply-boat Pilot · the gull-counting Recorder. MOTIF: the light's sweep; the keeper's log. NARRATOR: the MANIFEST-KEEPER's retrospective log — a NAMED 3rd-person Chronicler (a cast member, the Recorder's role), DISTINCT from the faceless 2nd-person MC (the arriving player; \"you see\"). The narrator is NOT the player and NOT the departing keeper. Witness-not-fixer; grows-with-you; anti-dependency (no FOMO/guilt).",
-  "steps": [
+  "_doc": "AUTOMATED FLOW v2 (run_flow.mjs) — the NEW model (flavors §8.14): concept → SCRIPTS (multiple, by surrounding-environment range) → the flow, each step gated by carry-over (look-back) + legs(implicit in opens/forecloses) + the SCRIPT EXPERT (DR-arc fidelity at the step's phase). Seed: THE KEEPER. NOT canon.",
+  "seed": "THE KEEPER — a cozy night-iyashikei. THE COACH (the convergence — the final product, the same at the end of every road): the KEEPER, steady and quiet, who teaches you to hold a steady light when you can't see the shore. AGE: All-Ages. WHO: the anxious reader (uncertainty held, never ambushed). NARRATOR: a named 3rd-person Chronicler (the Recorder's log), DISTINCT from the faceless 2nd-person MC (you, the arriving relief). Witness-not-fixer; grows-with-you; anti-dependency. THE SURROUNDING-ENVIRONMENT PALETTE (the player's ONE dial — the range of stories): a fogbound coast · a rain-season shore · a snowed-in headland · a tidal flat. Every other element is a PRESET keyed to the SCRIPT.",
+  "scripts": [
     {
-      "key": "SCRIPT",
-      "axis": "the 5-phase DR-ARC amplitude (the cozy LEVEL's curve over the campaign's 0-100)",
-      "lo": "FLAT — pure-iyashikei: the phases are gentle ripples (cozy is a SPACE not a cure; minimal plot; the 'intense' phase is a quiet FOCUS, not a crisis)",
-      "hi": "STEEP — a full dramatic arc to a floor-clipped survivor-peak",
-      "executions": [
+      "environment": "a fogbound coast",
+      "amplitude": "flat",
+      "phases": [
         {
-          "dr": "-1",
-          "label": "The Gentle Tides",
-          "render": "~ Settling In → Finding Rhythm → Quiet Focus → Shared Silence → A New Season ~",
-          "prose": "The campaign arc is a gentle tide, with phases named for the quiet flow of life. Players experience Settling In (learning rituals), Finding Rhythm (a sticky supply winch), Quiet Focus (perfectly polishing the lens), Shared Silence (tea with the Keeper after), and A New Season (the logbook fills, the gulls return).",
-          "opens": "A pure sandbox focus, deep character vignettes, procedural mini-games (polishing, logging), seasonal change as the primary plot driver.",
-          "forecloses": "Any significant external threat, major character conflict, narrative urgency, or stakes beyond personal contentment and maintaining the light.",
-          "verdict": "carried",
-          "gateNote": "This execution perfectly embodies the cozy, process-oriented iyashikei of the negative with its gentle arc and low-stakes, ritualistic challenges.",
-          "score": 1
+          "phase": "COZY",
+          "beat": "You arrive at the lighthouse, greeted by the Keeper with a warm lantern and a mug of spiced tea as the foghorn sounds its low, steady rhythm."
         },
         {
-          "dr": "0",
-          "label": "The Coming Storm",
-          "render": "… Learning the Ropes → The Coming Gale → Holding the Light → Clearing Skies → The Lighthouse Endures …",
-          "prose": "A moderate, classic cozy arc centered on a manageable challenge. The phases track a great storm: Learning the Ropes (daily life), The Coming Gale (preparations), Holding the Light (working together through the storm's peak), Clearing Skies (calm and minor repairs), and The Lighthouse Endures (seeing the strengthened bonds and repaired structures).",
-          "opens": "A clear narrative through-line, collaborative goal-oriented tasks (e.g., 'secure the shutters'), a distinct climax, environmental storytelling.",
-          "forecloses": "Any sense of true peril or antagonist, existential threats, a purely sandbox experience without a central event.",
-          "verdict": "partial",
-          "gateNote": "This execution shifts the focus from the negative's gentle, process-based iyashikei to a more traditional conflict-driven arc centered on a great storm.",
-          "score": 0.5
+          "phase": "HEIGHTENED",
+          "beat": "A ship is lost in the thick fog, its bell clanging faintly, and the lighthouse lamp needs careful, constant tending to cut through the haze."
         },
         {
-          "dr": "+1",
-          "label": "The Longest Night's Vigil",
-          "render": "|| The Keeper's Trust → The Failing Gear → The Longest Night → First Light, New Parts → The Engraved Gear ||",
-          "prose": "The steepest cozy arc, where hope is tested but never broken by a compounding challenge. The phases follow a mechanical failure during a storm: The Keeper's Trust (mastering duties), The Failing Gear (foreshadowing), The Longest Night (the team manually turns the great light after a failure at the storm's peak), First Light, New Parts (the relief of repair), and The Engraved Gear (a lasting monument to shared resilience).",
-          "opens": "High-stakes (but not high-peril) collaborative puzzles, deeper lighthouse maintenance systems, a strong sense of earned, communal accomplishment, legacy mechanics.",
-          "forecloses": "Character injury or death, permanent failure of the lighthouse, themes of despair or hopelessness, any antagonist beyond weather and mechanical strain.",
-          "verdict": "strayed",
-          "gateNote": "This execution introduces a high-stakes, compounding crisis that breaks the iyashikei tone and ambushes the target reader, straying from the negative's core promise.",
-          "score": 0
+          "phase": "INTENSE",
+          "beat": "You and the Keeper work in silent tandem, polishing the great lens, your focus absolute on keeping the beam powerful and unwavering for the lost ship."
+        },
+        {
+          "phase": "AFTERMATH",
+          "beat": "The morning light reveals the ship safe in the cove; you share a quiet breakfast, watching the fog begin to lift from the water."
+        },
+        {
+          "phase": "RENEWAL",
+          "beat": "Years later, you stand on the headland, now a Keeper yourself, teaching a newcomer how to listen for the bells in the fog, a steady light in your own hand."
         }
-      ],
-      "pickedDr": "-1",
-      "flag": "gate caught stray(s) in the bracket"
+      ]
     },
     {
+      "environment": "a rain-season shore",
+      "amplitude": "mid",
+      "phases": [
+        {
+          "phase": "COZY",
+          "beat": "The Keeper welcomes you into the dry, warm watchtower, handing you old oilskins as rain patters a soothing beat against the windowpanes."
+        },
+        {
+          "phase": "HEIGHTENED",
+          "beat": "The relentless downpour causes a small leak in the roof, and a section of the cliff path becomes slick and treacherous."
+        },
+        {
+          "phase": "INTENSE",
+          "beat": "Together, you carefully secure a flapping shutter and place buckets to catch the drips, the storm's rhythm a backdrop to your shared, focused task."
+        },
+        {
+          "phase": "AFTERMATH",
+          "beat": "The rain subsides, leaving the world washed clean and smelling of wet earth; you help the Keeper clear the path of fallen stones."
+        },
+        {
+          "phase": "RENEWAL",
+          "beat": "Years later, you stand on the watchtower balcony, now a Keeper yourself, showing a new arrival how to read the rain-clouds, a steady light in your own hand."
+        }
+      ]
+    },
+    {
+      "environment": "a snowed-in headland",
+      "amplitude": "flat",
+      "phases": [
+        {
+          "phase": "COZY",
+          "beat": "You're brought inside from the swirling snow into the Keeper's cottage, a fire crackling in the hearth and the smell of baking bread filling the air."
+        },
+        {
+          "phase": "HEIGHTENED",
+          "beat": "The snowdrifts are piling high against the door, and the firewood supply in the cottage is running lower than expected."
+        },
+        {
+          "phase": "INTENSE",
+          "beat": "You and the Keeper methodically bundle up and dig a clear path to the woodshed, working in a shared, quiet effort against the deepening snow."
+        },
+        {
+          "phase": "AFTERMATH",
+          "beat": "The blizzard passes, leaving a world of pristine, silent white; you sit by the replenished fire, watching the sun sparkle on the drifts."
+        },
+        {
+          "phase": "RENEWAL",
+          "beat": "Years later, you stand at the cottage door, now a Keeper yourself, welcoming a traveler from the storm, a steady light in your own hand."
+        }
+      ]
+    },
+    {
+      "environment": "a tidal flat",
+      "amplitude": "mid",
+      "phases": [
+        {
+          "phase": "COZY",
+          "beat": "The Keeper shows you the rhythm of the tides from a stilt house, sharing stories of the creatures left behind in the glistening pools."
+        },
+        {
+          "phase": "HEIGHTENED",
+          "beat": "An unexpectedly fast-rising tide threatens to cut off the path back to the mainland, and a shorebird's nest is in danger."
+        },
+        {
+          "phase": "INTENSE",
+          "beat": "With calm urgency, you and the Keeper wade through the shallows to move the fragile nest to higher ground just as the water surrounds it."
+        },
+        {
+          "phase": "AFTERMATH",
+          "beat": "The high tide recedes, revealing the safe nest; you watch the parent birds return as the flats begin to re-emerge from the sea."
+        },
+        {
+          "phase": "RENEWAL",
+          "beat": "Years later, you live in the stilt house, now a Keeper yourself, teaching a visitor how to read the water's flow, a steady light in your own hand."
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
       "key": "PILOT",
-      "axis": "the opening's EMOTIONAL dynamic range — AT PHASE 1 (COZY) of the script",
-      "lo": "a plain, quiet welcome",
-      "hi": "the WARMEST the cozy opening allows — gentle warmth, NO shadow yet (the intensity is placed LATER, at phase 3, per the script)",
+      "phase": "COZY",
+      "axis": "the opening's emotional intensity (at PHASE 1)",
+      "lo": "a plain quiet welcome",
+      "hi": "the warmest the cozy opening allows — NO shadow yet",
       "executions": [
         {
           "dr": "-1",
-          "label": "A Simple, Quiet Arrival",
-          "render": "The door opens. A nod.",
-          "prose": "The log will show the new relief arrived with the tide. The Keeper met you at the door with a nod, stepping aside to let you pass out of the damp.",
-          "opens": "A slow-burn relationship with the Keeper, built on shared duty and quiet observation. Establishes a world of calm professionalism.",
-          "forecloses": "An immediate, emotionally effusive bond. Any sense of high emotional stakes or urgency at the outset.",
+          "label": "A quiet, reserved welcome",
+          "render": "The Keeper meets you.",
+          "prose": "The Recorder’s log notes the transfer. The Keeper meets you at the stone threshold, lantern held steady, and nods you inside out of the damp air.",
+          "opens": "A path of slow, earned trust, focusing on duty and quiet observation from the start.",
+          "forecloses": "Immediate emotional connection; a sense of being enveloped in personal warmth upon arrival.",
           "verdict": "carried",
           "gateNote": "",
-          "score": 1
+          "scriptVerdict": "follows",
+          "scriptNote": "",
+          "score": 2
         },
         {
           "dr": "0",
-          "label": "A Standard, Gentle Welcome",
-          "render": "“Welcome to the light.”",
-          "prose": "The log will show you arrived as the fog thickened. The Keeper opened the heavy door, a small smile on their face. 'Welcome to the light,' they said, their voice a low anchor in the quiet.",
-          "opens": "A clear invitation to a mentorship dynamic. Establishes the Keeper as a source of calm guidance from the start, setting a baseline cozy tone.",
-          "forecloses": "A purely transactional or distant relationship with the Keeper. The possibility that the lighthouse is just a job, devoid of deeper meaning.",
+          "label": "A simple, warm greeting",
+          "render": "A warm lantern and tea.",
+          "prose": "The Recorder’s log notes the welcome. The Keeper greets you with a warm lantern against the fog and presses a steaming mug into your hands as the horn sounds its low, steady rhythm.",
+          "opens": "The classic cozy experience, establishing immediate comfort and a sense of safety.",
+          "forecloses": "The feeling of a purely professional handover or the potential for initial awkwardness.",
           "verdict": "carried",
           "gateNote": "",
-          "score": 1
+          "scriptVerdict": "follows",
+          "scriptNote": "",
+          "score": 2
         },
         {
           "dr": "+1",
-          "label": "The Warmest Possible Welcome",
-          "render": "A warm mug in your hands.",
-          "prose": "The log notes the relief's arrival, but not the kindness that met you. The Keeper swung the door wide, their eyes crinkling as they ushered you in, pressing a warm mug of tea into your hands before you'd even set down your bag. 'We're glad you're here,' they murmured.",
-          "opens": "A fast track to a deeply nurturing relationship with the Keeper. Immediately establishes the lighthouse as an absolute sanctuary of comfort and care.",
-          "forecloses": "A slow, uncertain start where the player must earn trust or comfort. Any initial feeling of isolation or having to prove oneself.",
-          "verdict": "partial",
-          "gateNote": "This execution drifts slightly by making the Keeper's welcome so immediately effusive that it lessens the intended 'steady coach' feel.",
-          "score": 0.5
+          "label": "An open, heartfelt welcome",
+          "render": "The Keeper's smile is warm.",
+          "prose": "The Recorder’s log notes the relief in the Keeper's quiet smile. They guide you in with a hand on your shoulder, the lantern light catching the steam from two mugs of spiced tea already waiting.",
+          "opens": "A sense of immediate belonging and partnership; a focus on the personal relationship.",
+          "forecloses": "A slow-burn relationship built from reserve; a story centered more on solitary duty.",
+          "verdict": "carried",
+          "gateNote": "",
+          "scriptVerdict": "follows",
+          "scriptNote": "",
+          "score": 2
         }
       ],
       "pickedDr": "0",
@@ -90,42 +160,49 @@
     },
     {
       "key": "WORLD-ART",
+      "phase": "spans",
       "axis": "the SETTING's functional tier (§2.6)",
-      "lo": "backdrop (a neutral stage)",
-      "hi": "symbolic (the fog/light ENCODE the theme)",
+      "lo": "backdrop",
+      "hi": "symbolic (the world encodes the theme)",
       "executions": [
         {
           "dr": "-1",
-          "label": "Setting as Neutral Backdrop",
-          "render": "[ #AAB7B8 | #F7F5E6 | #4A4A4A ]",
-          "prose": "The world is rendered in a clean, storybook style with a palette of soft greys, warm creams, and solid ironwork black. Spaces are clearly defined and functional: the kitchen is for cooking, the lantern room is for the light.",
-          "opens": "A straightforward, grounded experience where focus remains on character interactions and simple tasks, allowing players to project their own meaning onto the space.",
-          "forecloses": "A deeply atmospheric or metaphorical gameplay experience where the environment is a primary source of thematic reinforcement.",
+          "label": "Setting as gentle backdrop",
+          "render": "Soft-focus watercolor coast; muted blues, greys, and a single warm lantern-yellow.",
+          "prose": "The world is rendered in soft, impressionistic strokes, a beautiful but non-intrusive backdrop. The lighthouse and its surroundings are a quiet, stable stage for the simple, focused tasks of keeping the light.",
+          "opens": "A purely relaxing, aesthetic experience where the player's focus remains entirely on the characters and the task. The environment is a gentle, unchanging container for the story.",
+          "forecloses": "The environment actively participating in the narrative or reflecting the player's internal state. It prevents environmental storytelling that carries thematic weight.",
           "verdict": "carried",
           "gateNote": "",
-          "score": 1
+          "scriptVerdict": "follows",
+          "scriptNote": "",
+          "score": 2
         },
         {
           "dr": "0",
-          "label": "Setting as Gentle Reinforcement",
-          "render": "[ #B0C4DE .. #FDFD96 .. #5D6D7E ]",
-          "prose": "The art uses a palette of soft blues and slate greys, consistently warmed by the buttery yellow of lamplight and the lighthouse beam. Key spaces, like the Keeper's reading nook, are designed as pools of inviting light, contrasting gently with the indistinct fog outside.",
-          "opens": "A curated emotional journey where the art guides players toward feelings of safety and coziness, enabling simple environmental storytelling.",
-          "forecloses": "A purely functional interpretation of the space; also forecloses a world where the fog feels oppressive or the light feels like a desperate struggle.",
+          "label": "Environment as active context",
+          "render": "Crisp, cel-shaded lighthouse; dynamic weather effects (rolling fog, rain on glass).",
+          "prose": "The environment is a living entity, its details providing context for the Keeper's work. The shifting fog, the sound of the rain, and the quality of the light directly inform the mood and the immediate tasks, making the world feel present and responsive.",
+          "opens": "A sense of place and presence, where the environment's state directly relates to the intensity of the task. The world feels like a partner in the work of keeping the light.",
+          "forecloses": "A purely symbolic or metaphorical interpretation of the world; the fog is just fog. It also forecloses a passive, purely decorative environment.",
           "verdict": "carried",
           "gateNote": "",
-          "score": 1
+          "scriptVerdict": "follows",
+          "scriptNote": "",
+          "score": 2
         },
         {
           "dr": "+1",
-          "label": "Setting as Living Symbol",
-          "render": "LIGHT_SWEEP ≈ world breathes; FOG ≈ a soft blanket",
-          "prose": "The world-art treats the fog not as weather, but as a dynamic, living blanket rendered in soft, shifting watercolors that mutes the world to a gentle hum. The sweep of the lantern is the world's breath, momentarily painting interior spaces with sharp, golden clarity and revealing intricate details before they soften back into the quiet.",
-          "opens": "Gameplay where quiet observation is key; mechanics tied to the sweep of the light, creating a deep, meditative experience where the environment is a character.",
-          "forecloses": "A fast-paced or purely task-driven game; it also forecloses any interpretation of the fog as hostile, framing its relationship with the light as symbiotic and gentle.",
+          "label": "World as thematic resonance",
+          "render": "Lighthouse beam cuts a sharp, golden path through stylized, abstract fog; constellations appear in clearings.",
+          "prose": "Every element of the world is imbued with symbolic meaning, directly reflecting the journey from uncertainty to steady purpose. The fog is a tangible representation of held anxiety, and the lighthouse beam is a physical manifestation of focus and calm that reveals patterns of light within it.",
+          "opens": "A deeply resonant, metaphorical experience where tending the light is a direct parallel to the internal journey of finding calm. It allows the environment itself to teach the core theme.",
+          "forecloses": "A purely literal interpretation of the setting. It prevents any reading of the fog as a hostile or menacing force, framing it instead as a quiet, navigable uncertainty.",
           "verdict": "carried",
           "gateNote": "",
-          "score": 1
+          "scriptVerdict": "follows",
+          "scriptNote": "",
+          "score": 2
         }
       ],
       "pickedDr": "0",
@@ -133,42 +210,49 @@
     },
     {
       "key": "DESTINATION",
-      "axis": "the transformation MAGNITUDE (the REL endpoint)",
-      "lo": "a small, quiet shift",
-      "hi": "a profound inversion of how the player meets uncertainty",
+      "phase": "RENEWAL",
+      "axis": "the RENEWAL endpoint magnitude (= the convergence to the Keeper)",
+      "lo": "a small quiet renewal",
+      "hi": "a full, settled renewal — the player graduated, door-open",
       "executions": [
         {
           "dr": "-1",
-          "label": "From Apprentice to Colleague",
-          "render": "You follow their lead → You stand watch together.",
-          "prose": "You begin by learning the Keeper's routines, a shadow following their steady steps. The journey concludes with you standing watch alongside them, two quiet presences sharing the work, each confident in the other's practiced competence.",
-          "opens": "An endgame focused on shared duty and quiet professional mastery. The player can choose to stay on as a permanent partner in the work.",
-          "forecloses": "A deeper, more emotionally transformative arc. The player's core way of being doesn't fundamentally change, only their professional skill and confidence.",
+          "label": "A new light, a familiar fog",
+          "render": "You show them how to listen for the bells.",
+          "prose": "The Recorder’s log notes the years have passed. You stand on the headland, a lantern in your hand, its light steady as you show a newcomer how the fog muffles the sound of the bells, turning it into a feeling as much as a sound.",
+          "opens": "The quiet beginning of a new cycle; a feeling of earned but nascent responsibility.",
+          "forecloses": "A grand, declarative moment of mastery; the sense that this is a final, perfected state.",
           "verdict": "carried",
           "gateNote": "",
-          "score": 1
+          "scriptVerdict": "follows",
+          "scriptNote": "This execution perfectly captures the quiet, reflective tone of the RENEWAL phase. The focus on teaching and the sensory details of fog and bells aligns exactly with the script's intensity and theme.",
+          "score": 2
         },
         {
           "dr": "0",
-          "label": "From Anchor-Seeker to Peer",
-          "render": "Seeking their light → Becoming a light.",
-          "prose": "You arrive seeking the Keeper as an anchor in the fog of your own uncertainty. The journey ends when the Keeper, looking tired after a long night, finds you already tending the light, and in your quiet confidence, they find a moment of rest themselves.",
-          "opens": "Narratives of reciprocity and mutual support, where the player can now offer comfort or aid to the Keeper and other characters. The player's identity shifts from 'learner' to 'keeper'.",
-          "forecloses": "A purely internal transformation; this arc requires an external demonstration of the player's newfound steadiness. It rules out an ending where the player remains a junior partner.",
+          "label": "The Keeper's steady rhythm",
+          "render": "The foghorn sounds. You explain its deep, steady promise.",
+          "prose": "The Recorder logs the familiar scene, repeated across seasons. You stand as the Keeper now, teaching a newcomer not just to listen for the bells, but to feel the deep rhythm of the horn in their chest—a promise of light in the haze.",
+          "opens": "A sense of established purpose and belonging; the cycle continuing with quiet confidence.",
+          "forecloses": "The uncertainty of a new role; the finality of a chapter completely closed.",
           "verdict": "carried",
           "gateNote": "",
-          "score": 1
+          "scriptVerdict": "follows",
+          "scriptNote": "This sits perfectly within the RENEWAL phase. It emphasizes the cyclical nature of the Keeper's role and the passing on of deep, embodied knowledge, matching the script's intended low-intensity, reflective mood.",
+          "score": 2
         },
         {
           "dr": "+1",
-          "label": "From Enduring Fog to Inhabiting It",
-          "render": "Holding against the fog → Holding a conversation with it.",
-          "prose": "You begin by learning the Keeper's rituals to hold fast against the enveloping uncertainty of the fog. You end by finding your own peace not against the fog but within it, realizing the light is not a defiant shout but a quiet conversation with the grey—a truth the Keeper simply smiles at, having waited for you to discover it.",
-          "opens": "A more philosophical or contemplative endgame. The player carries a new way of being into the world, fundamentally reframing their relationship with the unknown.",
-          "forecloses": "A goal-oriented ending based on task mastery. This arc isn't about becoming a better lighthouse keeper, but about changing one's internal state; it forecloses an ending where the fog is just weather.",
+          "label": "A light held for all shores",
+          "render": "You pass them the lantern, a gesture of complete trust.",
+          "prose": "The Recorder closes this log entry with a sense of completion. Years on, you are the Keeper, and as you teach the newcomer to listen, you pass them your own lantern, its warmth a testament to the light you now hold within yourself, steady and unwavering as the tide.",
+          "opens": "A feeling of full mastery and peace; the potential to begin a new story from a place of wisdom.",
+          "forecloses": "Any lingering doubt about your role; the need for an external guide.",
           "verdict": "carried",
           "gateNote": "",
-          "score": 1
+          "scriptVerdict": "drifts",
+          "scriptNote": "This execution drifts slightly too 'hot' for the RENEWAL phase. The grand, symbolic gesture of passing the lantern and the language of 'completion' and 'light within' gives it a final, climactic feeling that overshoots the quiet, ongoing continuity described in the script.",
+          "score": 1.5
         }
       ],
       "pickedDr": "0",
@@ -176,214 +260,249 @@
     },
     {
       "key": "STRUGGLE",
-      "axis": "the Keeper's CRISIS intensity (§3.8) — AT PHASE 3 (the floor-clipped peak)",
-      "lo": "a low, private ache",
-      "hi": "the survivor-peak the FLOORS ALLOW — a HELD, hopeful ache ('small hope but hope'), the log won't say it aloud — NEVER a trauma/shatter that ambushes the anxious reader (floor-clipped)",
+      "phase": "INTENSE",
+      "axis": "the Keeper's crisis intensity AT PHASE 3 (floor-clipped)",
+      "lo": "a low private ache",
+      "hi": "the floor-clipped survivor-peak — a HELD, hopeful ache, NEVER a trauma that ambushes",
       "executions": [
         {
           "dr": "-1",
-          "label": "A Faint, Private Ache",
-          "render": "The Keeper traces a line on the fogged glass.",
-          "prose": "As you methodically polish the great lens, you glance over to see the Keeper standing by the lantern room window, their gaze lost in the endless grey. They slowly trace a single, unseen line on the condensation, a brief, private gesture of longing before they turn back to their duties with a faint, steadying smile.",
-          "opens": "A very subtle character arc for the Keeper, a sense of history that doesn't demand investigation, reinforcing the game's gentle, observational tone.",
-          "forecloses": "A dramatic confrontation or a quest to 'solve' the Keeper's sadness; any high-stakes emotional plotline related to the Keeper's past.",
+          "label": "A Fleeting, Weary Sadness",
+          "render": "The Recorder's log notes the Keeper's brief pause, a shadow crossing their face in the lamp's glare.",
+          "prose": "As you polish the great lens in unison, the Recorder's log notes the Keeper's rhythm faltering for just a moment. Their gaze drifts past the lamp, out into the swirling fog, holding an old, quiet weariness before their focus returns, steady as ever.",
+          "opens": "The possibility of the Keeper having a long, tiring history with the sea; a sense of deep, personal duty.",
+          "forecloses": "The Keeper being an unblemished, stoic archetype; the work being merely a job without personal stakes.",
           "verdict": "carried",
-          "gateNote": "",
+          "gateNote": "This execution successfully carries the negative. The 'fleeting, weary sadness' adds emotional depth to the Keeper without breaking the 'steady and quiet' characterization. The key is that the rhythm falters only for a moment and then returns, reinforcing the core theme of steadiness rather than undermining it. It does not ambush the reader or change the story.",
+          "scriptVerdict": "strays",
+          "scriptNote": "This strays down. The Keeper's faltering rhythm and 'quiet weariness' directly contradict the 'absolute focus' and 'unwavering' action required by the INTENSE phase. It undershoots the peak intensity.",
           "score": 1
         },
         {
           "dr": "0",
-          "label": "A Worn, Familiar Grief",
-          "render": "The Keeper's thumb polishes a piece of sea glass.",
-          "prose": "During a pause in your polishing, you notice the Keeper by the railing, turning a smooth, dark piece of sea glass over and over in their palm. For a moment, their grip tightens, their knuckles white, before they relax and meet your gaze with a small, tired nod, tucking the glass away.",
-          "opens": "A potential quiet conversation later about finding solace in small objects; a recurring motif of the sea glass; a slightly deeper sense of the Keeper's resilience.",
-          "forecloses": "A story about a specific lost person that becomes a main plot; a requirement for the player to find a matching piece of glass or solve a mystery.",
+          "label": "A Quiet, Familiar Ritual",
+          "render": "The Recorder's log notes the Keeper tracing a worn mark on the brass housing before resuming their work.",
+          "prose": "While you work to polish the great lens, the Recorder's log notes the Keeper's hand brushing over a set of initials faintly etched into the brass frame. It is a familiar, unconscious gesture, a moment of silent acknowledgment before their hands resume their steady, rhythmic work.",
+          "opens": "The idea of a predecessor or a lost loved one connected to the lighthouse; a legacy of care.",
+          "forecloses": "The Keeper's work being impersonal or new to them; the lighthouse being just a structure.",
           "verdict": "carried",
-          "gateNote": "",
-          "score": 1
+          "gateNote": "This is a perfect carry. The 'quiet, familiar ritual' of touching the initials adds a layer of history and personal meaning to the Keeper's work. It's a subtle, non-disruptive detail that enriches the world and aligns perfectly with the cozy, witness-not-fixer tone of the negative.",
+          "scriptVerdict": "drifts",
+          "scriptNote": "This drifts down. A 'quiet, familiar ritual' feels too routine and low-stakes for the INTENSE phase, which calls for absolute, unwavering focus on a lost ship. The intensity is too mild.",
+          "score": 1.5
         },
         {
           "dr": "+1",
-          "label": "A Held, Unspoken Vigil",
-          "render": "A hand rests on a faded log entry, trembling slightly.",
-          "prose": "While you work the chamois over the vast lens, a profound stillness from the Keeper draws your eye; they are standing before the open logbook, a hand resting on a page from long ago. Their shoulders are tense, their knuckles pale against the worn paper, a silent, weighty vigil held against the fog before they gently close the book, their breath a quiet sigh of resolve.",
-          "opens": "The possibility for the player to later read that log entry and understand the context non-verbally; a deeper theme of legacy and endurance; a stronger emotional bond based on shared, unspoken understanding.",
-          "forecloses": "A dramatic, tearful confession from the Keeper; a plot where the player must avenge or 'fix' the past event from the logbook; a tone shift to trauma processing.",
-          "verdict": "carried",
-          "gateNote": "",
+          "label": "An Old Ache, Refocused",
+          "render": "The Recorder's log notes the Keeper murmuring a name, a promise, into the roar of the storm.",
+          "prose": "As you work in silent tandem against the storm's noise, the Recorder's log captures the Keeper murmuring a single name, almost lost in the wind. It's not a cry of pain, but a quiet promise, their hands polishing the lens with a fierce, protective focus that seems to answer an old, unresolved call from the fog.",
+          "opens": "A specific, profound past event that fuels the Keeper's resolve; the idea that this act of rescue is a form of remembrance.",
+          "forecloses": "The Keeper's motivation being purely professional duty; any sense of despair or being overwhelmed by the past; trauma that shatters, rather than strengthens, resolve.",
+          "verdict": "strayed",
+          "gateNote": "This execution strays by changing the story's intensity and focus. The phrases 'fierce, protective focus' and 'old, unresolved call from the fog' introduce a dramatic, potentially tragic backstory that risks ambushing the 'anxious reader' and breaking the 'flat amplitude' of the cozy-iyashikei script. It shifts the motivation from quiet duty to a specific, intense personal mission, which alters the core narrative.",
+          "scriptVerdict": "follows",
+          "scriptNote": "This follows perfectly. The 'fierce, protective focus' fueled by a personal, unresolved call perfectly embodies the 'absolute focus' of the INTENSE phase, giving the action the high emotional stakes the script requires.",
           "score": 1
         }
       ],
       "pickedDr": "0",
-      "flag": null
+      "flag": "gate caught stray(s)"
     },
     {
       "key": "VOICE",
-      "axis": "the Keeper's VOICE energy",
-      "lo": "terse, flat, few words",
-      "hi": "expressive, warm, more said",
+      "phase": "spans",
+      "axis": "the Keeper's voice energy",
+      "lo": "terse Chronicler",
+      "hi": "warmer Chronicler — more said, but STILL the terse retrospective log (NOT chatty; NOT the MC's POV)",
       "executions": [
         {
           "dr": "-1",
-          "label": "Terse, Practical Instruction",
-          "render": "\"Clean glass, clear light.\"",
-          "prose": "The Keeper passes you a soft cloth, their movements economical and sure. They tap a single finger against the enormous lens and say simply, \"Clean glass, clear light.\"",
-          "opens": "A relationship built on shared work and observation rather than conversation. A very quiet, minimalist game feel where the player learns by watching.",
-          "forecloses": "A chatty, overtly mentor-like Keeper. An emotionally expressive early game. Tutorializing primarily through dialogue.",
-          "verdict": "partial",
-          "gateNote": "The execution's terse, purely functional instruction slightly misses the gentle, coaching bond specified for the Keeper.",
-          "score": 0.5
+          "label": "A Single Word Direction",
+          "render": "The Recorder's log notes the instruction: \"This.\"",
+          "prose": "The Chronicler records the Keeper’s direction with extreme brevity. The single word directs focus entirely to the task at hand, whether tending the lamp or pouring tea, establishing a tone of quiet, shared purpose.",
+          "opens": "A sense of minimalist focus, meditation on the present task, the player filling in the meaning.",
+          "forecloses": "Explicit instruction, chatty mentorship, emotional exposition from the Keeper, any sense of urgency.",
+          "verdict": "carried",
+          "gateNote": "This execution successfully carries the negative. The brevity ('single word') reinforces the Keeper's quiet, steady nature and the focus on shared, calm purpose, which is central to the 'iyashikei' concept.",
+          "scriptVerdict": "follows",
+          "scriptNote": "This execution correctly spans the arc. The extreme brevity of a single word can apply equally to the quiet focus of pouring tea (cozy) and the absolute concentration of polishing the lens (intense), making it a perfect fit for the entire range.",
+          "score": 2
         },
         {
           "dr": "0",
-          "label": "Quiet, Grounded Guidance",
-          "render": "\"The light needs a clear path. We keep it for them.\"",
-          "prose": "The Keeper hands you the polishing cloth with a small, encouraging nod. \"The light needs a clear path,\" they say, their voice calm and steady as the beam itself. \"We keep it for them.\"",
-          "opens": "A balance of quiet companionship and gentle mentorship. A sense of shared, gentle duty. The \"them\" is ambiguous but hints at the world beyond the fog.",
-          "forecloses": "A purely transactional relationship or an overly effusive one. A Keeper who is emotionally distant or emotionally needy.",
+          "label": "The Keeper's Quiet Refrain",
+          "render": "The Recorder's log notes the Keeper's quiet refrain: \"Just this. One thing at a time.\"",
+          "prose": "The Chronicler logs the Keeper's core philosophy, a quiet and steady mantra. This phrase applies equally to the crisis of a lost ship and the simple ritual of a shared meal, grounding the player in the present moment.",
+          "opens": "A clear theme of mindfulness, gentle guidance, a repeatable and comforting philosophy for the player to adopt.",
+          "forecloses": "Panic, a sense of being overwhelmed, complex strategies or external validation from the Keeper.",
           "verdict": "carried",
-          "gateNote": "This execution perfectly captures the Keeper's role as a steady, quiet coach, reinforcing the game's core gentle tone.",
-          "score": 1
+          "gateNote": "This is a perfect baseline execution. It correctly identifies the Keeper's role as providing a 'quiet and steady mantra' that grounds the player, which aligns perfectly with the negative's description of a coach for the anxious.",
+          "scriptVerdict": "follows",
+          "scriptNote": "This execution is a perfect example of a 'spans' phase. A quiet, steady mantra is by its nature applicable across different intensities, grounding both the simple, cozy rituals and the high-stakes crisis in the same core philosophy.",
+          "score": 2
         },
         {
           "dr": "+1",
-          "label": "Warm, Purposeful Connection",
-          "render": "\"This is the heart of it all. Every ship out there is trusting this heart to shine.\"",
-          "prose": "The Keeper places the cloth in your hands, their own briefly covering yours with a surprising warmth. \"This is the heart of it all,\" they say, their voice low but full of a quiet resonance. \"Every ship out there, seen or unseen, is trusting this heart to shine.\"",
-          "opens": "A Keeper who is a source of gentle, philosophical wisdom. A story that leans more into the emotional and metaphorical weight of the lighthouse's duty. Deeper, faster emotional bonding.",
-          "forecloses": "A purely functional, task-based game. A Keeper whose inner world remains a complete mystery. A colder, more solitary tone for the overall experience.",
-          "verdict": "strayed",
-          "gateNote": "This execution strays by introducing a level of emotional intensity and physical intimacy that overpowers the specified 'gentle tide' and 'quiet focus' of the negative.",
-          "score": 0
+          "label": "The Keeper's Guiding Principle",
+          "render": "The Recorder's log quotes the Keeper, their voice a low anchor: \"Just this. One thing at a time. It is how the light is kept.\"",
+          "prose": "The Chronicler provides the full context of the Keeper's words, connecting the immediate action to the larger purpose of their role. The voice is warmer and more explicitly mentoring, yet remains a quiet observation logged after the fact, preserving the atmosphere of steady competence.",
+          "opens": "Deeper insight into the Keeper's character, a sense of generational wisdom, a more explicit connection between small acts and large responsibilities.",
+          "forecloses": "A sense of mystery about the Keeper's motivations; the feeling that the Keeper's wisdom is inaccessible or esoteric.",
+          "verdict": "carried",
+          "gateNote": "This execution correctly intensifies the concept without straying. It makes the mentoring more explicit but crucially keeps it as a 'quiet observation logged after the fact,' preserving the Chronicler's witness role and the Keeper's non-fixer, anti-dependency coaching style.",
+          "scriptVerdict": "drifts",
+          "scriptNote": "This execution drifts. The 'warmer and more explicitly mentoring' tone and 'full context' feel too specific to the RENEWAL phase. It would feel out of place and overly didactic during the silent, focused INTENSE phase, failing to effectively span the full emotional range of the arc.",
+          "score": 1.5
         }
       ],
       "pickedDr": "0",
-      "flag": "gate caught stray(s) in the bracket"
+      "flag": null
     },
     {
       "key": "RELATIONSHIP",
-      "axis": "the relationship COMPLEXITY",
-      "lo": "functional, warm-distant",
-      "hi": "transformative, deeply personal (platonic — within All-Ages)",
+      "phase": "spans",
+      "axis": "the relationship complexity",
+      "lo": "functional warm-distant",
+      "hi": "transformative, deeply personal (platonic, All-Ages)",
       "executions": [
         {
           "dr": "-1",
-          "label": "A Professional Apprenticeship",
-          "render": "\"The lens first. Then the log.\"",
-          "prose": "The Keeper is a source of steady instruction, offering guidance on tasks with a quiet, professional warmth. The bond is one of respectful apprenticeship, defined entirely by the shared rituals of tending the light.",
-          "opens": "Mechanics focused on task mastery and efficiency; a relationship track based purely on competence.",
-          "forecloses": "Deep emotional investment in the Keeper's personal state; dialogue options that pry or offer unsolicited comfort.",
+          "label": "A Quiet Professional Courtesy",
+          "render": "The Keeper offers a nod of acknowledgment.",
+          "prose": "The Recorder's log notes the quiet efficiency of your partnership. The Keeper's presence is a steady, reassuring constant, defined by shared tasks and the rhythms of the lighthouse rather than personal exchange.",
+          "opens": "A relationship built on mutual respect and shared duty; focus on the mechanics of lighthouse keeping.",
+          "forecloses": "Deeper personal connection, sharing of vulnerabilities or personal histories; the Keeper as anything more than a mentor.",
           "verdict": "carried",
-          "gateNote": "",
+          "gateNote": "This correctly captures a lower-intensity version of the relationship, focusing on the professional, task-based dynamic which is a valid starting point for the 'grows-with-you' arc. It maintains the quiet, steady, and reassuring tone.",
+          "scriptVerdict": "strays",
+          "scriptNote": "This execution is too mild for a 'spans' step. It establishes a professional baseline that fits the COZY phase but never builds to the 'silent tandem' and 'absolute focus' of the INTENSE peak. It strays down.",
           "score": 1
         },
         {
           "dr": "0",
-          "label": "A Mentor's Steady Presence",
-          "render": "...a shared cup of tea in the quiet lamplight.",
-          "prose": "The Keeper's guidance extends from lighthouse mechanics to the quiet philosophy of the work, sharing small observations and comfortable silences with you. The bond is one of mentorship, where your presence is a welcome, steadying addition to their long-held routine.",
-          "opens": "'Shared Silence' moments that unlock new insights; learning about the Keeper's past through patient observation of symbolic objects.",
-          "forecloses": "A dynamic where the player must 'fix' or 'heal' the Keeper's grief; a dramatic, emotionally volatile bond.",
+          "label": "A Shared, Silent Understanding",
+          "render": "The Keeper shares a small, knowing smile.",
+          "prose": "The Recorder's log details a growing, unspoken rapport between you and the Keeper. A shared glance or a passed tool speaks volumes, building a bond of quiet companionship forged in the steady work of tending the light.",
+          "opens": "A sense of shared history and memory; the possibility of learning the stories behind small gestures or objects.",
+          "forecloses": "Explicit verbal emotional processing; overt dependency on the Keeper for validation.",
           "verdict": "carried",
-          "gateNote": "",
-          "score": 1
+          "gateNote": "This is a perfect baseline execution of the negative, focusing on the growing, unspoken rapport built through shared, steady work. It embodies the 'quiet companionship' core.",
+          "scriptVerdict": "follows",
+          "scriptNote": "This execution correctly spans the arc. The 'quiet companionship' serves the COZY floor, while the 'unspoken rapport' and 'shared glance' that 'speaks volumes' perfectly capture the INTENSE peak of working in silent tandem. It's just right.",
+          "score": 2
         },
         {
           "dr": "+1",
-          "label": "A Quiet, Mirrored Vigil",
-          "render": "A silent nod across the lantern room, a shared understanding.",
-          "prose": "The bond becomes a quiet mirroring; you learn the Keeper's rhythms as they learn yours, a shared language of gestures replacing most words. Your steady presence becomes an anchor for them, allowing a solitude they hadn't realized was a burden to gently soften into a shared watch.",
-          "opens": "A non-verbal communication system; a more profound peer dynamic at the journey's end; the player's actions subtly influencing the Chronicler's narrative tone.",
-          "forecloses": "Verbal confessions or explanations of the Keeper's past; any romance mechanics; a codependent dynamic where the Keeper cannot function alone.",
+          "label": "A Quiet, Found Kinship",
+          "render": "The Keeper's hand rests briefly on your shoulder.",
+          "prose": "The Recorder's log captures a profound, quiet kinship, a mentorship that transcends the mere teaching of tasks. The Keeper's steady presence becomes a mirror, reflecting your own growing capacity for calm and purpose, a light passed from one hand to another.",
+          "opens": "Internalizing the Keeper's philosophy; the player's growth into a similar steady presence, creating a legacy.",
+          "forecloses": "Romantic entanglement; a dramatic backstory reveal; the Keeper solving the player's internal problems for them.",
           "verdict": "carried",
-          "gateNote": "",
-          "score": 1
+          "gateNote": "This successfully executes the culmination of the relationship arc, showing the 'mentorship' and 'found kinship' that leads to the player's own growth. It perfectly reflects the 'witness-not-fixer' and 'anti-dependency' themes.",
+          "scriptVerdict": "follows",
+          "scriptNote": "This execution perfectly spans the full arc. The 'steady presence' serves the COZY phase, the 'profound, quiet kinship' captures the INTENSE connection, and 'a light passed from one hand to another' explicitly and beautifully realizes the RENEWAL phase. It's just right.",
+          "score": 2
         }
       ],
       "pickedDr": "0",
-      "flag": null
+      "flag": "gate caught stray(s)"
     },
     {
       "key": "MOTIF",
-      "axis": "the MOTIF density",
+      "phase": "spans",
+      "axis": "the motif density",
       "lo": "one quiet motif (the light's sweep)",
-      "hi": "a saturated lexicon (sweep · log · fog-bell · the kept lamp · …)",
+      "hi": "a saturated lexicon",
       "executions": [
         {
           "dr": "-1",
-          "label": "A Light's Quiet Sweep",
-          "render": "> o - - -",
-          "prose": "The game's rhythm is defined by its two core motifs: the sweep of the light marking time's passage, and the Keeper's log marking your progress. These are the quiet, steady anchors of the experience.",
-          "opens": "A minimalist, meditative gameplay loop focused purely on tending the light and reflective journaling. A very clean UI and simple controls.",
-          "forecloses": "A wide variety of mini-games or complex, interlocking systems. Deep environmental storytelling through a large number of interactive objects.",
+          "label": "The Light's Simple Sweep",
+          "render": "The beam passes, a slow and silent rhythm.",
+          "prose": "The Recorder's log consistently notes the passing of the light. It is a simple, physical fact of the place, like the tide or the wind, a quiet constant in every scene.",
+          "opens": "A sense of calm, steady rhythm; a background element that grounds the player without demanding constant attention.",
+          "forecloses": "A complex symbolic language; any sense of the light having a personality or deeper, hidden meaning beyond its function.",
           "verdict": "carried",
-          "gateNote": "",
-          "score": 1
+          "gateNote": "This execution perfectly captures the quiet, constant, and steady nature of the lighthouse, aligning with the 'steady light' motif and the iyashikei tone. It's a foundational detail that reinforces the core atmosphere.",
+          "scriptVerdict": "follows",
+          "scriptNote": "",
+          "score": 2
         },
         {
           "dr": "0",
-          "label": "The Sweep and The Log",
-          "render": "> o - | 📖 | 🔔",
-          "prose": "The light's sweep and the Keeper's log form the heart of the experience, complemented by the periodic, low call of the foghorn. These recurring elements create a steady, reassuring pulse for the world.",
-          "opens": "A balanced experience with a few core systems to manage. Opportunities for sound design to become a key navigational or temporal cue. A moderate level of environmental detail.",
-          "forecloses": "A purely abstract or single-screen experience. The ability for the player to ever feel truly rushed or overwhelmed by tasks.",
+          "label": "A Lexicon of Light",
+          "render": "The beam's steady pulse arcs across the lens.",
+          "prose": "The Chronicler's log develops a small, specific vocabulary for the lighthouse's operation. Words like 'beam', 'lens', 'pulse', and 'arc' are used precisely, describing the light not just as a presence, but as the product of steady, focused work.",
+          "opens": "Connecting the player's actions (polishing the lens) to the output (the beam); a greater appreciation for the mechanics of the lighthouse.",
+          "forecloses": "A purely atmospheric description of the light; viewing the light as a magical or entirely natural phenomenon separate from labor.",
           "verdict": "carried",
-          "gateNote": "",
-          "score": 1
+          "gateNote": "This execution carries the negative by focusing on the quiet craft of the Keeper's work. Developing a specific vocabulary grounds the experience in the steady, focused actions required to maintain the light, reinforcing the 'witness-not-fixer' and 'grows-with-you' themes.",
+          "scriptVerdict": "follows",
+          "scriptNote": "",
+          "score": 2
         },
         {
           "dr": "+1",
-          "label": "A Lexicon of Lighthouse Life",
-          "render": "> o | 📖 | 🔔 | ⚙️ | ✨ | ☕",
-          "prose": "The world is a dense tapestry of named rituals and motifs: the Sweep of the lamp, the Keeper's Log, the Foghorn's Call, the Winch's Song, the Lens's Polish, and the sharing of Tea. Every major action is part of a gentle, interlocking lexicon of this place, making the entire lighthouse feel like a single, living entity.",
-          "opens": "Deeply ritualized gameplay where perfecting each named task becomes a goal. A rich system of achievements or collectibles tied to each motif. A strong sense of place and procedural mastery.",
-          "forecloses": "Quick, casual play sessions. The ability for a player to ignore the established rituals without consequence. A minimalist aesthetic; the world will feel full and detailed.",
-          "verdict": "carried",
-          "gateNote": "",
+          "label": "The Saturated Lexicon of Light",
+          "render": "A focused wash of light refracts through the salt-glinted air.",
+          "prose": "The Recorder's log is saturated with a lexicon of light, using it to describe everything from the fog to the tea in your mug. The world is rendered in terms of 'refraction', 'focus', 'chroma', and 'glint', making the Keeper's work the central metaphor for all perception and understanding.",
+          "opens": "A deeply thematic and poetic experience; seeing the Keeper's philosophy of quiet focus reflected in every detail of the world.",
+          "forecloses": "A grounded, purely functional view of the lighthouse; a clear separation between the work of tending the light and the description of the world.",
+          "verdict": "strayed",
+          "gateNote": "This strays by overwriting the simple, cozy 'iyashikei' tone with a highly stylized, intellectual, and metaphorical narrative voice. Describing everything in terms of light physics ('refraction,' 'chroma') makes the world abstract and complex, moving away from the grounded, steady, and accessible experience promised for the 'anxious reader'.",
+          "scriptVerdict": "follows",
+          "scriptNote": "",
           "score": 1
         }
       ],
       "pickedDr": "0",
-      "flag": null
+      "flag": "gate caught stray(s)"
     },
     {
       "key": "APPEARANCE",
-      "axis": "the REVEAL / withholding depth (§3.9)",
-      "lo": "the Keeper's face shown early",
-      "hi": "the Keeper a ??? silhouette held to the summit",
+      "phase": "spans",
+      "axis": "the reveal/withholding depth (§3.9)",
+      "lo": "the Keeper shown early",
+      "hi": "the Keeper a ??? held to the summit",
       "executions": [
         {
           "dr": "-1",
-          "label": "Face in the Doorway",
-          "render": "[⦿‿⦿] → Welcome.",
-          "prose": "The heavy door swings open, and the Keeper's face is the first thing you see, framed by the warm light from within. Their features are kind, etched with laugh lines, and they offer a small, reassuring smile.",
-          "opens": "Immediate character bonding and trust, allowing for early art assets focused on facial expression and dialogue that leverages visual cues.",
-          "forecloses": "Any mystery surrounding the Keeper's identity or appearance, and a narrative arc based on a slow, earned visual reveal.",
+          "label": "Keeper Seen Clearly, Immediately",
+          "render": "The Keeper, a steady figure in oilskins, face lined with kindness, holds a lantern high.",
+          "prose": "The Chronicler's log describes the Keeper's appearance in detail from the first meeting. Their weathered face and calm eyes are a constant, reassuring presence, whether offering a warm mug or working by your side at the great lens.",
+          "opens": "An immediate sense of safety and trust; a focus on tasks over personality; grounding the player in a concrete, knowable guide.",
+          "forecloses": "Any mystery surrounding the Keeper's identity; the player projecting their own image onto the guide; a slow-burn reveal of character.",
           "verdict": "carried",
-          "gateNote": "It directly carries the gentle welcome described in the pilot by immediately revealing the Keeper's kind and reassuring face.",
-          "score": 1
+          "gateNote": "This execution carries the negative's promise of a cozy, reassuring presence. By making the Keeper a clearly seen and steady figure from the start, it directly addresses the 'anxious reader' by holding uncertainty at bay.",
+          "scriptVerdict": "drifts",
+          "scriptNote": "This execution is too consistently cozy and reassuring. By making the Keeper a fully known, constant presence from the start, it establishes the 'cozy' floor but fails to build any tension, thus not spanning the arc up to its 'intense' peak. It's too mild.",
+          "score": 1.5
         },
         {
           "dr": "0",
-          "label": "Silhouette, then Shared Light",
-          "render": "[ ? ] → [⦿‿⦿]",
-          "prose": "The Keeper is a silhouette in the doorway, their form defined by the warm light behind them; you see only their steady posture and the hand they offer. Their face is clearly revealed later, during your first shared task, when you both lean into the lamplight to inspect the lens.",
-          "opens": "A gentle reveal arc, tying the visual unveiling to a moment of shared purpose. Allows the player to focus on the Keeper's actions and voice first, creating a small, satisfying payoff.",
-          "forecloses": "The immediate comfort of seeing a friendly face from the very start, as well as a long, game-spanning mystery about the Keeper's appearance.",
+          "label": "A Silhouette, Then Features",
+          "render": "A figure emerges from the fog, their lantern a warm star. Their face is in shadow.",
+          "prose": "The Keeper is first recorded as a shape against the weather, a silhouette defined by their steadfast work. Their features resolve slowly, a glimpse of a hand on the lens or a profile in the lamplight, becoming fully clear only as your shared understanding deepens.",
+          "opens": "A gentle mystery that paces the narrative; revealing character in lockstep with the relationship; a feeling of earned intimacy.",
+          "forecloses": "The immediate comfort of a fully-known guide; the prolonged tension of a completely hidden figure.",
           "verdict": "carried",
-          "gateNote": "This carries the negative's theme of gradual connection by revealing the Keeper's face not at the door, but during a first shared, quiet task.",
-          "score": 1
+          "gateNote": "This execution strongly carries the 'grows-with-you' aspect of the negative. The slow reveal of the Keeper's features mirrors the deepening of the shared, silent understanding, tying appearance to the relationship's progress.",
+          "scriptVerdict": "follows",
+          "scriptNote": "This perfectly spans the arc. The Keeper as a 'silhouette' serves the mysterious, cozy beginning. The features resolving through shared, intense work maps directly to the script's peak. The final clarity reflects the aftermath and renewal. The intensity is just right.",
+          "score": 2
         },
         {
           "dr": "+1",
-          "label": "Known by Hands, Seen as Peers",
-          "render": "[ 👤 ] ... [ ⦿‿⦿ ]",
-          "prose": "For most of your stay, the Keeper is a comforting presence known by their steady hands, their calm voice, and their silhouette against the lamp. Their face is only fully revealed at the story's emotional peak, when they turn to you with genuine gratitude, and you finally see them not just as a mentor, but as a person and a peer.",
-          "opens": "A deep, earned emotional climax where seeing the Keeper's face signifies the culmination of your journey. Maximizes player focus on non-visual character traits like action and voice.",
-          "forecloses": "Early facial-expression-based storytelling and any sense of the Keeper as a casual, immediately-known friend; requires the art and narrative to fully support a character's presence without being fully seen.",
-          "verdict": "partial",
-          "gateNote": "It drifts from the 'cozy' and 'steady presence' ideals by withholding the Keeper's face until the end, which could create distance rather than comfort for the anxious player.",
-          "score": 0.5
+          "label": "A Presence, Never Pinned",
+          "render": "You see only the Keeper's steady hands on the brass, or their back to you as they watch the sea.",
+          "prose": "The Recorder's log never captures a clear image of the Keeper, who remains a presence felt rather than seen. Their identity is written in the sure movements of their hands and the steady rhythm of their work, an archetype of guidance rather than a specific person.",
+          "opens": "Maximum player projection onto the Keeper; focus on the *role* of Keeper as a legacy; an archetypal, almost mythic tone.",
+          "forecloses": "A personal, specific connection to the Keeper as an individual; the satisfaction of a full visual reveal; characterization through facial expression.",
+          "verdict": "carried",
+          "gateNote": "This execution fully realizes the 'anti-dependency' theme. By keeping the Keeper as an archetype defined by their work rather than a specific person, it reinforces that the player is learning a role they will eventually inhabit, not depending on an individual.",
+          "scriptVerdict": "drifts",
+          "scriptNote": "This execution maintains a constant, mythic tone. While a strong choice, an abstract 'presence' feels too distant for the intense, personal collaboration at the script's peak and the quiet intimacy of the aftermath. It doesn't modulate with the arc's emotional range.",
+          "score": 1.5
         }
       ],
       "pickedDr": "0",
@@ -391,42 +510,49 @@
     },
     {
       "key": "MINIGAME",
-      "axis": "the MECHANICAL depth",
-      "lo": "a light flavorful ritual",
-      "hi": "a core upkeep loop (TEND: keep the light)",
+      "phase": "spans",
+      "axis": "the mechanical depth",
+      "lo": "a light ritual",
+      "hi": "a core TEND upkeep loop",
       "executions": [
         {
           "dr": "-1",
-          "label": "A Single, Satisfying Wipe",
-          "render": "[ > wipe > ] ... ✨",
-          "prose": "You follow the Keeper's steady motion, a single guided interaction to wipe the great lens. The result is an immediate, satisfying gleam, a small but perfect act of care.",
-          "opens": "Lens polishing as a recurring narrative beat; character moments built around simple, shared tasks; a sense of contribution without mechanical pressure.",
-          "forecloses": "A deep, repeatable game loop for maintenance; any skill-based or resource-management mechanics related to lighthouse upkeep.",
+          "label": "A Quiet, Shared Ritual",
+          "render": "[ HOLD TO POLISH LENS ]",
+          "prose": "The Recorder's log notes the simple, meditative quality of the work. You follow the Keeper's lead, your cloth tracing slow, overlapping circles on the cool glass, the rhythm steady as a heartbeat.",
+          "opens": "A feeling of gentle participation and presence in a core lighthouse ritual without pressure or demand for skill.",
+          "forecloses": "Any mechanical challenge, skill expression, or possibility of failure; the action is purely a narrative beat.",
           "verdict": "carried",
-          "gateNote": "This execution directly embodies the 'Quiet Focus' phase with a simple, guided action that reinforces the theme of gentle care.",
-          "score": 1
+          "gateNote": "",
+          "scriptVerdict": "follows",
+          "scriptNote": "",
+          "score": 2
         },
         {
           "dr": "0",
-          "label": "Polishing the Great Lens",
-          "render": "◎ → ○ → ●",
-          "prose": "A quiet rhythm minigame begins, where you trace slow, circular patterns on the lens with the polishing cloth. You follow the soft, glowing guides as they appear, creating a steady, meditative loop until the entire surface shines brightly.",
-          "opens": "A regular, low-stakes ritual players can perform, creating a simple, non-punishing upkeep routine tied to the day cycle; minor upgrades (e.g., a better polishing cloth).",
-          "forecloses": "A purely narrative, non-interactive description of the task; a high-stakes challenge with critical failure states.",
+          "label": "Tracing the Lens's Arc",
+          "render": "Follow the gleam to polish: <span style='--path: 0 50, 100 50;'></span>",
+          "prose": "The log details the focused rhythm of the task, a steady back-and-forth motion along the great lens's curve. Your movements fall into a shared, silent cadence with the Keeper, buffing the glass until it gleams.",
+          "opens": "A light sense of mastery and synchronization with the Keeper, introducing a minimal skill component that feels like learning a craft.",
+          "forecloses": "High stakes, complex inputs, or a punitive fail state; the focus is on achieving a rhythm, not avoiding error.",
           "verdict": "carried",
-          "gateNote": "This execution translates the act of polishing into a meditative rhythm game that perfectly matches the game's quiet, focused tone.",
-          "score": 1
+          "gateNote": "",
+          "scriptVerdict": "follows",
+          "scriptNote": "",
+          "score": 2
         },
         {
           "dr": "+1",
-          "label": "Tending the Heartlight",
-          "render": "[Salt: 닦기 | Oil: 문지르기 | Dust: 불기]",
-          "prose": "A multi-stage maintenance loop where you inspect the lens for different atmospheric residues—salt spray, lamp oil, fine dust—and apply the correct, gentle cleaning technique for each. Achieving a 'Perfect Polish' offers a moment of pride and a unique entry in the log, but a simple clean is always enough to keep the light steady.",
-          "opens": "A core gameplay loop with gentle mastery; a system of observing weather to predict cleaning needs; deeper conversations with the Keeper about the nature of the work.",
-          "forecloses": "A simple one-button interaction; the ability to ignore maintenance without any narrative or mechanical acknowledgment; any punishing failure state that creates anxiety.",
-          "verdict": "partial",
-          "gateNote": "While the core task is aligned, introducing a multi-stage process with a 'Perfect Polish' reward system adds a slight pressure for optimization that drifts from the purely meditative, anti-FOMO spirit of the negative.",
-          "score": 0.5
+          "label": "Tending the Light's Heart",
+          "render": "Cleanse with the pulse: [ ⦿ … o … o … o ]",
+          "prose": "The log records the intense concentration required to maintain the beam's full power. You anticipate the lamp's rhythmic pulse to cleanse each imperfection from the lens, your focus absolute on keeping the light pure and unwavering for those in the fog.",
+          "opens": "A core upkeep loop where player focus directly influences the quality of the light, reinforcing the responsibility of a Keeper.",
+          "forecloses": "A passive experience and catastrophic failure; the ship is always safe, but your diligence determines the beam's brilliance.",
+          "verdict": "carried",
+          "gateNote": "",
+          "scriptVerdict": "follows",
+          "scriptNote": "",
+          "score": 2
         }
       ],
       "pickedDr": "0",
@@ -434,46 +560,53 @@
     },
     {
       "key": "PRELUDE",
-      "axis": "the prelude's EMOTIONAL register — AT PHASE 1 (COZY; the prelude is the welcoming threshold)",
+      "phase": "COZY",
+      "axis": "the prelude's register (at PHASE 1)",
       "lo": "plain and gentle",
-      "hi": "warm and welcoming, a faint note of the road ahead — NO shadow/trauma (phase 1; the weight comes later)",
+      "hi": "warm, a faint note of the road ahead — NO shadow",
       "executions": [
         {
           "dr": "-1",
-          "label": "A Simple, Factual Arrival",
-          "render": "The heavy oak door opens before you can knock.",
-          "prose": "The log notes their arrival on the tide of the third watch. You climb the last stone step, the fog damp on your coat, and the heavy oak door opens before you can knock.",
-          "opens": "A very slow, observational start that establishes a tone of quiet documentation. The relationship with the Keeper can build from a purely functional and procedural basis.",
-          "forecloses": "An immediate, emotionally charged connection. Rules out any sense of dramatic destiny or a fated meeting, keeping the emotional stakes very low at the outset.",
+          "label": "A Quiet, Factual Arrival",
+          "render": "The Recorder's log notes your arrival.",
+          "prose": "Recorder's Log, Entry 1. You have arrived on the headland. A figure emerges from the lighthouse, holding a lantern high against the fog, and offers you a mug as the horn sounds its low note.",
+          "opens": "A gentle, observational start. Establishes the Recorder's neutral tone and focuses on simple, concrete details.",
+          "forecloses": "Any immediate sense of high stakes, deep emotional connection, or narrative urgency. The relationship begins from a place of pure observation.",
           "verdict": "partial",
-          "gateNote": "This captures the factual event of the arrival from the log's perspective but omits the specific, personal welcome from the Keeper detailed in the pilot.",
-          "score": 0.5
+          "gateNote": "This execution captures the factual events of the arrival but misses the core emotional tone of the negative. The Keeper is an impersonal 'figure' and the welcome feels factual rather than 'cozy' and 'warm'.",
+          "scriptVerdict": "drifts",
+          "scriptNote": "This execution is too cold for the COZY phase. The factual, impersonal tone ('A figure', 'offers you a mug') undershoots the script's required warmth and comfort.",
+          "score": 1
         },
         {
           "dr": "0",
-          "label": "A Standard, Gentle Welcome",
-          "render": "...it swings inward, spilling a warm, buttery light.",
-          "prose": "The manifest simply reads: a relief keeper, arrived as the fog was setting in. The beam sweeps past overhead, a silent rhythm, and as your hand nears the door, it swings inward, spilling a warm, buttery light onto the damp stone.",
-          "opens": "A classic 'cozy' start, establishing the lighthouse as an immediate sanctuary. This sets up the contrast between the cool, foggy outside and the warm inside as a recurring visual and emotional theme.",
-          "forecloses": "A stark or austere beginning. Prevents the player from feeling unwelcome or that their arrival is an intrusion, removing ambiguity about the Keeper's disposition.",
-          "verdict": "partial",
-          "gateNote": "It focuses on the welcoming atmosphere of the lighthouse itself but strays by omitting the Keeper's direct presence and dialogue, which are central to the pilot.",
-          "score": 0.5
+          "label": "A Warm, Steady Welcome",
+          "render": "The Keeper offers a light against the fog.",
+          "prose": "The Recorder’s log notes the welcome. The Keeper greets you with a warm lantern, its light a steady gold point in the grey, and presses a steaming mug into your hands as the horn sounds its low, steady rhythm.",
+          "opens": "The central themes of warmth, comfort, and steadfastness. Establishes the Keeper as a quiet, reassuring presence.",
+          "forecloses": "A world that is cold or indifferent. The idea that you are beginning this journey entirely alone or unsupported.",
+          "verdict": "carried",
+          "gateNote": "This is a perfect execution of the PILOT, fully capturing the specified 'warm', 'steady', and 'cozy' tone of the negative.",
+          "scriptVerdict": "follows",
+          "scriptNote": "This execution's intensity is just right. It perfectly captures the 'warm lantern' and 'steady rhythm' of the COZY phase, establishing the intended feeling of a safe, gentle welcome.",
+          "score": 2
         },
         {
           "dr": "+1",
-          "label": "A Portent of Gentle Change",
-          "render": "It opens to a warmth you'd forgotten existed...",
-          "prose": "Some arrivals are marked as a change in the tide; the log marks this one as a change in the light. You stand before the door, a silhouette against the endless grey, and it opens to a warmth you'd forgotten existed, a steady shape waiting in the heart of it.",
-          "opens": "A slightly more narrative, thematic opening. Gently introduces the idea of the player's positive impact, foreshadowing the 'From Anchor-Seeker to Peer' destination and allowing for a quicker emotional investment.",
-          "forecloses": "A purely observational or passive player role. It immediately frames the player's presence as significant, ruling out a story where they are just a temporary helper passing through without leaving a mark.",
-          "verdict": "partial",
-          "gateNote": "While it elevates the tone effectively, it strays by omitting the Keeper's specific welcoming dialogue and reversing the established silhouette motif.",
-          "score": 0.5
+          "label": "A Welcome with Purpose",
+          "render": "A shared watch begins.",
+          "prose": "The Recorder's log marks the beginning of the watch. The Keeper meets you not just with a lantern but with *the* light, a steady promise held against the fog, passing you a warm mug that feels like the first part of a shared duty as the horn sounds its deep call.",
+          "opens": "The idea that this arrival is significant, the start of an apprenticeship or a calling. Gently foreshadows the player's eventual role without creating pressure.",
+          "forecloses": "The possibility that this is a casual or temporary visit. It frames the experience as one of quiet purpose from the very beginning.",
+          "verdict": "carried",
+          "gateNote": "This successfully intensifies the welcome by framing it with purpose ('shared duty', 'the beginning of the watch') while remaining true to the core themes and the cozy arrival scene.",
+          "scriptVerdict": "strays",
+          "scriptNote": "This execution is too hot for the COZY phase. It introduces a sense of purpose and duty ('the light', 'shared duty') that belongs in a later, more heightened phase, overshooting the simple welcome.",
+          "score": 1
         }
       ],
       "pickedDr": "0",
-      "flag": null
+      "flag": "gate caught stray(s)"
     }
   ]
 }

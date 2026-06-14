@@ -12,5 +12,14 @@ export const metadata = {
 };
 
 export default function AuditionsPage() {
-  return <AuditionsBook rounds={(data as { rounds: Round[] }).rounds} />;
+  return (
+    <div>
+      <div style={{ maxWidth: 980, margin: "0 auto", padding: "14px 20px 0" }}>
+        <div style={{ border: "2px solid var(--spot-red)", background: "var(--paper-shade)", padding: "10px 14px", fontSize: 12.5, lineHeight: 1.5, color: "var(--ink)" }}>
+          <b style={{ color: "var(--spot-red)", letterSpacing: ".08em" }}>DEPRECATED · FROZEN SNAPSHOT.</b> The campaign model changed — a campaign is now a <b>script + a range of stories</b>, not one pilot-tone. These point-auditions are archived (<code>docs/flavors/_deprecated/</code>). The live, automated run is at <a href="/auditions-auto" style={{ color: "var(--forest)" }}>/auditions-auto</a>; the authoring bench at <a href="/bench" style={{ color: "var(--forest)" }}>/bench</a>.
+        </div>
+      </div>
+      <AuditionsBook rounds={(data as { rounds: Round[] }).rounds} />
+    </div>
+  );
 }
