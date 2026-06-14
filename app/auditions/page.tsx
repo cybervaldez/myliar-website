@@ -74,30 +74,26 @@ export default function AuditionsPage() {
             </div>
             <p style={{ fontSize: 12.5, color: ink, margin: "8px 0 4px", lineHeight: 1.5 }}>{c.world}</p>
             <p style={{ fontSize: 11.5, color: soft, margin: "0 0 10px", lineHeight: 1.5 }}><b style={{ color: forest }}>gift</b> — {c.gift}</p>
-            <div style={{ borderTop: `1px solid var(--ink-soft)`, paddingTop: 8, display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: "4px 14px" }}>
+            <div style={{ borderTop: `1px solid var(--ink-soft)`, paddingTop: 8, fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: margin, fontFamily: "var(--theme-body)" }}>↘ THE AUDIENCE · WHY THEY SCORED IT</div>
+            <div style={{ marginTop: 5, display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: "7px 14px" }}>
               {TARGET.map((p) => { const r = get(p, i); if (!r) return null; return (
-                <div key={p} style={{ fontSize: 11, color: soft, lineHeight: 1.4 }}>
-                  <b style={{ color: margin }}>{PLABEL[p]}</b> <span style={{ color: ink }}>r{r.relate}/s{r.feelsSafe}</span> <i>{r.feeling}</i>
+                <div key={p} style={{ fontSize: 11, color: soft, lineHeight: 1.45, borderLeft: `2px solid var(--ink-soft)`, paddingLeft: 8 }}>
+                  <div><b style={{ color: margin }}>{PLABEL[p]}</b> <span style={{ color: ink, fontWeight: 700 }}>r{r.relate}/s{r.feelsSafe}</span> <span style={{ color: margin, fontStyle: "italic" }}>· {r.feeling}</span></div>
+                  <div style={{ color: ink }}>{r.expectExperience}</div>
                 </div> ); })}
             </div>
             {LEG_EXPERTS.length > 0 && (
               <div style={{ borderTop: `1px solid var(--ink-soft)`, marginTop: 8, paddingTop: 8 }}>
-                <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: margin, fontFamily: "var(--theme-body)", marginBottom: 5 }}>↗ FORWARD NOTES — could a later step build on it? <span style={{ fontWeight: 400, fontStyle: "italic" }}>(advisory · suggestions only — the real discovery is downstream)</span></div>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 6 }}>
+                <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: margin, fontFamily: "var(--theme-body)", marginBottom: 6 }}>↗ THE LEGS · FORWARD NOTES FROM THE SUCCEEDING STEPS <span style={{ fontWeight: 400, fontStyle: "italic" }}>(advisory · suggestions, never a veto)</span></div>
+                <div style={{ display: "grid", gap: 7 }}>
                   {LEG_EXPERTS.map((e) => { const r = getLeg(e, i); if (!r) return null; const col = legColor(r.canBuild); return (
-                    <span key={e} style={{ fontSize: 10, border: `1px solid ${col}`, color: col, borderRadius: 4, padding: "1px 7px", fontFamily: "var(--theme-body)" }}>
-                      {LEG_LABEL[e]} {r.canBuild === "load-bearing" ? "▰▰" : r.canBuild === "hairline" ? "▰▱" : "▱▱"}
-                    </span> ); })}
+                    <div key={e} style={{ fontSize: 11, lineHeight: 1.5, borderLeft: `2px solid ${col}`, paddingLeft: 8 }}>
+                      <span style={{ fontFamily: "var(--theme-body)", fontWeight: 700, color: col }}>{LEG_LABEL[e]}</span>
+                      <span style={{ fontSize: 9, color: col, border: `1px solid ${col}`, borderRadius: 3, padding: "0 5px", marginLeft: 6 }}>{r.canBuild}</span>
+                      <div style={{ color: ink, marginTop: 1 }}>{r.explanation}</div>
+                      <div style={{ color: margin, fontStyle: "italic", fontSize: 10.5 }}>opens {r.opens} · forecloses {r.forecloses} · <b style={{ color: forest, fontStyle: "normal" }}>seed</b> {r.seed}</div>
+                    </div> ); })}
                 </div>
-                <details style={{ fontSize: 11, color: soft }}>
-                  <summary style={{ cursor: "pointer", color: margin, fontStyle: "italic", listStyle: "none" }}>▸ the notes (why — for the step that builds this)</summary>
-                  <div style={{ marginTop: 5, display: "grid", gap: 5 }}>
-                    {LEG_EXPERTS.map((e) => { const r = getLeg(e, i); if (!r) return null; return (
-                      <div key={e} style={{ lineHeight: 1.45 }}>
-                        <b style={{ color: legColor(r.canBuild) }}>{LEG_LABEL[e]}</b> <span style={{ color: ink }}>{r.explanation}</span> <span style={{ color: margin }}>↳ seed: {r.seed}</span>
-                      </div> ); })}
-                  </div>
-                </details>
               </div>
             )}
           </section>
