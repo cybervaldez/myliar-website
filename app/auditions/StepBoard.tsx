@@ -18,8 +18,8 @@ const STATUS: Record<string, { txt: string; col: string }> = {
 
 export type Primer = { tldr: string; whatFor: string; impact: string; howToChoose: string; mechanic?: string; craft?: string };
 
-export default function StepBoard({ stepLabel, intro, primer, sourceStudy, data, items, carried, status, reference, prev, next }: {
-  stepLabel: string; intro: string; primer?: Primer; sourceStudy?: SourceStudy; data: StepData; items: Item[];
+export default function StepBoard({ stepLabel, intro, primer, prepend, sourceStudy, data, items, carried, status, reference, prev, next }: {
+  stepLabel: string; intro: string; primer?: Primer; prepend?: React.ReactNode; sourceStudy?: SourceStudy; data: StepData; items: Item[];
   carried?: { step: string; lines: string[] }[]; status?: Record<string, string>;
   reference?: { campaign: string; label: string; title: string; star: number }[]; prev?: Nav; next?: Nav;
 }) {
@@ -35,6 +35,8 @@ export default function StepBoard({ stepLabel, intro, primer, sourceStudy, data,
       </div>
       <h1 style={{ fontSize: 24, margin: "0 0 4px", color: ink }}>{stepLabel}</h1>
       <p style={{ fontSize: 12.5, color: soft, lineHeight: 1.55, margin: "0 0 12px" }}>{intro}</p>
+
+      {prepend}
 
       {primer && (
         <details style={{ border: `2px solid ${forest}`, background: shade, margin: "0 0 16px", padding: "0" }}>
