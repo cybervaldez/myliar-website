@@ -141,6 +141,26 @@ export const CAMPAIGNS: Record<string, {
           "open bet: the recurring RETURN (vs Spiritfarer’s one-way departure) has no proven analog — watch that perpetual return doesn’t dilute the goodbye payoff",
         ],
       },
+      pilot: {
+        vein: "the WITNESS VOICE in the opening — how successful works lock “I see you clearly and I won’t fix you” in the first beat. Verdict: a NEAR-precedent — our PURE witness (“logged at full weight,” no advice) is a defensible TIGHTENING, not an exact match.",
+        works: [
+          { title: "Midnight Diner — the Master’s narration", what: "the strongest reproducible device: a fixed opening-image / tone-promise (camera reveals Shinjuku; “open midnight to 7am… I make whatever customers request. That’s my policy. When people finish their day and hurry home, my day starts.”) — it states the unhurried, low-stakes policy BEFORE any story. The night-ferry conceit is structurally identical; borrow it directly. The Master is an “ear,” advice optional (“to consider and heed”), never too involved." },
+          { title: "the AFFECTIVE CONTRACT (Roquet 2009, peer-reviewed)", what: "the audience can sit in a safe space because they TRUST the author won’t hurt them with a distressing twist (“translucent simplicity + comfortable mystery”). THIS is what lets the keeper hold a hard rider “at full weight” without the tone breaking — the opening must signal the contract in the first beat." },
+          { title: "Mushishi — Ginko", what: "“verbal medicine”: heals by listening + reciprocity (gives AND receives), a “mouthpiece for both Mushi and people,” not a fixer. Warmth-without-preaching — but he still remedies, so not a pure witness." },
+          { title: "ARIA — Alicia · Coffee Talk", what: "tone built ENVIRONMENTALLY (calm visuals + a relaxed daily rhythm + matched sound); Coffee Talk removes time pressure from the core interaction (“take as much time as you want… no rush”) — “design by subtraction.” (Alicia is a goal-directed MENTOR, past our witness line — a vibe analog, not a structural one.)" },
+        ],
+        borrow: [
+          "a fixed OPENING-IMAGE / tone-promise that states the unhurried, low-stakes policy before any story (the Master) — the opening is load-bearing; a weak one can’t be rescued later",
+          "build tone ENVIRONMENTALLY — atmosphere, pacing, removal of pressure — not through stakes (ARIA, Coffee Talk’s subtraction)",
+          "signal the AFFECTIVE CONTRACT in the first beat (the player won’t be ambushed) — that trust is what lets a hard day be logged “at full weight”",
+          "warm RESTRAINT — the keeper is an “ear” / facilitator, present without getting too involved",
+        ],
+        avoid: [
+          "the PRIMARY failure — “nothing happens / boring” if the tone is mis-set (“Nothing really happens, but in a really good way” is the knife-edge; ARIA gets called slow/saccharine when the promise misses)",
+          "surface-platitude handling of real “issues” — it weakens the warmth frame (Coffee Talk’s scattershot social themes); witness the rider’s weight, don’t force conflict the tone can’t carry",
+          "tipping the PURE witness into COLD/detached — every proven voice (Master · Ginko · Alicia) keeps an optional warmth; our no-advice tightening must stay WARM, not clinical",
+        ],
+      },
     },
   },
 };
