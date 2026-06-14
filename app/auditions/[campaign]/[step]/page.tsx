@@ -35,10 +35,10 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
   // sorted by cohesion so the most cohesive (★) is the default
   let prepend = null;
   if (step === "pilot") {
-    const raw = c.steps.pilot as unknown as { scenes: string[]; picked?: string; scrubGroups: { id: string; name: string; settingTitle: string; storyTitles: string[]; throughline: string; env: string[]; buildingBlock: string; verdict?: string; metaphor?: string; audienceServe?: string }[]; worldbuild?: { richest: string; note: string } };
+    const raw = c.steps.pilot as unknown as { scenes: string[]; picked?: string; scrubGroups: { id: string; name: string; settingTitle: string; storyTitles: string[]; throughline: string; env: string[]; buildingBlock: string; verdict?: string; metaphor?: string; audienceServe?: string; subrange?: { cozy: string; intense: string }[] }[]; worldbuild?: { richest: string; note: string } };
     const rich = raw.worldbuild?.richest, pick = raw.picked;
     const groups = raw.scrubGroups
-      .map((gp, k) => ({ id: gp.id, name: gp.name, settingTitle: gp.settingTitle, storyTitles: gp.storyTitles, throughline: gp.throughline, env: gp.env, buildingBlock: gp.buildingBlock, verdict: gp.verdict, metaphor: gp.metaphor, audienceServe: gp.audienceServe, relate: avg(sd.data, k + 1, "relate"), safe: avg(sd.data, k + 1, "feelsSafe"), _s: star(sd.data, k + 1) }))
+      .map((gp, k) => ({ id: gp.id, name: gp.name, settingTitle: gp.settingTitle, storyTitles: gp.storyTitles, throughline: gp.throughline, env: gp.env, buildingBlock: gp.buildingBlock, verdict: gp.verdict, metaphor: gp.metaphor, audienceServe: gp.audienceServe, subrange: gp.subrange, relate: avg(sd.data, k + 1, "relate"), safe: avg(sd.data, k + 1, "feelsSafe"), _s: star(sd.data, k + 1) }))
       .sort((a, b) => (b.id === pick ? 1 : 0) - (a.id === pick ? 1 : 0) || (b.id === rich ? 1 : 0) - (a.id === rich ? 1 : 0) || b._s - a._s);
     prepend = <Scrubber scenes={raw.scenes} groups={groups} richest={rich} picked={pick} note={raw.worldbuild?.note} />;
   }

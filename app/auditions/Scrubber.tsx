@@ -179,7 +179,7 @@ function art(variant: Variant, dr: number): string[] {
   return grid.map((row) => { let s = row.join(""); if (s.length < COLS) s += " ".repeat(COLS - s.length); else if (s.length > COLS) s = s.slice(0, COLS); return s; });
 }
 
-type Group = { id: string; name: string; settingTitle: string; storyTitles: string[]; throughline: string; env: string[]; buildingBlock: string; verdict?: string; metaphor?: string; audienceServe?: string; relate: number; safe: number; top?: boolean; picked?: boolean };
+type Group = { id: string; name: string; settingTitle: string; storyTitles: string[]; throughline: string; env: string[]; buildingBlock: string; verdict?: string; metaphor?: string; audienceServe?: string; subrange?: { cozy: string; intense: string }[]; relate: number; safe: number; top?: boolean; picked?: boolean };
 
 const VARIANT_OF = (id: string): Variant => (id === "strait" ? "strait" : id === "water" ? "water" : "crossing");
 // the §8.13 arc gauge per phase (rises to the storm-peak, then resolves) — mirrors pilot.json SPARK
@@ -230,15 +230,23 @@ function OneScrubber({ g, scenes }: { g: Group; scenes: string[] }) {
           </div> ); })}
       </div>
       <div style={{ fontSize: 10, color: soft, fontStyle: "italic", margin: "5px 2px 0", paddingLeft: 16, minHeight: 24 }}><span style={{ color: forest, fontStyle: "normal" }}>{scenes[ph]}</span> — {g.env[ph]}</div>
-      {/* THE SUBRANGE — the story's TONE, a SEPARATE axis from the scene (free to match OR contrast it) */}
+      {/* THE SUBRANGE — the story's TONE, a SEPARATE axis from the scene. For the PICKED story it shows
+          the CONTENT each pole can hold at THIS world-moment (cozy even in the storm; intense in the calm). */}
       <div style={{ marginTop: 9, paddingTop: 8, borderTop: "1px dashed var(--ink-soft)" }}>
-        <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: margin, marginBottom: 3 }}>↕ THE SUBRANGE · the story’s tone — a separate dial from the scene</div>
-        <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 9, color: margin }}>
-          <span>cozy</span>
-          <div style={{ flex: 1, height: 4, background: `linear-gradient(90deg, ${forest}, var(--spot-red))`, opacity: 0.45 }} />
-          <span>intense</span>
+        <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: margin, marginBottom: 4 }}>↕ THE SUBRANGE · {g.subrange ? "what content can live in this moment" : "the story’s tone — a separate dial from the scene"}</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 9, marginBottom: g.subrange ? 5 : 3 }}>
+          <span style={{ color: forest }}>cozy</span>
+          <div style={{ flex: 1, height: 4, background: `linear-gradient(90deg, ${forest}, var(--spot-red))`, opacity: 0.5 }} />
+          <span style={{ color: "var(--spot-red)" }}>intense</span>
         </div>
-        <div style={{ fontSize: 9.5, color: soft, fontStyle: "italic", marginTop: 3, lineHeight: 1.45 }}>the scene above is the STAGE; the story can MATCH it or CONTRAST it — a tender beat inside the storm, a charged one in the calm.</div>
+        {g.subrange ? (
+          <div style={{ display: "grid", gap: 4, minHeight: 52 }}>
+            <div style={{ fontSize: 10.5, lineHeight: 1.4, color: soft }}><span style={{ color: forest, fontWeight: 700 }}>◂ cozy</span>  {g.subrange[ph].cozy}</div>
+            <div style={{ fontSize: 10.5, lineHeight: 1.4, color: soft }}><span style={{ color: "var(--spot-red)", fontWeight: 700 }}>intense ▸</span>  {g.subrange[ph].intense}</div>
+          </div>
+        ) : (
+          <div style={{ fontSize: 9.5, color: soft, fontStyle: "italic", lineHeight: 1.45 }}>the scene above is the STAGE; the story can MATCH it or CONTRAST it — a tender beat inside the storm, a charged one in the calm.</div>
+        )}
       </div>
     </div>
   );
