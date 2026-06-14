@@ -188,7 +188,7 @@ const BAR = ["▰▱▱▱▱", "▰▰▰▱▱", "▰▰▰▰▰", "▰▰▱
 // THE WHOLE PANEL is the scrub surface (pointer drag — best on mobile; the slider thumb was too small
 // to grab). touch-action pan-y lets the page still scroll vertically; horizontal drag scrubs. A slim
 // bar + handle is the position read-out (not the control). Keyboard arrows for a11y (role=slider).
-function OneScrubber({ g, phases }: { g: Group; phases: string[] }) {
+function OneScrubber({ g, scenes }: { g: Group; scenes: string[] }) {
   const [dr, setDr] = useState(0.0);
   const box = useRef<HTMLDivElement>(null);
   const drag = useRef<{ x: number; dr: number } | null>(null);
@@ -224,7 +224,17 @@ function OneScrubber({ g, phases }: { g: Group; phases: string[] }) {
             <span style={{ fontFamily: "var(--theme-display)", fontSize: active ? 16 : 11.5, fontWeight: active ? 700 : 400, fontStyle: active ? "normal" : "italic", color: active ? ink : soft, opacity: active ? 1 : 0.55, lineHeight: 1.1 }}>{t}</span>
           </div> ); })}
       </div>
-      <div style={{ fontSize: 10, color: soft, fontStyle: "italic", margin: "5px 2px 0", paddingLeft: 16, minHeight: 24 }}><span style={{ color: forest, fontStyle: "normal" }}>{phases[ph]}</span> — {g.env[ph]}</div>
+      <div style={{ fontSize: 10, color: soft, fontStyle: "italic", margin: "5px 2px 0", paddingLeft: 16, minHeight: 24 }}><span style={{ color: forest, fontStyle: "normal" }}>{scenes[ph]}</span> — {g.env[ph]}</div>
+      {/* THE SUBRANGE — the story's TONE, a SEPARATE axis from the scene (free to match OR contrast it) */}
+      <div style={{ marginTop: 9, paddingTop: 8, borderTop: "1px dashed var(--ink-soft)" }}>
+        <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: margin, marginBottom: 3 }}>↕ THE SUBRANGE · the story’s tone — a separate dial from the scene</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 9, color: margin }}>
+          <span>cozy</span>
+          <div style={{ flex: 1, height: 4, background: `linear-gradient(90deg, ${forest}, var(--spot-red))`, opacity: 0.45 }} />
+          <span>intense</span>
+        </div>
+        <div style={{ fontSize: 9.5, color: soft, fontStyle: "italic", marginTop: 3, lineHeight: 1.45 }}>the scene above is the STAGE; the story can MATCH it or CONTRAST it — a tender beat inside the storm, a charged one in the calm.</div>
+      </div>
     </div>
   );
 }
@@ -253,7 +263,7 @@ function WorldBuilderRead({ groups, richest, note }: { groups: Group[]; richest?
 }
 
 // Candidates live in TABS (one environment at a time); the richest is ◆ and the default.
-export default function Scrubber({ coziness, groups, richest, note }: { coziness: string[]; groups: Group[]; richest?: string; note?: string }) {
+export default function Scrubber({ scenes, groups, richest, note }: { scenes: string[]; groups: Group[]; richest?: string; note?: string }) {
   const richIdx = Math.max(0, groups.findIndex((x) => x.id === richest));
   const [active, setActive] = useState(richIdx);
   const g = groups[active] ?? groups[0];
@@ -265,7 +275,7 @@ export default function Scrubber({ coziness, groups, richest, note }: { coziness
             {x.id === richest ? "◆ " : ""}{x.name}
           </button> ); })}
       </div>
-      <OneScrubber g={{ ...g, top: g.id === richest }} phases={coziness} />
+      <OneScrubber g={{ ...g, top: g.id === richest }} scenes={scenes} />
       <WorldBuilderRead groups={groups} richest={richest} note={note} />
     </div>
   );

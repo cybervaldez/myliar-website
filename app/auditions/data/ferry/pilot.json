@@ -1,19 +1,19 @@
 {
  "concept": "ferry",
  "setting": "The Night Ferry",
- "coziness": [
-  "deeply cozy",
-  "the build",
+ "scenes": [
+  "calm water",
+  "rising wind",
   "the storm",
-  "the mend",
-  "renewed"
+  "settling sea",
+  "first light"
  ],
  "spark": {
-  "deeply cozy": "▰▱▱▱▱",
-  "the build": "▰▰▰▱▱",
+  "calm water": "▰▱▱▱▱",
+  "rising wind": "▰▰▰▱▱",
   "the storm": "▰▰▰▰▰",
-  "the mend": "▰▰▱▱▱",
-  "renewed": "▰▱▱▱▱"
+  "settling sea": "▰▰▱▱▱",
+  "first light": "▰▱▱▱▱"
  },
  "scrubGroups": [
   {

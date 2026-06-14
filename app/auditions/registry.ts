@@ -29,14 +29,14 @@ export const SLATE_STATUS: Record<string, string> = { ferry: "building", lightho
 // per-step normalizers → Item[]. concept = the SETTINGS slate; pilot = the MOMENTS (story-doors).
 const NORM: Record<string, (d: { [k: string]: unknown }) => Item[]> = {
   concept: (d) => (d as unknown as typeof SLATE).settings.map((s, k) => ({ key: s.id, idx: k + 1, title: s.title, sub: s.line, body: s.world })),
-  // the pilot is SCRUB GROUPS — each rendered as its SUBRANGE (the scrubber): one row per coziness =
-  // a story (two-part title) + its arc sparkline (cozy→intense→cozy; the peak rises down the subrange)
+  // the pilot is SCRUB GROUPS — each rendered as the SCENE arc (the scrubber): one row per scene (the
+  // surrounding WEATHER, the stage) + its arc bar (calm → the storm → first light). NOT the story's tone.
   pilot: (d) => {
-    const dd = d as unknown as { coziness: string[]; spark: Record<string, string>; scrubGroups: { id: string; name: string; settingTitle: string; storyTitles: string[] }[] };
+    const dd = d as unknown as { scenes: string[]; spark: Record<string, string>; scrubGroups: { id: string; name: string; settingTitle: string; storyTitles: string[] }[] };
     return dd.scrubGroups.map((g, k) => ({
       key: g.id, idx: k + 1, title: g.name, mono: true,
-      sub: `the SUBRANGE · scrub by coziness ↓ · anchor: “${g.settingTitle}”`,
-      body: dd.coziness.map((c, i) => `${dd.spark[c]}   ${g.settingTitle}  /  ${g.storyTitles[i]}   — ${c}`).join("\n"),
+      sub: `the SCENE arc · scrub the weather ↓ · anchor: “${g.settingTitle}”`,
+      body: dd.scenes.map((c, i) => `${dd.spark[c]}   ${g.settingTitle}  /  ${g.storyTitles[i]}   — ${c}`).join("\n"),
     }));
   },
 };
@@ -61,7 +61,7 @@ export const PRIMERS: Record<string, { tldr: string; whatFor: string; impact: st
     impact: "The resolution (aftermath→renewal) is what makes the storm safe to have happened — you come home to a RENEWED world, not the calm you began in. A cohesive set feels like ONE world arcing through the storm and out; an incohesive one breaks somewhere on the arc.",
     howToChoose: "Scrub EACH candidate’s dial — we pick by FEEL. The SURROUNDING anchor (line 1, §8.16) holds across the WHOLE arc; the storm-peak stays floor-clipped (weight, never ambush); the resolution lands (a real renewal, not just back-to-start).",
     mechanic: "the SCRUBBER per environment — the dial = the §8.13 WEATHER arc (cozy → storm-peak at ½ → renewed dawn) + the distinct surrounding ASCII + the two-part title. The WORLD holds (§8.15); the AMPLITUDE of the arc = coziness (the subrange).",
-    craft: "Craft: the §8.13 arc, EXACT — COZY 0-20 · HEIGHTENED 20-40 · INTENSE 40-60 (the peak, the MIDDLE) · AFTERMATH 60-80 · RENEWAL 80-100; the WORLD is the invariant (§8.15), only the WEATHER arcs.",
+    craft: "Craft: the dial is the SCENE (the surrounding WEATHER — the stage) across the §8.13 arc — calm water · rising wind · the storm · settling sea · first light; the WORLD is the invariant (§8.15). The scene is NOT the story’s tone — that’s the SUBRANGE (cozy↔intense), a separate axis free to contrast any scene.",
   },
   destination: {
     tldr: "the ending THIS story walks toward — its own deepest coach (per-story, §8.14: no shared coach)",
@@ -98,7 +98,7 @@ export const PRIMERS: Record<string, { tldr: string; whatFor: string; impact: st
 };
 export const INTRO: Record<string, string> = {
   concept: "The SETTING meets the room — the surrounding world you’d dwell in, not a story. The audience scores whether it feels safe to LIVE in; the hook-capacity legs score how wide a tonal range it can spawn while holding the floor. The picked setting becomes a campaign that spawns its stories.",
-  pilot: "One setting, candidate dynamic ranges — each its OWN environment. Drag a dial and the surrounding WEATHER runs the §8.13 arc: cozy → the storm-peak (the middle) → a renewed dawn, the WORLD (the ferry) holding throughout (§8.15). We PICK the most cohesive by FEEL — scrub each; the fleet’s cohesion + the arc legs are the record below.",
+  pilot: "One setting, candidate dynamic ranges — each its OWN environment. The dial scrubs the SCENE — the surrounding WEATHER (the stage): calm water → the storm → first light (the §8.13 arc), the WORLD holding throughout (§8.15). The scene labels are NOT the story’s feeling — the story’s TONE is a SEPARATE axis (the SUBRANGE, cozy ↔ intense), free to MATCH or CONTRAST any scene (a tender beat in the storm, a charged one in the calm). We PICK the most cohesive scene-arc by FEEL — scrub each.",
   destination: "The deepest chat THIS story reaches — the full-REL coach (per-story, §8.14: no shared coach). Authored after a moment is chosen; the path is built backward to it. The fleet asks: does the deepest relationship land?",
 };
 
