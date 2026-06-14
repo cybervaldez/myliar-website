@@ -42,7 +42,6 @@ const ink = "var(--ink)", soft = "var(--ink-soft)", paper = "var(--paper)", shad
 export default function AuditionsPage() {
   // rank by relate+safe; the winner gets the crown
   const ranked = D.concepts.map((c, k) => ({ c, i: k + 1, score: +avg(k + 1, "relate") + +avg(k + 1, "feelsSafe") })).sort((a, b) => b.score - a.score);
-  const winnerId = ranked[0].c.id;
 
   return (
     <main style={{ maxWidth: 760, margin: "0 auto", padding: "26px 20px 80px" }}>
@@ -57,29 +56,28 @@ export default function AuditionsPage() {
       <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".12em", color: forest, marginBottom: 4 }}>① THE CONCEPT AUDITION — Phase 0c</div>
       <p style={{ fontSize: 12.5, color: soft, margin: "0 0 12px" }}>Three candidates, read <b>both ways</b> (§8.10): the <b>AUDIENCE</b> (does it resonate? — demand) <i>and</i> the <b>LOOK-AHEAD experts</b> from every succeeding step (could they build on it? — supply). The legs are <b>forward NOTES</b> — suggestions the upcoming steps refer back to, <i>never a veto</i>; the real discovery happens when each step is actually built.</p>
       <div style={{ border: `1px dashed var(--ink-soft)`, background: paper, padding: "9px 12px", fontSize: 11, color: soft, lineHeight: 1.55, margin: "0 0 16px" }}>
-        <b style={{ color: forest }}>HOW IT&apos;S SCORED (§8.17 — not &ldquo;trust me bro&rdquo;)</b> — anchored rubric (relate/safe <b>0–5</b>: 0 not-for-me/ambush · 4 safe-and-for-me · 5 deeply). A <b>panel</b> of 4 audience reviewers + the legs, each with a <b>why</b>. The score is the panel <b>mean</b>; <b>agreement</b> = the spread (<span style={{ color: forest }}>agreed</span> ≤1 · <span style={{ color: "#c08a2e" }}>mixed</span> ≤2 · <span style={{ color: red }}>split</span> &gt;2). Demand (audience) and supply (legs) stay separate. <b>STRONG</b> = relate ≥4 · safe ≥4 · agreement ≥ mixed · repel held · legs buildable. Every number traces to the reviewers below.
+        <b style={{ color: forest }}>HOW IT&apos;S SCORED (§8.17 — not &ldquo;trust me bro&rdquo;)</b> — anchored rubric (relate/safe <b>0–5</b>: 0 not-for-me/ambush · 4 safe-and-for-me · 5 deeply). A <b>panel</b> of 4 audience reviewers + the legs, each with a <b>why</b>. The score is the panel <b>mean</b>; <b>agreement</b> = the spread (<span style={{ color: forest }}>agreed</span> ≤1 · <span style={{ color: "#c08a2e" }}>mixed</span> ≤2 · <span style={{ color: red }}>split</span> &gt;2). Demand (audience) and supply (legs) stay separate. <b>No pick</b> — every candidate is good; each is profiled by its <span style={{ color: forest }}>strengths</span> (<b>↑ reinforce</b>: load-bearing legs + high agreed audience, amplified by a later step) and its <span style={{ color: "#c08a2e" }}>gems</span> (<b>◆ fix</b>: hairline/hollow legs + audience flags/splits — the weaknesses a later step gets to fix, the seed pointing the way). <b>The weakness is the gem.</b> Every number traces to the reviewers below.
       </div>
 
       {ranked.map(({ c, i }) => {
-        const won = c.id === winnerId;
         const thr = get("thrill_seeker", i);
         return (
-          <section key={c.id} style={{ border: `2px solid ${won ? forest : "var(--ink-soft)"}`, background: paper, marginBottom: 16, padding: "14px 16px", position: "relative" }}>
-            {won && <span style={{ position: "absolute", top: -10, left: 14, background: forest, color: paper, fontSize: 10, fontWeight: 700, letterSpacing: ".1em", padding: "2px 8px", fontFamily: "var(--theme-body)" }}>★ TOP DEMAND</span>}
+          <section key={c.id} style={{ border: `2px solid var(--ink-soft)`, background: paper, marginBottom: 16, padding: "14px 16px" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
               <div>
                 <div style={{ fontFamily: "var(--theme-body)", fontSize: 11.5, fontWeight: 700, letterSpacing: ".06em", color: soft }}>{c.t1}</div>
-                <div style={{ fontFamily: "var(--theme-display)", fontSize: 22, color: won ? forest : ink }}>{c.t2}</div>
+                <div style={{ fontFamily: "var(--theme-display)", fontSize: 22, color: ink }}>{c.t2}</div>
               </div>
               <div style={{ textAlign: "right", fontSize: 11.5, minWidth: 158 }}>
                 {(() => {
                   const sr = spread(i, "relate"), ss = spread(i, "feelsSafe"), lm = legMean(i), repelHeld = !thr?.wouldPlay;
-                  const strong = +avg(i, "relate") >= 4 && +avg(i, "feelsSafe") >= 4 && Math.max(sr, ss) <= 2 && repelHeld && lm >= 1;
+                  const nLB = LEG_EXPERTS.filter((e) => getLeg(e, i)?.canBuild === "load-bearing").length;
+                  const nGem = (LEG_EXPERTS.length - nLB) + TARGET.filter((p) => (get(p, i)?.feelsSafe ?? 5) < 4 || (get(p, i)?.relate ?? 5) < 3).length + (repelHeld ? 0 : 1);
                   return (<>
                     <div>relate <b style={{ color: ink }}>{avg(i, "relate")}</b> <span style={{ color: agreeCol(sr), fontSize: 10 }}>· {agree(sr)}</span></div>
                     <div>safe <b style={{ color: ink }}>{avg(i, "feelsSafe")}</b> <span style={{ color: agreeCol(ss), fontSize: 10 }}>· {agree(ss)}</span></div>
                     <div style={{ fontSize: 10.5, color: margin }}>legs <b style={{ color: ink }}>{lm.toFixed(1)}</b>/2 · repel {repelHeld ? <span style={{ color: forest }}>held</span> : <span style={{ color: red }}>tapped</span>}</div>
-                    <div style={{ fontWeight: 700, marginTop: 2, color: strong ? forest : "#c08a2e" }}>{strong ? "✓ strong" : "⚑ flagged"}</div>
+                    <div style={{ fontWeight: 700, marginTop: 2, fontSize: 10.5 }}><span style={{ color: forest }}>↑{nLB} reinforce</span> · <span style={{ color: "#c08a2e" }}>◆{nGem} gems</span></div>
                   </>);
                 })()}
               </div>
@@ -117,17 +115,17 @@ export default function AuditionsPage() {
       {P.pilots.map((pl, k) => {
         const i = k + 1, sr = spreadP(i, "relate"), ss = spreadP(i, "feelsSafe"), lm = legMeanP(i);
         const thr = getP("thrill_seeker", i), repelHeld = !thr?.wouldPlay;
-        const strong = avgP(i, "relate") >= 4 && avgP(i, "feelsSafe") >= 4 && Math.max(sr, ss) <= 2 && repelHeld && lm >= 1;
+        const nLB = PLEGS.filter((e) => getLegP(e, i)?.canBuild === "load-bearing").length;
+        const nGem = (PLEGS.length - nLB) + TARGET.filter((p) => (getP(p, i)?.feelsSafe ?? 5) < 4 || (getP(p, i)?.relate ?? 5) < 3).length + (repelHeld ? 0 : 1);
         return (
-          <section key={pl.id} style={{ border: `2px solid ${strong ? forest : "var(--ink-soft)"}`, background: paper, marginBottom: 16, padding: "14px 16px", position: "relative" }}>
-            {strong && lm >= 2 && <span style={{ position: "absolute", top: -10, left: 14, background: forest, color: paper, fontSize: 10, fontWeight: 700, letterSpacing: ".1em", padding: "2px 8px", fontFamily: "var(--theme-body)" }}>★ THE TONE</span>}
+          <section key={pl.id} style={{ border: `2px solid var(--ink-soft)`, background: paper, marginBottom: 16, padding: "14px 16px" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
-              <div><div style={{ fontFamily: "var(--theme-display)", fontSize: 20, color: strong ? forest : ink }}>{pl.title}</div><div style={{ fontSize: 11, color: margin, fontStyle: "italic" }}>tone: {pl.tone}</div></div>
+              <div><div style={{ fontFamily: "var(--theme-display)", fontSize: 20, color: ink }}>{pl.title}</div><div style={{ fontSize: 11, color: margin, fontStyle: "italic" }}>tone: {pl.tone}</div></div>
               <div style={{ textAlign: "right", fontSize: 11.5, minWidth: 150 }}>
                 <div>relate <b style={{ color: ink }}>{avgP(i, "relate").toFixed(1)}</b> <span style={{ color: agreeCol(sr), fontSize: 10 }}>· {agree(sr)}</span></div>
                 <div>safe <b style={{ color: ink }}>{avgP(i, "feelsSafe").toFixed(1)}</b> <span style={{ color: agreeCol(ss), fontSize: 10 }}>· {agree(ss)}</span></div>
                 <div style={{ fontSize: 10.5, color: margin }}>legs <b style={{ color: ink }}>{lm.toFixed(1)}</b>/2 · repel {repelHeld ? <span style={{ color: forest }}>held</span> : <span style={{ color: red }}>tapped</span>}</div>
-                <div style={{ fontWeight: 700, marginTop: 2, color: strong ? forest : "#c08a2e" }}>{strong ? "✓ strong" : "⚑ flagged"}</div>
+                <div style={{ fontWeight: 700, marginTop: 2, fontSize: 10.5 }}><span style={{ color: forest }}>↑{nLB} reinforce</span> · <span style={{ color: "#c08a2e" }}>◆{nGem} gems</span></div>
               </div>
             </div>
             <p style={{ fontSize: 12, color: ink, margin: "8px 0", lineHeight: 1.55, fontStyle: "italic" }}>{pl.scene}</p>
@@ -152,7 +150,7 @@ export default function AuditionsPage() {
         );
       })}
       <div style={{ border: `1px dashed var(--ink-soft)`, background: shade, padding: "11px 14px", fontSize: 12, color: margin, marginTop: 8 }}>
-        <b style={{ color: forest }}>NEXT</b> — the picked tone (★ <i>Logged at Full Weight</i>) carries forward as the seed for the <b>DESTINATION</b> (a clear-eyed witness coach) + the <b>STRUGGLE</b> (the internal letting-go, logged at full weight). The next step&apos;s audition fills in here.
+        <b style={{ color: forest }}>NEXT</b> — no tone is &ldquo;picked&rdquo;; their profiles carry forward. The wry-affirming <i>witness</i> strength (all legs load-bearing) feeds the <b>DESTINATION</b> + the <b>STRUGGLE</b> (the internal letting-go, logged at full weight); the warm tone&apos;s gem (belonging read as a social demand) is the fix to mine when those beats are authored. The next step&apos;s audition fills in here.
       </div>
     </main>
   );
