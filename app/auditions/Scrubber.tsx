@@ -133,17 +133,32 @@ function ferryArt(dr: number): string[] {
   return grid.map((row) => { let s = row.join(""); if (s.length < COLS) s += " ".repeat(COLS - s.length); else if (s.length > COLS) s = s.slice(0, COLS); return s; });
 }
 
-export default function Scrubber({ settingTitle, coziness, storyTitles }: { settingTitle: string; coziness: string[]; storyTitles: string[] }) {
+type Group = { id: string; name: string; settingTitle: string; storyTitles: string[]; relate: number; safe: number };
+
+// We're still PICKING — so the scrubber is a candidate switcher (the bench pattern): scrub EACH
+// candidate subrange to compare, then pick the most cohesive. The ferry environment art is shared
+// (it's the setting); the candidates differ in their titles (the surrounding anchor + the subrange).
+export default function Scrubber({ coziness, groups }: { coziness: string[]; groups: Group[] }) {
+  const [gi, setGi] = useState(0); // default = the highest-cohesion candidate (groups are pre-sorted)
   const [dr, setDr] = useState(0.18);
+  const g = groups[gi] ?? groups[0];
   const n = coziness.length;
   const stop = Math.min(n - 1, Math.max(0, Math.round(dr * (n - 1))));
+  const safeCol = (s: number) => (s >= 4 ? forest : s >= 3 ? "#c08a2e" : "var(--spot-red)");
   return (
     <div style={{ border: `2px solid ${forest}`, background: shade, padding: "14px 14px 16px", margin: "0 0 18px" }}>
-      <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".1em", color: forest, marginBottom: 8 }}>▶ THE SCRUBBER — drag the dial; the surrounding arcs, the crossing holds</div>
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".1em", color: forest, marginBottom: 8 }}>▶ THE SCRUBBER — scrub each candidate, then pick the most cohesive range</div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 10 }}>
+        {groups.map((x, i) => (
+          <button key={x.id} onClick={() => setGi(i)} style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, padding: "4px 9px", cursor: "pointer", borderRadius: 5, border: `1.5px solid ${i === gi ? forest : "var(--ink-soft)"}`, background: i === gi ? paper : "transparent", color: i === gi ? forest : margin }}>
+            {x.name} <span style={{ fontWeight: 400, color: safeCol(x.safe) }}>· cohesion {x.relate.toFixed(1)}/{x.safe.toFixed(1)}</span>{i === 0 ? " ★" : ""}
+          </button>
+        ))}
+      </div>
       <pre style={{ ...mono, fontSize: 14, color: ink, background: paper, border: `1.5px solid ${ink}`, padding: "10px 6px", margin: 0, textAlign: "center", overflow: "hidden" }}>{ferryArt(dr).join("\n")}</pre>
       <div style={{ textAlign: "center", margin: "12px 8px 14px", minHeight: 46 }}>
-        <div style={{ fontFamily: "var(--theme-display)", fontSize: 18, color: ink }}>{settingTitle}</div>
-        <div style={{ fontSize: 15, fontStyle: "italic", color: soft }}>{storyTitles[stop]}</div>
+        <div style={{ fontFamily: "var(--theme-display)", fontSize: 18, color: ink }}>{g.settingTitle}</div>
+        <div style={{ fontSize: 15, fontStyle: "italic", color: soft }}>{g.storyTitles[stop]}</div>
         <div style={{ fontSize: 10, color: margin, marginTop: 2, letterSpacing: ".06em" }}>— {coziness[stop]} —</div>
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 10, maxWidth: 480, margin: "0 auto" }}>
@@ -151,7 +166,7 @@ export default function Scrubber({ settingTitle, coziness, storyTitles }: { sett
         <input type="range" min={0} max={1} step={0.01} value={dr} onChange={(e) => setDr(+e.target.value)} aria-label="coziness" style={{ flex: 1, accentColor: forest }} />
         <span style={{ fontSize: 11, color: margin, width: 44 }}>intense</span>
       </div>
-      <div style={{ textAlign: "center", fontSize: 10, color: margin, marginTop: 6, fontStyle: "italic" }}>the sun · sky · sea arc with the dial; the ferry holds (§8.15). each stop is its own cozy→intense→cozy story.</div>
+      <div style={{ textAlign: "center", fontSize: 10, color: margin, marginTop: 6, fontStyle: "italic" }}>the surrounding arcs with the dial; the ferry holds (§8.15). switch candidates above to compare — ★ = the audition’s most cohesive.</div>
     </div>
   );
 }
