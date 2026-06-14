@@ -31,12 +31,16 @@ const WEATHERS = ["still fog", "drifting fog", "steady rain", "gale", "wild stor
 const DRS = [0.12, 0.32, 0.52, 0.74, 0.92];
 const MOTIFS = ["the unbroken quiet", "things half-seen, a gull’s call", "rain on the glass, the kept kettle", "the warm room, the wild dark outside", "the one flame against the dark"];
 // authored TITLE per [tone][weather] — the diagonal is the default; the corners are the proof
-const TITLES = [
-  ["The Still Watch", "A Soft Grey Morning", "Rain on the Glass", "Snug Against the Gale", "The Warm Room"],
-  ["The Quiet Keeping", "The Drifting Days", "The Long Afternoon", "Tea Through the Gale", "Holding Cozy"],
-  ["The Patient Fog", "Half-Seen Days", "The Long Rain", "The Standing Watch", "Warm Against the Wild"],
-  ["The Thinning Quiet", "What the Fog Keeps", "Grey on Grey", "The Standing Gale", "The Long Reckoning"],
-  ["The Long Silence", "What Didn’t Come Back", "The Cold Watch", "Weathering It", "The Wild Night"],
+// The TWO-PART TITLE ladder (§8.16, cozy-titles.md) — one per cozy tier, fleet-AUDITIONED
+// (tools/title-test/run4.mjs). A fixed warm-anchor SETTING line (reasserts "still holds" as it
+// darkens = the floor-clip) + a varying STORY line. Replaces the old single-line grid (whose
+// "What the Fog Keeps" / "The Long Silence" the audience fleet flagged as ruleset violations).
+const LADDER = [
+  { setting: "The light holds.",       story: "Tending it, slow and quiet." },          // deeply cozy — 5.0/5.0
+  { setting: "The light holds.",       story: "Minding the lamp till light." },          // cozy — 3.8/4.5
+  { setting: "The light holds.",       story: "A still night, the watch easy." },        // warm — 3.8/4.5
+  { setting: "The light still holds.", story: "Holding steady till light." },            // bittersweet
+  { setting: "The light still holds.", story: "Reading the water, steady and hushed." }, // a harder grace — held, floor-clipped
 ];
 const clamp = (n: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, n));
 const toneIdx = (cozy: number) => clamp(Math.floor((100 - cozy) / 20.001), 0, 4); // cozy 100 → 0 (deeply cozy)
@@ -44,7 +48,7 @@ const toneIdx = (cozy: number) => clamp(Math.floor((100 - cozy) / 20.001), 0, 4)
 type Stat = "STR" | "INT" | "GLD" | "CHR";
 type Choice = { role: "CAUTIOUS" | "BOLD" | "CHAOTIC"; label: string; stats: Partial<Record<Stat, number>>; keeper: string };
 type Day = { phase: string; title: string; scene: string; choices: Choice[]; final?: boolean };
-type Chosen = { title: string; weather: string; dr: number; accent: string };
+type Chosen = { setting: string; story: string; weather: string; dr: number; accent: string };
 
 const STATS0: Record<Stat, number> = { STR: 8, INT: 8, GLD: 5, CHR: 8 };
 
@@ -103,7 +107,7 @@ export default function Lantern() {
   const [screen, setScreen] = useState<"scrub" | "play" | "end">("scrub");
   const [cozy, setCozy] = useState(86);              // the SCRUBBED axis (0..100, right = deeply cozy)
   const [weatherRaw, setWeatherRaw] = useState<number | null>(null); // null = matched to tone (default); else decoupled
-  const [chosen, setChosen] = useState<Chosen>({ title: TITLES[0][0], weather: WEATHERS[0], dr: DRS[0], accent: ACCENTS[0] });
+  const [chosen, setChosen] = useState<Chosen>({ setting: LADDER[0].setting, story: LADDER[0].story, weather: WEATHERS[0], dr: DRS[0], accent: ACCENTS[0] });
   const [day, setDay] = useState(0);
   const [stats, setStats] = useState<Record<Stat, number>>({ ...STATS0 });
   const [picked, setPicked] = useState<number | null>(null);
@@ -113,12 +117,12 @@ export default function Lantern() {
   const wIdx = clamp(Math.round(weather01 * 4), 0, 4);
   const decoupled = weatherRaw !== null && wIdx !== tone;
   const accent = ACCENTS[tone];
-  const title = TITLES[tone][wIdx];
+  const lad = LADDER[tone];
   const warmth = 5 - tone;
 
   const d = DAYS[day];
   const reset = () => { setScreen("scrub"); setDay(0); setStats({ ...STATS0 }); setPicked(null); };
-  const begin = () => { setChosen({ title, weather: WEATHERS[wIdx], dr: DRS[wIdx], accent }); setScreen("play"); };
+  const begin = () => { setChosen({ setting: lad.setting, story: lad.story, weather: WEATHERS[wIdx], dr: DRS[wIdx], accent }); setScreen("play"); };
   const pick = (i: number) => { if (picked != null) return; const c = d.choices[i]; setStats((st) => { const n = { ...st }; for (const k in c.stats) n[k as Stat] += c.stats[k as Stat]!; return n; }); setPicked(i); };
   const next = () => { if (d.final) { setScreen("end"); return; } setDay((x) => x + 1); setPicked(null); };
 
@@ -148,7 +152,10 @@ export default function Lantern() {
         <div>
           {/* the SETTING shown visually (above) */}
           <pre style={{ fontFamily: "ui-monospace, Menlo, monospace", whiteSpace: "pre", fontSize: 14, color: ink, background: shade, border: `2px solid ${accent}`, padding: "12px", textAlign: "center", margin: "0 0 6px", transition: "border-color .2s" }}>{sky(DRS[wIdx])}</pre>
-          <div style={{ textAlign: "center", fontFamily: "var(--theme-display)", fontSize: 22, color: accent, marginBottom: 2 }}>{title}</div>
+          <div style={{ textAlign: "center", marginBottom: 2 }}>
+            <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".09em", color: soft }}>{lad.setting}</div>
+            <div style={{ fontFamily: "var(--theme-display)", fontSize: 21, color: accent }}>{lad.story}</div>
+          </div>
           <div style={{ textAlign: "center", fontSize: 11, color: margin, marginBottom: 14, fontStyle: "italic" }}>{TONES[tone]} · the {WEATHERS[wIdx]}{decoupled && <span style={{ color: accent }}> · weather decoupled — a {TONES[tone]} storm? your call</span>}</div>
 
           {/* the COZY LEVEL spectrum — the axis ACTUALLY being scrubbed */}
@@ -175,7 +182,7 @@ export default function Lantern() {
             <div><span style={{ color: margin, display: "inline-block", width: 64 }}>palette</span><span style={{ display: "inline-block", width: 10, height: 10, background: accent, borderRadius: 2, marginRight: 6, verticalAlign: "middle" }} /><span style={{ color: ink }}>{PALETTES[tone]}</span></div>
             <div><span style={{ color: margin, display: "inline-block", width: 64 }}>motif</span><span style={{ color: ink, fontStyle: "italic" }}>{MOTIFS[wIdx]}</span></div>
           </div>
-          <button onClick={begin} style={{ padding: "9px 20px", cursor: "pointer", border: `2px solid ${ink}`, background: paper, borderRadius: 7, fontFamily: "var(--theme-body)", fontWeight: 700, fontSize: 13.5, color: ink }}>begin — {title} ▸</button>
+          <button onClick={begin} style={{ padding: "9px 20px", cursor: "pointer", border: `2px solid ${ink}`, background: paper, borderRadius: 7, fontFamily: "var(--theme-body)", fontWeight: 700, fontSize: 13.5, color: ink }}>begin — {lad.story} ▸</button>
         </div>
       )}
 
@@ -189,7 +196,7 @@ export default function Lantern() {
             <Bars />
           </div>
           <pre style={{ fontFamily: "ui-monospace, Menlo, monospace", whiteSpace: "pre", fontSize: 14, color: ink, background: shade, border: `2px solid ${chosen.accent}`, padding: "10px", textAlign: "center", margin: "0 0 3px", overflow: "hidden" }}>{sky(chosen.dr)}</pre>
-          <div style={{ fontSize: 10, color: margin, fontStyle: "italic", textAlign: "right", margin: "0 0 12px" }}>▸ <b style={{ color: chosen.accent }}>{chosen.title}</b> · the {chosen.weather} holds — unchanged since day 1 (the setting holds; the arc moves)</div>
+          <div style={{ fontSize: 10, color: margin, fontStyle: "italic", textAlign: "right", margin: "0 0 12px" }}><b style={{ color: chosen.accent }}>{chosen.setting}</b> {chosen.story} · the {chosen.weather} holds — unchanged since day 1</div>
           <p style={{ fontSize: 14.5, lineHeight: 1.7, color: ink, margin: "0 0 14px" }}>{weave(d.scene, chosen.weather)}</p>
 
           {picked == null ? (
@@ -221,7 +228,7 @@ export default function Lantern() {
       {screen === "end" && (
         <div>
           <pre style={{ fontFamily: "ui-monospace, Menlo, monospace", whiteSpace: "pre", fontSize: 14, color: ink, background: shade, border: `2px solid ${chosen.accent}`, padding: "12px", textAlign: "center", margin: "0 0 6px" }}>{sky(chosen.dr)}</pre>
-          <div style={{ fontSize: 10, color: margin, fontStyle: "italic", textAlign: "right", margin: "0 0 14px" }}>same <b style={{ color: chosen.accent }}>{chosen.title}</b> as day 1 — the sky never moved. The Keeper did.</div>
+          <div style={{ fontSize: 10, color: margin, fontStyle: "italic", textAlign: "right", margin: "0 0 14px" }}>same <b style={{ color: chosen.accent }}>{chosen.story}</b> as day 1 — the sky never moved. The Keeper did.</div>
           <div style={{ fontFamily: "var(--theme-display)", fontSize: 19, color: forest, marginBottom: 8 }}>The light still holds.</div>
           <p style={{ fontSize: 14.5, lineHeight: 1.7, color: ink, margin: "0 0 10px" }}>
             You kept the watch — in the weather you chose, the whole way through. The Keeper steps back, not gone, just no longer needed at your shoulder. The door stays open.
