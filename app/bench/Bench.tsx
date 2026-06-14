@@ -123,7 +123,8 @@ function Scrub({ c, dr, setDr, pick }: { c: Concept; dr: number; setDr: (n: numb
           aria-label="dynamic range" style={{ flex: 1, accentColor: forest }} />
         <span style={{ fontSize: 11, color: margin, width: 48 }}>aching</span>
       </div>
-      <div style={{ textAlign: "center", fontSize: 10, letterSpacing: ".12em", color: margin, marginTop: 4 }}>▁▂▃▄▅▆▇ DYNAMIC RANGE</div>
+      <div style={{ textAlign: "center", fontSize: 10, letterSpacing: ".12em", color: margin, marginTop: 4 }}>▁▂▃▄▅▆▇ THE SETTING YOU START IN</div>
+      <div style={{ textAlign: "center", fontSize: 10, color: forest, marginTop: 3, fontStyle: "italic" }}>↳ every setting converges to the same Keeper — the chat is the destination</div>
       <div style={{ textAlign: "center", fontSize: 11.5, color: soft, marginTop: 14 }}>
         <b style={{ color: forest }}>opens</b> {c.opens} · <b style={{ color: "var(--spot-red)" }}>forecloses</b> {c.forecloses}
       </div>
@@ -234,7 +235,7 @@ export default function Bench() {
         <span style={{ fontSize: 10.5, letterSpacing: ".12em", color: "var(--spot-red)", fontFamily: "var(--theme-body)", fontWeight: 700 }}>PROTOTYPE · FAKE DATA</span>
       </div>
       <p style={{ color: soft, fontSize: 13, lineHeight: 1.55, margin: "6px 0 16px", maxWidth: 560 }}>
-        The dynamic-range concept-space browser — candidate to replace the homepage. The ASCII density (<span style={mono}>· ░ ▒ ▓ █</span>) <b>is</b> the dynamic range; the prose snaps to five stops. Three versions — pick the one that feels right; we author real content after.
+A campaign spawns a <b>range of settings the player chooses among</b> — and they all converge to the <b>same coach</b> (the chat is the destination). The scrub = the player&apos;s chosen setting (what <i>persists</i>); the <b>ARC</b> (the story&apos;s intensity over time) is the author&apos;s script, separate. The ASCII density (<span style={mono}>· ░ ▒ ▓ █</span>) renders the setting. Three versions — pick the one that feels right; real content comes after.
       </p>
 
       {/* version switcher — the thing to pick */}
