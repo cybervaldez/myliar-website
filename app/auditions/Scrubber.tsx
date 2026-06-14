@@ -9,45 +9,128 @@ import { useState } from "react";
 const ink = "var(--ink)", soft = "var(--ink-soft)", paper = "var(--paper)", shade = "var(--paper-shade)", forest = "var(--forest)", margin = "var(--margin-ink)";
 const mono: React.CSSProperties = { fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace", whiteSpace: "pre", lineHeight: 1.04, letterSpacing: 0 };
 
-const COLS = 36, ROWS = 12, WATER = 7;
-const SEA = [" ", "·", "~", "~", "≈", "▒", "▓", "█"]; // calm → stormy
-
-function noise(x: number, y: number, s: number) {
-  let h = (x * 73856093) ^ (y * 19349663) ^ (s * 83492791);
-  h = Math.imul(h ^ (h >>> 13), 1274126177); h ^= h >>> 16;
-  return ((h >>> 0) % 1000) / 1000;
+// THE FERRY ENVIRONMENT — authored by the ASCII-art commission (demoscene/ANSI tradition): bands
+// (sky · horizon · sea) + a per-column surf[] height-field + the ferry sprite drawn LAST as one rigid
+// pitching body (so the hull never cracks). dr 0 = clear moon + glassy calm; dr 1 = storm + rain +
+// heavy swell, the ferry HOLDING with its warm window. Every layer is a smooth function of dr (no
+// keyframe special-casing) so the scrub is continuous. The NEGATIVE (the boat) is the invariant (§8.15).
+const COLS = 38, ROWS = 13;
+function hash(x: number, y: number, seed = 0): number {
+  let h = (x * 374761393 + y * 668265263 + seed * 2246822519) >>> 0;
+  h = (h ^ (h >>> 13)) * 1274126177;
+  h = (h ^ (h >>> 16)) >>> 0;
+  return h / 4294967296;
 }
+function snoise(x: number, seed: number): number {
+  const xi = Math.floor(x), xf = x - xi;
+  const a = hash(xi, 0, seed), b = hash(xi + 1, 0, seed);
+  const t = xf * xf * (3 - 2 * xf);
+  return a + (b - a) * t;
+}
+const clamp = (v: number, lo: number, hi: number) => (v < lo ? lo : v > hi ? hi : v);
+const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
-// the surrounding environment at intensity dr (0 = deeply cozy / sunny-calm, 1 = intense / storm)
 function ferryArt(dr: number): string[] {
-  const g: string[][] = Array.from({ length: ROWS }, () => Array(COLS).fill(" "));
-  // SUN (top-right) — fades out as dr rises
-  if (dr < 0.62) {
-    const sx = 27, sy = 1, sun = ["\\ | /", "- O -", "/ | \\"];
-    sun.forEach((ln, j) => [...ln].forEach((ch, i) => {
-      const x = sx + i, y = sy + j;
-      if (ch !== " " && y >= 0 && y < WATER - 1 && x >= 0 && x < COLS && noise(x, y, 1) > dr * 0.95) g[y][x] = ch;
-    }));
+  dr = clamp(dr, 0, 1);
+  const grid: string[][] = [];
+  for (let r = 0; r < ROWS; r++) grid.push(new Array(COLS).fill(" "));
+  const put = (x: number, y: number, ch: string | null | undefined) => {
+    if (x >= 0 && x < COLS && y >= 0 && y < ROWS && ch != null) grid[y][x] = ch;
+  };
+  const SEA_Y = 7;
+  // SKY — moon (fades), stars (clear sky), clouds (grow), rain (rough end)
+  const moonX = 29, moonY = 1;
+  if (dr < 0.62) { put(moonX, moonY, "("); put(moonX + 1, moonY, ")"); if (dr < 0.30) { put(moonX - 1, moonY, "."); put(moonX + 2, moonY, "."); } }
+  const starDensity = clamp(1 - dr / 0.5, 0, 1);
+  for (let y = 0; y < SEA_Y - 1; y++) for (let x = 0; x < COLS; x++) {
+    if (Math.abs(x - moonX) < 3 && y <= moonY + 1) continue;
+    const h = hash(x, y, 7);
+    if (h > 0.985 && h < 0.985 + starDensity * 0.012) put(x, y, h > 0.991 ? "*" : ".");
   }
-  // CLOUDS (top) + RAIN — grow with dr
-  if (dr > 0.38) {
-    for (let y = 0; y < 2; y++) for (let x = 0; x < COLS; x++) if (noise(x, y, 3) < (dr - 0.38) * 1.7) g[y][x] = noise(x, y, 5) < dr ? "▓" : "▒";
-    if (dr > 0.6) for (let y = 2; y < WATER - 1; y++) for (let x = 0; x < COLS; x++) if (noise(x, y, 9) < (dr - 0.6) * 1.25) g[y][x] = (x + 2 * y) % 3 ? "/" : " ";
+  const cloud = clamp((dr - 0.28) / 0.72, 0, 1);
+  if (cloud > 0) {
+    const maxDepth = SEA_Y - 1;
+    for (let y = 0; y < SEA_Y - 1; y++) for (let x = 0; x < COLS; x++) {
+      const n = snoise(x * 0.30 + 11, 21) * 0.6 + snoise(x * 0.13 + y * 0.5 + 3, 31) * 0.4;
+      const rowBias = 1 - y / maxDepth;
+      const thresh = 1 - cloud * (0.45 + 0.55 * rowBias);
+      if (n > thresh) {
+        const over = (n - thresh) / (1 - thresh + 1e-6);
+        let ch = "░";
+        if (dr > 0.8 && over > 0.55) ch = "▓"; else if (over > 0.5) ch = "▒";
+        put(x, y, ch);
+      }
+    }
   }
-  // SEA (below the waterline) — density + crests by dr
-  for (let y = WATER; y < ROWS; y++) for (let x = 0; x < COLS; x++) {
-    const depth = (y - WATER + 1) / (ROWS - WATER);
-    const t = dr * 1.45 + depth * 0.35 - noise(x, y, 7) * 0.7;
-    g[y][x] = SEA[Math.max(1, Math.min(SEA.length - 1, Math.round(t * (SEA.length - 1))))];
+  if (dr > 0.55) {
+    const rainAmt = clamp((dr - 0.55) / 0.45, 0, 1);
+    for (let y = 1; y < SEA_Y; y++) for (let x = 0; x < COLS; x++) {
+      const h = hash((x + y * 2) % 997, y, 55);
+      if (h < rainAmt * 0.09 && (grid[y][x] === " " || grid[y][x] === "░")) put(x, y, "'");
+    }
   }
-  // THE FERRY — the invariant, sitting on the waterline, centered
-  const boat = ["    ___", "   /▫▫▫\\", " _/_____\\_"];
-  const bx = Math.floor((COLS - 9) / 2), by = WATER - 2;
-  boat.forEach((ln, j) => [...ln].forEach((ch, i) => {
-    const x = bx + i, y = by + j;
-    if (ch !== " " && y >= 0 && y < ROWS && x >= 0 && x < COLS) g[y][x] = ch;
-  }));
-  return g.map((r) => r.join(""));
+  // SEA — per-column surf[] height-field; calm end kept SPARSE, darkens/fills with dr
+  const swellAmp = lerp(0.20, 2.4, dr), chop = dr;
+  const surf = new Array(COLS).fill(0);
+  for (let x = 0; x < COLS; x++) {
+    const swell = Math.sin(x * 0.22 + 0.4) * 0.6 + (snoise(x * 0.18 + 5, 71) - 0.5) * 1.4;
+    const ripple = (snoise(x * 0.9 + 2, 81) - 0.5) * chop;
+    surf[x] = swell * swellAmp + ripple * 1.3;
+  }
+  for (let x = 0; x < COLS; x++) {
+    const crest = snoise(x * 0.7 + 9, 91);
+    const topRow = SEA_Y - Math.round(clamp(surf[x], -1, 3));
+    for (let y = SEA_Y - 2; y < ROWS; y++) {
+      if (y < topRow) continue;
+      const depth = y - topRow;
+      let ch: string;
+      if (y === topRow) {
+        if (chop < 0.22) ch = crest > 0.62 ? "~" : "·";
+        else if (chop < 0.5) ch = crest > 0.55 ? "≈" : "~";
+        else if (surf[x] > swellAmp * 0.45 && crest > 0.5) ch = "'";
+        else ch = crest > 0.45 ? "▁" : "≈";
+      } else {
+        const fill = depth + dr * 2.4 - (1 - dr) * 2.2;
+        if (fill < 0.6) ch = chop < 0.3 ? " " : "≈";
+        else if (fill < 1.6) ch = "≈"; else if (fill < 2.6) ch = "▃";
+        else if (fill < 3.6) ch = "▅"; else if (fill < 4.6) ch = "▆"; else ch = "▇";
+      }
+      if (ch !== " ") put(x, y, ch);
+    }
+  }
+  if (dr < 0.26) {
+    const glade = clamp(1 - dr / 0.26, 0, 1);
+    for (let y = SEA_Y; y < SEA_Y + 2; y++) for (let dx = -1; dx <= 1; dx++) {
+      const x = moonX + dx;
+      if (hash(x, y, 12) < 0.45 * glade) put(x, y, dx === 0 ? ":" : ".");
+    }
+  }
+  // THE FERRY — the invariant, drawn last; one rigid hull that pitches without cracking
+  const fcx = 13;
+  const sLeft = surf[fcx - 4] || 0, sRight = surf[fcx + 4] || 0;
+  const bob = Math.round((surf[fcx] || 0) * 0.55);
+  const pitch = clamp(Math.round((sRight - sLeft) * 0.5), -1, 1);
+  const hullY = SEA_Y - 1 - bob, hullL = fcx - 5, hullR = fcx + 5;
+  const deckY = (x: number) => hullY + Math.round(-pitch * ((x - hullL) / (hullR - hullL) - 0.5) * 2);
+  let prevY: number | null = null;
+  for (let x = hullL; x <= hullR; x++) {
+    const y = deckY(x);
+    put(x, y, x === hullL ? "\\" : x === hullR ? "/" : "_");
+    put(x, y + 1, x === hullL ? "\\" : x === hullR ? "/" : "=");
+    if (prevY != null && y !== prevY) { const lo = Math.min(y, prevY), hi = Math.max(y, prevY); for (let yy = lo; yy <= hi; yy++) if (grid[yy][x] === " ") put(x, yy, "="); }
+    prevY = y;
+  }
+  const cabL = fcx - 2, cabR = fcx + 2, roofY = deckY(fcx) - 2, bodyY = deckY(fcx) - 1;
+  for (let yy = roofY; yy <= bodyY; yy++) for (let xx = cabL; xx <= cabR; xx++) put(xx, yy, " ");
+  put(cabL, roofY, "["); for (let x = cabL + 1; x < cabR; x++) put(x, roofY, "_"); put(cabR, roofY, "]");
+  put(cabL, bodyY, "|"); put(fcx, bodyY, "o"); put(cabR, bodyY, "|");
+  const stackX = fcx + 1, stackTop = roofY - 1;
+  put(stackX, stackTop, "!");
+  const windLean = dr > 0.4 ? 1 : 0;
+  let sx = stackX, sy = stackTop - 1;
+  for (let i = 0; i < 2; i++) { if (sy < 0) break; sx += windLean; const g = dr < 0.35 ? (i === 0 ? "." : null) : (i === 0 ? "~" : "'"); if (g) put(sx, sy, g); sy -= 1; }
+  put(hullR, deckY(hullR), "/");
+  return grid.map((row) => { let s = row.join(""); if (s.length < COLS) s += " ".repeat(COLS - s.length); else if (s.length > COLS) s = s.slice(0, COLS); return s; });
 }
 
 export default function Scrubber({ settingTitle, coziness, storyTitles }: { settingTitle: string; coziness: string[]; storyTitles: string[] }) {
