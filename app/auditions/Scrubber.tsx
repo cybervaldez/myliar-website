@@ -179,7 +179,7 @@ function art(variant: Variant, dr: number): string[] {
   return grid.map((row) => { let s = row.join(""); if (s.length < COLS) s += " ".repeat(COLS - s.length); else if (s.length > COLS) s = s.slice(0, COLS); return s; });
 }
 
-type Group = { id: string; name: string; settingTitle: string; storyTitles: string[]; throughline: string; env: string[]; buildingBlock: string; verdict?: string; metaphor?: string; audienceServe?: string; relate: number; safe: number; top?: boolean };
+type Group = { id: string; name: string; settingTitle: string; storyTitles: string[]; throughline: string; env: string[]; buildingBlock: string; verdict?: string; metaphor?: string; audienceServe?: string; relate: number; safe: number; top?: boolean; picked?: boolean };
 
 const VARIANT_OF = (id: string): Variant => (id === "strait" ? "strait" : id === "water" ? "water" : "crossing");
 // the §8.13 arc gauge per phase (rises to the storm-peak, then resolves) — mirrors pilot.json SPARK
@@ -203,9 +203,12 @@ function OneScrubber({ g, scenes }: { g: Group; scenes: string[] }) {
       onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} onKeyDown={key}
       style={{ border: `2px solid ${forest}`, background: paper, padding: "10px 12px 12px", touchAction: "pan-y", cursor: "ew-resize", userSelect: "none", WebkitUserSelect: "none" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-        <span style={{ fontFamily: "var(--theme-body)", fontSize: 11.5, fontWeight: 700, color: forest }}>{g.top ? "★ " : ""}{g.name}</span>
+        <span style={{ fontFamily: "var(--theme-body)", fontSize: 11.5, fontWeight: 700, color: forest }}>{g.name}</span>
         {g.verdict && <span style={{ fontSize: 9.5, color: g.verdict === "distinct" ? forest : amber, border: `1px solid ${g.verdict === "distinct" ? forest : amber}`, borderRadius: 3, padding: "0 5px" }}>✓ {g.verdict}</span>}
       </div>
+      {g.picked
+        ? <div style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".08em", color: forest, marginTop: 3 }}>● PICKED — building</div>
+        : <div style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, color: margin, marginTop: 3 }}>○ in the bank — revivable</div>}
       {/* THE METAPHOR — the step's north-star (the surrounding focus IS the story's core metaphor) */}
       {g.metaphor && <div style={{ fontFamily: "var(--theme-display)", fontSize: 14, color: forest, margin: "3px 0 0" }}>◆ {g.metaphor}</div>}
       <div style={{ fontSize: 10, fontStyle: "italic", color: soft, margin: "1px 0 7px" }}>↳ {g.throughline}</div>
@@ -244,43 +247,44 @@ function OneScrubber({ g, scenes }: { g: Group; scenes: string[] }) {
 // THE WORLD-BUILDER'S READ — the review lens for this step (replaces the audience cards here): it
 // explains the BUILDING BLOCKS each candidate hands the next step (the user's call — worldbuilders
 // fit this step better than audience).
-function WorldBuilderRead({ groups, richest, note }: { groups: Group[]; richest?: string; note?: string }) {
+function WorldBuilderRead({ groups, richest, picked, note }: { groups: Group[]; richest?: string; picked?: string; note?: string }) {
   const minSafe = Math.min(...groups.map((g) => g.safe));
+  const lead = picked ?? richest;
   return (
     <div style={{ border: `2px dashed ${forest}`, background: shade, padding: "11px 14px", margin: "12px 0 0" }}>
       <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 5 }}>🛠 THE WORLD-BUILDER’S READ — the METAPHOR each finds (the step’s north-star)</div>
       <div style={{ fontSize: 11, color: ink, lineHeight: 1.5, marginBottom: 7 }}>This step is about finding the right <b style={{ color: forest }}>metaphor</b> — the surrounding focus IS the story’s core metaphor for healing. All three came back <b style={{ color: forest }}>distinct</b>. The audience (anxiety · low self-worth · ADHD) is carried as <i>context</i> — each metaphor’s healing speaks to one facet:</div>
       <div style={{ display: "grid", gap: 7 }}>
         {groups.map((g) => (
-          <div key={g.id} style={{ fontSize: 11, color: ink, lineHeight: 1.4, borderLeft: `2px solid ${g.id === richest ? forest : "var(--ink-soft)"}`, paddingLeft: 8 }}>
-            <div><b style={{ color: g.id === richest ? forest : ink }}>{g.id === richest ? "◆ " : ""}{g.name}</b> {g.metaphor && <span style={{ color: forest, fontFamily: "var(--theme-display)" }}>«{g.metaphor}»</span>}</div>
+          <div key={g.id} style={{ fontSize: 11, color: ink, lineHeight: 1.4, borderLeft: `2px solid ${g.id === lead ? forest : "var(--ink-soft)"}`, paddingLeft: 8 }}>
+            <div><b style={{ color: g.id === lead ? forest : ink }}>{g.id === picked ? "● " : ""}{g.name}</b> {g.metaphor && <span style={{ color: forest, fontFamily: "var(--theme-display)" }}>«{g.metaphor}»</span>}</div>
             <div style={{ color: ink }}><span style={{ color: margin }}>→ next step:</span> {g.buildingBlock}</div>
             {g.audienceServe && <div style={{ color: soft, fontStyle: "italic", fontSize: 10 }}>↳ serves: {g.audienceServe}</div>}
           </div>
         ))}
       </div>
       <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginTop: 8, paddingTop: 6, borderTop: "1px solid var(--ink-soft)", lineHeight: 1.5 }}>
-        ◆ richest metaphor: <b style={{ color: forest }}>{groups.find((g) => g.id === richest)?.name ?? "—"}</b>{note ? ` — ${note}` : ""} · floor clean (§8.15) · audience safety held (≥{minSafe.toFixed(1)} all three).
+        ● <b style={{ color: forest }}>picked: {groups.find((g) => g.id === picked)?.name ?? "—"}</b> (the world-builder’s richest metaphor){note ? ` — ${note}` : ""} · floor clean (§8.15) · audience safety held (≥{minSafe.toFixed(1)} all three).
       </div>
     </div>
   );
 }
 
 // Candidates live in TABS (one environment at a time); the richest is ◆ and the default.
-export default function Scrubber({ scenes, groups, richest, note }: { scenes: string[]; groups: Group[]; richest?: string; note?: string }) {
-  const richIdx = Math.max(0, groups.findIndex((x) => x.id === richest));
-  const [active, setActive] = useState(richIdx);
+export default function Scrubber({ scenes, groups, richest, picked, note }: { scenes: string[]; groups: Group[]; richest?: string; picked?: string; note?: string }) {
+  const lead = picked ?? richest;
+  const [active, setActive] = useState(Math.max(0, groups.findIndex((x) => x.id === lead)));
   const g = groups[active] ?? groups[0];
   return (
     <div style={{ margin: "0 0 18px" }}>
       <div style={{ display: "flex", gap: 4 }}>
         {groups.map((x, i) => { const on = i === active; return (
           <button key={x.id} onClick={() => setActive(i)} style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, padding: "6px 12px", cursor: "pointer", border: `2px solid ${on ? forest : "var(--ink-soft)"}`, borderBottom: `2px solid ${on ? forest : "var(--ink-soft)"}`, background: on ? forest : paper, color: on ? paper : margin, marginBottom: -2, position: "relative", zIndex: on ? 2 : 1 }}>
-            {x.id === richest ? "◆ " : ""}{x.name}
+            {x.id === picked ? "● " : ""}{x.name}
           </button> ); })}
       </div>
-      <OneScrubber g={{ ...g, top: g.id === richest }} scenes={scenes} />
-      <WorldBuilderRead groups={groups} richest={richest} note={note} />
+      <OneScrubber g={{ ...g, picked: g.id === picked }} scenes={scenes} />
+      <WorldBuilderRead groups={groups} richest={richest} picked={picked} note={note} />
     </div>
   );
 }

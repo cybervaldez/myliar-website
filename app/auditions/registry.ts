@@ -108,6 +108,7 @@ export const INTRO: Record<string, string> = {
 const WHY_PICKED: Record<string, Record<string, string>> = {
   ferry: {
     concept: "We picked the Night Ferry because everyone we showed it to felt safe and ‘got it’ instantly — a clean sweep (relate 5.0 / safe 5.0). It’s a boat that crosses the dark water every night and asks nothing of you: a place to set a bad day down and let it go. The other ideas were good but lonelier (the lighthouse) or too small to grow many stories from (the sky station). The ferry gives the most kinds of gentle story while always feeling safe — so it earns the slot.",
+    pilot: "We picked The Dark Water because its metaphor — surrender as support — is the richest of the three. The Strait (pressure as passage) and the Crossing (destination as hope) are about getting THROUGH a hard thing or getting TO a far thing; The Dark Water is about the hard thing itself — the vast, overwhelming sea — turning out to be what holds you up. For someone worn out by trying to manage everything, ‘the world that feels like too much is actually carrying you’ is the deepest, kindest turn the night can make. It was the world-builder’s richest pick and stayed safe (≥4.8). The other two stay in the bank; this story is built on the deep.",
   },
 };
 export const whyPicked = (campaign: string, step: string): { text?: string; pending?: boolean } => {
