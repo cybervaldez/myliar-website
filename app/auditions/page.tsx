@@ -3,6 +3,7 @@
 // method: the same audience (anxiety · ADHD · low self-worth + a thrill repel-control) judges
 // every step via the blind fleet. First up: the CONCEPT AUDITION. NOT canon.
 import concepts from "./concepts.json";
+import pilot from "./pilot.json";
 
 export const metadata = { title: "Auditions — restarted from concept", description: "The audition pipeline, restarted from concept with the blind audience-fleet method." };
 
@@ -24,6 +25,17 @@ const agree = (s: number) => (s <= 1 ? "agreed" : s <= 2 ? "mixed" : "split");
 const agreeCol = (s: number) => (s <= 1 ? "var(--forest)" : s <= 2 ? "#c08a2e" : "var(--spot-red)");
 const LEGV: Record<string, number> = { "load-bearing": 2, hairline: 1, hollow: 0 };
 const legMean = (i: number) => { const vs = LEG_EXPERTS.map((e) => LEGV[getLeg(e, i)?.canBuild ?? "hollow"]); return vs.length ? vs.reduce((a, b) => a + b, 0) / vs.length : 0; };
+// ── PHASE 2 · the PILOT audition (its own data, same scoring) ──
+type AudReadP = { index: number; relate: number; feelsSafe: number; wouldPlay: boolean; why: string; feeling: string };
+type PilotData = { pilots: { id: string; title: string; tone: string; scene: string }[]; results: Record<string, AudReadP[]>; legs: Record<string, Leg[]> };
+const P = pilot as PilotData;
+const getP = (p: string, i: number) => (P.results[p] || []).find((r) => r.index === i);
+const avgP = (i: number, k: "relate" | "feelsSafe") => TARGET.reduce((s, p) => s + (getP(p, i)?.[k] ?? 0), 0) / TARGET.length;
+const spreadP = (i: number, k: "relate" | "feelsSafe") => { const v = TARGET.map((p) => getP(p, i)?.[k] ?? 0); return Math.max(...v) - Math.min(...v); };
+const PLEGS = Object.keys(P.legs || {});
+const getLegP = (e: string, i: number) => (P.legs[e] || []).find((r) => r.index === i);
+const legMeanP = (i: number) => { const v = PLEGS.map((e) => LEGV[getLegP(e, i)?.canBuild ?? "hollow"]); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : 0; };
+const labelize = (s: string) => s.replace(/_/g, " ");
 
 const ink = "var(--ink)", soft = "var(--ink-soft)", paper = "var(--paper)", shade = "var(--paper-shade)", forest = "var(--forest)", margin = "var(--margin-ink)", red = "var(--spot-red)";
 
@@ -100,8 +112,47 @@ export default function AuditionsPage() {
         );
       })}
 
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".12em", color: forest, margin: "28px 0 4px" }}>② THE PILOT AUDITION — the tone gate · concept: <span style={{ color: ink }}>THE FERRY</span></div>
+      <p style={{ fontSize: 12.5, color: soft, margin: "0 0 16px" }}>One first crossing, three tones. Same scoring (§8.17): the audience (demand) + the legs that build on the tone (destination · struggle · cast-voice · sustain).</p>
+      {P.pilots.map((pl, k) => {
+        const i = k + 1, sr = spreadP(i, "relate"), ss = spreadP(i, "feelsSafe"), lm = legMeanP(i);
+        const thr = getP("thrill_seeker", i), repelHeld = !thr?.wouldPlay;
+        const strong = avgP(i, "relate") >= 4 && avgP(i, "feelsSafe") >= 4 && Math.max(sr, ss) <= 2 && repelHeld && lm >= 1;
+        return (
+          <section key={pl.id} style={{ border: `2px solid ${strong ? forest : "var(--ink-soft)"}`, background: paper, marginBottom: 16, padding: "14px 16px", position: "relative" }}>
+            {strong && lm >= 2 && <span style={{ position: "absolute", top: -10, left: 14, background: forest, color: paper, fontSize: 10, fontWeight: 700, letterSpacing: ".1em", padding: "2px 8px", fontFamily: "var(--theme-body)" }}>★ THE TONE</span>}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
+              <div><div style={{ fontFamily: "var(--theme-display)", fontSize: 20, color: strong ? forest : ink }}>{pl.title}</div><div style={{ fontSize: 11, color: margin, fontStyle: "italic" }}>tone: {pl.tone}</div></div>
+              <div style={{ textAlign: "right", fontSize: 11.5, minWidth: 150 }}>
+                <div>relate <b style={{ color: ink }}>{avgP(i, "relate").toFixed(1)}</b> <span style={{ color: agreeCol(sr), fontSize: 10 }}>· {agree(sr)}</span></div>
+                <div>safe <b style={{ color: ink }}>{avgP(i, "feelsSafe").toFixed(1)}</b> <span style={{ color: agreeCol(ss), fontSize: 10 }}>· {agree(ss)}</span></div>
+                <div style={{ fontSize: 10.5, color: margin }}>legs <b style={{ color: ink }}>{lm.toFixed(1)}</b>/2 · repel {repelHeld ? <span style={{ color: forest }}>held</span> : <span style={{ color: red }}>tapped</span>}</div>
+                <div style={{ fontWeight: 700, marginTop: 2, color: strong ? forest : "#c08a2e" }}>{strong ? "✓ strong" : "⚑ flagged"}</div>
+              </div>
+            </div>
+            <p style={{ fontSize: 12, color: ink, margin: "8px 0", lineHeight: 1.55, fontStyle: "italic" }}>{pl.scene}</p>
+            <div style={{ borderTop: `1px solid var(--ink-soft)`, paddingTop: 8, fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: margin, fontFamily: "var(--theme-body)" }}>↘ THE AUDIENCE · WHY</div>
+            <div style={{ marginTop: 5, display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: "7px 14px" }}>
+              {TARGET.map((p) => { const r = getP(p, i); if (!r) return null; return (
+                <div key={p} style={{ fontSize: 11, color: soft, lineHeight: 1.45, borderLeft: `2px solid var(--ink-soft)`, paddingLeft: 8 }}>
+                  <div><b style={{ color: margin }}>{PLABEL[p]}</b> <span style={{ color: ink, fontWeight: 700 }}>r{r.relate}/s{r.feelsSafe}</span></div>
+                  <div style={{ color: ink }}>{r.why}</div>
+                </div> ); })}
+            </div>
+            <div style={{ borderTop: `1px solid var(--ink-soft)`, marginTop: 8, paddingTop: 8, fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: margin, fontFamily: "var(--theme-body)" }}>↗ THE LEGS · FORWARD NOTES</div>
+            <div style={{ marginTop: 6, display: "grid", gap: 7 }}>
+              {PLEGS.map((e) => { const r = getLegP(e, i); if (!r) return null; const col = legColor(r.canBuild); return (
+                <div key={e} style={{ fontSize: 11, lineHeight: 1.5, borderLeft: `2px solid ${col}`, paddingLeft: 8 }}>
+                  <span style={{ fontFamily: "var(--theme-body)", fontWeight: 700, color: col }}>{labelize(e)}</span> <span style={{ fontSize: 9, color: col, border: `1px solid ${col}`, borderRadius: 3, padding: "0 5px", marginLeft: 6 }}>{r.canBuild}</span>
+                  <div style={{ color: ink, marginTop: 1 }}>{r.explanation}</div>
+                  <div style={{ color: margin, fontStyle: "italic", fontSize: 10.5 }}>↳ seed: {r.seed}</div>
+                </div> ); })}
+            </div>
+          </section>
+        );
+      })}
       <div style={{ border: `1px dashed var(--ink-soft)`, background: shade, padding: "11px 14px", fontSize: 12, color: margin, marginTop: 8 }}>
-        <b style={{ color: forest }}>NEXT</b> — Phase B authors one real story from the picked concept (manual), each step run through the same fleet. The script-by-step audition pages fill in here as they're run.
+        <b style={{ color: forest }}>NEXT</b> — the picked tone (★ <i>Logged at Full Weight</i>) carries forward as the seed for the <b>DESTINATION</b> (a clear-eyed witness coach) + the <b>STRUGGLE</b> (the internal letting-go, logged at full weight). The next step&apos;s audition fills in here.
       </div>
     </main>
   );
