@@ -27,43 +27,43 @@
    {
     "index": 1,
     "relate": 5,
-    "feelsSafe": 4,
+    "feelsSafe": 5,
     "wouldPlay": true,
-    "expectExperience": "Playing this would feel like holding onto a single, clear purpose while the overwhelming fog is held at bay.",
-    "feeling": "Grounded purpose"
+    "expectExperience": "It would feel like having one single, manageable, important thing to focus on when everything else is a blur.",
+    "feeling": "Grounded and focused"
    },
    {
     "index": 2,
     "relate": 5,
     "feelsSafe": 5,
     "wouldPlay": true,
-    "expectExperience": "Playing this would feel like a deep, guilt-free exhale at the end of a long day, a truly bounded rest.",
-    "feeling": "Permission to rest"
+    "expectExperience": "This feels like a deep, quiet exhale and permission to not have to be 'on' for a little while.",
+    "feeling": "Predictable relief"
    },
    {
     "index": 3,
-    "relate": 5,
+    "relate": 4,
     "feelsSafe": 5,
     "wouldPlay": true,
-    "expectExperience": "Playing this would feel like being in a warm, quiet room where nothing is asked of me and my small contribution is enough.",
-    "feeling": "Quietly held"
+    "expectExperience": "This would feel like being tucked into a safe corner with a small, gentle task where nothing can go wrong.",
+    "feeling": "Perfectly contained"
    }
   ],
   "low_worth": [
    {
     "index": 1,
-    "relate": 5,
-    "feelsSafe": 4,
+    "relate": 4,
+    "feelsSafe": 5,
     "wouldPlay": true,
-    "expectExperience": "Playing this would feel like finally having a tool to make the overwhelming feeling of 'everything' shrink down to just one manageable step.",
-    "feeling": "Capable relief"
+    "expectExperience": "Playing this would feel like being given a tool to not get overwhelmed by everything I feel I have to do.",
+    "feeling": "Gently focused"
    },
    {
     "index": 2,
     "relate": 5,
     "feelsSafe": 5,
     "wouldPlay": true,
-    "expectExperience": "Playing this would feel like a deep, quiet exhale and practicing the radical act of letting a day's work be enough, even when it's unfinished.",
+    "expectExperience": "Playing this would feel like a deep, guilt-free exhale and permission to believe that what I did today was enough.",
     "feeling": "Permission to rest"
    },
    {
@@ -71,34 +71,34 @@
     "relate": 5,
     "feelsSafe": 5,
     "wouldPlay": true,
-    "expectExperience": "Playing this would feel like being in a place where my small, quiet presence is enough and my imperfect efforts are counted as valuable.",
-    "feeling": "Gentle belonging"
+    "expectExperience": "Playing this would feel like my small, imperfect efforts are seen and valued just as they are, without needing to be grand.",
+    "feeling": "Quietly accepted"
    }
   ],
   "adhd": [
    {
     "index": 1,
-    "relate": 4,
-    "feelsSafe": 2,
+    "relate": 5,
+    "feelsSafe": 4,
     "wouldPlay": true,
-    "expectExperience": "Playing this would feel like a beautiful but stressful responsibility, offset by a powerful tool for managing my real-life overwhelm.",
-    "feeling": "Anxious hope"
+    "expectExperience": "Playing this would feel like having a single, clear purpose to return to amidst the chaos of my own thoughts.",
+    "feeling": "Focused calm"
    },
    {
     "index": 2,
     "relate": 5,
     "feelsSafe": 5,
     "wouldPlay": true,
-    "expectExperience": "Playing this would feel like a gentle, validating ritual that gives me permission to rest without having to finish everything first.",
-    "feeling": "Deeply understood"
+    "expectExperience": "Playing this would feel like a sanctioned moment of peace where I'm allowed to let go of all my unfinished tasks without guilt.",
+    "feeling": "Permitted rest"
    },
    {
     "index": 3,
     "relate": 4,
     "feelsSafe": 5,
     "wouldPlay": true,
-    "expectExperience": "Playing this would feel like a quiet, no-pressure hobby where the smallest effort is enough and my place is always waiting.",
-    "feeling": "Gently welcomed"
+    "expectExperience": "Playing this would feel like quietly making a small, complete mark on the world that counts, without any pressure.",
+    "feeling": "Gentle accomplishment"
    }
   ],
   "iyashikei_fan": [
@@ -107,50 +107,167 @@
     "relate": 5,
     "feelsSafe": 5,
     "wouldPlay": true,
-    "expectExperience": "Playing this would feel like a quiet, meditative practice of focusing on one important thing at a time amidst the vastness.",
-    "feeling": "Deeply centered"
+    "expectExperience": "Playing this would feel like finding a quiet, purposeful rhythm in a world that has gently paused for me.",
+    "feeling": "Grounded and focused"
    },
    {
     "index": 2,
     "relate": 5,
-    "feelsSafe": 4,
+    "feelsSafe": 5,
     "wouldPlay": true,
-    "expectExperience": "Playing this would feel like a gentle, liminal ritual of letting go of the day's pressures and accepting that rest is productive too.",
-    "feeling": "Quietly relieved"
+    "expectExperience": "Playing this would feel like a gentle, nightly ritual of letting go and finding peace in the quiet in-between moments.",
+    "feeling": "Deeply restful"
    },
    {
     "index": 3,
     "relate": 4,
     "feelsSafe": 5,
     "wouldPlay": true,
-    "expectExperience": "Playing this would feel like a whimsical and peaceful act of finding small patterns and beauty in the night sky without any pressure.",
-    "feeling": "Gently observant"
+    "expectExperience": "Playing this would feel like a meditative practice of finding my small, significant place in a vast and gentle universe.",
+    "feeling": "Calm and contemplative"
    }
   ],
   "thrill_seeker": [
    {
     "index": 1,
-    "relate": 1,
-    "feelsSafe": 5,
-    "wouldPlay": false,
-    "expectExperience": "Playing this would feel like a painfully slow and solitary chore with no stakes.",
-    "feeling": "Profoundly dull"
-   },
-   {
-    "index": 2,
     "relate": 0,
     "feelsSafe": 5,
     "wouldPlay": false,
-    "expectExperience": "Playing this would feel like being stuck in a repetitive, pointless commute to nowhere.",
-    "feeling": "Oppressively calm"
+    "expectExperience": "Playing this would feel like waiting for an emergency that never happens.",
+    "feeling": "Restless"
    },
    {
-    "index": 3,
+    "index": 2,
     "relate": 1,
     "feelsSafe": 5,
     "wouldPlay": false,
-    "expectExperience": "Playing this would feel like watching paint dry in a slightly more scenic location.",
-    "feeling": "Utterly placid"
+    "expectExperience": "This would feel like a monotonous commute with no destination worth reaching.",
+    "feeling": "Confined"
+   },
+   {
+    "index": 3,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "expectExperience": "It would feel like a pointless, zero-stakes observation mission with no threat or goal.",
+    "feeling": "Deeply bored"
+   }
+  ]
+ },
+ "legs": {
+  "destination": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "opens": "Coaching on long-term purpose and daily discipline.",
+    "forecloses": "A focus on collaboration or interpersonal goals.",
+    "seed": "The core metaphor of tending a personal light."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "opens": "The craft of building restorative boundaries and transitions.",
+    "forecloses": "Sustained, forward-looking project or goal pursuit.",
+    "seed": "The 'crossing' as a ritual to transition between states."
+   },
+   {
+    "index": 3,
+    "canBuild": "hairline",
+    "opens": "A safe, non-judgmental space for gentle reflection.",
+    "forecloses": "Addressing high-stakes goals, ambition, or crisis.",
+    "seed": "The 'gentle sky-move' as a minimal, non-threatening suggestion."
+   }
+  ],
+  "struggle": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "opens": "A continuous, cyclical struggle against internal 'fog' or dimming.",
+    "forecloses": "Fast-paced, multi-tasking challenges.",
+    "seed": "The core verb 'tending' the light as the central struggle mechanic."
+   },
+   {
+    "index": 2,
+    "canBuild": "hairline",
+    "opens": "A struggle with rumination and the pressure for completion.",
+    "forecloses": "A long-term, persistent struggle with a tangible goal.",
+    "seed": "The ferry crossing as a ritual for mental transition."
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "opens": "A gentle struggle against perfectionism and self-invalidation.",
+    "forecloses": "High-stakes, crisis-driven narrative moments.",
+    "seed": "The single, deliberate 'mark' as an act of self-acceptance."
+   }
+  ],
+  "cast": [
+   {
+    "index": 1,
+    "canBuild": "hollow",
+    "opens": "A single, deeply archetypal coach figure",
+    "forecloses": "An ensemble cast with varied temperaments and domains",
+    "seed": "The singular archetype of the 'Keeper of the Light'"
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "opens": "A small, recurring crew with distinct roles and crafts",
+    "forecloses": "Grand, heroic adventures or high-stakes problem-solving",
+    "seed": "The distinct roles of a ferry crew (captain, engineer, steward)"
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "opens": "A team of gentle, specialized observers",
+    "forecloses": "Action-oriented or emotionally intense coaching",
+    "seed": "The specialized roles of the sky station observation team"
+   }
+  ],
+  "motif_title": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "opens": "A rich symbolic language of light, fog, and focus.",
+    "forecloses": "Any requirement for travel or wide exploration.",
+    "seed": "The metaphor of tending a light against the fog."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "opens": "A pattern language based on journeys and liminal states.",
+    "forecloses": "Goal-oriented progression or building something permanent.",
+    "seed": "The crossing as a repeatable ritual of release."
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "opens": "A system of observation, pattern-making, and gentle foresight.",
+    "forecloses": "Reactive gameplay or responding to external events.",
+    "seed": "The gradual creation of a personal constellation."
+   }
+  ],
+  "mechanics": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "opens": "a tangible, cyclical maintenance loop",
+    "forecloses": "high-action or expansive exploration mechanics",
+    "seed": "the daily checklist of tending the lighthouse lamp"
+   },
+   {
+    "index": 2,
+    "canBuild": "hairline",
+    "opens": "abstract, reflective, non-goal-oriented mechanics",
+    "forecloses": "a clear task-based progression system",
+    "seed": "a resource system based on letting go of the day's burdens"
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "opens": "a pattern-matching and interpretation-based minigame",
+    "forecloses": "any kind of combat or high-stakes survival mechanics",
+    "seed": "using the Weather Glass to get a daily forecast and a single choice"
    }
   ]
  }
