@@ -1,0 +1,242 @@
+{
+ "concept": "ferry",
+ "setting": "The Night Ferry",
+ "tiers": [
+  "cozy · pre",
+  "heightened",
+  "intense · peak",
+  "aftermath",
+  "renewal · post"
+ ],
+ "ascii": {
+  "cozy · pre": "    ·   ˚   ·\n~~~~~~[≡]~~~~~~",
+  "heightened": "   ˚ ·˚· ˚ ·\n~~≈~~[≡]~~≈~~",
+  "intense · peak": "  *˚*˚*˚*˚*\n▓≈▓≈[≡]≈▓≈▓",
+  "aftermath": "   ˚ ·˚· ˚ ·\n~~≈~~[≡]~~≈~~",
+  "renewal · post": "    ·   ˚   ·\n~~~~~~[≡]~~~~~~"
+ },
+ "scrubGroups": [
+  {
+   "id": "kettle",
+   "name": "The Kettle",
+   "settingTitle": "The kettle's always on.",
+   "storyTitles": [
+    "Boarding, nothing to carry.",
+    "The lamps lit, the crossing begun.",
+    "The wind's up; the kettle holds.",
+    "The sea easing, the far shore near.",
+    "Home, and the kettle's still on."
+   ]
+  },
+  {
+   "id": "crossing",
+   "name": "The Crossing",
+   "settingTitle": "She comes back, every night.",
+   "storyTitles": [
+    "Casting off, the water calm.",
+    "The strait opening, the lamps lit.",
+    "A heavy sea; she holds her heading.",
+    "The swell easing, the far shore near.",
+    "Back again, the way she always is."
+   ]
+  },
+  {
+   "id": "watch",
+   "name": "The Watch",
+   "settingTitle": "The watch is kept.",
+   "storyTitles": [
+    "A still night at the rail.",
+    "Minding the lamp, the fog low.",
+    "The fog thick; the watch holds.",
+    "The fog thinning, the shore returning.",
+    "Dawn, and the watch handed on."
+   ]
+  }
+ ],
+ "results": {
+  "anxious": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The constant, unchanging kettle provides a perfect anchor through a predictable rise and fall, making the entire journey feel deeply safe and cohesive.",
+    "feeling": "Warm and grounded"
+   },
+   {
+    "index": 2,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "This arc feels cohesive and its promise of reliability is reassuring, though the peak's 'heavy sea' is more directly intense than I'd prefer.",
+    "feeling": "Steadfast and capable"
+   },
+   {
+    "index": 3,
+    "relate": 2,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "While the arc is coherent, its peak of thick fog and the pressure of keeping watch creates a feeling of suspense and potential ambush rather than contained intensity.",
+    "feeling": "Tense and uncertain"
+   }
+  ],
+  "low_worth": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The central theme of a simple, comforting kettle enduring an external storm is a perfect metaphor for quiet persistence, making the arc feel both cohesive and deeply safe.",
+    "feeling": "Quietly steadfast"
+   },
+   {
+    "index": 2,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "The arc focuses on the ferry's reliable, dutiful persistence through the storm, creating a cohesive and reassuring journey that values showing up over winning.",
+    "feeling": "Dependable presence"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This arc's focus on quiet, dutiful endurance against an impersonal challenge like fog holds together perfectly and speaks directly to the value of just showing up.",
+    "feeling": "Quiet responsibility"
+   }
+  ],
+  "adhd": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The constant, unwavering presence of the kettle creates a perfectly cohesive and deeply safe arc that feels grounding and welcoming from start to finish.",
+    "feeling": "Unwavering warmth"
+   },
+   {
+    "index": 2,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "This journey feels cohesive and reliable, anchored by the ferry's steadfast nature, making the rise and fall of the storm feel like a managed, safe experience.",
+    "feeling": "Competent and steady"
+   },
+   {
+    "index": 3,
+    "relate": 2,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "While the arc is cohesive, its theme of constant vigilance feels like a demand that could create pressure and a sense of failure if I stop, undermining the goal of a safe, non-punishing experience.",
+    "feeling": "A heavy responsibility"
+   }
+  ],
+  "iyashikei_fan": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The constant, comforting presence of the kettle provides a perfect anchor, making the rise in intensity feel safe and the resolution deeply satisfying and cohesive.",
+    "feeling": "Enduring comfort"
+   },
+   {
+    "index": 2,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "The arc is held together by the ferry's reliable nature, making the intense peak feel like a challenge being capably met rather than a true danger, and the resolution is earned.",
+    "feeling": "Steadfast reliability"
+   },
+   {
+    "index": 3,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "This arc cohesively frames the intensity of the fog as a challenge to one's focus and duty, which resolves beautifully with the dawn and the continuation of the watch.",
+    "feeling": "Quiet diligence"
+   }
+  ],
+  "thrill_seeker": [
+   {
+    "index": 1,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "This arc is cohesive around its cozy kettle theme, but the peak lacks any real intensity or stakes, making the entire journey feel too safe and uninteresting.",
+    "feeling": "Domestic and dull"
+   },
+   {
+    "index": 2,
+    "relate": 3,
+    "feelsSafe": 3,
+    "wouldPlay": true,
+    "why": "This arc holds together well, rising to a genuinely intense peak with a heavy sea before resolving, which makes the journey worthwhile despite its safe, cozy frame.",
+    "feeling": "A decent storm"
+   },
+   {
+    "index": 3,
+    "relate": 2,
+    "feelsSafe": 4,
+    "wouldPlay": false,
+    "why": "While the arc is cohesive and atmospheric, its peak relies on the passive threat of fog and the act of enduring, which lacks the high-stakes action I'm looking for.",
+    "feeling": "Tense but passive"
+   }
+  ]
+ },
+ "legs": {
+  "arc_complete": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "The constant, unchanging 'kettle' provides a perfect anchor for the journey's rising and falling intensity. The arc is symmetrical and complete, returning to the initial state of comfort with a sense of accomplishment.",
+    "opens": "A sense of enduring domesticity against external chaos.",
+    "forecloses": "A journey where the destination changes the traveler's core.",
+    "seed": "The kettle's always on."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "This arc hinges on the reliability of the subject, which is tested at the peak and reaffirmed in the renewal. The journey provides a classic, symmetrical rise and fall of tension, perfectly completing the cozy-intense-cozy cycle.",
+    "opens": "A story of reliability and steadfastness in the face of trial.",
+    "forecloses": "A narrative of permanent change or failure to return.",
+    "seed": "She comes back, every night."
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "The arc uses the thickening and thinning of fog as a perfect metaphor for rising and falling tension. The peak is a moment of pure vigilance, and the resolution successfully completes the cycle of duty by handing on the watch.",
+    "opens": "Themes of duty, vigilance, and the continuity of a trust.",
+    "forecloses": "A story where vigilance fails or the threat is permanent.",
+    "seed": "The watch is kept."
+   }
+  ],
+  "story_spawn": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "The kettle provides a powerful, unwavering anchor against the external storm, creating a clear and resonant arc of comfort tested and reaffirmed. This contrast between the domestic and the elemental is a classic, sturdy storytelling engine.",
+    "opens": "Stories of domestic resilience, found family, and the quiet constants that get us through storms.",
+    "forecloses": "A story where the core 'home' is fundamentally broken or changed by the journey.",
+    "seed": "The kettle's always on."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "This arc personifies the journey, focusing on the steadfastness of 'she' against the trial of a heavy sea. It's a classic narrative of reliability proven through adversity, making the final, expected return deeply satisfying.",
+    "opens": "Stories about duty, reliability, a single character's (or vessel's) journey, and promises kept.",
+    "forecloses": "Stories of failure to return, or where the trial causes a fundamental change in the protagonist's nature.",
+    "seed": "She comes back, every night."
+   },
+   {
+    "index": 3,
+    "canBuild": "hairline",
+    "explanation": "This arc presents a more subtle, internal conflict of vigilance against the disorienting threat of fog. While the cozy-intense-cozy structure holds, its quiet, passive nature might be harder to build into a full story with rising action, making it a more delicate, atmospheric build.",
+    "opens": "Stories about quiet duty, shared responsibility, and the challenges of perception versus reality.",
+    "forecloses": "High-action, kinetic conflict; stories centered on a single hero's triumphant return.",
+    "seed": "The watch is kept."
+   }
+  ]
+ }
+}

@@ -29,13 +29,14 @@ export const SLATE_STATUS: Record<string, string> = { ferry: "building", lightho
 // per-step normalizers → Item[]. concept = the SETTINGS slate; pilot = the MOMENTS (story-doors).
 const NORM: Record<string, (d: { [k: string]: unknown }) => Item[]> = {
   concept: (d) => (d as unknown as typeof SLATE).settings.map((s, k) => ({ key: s.id, idx: k + 1, title: s.title, sub: s.line, body: s.world })),
-  // the pilot is now SCRUB GROUPS — each rendered as its complete ladder (ASCII + two-part title per tier)
+  // the pilot is SCRUB GROUPS — each rendered as its SUBRANGE (the scrubber): one row per coziness =
+  // a story (two-part title) + its arc sparkline (cozy→intense→cozy; the peak rises down the subrange)
   pilot: (d) => {
-    const dd = d as unknown as { tiers: string[]; ascii: Record<string, string>; scrubGroups: { id: string; name: string; settingTitle: string; storyTitles: string[] }[] };
+    const dd = d as unknown as { coziness: string[]; spark: Record<string, string>; scrubGroups: { id: string; name: string; settingTitle: string; storyTitles: string[] }[] };
     return dd.scrubGroups.map((g, k) => ({
       key: g.id, idx: k + 1, title: g.name, mono: true,
-      sub: `the tonal range · anchor: “${g.settingTitle}”`,
-      body: dd.tiers.map((t, i) => `${dd.ascii[t]}\n   ${g.settingTitle}  /  ${g.storyTitles[i]}   — ${t}`).join("\n\n"),
+      sub: `the SUBRANGE · scrub by coziness ↓ · anchor: “${g.settingTitle}”`,
+      body: dd.coziness.map((c, i) => `${dd.spark[c]}   ${g.settingTitle}  /  ${g.storyTitles[i]}   — ${c}`).join("\n"),
     }));
   },
 };
@@ -55,12 +56,12 @@ export const PRIMERS: Record<string, { tldr: string; whatFor: string; impact: st
     craft: "Craft (§8.14/§8.15): the setting is the convergence, NOT a coach — it’s a persistent backdrop the player dwells in, never an arc. The stories (own casts) branch off it.",
   },
   pilot: {
-    tldr: "the RANGE — pick the most COHESIVE scrub group (a complete cozy↔intense ladder for the setting)",
-    whatFor: "Not scenes scored one-by-one. We compare candidate SCRUB GROUPS — each a COMPLETE tonal range for the one setting (the fixed setting-title anchor + a ladder of story-titles across the cozy↔intense tiers + ASCII per tier) — and pick the one that coheres best as a WHOLE. This IS the player’s scrubber; each rung is a story-door.",
-    impact: "The range is the player’s choice surface — they scrub it by current feeling. A cohesive range feels like ONE mood-dial on ONE world; an incohesive one feels like five unrelated covers and the scrub stops meaning anything. Cohesion is what makes the hook-engine legible.",
-    howToChoose: "PICK the most cohesive SET (not the rungs — the whole ladder). Cohesion is judged on the FAMILY: does the anchor hold (and reassert as it darkens)? do the story-titles share one imagery-world and dial smoothly + evenly? Then the legs check the RANGE is complete (floor-to-floor, floor-clipped at the top) and every rung can spawn a story.",
-    mechanic: "the SCRUBBER (the browser’s cozy-axis dial, §8.15) + the two-part title + the ASCII (density encodes the dial, §8.12). The chosen group IS the setting’s scrub.",
-    craft: "Craft: the cohesion lives in the titles — fixed setting-title anchor + a story-title family that dials evenly; the dial is the COZY/space axis (the player’s scrub), never the time-arc (§8.13/§8.15).",
+    tldr: "the RANGE — pick the most COHESIVE SUBRANGE (the scrubber: stories by coziness, each a peak-and-fall arc)",
+    whatFor: "One scrubber — the SUBRANGE: the player drags COZINESS to pick a story (deeply-cozy ↔ intense). Each story is itself a cozy→intense→cozy ARC (it peaks AND falls — pre/current/post), the peak rising with coziness (§8.13 amplitude). We pick the subrange that coheres best as one family.",
+    impact: "The subrange is the player’s choice surface AND a creative SPACE. Because the story’s coziness FRAME is decoupled from its beats, you get creative LIBERTY: a COZY contrast at an intense peak (the eye of the storm), an INTENSE contrast in a cozy slope (a spike in the gentle) — the iyashikei move, a tranquil frame holding dark content. And every story comes HOME, so even the intense end stays SAFE.",
+    howToChoose: "PICK the most cohesive SUBRANGE (the whole scrubber). Test the title-FAMILY (anchor holds, one imagery-world) + the SPREAD (a real deeply-cozy AND a real intense pole, still floor-clipped, amplitude rising smoothly). Each story still peaks AND falls (resolves home).",
+    mechanic: "the SCRUBBER (the subrange = the player’s coziness dial) — distinct from the SETTING scrub (§8.15); each story’s arc is the §8.13 SCRIPT (TIME), its amplitude set by the scrub position.",
+    craft: "Craft: the subrange grants creative LIBERTY — beat-intensity is decoupled from the story’s coziness frame (the frame sets the level, the beats are free to CONTRAST: cozy-in-intense, intense-in-cozy; §8.15 — a tranquil frame can hold weight).",
   },
   destination: {
     tldr: "the ending THIS story walks toward — its own deepest coach (per-story, §8.14: no shared coach)",
@@ -97,7 +98,7 @@ export const PRIMERS: Record<string, { tldr: string; whatFor: string; impact: st
 };
 export const INTRO: Record<string, string> = {
   concept: "The SETTING meets the room — the surrounding world you’d dwell in, not a story. The audience scores whether it feels safe to LIVE in; the hook-capacity legs score how wide a tonal range it can spawn while holding the floor. The picked setting becomes a campaign that spawns its stories.",
-  pilot: "One setting, candidate SCRUB GROUPS — each a complete cozy↔intense tonal range (the anchor + a ladder of two-part titles + ASCII). We PICK the most cohesive set as a whole: the fleet scores cohesion (does it feel like one mood-dial?); the legs check the range is complete + each rung spawns a story. The winner IS the setting’s scrub.",
+  pilot: "One setting, candidate SUBRANGES — the scrubber the player drags by COZINESS to pick a story (deeply-cozy ↔ intense). Each story is a cozy→intense→cozy arc (the sparkline — it peaks AND comes home; its amplitude set by the scrub). The subrange grants creative liberty (cozy-in-intense, intense-in-cozy). We PICK the most cohesive subrange: the fleet scores cohesion + safety across the spread; the legs check it’s complete + each story spawns.",
   destination: "The deepest chat THIS story reaches — the full-REL coach (per-story, §8.14: no shared coach). Authored after a moment is chosen; the path is built backward to it. The fleet asks: does the deepest relationship land?",
 };
 
