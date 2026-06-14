@@ -35,7 +35,9 @@
     "the cliffs fall back; the wind sighs and eases, the deck put right",
     "dawn on open water, the tight channel astern"
    ],
-   "buildingBlock": "a struggle of endurance against a known, external pressure — the Pilot's lens"
+   "buildingBlock": "a struggle of endurance against a known, external pressure — the Pilot's lens",
+   "verdict": "distinct",
+   "floorFlags": []
   },
   {
    "id": "crossing",
@@ -56,7 +58,9 @@
     "the far lights swim up again, closer than you dared hope",
     "the harbour close, a lone bell, first light on the landing"
    ],
-   "buildingBlock": "a struggle of faith when the destination vanishes — the Manifest-Keeper's lens"
+   "buildingBlock": "a struggle of faith when the destination vanishes — the Manifest-Keeper's lens",
+   "verdict": "distinct",
+   "floorFlags": []
   },
   {
    "id": "water",
@@ -77,7 +81,9 @@
     "the swell subsides, the great tension letting go",
     "dawn on the calm that held you all along"
    ],
-   "buildingBlock": "a struggle of acceptance against an overwhelming force — the Deckhand's lens"
+   "buildingBlock": "a struggle of acceptance against an overwhelming force — the Deckhand's lens",
+   "verdict": "distinct",
+   "floorFlags": []
   }
  ],
  "results": {
@@ -265,5 +271,9 @@
     "seed": "The Water Holds"
    }
   ]
+ },
+ "worldbuild": {
+  "richest": "water",
+  "note": "The choice of environmental focus (cliffs, shore, or water) fundamentally changes the story's core metaphor for healing."
  }
 }

@@ -18,8 +18,8 @@ const STATUS: Record<string, { txt: string; col: string }> = {
 
 export type Primer = { tldr: string; whatFor: string; impact: string; howToChoose: string; mechanic?: string; craft?: string };
 
-export default function StepBoard({ stepLabel, intro, primer, prepend, sourceStudy, data, items, carried, status, reference, prev, next }: {
-  stepLabel: string; intro: string; primer?: Primer; prepend?: React.ReactNode; sourceStudy?: SourceStudy; data: StepData; items: Item[];
+export default function StepBoard({ stepLabel, intro, whyPicked, primer, prepend, sourceStudy, data, items, carried, status, reference, prev, next }: {
+  stepLabel: string; intro: string; whyPicked?: { text?: string; pending?: boolean }; primer?: Primer; prepend?: React.ReactNode; sourceStudy?: SourceStudy; data: StepData; items: Item[];
   carried?: { step: string; lines: string[] }[]; status?: Record<string, string>;
   reference?: { campaign: string; label: string; title: string; star: number }[]; prev?: Nav; next?: Nav;
 }) {
@@ -35,6 +35,19 @@ export default function StepBoard({ stepLabel, intro, primer, prepend, sourceStu
       </div>
       <h1 style={{ fontSize: 24, margin: "0 0 4px", color: ink }}>{stepLabel}</h1>
       <p style={{ fontSize: 12.5, color: soft, lineHeight: 1.55, margin: "0 0 12px" }}>{intro}</p>
+
+      {/* §8.19 — every PICKED step ships an ELI5 "why this won" (distinct from the primer's "what is this step") */}
+      {whyPicked?.text && (
+        <div style={{ border: `2px solid ${forest}`, background: shade, padding: "10px 14px", margin: "0 0 14px" }}>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".1em", color: forest, marginBottom: 4 }}>✓ WHY THIS WAS PICKED · ELI5</div>
+          <div style={{ fontSize: 12.5, color: ink, lineHeight: 1.6 }}>{whyPicked.text}</div>
+        </div>
+      )}
+      {whyPicked?.pending && (
+        <div style={{ border: `1px dashed var(--ink-soft)`, background: paper, padding: "8px 14px", margin: "0 0 14px", fontSize: 11, color: margin, fontStyle: "italic", lineHeight: 1.5 }}>
+          ○ <b style={{ fontStyle: "normal" }}>why-picked — pending:</b> no pick yet (still finding the rhythm). When a candidate is chosen, its ELI5 “why this won” lands here (§8.19, hard rule).
+        </div>
+      )}
 
       {prepend}
 

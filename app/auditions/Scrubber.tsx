@@ -7,9 +7,9 @@
 // only the weather arcs. EACH candidate gets its OWN environment, distinct by structure: the STRAIT
 // (two headlands framing a channel), the CROSSING (a far shore on the horizon), the DARK WATER (a
 // vast high-horizon deep). Authored in the ASCII-art commission's demoscene/ANSI tradition.
-import { useState } from "react";
+import { useState, useRef } from "react";
 
-const ink = "var(--ink)", soft = "var(--ink-soft)", paper = "var(--paper)", shade = "var(--paper-shade)", forest = "var(--forest)", margin = "var(--margin-ink)";
+const ink = "var(--ink)", soft = "var(--ink-soft)", paper = "var(--paper)", shade = "var(--paper-shade)", forest = "var(--forest)", margin = "var(--margin-ink)", amber = "#c08a2e";
 const mono: React.CSSProperties = { fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace", whiteSpace: "pre", lineHeight: 1.04, letterSpacing: 0 };
 
 const COLS = 38, ROWS = 13;
@@ -179,80 +179,94 @@ function art(variant: Variant, dr: number): string[] {
   return grid.map((row) => { let s = row.join(""); if (s.length < COLS) s += " ".repeat(COLS - s.length); else if (s.length > COLS) s = s.slice(0, COLS); return s; });
 }
 
-type Group = { id: string; name: string; settingTitle: string; storyTitles: string[]; throughline: string; env: string[]; buildingBlock: string; relate: number; safe: number; top?: boolean };
+type Group = { id: string; name: string; settingTitle: string; storyTitles: string[]; throughline: string; env: string[]; buildingBlock: string; verdict?: string; relate: number; safe: number; top?: boolean };
 
-const safeCol = (s: number) => (s >= 4 ? forest : s >= 3 ? "#c08a2e" : "var(--spot-red)");
 const VARIANT_OF = (id: string): Variant => (id === "strait" ? "strait" : id === "water" ? "water" : "crossing");
 // the §8.13 arc gauge per phase (rises to the storm-peak, then resolves) — mirrors pilot.json SPARK
 const BAR = ["▰▱▱▱▱", "▰▰▰▱▱", "▰▰▰▰▰", "▰▰▱▱▱", "▰▱▱▱▱"];
 
-// a chunky, easy-to-grab dial (the native thumb is too small) — square handle, drop-shadow, big hit area
-const SLIDER_CSS = `
-.scrub-range{-webkit-appearance:none;appearance:none;width:100%;height:26px;background:transparent;cursor:pointer;margin:0;display:block;}
-.scrub-range:focus{outline:none;}
-.scrub-range::-webkit-slider-runnable-track{height:10px;background:var(--paper-shade);border:1.5px solid var(--ink);}
-.scrub-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;margin-top:-9px;background:var(--forest);border:2px solid var(--ink);box-shadow:2px 2px 0 rgba(0,0,0,.22);cursor:grab;}
-.scrub-range:active::-webkit-slider-thumb{cursor:grabbing;background:var(--ink);}
-.scrub-range::-moz-range-track{height:10px;background:var(--paper-shade);border:1.5px solid var(--ink);}
-.scrub-range::-moz-range-thumb{width:24px;height:24px;background:var(--forest);border:2px solid var(--ink);border-radius:0;box-shadow:2px 2px 0 rgba(0,0,0,.22);cursor:grab;}
-`;
-
+// THE WHOLE PANEL is the scrub surface (pointer drag — best on mobile; the slider thumb was too small
+// to grab). touch-action pan-y lets the page still scroll vertically; horizontal drag scrubs. A slim
+// bar + handle is the position read-out (not the control). Keyboard arrows for a11y (role=slider).
 function OneScrubber({ g, phases }: { g: Group; phases: string[] }) {
   const [dr, setDr] = useState(0.0);
+  const box = useRef<HTMLDivElement>(null);
+  const drag = useRef<{ x: number; dr: number } | null>(null);
   const ph = phaseOf(dr);
   const variant = VARIANT_OF(g.id);
+  const down = (e: React.PointerEvent) => { box.current?.setPointerCapture(e.pointerId); drag.current = { x: e.clientX, dr }; };
+  const move = (e: React.PointerEvent) => { if (!drag.current || !box.current) return; const w = box.current.offsetWidth || 1; setDr(clamp(drag.current.dr + (e.clientX - drag.current.x) / w, 0, 1)); };
+  const up = (e: React.PointerEvent) => { drag.current = null; try { box.current?.releasePointerCapture(e.pointerId); } catch {} };
+  const key = (e: React.KeyboardEvent) => { if (e.key === "ArrowRight" || e.key === "ArrowUp") { setDr((d) => clamp(d + 0.05, 0, 1)); e.preventDefault(); } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") { setDr((d) => clamp(d - 0.05, 0, 1)); e.preventDefault(); } };
   return (
-    <div style={{ border: `2px solid ${forest}`, background: paper, padding: "10px 12px 11px" }}>
+    <div ref={box} role="slider" aria-label="dynamic range — drag to scrub" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(dr * 100)} tabIndex={0}
+      onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} onKeyDown={key}
+      style={{ border: `2px solid ${forest}`, background: paper, padding: "10px 12px 12px", touchAction: "pan-y", cursor: "ew-resize", userSelect: "none", WebkitUserSelect: "none" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
         <span style={{ fontFamily: "var(--theme-body)", fontSize: 11.5, fontWeight: 700, color: forest }}>{g.top ? "★ " : ""}{g.name}</span>
-        <span style={{ fontSize: 10, color: safeCol(g.safe) }}>cohesion {g.relate.toFixed(1)}/{g.safe.toFixed(1)}</span>
+        {g.verdict && <span style={{ fontSize: 9.5, color: g.verdict === "distinct" ? forest : amber, border: `1px solid ${g.verdict === "distinct" ? forest : amber}`, borderRadius: 3, padding: "0 5px" }}>✓ {g.verdict}</span>}
       </div>
       <div style={{ fontSize: 10, fontStyle: "italic", color: soft, margin: "1px 0 7px" }}>↳ {g.throughline}</div>
       <pre style={{ ...mono, fontSize: 11.5, color: ink, background: paper, border: `1.5px solid ${ink}`, padding: "7px 5px", margin: 0, textAlign: "center", overflow: "hidden" }}>{art(variant, dr).join("\n")}</pre>
-      {/* THE DIAL — chunky + grabbable, right under the art it drives */}
-      <input className="scrub-range" type="range" min={0} max={1} step={0.01} value={dr} onChange={(e) => setDr(+e.target.value)} aria-label="dynamic range" style={{ marginTop: 9 }} />
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 9.5, color: margin, marginTop: 2 }}>
-        <span>cozy</span><span>the storm (½)</span><span>renewed</span>
+      {/* slim position read-out (the panel itself is the scrub surface) — fill · phase ticks · handle */}
+      <div style={{ position: "relative", height: 9, background: shade, border: `1.5px solid ${ink}`, margin: "10px 0 0" }}>
+        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${dr * 100}%`, background: forest }} />
+        {[0.2, 0.4, 0.6, 0.8].map((t) => <div key={t} style={{ position: "absolute", left: `${t * 100}%`, top: -1, bottom: -1, width: 1, background: "var(--ink-soft)" }} />)}
+        <div style={{ position: "absolute", left: `${dr * 100}%`, top: -4, width: 5, height: 15, background: ink, transform: "translateX(-50%)", boxShadow: "1px 1px 0 rgba(0,0,0,.2)" }} />
       </div>
-      {/* the 1st title (anchor, small + light) then the range — all five, the active 2nd title BIG */}
-      <div style={{ textAlign: "center", fontFamily: "var(--theme-body)", fontSize: 10.5, color: margin, margin: "10px 0 5px" }}>{g.settingTitle}</div>
+      <div style={{ textAlign: "center", fontSize: 9, color: margin, marginTop: 3, letterSpacing: ".03em" }}>↔ drag anywhere to scrub · cozy → the storm (½) → renewed</div>
+      {/* the 1st title (anchor, small) then the range — all five, the active 2nd title BIG */}
+      <div style={{ textAlign: "center", fontFamily: "var(--theme-body)", fontSize: 10.5, color: margin, margin: "9px 0 5px" }}>{g.settingTitle}</div>
       <div style={{ margin: "0 2px" }}>
-        {g.storyTitles.map((t, i) => {
-          const active = i === ph;
-          return (
-            <div key={i} style={{ display: "flex", alignItems: "baseline", gap: 8, padding: "0.5px 0" }}>
-              <span style={{ ...mono, fontSize: 8.5, color: active ? forest : margin, opacity: active ? 1 : 0.5 }}>{BAR[i]}</span>
-              <span style={{ fontFamily: "var(--theme-display)", fontSize: active ? 16 : 11.5, fontWeight: active ? 700 : 400, fontStyle: active ? "normal" : "italic", color: active ? ink : soft, opacity: active ? 1 : 0.55, lineHeight: 1.1 }}>{t}</span>
-            </div>
-          );
-        })}
+        {g.storyTitles.map((t, i) => { const active = i === ph; return (
+          <div key={i} style={{ display: "flex", alignItems: "baseline", gap: 8, padding: "0.5px 0" }}>
+            <span style={{ ...mono, fontSize: 8.5, color: active ? forest : margin, opacity: active ? 1 : 0.5 }}>{BAR[i]}</span>
+            <span style={{ fontFamily: "var(--theme-display)", fontSize: active ? 16 : 11.5, fontWeight: active ? 700 : 400, fontStyle: active ? "normal" : "italic", color: active ? ink : soft, opacity: active ? 1 : 0.55, lineHeight: 1.1 }}>{t}</span>
+          </div> ); })}
       </div>
-      {/* the active phase's SURROUNDING-ENVIRONMENT change + the building block it hands forward */}
       <div style={{ fontSize: 10, color: soft, fontStyle: "italic", margin: "5px 2px 0", paddingLeft: 16, minHeight: 24 }}><span style={{ color: forest, fontStyle: "normal" }}>{phases[ph]}</span> — {g.env[ph]}</div>
-      <div style={{ fontSize: 9, color: margin, marginTop: 7, paddingTop: 5, borderTop: "1px dashed var(--ink-soft)" }}>→ next step: {g.buildingBlock}</div>
     </div>
   );
 }
 
-// Candidates live in TABS — one environment shown at a time (groups pre-sorted by cohesion; first is ★).
-export default function Scrubber({ coziness, groups }: { coziness: string[]; groups: Group[] }) {
-  const [active, setActive] = useState(0);
+// THE WORLD-BUILDER'S READ — the review lens for this step (replaces the audience cards here): it
+// explains the BUILDING BLOCKS each candidate hands the next step (the user's call — worldbuilders
+// fit this step better than audience).
+function WorldBuilderRead({ groups, richest, note }: { groups: Group[]; richest?: string; note?: string }) {
+  const minSafe = Math.min(...groups.map((g) => g.safe));
+  return (
+    <div style={{ border: `2px dashed ${forest}`, background: shade, padding: "11px 14px", margin: "12px 0 0" }}>
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 5 }}>🛠 THE WORLD-BUILDER’S READ — what each hands the next step</div>
+      <div style={{ fontSize: 11, color: ink, lineHeight: 1.5, marginBottom: 7 }}>All three came back <b style={{ color: forest }}>distinct</b> — each through-line carries a different <i>meaning</i>, not just a different picture.</div>
+      <div style={{ display: "grid", gap: 5 }}>
+        {groups.map((g) => (
+          <div key={g.id} style={{ fontSize: 11, color: ink, lineHeight: 1.45, borderLeft: `2px solid ${g.id === richest ? forest : "var(--ink-soft)"}`, paddingLeft: 8 }}>
+            <b style={{ color: g.id === richest ? forest : ink }}>{g.id === richest ? "◆ " : ""}{g.name}</b> <span style={{ color: margin }}>→</span> {g.buildingBlock}
+          </div>
+        ))}
+      </div>
+      <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginTop: 8, paddingTop: 6, borderTop: "1px solid var(--ink-soft)", lineHeight: 1.5 }}>
+        ◆ world-builder’s richest-metaphor pick: <b style={{ color: forest }}>{groups.find((g) => g.id === richest)?.name ?? "—"}</b>{note ? ` — ${note}` : ""} · floor clean (the Strait’s storm beat was reworded off framing the world as an antagonist, §8.15) · audience safety held (≥{minSafe.toFixed(1)} all three).
+      </div>
+    </div>
+  );
+}
+
+// Candidates live in TABS (one environment at a time); the richest is ◆ and the default.
+export default function Scrubber({ coziness, groups, richest, note }: { coziness: string[]; groups: Group[]; richest?: string; note?: string }) {
+  const richIdx = Math.max(0, groups.findIndex((x) => x.id === richest));
+  const [active, setActive] = useState(richIdx);
   const g = groups[active] ?? groups[0];
   return (
     <div style={{ margin: "0 0 18px" }}>
-      <style>{SLIDER_CSS}</style>
-      <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".1em", color: forest, marginBottom: 8 }}>▶ THE SCRUBBER — pick a candidate, drag the dial: the WEATHER runs the §8.13 arc (cozy → storm-peak at ½ → renewed dawn), the WORLD holds (§8.15).</div>
       <div style={{ display: "flex", gap: 4 }}>
-        {groups.map((x, i) => {
-          const on = i === active;
-          return (
-            <button key={x.id} onClick={() => setActive(i)} style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, padding: "6px 12px", cursor: "pointer", border: `2px solid ${on ? forest : "var(--ink-soft)"}`, borderBottom: on ? `2px solid ${forest}` : `2px solid var(--ink-soft)`, background: on ? forest : paper, color: on ? paper : margin, marginBottom: -2, position: "relative", zIndex: on ? 2 : 1 }}>
-              {i === 0 ? "★ " : ""}{x.name}
-            </button>
-          );
-        })}
+        {groups.map((x, i) => { const on = i === active; return (
+          <button key={x.id} onClick={() => setActive(i)} style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, padding: "6px 12px", cursor: "pointer", border: `2px solid ${on ? forest : "var(--ink-soft)"}`, borderBottom: `2px solid ${on ? forest : "var(--ink-soft)"}`, background: on ? forest : paper, color: on ? paper : margin, marginBottom: -2, position: "relative", zIndex: on ? 2 : 1 }}>
+            {x.id === richest ? "◆ " : ""}{x.name}
+          </button> ); })}
       </div>
-      <OneScrubber g={{ ...g, top: active === 0 }} phases={coziness} />
+      <OneScrubber g={{ ...g, top: g.id === richest }} phases={coziness} />
+      <WorldBuilderRead groups={groups} richest={richest} note={note} />
     </div>
   );
 }

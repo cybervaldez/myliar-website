@@ -102,6 +102,19 @@ export const INTRO: Record<string, string> = {
   destination: "The deepest chat THIS story reaches — the full-REL coach (per-story, §8.14: no shared coach). Authored after a moment is chosen; the path is built backward to it. The fleet asks: does the deepest relationship land?",
 };
 
+// §8.19 HARD RULE — every PICKED step (status building/shipped) ships a plain-language ELI5 "why this
+// WON" (distinct from the PRIMER's "what is this step"). Keyed campaign→step. A step still being
+// auditioned (no pick yet) returns { pending: true } — the slot shows, the rule lands on pick.
+const WHY_PICKED: Record<string, Record<string, string>> = {
+  ferry: {
+    concept: "We picked the Night Ferry because everyone we showed it to felt safe and ‘got it’ instantly — a clean sweep (relate 5.0 / safe 5.0). It’s a boat that crosses the dark water every night and asks nothing of you: a place to set a bad day down and let it go. The other ideas were good but lonelier (the lighthouse) or too small to grow many stories from (the sky station). The ferry gives the most kinds of gentle story while always feeling safe — so it earns the slot.",
+  },
+};
+export const whyPicked = (campaign: string, step: string): { text?: string; pending?: boolean } => {
+  const t = WHY_PICKED[campaign]?.[step];
+  return t ? { text: t } : { pending: true };
+};
+
 type Carried = { step: string; lines: string[] }[];
 export const CAMPAIGNS: Record<string, {
   label: string; pick: string; blurb: string;
