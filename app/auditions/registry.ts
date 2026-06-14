@@ -56,12 +56,12 @@ export const PRIMERS: Record<string, { tldr: string; whatFor: string; impact: st
     craft: "Craft (§8.14/§8.15): the setting is the convergence, NOT a coach — it’s a persistent backdrop the player dwells in, never an arc. The stories (own casts) branch off it.",
   },
   pilot: {
-    tldr: "the RANGE — pick the most COHESIVE SUBRANGE (the scrubber: stories by coziness, each a peak-and-fall arc)",
-    whatFor: "One scrubber — the SUBRANGE: the player drags COZINESS to pick a story (deeply-cozy ↔ intense). Each story is itself a cozy→intense→cozy ARC (it peaks AND falls — pre/current/post), the peak rising with coziness (§8.13 amplitude). We pick the subrange that coheres best as one family.",
-    impact: "The subrange is the player’s choice surface AND a creative SPACE. Because the story’s coziness FRAME is decoupled from its beats, you get creative LIBERTY: a COZY contrast at an intense peak (the eye of the storm), an INTENSE contrast in a cozy slope (a spike in the gentle) — the iyashikei move, a tranquil frame holding dark content. And every story comes HOME, so even the intense end stays SAFE.",
-    howToChoose: "PICK the most cohesive SUBRANGE (the whole scrubber). Test the title-FAMILY (anchor holds, one imagery-world) + the SPREAD (a real deeply-cozy AND a real intense pole, still floor-clipped, amplitude rising smoothly). Each story still peaks AND falls (resolves home).",
-    mechanic: "the SCRUBBER (the subrange = the player’s coziness dial) — distinct from the SETTING scrub (§8.15); each story’s arc is the §8.13 SCRIPT (TIME), its amplitude set by the scrub position.",
-    craft: "Craft: the subrange grants creative LIBERTY — beat-intensity is decoupled from the story’s coziness frame (the frame sets the level, the beats are free to CONTRAST: cozy-in-intense, intense-in-cozy; §8.15 — a tranquil frame can hold weight).",
+    tldr: "the RANGE — pick the most COHESIVE SUBRANGE (the scrubber: stories from cozy to intense)",
+    whatFor: "One scrubber — the SUBRANGE: drag COZINESS to pick a story, deeply-cozy ↔ intense. The range is JUST that — a clean cozy→intense spread, nothing more. (Each story’s own pre→peak→post arc is a separate, downstream thing — the §8.13 script — NOT the range.)",
+    impact: "The range is the player’s ‘find your mood’ surface. A cohesive range feels like ONE world dialed from gentle to intense; an incohesive one reads as unrelated covers. And every candidate must stay SAFE even at the intense end — the floor holds (§8.11), so picking ‘intense’ is never an ambush.",
+    howToChoose: "PICK the most cohesive SUBRANGE (the whole spread). Test the title-FAMILY: the SURROUNDING anchor (line 1, §8.16) holds + one imagery-world; the SUBRANGE story (line 2) intersects it — across a smooth cozy→intense spread. CREATIVE LIBERTY: a cozy story may still hold an intense beat, an intense story a cozy one (the contrast).",
+    mechanic: "the SCRUBBER (the cozy→intense coziness dial) + the two-part title + the surrounding art (which gets more intense from cozy to intense). Distinct from the SETTING scrub (§8.15) and from each story’s SCRIPT arc (§8.13).",
+    craft: "Craft: the range is cozy→intense (a coziness spread, §8.11) — NOT the per-story pre/current/post arc (§8.13). The SETTING persists across it (§8.15); only the surrounding intensity dials.",
   },
   destination: {
     tldr: "the ending THIS story walks toward — its own deepest coach (per-story, §8.14: no shared coach)",
@@ -98,7 +98,7 @@ export const PRIMERS: Record<string, { tldr: string; whatFor: string; impact: st
 };
 export const INTRO: Record<string, string> = {
   concept: "The SETTING meets the room — the surrounding world you’d dwell in, not a story. The audience scores whether it feels safe to LIVE in; the hook-capacity legs score how wide a tonal range it can spawn while holding the floor. The picked setting becomes a campaign that spawns its stories.",
-  pilot: "One setting, candidate SUBRANGES — the scrubber the player drags by COZINESS to pick a story (deeply-cozy ↔ intense). Each story is a cozy→intense→cozy arc (the sparkline — it peaks AND comes home; its amplitude set by the scrub). The subrange grants creative liberty (cozy-in-intense, intense-in-cozy). We PICK the most cohesive subrange: the fleet scores cohesion + safety across the spread; the legs check it’s complete + each story spawns.",
+  pilot: "One setting, candidate SUBRANGES — the scrubber the player drags by COZINESS to pick a story (deeply-cozy ↔ intense). The range is JUST that cozy→intense spread (each story’s own pre→peak→post arc is the §8.13 script, a separate axis). Creative liberty: a cozy story can still hold an intense beat, and vice-versa. We PICK the most cohesive subrange: the fleet scores cohesion + safety across the spread; the legs check it’s complete + each story spawns.",
   destination: "The deepest chat THIS story reaches — the full-REL coach (per-story, §8.14: no shared coach). Authored after a moment is chosen; the path is built backward to it. The fleet asks: does the deepest relationship land?",
 };
 

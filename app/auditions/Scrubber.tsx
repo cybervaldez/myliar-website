@@ -166,7 +166,7 @@ export default function Scrubber({ coziness, groups }: { coziness: string[]; gro
         <input type="range" min={0} max={1} step={0.01} value={dr} onChange={(e) => setDr(+e.target.value)} aria-label="coziness" style={{ flex: 1, accentColor: forest }} />
         <span style={{ fontSize: 11, color: margin, width: 44 }}>intense</span>
       </div>
-      <div style={{ textAlign: "center", fontSize: 10, color: margin, marginTop: 6, fontStyle: "italic" }}>the surrounding arcs with the dial; the ferry holds (§8.15). switch candidates above to compare — ★ = the audition’s most cohesive.</div>
+      <div style={{ textAlign: "center", fontSize: 10, color: margin, marginTop: 6, fontStyle: "italic" }}>the surrounding dials calm → storm (just cozy→intense); the ferry holds (§8.15). switch candidates to compare — ★ = the audition’s most cohesive.</div>
     </div>
   );
 }

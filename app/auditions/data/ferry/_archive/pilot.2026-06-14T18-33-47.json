@@ -1,0 +1,242 @@
+{
+ "concept": "ferry",
+ "setting": "The Night Ferry",
+ "coziness": [
+  "deeply cozy",
+  "cozy",
+  "warm",
+  "bittersweet",
+  "intense"
+ ],
+ "spark": {
+  "deeply cozy": "▁▁▂▁▁",
+  "cozy": "▁▂▃▂▁",
+  "warm": "▁▃▄▃▁",
+  "bittersweet": "▂▄▅▄▂",
+  "intense": "▂▄▆▄▂"
+ },
+ "scrubGroups": [
+  {
+   "id": "strait",
+   "name": "The Strait",
+   "settingTitle": "She crosses the dark strait, every night.",
+   "storyTitles": [
+    "the galley warm, nothing to carry",
+    "a slow, easy crossing",
+    "the lamps lit, the deck quiet",
+    "a long swell, and home by dawn",
+    "a heavy sea, and back again"
+   ]
+  },
+  {
+   "id": "crossing",
+   "name": "The Night Crossing",
+   "settingTitle": "Every night, the same dark crossing.",
+   "storyTitles": [
+    "nothing asked of you tonight",
+    "an hour just to breathe",
+    "the kettle on, the night outside",
+    "the far shore slow to come",
+    "the wind up, and held steady"
+   ]
+  },
+  {
+   "id": "water",
+   "name": "The Dark Water",
+   "settingTitle": "The dark water carries you over.",
+   "storyTitles": [
+    "calm, and the far shore near",
+    "a fair tide, the lamps lit",
+    "the swell gentle, the deck warm",
+    "a long pull, and home",
+    "a heavy sea, and she holds"
+   ]
+  }
+ ],
+ "results": {
+  "anxious": [
+   {
+    "index": 1,
+    "relate": 3,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "This range holds together, but the most intense option, \"and back again,\" feels like an unpredictable failure, which is too much of an ambush for me.",
+    "feeling": "A little uncertain"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This range coheres perfectly and feels deeply safe because even its most intense moment is explicitly framed with reassurance (\"held steady\").",
+    "feeling": "Gently held"
+   },
+   {
+    "index": 3,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This range coheres beautifully around the water's state, and feels deeply safe because the most intense option confirms the vessel \"holds,\" preventing any feeling of ambush.",
+    "feeling": "Safely afloat"
+   }
+  ],
+  "low_worth": [
+   {
+    "index": 1,
+    "relate": 3,
+    "feelsSafe": 3,
+    "wouldPlay": true,
+    "why": "This range holds together, but the intense end's 'heavy sea, and back again' feels a bit like a challenge I might fail, not a safe space to just be.",
+    "feeling": "A little uncertain"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This feels perfect because the whole range, from 'nothing asked of you' to being 'held steady', honors the feeling of just needing to show up and breathe.",
+    "feeling": "Deeply understood"
+   },
+   {
+    "index": 3,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "This coheres well and stays safe by focusing on how the vessel 'carries you' and 'holds', which takes the pressure off me to be strong enough.",
+    "feeling": "Safely held"
+   }
+  ],
+  "adhd": [
+   {
+    "index": 1,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "This range holds together perfectly with its consistent framing, providing a safe and gentle gradient from calm to a manageable intensity.",
+    "feeling": "A steady, nightly ritual"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This range perfectly understands my need for a low-demand space, using explicit reassurance to stay deeply safe across its entire gentle gradient of intensity.",
+    "feeling": "A quiet, personal refuge"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The central theme of being passively carried and held by the vessel creates a profound sense of security that stays constant across the entire intensity range.",
+    "feeling": "Safely held and carried"
+   }
+  ],
+  "iyashikei_fan": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This subrange feels perfectly cohesive and safe, offering a meaningful emotional spread from deep comfort to manageable intensity within a strong, evocative frame.",
+    "feeling": "A quiet, steady heart"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This set powerfully captures the feeling of respite and quiet endurance, maintaining a deep sense of safety across a well-crafted emotional range.",
+    "feeling": "A welcome exhale"
+   },
+   {
+    "index": 3,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This range feels like being held and protected, with the boat itself ensuring safety even in intense seas, creating a wonderfully coherent and secure experience.",
+    "feeling": "Safely held"
+   }
+  ],
+  "thrill_seeker": [
+   {
+    "index": 1,
+    "relate": 1,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "The stories cohere well around the ferry crossing and feel very safe, but the range from 'warm galley' to 'heavy sea' is far too gentle and low-stakes for me.",
+    "feeling": "Nautical and sleepy"
+   },
+   {
+    "index": 2,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "While it holds together as a cohesive set of introspective moments and feels deeply safe, it's entirely focused on quiet and calm, which I find completely unengaging.",
+    "feeling": "A long, quiet sigh"
+   },
+   {
+    "index": 3,
+    "relate": 1,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "This range coheres nicely and feels completely safe, but its version of 'intense' is just a heavy sea that the ship easily handles, offering no real stakes or action.",
+    "feeling": "Repetitive and uneventful"
+   }
+  ]
+ },
+ "legs": {
+  "subrange_complete": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "This subrange is anchored by a strong, active protagonist, creating a personal and compelling arc. The progression from the 'warm galley' to the 'heavy sea' feels smooth, full-range, and perfectly floor-clipped.",
+    "opens": "A character-focused story of routine, skill, and endurance.",
+    "forecloses": "A more elemental or passive experience of the crossing.",
+    "seed": "She crosses the dark strait, every night."
+   },
+   {
+    "index": 2,
+    "canBuild": "hairline",
+    "explanation": "The anchor is more passive, creating a meditative but less active feel, and the intense pole feels slightly muted. While the cozy end is very strong, the overall amplitude doesn't feel quite as wide or weighty as the others.",
+    "opens": "An internal, reflective mood piece about duty and respite.",
+    "forecloses": "The visceral, physical struggle against the elements.",
+    "seed": "Every night, the same dark crossing."
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "The anchor's direct address ('you') and the focus on the water as an agent create an immersive, elemental feeling. The range is excellent, moving smoothly from calm to a 'heavy sea' where the ship itself 'holds,' which is a powerful and well-realized intense pole.",
+    "opens": "A direct, sensory experience of being subject to the sea's power.",
+    "forecloses": "A story centered on a specific character's job or personal history.",
+    "seed": "The dark water carries you over."
+   }
+  ],
+  "story_spawn": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "This subrange provides a strong, clear arc by moving from internal comfort (the warm galley) to external, physical challenge (a heavy sea). Each step offers a distinct sensory and emotional anchor, making the progression feel both natural and buildable.",
+    "opens": "A character-focused story about routine, duty, and resilience against the elements.",
+    "forecloses": "A story where the crossing is abstract or lacks a specific, personal point of view.",
+    "seed": "She crosses the dark strait, every night."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "The focus here is on the internal, psychological experience of the crossing, which provides a powerful and coherent theme. The progression from quiet respite ('nothing asked of you') to tense endurance ('held steady') creates a subtle but very distinct emotional arc.",
+    "opens": "An introspective story about mental fortitude, finding peace in repetition, and quiet endurance.",
+    "forecloses": "A story focused on external action or overt physical danger.",
+    "seed": "Every night, the same dark crossing."
+   },
+   {
+    "index": 3,
+    "canBuild": "hairline",
+    "explanation": "While the overall arc from calm to intense is present, the early steps ('calm', 'fair tide', 'swell gentle') are too similar in feeling and lack distinct imagery. This lack of clear differentiation makes the cozy end of the spectrum feel flat and less compelling to build from.",
+    "opens": "A story where the water itself is the main character, exploring themes of passivity and being subject to nature.",
+    "forecloses": "A story with a strong, active protagonist who shapes their own journey.",
+    "seed": "The dark water carries you over."
+   }
+  ]
+ }
+}
