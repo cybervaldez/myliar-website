@@ -6,7 +6,7 @@ export type Leg = { index: number; canBuild: "load-bearing" | "hairline" | "holl
 export type StepData = { results: Record<string, Read[]>; legs: Record<string, Leg[]> };
 export type Item = { key: string; idx: number; title: string; sub: string; body: string };
 // the SOURCE STUDY (§8.18) — the third lens (PRECEDENT), studied BEFORE the ELI5 is written
-export type SourceStudy = { vein: string; works: { title: string; what: string }[]; borrow: string[]; avoid: string[]; preliminary?: boolean };
+export type SourceStudy = { vein: string; works: { title: string; what: string }[]; borrow: string[]; avoid: string[]; preliminary?: boolean; method?: "ultrathink" | "deep-research" };
 
 export const TARGET = ["anxious", "low_worth", "adhd", "iyashikei_fan"];
 export const PLABEL: Record<string, string> = { anxious: "anxious", low_worth: "low self-worth", adhd: "ADHD", iyashikei_fan: "iyashikei fan" };

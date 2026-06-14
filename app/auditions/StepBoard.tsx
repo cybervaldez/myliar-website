@@ -62,6 +62,7 @@ export default function StepBoard({ stepLabel, intro, primer, sourceStudy, data,
         <details style={{ border: `2px solid ${amber}`, background: paper, margin: "0 0 16px" }}>
           <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 14px", fontFamily: "var(--theme-body)", fontSize: 11.5, fontWeight: 700, color: amber, letterSpacing: ".02em" }}>
             📚 SOURCE STUDY — what made successful stories in this vein work <span style={{ color: margin, fontWeight: 400, fontStyle: "italic" }}>· studied before the summary (§8.18)</span>
+            {sourceStudy.method && <span style={{ marginLeft: 6, fontSize: 9, color: sourceStudy.method === "deep-research" ? forest : margin, border: `1px solid ${sourceStudy.method === "deep-research" ? forest : margin}`, borderRadius: 3, padding: "0 5px" }}>{sourceStudy.method === "deep-research" ? "deep-research · verified" : "ultrathink · reasoned"}</span>}
             {sourceStudy.preliminary && <span style={{ marginLeft: 6, fontSize: 9, color: red, border: `1px solid ${red}`, borderRadius: 3, padding: "0 5px" }}>PRELIMINARY · verifying</span>}
           </summary>
           <div style={{ padding: "2px 14px 13px", fontSize: 12, color: ink, lineHeight: 1.55 }}>

@@ -120,6 +120,7 @@ export const CAMPAIGNS: Record<string, {
     // Verdict: no vein beats the Ferry; its iyashikei/keeper vein has the strongest proven track record.
     sourceStudy: {
       concept: {
+        method: "deep-research",
         vein: "cozy night-transit iyashikei — the KEEPER who witnesses transient strangers (Spiritfarer · Midnight Diner · Mushishi · ARIA). The strongest-evidenced of the three veins; the Ferry pick is validated.",
         works: [
           { title: "Spiritfarer", what: "the closest STRUCTURAL analog — a keeper brings transient passengers aboard, fulfills their unfinished business, and releases them (board → witness → depart). The emotional payoff is the GOODBYE, not the systems; the simplest beat (a hug) lands hardest. (One-way departures, though — the Ferry’s nightly RETURN is its own untested bet.)" },
@@ -142,6 +143,7 @@ export const CAMPAIGNS: Record<string, {
         ],
       },
       pilot: {
+        method: "deep-research",
         vein: "the WITNESS VOICE in the opening — how successful works lock “I see you clearly and I won’t fix you” in the first beat. Verdict: a NEAR-precedent — our PURE witness (“logged at full weight,” no advice) is a defensible TIGHTENING, not an exact match.",
         works: [
           { title: "Midnight Diner — the Master’s narration", what: "the strongest reproducible device: a fixed opening-image / tone-promise (camera reveals Shinjuku; “open midnight to 7am… I make whatever customers request. That’s my policy. When people finish their day and hurry home, my day starts.”) — it states the unhurried, low-stakes policy BEFORE any story. The night-ferry conceit is structurally identical; borrow it directly. The Master is an “ear,” advice optional (“to consider and heed”), never too involved." },
@@ -159,6 +161,28 @@ export const CAMPAIGNS: Record<string, {
           "the PRIMARY failure — “nothing happens / boring” if the tone is mis-set (“Nothing really happens, but in a really good way” is the knife-edge; ARIA gets called slow/saccharine when the promise misses)",
           "surface-platitude handling of real “issues” — it weakens the warmth frame (Coffee Talk’s scattershot social themes); witness the rider’s weight, don’t force conflict the tone can’t carry",
           "tipping the PURE witness into COLD/detached — every proven voice (Master · Ginko · Alicia) keeps an optional warmth; our no-advice tightening must stay WARM, not clinical",
+        ],
+      },
+      destination: {
+        method: "ultrathink",
+        vein: "the DEEPEST bond + the ending beat in the keeper-witness vein — how the relationship reaches its fullest state and how the payoff lands. Pick: “The Open Page” (the keeper shows what HE carried → an equal). Verdict: STRONGLY precedented — the INVERSION is the genre’s emotional core.",
+        works: [
+          { title: "Spiritfarer — Stella", what: "the deepest beat is the INVERSION — the caretaker is herself dying; the one who tends is revealed to need tending. And the payoff is a GESTURE (the hug), not a speech. The closest precedent for “The Open Page”: the keeper showing his own carried weight." },
+          { title: "Avatar — Iroh (“Leaves from the Vine”)", what: "the warm, wise witness whose deepest moment is HIS unspoken grief (the song for his dead son). The mentor becomes an equal SUFFERER, not a dispenser of wisdom — the bond deepens when the witness is himself witnessed." },
+          { title: "Midnight Diner — the Master", what: "preserved MYSTERY — the scar/past is never explained; the deepest bond with a regular is unspoken, shown by remembering the order, not by disclosure. Depth from ONE revealed thing, not a backstory dump." },
+          { title: "iyashikei endings (Mushishi · Natsume)", what: "the ending shape is ACCEPTANCE, not resolution or triumph — “a day is a shore, not a verdict.” The bond’s fullest state is being seen and let go, door-open." },
+        ],
+        borrow: [
+          "the INVERSION as the deepest beat — the keeper reveals his own carried weight and becomes an EQUAL (Spiritfarer’s dying caretaker; Iroh’s grief). This is exactly “The Open Page.”",
+          "the payoff is a GESTURE, not a speech (Spiritfarer’s hug — the simplest beat lands hardest)",
+          "preserve MYSTERY — reveal ONE carried thing (“the one page”), never a full backstory; depth comes from restraint (the Master’s unexplained scar)",
+          "an OPEN-DOOR ending — acceptance, not finale; the bond can go quiet because you no longer need the push (grows-with-you)",
+        ],
+        avoid: [
+          "the “graduation as DUTY” trap — handing the player the keeper’s role triggers performance fear (our own audition killed “The Pen Is Yours” for exactly this: relate 1.5 / safe 1.8)",
+          "the one-way mentor who never becomes vulnerable — stays a service provider; the bond stays shallow",
+          "over-explaining the keeper — a full backstory dump dilutes the mystery; one page, not the whole log",
+          "a triumphant / closed FINALE — the wrong shape for this vein; the ending is open-door, not a trophy",
         ],
       },
     },
