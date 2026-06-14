@@ -186,51 +186,73 @@ const VARIANT_OF = (id: string): Variant => (id === "strait" ? "strait" : id ===
 // the §8.13 arc gauge per phase (rises to the storm-peak, then resolves) — mirrors pilot.json SPARK
 const BAR = ["▰▱▱▱▱", "▰▰▰▱▱", "▰▰▰▰▰", "▰▰▱▱▱", "▰▱▱▱▱"];
 
+// a chunky, easy-to-grab dial (the native thumb is too small) — square handle, drop-shadow, big hit area
+const SLIDER_CSS = `
+.scrub-range{-webkit-appearance:none;appearance:none;width:100%;height:26px;background:transparent;cursor:pointer;margin:0;display:block;}
+.scrub-range:focus{outline:none;}
+.scrub-range::-webkit-slider-runnable-track{height:10px;background:var(--paper-shade);border:1.5px solid var(--ink);}
+.scrub-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;margin-top:-9px;background:var(--forest);border:2px solid var(--ink);box-shadow:2px 2px 0 rgba(0,0,0,.22);cursor:grab;}
+.scrub-range:active::-webkit-slider-thumb{cursor:grabbing;background:var(--ink);}
+.scrub-range::-moz-range-track{height:10px;background:var(--paper-shade);border:1.5px solid var(--ink);}
+.scrub-range::-moz-range-thumb{width:24px;height:24px;background:var(--forest);border:2px solid var(--ink);border-radius:0;box-shadow:2px 2px 0 rgba(0,0,0,.22);cursor:grab;}
+`;
+
 function OneScrubber({ g, phases }: { g: Group; phases: string[] }) {
   const [dr, setDr] = useState(0.0);
   const ph = phaseOf(dr);
   const variant = VARIANT_OF(g.id);
   return (
-    <div style={{ border: `2px solid ${g.top ? forest : "var(--ink-soft)"}`, background: g.top ? shade : paper, padding: "12px 12px 14px", marginBottom: 12 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
-        <span style={{ fontFamily: "var(--theme-body)", fontSize: 11.5, fontWeight: 700, color: g.top ? forest : ink }}>{g.top ? "★ " : ""}{g.name}</span>
+    <div style={{ border: `2px solid ${forest}`, background: paper, padding: "10px 12px 11px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+        <span style={{ fontFamily: "var(--theme-body)", fontSize: 11.5, fontWeight: 700, color: forest }}>{g.top ? "★ " : ""}{g.name}</span>
         <span style={{ fontSize: 10, color: safeCol(g.safe) }}>cohesion {g.relate.toFixed(1)}/{g.safe.toFixed(1)}</span>
       </div>
-      <pre style={{ ...mono, fontSize: 12.5, color: ink, background: paper, border: `1.5px solid ${ink}`, padding: "9px 6px", margin: 0, textAlign: "center", overflow: "hidden" }}>{art(variant, dr).join("\n")}</pre>
-      {/* the THROUGH-LINE — the candidate's spine (the world-builder building block) */}
-      <div style={{ textAlign: "center", fontSize: 10, fontStyle: "italic", color: forest, margin: "9px 4px 5px" }}>↳ {g.throughline}</div>
-      {/* the 1st title — the constant anchor: SMALL, not bold */}
-      <div style={{ textAlign: "center", fontFamily: "var(--theme-body)", fontSize: 11, color: margin, marginBottom: 7 }}>{g.settingTitle}</div>
-      {/* THE RANGE INDICATOR — all five story-titles; the active (the changing 2nd title) is BIG */}
+      <div style={{ fontSize: 10, fontStyle: "italic", color: soft, margin: "1px 0 7px" }}>↳ {g.throughline}</div>
+      <pre style={{ ...mono, fontSize: 11.5, color: ink, background: paper, border: `1.5px solid ${ink}`, padding: "7px 5px", margin: 0, textAlign: "center", overflow: "hidden" }}>{art(variant, dr).join("\n")}</pre>
+      {/* THE DIAL — chunky + grabbable, right under the art it drives */}
+      <input className="scrub-range" type="range" min={0} max={1} step={0.01} value={dr} onChange={(e) => setDr(+e.target.value)} aria-label="dynamic range" style={{ marginTop: 9 }} />
+      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 9.5, color: margin, marginTop: 2 }}>
+        <span>cozy</span><span>the storm (½)</span><span>renewed</span>
+      </div>
+      {/* the 1st title (anchor, small + light) then the range — all five, the active 2nd title BIG */}
+      <div style={{ textAlign: "center", fontFamily: "var(--theme-body)", fontSize: 10.5, color: margin, margin: "10px 0 5px" }}>{g.settingTitle}</div>
       <div style={{ margin: "0 2px" }}>
         {g.storyTitles.map((t, i) => {
           const active = i === ph;
           return (
-            <div key={i} style={{ display: "flex", alignItems: "baseline", gap: 8, padding: "1.5px 0" }}>
-              <span style={{ ...mono, fontSize: 9, color: active ? forest : margin, opacity: active ? 1 : 0.55 }}>{BAR[i]}</span>
-              <span style={{ fontFamily: "var(--theme-display)", fontSize: active ? 18 : 12, fontWeight: active ? 700 : 400, fontStyle: active ? "normal" : "italic", color: active ? ink : soft, opacity: active ? 1 : 0.6, lineHeight: 1.15 }}>{t}</span>
+            <div key={i} style={{ display: "flex", alignItems: "baseline", gap: 8, padding: "0.5px 0" }}>
+              <span style={{ ...mono, fontSize: 8.5, color: active ? forest : margin, opacity: active ? 1 : 0.5 }}>{BAR[i]}</span>
+              <span style={{ fontFamily: "var(--theme-display)", fontSize: active ? 16 : 11.5, fontWeight: active ? 700 : 400, fontStyle: active ? "normal" : "italic", color: active ? ink : soft, opacity: active ? 1 : 0.55, lineHeight: 1.1 }}>{t}</span>
             </div>
           );
         })}
       </div>
-      {/* the active phase's SURROUNDING-ENVIRONMENT change (the world-build) */}
-      <div style={{ fontSize: 10.5, color: soft, fontStyle: "italic", margin: "5px 2px 9px", paddingLeft: 17, minHeight: 28 }}><span style={{ color: forest, fontStyle: "normal", letterSpacing: ".04em" }}>{phases[ph]}</span> — {g.env[ph]}</div>
-      <input type="range" min={0} max={1} step={0.01} value={dr} onChange={(e) => setDr(+e.target.value)} aria-label="dynamic range" style={{ width: "100%", accentColor: forest, display: "block" }} />
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 9.5, color: margin, marginTop: 2 }}>
-        <span>cozy</span><span>↑ the storm (½)</span><span>renewed</span>
-      </div>
-      {/* the BUILDING BLOCK — what this candidate hands the next step */}
-      <div style={{ fontSize: 9.5, color: margin, marginTop: 8, paddingTop: 6, borderTop: "1px dashed var(--ink-soft)" }}>→ hands the next step: {g.buildingBlock}</div>
+      {/* the active phase's SURROUNDING-ENVIRONMENT change + the building block it hands forward */}
+      <div style={{ fontSize: 10, color: soft, fontStyle: "italic", margin: "5px 2px 0", paddingLeft: 16, minHeight: 24 }}><span style={{ color: forest, fontStyle: "normal" }}>{phases[ph]}</span> — {g.env[ph]}</div>
+      <div style={{ fontSize: 9, color: margin, marginTop: 7, paddingTop: 5, borderTop: "1px dashed var(--ink-soft)" }}>→ next step: {g.buildingBlock}</div>
     </div>
   );
 }
 
-// Each SET its own environment (groups pre-sorted by cohesion; the first is ★).
+// Candidates live in TABS — one environment shown at a time (groups pre-sorted by cohesion; first is ★).
 export default function Scrubber({ coziness, groups }: { coziness: string[]; groups: Group[] }) {
+  const [active, setActive] = useState(0);
+  const g = groups[active] ?? groups[0];
   return (
     <div style={{ margin: "0 0 18px" }}>
-      <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".1em", color: forest, marginBottom: 8 }}>▶ THE SCRUBBERS — drag each candidate’s dial: the WEATHER runs the dynamic range (calm → the storm-peak at ½ → a renewed dawn, §8.13), the WORLD holds (§8.15). Each environment is its own. Scrub each to pick the most cohesive.</div>
-      {groups.map((g, i) => <OneScrubber key={g.id} g={{ ...g, top: i === 0 }} phases={coziness} />)}
+      <style>{SLIDER_CSS}</style>
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".1em", color: forest, marginBottom: 8 }}>▶ THE SCRUBBER — pick a candidate, drag the dial: the WEATHER runs the §8.13 arc (cozy → storm-peak at ½ → renewed dawn), the WORLD holds (§8.15).</div>
+      <div style={{ display: "flex", gap: 4 }}>
+        {groups.map((x, i) => {
+          const on = i === active;
+          return (
+            <button key={x.id} onClick={() => setActive(i)} style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, padding: "6px 12px", cursor: "pointer", border: `2px solid ${on ? forest : "var(--ink-soft)"}`, borderBottom: on ? `2px solid ${forest}` : `2px solid var(--ink-soft)`, background: on ? forest : paper, color: on ? paper : margin, marginBottom: -2, position: "relative", zIndex: on ? 2 : 1 }}>
+              {i === 0 ? "★ " : ""}{x.name}
+            </button>
+          );
+        })}
+      </div>
+      <OneScrubber g={{ ...g, top: active === 0 }} phases={coziness} />
     </div>
   );
 }
