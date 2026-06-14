@@ -4,7 +4,7 @@
 export type Read = { index: number; relate: number; feelsSafe: number; wouldPlay: boolean; why?: string; feeling?: string; expectExperience?: string };
 export type Leg = { index: number; canBuild: "load-bearing" | "hairline" | "hollow"; explanation: string; opens: string; forecloses: string; seed: string };
 export type StepData = { results: Record<string, Read[]>; legs: Record<string, Leg[]> };
-export type Item = { key: string; idx: number; title: string; sub: string; body: string };
+export type Item = { key: string; idx: number; title: string; sub: string; body: string; mono?: boolean };
 // the SOURCE STUDY (§8.18) — the third lens (PRECEDENT), studied BEFORE the ELI5 is written
 export type SourceStudy = { vein: string; works: { title: string; what: string }[]; borrow: string[]; avoid: string[]; preliminary?: boolean; method?: "ultrathink" | "deep-research" };
 

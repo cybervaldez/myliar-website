@@ -1,0 +1,334 @@
+{
+ "concept": "ferry",
+ "setting": "The Night Ferry",
+ "moments": [
+  {
+   "id": "boarding",
+   "title": "The Quiet Boarding",
+   "tone": "still / cozy",
+   "scene": "You step aboard with nothing to show for the day. Nobody asks. The deckhand loops the line, nods at the empty rail: \"Stand where you like.\" The lamps catch; the dark strait opens; the engine settles into its one low note. For the length of the crossing, the day on the far shore can't reach you."
+  },
+  {
+   "id": "galley",
+   "title": "The Midnight Galley",
+   "tone": "warm",
+   "scene": "Down in the galley the kettle's already on. The cook sets a bowl in front of you without asking — whatever was aboard, made warm. \"Eat. The crossing's long enough.\" The stove ticks, the hull hums, the night slides past the porthole, and in here it's just the one warm room and the smell of something simmering."
+  },
+  {
+   "id": "wheelhouse",
+   "title": "The Fog-Bound Wheelhouse",
+   "tone": "held / hushed-intense",
+   "scene": "The fog's in thick and the pilot stands the dark middle of the strait, where neither of you can see the other's face. \"Talk to me,\" she says, not turning. \"Easier in the dark.\" The compass reads a half-degree off; she corrects it by hand, every crossing, never repaired. The strait runs heavy tonight — but the wheel holds, and so does she."
+  },
+  {
+   "id": "far_shore",
+   "title": "The Far-Shore Rail",
+   "tone": "bittersweet / quiet",
+   "scene": "The far lights come up slow. You've crossed the whole dark strait and here's the shore — the day behind you now just a row of lamps on the water. The keeper closes the log. \"Same time tomorrow,\" he says, not a question. The gangway lifts; the night was a shore, not a verdict; and the ferry, gently, turns to go back."
+  },
+  {
+   "id": "logbook",
+   "title": "The Stern Logbook",
+   "tone": "reflective / still",
+   "scene": "Late, at the stern, the keeper opens the manifest and logs the crossing — the weather, the cargo, who rode and what they carried. He writes your line in the same ink as everyone else's, at its true weight. \"Every crossing counts the same,\" he says, not looking up. \"That's the only rule of the book.\""
+  }
+ ],
+ "results": {
+  "anxious": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The lack of expectation and the promise of a quiet, protected space with no demands feels incredibly safe and deeply resonant.",
+    "feeling": "A quiet refuge"
+   },
+   {
+    "index": 2,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It offers gentle, non-verbal care in a warm, contained space, which feels profoundly safe and restorative.",
+    "feeling": "Gentle nourishment"
+   },
+   {
+    "index": 3,
+    "relate": 2,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "The combination of external danger and a direct invitation to speak feels too intense and unpredictable for me.",
+    "feeling": "Tense and uncertain"
+   },
+   {
+    "index": 4,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "It frames the end of the journey not as a finality but as a predictable, gentle cycle, which makes the return feel safe.",
+    "feeling": "Gentle transition"
+   },
+   {
+    "index": 5,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It offers a profound sense of validation without the pressure of direct interaction or judgment, making me feel seen and safe.",
+    "feeling": "Quietly validated"
+   }
+  ],
+  "low_worth": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It offers a quiet escape from the pressure of the day without any questions or expectations.",
+    "feeling": "A quiet release"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It offers simple, unconditional care without me having to perform or prove I deserve it.",
+    "feeling": "Unconditional warmth"
+   },
+   {
+    "index": 3,
+    "relate": 3,
+    "feelsSafe": 3,
+    "wouldPlay": false,
+    "why": "The request to 'talk' feels like a demand for a performance, which is exactly the kind of pressure I'm trying to escape.",
+    "feeling": "Anxious but held"
+   },
+   {
+    "index": 4,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The phrase 'not a verdict' and the expectation of my return feels deeply reassuring and accepting.",
+    "feeling": "Gentle hope"
+   },
+   {
+    "index": 5,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This explicitly validates the simple act of showing up, making my small effort equal to anyone else's.",
+    "feeling": "Seen and counted"
+   }
+  ],
+  "adhd": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It offers a gentle, no-questions-asked start and a self-contained experience that promises refuge without demanding anything in return.",
+    "feeling": "A quiet release"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It removes all decision-making and offers simple, unconditional care, which feels incredibly safe and restorative when I'm feeling depleted.",
+    "feeling": "Gentle nourishment"
+   },
+   {
+    "index": 3,
+    "relate": 2,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "The intensity and the direct request to talk feel like a demand for energy and focus that I might not have, creating a pressure to perform.",
+    "feeling": "A heavy expectation"
+   },
+   {
+    "index": 4,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "It promises a clean, self-contained ending without judgment, which alleviates the anxiety of leaving something unfinished.",
+    "feeling": "Gentle closure"
+   },
+   {
+    "index": 5,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It offers powerful validation that my experience, whatever it was, is counted and has value, directly countering the internal narrative of not doing enough.",
+    "feeling": "Quiet validation"
+   }
+  ],
+  "iyashikei_fan": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This perfectly captures the non-demanding sanctuary I look for, offering a genuine respite from the world without any strings attached.",
+    "feeling": "A quiet exhale"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The simple, unconditional act of being given warm food in a cozy space is the epitome of genuine, tangible comfort.",
+    "feeling": "Simple, warm care"
+   },
+   {
+    "index": 3,
+    "relate": 3,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "While more intense than purely cozy, being held safely by a competent guide through the dark offers a profound and unique sense of security.",
+    "feeling": "Held in the dark"
+   },
+   {
+    "index": 4,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "This moment beautifully captures the bittersweet but hopeful feeling of a temporary respite ending, with the promise that the sanctuary remains.",
+    "feeling": "A gentle landing"
+   },
+   {
+    "index": 5,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The quiet act of being recorded without judgment, as an equal part of a larger story, feels profoundly validating and safe.",
+    "feeling": "Quietly seen"
+   }
+  ],
+  "thrill_seeker": [
+   {
+    "index": 1,
+    "relate": 0,
+    "feelsSafe": 4,
+    "wouldPlay": false,
+    "why": "This promises a quiet, uneventful escape, which is the opposite of the high-stakes action I'm looking for.",
+    "feeling": "Utterly placid"
+   },
+   {
+    "index": 2,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "Being quietly cared for in a warm room offers no hint of conflict, danger, or anything interesting.",
+    "feeling": "Tiresomely cozy"
+   },
+   {
+    "index": 3,
+    "relate": 4,
+    "feelsSafe": 2,
+    "wouldPlay": true,
+    "why": "The combination of thick fog, a heavy strait, and a pilot navigating by instinct creates the high-stakes, tense atmosphere I crave.",
+    "feeling": "Controlled danger"
+   },
+   {
+    "index": 4,
+    "relate": 1,
+    "feelsSafe": 4,
+    "wouldPlay": false,
+    "why": "This is the quiet conclusion after the interesting part is already over; there's no forward momentum.",
+    "feeling": "The boring aftermath"
+   },
+   {
+    "index": 5,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "A moment of quiet reflection and record-keeping is completely devoid of the action or intensity I need.",
+    "feeling": "Dutifully still"
+   }
+  ]
+ },
+ "legs": {
+  "story_spawn": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "This moment establishes a character in a state of quiet retreat, leaving a failed day behind. The ferry acts as a perfect liminal space, creating a natural container for a story about transition, reflection, and what happens when the pressures of the world are temporarily suspended.",
+    "opens": "A story of quiet introspection and escape.",
+    "forecloses": "An action-packed or high-energy beginning.",
+    "seed": "The day you leave on the shore."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "The act of being given food without asking introduces a powerful theme of quiet care and community. This moment builds a world where small kindnesses matter, opening a story about the relationship between the traveler and the ferry's crew, or the galley as a sanctuary.",
+    "opens": "A story about found family and simple kindness.",
+    "forecloses": "A story of total isolation or hostility.",
+    "seed": "The cook who asks no questions."
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "The intense, hushed atmosphere of the wheelhouse provides a dramatic and metaphorical core. The pilot, who navigates by feel and trusts a flawed compass, is an instantly compelling character, setting up a story about trust, hidden dangers, and guidance through the unknown.",
+    "opens": "A story of mentorship, trust, or navigating a hidden threat.",
+    "forecloses": "A lighthearted or whimsical journey.",
+    "seed": "The pilot who sees in the dark."
+   },
+   {
+    "index": 4,
+    "canBuild": "hairline",
+    "explanation": "This moment feels more like an ending, a quiet exhalation after the journey is complete. While the cyclical nature suggests a larger story, this specific beat resolves the immediate tension of the crossing, making it a less dynamic starting point than a moment of crisis or introduction.",
+    "opens": "A story about routine and the nature of endings.",
+    "forecloses": "A story about a singular, life-changing journey.",
+    "seed": "Same time tomorrow."
+   },
+   {
+    "index": 5,
+    "canBuild": "load-bearing",
+    "explanation": "This moment provides a powerful thematic anchor: the idea that every journey has weight and is recorded without judgment. The logbook itself becomes a character or narrative device, allowing a story to explore the interconnected lives of those who cross on the ferry.",
+    "opens": "An ensemble story about legacy and memory.",
+    "forecloses": "A purely subjective, solipsistic narrative.",
+    "seed": "The entry that changed the book."
+   }
+  ],
+  "cohesiveness": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "This establishes the ferry as a liminal space, a sanctuary between the shores of the day. The quiet acceptance offered by the crew is a foundational element of the world's gentle, non-judgmental nature.",
+    "opens": "A sense of refuge, anonymity, the chance to leave a day behind.",
+    "forecloses": "A bustling, impersonal, commercial ferry experience; judgment from the crew.",
+    "seed": "The Unmarked Passenger"
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "This deepens the ferry's role from a simple sanctuary to a place of active, unspoken care. The cook's gesture of providing warm food without question is a powerful, world-defining act of kindness.",
+    "opens": "Unspoken community, nourishment, a feeling of being looked after.",
+    "forecloses": "Scarcity, having to fend for oneself, a transactional relationship with the crew.",
+    "seed": "The Cook's Stew"
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "This moment grounds the ferry's safety not in perfect technology, but in human skill, tradition, and trust. The pilot's calm competence in the fog makes the world feel deeply real and reliable.",
+    "opens": "Quiet competence, shared vulnerability, trust in the pilot.",
+    "forecloses": "A high-tech, automated, impersonal journey; the idea that safety is effortless.",
+    "seed": "The Broken Compass"
+   },
+   {
+    "index": 4,
+    "canBuild": "load-bearing",
+    "explanation": "This moment defines the crossing as a repeatable respite, not a one-time escape. The keeper's simple statement confirms the ferry's reliability, framing the journey as a sustainable rhythm.",
+    "opens": "The cyclical nature of refuge, a gentle return to life, the promise of another crossing.",
+    "forecloses": "The idea that the crossing is a permanent escape or a transformative, one-off event.",
+    "seed": "The Far-Shore Lights"
+   },
+   {
+    "index": 5,
+    "canBuild": "hairline",
+    "explanation": "This moment is the quiet, moral center of the ferry, but its power is delicate and ritualistic. It codifies the world's core value of quiet, equal regard, but could feel heavy-handed if not handled with care.",
+    "opens": "A sense of history, a place in a larger story, the ferry as an impartial witness.",
+    "forecloses": "Anonymity being forgotten, the idea that some journeys are more important than others.",
+    "seed": "The Keeper's Ink"
+   }
+  ]
+ }
+}

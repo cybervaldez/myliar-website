@@ -123,7 +123,7 @@ export default function StepBoard({ stepLabel, intro, primer, sourceStudy, data,
                 <div style={{ fontWeight: 700, marginTop: 2, fontSize: 10.5 }}><span style={{ color: forest }}>↑{nLB} reinforce</span> · <span style={{ color: amber }}>◆{nGem} gems</span></div>
               </div>
             </div>
-            <p style={{ fontSize: 12.5, color: ink, margin: "8px 0", lineHeight: 1.6, whiteSpace: "pre-line" }}>{it.body}</p>
+            <p style={{ fontSize: it.mono ? 11 : 12.5, color: ink, margin: "8px 0", lineHeight: it.mono ? 1.35 : 1.6, whiteSpace: it.mono ? "pre" : "pre-line", fontFamily: it.mono ? "ui-monospace, Menlo, monospace" : undefined, overflowX: it.mono ? "auto" : undefined }}>{it.body}</p>
             <div style={{ borderTop: `1px solid var(--ink-soft)`, paddingTop: 8, fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: margin, fontFamily: "var(--theme-body)" }}>↘ THE AUDIENCE · WHY</div>
             <div style={{ marginTop: 5, display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: "7px 14px" }}>
               {TARGET.map((p) => { const r = get(p, i); if (!r) return null; return (

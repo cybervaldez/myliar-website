@@ -16,7 +16,7 @@ import ferryPilot from "./data/ferry/pilot.json";
 // are not campaign-level steps here. (The pre-hook-engine version lives at /auditions-v1.)
 export const STEP_DEFS = [
   { key: "concept", label: "The Setting" },
-  { key: "pilot", label: "The Moments" },
+  { key: "pilot", label: "The Range" },
 ];
 export const stepLabel = (k: string) => STEP_DEFS.find((s) => s.key === k)?.label ?? k;
 export const stepNo = (k: string) => "①②③④⑤⑥"[STEP_DEFS.findIndex((s) => s.key === k)] ?? "•";
@@ -29,7 +29,15 @@ export const SLATE_STATUS: Record<string, string> = { ferry: "building", lightho
 // per-step normalizers → Item[]. concept = the SETTINGS slate; pilot = the MOMENTS (story-doors).
 const NORM: Record<string, (d: { [k: string]: unknown }) => Item[]> = {
   concept: (d) => (d as unknown as typeof SLATE).settings.map((s, k) => ({ key: s.id, idx: k + 1, title: s.title, sub: s.line, body: s.world })),
-  pilot: (d) => (d as { moments: { id: string; title: string; tone: string; scene: string }[] }).moments.map((m, k) => ({ key: m.id, idx: k + 1, title: m.title, sub: `tone — ${m.tone}`, body: m.scene })),
+  // the pilot is now SCRUB GROUPS — each rendered as its complete ladder (ASCII + two-part title per tier)
+  pilot: (d) => {
+    const dd = d as unknown as { tiers: string[]; ascii: Record<string, string>; scrubGroups: { id: string; name: string; settingTitle: string; storyTitles: string[] }[] };
+    return dd.scrubGroups.map((g, k) => ({
+      key: g.id, idx: k + 1, title: g.name, mono: true,
+      sub: `the tonal range · anchor: “${g.settingTitle}”`,
+      body: dd.tiers.map((t, i) => `${dd.ascii[t]}\n   ${g.settingTitle}  /  ${g.storyTitles[i]}   — ${t}`).join("\n\n"),
+    }));
+  },
 };
 // THE PER-STEP PRIMERS — the collapsible ELI5 at the top of each step page: what the step is FOR,
 // how it IMPACTS the story, how to CHOOSE, + a named CRAFT principle. Grounded by the 2026-06-14
@@ -47,12 +55,12 @@ export const PRIMERS: Record<string, { tldr: string; whatFor: string; impact: st
     craft: "Craft (§8.14/§8.15): the setting is the convergence, NOT a coach — it’s a persistent backdrop the player dwells in, never an arc. The stories (own casts) branch off it.",
   },
   pilot: {
-    tldr: "the MOMENTS — a set of scenes in the one world, each a tonal hook. Each moment is a story-door.",
-    whatFor: "Not ‘one scene, three tones, pick one.’ The pilot is a SET of distinct MOMENTS in the same world — the quiet boarding, the warm galley, the fog-bound wheelhouse, the far-shore rail — each carrying its own tone. Each is a door a different reader walks through; each spawns its own story (own cast/coach) downstream.",
-    impact: "This is the hook FACTORY. Each moment that lands is another reader caught — the one who’d bounce off ‘slow and quiet’ is hooked by ‘a long, watchful crossing,’ and both are safe because the SETTING guarantees the floor. More landed moments = a wider net.",
-    howToChoose: "NO PICK — keep the RANGE. Each moment is a story-door, not a candidate to eliminate; the set IS the scrub’s subrange. Test two things: does each moment HOOK (relate) + stay SAFE, and is the set LIGHT-COHESIVE (one world, no moment binding another into one plot, §8.14).",
-    mechanic: "the day-unit + the scrub (the browser’s tonal subrange). Each moment = a scrub-point; together they’re the range the player browses to find their story.",
-    craft: "Craft: tone is built ENVIRONMENTALLY (atmosphere, pacing, no-pressure), and the moments are light-cohesive POINTERS, never binding facts (§8.14 — a cross-ref is a teaser, not canon).",
+    tldr: "the RANGE — pick the most COHESIVE scrub group (a complete cozy↔intense ladder for the setting)",
+    whatFor: "Not scenes scored one-by-one. We compare candidate SCRUB GROUPS — each a COMPLETE tonal range for the one setting (the fixed setting-title anchor + a ladder of story-titles across the cozy↔intense tiers + ASCII per tier) — and pick the one that coheres best as a WHOLE. This IS the player’s scrubber; each rung is a story-door.",
+    impact: "The range is the player’s choice surface — they scrub it by current feeling. A cohesive range feels like ONE mood-dial on ONE world; an incohesive one feels like five unrelated covers and the scrub stops meaning anything. Cohesion is what makes the hook-engine legible.",
+    howToChoose: "PICK the most cohesive SET (not the rungs — the whole ladder). Cohesion is judged on the FAMILY: does the anchor hold (and reassert as it darkens)? do the story-titles share one imagery-world and dial smoothly + evenly? Then the legs check the RANGE is complete (floor-to-floor, floor-clipped at the top) and every rung can spawn a story.",
+    mechanic: "the SCRUBBER (the browser’s cozy-axis dial, §8.15) + the two-part title + the ASCII (density encodes the dial, §8.12). The chosen group IS the setting’s scrub.",
+    craft: "Craft: the cohesion lives in the titles — fixed setting-title anchor + a story-title family that dials evenly; the dial is the COZY/space axis (the player’s scrub), never the time-arc (§8.13/§8.15).",
   },
   destination: {
     tldr: "the ending THIS story walks toward — its own deepest coach (per-story, §8.14: no shared coach)",
@@ -89,7 +97,7 @@ export const PRIMERS: Record<string, { tldr: string; whatFor: string; impact: st
 };
 export const INTRO: Record<string, string> = {
   concept: "The SETTING meets the room — the surrounding world you’d dwell in, not a story. The audience scores whether it feels safe to LIVE in; the hook-capacity legs score how wide a tonal range it can spawn while holding the floor. The picked setting becomes a campaign that spawns its stories.",
-  pilot: "One world, a SET of moments — each a tonal door into it. No pick: we keep the range (the scrub’s subrange). The fleet scores each moment’s hook (relate/safe + the story it promises); the legs score the story it spawns + the set’s light-cohesiveness.",
+  pilot: "One setting, candidate SCRUB GROUPS — each a complete cozy↔intense tonal range (the anchor + a ladder of two-part titles + ASCII). We PICK the most cohesive set as a whole: the fleet scores cohesion (does it feel like one mood-dial?); the legs check the range is complete + each rung spawns a story. The winner IS the setting’s scrub.",
   destination: "The deepest chat THIS story reaches — the full-REL coach (per-story, §8.14: no shared coach). Authored after a moment is chosen; the path is built backward to it. The fleet asks: does the deepest relationship land?",
 };
 
@@ -108,9 +116,9 @@ export const CAMPAIGNS: Record<string, {
       pilot: [{
         step: "① THE SETTING — the Night Ferry",
         lines: [
-          "won as a hook-engine: a world that holds calm OR heavy — the widest tonal range of the three settings",
-          "↳ carry its SAFETY FLOOR into every moment (even the held ones stay floor-clipped, no ambush)",
-          "↳ keep the moments LIGHT-COHESIVE — one ferry, no moment binding another (§8.14)",
+          "won as a hook-engine: a world that holds calm OR heavy — the widest tonal range of the three settings (its hook-capacity legs were all load-bearing)",
+          "↳ carry the SAFETY FLOOR across the WHOLE range (the intense pole stays floor-clipped — weight, never ambush)",
+          "↳ the range must be the SAME ferry dialed (§8.12) — cohesion is the test, the titles the load-bearing read",
         ],
       }],
     },
