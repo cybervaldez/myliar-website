@@ -35,9 +35,9 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
   // sorted by cohesion so the most cohesive (★) is the default
   let prepend = null;
   if (step === "pilot") {
-    const raw = c.steps.pilot as unknown as { coziness: string[]; scrubGroups: { id: string; name: string; settingTitle: string; storyTitles: string[] }[] };
+    const raw = c.steps.pilot as unknown as { coziness: string[]; scrubGroups: { id: string; name: string; settingTitle: string; storyTitles: string[]; throughline: string; env: string[]; buildingBlock: string }[] };
     const groups = raw.scrubGroups
-      .map((gp, k) => ({ id: gp.id, name: gp.name, settingTitle: gp.settingTitle, storyTitles: gp.storyTitles, relate: avg(sd.data, k + 1, "relate"), safe: avg(sd.data, k + 1, "feelsSafe"), _s: star(sd.data, k + 1) }))
+      .map((gp, k) => ({ id: gp.id, name: gp.name, settingTitle: gp.settingTitle, storyTitles: gp.storyTitles, throughline: gp.throughline, env: gp.env, buildingBlock: gp.buildingBlock, relate: avg(sd.data, k + 1, "relate"), safe: avg(sd.data, k + 1, "feelsSafe"), _s: star(sd.data, k + 1) }))
       .sort((a, b) => b._s - a._s);
     prepend = <Scrubber coziness={raw.coziness} groups={groups} />;
   }

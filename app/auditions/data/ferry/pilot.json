@@ -26,7 +26,16 @@
     "a hard sea between the cliffs",
     "the worst past, the deck put right",
     "through the narrows, and home by dawn"
-   ]
+   ],
+   "throughline": "the narrows — the pressure you pass through to get free",
+   "env": [
+    "the cliffs hold the wind off; the channel flat, both shore-lights burning",
+    "the wind funnels off the headland; the channel chops up",
+    "the cliffs loom close, the sea heaped and roaring between them",
+    "the cliffs fall back; the wind sighs and eases, the deck put right",
+    "dawn on open water, the tight channel astern"
+   ],
+   "buildingBlock": "a struggle of endurance against a known, external pressure — the Pilot's lens"
   },
   {
    "id": "crossing",
@@ -38,7 +47,16 @@
     "the wind up, and held steady",
     "the squall behind, the kettle on",
     "the far shore close, and first light"
-   ]
+   ],
+   "throughline": "the far shore — a promise lost in the storm, found at dawn",
+   "env": [
+    "the far shore a low string of lights, a patient promise",
+    "rain hazes the far lights; it stops getting nearer",
+    "no shore, no horizon — only the rain and the compass glow",
+    "the far lights swim up again, closer than you dared hope",
+    "the harbour close, a lone bell, first light on the landing"
+   ],
+   "buildingBlock": "a struggle of faith when the destination vanishes — the Manifest-Keeper's lens"
   },
   {
    "id": "water",
@@ -50,7 +68,16 @@
     "the deep heaving, and she holds",
     "the sea settling, the worst gone",
     "the water still, the dawn on it"
-   ]
+   ],
+   "throughline": "the deep — the indifferent power that carries you anyway",
+   "env": [
+    "glass-black water holding the moon's road",
+    "a long, deep swell begins to lift the hull",
+    "the boat sinks in the troughs between immense dark waves",
+    "the swell subsides, the great tension letting go",
+    "dawn on the calm that held you all along"
+   ],
+   "buildingBlock": "a struggle of acceptance against an overwhelming force — the Deckhand's lens"
   }
  ],
  "results": {

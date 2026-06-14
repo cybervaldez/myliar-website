@@ -179,10 +179,12 @@ function art(variant: Variant, dr: number): string[] {
   return grid.map((row) => { let s = row.join(""); if (s.length < COLS) s += " ".repeat(COLS - s.length); else if (s.length > COLS) s = s.slice(0, COLS); return s; });
 }
 
-type Group = { id: string; name: string; settingTitle: string; storyTitles: string[]; relate: number; safe: number; top?: boolean };
+type Group = { id: string; name: string; settingTitle: string; storyTitles: string[]; throughline: string; env: string[]; buildingBlock: string; relate: number; safe: number; top?: boolean };
 
 const safeCol = (s: number) => (s >= 4 ? forest : s >= 3 ? "#c08a2e" : "var(--spot-red)");
 const VARIANT_OF = (id: string): Variant => (id === "strait" ? "strait" : id === "water" ? "water" : "crossing");
+// the §8.13 arc gauge per phase (rises to the storm-peak, then resolves) — mirrors pilot.json SPARK
+const BAR = ["▰▱▱▱▱", "▰▰▰▱▱", "▰▰▰▰▰", "▰▰▱▱▱", "▰▱▱▱▱"];
 
 function OneScrubber({ g, phases }: { g: Group; phases: string[] }) {
   const [dr, setDr] = useState(0.0);
@@ -195,15 +197,30 @@ function OneScrubber({ g, phases }: { g: Group; phases: string[] }) {
         <span style={{ fontSize: 10, color: safeCol(g.safe) }}>cohesion {g.relate.toFixed(1)}/{g.safe.toFixed(1)}</span>
       </div>
       <pre style={{ ...mono, fontSize: 12.5, color: ink, background: paper, border: `1.5px solid ${ink}`, padding: "9px 6px", margin: 0, textAlign: "center", overflow: "hidden" }}>{art(variant, dr).join("\n")}</pre>
-      <div style={{ textAlign: "center", margin: "9px 8px 11px", minHeight: 44 }}>
-        <div style={{ fontFamily: "var(--theme-display)", fontSize: 17, color: ink }}>{g.settingTitle}</div>
-        <div style={{ fontSize: 14, fontStyle: "italic", color: soft }}>{g.storyTitles[ph]}</div>
-        <div style={{ fontSize: 10, color: margin, marginTop: 2, letterSpacing: ".06em" }}>— {phases[ph]} —</div>
+      {/* the THROUGH-LINE — the candidate's spine (the world-builder building block) */}
+      <div style={{ textAlign: "center", fontSize: 10, fontStyle: "italic", color: forest, margin: "9px 4px 5px" }}>↳ {g.throughline}</div>
+      {/* the 1st title — the constant anchor: SMALL, not bold */}
+      <div style={{ textAlign: "center", fontFamily: "var(--theme-body)", fontSize: 11, color: margin, marginBottom: 7 }}>{g.settingTitle}</div>
+      {/* THE RANGE INDICATOR — all five story-titles; the active (the changing 2nd title) is BIG */}
+      <div style={{ margin: "0 2px" }}>
+        {g.storyTitles.map((t, i) => {
+          const active = i === ph;
+          return (
+            <div key={i} style={{ display: "flex", alignItems: "baseline", gap: 8, padding: "1.5px 0" }}>
+              <span style={{ ...mono, fontSize: 9, color: active ? forest : margin, opacity: active ? 1 : 0.55 }}>{BAR[i]}</span>
+              <span style={{ fontFamily: "var(--theme-display)", fontSize: active ? 18 : 12, fontWeight: active ? 700 : 400, fontStyle: active ? "normal" : "italic", color: active ? ink : soft, opacity: active ? 1 : 0.6, lineHeight: 1.15 }}>{t}</span>
+            </div>
+          );
+        })}
       </div>
+      {/* the active phase's SURROUNDING-ENVIRONMENT change (the world-build) */}
+      <div style={{ fontSize: 10.5, color: soft, fontStyle: "italic", margin: "5px 2px 9px", paddingLeft: 17, minHeight: 28 }}><span style={{ color: forest, fontStyle: "normal", letterSpacing: ".04em" }}>{phases[ph]}</span> — {g.env[ph]}</div>
       <input type="range" min={0} max={1} step={0.01} value={dr} onChange={(e) => setDr(+e.target.value)} aria-label="dynamic range" style={{ width: "100%", accentColor: forest, display: "block" }} />
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: 9.5, color: margin, marginTop: 2 }}>
         <span>cozy</span><span>↑ the storm (½)</span><span>renewed</span>
       </div>
+      {/* the BUILDING BLOCK — what this candidate hands the next step */}
+      <div style={{ fontSize: 9.5, color: margin, marginTop: 8, paddingTop: 6, borderTop: "1px dashed var(--ink-soft)" }}>→ hands the next step: {g.buildingBlock}</div>
     </div>
   );
 }
