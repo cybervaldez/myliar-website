@@ -1,0 +1,289 @@
+{
+ "concepts": [
+  {
+   "id": "lighthouse",
+   "t1": "The light holds.",
+   "t2": "Tending it, slow and quiet.",
+   "world": "A lone white-stone lighthouse on a mossy islet, in a rolling fog. You come by a small skiff — not for a quest, but for a fixed point — and learn to tend a light of your own.",
+   "gift": "a Wayfinder's Lens: hold it up to a daunting list and everything blurs but the next single step."
+  },
+  {
+   "id": "ferry",
+   "t1": "The kettle's always on.",
+   "t2": "A still, easy crossing.",
+   "world": "A small night ferry that crosses the same dark strait every night, and always comes back. The crossing is the one hour nobody can ask anything more of you.",
+   "gift": "the craft of crossings: how to leave a day behind without finishing it, and call one watch's work a night, honestly."
+  },
+  {
+   "id": "cloudhouse",
+   "t1": "Your seat is kept.",
+   "t2": "Reading one patch of sky.",
+   "world": "A soft-lit sky station moored above sleeping hills. Nothing here is in danger — you read one patch of sky, make one mark, and let a rough little constellation count.",
+   "gift": "a Weather Glass: it turns the night into a tiny personal forecast and offers one gentle sky-move."
+  }
+ ],
+ "results": {
+  "anxious": [
+   {
+    "index": 1,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like focusing on a single, warm, manageable task while the confusing world fades into the background.",
+    "feeling": "Reassured focus"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like a gentle, nightly ritual of letting go of the day's stress in a warm, safe, and predictable space.",
+    "feeling": "Deeply comforting"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like being wrapped in a soft blanket, given a simple, beautiful task with no pressure to succeed.",
+    "feeling": "Utterly safe"
+   }
+  ],
+  "low_worth": [
+   {
+    "index": 1,
+    "relate": 3,
+    "feelsSafe": 3,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like having a single, vital purpose that might be a little scary to get wrong.",
+    "feeling": "Anxious purpose"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like a deep exhale and permission to be done for the day, even if I'm not finished.",
+    "feeling": "Allowed rest"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like my small, imperfect effort is seen and valued exactly as it is.",
+    "feeling": "Gentle acceptance"
+   }
+  ],
+  "adhd": [
+   {
+    "index": 1,
+    "relate": 4,
+    "feelsSafe": 2,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like managing a single, daunting responsibility with the help of a magical focus tool.",
+    "feeling": "Anxious but hopeful"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like a nightly ritual that grants permission to let go of the day's unfinished business.",
+    "feeling": "Deeply understood"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like finding satisfaction in one small, completed action that is explicitly enough.",
+    "feeling": "Calm and capable"
+   }
+  ],
+  "iyashikei_fan": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like finding a quiet, reliable rhythm in my own life by focusing on one simple, meaningful task.",
+    "feeling": "Quiet purpose"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like a gentle, guided meditation on letting go of the day's pressures and accepting that rest is enough.",
+    "feeling": "Gentle permission"
+   },
+   {
+    "index": 3,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "expectExperience": "Playing this would feel like a weightless, wondrous moment of observation where my small contribution is valued and beautiful.",
+    "feeling": "Wondrous stillness"
+   }
+  ],
+  "thrill_seeker": [
+   {
+    "index": 1,
+    "relate": 1,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "expectExperience": "Playing this would feel like an endless, lonely chore with no stakes or excitement.",
+    "feeling": "Stiflingly quiet"
+   },
+   {
+    "index": 2,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "expectExperience": "It would feel like being stuck on a mundane commute that never actually goes anywhere interesting.",
+    "feeling": "Mind-numbing repetition"
+   },
+   {
+    "index": 3,
+    "relate": 1,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "expectExperience": "This would feel like being trapped in a beautiful waiting room with absolutely nothing to do.",
+    "feeling": "Profoundly boring"
+   }
+  ]
+ },
+ "legs": {
+  "destination": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "The metaphor of 'tending a light' is a durable, long-term anchor for a coaching relationship focused on building internal guidance and resilience. It supports both a daily ritual ('tending') and a concrete tool for overwhelm ('the Lens'), making it highly practical.",
+    "opens": "A practice of daily maintenance/consistency.",
+    "forecloses": "High-energy, motivational 'cheerleader' coaching.",
+    "seed": "The daily ritual of 'tending the light'."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "This concept provides a perfect, non-negotiable container for a daily ritual—the end-of-day 'crossing.' It directly teaches the vital skill of transitioning and closure, which can sustain a long-term relationship built on daily reflection and boundary-setting.",
+    "opens": "Rituals for transitioning between life domains.",
+    "forecloses": "Productivity-hacking and goal-achievement focus.",
+    "seed": "The 'crossing' as a structured end-of-day shutdown ritual."
+   },
+   {
+    "index": 3,
+    "canBuild": "hairline",
+    "explanation": "The theme of gentle, safe observation is beautiful, but the core 'gift' and interaction loop are too abstract to form the foundation of a robust coaching product. It risks feeling more like a passive oracle than an active partner in change.",
+    "opens": "Mindful, non-judgmental self-observation.",
+    "forecloses": "Concrete, action-oriented problem-solving.",
+    "seed": "The core safety principle: 'Nothing here is in danger'."
+   }
+  ],
+  "struggle": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "The metaphor of tending a light against the fog is a powerful and direct representation of maintaining focus amidst overwhelming feelings. The gift directly addresses a core symptom (task paralysis), providing a clear mechanical hook for the struggle.",
+    "opens": "A cyclical maintenance loop",
+    "forecloses": "High-stakes, external conflict",
+    "seed": "The Wayfinder's Lens as a UI mechanic"
+   },
+   {
+    "index": 2,
+    "canBuild": "hairline",
+    "explanation": "This concept beautifully captures the need for boundaries and deliberate rest, but its core loop is passive. The struggle is about letting go, which is a more abstract and potentially harder mechanic to build than an active task.",
+    "opens": "A mechanic of ritual and release",
+    "forecloses": "A task-based progression system",
+    "seed": "A protected, liminal time/space"
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "This concept excels at creating a low-stakes environment that directly counters perfectionism and low self-worth. The 'one mark is enough' action is a concrete, repeatable loop for the struggle of feeling 'enough,' and the Weather Glass provides a clear system for gentle guidance.",
+    "opens": "A system of gentle, predictive guidance",
+    "forecloses": "A focus on achievement or mastery",
+    "seed": "The 'one mark is enough' core action"
+   }
+  ],
+  "cast": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "This concept provides a powerful, self-contained archetype in the Lighthouse Keeper. The world, craft, and gift are all tightly integrated, offering a clear foundation for a coach focused on solitary focus and navigating overwhelm.",
+    "opens": "A coach of deep, solitary focus.",
+    "forecloses": "A coach for collaboration or social energy.",
+    "seed": "The Wayfinder's Lens as a tool for single-tasking."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "The 'crossing' is a powerful metaphor for creating boundaries and managing daily transitions, a very strong domain for a coach. The Ferryman archetype is clear, even if the signature object needs to be developed from the craft itself.",
+    "opens": "A coach for boundaries and transitions.",
+    "forecloses": "A coach for long-term planning or ambition.",
+    "seed": "The 'craft of crossings' as a ritual for ending the workday."
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "This creates a unique niche for a coach of gentle observation and low-stakes action, a valuable counterpoint to more goal-oriented archetypes. The Weather Glass offers a tangible tool for a more intuitive, less demanding form of planning.",
+    "opens": "A coach for gentle progress and mindfulness.",
+    "forecloses": "A coach for high-stakes decisions or crisis management.",
+    "seed": "The Weather Glass as a tool for gentle, intuitive next steps."
+   }
+  ],
+  "motif_title": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "The central metaphor of 'tending a light' is strong and easily translates into a repeatable daily action or unit. The gift provides a direct mechanical hook for a stat or progress system focused on single-tasking.",
+    "opens": "A system of singular, focused tasks",
+    "forecloses": "Managing complex, multi-part goals",
+    "seed": "The verb 'tending' as the core daily action"
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "The concept of a 'crossing' as a bounded, repeatable transition provides a powerful and flexible foundation for a day-unit. It directly addresses the problem of unfinished work, making its philosophy easy to systematize.",
+    "opens": "Rituals of transition and boundary-setting",
+    "forecloses": "Continuous, unbroken work sessions",
+    "seed": "The 'crossing' as the name for the end-of-day unit"
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "The core loop of 'observe, mark, count' is highly systemic and can be translated into a pattern language of small, consistent actions. The 'Weather Glass' gift is a perfect model for a system that generates a randomized daily prompt or focus.",
+    "opens": "Systems of observation and gentle prompts",
+    "forecloses": "Ambitious, project-based action",
+    "seed": "The 'Weather Glass' as a mechanic for a single daily focus"
+   }
+  ],
+  "mechanics": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "The central loop of tending the light is a strong anchor for a core minigame, and the Wayfinder's Lens is a directly implementable UI mechanic for managing tasks. The four stats can be easily mapped to concrete maintenance actions.",
+    "opens": "Minigames of maintenance and focus.",
+    "forecloses": "Complex social mechanics or a sprawling world.",
+    "seed": "The 'tending the light' resource management loop."
+   },
+   {
+    "index": 2,
+    "canBuild": "hairline",
+    "explanation": "The concept's strength is its passive, anti-mechanical nature, which makes designing an engaging core loop challenging. The 'gift' is a powerful narrative idea, but mechanizing 'letting a day go' without betraying the core feeling is a delicate task.",
+    "opens": "Abstract, ritualistic state-change mechanics.",
+    "forecloses": "Action-oriented or skill-based minigames.",
+    "seed": "A mechanic for choosing which debuffs to clear at the end of a cycle."
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "The central activity of star-charting provides a clear foundation for a core puzzle or observation minigame. The Weather Glass gift translates directly into a forecast/boon mechanic that can interact with other game systems.",
+    "opens": "Pattern-recognition puzzles and forecasting.",
+    "forecloses": "Fast-paced action or combat.",
+    "seed": "The Weather Glass as a forecast/boon system."
+   }
+  ]
+ }
+}

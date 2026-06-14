@@ -1,0 +1,261 @@
+{
+ "concept": "ferry",
+ "destinations": [
+  {
+   "id": "open_page",
+   "title": "The Open Page",
+   "facet": "the inversion — he shows you what HE carried",
+   "sample": "You've crossed enough nights that he knows your weight without the scale. Tonight, at the far end of the crossing, he turns the manifest to the one page that's always been ribboned shut — and opens it. \"Crossing one. Mine. I rode it the way you rode yours, the first night.\" He doesn't explain; he doesn't have to. \"I logged you at full weight every time because someone did the same for me once, and I never said thank you. So — thank you. You can read the rest whenever. It's your column now too.\""
+  },
+  {
+   "id": "pen_yours",
+   "title": "The Pen Is Yours",
+   "facet": "the graduation — you become the keeper",
+   "sample": "He slides the manifest across to you and sets the pen on top of it. \"You've stood enough watches. The book's yours tonight.\" You write the crossing — the weather, the cargo, who rode. He reads it over your shoulder, nods once. \"Full weight. As is only proper.\" Then, quieter: \"You don't need me to tell you that anymore. But I'll be here to read it, long as you keep crossing.\""
+  },
+  {
+   "id": "same_ever",
+   "title": "Same as Ever",
+   "facet": "Mutual mode — the standing, unconditional presence",
+   "sample": "There's no lesson tonight. There hasn't been in a while. He's just there, where he's always been, the lamp catching the brass. \"Tell me about your day,\" he says — the way you'd ask a friend, not a passenger. \"I'll log it.\" And when you do — the good and the half-done and the parts you'd have left off the page — he writes every line at full weight, and at the end he just slides the bowl across, and the crossing goes, gently, and comes back."
+  }
+ ],
+ "results": {
+  "anxious": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 3,
+    "wouldPlay": true,
+    "why": "The shared vulnerability makes me feel deeply seen, but receiving his own history so suddenly feels like a heavy, unexpected weight.",
+    "feeling": "A heavy connection"
+   },
+   {
+    "index": 2,
+    "relate": 1,
+    "feelsSafe": 0,
+    "wouldPlay": false,
+    "why": "This turns a safe ritual into a sudden performance test where I could fail, which is my greatest fear.",
+    "feeling": "Anxious ambush"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The predictable, unconditional presence represents the ultimate safe harbor, a gentle friendship that asks nothing more than for me to just be.",
+    "feeling": "Perfectly held"
+   }
+  ],
+  "low_worth": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The coach's shared vulnerability makes my own struggle feel valid and seen, not like a failure I needed to overcome.",
+    "feeling": "Deeply understood"
+   },
+   {
+    "index": 2,
+    "relate": 1,
+    "feelsSafe": 1,
+    "wouldPlay": false,
+    "why": "This 'graduation' feels like being put on the spot with a new responsibility to perform perfectly, which is exactly what triggers my anxiety.",
+    "feeling": "Anxious pressure"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The transition into a gentle, unconditional friendship where I am accepted as I am is the most healing and sustainable outcome imaginable.",
+    "feeling": "Peacefully accepted"
+   }
+  ],
+  "adhd": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This option validates my entire struggle by revealing the coach's own past, creating a profound sense of shared humanity without any final test or expectation.",
+    "feeling": "Seen and honored"
+   },
+   {
+    "index": 2,
+    "relate": 1,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "This graduation feels like a new, stressful responsibility, which is the opposite of the unconditional support I've come to rely on and need.",
+    "feeling": "Anxious pressure"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This provides the ultimate safety by maintaining the supportive routine and explicitly validating my 'half-done' parts without any pressure to graduate.",
+    "feeling": "Unconditionally supported"
+   }
+  ],
+  "iyashikei_fan": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The mutual vulnerability and shared history create a profound sense of being seen and understood, which is the pinnacle of a healing narrative.",
+    "feeling": "A quiet, shared understanding"
+   },
+   {
+    "index": 2,
+    "relate": 3,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "While it's a satisfying graduation, it prioritizes my independence over the deep, mutual connection that defines a truly cozy experience for me.",
+    "feeling": "Capable but a little distant"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This represents the true destination of a healing journey: not a grand finale, but a quiet, stable friendship where I am accepted completely.",
+    "feeling": "Deep, quiet contentment"
+   }
+  ],
+  "thrill_seeker": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The sudden reveal of the coach's own history and vulnerability is an incredibly intense and rewarding emotional payoff.",
+    "feeling": "A shared burden"
+   },
+   {
+    "index": 2,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "Being given the responsibility and trust to take over the log feels like a high-stakes graduation into a new role.",
+    "feeling": "Stepping into power"
+   },
+   {
+    "index": 3,
+    "relate": 1,
+    "feelsSafe": 4,
+    "wouldPlay": false,
+    "why": "This ending feels anticlimactic and too cozy, lacking the intense payoff or high-stakes development I was hoping for.",
+    "feeling": "Stagnant comfort"
+   }
+  ]
+ },
+ "legs": {
+  "struggle": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "This reveal retroactively validates every struggle the player has faced, transforming the relationship into one of deep, mutual respect. It provides a powerful emotional payoff by showing the player they were never truly alone and are now part of a legacy.",
+    "opens": "A legacy of shared vulnerability.",
+    "forecloses": "The mystery of the coach's past.",
+    "seed": "The ribboned page."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "This destination provides a powerful and tangible shift in the player's role, graduating them from student to master. The physical act of taking the pen is a clear, satisfying culmination of the journey, signifying earned trust and new responsibility.",
+    "opens": "A new role as keeper or mentor.",
+    "forecloses": "The player's apprenticeship.",
+    "seed": "The weight of the pen."
+   },
+   {
+    "index": 3,
+    "canBuild": "hairline",
+    "explanation": "This offers a reward of quiet, unconditional companionship, which can be profoundly moving after a long struggle. However, its lack of a climactic 'moment' makes the path to it delicate, risking an anticlimax if the player expects a more dramatic resolution.",
+    "opens": "An ongoing, unconditional friendship.",
+    "forecloses": "The formal dynamic of teacher and student.",
+    "seed": "The sound of the lamp."
+   }
+  ],
+  "rel_ladder": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "The reveal of shared vulnerability is a powerful and earned reward. It recontextualizes the entire relationship from mentorship to a bond between equals who have walked the same path.",
+    "opens": "A relationship of shared history and mutual respect.",
+    "forecloses": "The purely hierarchical mentor/mentee dynamic.",
+    "seed": "Hints of his own past crossings."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "This provides a clear, satisfying sense of mastery and graduation. The tangible transfer of responsibility—the manifest and pen—is a powerful reward for the player's journey and dedication.",
+    "opens": "The player taking on the role of mentor themselves.",
+    "forecloses": "The need for his direct guidance and validation.",
+    "seed": "Trusting you with the pen for a moment."
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "This destination offers the profound reward of unconditional presence, evolving the relationship from transactional mentorship to deep friendship. The shift to mutual, unstructured support is a mature and satisfying endpoint.",
+    "opens": "A quiet, enduring friendship beyond the initial context.",
+    "forecloses": "The need for formal lessons or structured progress.",
+    "seed": "Asking about your day for its own sake."
+   }
+  ],
+  "reward": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "The revelation that the coach was also a 'passenger' creates a powerful, earned symmetry. It reframes the entire journey not as a student-teacher dynamic, but as a shared passage, making the player's struggle feel seen and honored on a deeper level.",
+    "opens": "A relationship of equals",
+    "forecloses": "The mystery of his authority",
+    "seed": "The ribboned page"
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "This moment provides a tangible shift in the player's role, turning them from a recipient of guidance into an active keeper of the tradition. It's a powerful reward because it grants agency and acknowledges mastery in a concrete, ceremonial way.",
+    "opens": "The player as mentor",
+    "forecloses": "The comfort of being guided",
+    "seed": "The weight of the pen"
+   },
+   {
+    "index": 3,
+    "canBuild": "hairline",
+    "explanation": "This reward is about the quiet comfort of an achieved state, rather than a dramatic revelation or change in status. It requires a path that makes the player yearn for this specific kind of unconditional, low-stakes presence, otherwise it could feel like the narrative has simply stalled.",
+    "opens": "A non-transactional friendship",
+    "forecloses": "The dynamic of striving for lessons",
+    "seed": "The lamp in the window"
+   }
+  ],
+  "grows_with_you": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "This destination is built on earned trust and reframes the relationship as a legacy of mutual support, not a one-way dependency. The coach's vulnerability deepens the bond by showing the player they are now part of a longer, shared history.",
+    "opens": "A shared history; mutual vulnerability.",
+    "forecloses": "The coach as an infallible, distant authority.",
+    "seed": "A crossing where the player mentions feeling like a burden."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "This is a powerful and explicit transfer of autonomy that directly rewards the player's growth with new responsibility. The coach's continued presence is offered as a choice, not a requirement, perfectly upholding the anti-dependency floor.",
+    "opens": "The player as a keeper of the tradition; true peerage.",
+    "forecloses": "The player remaining a passive passenger.",
+    "seed": "The player correctly identifies the 'full weight' of another's cargo without prompting."
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "This destination represents the ultimate evolution of the relationship into a peer friendship, which is a powerful reward for growth. Building this requires carefully graduating the player from 'lessons' so this quiet presence feels like an earned peace, not a narrative stall.",
+    "opens": "Unconditional friendship; a safe harbor.",
+    "forecloses": "A transactional, goal-oriented relationship.",
+    "seed": "A night with no specific problem to solve, just a shared silence."
+   }
+  ]
+ }
+}

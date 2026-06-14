@@ -1,0 +1,260 @@
+{
+ "settings": [
+  {
+   "id": "ferry",
+   "title": "The Night Ferry",
+   "line": "The kettle's always on.",
+   "world": "A small night ferry that crosses the same dark strait, every night, and always comes back. A crew of four; the crossing is the one hour nobody can ask anything more of you. Night, water, lamps, a kettle — a world that holds whether the strait is glass-calm or running heavy."
+  },
+  {
+   "id": "lighthouse",
+   "title": "The Lighthouse Coast",
+   "line": "The light holds.",
+   "world": "A lone white-stone lighthouse on a mossy islet in rolling fog. A fixed point you tend — the lamp, the glass, the long watch. A coast that holds whether the night is still or the fog rolls in thick."
+  },
+  {
+   "id": "cloudhouse",
+   "title": "The Sky Station",
+   "line": "Your seat is kept.",
+   "world": "A soft-lit sky station moored above sleeping hills. You read one patch of sky and make one small mark, and a rough little constellation is allowed to count. A station that holds whether the night is clear or the weather turns."
+  }
+ ],
+ "results": {
+  "anxious": [
+   {
+    "index": 1,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "The predictable, bounded ritual of the one-hour crossing with no demands feels like a perfect, manageable slice of peace.",
+    "feeling": "Contained quiet"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The profound solitude and the simple, vital, repetitive task of tending the light create a perfectly predictable and safe existence.",
+    "feeling": "Purposeful solitude"
+   },
+   {
+    "index": 3,
+    "relate": 3,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "While the gentle, low-pressure task is appealing, the inherent precarity of being in a sky station during bad weather is too frightening.",
+    "feeling": "Gentle but precarious"
+   }
+  ],
+  "low_worth": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The contained one-hour duty where nothing more is expected feels like a safe, manageable way to contribute without pressure.",
+    "feeling": "Quietly held"
+   },
+   {
+    "index": 2,
+    "relate": 3,
+    "feelsSafe": 3,
+    "wouldPlay": false,
+    "why": "The solitary responsibility of keeping the light feels too high-stakes and isolating for my low self-worth.",
+    "feeling": "Solitary pressure"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The explicit validation that a small, imperfect effort is enough feels deeply safe and exactly what I need.",
+    "feeling": "Gently valued"
+   }
+  ],
+  "adhd": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The short, contained, and repetitive nature of the one-hour crossing feels like a perfect, pressure-free reset without any chance of leaving things unfinished.",
+    "feeling": "Contained peace"
+   },
+   {
+    "index": 2,
+    "relate": 2,
+    "feelsSafe": 3,
+    "wouldPlay": false,
+    "why": "The solitary responsibility of tending the light feels like a high-stakes task that could easily become a source of anxiety if I couldn't keep up.",
+    "feeling": "Anxious responsibility"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The explicit permission for a small, imperfect contribution to be enough removes all the pressure and fear of failure associated with starting and finishing tasks.",
+    "feeling": "Gentle acceptance"
+   }
+  ],
+  "iyashikei_fan": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The reliable routine, small found family, and protected hour of respite create a perfectly contained and reassuring world to live in.",
+    "feeling": "Gentle, rhythmic safety"
+   },
+   {
+    "index": 2,
+    "relate": 2,
+    "feelsSafe": 3,
+    "wouldPlay": false,
+    "why": "The profound isolation feels more like a stoic trial than a genuinely cozy or healing community to settle into.",
+    "feeling": "Stoic, lonely purpose"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It promises a gentle, non-demanding purpose where small, imperfect contributions are valued, which feels deeply safe and restorative.",
+    "feeling": "Gentle, accepted belonging"
+   }
+  ],
+  "thrill_seeker": [
+   {
+    "index": 1,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "While the predictable routine is deeply safe, it's also a monotonous and confining existence with no room for action or change.",
+    "feeling": "Trapped by routine"
+   },
+   {
+    "index": 2,
+    "relate": 1,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "The deep safety of its solitary, unchanging duty is precisely what makes it an unthinkably boring world for me.",
+    "feeling": "Isolated and restless"
+   },
+   {
+    "index": 3,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "This world offers ultimate safety and gentle purpose, but its complete lack of stakes or challenge makes it feel utterly lifeless to me.",
+    "feeling": "Numbed by quiet"
+   }
+  ]
+ },
+ "legs": {
+  "tone_breadth": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "The ferry is a container for both the crew's routine and the passengers' transient stories. This mix of the constant and the variable allows it to host a wide range of tones, from the quiet comfort of the kettle to the contained intensity of a storm.",
+    "opens": "A rotating cast of passengers, the crew's shared history, the mood of the water.",
+    "forecloses": "Grand-scale external conflict, stories that require a fixed location over time.",
+    "seed": "The fog is so thick tonight you can't see the bow from the bridge. A passenger you've never seen before asks for a cup of tea, but they're holding a tarnished silver locket instead of a mug."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "The lighthouse is a powerful symbol of steadfastness against overwhelming forces, be they weather or internal turmoil. While it excels at stories of solitude and melancholy, its role as a beacon allows for moments of intense, contained drama and quiet warmth.",
+    "opens": "Stories of solitude and responsibility, the history of the light, the relationship with the sea.",
+    "forecloses": "Complex social dynamics, stories requiring a bustling community, frequent new encounters.",
+    "seed": "During the long watch, you see another light blink back from the coast, a place where no light should be. It's not a ship; the pattern is an answer to your own."
+   },
+   {
+    "index": 3,
+    "canBuild": "hairline",
+    "explanation": "The setting is built on a gentle, specific premise of quiet observation and validation. While strong for introspective, warm, or melancholy tones, its abstract nature may make it less adaptable for generating more varied human dramas without significant additions.",
+    "opens": "Stories of quiet purpose, wonder, scientific discovery, the feeling of being small in the universe.",
+    "forecloses": "Grounded, visceral conflict; stories about community on the ground; fast-paced action.",
+    "seed": "The constellation you've been charting for weeks isn't where it should be. The change is small, just a single mark, but it breaks every known law of the sky."
+   }
+  ],
+  "safety_floor": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "This setting provides a bounded, predictable ritual that explicitly pauses external demands, creating a natural container for processing or simply resting. The constant, simple hospitality of the kettle reinforces a sense of being cared for without condition.",
+    "opens": "Quiet solidarity and shared, simple ritual.",
+    "forecloses": "Grand gestures or escaping the core loop.",
+    "seed": "Who pours the tea when you can't lift the kettle?"
+   },
+   {
+    "index": 2,
+    "canBuild": "hairline",
+    "explanation": "This setting offers a powerful sense of purpose from a single, vital task, which can be grounding. However, the profound isolation and the high stakes of that one responsibility could easily amplify anxiety if the character's ability to perform it feels threatened.",
+    "opens": "Solitary purpose and the weight of duty.",
+    "forecloses": "Easy companionship or a break from the self.",
+    "seed": "The fog is so thick, you can't tell if the light is still on."
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "The setting is built on a foundation of gentle purpose and explicit permission for imperfection, directly counteracting feelings of low self-worth. Its quiet, observational nature provides a calm, detached space that lowers the stakes for engagement.",
+    "opens": "Gentle purpose and accepted imperfection.",
+    "forecloses": "High-stakes action or direct worldly conflict.",
+    "seed": "What happens when a star you're watching goes out?"
+   }
+  ],
+  "story_spawn": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "The ferry is a self-contained, repeating microcosm with a built-in cast (the crew) and a steady stream of new elements (the passengers). Its liminal state—an hour of suspension between two shores—is a powerful engine for stories about secrets, transitions, and brief, intense encounters.",
+    "opens": "Stories of transient community, shared secrets in a confined space, the rhythm of a strange job.",
+    "forecloses": "Epic journeys, stories of settlement, large-scale societal change.",
+    "seed": "The new deckhand doesn't cast a reflection in the cabin glass."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "The lighthouse is a potent symbol of isolation and steadfastness, creating a strong container for stories of a solitary nature, be they psychological, historical, or supernatural. While the cast is small, the setting's history and its relationship to the vast, mysterious sea provide deep soil for varied narratives over time.",
+    "opens": "Tales of solitude, madness, generational duty, and strange things seen from a fixed point.",
+    "forecloses": "Stories of bustling city life, complex social maneuvering, rapid travel.",
+    "seed": "The light reveals a pattern in the fog that wasn't there before."
+   },
+   {
+    "index": 3,
+    "canBuild": "hairline",
+    "explanation": "This setting is poetically rich but structurally sparse, offering a mood more than a ready-made conflict engine. While it beautifully supports quiet, contemplative stories, building multiple distinct narratives might require inventing more of the station's purpose and social structure for each one.",
+    "opens": "Gentle sci-fi, stories of quiet purpose, finding meaning in small data, a community of observers.",
+    "forecloses": "High-action conflict, stories of survival against the elements, grounded realism.",
+    "seed": "One of the rough constellations begins to move."
+   }
+  ],
+  "persistence": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "The ferry is a repeating, contained ritual, a perfect stage for transient characters and self-contained stories to play out against a constant backdrop. Its cyclical nature resists a single, linear arc, allowing it to spawn many different encounters night after night.",
+    "opens": "Encounters in transit; temporary community; confessions in the dark.",
+    "forecloses": "Epic journeys; lasting change to the setting itself; high-stakes external conflict.",
+    "seed": "Who is the one passenger that never gets off at either shore?"
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "The lighthouse's purpose is a perpetual, unchanging duty—to keep the light—rather than a goal to be achieved. This makes it a stable backdrop for stories of solitude and responsibility, without demanding the setting itself change.",
+    "opens": "Stories of isolation; the weight of duty; strange arrivals from the sea.",
+    "forecloses": "Large ensemble casts; bustling city life; rapid plot progression.",
+    "seed": "The light reveals something in the fog that shouldn't be there."
+   },
+   {
+    "index": 3,
+    "canBuild": "hairline",
+    "explanation": "This setting's stability is fragile because the act of charting a constellation implies progress towards a final goal, which could easily become a single arc. To remain a persistent backdrop, stories must focus on the quiet process of watching, not the completion of the map.",
+    "opens": "Quiet observation; finding meaning in small patterns; a sense of gentle purpose.",
+    "forecloses": "Ground-level concerns; fast-paced action; stories without introspection.",
+    "seed": "One night, a mark you made the night before has moved on its own."
+   }
+  ]
+ }
+}

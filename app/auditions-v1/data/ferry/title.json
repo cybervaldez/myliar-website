@@ -1,0 +1,627 @@
+{
+ "concept": "ferry",
+ "titles": [
+  {
+   "frame": "The kettle's always on.",
+   "story": "Crossing, slow and quiet.",
+   "tone": "cozy",
+   "source": "naming-matrix"
+  },
+  {
+   "frame": "The kettle's always on.",
+   "story": "The lamps all lit this one crossing.",
+   "tone": "cozy",
+   "source": "naming-matrix"
+  },
+  {
+   "frame": "The kettle's always on.",
+   "story": "The fifth bowl, set.",
+   "tone": "cozy",
+   "source": "naming-matrix"
+  },
+  {
+   "frame": "She comes back, every night.",
+   "story": "Holding steady till the far shore.",
+   "tone": "held",
+   "source": "naming-matrix"
+  },
+  {
+   "frame": "She comes back, every night.",
+   "story": "Riding it out, long and quiet.",
+   "tone": "held",
+   "source": "naming-matrix"
+  },
+  {
+   "frame": "The Bell Rings Every Night",
+   "story": "A Blanket and Some Tea",
+   "tone": "cozy",
+   "source": "gemini",
+   "why": "Cues physical warmth and simple, non-demanding comfort through familiar, gentle ritual.",
+   "banned": false
+  },
+  {
+   "frame": "The Lantern Is Always Lit",
+   "story": "The Weight You Carried Here",
+   "tone": "warm",
+   "source": "gemini",
+   "why": "Offers gentle, steady guidance while acknowledging the player's burden with acceptance, not a demand to fix it.",
+   "banned": false
+  },
+  {
+   "frame": "The Crossing Is Always Here",
+   "story": "An Hour Just for Breathing",
+   "tone": "cozy",
+   "source": "gemini",
+   "why": "Names the relief directly: a reliable space for simple existence, free of external expectation.",
+   "banned": false
+  },
+  {
+   "frame": "The Log Is Always Open",
+   "story": "A Page for This One Day",
+   "tone": "warm",
+   "source": "gemini",
+   "why": "Promises a safe, non-judgmental container for the day's story, affirming it is worthy of being held.",
+   "banned": false
+  },
+  {
+   "frame": "The Harbor Light Still Burns",
+   "story": "The Shore We Leave Unfinished",
+   "tone": "held",
+   "source": "gemini",
+   "why": "Validates the difficult feeling of incompletion while the anchor ('still') promises an unwavering point of return.",
+   "banned": false
+  },
+  {
+   "frame": "The Ferry Still Comes Back",
+   "story": "At Your Full, Unspoken Weight",
+   "tone": "held",
+   "source": "gemini",
+   "why": "Pledges to hold the player's heaviest burdens, seen and unseen, anchored by an unbreakable, resilient routine.",
+   "banned": false
+  }
+ ],
+ "results": {
+  "anxious": [
+   {
+    "index": 1,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The combination of a constant, warm comfort with a gentle, unhurried action feels incredibly safe and manageable.",
+    "feeling": "Gentle journey"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It promises a well-lit, singular, and contained task, anchored by the reliable comfort of the kettle.",
+    "feeling": "Guided and secure"
+   },
+   {
+    "index": 3,
+    "relate": 2,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "The mystery of the fifth bowl introduces an unpredictable element that feels more like a potential social ambush than a gentle story.",
+    "feeling": "Unsettling mystery"
+   },
+   {
+    "index": 4,
+    "relate": 3,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "It feels like a game about endurance and vigilance rather than a gentle, relaxing experience.",
+    "feeling": "Anxious endurance"
+   },
+   {
+    "index": 5,
+    "relate": 5,
+    "feelsSafe": 3,
+    "wouldPlay": false,
+    "why": "While deeply relatable, it sounds like a game about enduring something difficult rather than finding a safe respite.",
+    "feeling": "Resigned coping"
+   },
+   {
+    "index": 6,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The title explicitly promises a routine centered on physical comfort and warmth, which is exactly what I'm looking for.",
+    "feeling": "Ritual comfort"
+   },
+   {
+    "index": 7,
+    "relate": 2,
+    "feelsSafe": 1,
+    "wouldPlay": false,
+    "why": "It sounds like the game's core mechanic is processing trauma, which feels too heavy and unsafe for a cozy game.",
+    "feeling": "Emotional ambush"
+   },
+   {
+    "index": 8,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The game explicitly offers a bounded, safe time for a calming, restorative activity without any other pressures.",
+    "feeling": "A safe refuge"
+   },
+   {
+    "index": 9,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It promises a gentle, contained, and reflective journaling experience focused only on the present day.",
+    "feeling": "Quiet reflection"
+   },
+   {
+    "index": 10,
+    "relate": 1,
+    "feelsSafe": 1,
+    "wouldPlay": false,
+    "why": "The concept of focusing on something 'unfinished' is the opposite of the bounded, complete, and gentle experience I need.",
+    "feeling": "Stress of incompletion"
+   },
+   {
+    "index": 11,
+    "relate": 2,
+    "feelsSafe": 0,
+    "wouldPlay": false,
+    "why": "It sounds emotionally invasive and confrontational, promising to deal with heavy personal baggage in a way that feels like an ambush.",
+    "feeling": "Invasive and heavy"
+   }
+  ],
+  "low_worth": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It promises a gentle, unhurried experience with a constant source of comfort and no pressure to perform.",
+    "feeling": "A quiet welcome"
+   },
+   {
+    "index": 2,
+    "relate": 3,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "It feels welcoming and guided, but the 'lamps all lit' makes it feel a bit more like a test than just a quiet journey.",
+    "feeling": "Gentle but focused"
+   },
+   {
+    "index": 3,
+    "relate": 1,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "The mysterious specificity of the 'fifth bowl' creates a sense of expectation and a role I might fail to live up to.",
+    "feeling": "Unspoken expectations"
+   },
+   {
+    "index": 4,
+    "relate": 2,
+    "feelsSafe": 3,
+    "wouldPlay": false,
+    "why": "It sounds like a game about endurance and active effort, which is what I'm trying to get a break from.",
+    "feeling": "A supportive challenge"
+   },
+   {
+    "index": 5,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "It promises a quiet, accepting space for just enduring and being present without the need for active struggle.",
+    "feeling": "Quiet companionship"
+   },
+   {
+    "index": 6,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It combines a gentle, predictable ritual with the ultimate symbols of cozy comfort, promising a safe and restorative experience.",
+    "feeling": "A call to rest"
+   },
+   {
+    "index": 7,
+    "relate": 3,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "It feels like it would focus directly on my struggles, which is too confrontational when I'm seeking a gentle escape.",
+    "feeling": "Too close to home"
+   },
+   {
+    "index": 8,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It explicitly promises a dedicated time and space with no expectations other than to just exist and breathe.",
+    "feeling": "Permission to just be"
+   },
+   {
+    "index": 9,
+    "relate": 1,
+    "feelsSafe": 1,
+    "wouldPlay": false,
+    "why": "The concept of filling a page every day, even a small one, feels like a performance with the potential for failure.",
+    "feeling": "The blank page dread"
+   },
+   {
+    "index": 10,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It directly validates the act of trying and accepts imperfection, which removes the pressure to 'win' or complete everything.",
+    "feeling": "The grace of imperfection"
+   },
+   {
+    "index": 11,
+    "relate": 5,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "It promises complete acceptance of my burdens without the need to perform or even articulate them, which feels incredibly freeing.",
+    "feeling": "Seen and accepted"
+   }
+  ],
+  "adhd": [
+   {
+    "index": 1,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It promises a gentle, low-demand experience with a constant, comforting anchor that doesn't require me to finish anything.",
+    "feeling": "Gentle acceptance"
+   },
+   {
+    "index": 2,
+    "relate": 3,
+    "feelsSafe": 3,
+    "wouldPlay": true,
+    "why": "The comforting kettle is inviting, but the mention of 'all lit' lamps feels like it could be a nagging, unfinished task.",
+    "feeling": "A hint of obligation"
+   },
+   {
+    "index": 3,
+    "relate": 2,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "It hints at a specific, completable ritual which might feel like a nagging, unfinished task if I can't start or finish it.",
+    "feeling": "Quiet pressure"
+   },
+   {
+    "index": 4,
+    "relate": 1,
+    "feelsSafe": 1,
+    "wouldPlay": false,
+    "why": "The title implies a long, effortful journey with a specific goal, which feels like a setup for feeling bad if I can't finish.",
+    "feeling": "Demanding endurance"
+   },
+   {
+    "index": 5,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "It focuses on the process of enduring rather than a final goal, which feels more accepting of my fluctuating energy levels.",
+    "feeling": "Patient companionship"
+   },
+   {
+    "index": 6,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This title explicitly promises comfort and a simple, repeatable ritual without any mention of difficult tasks or goals.",
+    "feeling": "Pure comfort"
+   },
+   {
+    "index": 7,
+    "relate": 3,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "It sounds like it might ask for emotional labor that I'm not always ready to give, even though the setting seems safe.",
+    "feeling": "Emotional baggage claim"
+   },
+   {
+    "index": 8,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It directly offers a no-pressure space for rest and self-regulation, which is exactly what I need in a game.",
+    "feeling": "A sigh of relief"
+   },
+   {
+    "index": 9,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It presents a small, manageable, self-contained daily activity that I can engage with or ignore without punishment.",
+    "feeling": "Gentle reflection"
+   },
+   {
+    "index": 10,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The title directly addresses and normalizes the act of leaving things unfinished, turning my biggest anxiety into a core, safe mechanic.",
+    "feeling": "Seen and validated"
+   },
+   {
+    "index": 11,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "It promises acceptance of my burdens without explicitly demanding I do something about them, which feels supportive.",
+    "feeling": "Somber acceptance"
+   }
+  ],
+  "iyashikei_fan": [
+   {
+    "index": 1,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The combination of a constantly welcoming space with a promise of slow, quiet contemplation feels genuinely restful and safe.",
+    "feeling": "Gentle journey"
+   },
+   {
+    "index": 2,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It promises a guided, well-lit journey within a warm and welcoming environment, which feels incredibly safe and inviting.",
+    "feeling": "Guided warmth"
+   },
+   {
+    "index": 3,
+    "relate": 3,
+    "feelsSafe": 3,
+    "wouldPlay": true,
+    "why": "The hint of ritual and mystery is intriguing, but the implied absence or waiting for someone feels potentially heavy for a purely cozy game.",
+    "feeling": "Gentle mystery"
+   },
+   {
+    "index": 4,
+    "relate": 2,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "The language suggests themes of endurance, loss, and waiting for an end, which feels too emotionally demanding for a relaxing, cozy experience.",
+    "feeling": "Heavy-hearted duty"
+   },
+   {
+    "index": 5,
+    "relate": 1,
+    "feelsSafe": 1,
+    "wouldPlay": false,
+    "why": "This title strongly implies enduring a long, quiet hardship, which is the antithesis of the safe, restorative feeling I seek in a cozy game.",
+    "feeling": "Quiet endurance"
+   },
+   {
+    "index": 6,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It perfectly pairs a gentle, intriguing routine with the explicit promise of ultimate comfort and safety.",
+    "feeling": "Comfort ritual"
+   },
+   {
+    "index": 7,
+    "relate": 3,
+    "feelsSafe": 3,
+    "wouldPlay": true,
+    "why": "It promises a safe place to process emotional burdens, which is appealing, but the direct focus on 'weight' suggests it might not be a light, escapist experience.",
+    "feeling": "Gentle healing"
+   },
+   {
+    "index": 8,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It explicitly promises a dedicated, no-pressure space for quiet mindfulness, which is the exact definition of a genuinely safe and cozy game for me.",
+    "feeling": "Pure respite"
+   },
+   {
+    "index": 9,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The idea of a gentle, daily journaling or observation game feels incredibly low-pressure, creative, and centered on appreciating the present moment.",
+    "feeling": "Mindful record-keeping"
+   },
+   {
+    "index": 10,
+    "relate": 2,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "It combines a safe setting with a theme of incompletion and things left behind, suggesting a melancholy or regretful tone that I don't find cozy.",
+    "feeling": "Lingering regret"
+   },
+   {
+    "index": 11,
+    "relate": 1,
+    "feelsSafe": 0,
+    "wouldPlay": false,
+    "why": "The language is too intense and personal, feeling less like a gentle invitation and more like a demand for emotional vulnerability that feels unsafe.",
+    "feeling": "Emotional ambush"
+   }
+  ],
+  "thrill_seeker": [
+   {
+    "index": 1,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "This sounds like a game about literally doing nothing, which is the opposite of the high-stakes action I enjoy.",
+    "feeling": "Utterly boring"
+   },
+   {
+    "index": 2,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "The promise of a fully lit, safe passage tells me there are no challenges, no risks, and therefore no fun.",
+    "feeling": "Sleep-inducing"
+   },
+   {
+    "index": 3,
+    "relate": 1,
+    "feelsSafe": 4,
+    "wouldPlay": false,
+    "why": "There's a faint hint of mystery with the fifth bowl, but it's smothered by the overwhelming domesticity of a kettle.",
+    "feeling": "Mildly curious, but bored"
+   },
+   {
+    "index": 4,
+    "relate": 2,
+    "feelsSafe": 3,
+    "wouldPlay": false,
+    "why": "This suggests a struggle for survival or a nightly trial, but 'holding steady' sounds more passive than the active fight I want.",
+    "feeling": "A hint of tension"
+   },
+   {
+    "index": 5,
+    "relate": 1,
+    "feelsSafe": 4,
+    "wouldPlay": false,
+    "why": "The potential threat of a nightly return is immediately deflated by the idea of quietly and passively 'riding it out'.",
+    "feeling": "Monotonous endurance"
+   },
+   {
+    "index": 6,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "Any potential alarm from a nightly bell is completely nullified by the promise of tea and blankets; it's a cozy trap.",
+    "feeling": "Aggressively gentle"
+   },
+   {
+    "index": 7,
+    "relate": 2,
+    "feelsSafe": 4,
+    "wouldPlay": false,
+    "why": "While confronting a metaphorical 'weight' has stakes, it's an internal, emotional battle, not the external, visceral conflict I play games for.",
+    "feeling": "Heavy, but passive"
+   },
+   {
+    "index": 8,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "This doesn't even sound like a game; it sounds like a meditation app, which is the antithesis of excitement.",
+    "feeling": "A guided meditation"
+   },
+   {
+    "index": 9,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "A journaling game offers zero action, challenge, or external stakes, making it completely uninteresting to me.",
+    "feeling": "Like doing homework"
+   },
+   {
+    "index": 10,
+    "relate": 3,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "The sense of failure and unresolved business is compelling, but it promises emotional stakes rather than the physical, high-octane gameplay I prefer.",
+    "feeling": "A compelling regret"
+   },
+   {
+    "index": 11,
+    "relate": 2,
+    "feelsSafe": 3,
+    "wouldPlay": false,
+    "why": "This sounds like a somber game about confronting your baggage, which is too introspective and not the kind of intense challenge I seek.",
+    "feeling": "Emotional baggage claim"
+   }
+  ]
+ },
+ "legs": {
+  "promise": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "This title perfectly establishes a core promise of reliable, simple comfort and a gentle, non-demanding journey. The 'kettle' is a powerful symbol of warmth and welcome that resonates with the target audience's need for a safe space.",
+    "opens": "Themes of unconditional welcome, simple rituals, quiet observation, and slow passage.",
+    "forecloses": "High-stakes action, complex social dynamics, or a sense of urgency.",
+    "seed": "The ferry's galley, where a kettle is perpetually just about to boil, offering tea to any passenger."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "While still promising the core comfort of the kettle, this title adds a layer of quiet significance with 'the lamps all lit.' It suggests this particular journey, and by extension the reader's experience, is seen, acknowledged, and held in a special light.",
+    "opens": "A sense of quiet magic, a feeling of being seen, a pivotal but gentle moment of change.",
+    "forecloses": "Mundanity, the idea that this is just another forgettable night.",
+    "seed": "The ferry is unusually bright tonight, every lamp glowing softly, pushing back the darkness just for this trip."
+   },
+   {
+    "index": 3,
+    "canBuild": "hollow",
+    "explanation": "This title's promise is split; the kettle offers comfort, but 'the fifth bowl' introduces a specific, unexplained mystery. This risks creating cognitive load and anxiety for a reader seeking a gentle escape, making the promise feel hollow or misleading.",
+    "opens": "Mystery, ritual, a story about a specific missing person or entity.",
+    "forecloses": "A purely atmospheric, non-narrative experience of just being on the ferry.",
+    "seed": "A ritual where four bowls of soup are served, but a fifth is always placed at an empty seat."
+   },
+   {
+    "index": 4,
+    "canBuild": "load-bearing",
+    "explanation": "This title offers a powerful promise of steadfast reliability and gentle perseverance, embodied by a character or the ferry itself. For an audience feeling adrift, the idea of something or someone 'holding steady' until the end of the journey is deeply comforting.",
+    "opens": "A character-focused story, themes of duty, care, and quiet strength.",
+    "forecloses": "A purely solitary experience; it implies a gentle guardian figure is present.",
+    "seed": "The ferry's captain, an older woman who has made this crossing every night for decades."
+   },
+   {
+    "index": 5,
+    "canBuild": "hairline",
+    "explanation": "This title promises endurance, but the phrase 'riding it out' can feel passive and tinged with resignation rather than active care. It's a hairline distinction, but it might not land as a purely cozy or safe promise for a reader already feeling overwhelmed.",
+    "opens": "Themes of endurance, patience, and weathering a storm (even a metaphorical one).",
+    "forecloses": "A sense of proactive care, joy, or active safety.",
+    "seed": "A passenger who takes the ferry every night to escape a difficult home life, just enduring until morning."
+   },
+   {
+    "index": 6,
+    "canBuild": "load-bearing",
+    "explanation": "This title makes a simple, concrete promise that it can easily keep: a reliable ritual followed by tangible comfort. It avoids abstraction and speaks directly to the sensory experience of safety and warmth, which is perfect for a grounded, cozy story.",
+    "opens": "A focus on sensory details, simple cause-and-effect (the bell rings, comfort arrives), and structured ritual.",
+    "forecloses": "A free-form, unstructured narrative; any sense of surprise or danger.",
+    "seed": "The moment the ferry leaves the dock, a soft bell chimes, and a crew member brings each passenger a blanket and a cup of tea."
+   },
+   {
+    "index": 7,
+    "canBuild": "load-bearing",
+    "explanation": "This title directly and gently acknowledges the reader's emotional state, promising a safe, illuminated space to bring their burdens without judgment. It's a deeply validating and comforting promise that aligns perfectly with the story's purpose.",
+    "opens": "Themes of release, acceptance, finding light in darkness, and emotional processing.",
+    "forecloses": "A purely light or superficial story; it directly engages with emotional weight.",
+    "seed": "A quiet corner of the ferry deck, lit by a single, warm lantern, where passengers can sit and let go of their day."
+   },
+   {
+    "index": 8,
+    "canBuild": "load-bearing",
+    "explanation": "This title explicitly frames the story as a sanctuary and a tool, giving direct permission for the reader to simply exist and breathe. It perfectly manages expectations by removing any pressure to follow a plot and instead offering a gentle experience.",
+    "opens": "A meditative experience, a focus on mindfulness, the passage of time as a healing force.",
+    "forecloses": "A plot-driven narrative, character arcs, or any external goals.",
+    "seed": "The story is structured in real-time over one hour, with gentle prompts to notice the sound of the engine and one's own breath."
+   },
+   {
+    "index": 9,
+    "canBuild": "hairline",
+    "explanation": "While the intent is gentle, the promise of an 'open log' can feel like a task or an expectation to perform introspection. For an audience seeking to quiet their mind, this might inadvertently add pressure, making the promise feel fragile or demanding.",
+    "opens": "Themes of journaling, memory, leaving a mark, and personal history.",
+    "forecloses": "A purely passive, receptive experience; it implies an act of contribution is needed.",
+    "seed": "A large, leather-bound book in the ferry's lounge where passengers can anonymously write or draw anything about their day."
+   },
+   {
+    "index": 10,
+    "canBuild": "load-bearing",
+    "explanation": "This title masterfully combines a promise of constant hope (the light) with gentle permission for imperfection (the unfinished shore). It speaks directly to the feeling of being overwhelmed, assuring the reader that it's okay to let go.",
+    "opens": "Themes of letting go, acceptance, hope, and the nature of journeys vs. destinations.",
+    "forecloses": "A story about achieving goals, resolution, or tying up loose ends.",
+    "seed": "The story focuses on the view from the ferry's stern, watching the lights of the city and accepting the day that is now behind."
+   },
+   {
+    "index": 11,
+    "canBuild": "load-bearing",
+    "explanation": "This title makes a profound promise of unconditional acceptance, specifically addressing the feeling of being a burden. The phrase 'at your full, unspoken weight' is a deeply validating and radical welcome, assuring the reader they are accepted as they are.",
+    "opens": "Deep themes of self-worth, radical acceptance, being seen, and the weight of unspoken anxiety.",
+    "forecloses": "A light, surface-level cozy story; this promises to meet the reader in a deep place.",
+    "seed": "The ferry feels like it adjusts its own buoyancy to perfectly and effortlessly carry the emotional weight of its passengers."
+   }
+  ]
+ }
+}

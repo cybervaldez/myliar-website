@@ -1,0 +1,261 @@
+{
+ "concept": "ferry",
+ "pilots": [
+  {
+   "id": "quiet",
+   "title": "The Quiet Boarding",
+   "tone": "still / observational",
+   "scene": "You step aboard the night ferry with nothing to show for the day. Nobody asks. The deckhand loops the line, nods at the empty rail: \"Tide's turning. So's the gangway. Stand where you like.\" The lamps catch; the dark strait opens; the engine settles into its one low note. For the length of the crossing, the day on the far shore can't reach you."
+  },
+  {
+   "id": "warm",
+   "title": "A Place Already Set",
+   "tone": "warm / belonging",
+   "scene": "You step aboard half-expecting to be in the way. The cook is already laying the little table — and sets a fifth bowl at the end, turned down. \"Galley's warm. That one's yours, soon as I learn the name.\" The deckhand doesn't look up from the line: \"She always cooks for five. Sit.\" The strait opens dark and quiet, and for one hour nobody needs anything from you but to be aboard."
+  },
+  {
+   "id": "wry",
+   "title": "Logged at Full Weight",
+   "tone": "wry / affirming",
+   "scene": "You step aboard with a day that didn't go your way and nothing to put in your hands. The manifest-keeper licks a thumb, turns a page, and writes without looking up: \"Crossing 412. One passenger. Cargo: carried themselves across. Logged at full weight, as is only proper.\" He caps the pen. \"The book doesn't do half-entries. Neither do we.\""
+  }
+ ],
+ "results": {
+  "anxious": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The lack of social demands and the promise of a quiet, unreachable space feels deeply safe and gentle.",
+    "feeling": "A quiet relief"
+   },
+   {
+    "index": 2,
+    "relate": 3,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "The immediate, unprompted social inclusion creates an expectation to participate that feels like a potential ambush.",
+    "feeling": "Socially cornered"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It validates my emotional state without being intrusive or demanding a social response, which makes me feel seen and safe.",
+    "feeling": "Quietly seen"
+   }
+  ],
+  "low_worth": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The quiet, non-judgmental space where my failures don't matter and nobody expects anything feels like a profound relief.",
+    "feeling": "Peacefully ignored"
+   },
+   {
+    "index": 2,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "It feels incredibly welcoming to have a place already made for me, even if the direct social invitation is a little daunting.",
+    "feeling": "Gently included"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "Being officially logged at 'full weight' validates the invisible effort of just getting through the day, which is something I crave.",
+    "feeling": "Formally validated"
+   }
+  ],
+  "adhd": [
+   {
+    "index": 1,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The complete lack of any social or task-based demands makes it feel like a safe, pressure-free space where I can just exist without needing to perform.",
+    "feeling": "Calm acceptance"
+   },
+   {
+    "index": 2,
+    "relate": 2,
+    "feelsSafe": 3,
+    "wouldPlay": false,
+    "why": "The immediate, though gentle, social expectation of joining a group creates a pressure to perform that I'm trying to avoid.",
+    "feeling": "Gentle pressure"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It directly validates the struggle of just showing up and reframes it as a complete accomplishment, which feels incredibly safe and affirming.",
+    "feeling": "Seen and valued"
+   }
+  ],
+  "iyashikei_fan": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It offers a rare and genuine sense of quiet refuge without forcing interaction or prescribed coziness.",
+    "feeling": "Quietly held"
+   },
+   {
+    "index": 2,
+    "relate": 3,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "While leaning into familiar tropes, the explicit promise of a warm, welcoming space is still very appealing.",
+    "feeling": "Gently welcomed"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It validates the player's unseen struggles with a unique and respectful wryness that feels deeply genuine and safe.",
+    "feeling": "Seen and affirmed"
+   }
+  ],
+  "thrill_seeker": [
+   {
+    "index": 1,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "The still, observational tone promises a slow, uneventful experience with no action or stakes.",
+    "feeling": "Utterly bored"
+   },
+   {
+    "index": 2,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "The warm, welcoming tone signals a focus on relationships and comfort, which is the opposite of the high-stakes action I enjoy.",
+    "feeling": "Uncomfortably coddled"
+   },
+   {
+    "index": 3,
+    "relate": 2,
+    "feelsSafe": 4,
+    "wouldPlay": false,
+    "why": "Although the wry, affirming tone is the most compelling, the game still appears to be a slow-paced, narrative experience devoid of any real conflict.",
+    "feeling": "Respectful but uninterested"
+   }
+  ]
+ },
+ "legs": {
+  "destination": [
+   {
+    "index": 1,
+    "canBuild": "hairline",
+    "explanation": "This tone creates a powerful sense of sanctuary, but its observational distance offers little to build an interactive relationship on. A coach needs a stronger point of connection than just shared quiet.",
+    "opens": "A coach as a silent witness, providing space.",
+    "forecloses": "A proactive, challenging, or warmly engaged coach.",
+    "seed": "Sanctuary"
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "This pilot immediately establishes unconditional welcome and a sense of belonging, creating a safe space for vulnerability. This pre-emptive care is a robust foundation for a long-term, trusting relationship.",
+    "opens": "A nurturing, community-focused coach who provides comfort.",
+    "forecloses": "A detached, philosophical, or provocateur-style coach.",
+    "seed": "Welcome"
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "This tone provides a powerful, non-sentimental affirmation that respects the player's struggle without pity. This wry validation is an excellent foundation for a coach who is a clear-eyed witness, offering perspective and respect.",
+    "opens": "A coach who offers sharp insights and values effort over outcome.",
+    "forecloses": "A soft, emotionally effusive, or gently nurturing style.",
+    "seed": "Witnessed"
+   }
+  ],
+  "struggle": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "The quiet, observational tone creates a neutral, safe space for a character's internal struggle to simply exist without judgment or immediate resolution. This respectful quiet is a very strong foundation for exploring the process of letting go in a meaningful way.",
+    "opens": "A story of quiet introspection and self-discovery.",
+    "forecloses": "A story driven by external comfort or immediate community intervention.",
+    "seed": "the day on the far shore can't reach you"
+   },
+   {
+    "index": 2,
+    "canBuild": "hairline",
+    "explanation": "This tone immediately offers a solution—community and warmth—which can risk invalidating the depth of a real struggle if not handled carefully. It can hold the theme, but it walks a fine line to avoid making the internal work of letting go feel unearned or simplistic.",
+    "opens": "A story about healing through found family and accepting care.",
+    "forecloses": "A story centered on solitude or the difficulty of trusting others.",
+    "seed": "nobody needs anything from you but to be aboard"
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "This tone powerfully validates the character's burden by formally acknowledging it without sentimentality. This wry, respectful affirmation provides a sturdy floor that can support a deep internal process, making the struggle feel seen and honored.",
+    "opens": "A story about self-acceptance and recognizing one's own resilience.",
+    "forecloses": "A story where the character's struggle is invisible or misunderstood.",
+    "seed": "Logged at full weight, as is only proper."
+   }
+  ],
+  "cast_voice": [
+   {
+    "index": 1,
+    "canBuild": "hairline",
+    "explanation": "This establishes a powerful mood of quiet introspection, but its uniform stillness might make it difficult to differentiate a crew of varied personalities. The voices risk blending into the same laconic, observational register, making distinct character arcs a challenge.",
+    "opens": "Subtle character reveals through sparse words and action.",
+    "forecloses": "Loud, boisterous, or emotionally expressive crew dynamics.",
+    "seed": "Stand where you like."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "This opening immediately provides two distinct voices—the proactive, welcoming Cook and the gruff, affirming Deckhand—creating a clear sense of an existing crew dynamic. This foundation of warmth and established roles is a strong, flexible base for developing a full cast.",
+    "opens": "Found-family dynamics and character-driven warmth.",
+    "forecloses": "A tone of deep suspicion or existential isolation among the crew.",
+    "seed": "She always cooks for five."
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "This establishes a powerful, unique voice and a core philosophy for the crew in a single interaction. This wry, affirming tone is a strong hook that can define one character and serve as a tonal anchor for contrasting or complementary voices.",
+    "opens": "A crew with a shared, unique philosophy and stylized dialogue.",
+    "forecloses": "Casual, modern, or mundane conversational styles.",
+    "seed": "Logged at full weight, as is only proper."
+   }
+  ],
+  "sustain": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "The observational, almost detached tone provides a stable container for a wide range of daily experiences without needing to force a specific emotional resolution. It relies on atmosphere rather than character interaction, which is highly repeatable.",
+    "opens": "Meditative interiority, quiet observation, finding meaning in small details.",
+    "forecloses": "High-energy emotional arcs, direct interpersonal conflict, overt narrative drive.",
+    "seed": "the engine settles into its one low note"
+   },
+   {
+    "index": 2,
+    "canBuild": "hairline",
+    "explanation": "While deeply appealing, the promise of warmth and belonging is a high emotional bar to clear every single night. It risks feeling repetitive or even saccharine, potentially clashing with a user's more negative daily experiences.",
+    "opens": "Found family dynamics, gentle affirmations, a sense of safety and comfort.",
+    "forecloses": "Feelings of true isolation, exploring darker themes, cynical or world-weary perspectives.",
+    "seed": "She always cooks for five. Sit."
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "This tone successfully affirms the user's experience without demanding a specific emotional response, making it incredibly versatile. Its wry, matter-of-fact delivery provides validation that feels earned and substantial, capable of accommodating a wide spectrum of daily realities.",
+    "opens": "Dignified self-acceptance, finding meaning in process, a sense of being seen without judgment.",
+    "forecloses": "Overt sentimentality, playful whimsy, narratives of escape or transcendence.",
+    "seed": "Logged at full weight, as is only proper."
+   }
+  ]
+ }
+}
