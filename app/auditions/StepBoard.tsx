@@ -16,7 +16,7 @@ const STATUS: Record<string, { txt: string; col: string }> = {
   available: { txt: "○ in the bank — revivable", col: margin }, retired: { txt: "✕ retired", col: red },
 };
 
-export type Primer = { tldr: string; whatFor: string; impact: string; howToChoose: string; craft?: string };
+export type Primer = { tldr: string; whatFor: string; impact: string; howToChoose: string; mechanic?: string; craft?: string };
 
 export default function StepBoard({ stepLabel, intro, primer, data, items, carried, status, reference, prev, next }: {
   stepLabel: string; intro: string; primer?: Primer; data: StepData; items: Item[];
@@ -48,6 +48,11 @@ export default function StepBoard({ stepLabel, intro, primer, data, items, carri
                 {body}
               </div>
             ))}
+            {primer.mechanic && (
+              <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5, borderTop: `1px solid var(--ink-soft)`, paddingTop: 7 }}>
+                <span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: forest }}>⚙ PLAYS TO (our mechanics)</span> {primer.mechanic}
+              </div>
+            )}
             {primer.craft && <div style={{ fontSize: 10.5, color: margin, fontStyle: "italic", lineHeight: 1.5, borderTop: `1px solid var(--ink-soft)`, paddingTop: 7 }}>{primer.craft}</div>}
           </div>
         </details>
