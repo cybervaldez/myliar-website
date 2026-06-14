@@ -24,7 +24,7 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
     if (!has) return { ...s, done: false, pick: "", star: 0 };
     const sd = stepDataFor(campaign, s.key)!;
     const top = s.key === "concept"
-      ? { title: (SLATE.concepts.find((x) => x.id === c.pick)?.t2 ?? c.label), star: star(sd.data, SLATE.concepts.findIndex((x) => x.id === c.pick) + 1) }
+      ? { title: (SLATE.settings.find((x) => x.id === c.pick)?.title ?? c.label), star: star(sd.data, SLATE.settings.findIndex((x) => x.id === c.pick) + 1) }
       : topOf(sd.data, sd.items.map((i) => i.title));
     return { ...s, done: true, pick: top.title, star: top.star };
   });

@@ -4,13 +4,16 @@
 // (+ its data/<campaign>/<step>.json). Concept is the shared SLATE (the master idea bank) — every
 // campaign's pipeline is born from it. NOT canon.
 import { type Item, type StepData, type SourceStudy, topOf } from "./score";
-import slate from "./data/concepts.json";
+import slate from "./data/settings.json";
 import ferryPilot from "./data/ferry/pilot.json";
-import ferryDestination from "./data/ferry/destination.json";
 
+// THE HOOK-ENGINE PIPELINE (§8.14): the CONCEPT is the SETTING (the shared world/ground — a hook-
+// engine), the PILOT is the set of MOMENTS (tonal story-doors, light-cohesive); each moment spawns
+// its own STORY downstream (own cast/coach — no shared coach). So destination/struggle/cast/motif are
+// PER-STORY (built after a moment is chosen), not campaign-level.
 export const STEP_DEFS = [
-  { key: "concept", label: "The Concept" },
-  { key: "pilot", label: "The Pilot" },
+  { key: "concept", label: "The Setting" },
+  { key: "pilot", label: "The Moments" },
   { key: "destination", label: "The Destination" },
   { key: "struggle", label: "The Struggle" },
   { key: "cast", label: "The Cast" },
@@ -19,15 +22,15 @@ export const STEP_DEFS = [
 export const stepLabel = (k: string) => STEP_DEFS.find((s) => s.key === k)?.label ?? k;
 export const stepNo = (k: string) => "①②③④⑤⑥"[STEP_DEFS.findIndex((s) => s.key === k)] ?? "•";
 
-// THE SLATE — the master concept ledger (every concept, all rounds). Cross-campaign by nature.
-export const SLATE = slate as unknown as { concepts: { id: string; t1: string; t2: string; world: string; gift: string }[] } & StepData;
+// THE SLATE — the master SETTING ledger (every setting/world auditioned). Cross-campaign by nature:
+// settings are the grouping ground; a picked setting becomes a campaign that spawns its stories.
+export const SLATE = slate as unknown as { settings: { id: string; title: string; line: string; world: string }[] } & StepData;
 export const SLATE_STATUS: Record<string, string> = { ferry: "building", lighthouse: "available", cloudhouse: "available" };
 
-// per-step normalizers → Item[] (add a new step's normalizer here when its audition lands)
+// per-step normalizers → Item[]. concept = the SETTINGS slate; pilot = the MOMENTS (story-doors).
 const NORM: Record<string, (d: { [k: string]: unknown }) => Item[]> = {
-  concept: (d) => (d as unknown as typeof SLATE).concepts.map((c, k) => ({ key: c.id, idx: k + 1, title: c.t2, sub: c.t1, body: `${c.world}\n\nGift — ${c.gift}` })),
-  pilot: (d) => (d as { pilots: { id: string; title: string; tone: string; scene: string }[] }).pilots.map((p, k) => ({ key: p.id, idx: k + 1, title: p.title, sub: `tone — ${p.tone}`, body: p.scene })),
-  destination: (d) => (d as { destinations: { id: string; title: string; facet: string; sample: string }[] }).destinations.map((x, k) => ({ key: x.id, idx: k + 1, title: x.title, sub: x.facet, body: x.sample })),
+  concept: (d) => (d as unknown as typeof SLATE).settings.map((s, k) => ({ key: s.id, idx: k + 1, title: s.title, sub: s.line, body: s.world })),
+  pilot: (d) => (d as { moments: { id: string; title: string; tone: string; scene: string }[] }).moments.map((m, k) => ({ key: m.id, idx: k + 1, title: m.title, sub: `tone — ${m.tone}`, body: m.scene })),
 };
 // THE PER-STEP PRIMERS — the collapsible ELI5 at the top of each step page: what the step is FOR,
 // how it IMPACTS the story, how to CHOOSE, + a named CRAFT principle. Grounded by the 2026-06-14
@@ -37,24 +40,24 @@ const NORM: Record<string, (d: { [k: string]: unknown }) => Item[]> = {
 // forced-distinct functions); motif = meaning by repetition. Sources in docs/flavors/concepts/GUIDELINE.md.
 export const PRIMERS: Record<string, { tldr: string; whatFor: string; impact: string; howToChoose: string; mechanic?: string; craft?: string }> = {
   concept: {
-    tldr: "the big idea — the world, the gift, and who it’s for; the promise that makes someone pick this off the shelf",
-    whatFor: "The concept is the cover and the logline rolled into one: the setting, the gift you get on night one, and who it’s for. Like a good logline it hooks by what it OFFERS while leaving the ending unspoken — a promise to the player.",
-    impact: "It’s the nucleus everything downstream organizes around — tone, coach, struggle, motif all grow from it. A weak concept can’t be rescued by good writing later; the world you pick here is the soil for all of it.",
-    howToChoose: "Don’t crown the ‘best’ — there’s no single-sentence acid test that proves a premise (the research killed that myth). Pick the one whose AUDIENCE deeply relates AND that the later build-steps can build richly on (load-bearing legs). A high score with a hairline leg is a strong idea carrying a known gem to fix — keep it; the gem is the to-do.",
-    mechanic: "the GIFT (useful at REL 0) + the stat-skins. Fit test: can the coach actually deliver this gift, and can the four stats skin this domain honestly?",
-    craft: "Craft: a logline is a promise that hooks by withholding the ending — the nucleus the whole story organizes around (it’s not a pass/fail acid test for the idea).",
+    tldr: "the SETTING — the surrounding world you’d dwell in. NOT a story; the shared ground stories spawn from.",
+    whatFor: "The concept is the SETTING, not a story. It’s the surrounding environment + who-it’s-for — the grouping ground. We don’t build a coach or a struggle here; we pick the WORLD that everything else branches off.",
+    impact: "The setting is a HOOK-ENGINE: build the world once (and its safety floor), and every story spun off it is a cheap tonal hook that catches a different reader. The setting is capital; the stories are dividends. A wide-range setting catches the whole audience; a one-note setting catches a sliver.",
+    howToChoose: "Don’t pick ‘the best story’ — there’s no story yet. Pick the SETTING whose audience feels safe to DWELL in AND that can spawn the WIDEST tonal range (a cozy hook AND a melancholy hook AND a held-but-safe hook) while holding the floor. The hook-capacity legs (tone-breadth · safety-floor · story-spawn · persistence) score that capacity.",
+    mechanic: "the shared safety FLOOR + the stat-skin DOMAIN. Fit test: does the surrounding environment carry the audience’s safety on its own, and can the four stats skin this world’s domain?",
+    craft: "Craft (§8.14/§8.15): the setting is the convergence, NOT a coach — it’s a persistent backdrop the player dwells in, never an arc. The stories (own casts) branch off it.",
   },
   pilot: {
-    tldr: "the first scene — and the TONE it sets. the taste test.",
-    whatFor: "The pilot is night one: a tiny microcosm of the whole story that must answer three silent questions in the first minutes — what is this, who do I care about, why keep going? — and lock the voice (wry, warm, still) the rest will speak in.",
-    impact: "Tone is a promise. The opening is an audition: if it feels safe and unhurried, the player trusts the story won’t ambush them. You’re allowed deliberate range later — what breaks trust is an UNSIGNALED contradiction of the tone you set here.",
-    howToChoose: "Pick the tone that makes the target audience exhale AND proves the concept’s hardest gem can be FELT, not just claimed. The take with all load-bearing legs is the voice the rest can stand on; a high score that splits the audience is a flag, not a winner.",
-    mechanic: "the day-unit ritual + the coach’s chat VOICE. The tone you lock here is the voice the coach speaks in all the way up to Unspoken.",
-    craft: "Craft: the opening is your audition — a tonal microcosm answering what-is-this / who-do-I-care-about / why-keep-going; only an unsignaled tonal contradiction is off-limits.",
+    tldr: "the MOMENTS — a set of scenes in the one world, each a tonal hook. Each moment is a story-door.",
+    whatFor: "Not ‘one scene, three tones, pick one.’ The pilot is a SET of distinct MOMENTS in the same world — the quiet boarding, the warm galley, the fog-bound wheelhouse, the far-shore rail — each carrying its own tone. Each is a door a different reader walks through; each spawns its own story (own cast/coach) downstream.",
+    impact: "This is the hook FACTORY. Each moment that lands is another reader caught — the one who’d bounce off ‘slow and quiet’ is hooked by ‘a long, watchful crossing,’ and both are safe because the SETTING guarantees the floor. More landed moments = a wider net.",
+    howToChoose: "NO PICK — keep the RANGE. Each moment is a story-door, not a candidate to eliminate; the set IS the scrub’s subrange. Test two things: does each moment HOOK (relate) + stay SAFE, and is the set LIGHT-COHESIVE (one world, no moment binding another into one plot, §8.14).",
+    mechanic: "the day-unit + the scrub (the browser’s tonal subrange). Each moment = a scrub-point; together they’re the range the player browses to find their story.",
+    craft: "Craft: tone is built ENVIRONMENTALLY (atmosphere, pacing, no-pressure), and the moments are light-cohesive POINTERS, never binding facts (§8.14 — a cross-ref is a teaser, not canon).",
   },
   destination: {
-    tldr: "the ending you’re walking toward — the deepest version of the relationship",
-    whatFor: "The destination is the full-REL coach: the last, deepest chat the whole game converges to. We author it FIRST, then build the path backward — because the ending is what gives every earlier beat its meaning.",
+    tldr: "the ending THIS story walks toward — its own deepest coach (per-story, §8.14: no shared coach)",
+    whatFor: "The destination is the full-REL coach THIS story reaches — built per chosen moment/story (each story has its OWN coach). Author it FIRST for that story, then build the path backward — the ending is what gives every earlier beat its meaning.",
     impact: "The ending reshapes everything before it: once you know where it lands, you plant the setups backward from it. A destination that feels like a duty handed to you (now perform!) repels; one where the coach becomes an EQUAL — a witness, not a boss — is worth the climb.",
     howToChoose: "Pick the version the audience LONGS for, not the one that sounds impressive. Watch for the trap: a ‘graduation’ that makes the player feel judged or on-the-hook craters relate/safe (the gem flag). The winner makes belonging feel unconditional — cathartic, not hollow.",
     mechanic: "the chat-agent at its apex + the REL ladder + the earned title. Author the BOND (the writing) as what earns intimacy — game-design research couldn’t show that climbing rungs makes intimacy feel earned, so the ladder is the map, never the cause.",
@@ -86,9 +89,9 @@ export const PRIMERS: Record<string, { tldr: string; whatFor: string; impact: st
   },
 };
 export const INTRO: Record<string, string> = {
-  concept: "The cover meets the room. Each candidate is shown the way a player meets it — its two-part title, its world, and the gift it gives on night one. The audience scores relate · feels-safe; the look-ahead legs leave forward notes.",
-  pilot: "One concept, three tones for the night-one scene. The fleet scores which tone lands — and whether the look-ahead legs can now build the struggle the concept left hairline.",
-  destination: "The deepest chat the whole game converges to — the full-REL coach. Authored first; every other build step makes the PATH to it. The fleet asks: does the deepest relationship land? The path-building legs ask: is this coach worth the climb?",
+  concept: "The SETTING meets the room — the surrounding world you’d dwell in, not a story. The audience scores whether it feels safe to LIVE in; the hook-capacity legs score how wide a tonal range it can spawn while holding the floor. The picked setting becomes a campaign that spawns its stories.",
+  pilot: "One world, a SET of moments — each a tonal door into it. No pick: we keep the range (the scrub’s subrange). The fleet scores each moment’s hook (relate/safe + the story it promises); the legs score the story it spawns + the set’s light-cohesiveness.",
+  destination: "The deepest chat THIS story reaches — the full-REL coach (per-story, §8.14: no shared coach). Authored after a moment is chosen; the path is built backward to it. The fleet asks: does the deepest relationship land?",
 };
 
 type Carried = { step: string; lines: string[] }[];
@@ -99,22 +102,18 @@ export const CAMPAIGNS: Record<string, {
   sourceStudy?: Record<string, SourceStudy>;
 }> = {
   ferry: {
-    label: "The Ferry", pick: "ferry",
-    blurb: "a small night ferry that crosses the same dark strait every night, and always comes back — the one hour nobody can ask more of you",
-    steps: { pilot: ferryPilot as unknown as StepData, destination: ferryDestination as unknown as StepData },
+    label: "The Night Ferry", pick: "ferry",
+    blurb: "the night-ferry SETTING — a world that holds whether the strait is glass-calm or running heavy; its moments are the doors its stories spawn from",
+    steps: { pilot: ferryPilot as unknown as StepData },
     carried: {
       pilot: [{
-        step: "① CONCEPT — building THE FERRY",
+        step: "① THE SETTING — the Night Ferry",
         lines: [
-          "won the room (r5.0 / s5.0 — the night crossing = the one hour nobody can ask more of you)",
-          "◆ gem carried: the calm risks a passive struggle — the struggle + mechanics legs came back hairline",
-          "↳ seed: the letting-go must be INTERNAL (leave a day behind unfinished, honestly), not external stakes",
+          "won as a hook-engine: a world that holds calm OR heavy — the widest tonal range of the three settings",
+          "↳ carry its SAFETY FLOOR into every moment (even the held ones stay floor-clipped, no ambush)",
+          "↳ keep the moments LIGHT-COHESIVE — one ferry, no moment binding another (§8.14)",
         ],
       }],
-      destination: [
-        { step: "① CONCEPT — THE FERRY", lines: ["the crossing as the day-unit", "◆ gem: a passive struggle (hairline) → must resolve to an internal letting-go"] },
-        { step: "② PILOT — “Logged at Full Weight” won (5★, every leg load-bearing)", lines: ["a clear-eyed WITNESS, not a mentor", "the “I log you at full weight” tone turned the struggle gem load-bearing", "↳ seed: the coach witnesses without grading — belonging must never read as social demand"] },
-      ],
     },
     // §8.18 SOURCE STUDY — verified by the source-study research (2026-06-14, 22 sources, adversarial).
     // Verdict: no vein beats the Ferry; its iyashikei/keeper vein has the strongest proven track record.

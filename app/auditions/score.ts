@@ -11,7 +11,9 @@ export type SourceStudy = { vein: string; works: { title: string; what: string }
 export const TARGET = ["anxious", "low_worth", "adhd", "iyashikei_fan"];
 export const PLABEL: Record<string, string> = { anxious: "anxious", low_worth: "low self-worth", adhd: "ADHD", iyashikei_fan: "iyashikei fan" };
 export const LEGV: Record<string, number> = { "load-bearing": 1, hairline: 0.5, hollow: 0 };
-export const SW: Record<string, number> = { feelsSafe: 3, destination: 3, struggle: 3, relate: 2, mechanics: 2, cast: 1.5, cast_voice: 1.5, sustain: 1.5, motif_title: 1, rel_ladder: 1.5, reward: 1.5, grows_with_you: 2 };
+export const SW: Record<string, number> = { feelsSafe: 3, destination: 3, struggle: 3, relate: 2, mechanics: 2, cast: 1.5, cast_voice: 1.5, sustain: 1.5, motif_title: 1, rel_ladder: 1.5, reward: 1.5, grows_with_you: 2,
+  // hook-engine legs (settings) + pilot-moment legs
+  tone_breadth: 3, safety_floor: 3, story_spawn: 2.5, persistence: 1.5, cohesiveness: 2 };
 
 export const starStr = (n: number) => "★".repeat(Math.floor(n)) + (n % 1 ? "½" : "") + "☆".repeat(Math.max(0, 5 - Math.ceil(n)));
 export const reason = (r: Read) => r.why || r.expectExperience || r.feeling || "";

@@ -15,7 +15,7 @@ function chips(campaign: string) {
     if (!hasStep(campaign, s.key)) return { key: s.key, done: false, star: 0 };
     const sd = stepDataFor(campaign, s.key)!;
     const st = s.key === "concept"
-      ? star(sd.data, SLATE.concepts.findIndex((x) => x.id === CAMPAIGNS[campaign].pick) + 1)
+      ? star(sd.data, SLATE.settings.findIndex((x) => x.id === CAMPAIGNS[campaign].pick) + 1)
       : topOf(sd.data, sd.items.map((i) => i.title)).star;
     return { key: s.key, done: true, star: st };
   });
@@ -45,7 +45,7 @@ export default function Board() {
       <a href="/auditions/concept" style={{ display: "block", textDecoration: "none", border: `2px solid var(--ink-soft)`, background: paper, padding: "13px 16px", marginBottom: 22, color: ink }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
           <span style={{ fontFamily: "var(--theme-display)", fontSize: 19 }}>The Slate</span>
-          <span style={{ fontSize: 11, color: margin }}>{SLATE.concepts.length} concepts · <b style={{ color: forest }}>{statusCounts.building ?? 0} building</b> · {statusCounts.available ?? 0} in the bank</span>
+          <span style={{ fontSize: 11, color: margin }}>{SLATE.settings.length} settings · <b style={{ color: forest }}>{statusCounts.building ?? 0} building</b> · {statusCounts.available ?? 0} in the bank</span>
         </div>
         <div style={{ fontSize: 11.5, color: soft, marginTop: 3 }}>the master concept ledger — the idea bank every story is born from. open →</div>
       </a>
