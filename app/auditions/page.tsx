@@ -4,6 +4,7 @@
 // every step via the blind fleet. First up: the CONCEPT AUDITION. NOT canon.
 import concepts from "./concepts.json";
 import pilot from "./pilot.json";
+import destination from "./destination.json";
 
 export const metadata = { title: "Auditions — restarted from concept", description: "The audition pipeline, restarted from concept with the blind audience-fleet method." };
 
@@ -47,6 +48,15 @@ const starScore = (relate: number, safe: number, legs: { key: string; cb: string
 };
 const starStr = (n: number) => "★".repeat(Math.floor(n)) + (n % 1 ? "½" : "") + "☆".repeat(Math.max(0, 5 - Math.ceil(n)));
 const StarLine = ({ s }: { s: number }) => (<div style={{ fontSize: 15, color: "#c08a2e", letterSpacing: 1, marginTop: 1 }}>{starStr(s)} <span style={{ fontSize: 10.5, color: margin, letterSpacing: 0 }}>{s.toFixed(1)} build-value</span></div>);
+// ── PHASE 2 · ③ the DESTINATION audition ──
+type DestData = { destinations: { id: string; title: string; facet: string; sample: string }[]; results: Record<string, AudReadP[]>; legs: Record<string, Leg[]> };
+const DEST = destination as DestData;
+const getD = (p: string, i: number) => (DEST.results[p] || []).find((r) => r.index === i);
+const avgD = (i: number, k: "relate" | "feelsSafe") => TARGET.reduce((s, p) => s + (getD(p, i)?.[k] ?? 0), 0) / TARGET.length;
+const spreadD = (i: number, k: "relate" | "feelsSafe") => { const v = TARGET.map((p) => getD(p, i)?.[k] ?? 0); return Math.max(...v) - Math.min(...v); };
+const DLEGS = Object.keys(DEST.legs || {});
+const getLegD = (e: string, i: number) => (DEST.legs[e] || []).find((r) => r.index === i);
+const legMeanD = (i: number) => { const v = DLEGS.map((e) => LEGV[getLegD(e, i)?.canBuild ?? "hollow"]); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : 0; };
 
 const ink = "var(--ink)", soft = "var(--ink-soft)", paper = "var(--paper)", shade = "var(--paper-shade)", forest = "var(--forest)", margin = "var(--margin-ink)", red = "var(--spot-red)";
 
@@ -173,8 +183,47 @@ export default function AuditionsPage() {
           </section>
         );
       })}
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".12em", color: forest, margin: "28px 0 4px" }}>③ THE DESTINATION — the full-REL coach (the product) · concept: <span style={{ color: ink }}>THE FERRY</span></div>
+      <p style={{ fontSize: 12.5, color: soft, margin: "0 0 16px" }}>What the witness coach (the manifest-keeper) becomes at <b>Unspoken</b> — the deepest chat the game converges to. Three takes; same scoring; the legs here are the steps that build the <i>path</i> to it.</p>
+      {DEST.destinations.map((dd, k) => {
+        const i = k + 1, sr = spreadD(i, "relate"), ss = spreadD(i, "feelsSafe"), lm = legMeanD(i);
+        const thr = getD("thrill_seeker", i), repelHeld = !thr?.wouldPlay;
+        const nLB = DLEGS.filter((e) => getLegD(e, i)?.canBuild === "load-bearing").length;
+        const nGem = (DLEGS.length - nLB) + TARGET.filter((p) => (getD(p, i)?.feelsSafe ?? 5) < 4 || (getD(p, i)?.relate ?? 5) < 3).length + (repelHeld ? 0 : 1);
+        return (
+          <section key={dd.id} style={{ border: `2px solid var(--ink-soft)`, background: paper, marginBottom: 16, padding: "14px 16px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
+              <div><div style={{ fontFamily: "var(--theme-display)", fontSize: 20, color: ink }}>{dd.title}</div><div style={{ fontSize: 11, color: margin, fontStyle: "italic" }}>{dd.facet}</div><StarLine s={starScore(avgD(i, "relate"), avgD(i, "feelsSafe"), DLEGS.map((e) => ({ key: e, cb: getLegD(e, i)?.canBuild ?? "hollow" })))} /></div>
+              <div style={{ textAlign: "right", fontSize: 11.5, minWidth: 150 }}>
+                <div>relate <b style={{ color: ink }}>{avgD(i, "relate").toFixed(1)}</b> <span style={{ color: agreeCol(sr), fontSize: 10 }}>· {agree(sr)}</span></div>
+                <div>safe <b style={{ color: ink }}>{avgD(i, "feelsSafe").toFixed(1)}</b> <span style={{ color: agreeCol(ss), fontSize: 10 }}>· {agree(ss)}</span></div>
+                <div style={{ fontSize: 10.5, color: margin }}>legs <b style={{ color: ink }}>{lm.toFixed(1)}</b>/2 · repel {repelHeld ? <span style={{ color: forest }}>held</span> : <span style={{ color: red }}>tapped</span>}</div>
+                <div style={{ fontWeight: 700, marginTop: 2, fontSize: 10.5 }}><span style={{ color: forest }}>↑{nLB} reinforce</span> · <span style={{ color: "#c08a2e" }}>◆{nGem} gems</span></div>
+              </div>
+            </div>
+            <p style={{ fontSize: 12, color: ink, margin: "8px 0", lineHeight: 1.6, fontStyle: "italic" }}>{dd.sample}</p>
+            <div style={{ borderTop: `1px solid var(--ink-soft)`, paddingTop: 8, fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: margin, fontFamily: "var(--theme-body)" }}>↘ THE AUDIENCE · WHY</div>
+            <div style={{ marginTop: 5, display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: "7px 14px" }}>
+              {TARGET.map((p) => { const r = getD(p, i); if (!r) return null; return (
+                <div key={p} style={{ fontSize: 11, color: soft, lineHeight: 1.45, borderLeft: `2px solid var(--ink-soft)`, paddingLeft: 8 }}>
+                  <div><b style={{ color: margin }}>{PLABEL[p]}</b> <span style={{ color: ink, fontWeight: 700 }}>r{r.relate}/s{r.feelsSafe}</span></div>
+                  <div style={{ color: ink }}>{r.why}</div>
+                </div> ); })}
+            </div>
+            <div style={{ borderTop: `1px solid var(--ink-soft)`, marginTop: 8, paddingTop: 8, fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: margin, fontFamily: "var(--theme-body)" }}>↗ THE LEGS · FORWARD NOTES</div>
+            <div style={{ marginTop: 6, display: "grid", gap: 7 }}>
+              {DLEGS.map((e) => { const r = getLegD(e, i); if (!r) return null; const col = legColor(r.canBuild); return (
+                <div key={e} style={{ fontSize: 11, lineHeight: 1.5, borderLeft: `2px solid ${col}`, paddingLeft: 8 }}>
+                  <span style={{ fontFamily: "var(--theme-body)", fontWeight: 700, color: col }}>{labelize(e)}</span> <span style={{ fontSize: 9, color: col, border: `1px solid ${col}`, borderRadius: 3, padding: "0 5px", marginLeft: 6 }}>{r.canBuild}</span>
+                  <div style={{ color: ink, marginTop: 1 }}>{r.explanation}</div>
+                  <div style={{ color: margin, fontStyle: "italic", fontSize: 10.5 }}>↳ seed: {r.seed}</div>
+                </div> ); })}
+            </div>
+          </section>
+        );
+      })}
       <div style={{ border: `1px dashed var(--ink-soft)`, background: shade, padding: "11px 14px", fontSize: 12, color: margin, marginTop: 8 }}>
-        <b style={{ color: forest }}>NEXT</b> — no tone is &ldquo;picked&rdquo;; their profiles carry forward. The wry-affirming <i>witness</i> strength (all legs load-bearing) feeds the <b>DESTINATION</b> + the <b>STRUGGLE</b> (the internal letting-go, logged at full weight); the warm tone&apos;s gem (belonging read as a social demand) is the fix to mine when those beats are authored. The next step&apos;s audition fills in here.
+        <b style={{ color: forest }}>NEXT</b> — the destination resolves to a <i>witness who becomes an equal</i> (<b>The Open Page ★★★★★</b> + <b>Same as Ever</b>&apos;s unconditional presence), explicitly <b>not</b> a mentor handing you a duty (<i>The Pen Is Yours</i>&apos; gem — it reads as a performance test). Carried forward: <b>pace the inversion</b> (don&apos;t dump his history) and make the path <i>yearn</i> for the quiet. The <b>STRUGGLE</b> audition is next — the internal letting-go, logged at full weight.
       </div>
     </main>
   );
