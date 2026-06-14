@@ -234,56 +234,67 @@ function OneScrubber({ g, scenes }: { g: Group; scenes: string[] }) {
   );
 }
 
-// THE STORY BUILD — the picked story's own page (carried over from the audition scrubber). One story,
-// no tabs, no picking: scrub the crossing (the world-moments) and the SUBRANGE shows the BEATS that can
-// live at each — the cozy ↔ intense content (a tender beat inside the storm, a charged one in the calm).
-type StoryT = { id: string; env: string[]; subrange?: { cozy: string; intense: string }[] };
-export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] }) {
-  const [dr, setDr] = useState(0.0);
+// a reusable scrub control (pointer/touch drag + keyboard); the markers/handle live in the render.
+function useScrub(initial: number) {
+  const [v, setV] = useState(initial);
   const box = useRef<HTMLDivElement>(null);
-  const drag = useRef<{ x: number; dr: number } | null>(null);
-  const ph = phaseOf(dr);
+  const drag = useRef<{ x: number; v: number } | null>(null);
+  const bind = {
+    ref: box, role: "slider" as const, "aria-valuemin": 0, "aria-valuemax": 100, "aria-valuenow": Math.round(v * 100), tabIndex: 0,
+    onPointerDown: (e: React.PointerEvent) => { box.current?.setPointerCapture(e.pointerId); drag.current = { x: e.clientX, v }; },
+    onPointerMove: (e: React.PointerEvent) => { if (!drag.current || !box.current) return; const w = box.current.offsetWidth || 1; setV(clamp(drag.current.v + (e.clientX - drag.current.x) / w, 0, 1)); },
+    onPointerUp: (e: React.PointerEvent) => { drag.current = null; try { box.current?.releasePointerCapture(e.pointerId); } catch {} },
+    onPointerCancel: (e: React.PointerEvent) => { drag.current = null; try { box.current?.releasePointerCapture(e.pointerId); } catch {} },
+    onKeyDown: (e: React.KeyboardEvent) => { if (e.key === "ArrowRight" || e.key === "ArrowUp") { setV((d) => clamp(d + 0.05, 0, 1)); e.preventDefault(); } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") { setV((d) => clamp(d - 0.05, 0, 1)); e.preventDefault(); } },
+  };
+  return { v, bind };
+}
+
+// THE STORY BUILD — the picked story's own page. TWO scrubbers: (1) the world-moment, frozen in time
+// (the art); (2) the SUBRANGE — drag the tone (cozy · warm · intense) and read the story at this moment.
+type Tone = { label: string; text: string };
+type StoryT = { id: string; env: string[]; subrange?: Tone[][] };
+export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] }) {
+  const scene = useScrub(0.0);   // the world-moment (the weather)
+  const tone = useScrub(0.5);    // the subrange (the story's tone) — default the warm middle
+  const ph = phaseOf(scene.v);
   const variant = VARIANT_OF(story.id);
-  const beat = story.subrange?.[ph];
-  const down = (e: React.PointerEvent) => { box.current?.setPointerCapture(e.pointerId); drag.current = { x: e.clientX, dr }; };
-  const move = (e: React.PointerEvent) => { if (!drag.current || !box.current) return; const w = box.current.offsetWidth || 1; setDr(clamp(drag.current.dr + (e.clientX - drag.current.x) / w, 0, 1)); };
-  const up = (e: React.PointerEvent) => { drag.current = null; try { box.current?.releasePointerCapture(e.pointerId); } catch {} };
-  const key = (e: React.KeyboardEvent) => { if (e.key === "ArrowRight" || e.key === "ArrowUp") { setDr((d) => clamp(d + 0.05, 0, 1)); e.preventDefault(); } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") { setDr((d) => clamp(d - 0.05, 0, 1)); e.preventDefault(); } };
+  const tones = story.subrange?.[ph] ?? [];
+  const last = Math.max(1, tones.length - 1);
+  const ti = tones.length ? Math.min(tones.length - 1, Math.round(tone.v * last)) : 0;
+  const beat = tones[ti];
+  const hot = (l?: string) => (l === "intense" ? "var(--spot-red)" : forest);
   return (
     <div>
-      {/* the world-moment — art + scrub (the surrounding at this point in the crossing) */}
-      <div ref={box} role="slider" aria-label="the crossing — drag to scrub" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(dr * 100)} tabIndex={0}
-        onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} onKeyDown={key}
+      {/* SCRUBBER 1 — the world-moment, frozen: the art (drag to move through the crossing) */}
+      <div {...scene.bind} aria-label="the crossing — drag to scrub the world-moment"
         style={{ border: `2px solid ${forest}`, background: paper, padding: "10px 12px 12px", touchAction: "pan-y", cursor: "ew-resize", userSelect: "none", WebkitUserSelect: "none" }}>
-        <pre style={{ ...mono, fontSize: 12.5, color: ink, background: paper, border: `1.5px solid ${ink}`, padding: "8px 6px", margin: 0, textAlign: "center", overflow: "hidden" }}>{art(variant, dr).join("\n")}</pre>
+        <pre style={{ ...mono, fontSize: 12.5, color: ink, background: paper, border: `1.5px solid ${ink}`, padding: "8px 6px", margin: 0, textAlign: "center", overflow: "hidden" }}>{art(variant, scene.v).join("\n")}</pre>
         <div style={{ position: "relative", height: 9, background: shade, border: `1.5px solid ${ink}`, margin: "10px 0 0" }}>
-          <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${dr * 100}%`, background: forest }} />
+          <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${scene.v * 100}%`, background: forest }} />
           {[0.2, 0.4, 0.6, 0.8].map((t) => <div key={t} style={{ position: "absolute", left: `${t * 100}%`, top: -1, bottom: -1, width: 1, background: "var(--ink-soft)" }} />)}
-          <div style={{ position: "absolute", left: `${dr * 100}%`, top: -4, width: 5, height: 15, background: ink, transform: "translateX(-50%)", boxShadow: "1px 1px 0 rgba(0,0,0,.2)" }} />
+          <div style={{ position: "absolute", left: `${scene.v * 100}%`, top: -4, width: 5, height: 15, background: ink, transform: "translateX(-50%)", boxShadow: "1px 1px 0 rgba(0,0,0,.2)" }} />
         </div>
-        <div style={{ textAlign: "center", fontSize: 9, color: margin, marginTop: 3, letterSpacing: ".03em" }}>↔ drag to move through the crossing</div>
+        <div style={{ textAlign: "center", fontSize: 9, color: margin, marginTop: 3, letterSpacing: ".03em" }}>↔ the crossing · <span style={{ color: forest, fontWeight: 700 }}>{scenes[ph]}</span>, frozen</div>
       </div>
-      {/* the surrounding at this moment */}
-      <div style={{ fontSize: 11, color: soft, fontStyle: "italic", margin: "9px 2px 0", paddingLeft: 4 }}><span style={{ color: forest, fontStyle: "normal", fontWeight: 700, letterSpacing: ".04em" }}>{scenes[ph]}</span> — {story.env[ph]}</div>
-      {/* THE BEATS — the main event: what content can live at this moment, cozy ↔ intense */}
+      <div style={{ fontSize: 11, color: soft, fontStyle: "italic", margin: "8px 2px 0", paddingLeft: 4 }}>{story.env[ph]}</div>
+
+      {/* SCRUBBER 2 — the SUBRANGE: drag the tone (the whole box grabs), read the story at this moment */}
       {beat && (
-        <div style={{ border: `2px solid ${forest}`, background: shade, padding: "11px 13px", marginTop: 11 }}>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 8 }}>↕ WHAT CONTENT CAN LIVE HERE — the subrange (a beat can run with or against the surrounding)</div>
-          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 9, marginBottom: 9 }}>
-            <span style={{ color: forest, fontWeight: 700 }}>cozy</span>
-            <div style={{ flex: 1, height: 4, background: `linear-gradient(90deg, ${forest}, var(--spot-red))`, opacity: 0.55 }} />
-            <span style={{ color: "var(--spot-red)", fontWeight: 700 }}>intense</span>
+        <div {...tone.bind} aria-label="the subrange — drag to scrub the tone"
+          style={{ border: `2px solid ${forest}`, background: shade, padding: "11px 13px 13px", marginTop: 12, touchAction: "pan-y", cursor: "ew-resize", userSelect: "none", WebkitUserSelect: "none" }}>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 9 }}>↕ THE SUBRANGE — the story at this moment <span style={{ color: margin, fontWeight: 400 }}>· drag the tone</span></div>
+          {/* the tone bar — gradient + a marker per tone + the handle */}
+          <div style={{ position: "relative", height: 16 }}>
+            <div style={{ position: "absolute", left: 0, right: 0, top: 6, height: 5, background: `linear-gradient(90deg, ${forest}, var(--spot-red))`, opacity: 0.6, border: `1px solid ${ink}` }} />
+            {tones.map((_, i) => <div key={i} style={{ position: "absolute", left: `${(i / last) * 100}%`, top: 3, bottom: 3, width: 1, background: ink, transform: "translateX(-50%)" }} />)}
+            <div style={{ position: "absolute", left: `${(ti / last) * 100}%`, top: 0, width: 7, height: 16, background: ink, transform: "translateX(-50%)", boxShadow: "1px 1px 0 rgba(0,0,0,.25)" }} />
           </div>
-          <div style={{ display: "grid", gap: 10, minHeight: 88 }}>
-            <div style={{ borderLeft: `3px solid ${forest}`, paddingLeft: 10 }}>
-              <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, color: forest, letterSpacing: ".08em" }}>◂ COZY BEAT</div>
-              <div style={{ fontSize: 13.5, color: ink, lineHeight: 1.5 }}>{beat.cozy}</div>
-            </div>
-            <div style={{ borderLeft: `3px solid var(--spot-red)`, paddingLeft: 10 }}>
-              <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, color: "var(--spot-red)", letterSpacing: ".08em" }}>INTENSE BEAT ▸</div>
-              <div style={{ fontSize: 13.5, color: ink, lineHeight: 1.5 }}>{beat.intense}</div>
-            </div>
+          <div style={{ display: "flex", justifyContent: "space-between", fontSize: 9.5, margin: "3px 0 10px" }}>
+            {tones.map((t, i) => <span key={i} style={{ color: i === ti ? hot(t.label) : margin, fontWeight: i === ti ? 700 : 400, letterSpacing: ".04em" }}>{t.label}</span>)}
           </div>
+          {/* the story at the current tone */}
+          <div style={{ fontSize: 14.5, color: ink, lineHeight: 1.55, minHeight: 68, borderLeft: `3px solid ${hot(beat.label)}`, paddingLeft: 12 }}>{beat.text}</div>
         </div>
       )}
     </div>

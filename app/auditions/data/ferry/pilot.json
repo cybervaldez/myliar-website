@@ -94,26 +94,76 @@
    "audienceServe": "Addresses ADHD patterns by reframing the overwhelming world as a force that carries, not crushes.",
    "wbRead": "Implies stories of acceptance, with a cast focused on letting go of control within chaos.",
    "subrange": [
-    {
-     "cozy": "below in the galley, the kettle on — the deep glass-black and quiet past the porthole",
-     "intense": "alone at the stern, just you and the black water, the lamps small behind you"
-    },
-    {
-     "cozy": "the cook bracing the pot, your cup rocking; nothing asked of you yet",
-     "intense": "on deck as the first long swell lifts the hull — your hands already gripping the rail"
-    },
-    {
-     "cozy": "the four of you wedged in the galley, tea and the worst of it shut outside",
-     "intense": "out in it, the deck heaving — the Deckhand’s hand: “stop steering. let her carry you.”"
-    },
-    {
-     "cozy": "the worst gone — dry socks, the manifest-keeper logging the night, quiet",
-     "intense": "still white-knuckled long after you needed to be — learning, slowly, to unclench"
-    },
-    {
-     "cozy": "dawn in the galley, the fifth bowl set, the deep flat and bright",
-     "intense": "alone at the bow as the light comes — letting the held thing go, at last, over the side"
-    }
+    [
+     {
+      "label": "cozy",
+      "text": "below in the galley, the kettle on — the deep glass-black and quiet past the porthole"
+     },
+     {
+      "label": "warm",
+      "text": "on the warm side of the wheelhouse, watching the dark water slide past"
+     },
+     {
+      "label": "intense",
+      "text": "alone at the stern, just you and the black water, the lamps small behind you"
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "the cook bracing the pot, your cup rocking; nothing asked of you yet"
+     },
+     {
+      "label": "warm",
+      "text": "at the rail with the Deckhand, feeling the swell come up under you"
+     },
+     {
+      "label": "intense",
+      "text": "on deck as the first long swell lifts the hull — your hands already gripping the rail"
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "the four of you wedged in the galley, tea and the worst of it shut outside"
+     },
+     {
+      "label": "warm",
+      "text": "in the wheelhouse doorway, half in, half out, watching the Pilot hold the wheel"
+     },
+     {
+      "label": "intense",
+      "text": "out in it, the deck heaving — the Deckhand’s hand: “stop steering. let her carry you.”"
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "the worst gone — dry socks, the manifest-keeper logging the night, quiet"
+     },
+     {
+      "label": "warm",
+      "text": "on deck as it eases, the Deckhand coiling line beside you, not saying much"
+     },
+     {
+      "label": "intense",
+      "text": "still white-knuckled long after you needed to be — learning, slowly, to unclench"
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "dawn in the galley, the fifth bowl set, the deep flat and bright"
+     },
+     {
+      "label": "warm",
+      "text": "at the rail as the light comes, the far shore a line, the crew quiet around you"
+     },
+     {
+      "label": "intense",
+      "text": "alone at the bow as the light comes — letting the held thing go, at last, over the side"
+     }
+    ]
    ]
   }
  ],
