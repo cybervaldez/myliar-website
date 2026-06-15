@@ -692,18 +692,50 @@
    "content": {
     "cozy": {
      "focal": "the Cook",
-     "coachVoice": "The Cook's presence is a quiet anchor, their voice a low murmur that never asks for a reply. They communicate through action—the slide of a warm bowl, a steady hand on the kettle—letting the shared silence hold more than words could. Their care is a simple, observable fact, offered without condition or expectation.",
+     "coachVoice": "The Cook's voice is one of quiet, physical presence. They witness through action—the steadying of a pot, the silent offering of a bowl. Their language is gesture, communicating safety and permission to rest without the burden of words.",
      "sampleLines": [
-      "Eat when you're ready.",
-      "She'll hold.",
-      "The kettle's on again."
+      "Mind the lurch.",
+      "The kettle's always on.",
+      "It'll pass."
      ],
      "beats": [
-      "The Cook moves with the ship's first sways, lighting a weighted lamp on the galley table. Its small, steady pool of light doesn't flicker as the sea begins to stir outside.",
-      "During the worst of the storm, the Cook wordlessly passes around thick, mismatched wool socks from a locker, placing a dry pair beside your hand without asking if you need them.",
-      "At dawn, the Cook takes the finished and untouched bowls with the same quiet nod, replacing them with two small cups of a clear, steaming broth that smells of ginger and salt."
+      "The Cook ladles steaming broth into two bowls. One is set before you. The other is placed by the other passenger, who just nods. No words are needed.",
+      "As the ship pitches, the Cook takes a thick, woollen blanket from a sea-locker and drapes it over your shoulders before turning to brace a rattling cabinet.",
+      "After the storm, the Cook methodically wipes down the steel counter. They pause, looking out the porthole at the settling sea, a shared moment of quiet."
      ],
-     "narrowedBy": "The iyashikei genre's focus on quiet witness and the audience's need for low-load presence pre-decided that care must be shown through silent, steady action, not conversation."
+     "narrowedBy": "The convergence of the iyashikei genre's value on restraint ('ma') and the audience's state of overwhelm pre-decided that care must be expressed through silent, non-demanding gestures rather than words.",
+     "vet": {
+      "perExpert": [
+       {
+        "name": "Mara Oduya",
+        "honored": "yes",
+        "note": "The Cook's steady, physical presence perfectly embodies the 'calm first' principle of co-regulation."
+       },
+       {
+        "name": "Devin Sato",
+        "honored": "yes",
+        "note": "The content correctly establishes a single, warm focal character, requiring no decisions or state-tracking for comfort."
+       },
+       {
+        "name": "Lena Hart",
+        "honored": "yes",
+        "note": "This is a prime example of witnessing through quiet competence; care is shown through action, not coaching."
+       },
+       {
+        "name": "Sam Reyes",
+        "honored": "yes",
+        "note": "Care is delivered unconditionally through gestures like the blanket and broth, asking nothing in return."
+       },
+       {
+        "name": "Haruki Sone",
+        "honored": "yes",
+        "note": "The beats feel like self-contained vignettes, using the atmospheric strait as a backdrop for warmth, not a threat."
+       }
+      ],
+      "safe": "safe",
+      "fixes": [],
+      "oneLine": "The writer perfectly captured the brief's 'calm first' principle through quiet, unconditional, and witnessing action."
+     }
     }
    }
   }

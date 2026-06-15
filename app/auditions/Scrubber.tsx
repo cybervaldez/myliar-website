@@ -439,7 +439,7 @@ type CastVerdict = { id: string; cohesion: string; contrast: string; safe: strin
 type CastAudition = { sets: CastSet[]; perSet: CastVerdict[]; winner: string; winnerName: string; why: string; runnerUp: string; runnerUpGem: string };
 type MirrorCond = { id: string; label: string; from: string };
 type MirrorT = { kind: string; premise: string; conditions: MirrorCond[]; perTone: { tone: string; text: string }[]; vet: { perCondition: { id: string; met: string; note: string }[]; perTone: { tone: string; holds: string; note: string }[]; safe: string; oneLine: string } };
-type ToneContent = { focal: string; coachVoice: string; sampleLines: string[]; beats: string[]; narrowedBy: string };
+type ToneContent = { focal: string; coachVoice: string; sampleLines: string[]; beats: string[]; narrowedBy: string; vet?: { perExpert: { name: string; honored: string; note: string }[]; safe: string; fixes: string[]; oneLine: string } };
 export type ToneT = { audience: string; experts: Expert[]; framework: Framework; vet: ExpertVet; characters: Character[]; charPrompts: string[]; audit: SubAudit; ambientName: string; ambientBase: string; castAudition?: CastAudition; mirror?: MirrorT; content?: { [tone: string]: ToneContent } };
 const TONE_C: Record<string, string> = { cozy: "#c0795c", warm: "#6b8ba6", intense: "#c98a3e" };
 const auditGood = (v: string) => ["cohesive", "distinct", "safe", "yes"].includes(v);
@@ -590,6 +590,11 @@ export function ToneBuild({ d }: { d: ToneT }) {
           <div style={{ marginTop: 5 }}><b>beats:</b></div>
           {ct.beats.map((b, i) => <div key={i} style={{ color: soft, marginLeft: 8 }}>· {b}</div>)}
           <div style={{ marginTop: 6, paddingTop: 5, borderTop: `1px solid ${soft}`, fontSize: 10, color: margin, fontStyle: "italic" }}>↳ the factors narrowed this: {ct.narrowedBy}</div>
+          {ct.vet && (
+            <div style={{ marginTop: 5, fontSize: 9.5, color: margin }}>
+              <span style={{ fontFamily: "var(--theme-body)", fontWeight: 700, letterSpacing: ".05em", color: forest }}>✓ THE EXPERTS WEIGH IN</span> {ct.vet.perExpert.filter((p) => p.honored === "yes").length}/{ct.vet.perExpert.length} honored · <b style={{ color: ct.vet.safe === "safe" ? forest : red }}>{ct.vet.safe}</b> · {ct.vet.fixes.length ? `fixes: ${ct.vet.fixes.join("; ")}` : "no fixes"} <span style={{ fontStyle: "italic" }}>— {ct.vet.oneLine}</span>
+            </div>
+          )}
         </div>
       ))}
       {!d.content && <div style={{ fontSize: 10, color: margin, marginTop: 11, fontStyle: "italic", lineHeight: 1.5 }}>↓ this set passes the floor. The per-tone CONTENT (chat → beats) is built <b>cozy-first</b> (next).</div>}
