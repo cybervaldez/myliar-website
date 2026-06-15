@@ -85,6 +85,12 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
               </div>
             )}
           </div>
+          {/* THE CAST — auditioned across the WHOLE range (the ensemble as a SET), so selections cohere */}
+          <div style={{ borderLeft: `2px dashed ${forest}`, height: 12, margin: "0 0 0 16px" }} />
+          <div style={{ border: `2px solid ${forest}`, background: paper, padding: "11px 15px", marginBottom: 4 }}>
+            <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>④ THE CAST — across the WHOLE range (the ensemble, as a SET)</div>
+            <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5 }}>NOT one subrange at a time: the crew is auditioned across ALL tones together — each member · their identity + voice · how they present at cozy / warm / intense — so the reader's <b>selections cohere</b> (the cozy Cook and the intense Deckhand are one crew). <b>Cohesion</b> (one ensemble) + <b>contrast</b> (each tone's lead distinct). The chatbot lives here; reviewed by the <b>/writers-room</b>. THEN the per-tone branches below build the chat + beats — starting cozy.</div>
+          </div>
           {subranges.map((tone, i) => {
             const active = i === 0;
             const col = active ? forest : "var(--ink-soft)";
@@ -96,9 +102,9 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
                     <span style={{ fontSize: 13.5 }}><b style={{ color: active ? forest : margin, textTransform: "capitalize" }}>{tone}</b> <span style={{ fontSize: 11, color: margin }}>subrange</span></span>
                     <span style={{ fontSize: 10.5, color: active ? forest : margin, fontWeight: active ? 700 : 400, whiteSpace: "nowrap" }}>{active ? "● START — the floor" : "○ later"}</span>
                   </div>
-                  <div style={{ fontSize: 11, color: soft, marginTop: 4 }}>the mood <span style={{ color: margin }}>→</span> the cast <span style={{ color: margin }}>→</span> the chat <span style={{ color: margin }}>→</span> the beats{active ? "" : <span style={{ color: margin, fontStyle: "italic" }}> · after the cozy branch ships</span>}</div>
+                  <div style={{ fontSize: 11, color: soft, marginTop: 4 }}>the mood (this tone) <span style={{ color: margin }}>→</span> the chat <span style={{ color: margin }}>→</span> the beats{active ? "" : <span style={{ color: margin, fontStyle: "italic" }}> · after the cozy branch ships</span>} <span style={{ color: margin, fontStyle: "italic" }}>(using the shared cast)</span></div>
                   {pt && <div style={{ fontSize: 9.5, color: pt.holds === "yes" ? forest : amber, fontStyle: "italic", marginTop: 3 }}>{pt.holds === "yes" ? "✓" : "⚑"} {pt.note}</div>}
-                  {active && <div style={{ fontSize: 11, color: forest, marginTop: 5, fontWeight: 700 }}>→ lock this tone's mood, then the cast (next)</div>}
+                  {active && <div style={{ fontSize: 11, color: forest, marginTop: 5, fontWeight: 700 }}>→ lock this tone's mood + its chat (next)</div>}
                 </div>
               </div>
             );
