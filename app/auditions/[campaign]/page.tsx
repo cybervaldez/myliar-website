@@ -37,9 +37,10 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
 
   // after the shared TRUNK (setting · range · mood) the pipeline BRANCHES per SUBRANGE (the tone) —
   // each tone is its own cast + chat + beats (the cast is tone-dependent). Start with the coziest.
-  const pilotRaw = c.steps.pilot as unknown as { picked?: string; scrubGroups: { id: string; subrange?: { label: string }[][] }[] } | undefined;
+  const pilotRaw = c.steps.pilot as unknown as { picked?: string; scrubGroups: { id: string; subrange?: { label: string }[][]; subrangeAudit?: { cohesion: string; contrast: string; safeFloor: string; perTone: { tone: string; holds: string; note: string }[]; oneLine: string } }[] } | undefined;
   const pickedStory = pilotRaw?.scrubGroups?.find((g) => g.id === pilotRaw.picked);
   const subranges = (pickedStory?.subrange?.[0] ?? []).map((t) => t.label);
+  const audit = pickedStory?.subrangeAudit;
 
   return (
     <main style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
@@ -75,12 +76,19 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
         <>
           <div style={{ borderLeft: `2px dashed ${forest}`, height: 14, margin: "0 0 0 16px" }} />
           <div style={{ border: `2px solid ${forest}`, background: "var(--paper-shade)", padding: "11px 15px", marginBottom: 4 }}>
-            <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>⑃ THE SUBRANGE BRANCHES — here the pipeline forks</div>
-            <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5 }}>the trunk above is the SHARED foundation — the setting · the range/metaphor · the colour-<b>language</b> (the base palette · the characters' colours · the prose rules · the rule that the palette GROWS with the tone). From here each <b>tone LOCKS its own mood</b> (which colours are active · the focal coach · the felt intensity), then runs its own <b>cast → chat → beats</b> — the cast is tone-dependent (the chatbot lives here). <b>Build the coziest first</b> (the floor); the rest extrapolate up.</div>
+            <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>⑃ THE SUBRANGE AUDITION — the fork (audition the 3 tones as a SET)</div>
+            <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5 }}>the trunk above is the SHARED colour-<b>language</b>. The fork is itself an AUDITION: at one <b>world-moment</b> (the surrounding held constant), the 3 tones (cozy · warm · intense) are the candidates — do they <b>COHERE</b> (one world / one metaphor) AND <b>CONTRAST</b> (genuinely distinct, not three samey shades), each staying <b>SAFE</b>? Then each tone branch runs its own <b>mood → cast → chat → beats</b> — itself an audition (the cast is tone-dependent; the chatbot lives here). <b>Build the coziest first</b>.</div>
+            {audit && (
+              <div style={{ fontSize: 10.5, color: ink, marginTop: 7, paddingTop: 6, borderTop: "1px solid var(--ink-soft)", lineHeight: 1.5 }}>
+                <span style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".06em", color: forest }}>🎭 TONAL VET</span> cohesion <b style={{ color: audit.cohesion === "cohesive" ? forest : amber }}>{audit.cohesion}</b> · contrast <b style={{ color: audit.contrast === "distinct" ? forest : amber }}>{audit.contrast}</b> · floor <b style={{ color: audit.safeFloor === "safe" ? forest : red }}>{audit.safeFloor}</b>
+                <div style={{ color: soft, fontStyle: "italic", marginTop: 2 }}>↳ {audit.oneLine}</div>
+              </div>
+            )}
           </div>
           {subranges.map((tone, i) => {
             const active = i === 0;
             const col = active ? forest : "var(--ink-soft)";
+            const pt = audit?.perTone?.find((p) => p.tone === tone);
             return (
               <div key={tone} style={{ marginLeft: 24, borderLeft: `2px ${active ? "solid" : "dashed"} ${col}`, paddingLeft: 14, marginBottom: 8 }}>
                 <div style={{ border: `2px ${active ? "solid" : "dashed"} ${col}`, background: active ? paper : "transparent", padding: "10px 14px", opacity: active ? 1 : 0.7 }}>
@@ -89,6 +97,7 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
                     <span style={{ fontSize: 10.5, color: active ? forest : margin, fontWeight: active ? 700 : 400, whiteSpace: "nowrap" }}>{active ? "● START — the floor" : "○ later"}</span>
                   </div>
                   <div style={{ fontSize: 11, color: soft, marginTop: 4 }}>the mood <span style={{ color: margin }}>→</span> the cast <span style={{ color: margin }}>→</span> the chat <span style={{ color: margin }}>→</span> the beats{active ? "" : <span style={{ color: margin, fontStyle: "italic" }}> · after the cozy branch ships</span>}</div>
+                  {pt && <div style={{ fontSize: 9.5, color: pt.holds === "yes" ? forest : amber, fontStyle: "italic", marginTop: 3 }}>{pt.holds === "yes" ? "✓" : "⚑"} {pt.note}</div>}
                   {active && <div style={{ fontSize: 11, color: forest, marginTop: 5, fontWeight: 700 }}>→ lock this tone's mood, then the cast (next)</div>}
                 </div>
               </div>

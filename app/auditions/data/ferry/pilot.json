@@ -356,6 +356,40 @@
      ],
      "example": "Below, the galley holds its amber pool of lamp-light against the cold dark past the porthole. The kettle ticks; steam beads the glass. Out there the deep slides by, slate and still, and asks nothing of you."
     }
+   },
+   "subrangeAudit": {
+    "tones": [
+     "cozy",
+     "warm",
+     "intense"
+    ],
+    "focal": [
+     "the Cook",
+     "the Pilot",
+     "the Deckhand"
+    ],
+    "cohesion": "cohesive",
+    "contrast": "distinct",
+    "safeFloor": "safe",
+    "perTone": [
+     {
+      "tone": "COZY",
+      "holds": "yes",
+      "note": "Provides a classic iyashikei experience of buffered safety and communal warmth."
+     },
+     {
+      "tone": "WARM",
+      "holds": "yes",
+      "note": "Effectively bridges the gap between shelter and storm by focusing on trust and witnessing competence."
+     },
+     {
+      "tone": "INTENSE",
+      "holds": "yes",
+      "note": "Directly and safely engages the core metaphor through guided, embodied surrender."
+     }
+    ],
+    "fixes": [],
+    "oneLine": "The set offers three distinct and safe pathways to the core metaphor, scaling perfectly from indirect comfort to direct catharsis."
    }
   }
  ],
