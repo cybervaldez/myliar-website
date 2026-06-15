@@ -310,12 +310,13 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
         <div style={{ textAlign: "center", fontSize: 9, color: margin, marginTop: 5, letterSpacing: ".03em" }}>↔ drag the crossing · inside each scene, the tone runs <span style={{ color: forest }}>cozy</span> → <span style={{ color: "var(--spot-red)" }}>intense</span></div>
       </div>
 
-      {/* the world-moment + the story at the current tone */}
+      {/* the world-moment + an EXAMPLE of the kind of scene at the current tone (NOT the final story) */}
       <div style={{ fontSize: 11, color: soft, fontStyle: "italic", margin: "10px 2px 0", paddingLeft: 2 }}><span style={{ color: forest, fontStyle: "normal", fontWeight: 700, letterSpacing: ".04em" }}>{scenes[seg]}</span> — {story.env[seg]}</div>
+      <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", margin: "7px 2px 0", paddingLeft: 2 }}>↳ EXAMPLE scenes — variations to feel the tone &amp; range here; not the authored story (the real beats come later).</div>
       {beat && (
-        <div style={{ border: `2px solid ${hot(beat.label)}`, background: shade, padding: "11px 13px", marginTop: 9 }}>
+        <div style={{ border: `2px solid ${hot(beat.label)}`, background: shade, padding: "11px 13px", marginTop: 7 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 7 }}>
-            <span style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: hot(beat.label) }}>↕ {beat.label.toUpperCase()} — the story here</span>
+            <span style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: hot(beat.label) }}>↕ {beat.label.toUpperCase()} — an example scene</span>
             <span style={{ fontSize: 9, color: margin }}>{tones.map((t, i) => <span key={i} style={{ color: i === ti ? hot(t.label) : margin, fontWeight: i === ti ? 700 : 400 }}>{i ? " · " : ""}{t.label}</span>)}</span>
           </div>
           <div style={{ fontSize: 14.5, color: ink, lineHeight: 1.55, minHeight: 50 }}>{beat.text}</div>
@@ -380,7 +381,7 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
               <span style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "62%", background: A.accent, opacity: 0.85 }} />
             </span>
           </div>
-          <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginTop: 6 }}>the dialogue box · choices · the stat bar — all from the ambient (base · ink · accent); the speaker’s name takes the character’s colour.</div>
+          <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginTop: 6 }}>the dialogue box · choices · the stat bar — all from the ambient (base · ink · accent); the speaker’s name takes the character’s colour. <span style={{ color: "var(--spot-red)" }}>The line is an example.</span></div>
         </div>
       )}
     </div>
