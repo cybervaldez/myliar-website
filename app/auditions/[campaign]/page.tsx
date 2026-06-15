@@ -41,6 +41,8 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
   const pickedStory = pilotRaw?.scrubGroups?.find((g) => g.id === pilotRaw.picked);
   const subranges = (pickedStory?.subrange?.[0] ?? []).map((t) => t.label);
   const audit = pickedStory?.subrangeAudit;
+  // the TARGET AGE — set at the concept, the PRIOR every downstream step narrows to (the dialed tone overrides it)
+  const targetAge = (c.steps.pilot as unknown as { targetAge?: { range: number[]; center: number; band: string; lifeContext: string; register: string; note: string } } | undefined)?.targetAge;
 
   return (
     <main style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
@@ -50,7 +52,15 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
       </div>
       <h1 style={{ fontSize: 28, margin: "0 0 2px", color: ink }}>{c.label}</h1>
       <p style={{ fontSize: 12.5, color: soft, lineHeight: 1.55, margin: "0 0 6px" }}>{c.blurb}</p>
-      <p style={{ fontSize: 11, color: margin, margin: "0 0 20px" }}>born from <a href="/auditions/concept" style={{ color: forest }}>the slate</a> · a shared TRUNK (setting · range · mood), then it BRANCHES per tone — each tone its own cast · chat · beats. Each step carries the last's experts forward.</p>
+      <p style={{ fontSize: 11, color: margin, margin: "0 0 12px" }}>born from <a href="/auditions/concept" style={{ color: forest }}>the slate</a> · a shared TRUNK (setting · range · mood), then it BRANCHES per tone — each tone its own cast · chat · beats. Each step carries the last's experts forward.</p>
+
+      {targetAge && (
+        <div style={{ border: `2px solid ${forest}`, background: "var(--paper-shade)", padding: "9px 13px", margin: "0 0 20px" }}>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".07em", color: forest }}>🎯 TARGET AGE — the PRIOR the whole flow narrows to (set at the concept)</div>
+          <div style={{ fontSize: 12, color: ink, marginTop: 3, lineHeight: 1.5 }}><b>{targetAge.range[0]}–{targetAge.range[1]}</b> (center ~{targetAge.center}) · <b>{targetAge.band}</b> · {targetAge.lifeContext}<br /><span style={{ color: soft }}>default register: {targetAge.register}</span></div>
+          <div style={{ fontSize: 10, color: margin, marginTop: 4, fontStyle: "italic" }}>every step below narrows to this — but it&rsquo;s a PRIOR, not a gate: the player&rsquo;s <b>dialed tone overrides</b> it (the research: perceived-time &gt; age). {targetAge.note}</div>
+        </div>
+      )}
 
       {order.map((s, k) => (
         <div key={s.key}>

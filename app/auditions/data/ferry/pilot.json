@@ -439,30 +439,30 @@
        "name": "Mara Oduya",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "The focus on somatic co-regulation and non-threatening visuals directly addresses the hypervigilant, braced body of anxiety."
+       "note": "Her somatic focus on anxiety is precise and her recommendations directly mitigate hypervigilance."
       },
       {
        "name": "Devin Sato",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "The principle of 'opt-in cognitive load' is a crucial and specific insight for designing for ADHD-related overwhelm."
+       "note": "His focus on cognitive load and minimizing demands is a crucial, specific insight for the ADHD/overwhelm audience."
       },
       {
        "name": "Lena Hart",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "The 'witness, don't fix' model is a core safety principle that respects the audience's wound without trying to solve it."
+       "note": "Her distinction between 'accompanying' and 'fixing' is a vital safeguard against making the player feel like a problem."
       },
       {
        "name": "Sam Reyes",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "Framing support as unconditional and indifferent to 'performance' is a powerful and safe antidote to low self-worth."
+       "note": "His framing of unconditional, non-performative care is essential for an audience that expects to be rejected."
       }
      ],
      "missing": [],
      "frameworkSound": "yes",
-     "oneLine": "This panel's synthesis is a deeply empathetic, specific, and safe framework that earns the right to brief the final creative."
+     "oneLine": "This panel demonstrates a rare, unified expertise, producing a brief that is both deeply empathetic and concretely actionable."
     }
    },
    "castAudition": {
@@ -869,5 +869,17 @@
   "richest": "water",
   "note": "The richest metaphor reframes the nature of the struggle itself, not just the journey's beginning or end."
  },
- "picked": "water"
+ "picked": "water",
+ "targetAge": {
+  "range": [
+   27,
+   47
+  ],
+  "center": 36,
+  "band": "adult → mature",
+  "lifeContext": "burnout · overwhelm · low self-worth (a worn-out / limited-time state)",
+  "register": "cozy + warm core with an intense-as-DEPTH (poignancy) ceiling — calm tipping into weight, never thrill",
+  "note": "PROVISIONAL prior (playtest-calibrate, do not hard-code); the dialed tone overrides; content rating = All Ages",
+  "setAt": "concept"
+ }
 }
