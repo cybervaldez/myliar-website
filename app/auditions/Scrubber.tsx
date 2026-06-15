@@ -259,7 +259,8 @@ type Ambient = { id: string; name: string; base: string; ink: string; accent: st
 type Character = { name: string; color: string; is: string; joinsAt: string };
 type VetA = { id: string; conveys_metaphor: string; safe_floor: string; arc_fit: string; note: string };
 type Vet = { best: string; ambients: VetA[]; characterHarmony: string; contrastFlags: string[]; oneLine: string };
-type Mood = { ambients: Ambient[]; characters: Character[]; eli5: string; vet?: Vet };
+type Prompts = { characters: string[]; objects: string[]; trophy: string[]; items: string[]; achievementIcons: string[] };
+type Mood = { ambients: Ambient[]; characters: Character[]; eli5: string; vet?: Vet; prompts?: Prompts };
 type StoryT = { id: string; env: string[]; subrange?: Tone[][]; mood?: Mood };
 const TJOIN: Record<string, number> = { cozy: 0, warm: 1, intense: 2 };
 export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] }) {
@@ -344,15 +345,6 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
               {vet!.oneLine && <div style={{ color: margin, marginTop: 3 }}>↳ {vet!.oneLine}</div>}
             </div>
           )}
-          <div style={{ fontSize: 10, color: margin, marginBottom: 4 }}>the palette at <b style={{ color: hot(beat?.label) }}>{beat?.label ?? "—"}</b> · <b style={{ color: ink }}>{swatches.length} colours</b> = {swatches.length} moods <span style={{ fontStyle: "italic" }}>(more as it turns intense)</span></div>
-          <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: 11 }}>
-            {swatches.map((s, i) => (
-              <div key={i} style={{ textAlign: "center" }}>
-                <div style={{ width: 38, height: 24, background: s.c, border: `1.5px solid ${ink}` }} />
-                <div style={{ fontSize: 7.5, color: margin, marginTop: 1, maxWidth: 42, lineHeight: 1.1 }}>{s.label}</div>
-              </div>
-            ))}
-          </div>
           <div style={{ fontSize: 10, color: margin, marginBottom: 5 }}>↳ a glimpse of the crew <span style={{ fontStyle: "italic" }}>(each colour derived from the deep; together they harmonise — the warm ones are the people)</span></div>
           <div style={{ display: "grid", gap: 4, marginBottom: 10 }}>
             {story.mood!.characters.map((ch) => { const onNow = (TJOIN[ch.joinsAt] ?? 0) <= ti; return (
@@ -362,7 +354,17 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
               </div> ); })}
           </div>
           <div style={{ fontSize: 10.5, color: ink, lineHeight: 1.5, borderTop: "1px solid var(--ink-soft)", paddingTop: 8 }}><span style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: forest }}>WHY THESE COLOURS · ELI5 </span>{story.mood!.eli5}</div>
-          <div style={{ fontSize: 10, color: soft, fontStyle: "italic", marginTop: 5 }}>↳ {A.name}: {A.why}</div>
+          <div style={{ fontSize: 10, color: soft, fontStyle: "italic", marginTop: 5, marginBottom: 11 }}>↳ {A.name}: {A.why}</div>
+          {/* the palette swatches — placed LAST so the colours sit right above the UI built from them */}
+          <div style={{ fontSize: 10, color: margin, marginBottom: 4 }}>the palette at <b style={{ color: hot(beat?.label) }}>{beat?.label ?? "—"}</b> · <b style={{ color: ink }}>{swatches.length} colours</b> = {swatches.length} moods <span style={{ fontStyle: "italic" }}>(more as it turns intense)</span></div>
+          <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
+            {swatches.map((s, i) => (
+              <div key={i} style={{ textAlign: "center" }}>
+                <div style={{ width: 38, height: 24, background: s.c, border: `1.5px solid ${ink}` }} />
+                <div style={{ fontSize: 7.5, color: margin, marginTop: 1, maxWidth: 42, lineHeight: 1.1 }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       )}
 
@@ -382,6 +384,26 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
             </span>
           </div>
           <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginTop: 6 }}>the dialogue box · choices · the stat bar — all from the ambient (base · ink · accent); the speaker’s name takes the character’s colour. <span style={{ color: "var(--spot-red)" }}>The line is an example.</span></div>
+        </div>
+      )}
+
+      {/* PROMPT-FRIENDLY COLOURS — natural-language colour phrases from the palette, for generating assets */}
+      {story.mood?.prompts && (
+        <div style={{ border: `2px solid ${forest}`, background: paper, padding: "11px 13px", marginTop: 14 }}>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 7 }}>🧩 PROMPT-FRIENDLY COLOURS — for generating assets <span style={{ color: margin, fontWeight: 400 }}>· examples, derived from the palette</span></div>
+          {([["characters", "CHARACTERS"], ["objects", "OBJECTS"], ["trophy", "TROPHY"], ["items", "ITEMS"], ["achievementIcons", "ACHIEVEMENT ICONS"]] as const).map(([k, label]) => {
+            const list = story.mood!.prompts![k];
+            if (!list?.length) return null;
+            return (
+              <div key={k} style={{ marginTop: 8 }}>
+                <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>{label}</div>
+                <div style={{ display: "grid", gap: 3 }}>
+                  {list.map((s, i) => <div key={i} style={{ fontSize: 11, color: ink, lineHeight: 1.45, paddingLeft: 11, position: "relative" }}><span style={{ position: "absolute", left: 0, color: margin }}>·</span>{s}</div>)}
+                </div>
+              </div>
+            );
+          })}
+          <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginTop: 9, borderTop: "1px solid var(--ink-soft)", paddingTop: 7 }}>↳ these feed the asset / icon prompts downstream — the colour language a generator reads, derived from the picked ambient. Examples; re-derive if the palette changes.</div>
         </div>
       )}
     </div>

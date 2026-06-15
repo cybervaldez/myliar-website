@@ -284,6 +284,31 @@
       "Cook #b06a4e -> #C0795C (to pass 4.5 contrast for text)"
      ],
      "oneLine": "A deep, monochromatic cool base isn't oppressive; it's a safe, indifferent void that allows a single warm note to signify support."
+    },
+    "prompts": {
+     "characters": [
+      "the Deckhand — weathered amber jacket, sun-browned hands, a cold cyan rim-light off the deep (the one warm figure)",
+      "the Pilot — muted slate-blue oils, cool and steady, face half in shadow",
+      "the Cook — soft terracotta apron, galley-lamp glow on her, warm but low-saturation",
+      "the Manifest-keeper — deep teal-grey coat, ink-dark, a pale-silver ledger"
+     ],
+     "objects": [
+      "the lamp — a small warm-brass pool against the cold dark",
+      "the rail — wet near-black iron with a cold cyan sheen",
+      "the kettle / galley — soft terracotta warmth, steam catching the lamp",
+      "the manifest / log — deep teal-grey leather, pale-silver pages"
+     ],
+     "trophy": [
+      "a cold pewter-silver form catching the moon's cyan gleam on the deep-indigo dark — luminous, never gold"
+     ],
+     "items": [
+      "a slate-blue brass compass, salt-dulled",
+      "a terracotta enamel cup, chipped",
+      "an amber coil of mooring line — each a low-saturation note against the deep"
+     ],
+     "achievementIcons": [
+      "flat icon on the deep-indigo base · a pale-silver line · the cold-cyan accent for the earned glow · one warm amber note when the achievement is about being carried"
+     ]
     }
    }
   }
