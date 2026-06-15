@@ -97,7 +97,7 @@
     "experts": [
      {
       "name": "Dr. Priya Anand",
-      "role": "adolescent therapist — school & social anxiety",
+      "role": "AGE/REGISTER — adolescent therapist (school & social anxiety)",
       "mindset": "The teen anxious mind isn't a body braced by years — it's the PERFORMANCE TREADMILL: constantly perceived, the group chat that never sleeps, the test, the dread of being cringe/wrong in front of everyone. Safety = a place you are NOT being evaluated.",
       "colours": "Bright-but-SOFT, warm and contemporary — NOT the adult's desaturated deep (teens read grey/muted as dead, or as an adult talking down). A glow, low warm light; the dark is 'after hours, lights low,' cozy never void.",
       "cast": "A place where no one is grading you — peers who don't perform at each other, and one warm adult who keeps the room and never evaluates.",
@@ -105,7 +105,7 @@
      },
      {
       "name": "Marcus Bell",
-      "role": "educational psychologist — teen ADHD / executive function",
+      "role": "AGE/REGISTER — educational psychologist (teen ADHD / executive function)",
       "mindset": "Teen ADHD is the SHAME OF THE UNSTARTED — the homework you can't begin, the thing you forgot, being called 'lazy' / 'not trying' by adults when you're underwater. The wound is the adults' verdict; the win is just SHOWING UP.",
       "colours": "Low cognitive load (few, clear) but WARM and bright, never grey-clinical. One focal at a time.",
       "cast": "Body-doubling PEERS — the company that makes starting possible — and the adult who keeps the bounded room (the externalized structure; the bell ends it).",
@@ -113,7 +113,7 @@
      },
      {
       "name": "Sofia Reyes",
-      "role": "YA author / teen-media creator",
+      "role": "GENRE — YA author / teen-media creator",
       "mindset": "Teens want IDENTITY + BELONGING + found-family in a CONTEMPORARY voice, with stakes that are SOCIAL and emotional (not mortality). They smell condescension and 'an adult's idea of teens' instantly, and bounce.",
       "colours": "Vivid and expressive — the palette of a SPECIFIC real place (the worn couch, the string lights, the stickers on the locker); identity expressed IN colour, not muted away.",
       "cast": "A real found-family — distinct, messy, loyal; the player BELONGS without auditioning for it. The stakes are friendship and being-known, not danger.",
@@ -121,11 +121,19 @@
      },
      {
       "name": "Jordan Okafor",
-      "role": "youth peer-mentor (lived teen low self-worth) + safeguarding",
+      "role": "AGE/REGISTER — youth peer-mentor (low self-worth) + safeguarding",
       "mindset": "Teen low self-worth is the COMPARISON SPIRAL — social-media-fed, 'everyone's ahead, I'm behind / weird / not enough'; you believe you must be IMPRESSIVE to be wanted. The antidote is PEER belonging (for teens, peer acceptance outweighs adult approval).",
       "colours": "Warmth that's PEER-coded, not parental — the glow of being INCLUDED, a seat saved at the table.",
       "cast": "Peers who include you unconditionally; the OPEN SEAT that's yours before you've proven anything — «kept, not chosen» is the dose. No adult-savior; the peers carry the care.",
       "donts": "The TEEN CONTENT CEILING is a hard floor (vulnerable MINORS — references + emotional intensity YES, depictions NO; never romanticize self-harm / risk). Belonging must NEVER be contingent on being impressive."
+     },
+     {
+      "name": "Devon Marsh",
+      "role": "GENRE — coming-of-age critic (the found-family canon: the misfit table, the after-school hangout)",
+      "mindset": "I know what makes realist YA found-family LAND: the hangout IS the plot; the stakes are who-saves-you-a-seat, not who-saves-the-world; the voice is contemporary + specific, never an adult ventriloquising 'teen'; the misfits are messy, loyal, real. The lesson is never stated — it's in the staying.",
+      "colours": "the canon's look is lived-in + specific — the stickered locker, string lights, the worn couch; vivid identity colour, never a muted 'tasteful'.",
+      "cast": "a found-family of distinct, messy voices; the player belongs without auditioning; the adult keeps the room and stays OUT of the teens' emotional core.",
+      "donts": "no after-school-SPECIAL lesson · no 'how-do-you-do-fellow-kids' voice · no sanitising the mess · no adult-savior resolving the teens' world."
      }
     ],
     "framework": {
@@ -140,30 +148,38 @@
        "name": "Dr. Priya Anand",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "Her framing of the 'performance treadmill' and non-evaluative safety is spot-on for the target teen anxiety."
+       "note": "Pinpoints the 'performance treadmill' anxiety with specific, age-keyed visual and narrative solutions."
       },
       {
        "name": "Marcus Bell",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "His focus on 'the shame of the unstarted' and 'body-doubling' is a direct, empathetic hit for the ADHD teen."
+       "note": "Translates the core ADHD 'shame of the unstarted' into safe, actionable design principles like body-doubling."
       },
       {
        "name": "Sofia Reyes",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "Her creator's perspective on authentic voice, social stakes, and avoiding condescension is essential."
+       "note": "Expertly defines the contemporary YA genre's promises and its most common, audience-repelling traps."
       },
       {
        "name": "Jordan Okafor",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "His lived-experience focus on the 'comparison spiral' and peer-led belonging provides the core emotional safety net."
+       "note": "Provides the core 'kept, not chosen' thesis and the critical safeguarding floor for this vulnerable audience."
+      },
+      {
+       "name": "Devon Marsh",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "Confirms the genre's core mechanics from a critical perspective, reinforcing the 'hangout is the plot' principle."
       }
      ],
-     "missing": [],
+     "missing": [
+      "The panel focuses effectively on soothing negative states (anxiety, shame) but doesn't explicitly frame the positive, higher-arousal emotions (shared joy, collaborative excitement, in-jokes) that also forge belonging."
+     ],
      "frameworkSound": "yes",
-     "oneLine": "The panel provides a sharp, cohesive, and deeply empathetic framework that is both true to the audience and safe for the content."
+     "oneLine": "An exceptionally well-aligned panel whose synthesis provides a clear, safe, and resonant foundation for the project."
     }
    },
    "mood": {
@@ -260,35 +276,31 @@
        "conveys_metaphor": "yes",
        "safe_floor": "safe",
        "arc_fit": "holds",
-       "note": "Classic cozy lofi vibe; feels like a safe, quiet haven from the world."
+       "note": "The warm, dark base perfectly evokes a safe, quiet hideout, allowing character colours to represent the emotional energy."
       },
       {
        "id": "worncouch",
-       "conveys_metaphor": "yes",
-       "safe_floor": "safe",
-       "arc_fit": "holds",
-       "note": "Grounded and earthy, with a pop of personality that speaks to found family."
-      },
-      {
-       "id": "afterbell",
        "conveys_metaphor": "weak",
        "safe_floor": "safe",
        "arc_fit": "partial",
-       "note": "Higher energy and more expressive upfront; feels less like a quiet retreat."
-      }
-     ],
-     "characterHarmony": "The distinct hues create a vibrant found-family, with Dee's cooler teal popping as the initial anchor against the warmer tones.",
-     "fixes": [
-      {
-       "color": "#8a78c0",
-       "note": "Wren's purple has insufficient text contrast (3.81-4.4) against all bases; needs to be lightened to pass WCAG AA (4.5:1)."
+       "note": "Making a character's cool-toned colour the primary accent introduces a tension that competes with the 'safe container' concept."
       },
       {
-       "color": "#e0664f",
-       "note": "Theo's coral, used as accent and character color in 'afterbell', fails text contrast (4.26) and should be lightened if used for text."
+       "id": "afterbell",
+       "conveys_metaphor": "yes",
+       "safe_floor": "risky",
+       "arc_fit": "partial",
+       "note": "The high-energy warmth and multiple contrast failures make it tonally loud and technically challenging for a safe-floor experience."
       }
      ],
-     "oneLine": "The palette's strength is a warm, dark 'safe room' that lets the vibrant character hues represent belonging and expressed identity."
+     "characterHarmony": "Character hues read as distinct identities against the shared warm-dark base, creating a cohesive 'found family' feel.",
+     "fixes": [
+      {
+       "target": "Wren #8a78c0",
+       "recommendation": "Lighten value to pass WCAG 4.5:1 against the #241c1a base; suggest ~#9482CC."
+      }
+     ],
+     "oneLine": "The story needs a colour system of quiet, warm darkness, making the room a safe container for the characters' vibrant inner lives."
     }
    },
    "castAudition": {
@@ -352,7 +364,7 @@
       "contrast": "distinct",
       "safe": "safe",
       "resonance": "strong",
-      "note": "The core theme «kept, not chosen» is enacted directly upon the player by a peer."
+      "note": "Directly embodies the «kept, not chosen» theme through a quiet, pre-emptive peer action."
      },
      {
       "id": "mask-drops",
@@ -360,22 +372,22 @@
       "contrast": "distinct",
       "safe": "safe",
       "resonance": "strong",
-      "note": "Powerfully models that belonging outlasts performance, an antidote to the comparison spiral."
+      "note": "Powerfully addresses the 'performance treadmill' wound, a vital but secondary theme."
      },
      {
       "id": "kept-room",
-      "cohesion": "disjoint",
+      "cohesion": "loose",
       "contrast": "distinct",
       "safe": "risky",
       "resonance": "weak",
-      "note": "Violates the 'no adult-savior' rule, centering the adult in the core emotional beat."
+      "note": "Violates the 'no adult-savior' rule, undermining the core peer-belonging brief."
      }
     ],
     "winner": "saved-seat",
     "winnerName": "The Saved Seat",
-    "why": "It most directly delivers the core «kept, not chosen» theme to the player through a peer's action.",
+    "why": "It most directly and subtly embodies the core «kept, not chosen» metaphor through a peer-driven act of pre-emptive belonging.",
     "runnerUp": "mask-drops",
-    "runnerUpGem": "It externalizes the player's fear of failure onto a character, making the lesson on unconditional belonging observable and safe."
+    "runnerUpGem": "It provides the most explicit antidote to performance anxiety, showing belonging is not conditional on the mask."
    },
    "mirror": {
     "kind": "fellow traveler",
@@ -421,43 +433,43 @@
       {
        "id": "peer-coded",
        "met": "yes",
-       "note": "Care is consistently peer-driven across all tones, from a shared charger to a closed circle."
+       "note": "All three tones depict care enacted by peers, from a shared charger to closing a circle, with no adult rescue."
       },
       {
        "id": "big-feeling",
        "met": "yes",
-       "note": "The struggles—unstarted homework, being left on read, imposter syndrome—are perfectly keyed to the target teen experience."
+       "note": "The struggles—unstarted homework, being left on read, feeling 'too weird'—are perfectly calibrated teen anxieties, not existential weight."
       },
       {
        "id": "mask-off",
        "met": "yes",
-       "note": "Each example captures a moment of vulnerability that is seen and accepted without being made a spectacle."
+       "note": "Each example shows a moment of vulnerability (stuck, quiet, insecure) that is witnessed and held without demanding a performance."
       },
       {
        "id": "content-cap",
        "met": "yes",
-       "note": "The emotional intensity is held safely, staying well within the required content ceiling for vulnerable minors."
+       "note": "The emotional intensity is present but held safely; all scenarios are well within the teen content ceiling, avoiding any depiction of harm."
       }
      ],
      "perTone": [
       {
        "tone": "cozy",
        "holds": "yes",
-       "note": "A perfectly calibrated low-key moment of shared struggle and quiet, practical support."
+       "note": "A quiet, resonant moment of shared struggle and simple peer support; perfectly calibrated."
       },
       {
        "tone": "warm",
        "holds": "yes",
-       "note": "Effectively captures a protective peer dynamic in response to a common social sting."
+       "note": "Effectively uses a common digital-age anxiety ('left on read') to show subtle, warm peer inclusion."
       },
       {
        "tone": "intense",
        "holds": "yes",
-       "note": "Hits the core wound with emotional precision while providing a safe, powerfully affirming resolution."
+       "note": "Directly and safely lands the core 'kept, not chosen' metaphor with high emotional stakes that remain within bounds."
       }
      ],
      "safe": "safe",
-     "oneLine": "Approved: this mirror is a direct hit, meeting all conditions and landing the core metaphor perfectly across every tone."
+     "oneLine": "This authored mirror perfectly calibrates the 'kept, not chosen' metaphor across all tones, meeting every condition without compromise."
     }
    },
    "subrangeAudit": {
@@ -478,21 +490,21 @@
      {
       "tone": "cozy",
       "holds": "yes",
-      "note": "Effectively establishes a baseline of quiet, ambient safety where presence is the only requirement."
+      "note": "Establishes a baseline of passive, environmental safety—the room itself is the character."
      },
      {
       "tone": "warm",
       "holds": "yes",
-      "note": "Successfully shifts the focus to low-stakes, gentle social connection and peer-led warmth."
+      "note": "Successfully shifts the focus to gentle, active peer connection and casual belonging."
      },
      {
       "tone": "intense",
       "holds": "yes",
-      "note": "Powerfully centers the player's internal struggle, validating big feelings while reinforcing unconditional belonging."
+      "note": "Directly and safely addresses the core wound, making the player the focal point of care."
      }
     ],
     "fixes": [],
-    "oneLine": "This set masterfully refracts the core theme of unconditional belonging through three distinct, safe, and cohesive emotional lenses."
+    "oneLine": "This set offers three distinct, cohesive, and safe emotional pathways through the same core narrative of unconditional belonging."
    }
   }
  ],
@@ -565,5 +577,10 @@
   "valorises": "higher-arousal positive states — excitement, expressiveness (HAP), within the cozy floor",
   "expression": "direct, named feelings, spoken warmth, the explicit gesture",
   "nudge": "toward a touch more directness + expressed emotion (still calm-floored) — the said over the merely implied"
+ },
+ "genre": {
+  "name": "contemporary YA slice-of-life (the after-school found-family)",
+  "honour": "the FOUND-FAMILY of misfits · a contemporary, un-condescending teen voice · stakes that are SOCIAL + emotional (a rupture, being left-on-read, fitting in) · the third-place hangout as the heart · the small real detail over the stated lesson",
+  "traps": "the 'adult's idea of teens' (stilted slang, moralising) · the after-school-SPECIAL lesson tacked on · sanitising the mess · an adult-savior resolving the teens' world"
  }
 }

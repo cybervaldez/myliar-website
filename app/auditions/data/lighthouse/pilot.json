@@ -97,7 +97,7 @@
     "experts": [
      {
       "name": "Dr. Eleanor Voss",
-      "role": "grief & meaning counselor — later-life / bereavement",
+      "role": "AGE/REGISTER — grief & meaning counselor (later-life / bereavement)",
       "mindset": "This reader carries losses that won't be 'resolved' — and has stopped wanting them resolved. They don't fear sadness; they fear MEANINGLESSNESS. The bittersweet isn't a wound to avoid — it's the texture of a life fully felt. They want their grief WITNESSED, not lifted.",
       "colours": "The single warm lamp against the vast cool dark — devotion as one steady point. Cool fog-greys and deep stone; the warmth EARNED and small (a tended flame, not a glow). The dark isn't a threat — it's the long night you keep watch through.",
       "cast": "A presence that bears WITNESS to a whole life, not one that fixes a problem. Sparse. The intense tone is the deep vigil — mortality and meaning held together, bittersweet, never grim.",
@@ -105,7 +105,7 @@
      },
      {
       "name": "Tomas Reynir",
-      "role": "veteran of long solitude — a lighthouse / polar-station keeper",
+      "role": "AGE/REGISTER — veteran of long solitude (a keeper)",
       "mindset": "Aloneness is not loneliness. The long watch has its own fullness — the rhythm of tending, the company of weather, the dignity of a kept post. This reader chose (or was given) solitude and wants it HONORED, not pitied or filled with noise.",
       "colours": "The texture of a kept place — worn brass, salt-glass, lamp-room warmth at the top of a cold stair. The palette should feel TENDED, lived-in by one pair of hands over years.",
       "cast": "SPARSE — one or two human presences at most, and the SILENCE is itself a character. A rare visitor or a radio voice lands HARD precisely because the solitude is real. Never crowd the watch.",
@@ -113,7 +113,7 @@
      },
      {
       "name": "Margaret Okonkwo",
-      "role": "elegiac literary editor — quiet / literary fiction",
+      "role": "GENRE — elegiac literary editor (quiet / literary fiction)",
       "mindset": "The mature reader has no patience for melodrama or being TOLD what to feel. They want restraint — the unsaid, the long sentence that earns its weight, the image that does the work. Sentiment must be EARNED, never performed.",
       "colours": "Restraint in the palette as in the prose — few colours, held long; the contrast is the lamp and the dark, nothing busier. Let one true detail carry the weight (the unrepaired thing, the kept page).",
       "cast": "Voices that are spare and earned — characters who speak less than they feel. The depth lives in subtext; the intense tone is the most RESTRAINED, not the loudest.",
@@ -121,11 +121,19 @@
      },
      {
       "name": "Dr. Aniket Rao",
-      "role": "gerontologist — socioemotional-selectivity / the research lens",
+      "role": "AGE/REGISTER — gerontologist (socioemotional selectivity)",
       "mindset": "A limited-time horizon shifts the reader toward MEANING, present-focus, and bittersweet POIGNANCY — and toward positive, LOW-THREAT emotional content (the positivity effect). They can hold real sadness but reject gratuitous darkness. Calm is valued; the bittersweet is welcome; cruelty is not.",
       "colours": "Calm, low-arousal — the peaceful register the mature eye reads as 'happy' (calm over excitement). Depth without alarm; the dark is vast but never a threat.",
       "cast": "Meaningful + low-threat. The intense tone carries mortality and the long view but stays POIGNANT, never grim — the night always holds. Bittersweet is the target, not bleak.",
       "donts": "No gratuitous darkness / cruelty / dread. No high-arousal thrill (that's the young register). Don't mistake DEPTH for BLEAKNESS."
+     },
+     {
+      "name": "Aoife Brennan",
+      "role": "GENRE — elegiac-canon critic (Woolf's lighthouse · the lone-keeper literary tradition)",
+      "mindset": "I know the elegiac contemplative: the IMAGE does the work (the lamp, the logbook, the fog), the feeling is EARNED slowly and never named, the long silence is as load-bearing as the long sentence, the place + weather are characters. Poignancy is bittersweet, never bleak — the dark is held, not feared.",
+      "colours": "restraint — few colours held long; the one lamp against the cool dark; a single true detail (the unrepaired thing) carries the weight. Never busy, never lush.",
+      "cast": "voices spare + earned, speaking less than they feel; the place itself a presence; the depth lives in subtext.",
+      "donts": "no MELODRAMA / the maudlin · no explaining the feeling (telling, not showing) · no swelling-strings sentiment · don't mistake the grim/bleak for the deep."
      }
     ],
     "framework": {
@@ -140,30 +148,38 @@
        "name": "Dr. Eleanor Voss",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "Her framing of grief as a texture to be witnessed, not a problem to solve, is core to the project's success."
+       "note": "Her framing of witnessing grief rather than resolving it is core to the target audience's mindset."
       },
       {
        "name": "Tomas Reynir",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "He provides the crucial experiential lens, ensuring the portrayal of solitude feels authentic and respectful."
+       "note": "His distinction between aloneness and loneliness is crucial and honors the audience's lived experience."
       },
       {
        "name": "Margaret Okonkwo",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "Her focus on narrative restraint is vital for earning the trust and engagement of a sophisticated, mature reader."
+       "note": "Provides clear, actionable craft advice that aligns perfectly with the genre's demands for restraint."
       },
       {
        "name": "Dr. Aniket Rao",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "He provides the critical research-based guardrail against mistaking 'deep' for 'grim' or 'intense' for 'thrilling'."
+       "note": "His application of socioemotional selectivity provides a critical safety rail against mistaking depth for bleakness."
+      },
+      {
+       "name": "Aoife Brennan",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "Reinforces the genre's core tenets with canonical authority, though her points overlap with Okonkwo's."
       }
      ],
-     "missing": [],
+     "missing": [
+      "The specific psychological need for legacy or generativity, beyond the internal meaning of the vigil itself."
+     ],
      "frameworkSound": "yes",
-     "oneLine": "The panel's multi-lens audit produces a deeply aligned, specific, and safe framework that earns the right to brief the cast."
+     "oneLine": "This expert panel delivers a cohesive and actionable framework, earning the right to brief the next stage."
     }
    },
    "mood": {
@@ -253,36 +269,35 @@
       }
      },
      "contrastFlags": [],
-     "best": "thelongdark",
+     "best": "lamproom",
      "ambients": [
       {
        "id": "lamproom",
        "conveys_metaphor": "yes",
        "safe_floor": "safe",
        "arc_fit": "holds",
-       "note": "A strong, safe foundation for the 'cozy' state; the core metaphor is clear."
+       "note": "Strongest balance of metaphor, safety, and tonal flexibility, establishing a deep but not grim floor."
       },
       {
        "id": "fogstone",
-       "conveys_metaphor": "yes",
+       "conveys_metaphor": "weak",
        "safe_floor": "safe",
-       "arc_fit": "holds",
-       "note": "A subtle, effective shift for the 'warm' tone, suggesting endurance through weather."
+       "arc_fit": "partial",
+       "note": "More atmospheric than metaphorical; the lighter base struggles to convey the 'intense' end of the arc."
       },
       {
        "id": "thelongdark",
        "conveys_metaphor": "yes",
-       "safe_floor": "safe",
-       "arc_fit": "holds",
-       "note": "The desaturated gold is a poignant, perfect end-point for the 'intense' arc."
+       "safe_floor": "risky",
+       "arc_fit": "partial",
+       "note": "Thematically powerful but risks feeling oppressive for the target audience and may not scale down to 'cozy'."
       }
      ],
-     "characterHarmony": "The derived characters feel like a cohesive, quiet crew, with the single warm 'Light' correctly popping as the focal point.",
+     "characterHarmony": "The derived crew harmonises beautifully, with the warm 'Light' as the clear focal point against the cooler supporting cast.",
      "fixes": [
-      "Nudge 'the Voice #5b7e9c' lighter to meet text contrast on all dark bases (fails at 3.4-4.1).",
-      "Slightly lighten 'the Keeper-before #9a8c7a' to pass text contrast in the 'fogstone' ambient (borderline at 4.45)."
+      "#5b7e9c ('the Voice') fails text contrast (3.84 on best palette); suggest lightening to ~#6e94b8 for accessibility."
      ],
-     "oneLine": "The system brilliantly uses a single, desaturating warm accent against a deep, cool field to carry the entire emotional arc."
+     "oneLine": "The entire emotional system rests on the singular warmth of the 'devotion' gold against the vast, quiet cool of the 'watch'."
     }
    },
    "castAudition": {
@@ -346,15 +361,15 @@
       "contrast": "distinct",
       "safe": "safe",
       "resonance": "strong",
-      "note": "A tangible, human anchor for legacy makes the abstract theme deeply resonant."
+      "note": "Connects personal devotion to a timeless, shared legacy, perfectly matching the age prior."
      },
      {
       "id": "the-silence",
       "cohesion": "cohesive",
       "contrast": "distinct",
       "safe": "risky",
-      "resonance": "weak",
-      "note": "Risks melodrama and framing solitude as a deficit, undermining the core brief."
+      "resonance": "partial",
+      "note": "Risks framing solitude as loss, potentially violating the 'poignant, never bleak' floor."
      },
      {
       "id": "for-the-unseen",
@@ -362,14 +377,14 @@
       "contrast": "partial",
       "safe": "safe",
       "resonance": "strong",
-      "note": "Conceptually pure but risks feeling emotionally abstract and lacking tonal contrast."
+      "note": "Thematically pure, but risks blurring the cozy/intense tones by centering both on the Light."
      }
     ],
     "winner": "the-line",
     "winnerName": "The Line of Keepers",
-    "why": "It externalizes the abstract theme of legacy into a concrete, human element, providing the most emotionally resonant and cohesive journey.",
+    "why": "It creates the clearest emotional progression and grounds the 'intense' theme of legacy in a tangible presence, making it poignant and accessible.",
     "runnerUp": "for-the-unseen",
-    "runnerUpGem": "Its pure focus on the act itself—that devotion needs no audience to be valid—is a powerful counterpoint to the winner's focus on legacy."
+    "runnerUpGem": "Its focus on the act of keeping the light as the ultimate source of meaning, independent of any audience, is the theme's purest expression."
    },
    "mirror": {
     "kind": "fellow traveler",
@@ -415,43 +430,43 @@
       {
        "id": "solitude-fullness",
        "met": "yes",
-       "note": "All tones present the other keeper's watch as a dignified, chosen state, not a deficit to be solved."
+       "note": "All versions frame the other keeper as self-sufficient, dignified, and never a target for rescue."
       },
       {
        "id": "poignant",
        "met": "yes",
-       "note": "The writing masterfully achieves bittersweet meaning without ever tipping into bleakness or dread."
+       "note": "The tone is consistently bittersweet and meaningful, handling mortality gently without tipping into dread."
       },
       {
        "id": "restraint",
        "met": "yes",
-       "note": "The mirror is conveyed through elegantly understated means—a light, silence, a logbook—avoiding all melodrama."
+       "note": "The mirror is conveyed through distant, indirect means—a light, radio silence, a logbook—avoiding melodrama."
       },
       {
        "id": "never-meet",
        "met": "yes",
-       "note": "The design inherently and explicitly prevents a meeting, reinforcing the core theme of knowing, not joining."
+       "note": "The premise of distance is central to each example, ensuring the comfort comes from knowing, not joining."
       }
      ],
      "perTone": [
       {
        "tone": "cozy",
        "holds": "yes",
-       "note": "A perfectly calibrated, gentle introduction to the core metaphor of shared vigil."
+       "note": "Effectively establishes the core metaphor of shared solitude with minimal emotional weight."
       },
       {
        "tone": "warm",
        "holds": "yes",
-       "note": "Excellent use of shared silence; it deepens the connection while respecting the solitude."
+       "note": "Calibrates warmth perfectly through a shared, unspoken gesture of presence via the radio."
       },
       {
        "tone": "intense",
        "holds": "yes",
-       "note": "Hits the core themes of legacy and mortality with masterful poignancy and restraint."
+       "note": "Powerfully lands the mature themes of mortality and legacy, reframing the watch as meaningful continuity."
       }
      ],
      "safe": "safe",
-     "oneLine": "Approved: a masterclass in restraint that meets all conditions to deliver a profoundly resonant and safe experience."
+     "oneLine": "This mirror is perfectly calibrated; it meets all conditions and powerfully lands the core themes across all tonal registers."
     }
    },
    "subrangeAudit": {
@@ -470,23 +485,23 @@
     "safeFloor": "safe",
     "perTone": [
      {
-      "tone": "cozy",
+      "tone": "COZY",
       "holds": "yes",
-      "note": "Perfectly grounds the experience in quiet, sensory mindfulness and self-contained purpose."
+      "note": "Perfectly captures self-contained, sensory solitude; the focus on the physical light and the room is a strong anchor."
      },
      {
-      "tone": "warm",
+      "tone": "WARM",
       "holds": "yes",
-      "note": "Beautifully introduces connection-at-a-distance, enriching solitude without compromising it."
+      "note": "Effectively shifts focus to shared solitude, creating connection without breaking the core feeling of the watch; a gentle, welcome warmth."
      },
      {
-      "tone": "intense",
+      "tone": "INTENSE",
       "holds": "yes",
-      "note": "Masterfully handles themes of legacy and mortality, finding profound comfort in continuity."
+      "note": "Masterfully handles the themes of legacy and mortality, framing them as poignant and meaningful, staying safely within the project floor."
      }
     ],
     "fixes": [],
-    "oneLine": "This set brilliantly refracts a single act of devotion through the prisms of self, other, and legacy, offering a truly meaningful tonal choice."
+    "oneLine": "The set creates three distinct emotional pathways (sensory, social, existential) through the same core experience, perfectly upholding the project's floor of meaningful solitude."
    }
   }
  ],
@@ -498,9 +513,14 @@
   "first light"
  ],
  "culture": {
-  "name": "Western (Anglo-contemporary)",
-  "valorises": "higher-arousal positive states — excitement, expressiveness (HAP), within the cozy floor",
-  "expression": "direct, named feelings, spoken warmth, the explicit gesture",
-  "nudge": "toward a touch more directness + expressed emotion (still calm-floored) — the said over the merely implied"
+  "name": "Western — literary-elegiac (restrained)",
+  "valorises": "low-arousal, meaningful POIGNANCY — the bittersweet + the contemplative (a RESTRAINED Western register, not the high-arousal Anglo-pop default)",
+  "expression": "indirect, the unsaid, the image over the statement — restraint as the Western literary-elegiac tradition (Woolf, the North-Atlantic)",
+  "nudge": "toward restraint + the implied — the SAME direction the elegiac genre demands (a restrained Western subculture, not the direct-expression default)"
+ },
+ "genre": {
+  "name": "literary elegiac (the quiet, contemplative lone-keeper)",
+  "honour": "RESTRAINT + the unsaid · the image that does the work (the lamp, the logbook, the fog) · bittersweet POIGNANCY earned slowly · the long sentence + the long silence · place + weather as character (the North-Atlantic elegiac lineage)",
+  "traps": "MELODRAMA / the maudlin · explaining the feeling (telling not showing) · swelling-strings sentiment · the grim/bleak mistaken for the deep"
  }
 }
