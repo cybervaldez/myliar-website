@@ -1,7 +1,7 @@
 // /auditions/<campaign> — one story's SPINE: its pipeline, step by step, born from the shared slate.
 // Each step card links into its audition and shows the pick + ★ + what it carried in. Next 16: params
 // async. NOT canon.
-import { CAMPAIGNS, STEP_DEFS, SLATE, campaignKeys, hasStep, stepDataFor, stepNo, stepLabel } from "../registry";
+import { CAMPAIGNS, STEP_DEFS, SLATE, campaignKeys, hasStep, stepDataFor, stepNo, stepLabel, isSeed } from "../registry";
 import { star, starStr, topOf } from "../score";
 
 export async function generateStaticParams() {
@@ -19,30 +19,40 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
   const c = CAMPAIGNS[campaign];
   if (!c) return <main style={{ maxWidth: 760, margin: "0 auto", padding: 40 }}><p style={{ color: margin }}>Unknown story. <a href="/auditions" style={{ color: forest }}>↑ the board</a></p></main>;
 
+  const seed = isSeed(campaign);
   const order = STEP_DEFS.map((s) => {
     const has = hasStep(campaign, s.key);
-    if (!has) return { ...s, done: false, pick: "", star: 0 };
+    // SEEDS (age-prior demos): only the TONE step is live; the rest are folded in (shown as · seed)
+    if (seed) {
+      if (s.key === "tone") {
+        const p = c.steps.tone as unknown as { picked?: string; scrubGroups: { id: string; name: string }[] };
+        const picked = p?.scrubGroups?.find((g) => g.id === p.picked);
+        return { ...s, done: !!picked, pick: "the makeup", star: -1, seed: false };
+      }
+      return { ...s, done: false, pick: "", star: 0, seed: true };
+    }
+    if (!has) return { ...s, done: false, pick: "", star: 0, seed: false };
     // THE STORY + THE TONE are the picked range being BUILT (not scored auditions) — read, don't score
     if (s.key === "story" || s.key === "tone") {
       const p = c.steps.pilot as unknown as { picked?: string; scrubGroups: { id: string; name: string }[] };
       const picked = p?.scrubGroups?.find((g) => g.id === p.picked);
-      return { ...s, done: !!picked, pick: s.key === "story" ? (picked?.name ?? "") : "the cast-set makeup", star: s.key === "story" ? -2 : -1 };
+      return { ...s, done: !!picked, pick: s.key === "story" ? (picked?.name ?? "") : "the cast-set makeup", star: s.key === "story" ? -2 : -1, seed: false };
     }
     const sd = stepDataFor(campaign, s.key)!;
     const top = s.key === "concept"
       ? { title: (SLATE.settings.find((x) => x.id === c.pick)?.title ?? c.label), star: star(sd.data, SLATE.settings.findIndex((x) => x.id === c.pick) + 1) }
       : topOf(sd.data, sd.items.map((i) => i.title));
-    return { ...s, done: true, pick: top.title, star: top.star };
+    return { ...s, done: true, pick: top.title, star: top.star, seed: false };
   });
 
   // after the shared TRUNK (setting · range · mood) the pipeline BRANCHES per TONE —
   // each tone is its own cast + chat + beats (the cast is tone-dependent). Start with the coziest.
-  const pilotRaw = c.steps.pilot as unknown as { picked?: string; scrubGroups: { id: string; subrange?: { label: string }[][]; subrangeAudit?: { perTone: { tone: string; holds: string; note: string }[] } }[] } | undefined;
+  const pilotRaw = (c.steps.tone ?? c.steps.pilot) as unknown as { picked?: string; scrubGroups: { id: string; subrange?: { label: string }[][]; subrangeAudit?: { perTone: { tone: string; holds: string; note: string }[] } }[] } | undefined;
   const pickedStory = pilotRaw?.scrubGroups?.find((g) => g.id === pilotRaw.picked);
   const subranges = (pickedStory?.subrange?.[0] ?? []).map((t) => t.label);
   const audit = pickedStory?.subrangeAudit;
   // the TARGET AGE — set at the concept, the PRIOR every downstream step narrows to (the dialed tone overrides it)
-  const targetAge = (c.steps.pilot as unknown as { targetAge?: { range: number[]; center: number; band: string; lifeContext: string; register: string; note: string } } | undefined)?.targetAge;
+  const targetAge = ((c.steps.tone ?? c.steps.pilot) as unknown as { targetAge?: { range: number[]; center: number; band: string; lifeContext: string; register: string; note: string } } | undefined)?.targetAge;
 
   return (
     <main style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
@@ -76,7 +86,7 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
               <div style={{ fontSize: 11.5, color: soft, marginTop: 3 }}>open →</div>
             </a>
           ) : (
-            <div style={{ border: `2px dashed var(--ink-soft)`, padding: "12px 15px", color: margin, fontSize: 14 }}><b>{stepNo(s.key)} {s.label}</b> <span style={{ fontSize: 12 }}>— next</span></div>
+            <div style={{ border: `2px dashed var(--ink-soft)`, padding: "12px 15px", color: margin, fontSize: 14 }}><b>{stepNo(s.key)} {s.label}</b> <span style={{ fontSize: 12 }}>— {s.seed ? "seed · folded into the tone step" : "next"}</span></div>
           )}
           {k < order.length - 1 && <div style={{ borderLeft: `2px dashed ${forest}`, height: 12, margin: "0 0 0 16px" }} />}
         </div>

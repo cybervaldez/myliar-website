@@ -1,7 +1,7 @@
 // /auditions — THE BOARD. Campaign-primary: the master SLATE (the idea bank) on top, then a thread
 // per story (its steps as chips). Two readings from one source: read a row = one story's pipeline;
 // open the slate or a step's cross-story reference = the idea bank across stories. NOT canon.
-import { CAMPAIGNS, STEP_DEFS, SLATE, SLATE_STATUS, campaignKeys, hasStep, stepDataFor, stepNo } from "./registry";
+import { CAMPAIGNS, STEP_DEFS, SLATE, SLATE_STATUS, campaignKeys, hasStep, stepDataFor, stepNo, isSeed } from "./registry";
 import { star, starStr, topOf } from "./score";
 
 export const metadata = { title: "Auditions — the board", description: "The audition board: the concept slate + a thread per story, experts carried forward." };
@@ -11,18 +11,24 @@ const ink = "var(--ink)", soft = "var(--ink-soft)", paper = "var(--paper)", shad
 const statusCounts = Object.values(SLATE_STATUS).reduce((m: Record<string, number>, s) => ((m[s] = (m[s] ?? 0) + 1), m), {});
 
 function chips(campaign: string) {
+  const seed = isSeed(campaign);
   return STEP_DEFS.map((s) => {
-    if (!hasStep(campaign, s.key)) return { key: s.key, done: false, star: 0 };
+    // SEEDS (age-prior demos): only the TONE step is live; the rest fold into it (shown as · seed)
+    if (seed) {
+      if (s.key === "tone") { const p = CAMPAIGNS[campaign].steps.tone as unknown as { picked?: string }; return { key: s.key, done: !!p?.picked, star: -1, seed: false }; }
+      return { key: s.key, done: false, star: 0, seed: true };
+    }
+    if (!hasStep(campaign, s.key)) return { key: s.key, done: false, star: 0, seed: false };
     // the STORY + TONE steps are the picked range being built (not scored) — done if a range is picked
     if (s.key === "story" || s.key === "tone") {
       const p = CAMPAIGNS[campaign].steps.pilot as unknown as { picked?: string };
-      return { key: s.key, done: !!p?.picked, star: s.key === "story" ? -2 : -1 };
+      return { key: s.key, done: !!p?.picked, star: s.key === "story" ? -2 : -1, seed: false };
     }
     const sd = stepDataFor(campaign, s.key)!;
     const st = s.key === "concept"
       ? star(sd.data, SLATE.settings.findIndex((x) => x.id === CAMPAIGNS[campaign].pick) + 1)
       : topOf(sd.data, sd.items.map((i) => i.title)).star;
-    return { key: s.key, done: true, star: st };
+    return { key: s.key, done: true, star: st, seed: false };
   });
 }
 
@@ -73,7 +79,7 @@ export default function Board() {
                       <b style={{ color: forest }}>{stepNo(ch.key)} {STEP_DEFS[k].label.replace(/^The /, "")}</b> <span style={{ color: ch.star < 0 ? forest : amber }}>{ch.star === -2 ? "✓" : ch.star === -1 ? "●" : starStr(ch.star)}</span>
                     </a>
                   ) : (
-                    <span style={{ border: `1.5px dashed var(--ink-soft)`, color: margin, fontSize: 11, padding: "3px 8px", display: "inline-block" }}>{stepNo(ch.key)} {STEP_DEFS[k].label.replace(/^The /, "")} · next</span>
+                    <span style={{ border: `1.5px dashed var(--ink-soft)`, color: margin, fontSize: 11, padding: "3px 8px", display: "inline-block" }}>{stepNo(ch.key)} {STEP_DEFS[k].label.replace(/^The /, "")} · {ch.seed ? "seed" : "next"}</span>
                   )}
                   <span style={{ color: margin, margin: "0 1px", fontSize: 11 }}>→</span>
                 </span>

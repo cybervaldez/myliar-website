@@ -6,6 +6,8 @@
 import { type Item, type StepData, type SourceStudy, topOf } from "./score";
 import slate from "./data/settings.json";
 import ferryPilot from "./data/ferry/pilot.json";
+import roomPilot from "./data/room/pilot.json";
+import lighthousePilot from "./data/lighthouse/pilot.json";
 
 // THE HOOK-ENGINE PIPELINE (§8.14): the CONCEPT is the SETTING (the shared world/ground — a hook-
 // engine), the PILOT is the set of MOMENTS (tonal story-doors, light-cohesive); each moment spawns
@@ -173,8 +175,24 @@ export const CAMPAIGNS: Record<string, {
       //  The moments' own source study + the per-story destination study get authored on demand.)
     },
   },
+  // SEEDS — the age-prior demo campaigns (same audience struggle, different age). Only the TONE step is
+  // live (its full makeup: experts · cast · palette · mirror · per-tone content); the earlier steps are
+  // folded in (no fleet-scored range). `isSeed` gates the render so the spine/board don't choke.
+  room: {
+    label: "The Open Room", pick: "room",
+    blurb: "the TEEN demo — a school room a caretaker keeps unlocked after the bell; the same audience (anxiety · low self-worth · ADHD) dialed to TEEN. «kept, not chosen».",
+    steps: { tone: roomPilot as unknown as StepData },
+    carried: {},
+  },
+  lighthouse: {
+    label: "The Lighthouse Coast", pick: "lighthouse",
+    blurb: "the MATURE demo — a lone lighthouse, the long watch; the same audience dialed to MATURE/depth. «vigil as devotion».",
+    steps: { tone: lighthousePilot as unknown as StepData },
+    carried: {},
+  },
 };
 
+export const isSeed = (campaign: string) => !!CAMPAIGNS[campaign] && !CAMPAIGNS[campaign].steps.pilot;
 export const campaignKeys = () => Object.keys(CAMPAIGNS);
 export const hasStep = (campaign: string, step: string) => step === "concept" ? !!SLATE_STATUS[CAMPAIGNS[campaign]?.pick] : !!CAMPAIGNS[campaign]?.steps[step];
 

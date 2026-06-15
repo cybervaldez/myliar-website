@@ -1,0 +1,500 @@
+{
+ "concept": "lighthouse",
+ "picked": "watch",
+ "settingDesc": "The Lighthouse Coast — a lone white-stone lighthouse on a mossy islet in rolling fog. A fixed point you tend: the lamp, the glass, the long watch. A coast that holds whether the night is still or the fog rolls in thick. People keep the light because the keeping IS the meaning; no one rows out to thank them.",
+ "targetAge": {
+  "range": [
+   40,
+   68
+  ],
+  "center": 54,
+  "band": "mature adult",
+  "lifeContext": "solitude · the long watch · accumulated loss · mortality & legacy (a limited-time horizon)",
+  "register": "depth-intense (poignancy) — solitude held as fullness, the bittersweet welcome; calm-but-deep, weight never thrill, meaningful never grim",
+  "note": "PROVISIONAL prior (playtest-calibrate); the dialed tone overrides; content likely Teen+ (mature themes — mortality/grief), confirm at the content gate",
+  "setAt": "concept"
+ },
+ "scrubGroups": [
+  {
+   "id": "watch",
+   "name": "The Long Watch",
+   "metaphor": "vigil as devotion",
+   "audienceServe": "Addresses the mature wound of the long, unwitnessed watch (caregiving · grief · aging) — reframing solitary devotion as MEANING, not futility; the keeping IS the worth.",
+   "subrange": [
+    [
+     {
+      "label": "cozy",
+      "text": "you climb the cold stair at dusk and wake the lamp, the way it's been woken every night for a hundred years; the dark steps back a little."
+     },
+     {
+      "label": "warm",
+      "text": "the radio crackles — a keeper three headlands down, marking the weather; you answer, brief, and leave the set on after, just on."
+     },
+     {
+      "label": "intense",
+      "text": "the logbook's open to a hand that isn't yours. the same date, decades back. the same lamp. you light it the same way. you're a long way down a line."
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "the lamp turns, the room glows gold, and outside the whole coast goes to water and night; it's enough to tend the one warm thing."
+     },
+     {
+      "label": "warm",
+      "text": "across the strait another light blinks on at your hour — someone you'll never meet, keeping their own watch — and it's company, somehow."
+     },
+     {
+      "label": "intense",
+      "text": "you read a few lines of the keeper-before: a gale, a ship that made it, a name. the watch outlived the watcher. that is the comfort, not the grief."
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "fog folds the islet up small; you keep the glass clean and the flame steady, the work that asks nothing but to be done."
+     },
+     {
+      "label": "warm",
+      "text": "the voice on the set goes quiet for a stretch — fog'll do that — and you keep the set on anyway, keeping them company in the static."
+     },
+     {
+      "label": "intense",
+      "text": "you'll be a name in this book one night, to a keeper not born yet. the thought doesn't frighten you the way it would have, younger. the light gets kept. that's all it asks."
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "the fog wears thin and the stars come back one at a time; the lamp's still turning; you put the kettle on the small ring."
+     },
+     {
+      "label": "warm",
+      "text": "the radio finds the other keeper again — still there, still on — and neither of you says much. you didn't need to; you just needed them on."
+     },
+     {
+      "label": "intense",
+      "text": "you close the logbook on your own entry — calm night, no cargo, lamp kept — in the same ink as the hand before yours. you're not the first. you won't be the last."
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "grey comes up over the water and you damp the lamp; the night's kept, the coast held, and you go down the stair to sleep."
+     },
+     {
+      "label": "warm",
+      "text": "'morning' over the set, both of you signing off — a whole night's quiet company, not three sentences in it, and somehow plenty."
+     },
+     {
+      "label": "intense",
+      "text": "the light you kept all night was for ships that passed in the fog and never knew your name. that's the whole of it. that's enough. you climb down and sleep like the dead, and wake to do it again."
+     }
+    ]
+   ],
+   "expertPanel": {
+    "audience": "solitude held as FULLNESS (not loneliness to cure) · accumulated loss + grief carried quietly · a shortening horizon (mortality · legacy · 'what was it all for') — a MATURE reader who does not fear sadness but seeks MEANING in it",
+    "experts": [
+     {
+      "name": "Dr. Eleanor Voss",
+      "role": "grief & meaning counselor — later-life / bereavement",
+      "mindset": "This reader carries losses that won't be 'resolved' — and has stopped wanting them resolved. They don't fear sadness; they fear MEANINGLESSNESS. The bittersweet isn't a wound to avoid — it's the texture of a life fully felt. They want their grief WITNESSED, not lifted.",
+      "colours": "The single warm lamp against the vast cool dark — devotion as one steady point. Cool fog-greys and deep stone; the warmth EARNED and small (a tended flame, not a glow). The dark isn't a threat — it's the long night you keep watch through.",
+      "cast": "A presence that bears WITNESS to a whole life, not one that fixes a problem. Sparse. The intense tone is the deep vigil — mortality and meaning held together, bittersweet, never grim.",
+      "donts": "Never 'cheer them up' or resolve the grief. Never treat solitude as a deficit to cure. The depth must be POIGNANT, not bleak — meaningful, never cruel."
+     },
+     {
+      "name": "Tomas Reynir",
+      "role": "veteran of long solitude — a lighthouse / polar-station keeper",
+      "mindset": "Aloneness is not loneliness. The long watch has its own fullness — the rhythm of tending, the company of weather, the dignity of a kept post. This reader chose (or was given) solitude and wants it HONORED, not pitied or filled with noise.",
+      "colours": "The texture of a kept place — worn brass, salt-glass, lamp-room warmth at the top of a cold stair. The palette should feel TENDED, lived-in by one pair of hands over years.",
+      "cast": "SPARSE — one or two human presences at most, and the SILENCE is itself a character. A rare visitor or a radio voice lands HARD precisely because the solitude is real. Never crowd the watch.",
+      "donts": "Don't rescue them from solitude. Don't fill the silence. Don't make the keeper's life look like a problem to escape."
+     },
+     {
+      "name": "Margaret Okonkwo",
+      "role": "elegiac literary editor — quiet / literary fiction",
+      "mindset": "The mature reader has no patience for melodrama or being TOLD what to feel. They want restraint — the unsaid, the long sentence that earns its weight, the image that does the work. Sentiment must be EARNED, never performed.",
+      "colours": "Restraint in the palette as in the prose — few colours, held long; the contrast is the lamp and the dark, nothing busier. Let one true detail carry the weight (the unrepaired thing, the kept page).",
+      "cast": "Voices that are spare and earned — characters who speak less than they feel. The depth lives in subtext; the intense tone is the most RESTRAINED, not the loudest.",
+      "donts": "No melodrama, no telling-not-showing, no swelling-strings emotion. Never explain the feeling — trust the reader to meet it."
+     },
+     {
+      "name": "Dr. Aniket Rao",
+      "role": "gerontologist — socioemotional-selectivity / the research lens",
+      "mindset": "A limited-time horizon shifts the reader toward MEANING, present-focus, and bittersweet POIGNANCY — and toward positive, LOW-THREAT emotional content (the positivity effect). They can hold real sadness but reject gratuitous darkness. Calm is valued; the bittersweet is welcome; cruelty is not.",
+      "colours": "Calm, low-arousal — the peaceful register the mature eye reads as 'happy' (calm over excitement). Depth without alarm; the dark is vast but never a threat.",
+      "cast": "Meaningful + low-threat. The intense tone carries mortality and the long view but stays POIGNANT, never grim — the night always holds. Bittersweet is the target, not bleak.",
+      "donts": "No gratuitous darkness / cruelty / dread. No high-arousal thrill (that's the young register). Don't mistake DEPTH for BLEAKNESS."
+     }
+    ],
+    "framework": {
+     "palette": "The single warm lamp against the vast cool dark — devotion as one steady point. Cool fog-greys + deep stone; the warmth EARNED and small (a tended flame). The dark is the long night you keep watch through, never a threat. Restraint — few colours, held long.",
+     "cast": "Sparse — the PLACE is a character (the lamp, the glass, the watch); one or two human presences at most, and silence is itself a presence. Bears WITNESS to a whole life, never fixes a problem. A rare visitor lands hard because the solitude is real.",
+     "tones": "cozy = the tended warmth (the kept lamp-room, the rhythm of the watch) · warm = a rare companionship in solitude (a visitor, a radio voice) that HONORS the aloneness · intense = the deep vigil — mortality, the long view, what the light is FOR — bittersweet, restrained, POIGNANT never grim.",
+     "floor": "The depth is POIGNANT, never bleak — meaningful + low-threat (the positivity effect); solitude is held as FULLNESS, never loneliness-as-deficit; the weight is real but the night always holds. No gratuitous darkness, no melodrama."
+    },
+    "vet": {
+     "perExpert": [
+      {
+       "name": "Dr. Eleanor Voss",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "Her framing of grief as a texture to be witnessed, not a problem to solve, is core to the project's success."
+      },
+      {
+       "name": "Tomas Reynir",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "He provides the crucial experiential lens, ensuring the portrayal of solitude feels authentic and respectful."
+      },
+      {
+       "name": "Margaret Okonkwo",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "Her focus on narrative restraint is vital for earning the trust and engagement of a sophisticated, mature reader."
+      },
+      {
+       "name": "Dr. Aniket Rao",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "He provides the critical research-based guardrail against mistaking 'deep' for 'grim' or 'intense' for 'thrilling'."
+      }
+     ],
+     "missing": [],
+     "frameworkSound": "yes",
+     "oneLine": "The panel's multi-lens audit produces a deeply aligned, specific, and safe framework that earns the right to brief the cast."
+    }
+   },
+   "mood": {
+    "characters": [
+     {
+      "name": "the Light",
+      "color": "#d9b25e",
+      "is": "the lamp itself — the one warm thing you keep burning through the night",
+      "joinsAt": "cozy"
+     },
+     {
+      "name": "the Voice",
+      "color": "#5b7e9c",
+      "is": "a voice on the radio set, miles off — the one other watch still keeping",
+      "joinsAt": "warm"
+     },
+     {
+      "name": "the Keeper-before",
+      "color": "#9a8c7a",
+      "is": "the hand that kept the light before you — a logbook, a name, a worn stair",
+      "joinsAt": "intense"
+     },
+     {
+      "name": "the Visitor",
+      "color": "#8a9c7a",
+      "is": "the supply boat, once a season — the only face, then gone",
+      "joinsAt": "warm"
+     }
+    ],
+    "ambients": [
+     {
+      "id": "lamproom",
+      "name": "The Lamp-room",
+      "base": "#1a2026",
+      "ink": "#d7dee4",
+      "accent": "#d9b25e",
+      "why": "the lamp-room at the top of the cold stair — cool stone, the one warm gold of the lamp; restraint"
+     },
+     {
+      "id": "fogstone",
+      "name": "Fog and Stone",
+      "base": "#222a2e",
+      "ink": "#dfe4e6",
+      "accent": "#d9b25e",
+      "why": "fog and wet stone — cooler, the lamp a small steady gold in the grey; the long night"
+     },
+     {
+      "id": "thelongdark",
+      "name": "The Long Dark",
+      "base": "#141a1f",
+      "ink": "#cdd5db",
+      "accent": "#c79a4e",
+      "why": "the deepest watch — the vast dark you keep the light against; one earned, dim gold"
+     }
+    ],
+    "vet": {
+     "contrast": {
+      "lamproom": {
+       "ink-on-base (text, ≥4.5)": 12.09,
+       "accent-on-base (UI, ≥3)": 8.2,
+       "chars": {
+        "the Light": 8.2,
+        "the Voice": 3.84,
+        "the Keeper-before": 5.01,
+        "the Visitor": 5.57
+       }
+      },
+      "fogstone": {
+       "ink-on-base (text, ≥4.5)": 11.38,
+       "accent-on-base (UI, ≥3)": 7.28,
+       "chars": {
+        "the Light": 7.28,
+        "the Voice": 3.41,
+        "the Keeper-before": 4.45,
+        "the Visitor": 4.95
+       }
+      },
+      "thelongdark": {
+       "ink-on-base (text, ≥4.5)": 11.81,
+       "accent-on-base (UI, ≥3)": 6.82,
+       "chars": {
+        "the Light": 8.75,
+        "the Voice": 4.1,
+        "the Keeper-before": 5.35,
+        "the Visitor": 5.94
+       }
+      }
+     },
+     "contrastFlags": [],
+     "best": "thelongdark",
+     "ambients": [
+      {
+       "id": "lamproom",
+       "conveys_metaphor": "yes",
+       "safe_floor": "safe",
+       "arc_fit": "holds",
+       "note": "A strong, safe foundation for the 'cozy' state; the core metaphor is clear."
+      },
+      {
+       "id": "fogstone",
+       "conveys_metaphor": "yes",
+       "safe_floor": "safe",
+       "arc_fit": "holds",
+       "note": "A subtle, effective shift for the 'warm' tone, suggesting endurance through weather."
+      },
+      {
+       "id": "thelongdark",
+       "conveys_metaphor": "yes",
+       "safe_floor": "safe",
+       "arc_fit": "holds",
+       "note": "The desaturated gold is a poignant, perfect end-point for the 'intense' arc."
+      }
+     ],
+     "characterHarmony": "The derived characters feel like a cohesive, quiet crew, with the single warm 'Light' correctly popping as the focal point.",
+     "fixes": [
+      "Nudge 'the Voice #5b7e9c' lighter to meet text contrast on all dark bases (fails at 3.4-4.1).",
+      "Slightly lighten 'the Keeper-before #9a8c7a' to pass text contrast in the 'fogstone' ambient (borderline at 4.45)."
+     ],
+     "oneLine": "The system brilliantly uses a single, desaturating warm accent against a deep, cool field to carry the entire emotional arc."
+    }
+   },
+   "castAudition": {
+    "sets": [
+     {
+      "id": "the-line",
+      "name": "The Line of Keepers",
+      "map": {
+       "cozy": [
+        "the Light"
+       ],
+       "warm": [
+        "the Voice",
+        "the Visitor"
+       ],
+       "intense": [
+        "the Keeper-before"
+       ]
+      },
+      "deepening": "the logbook in the predecessor's hand — you're one keeper in a long line, each tending the same light and gone. «vigil as devotion» as legacy: the watch outlives the watcher, and that is the comfort, not the grief."
+     },
+     {
+      "id": "the-silence",
+      "name": "The Silence on the Set",
+      "map": {
+       "cozy": [
+        "the Light"
+       ],
+       "warm": [
+        "the Keeper-before",
+        "the Visitor"
+       ],
+       "intense": [
+        "the Voice"
+       ]
+      },
+      "deepening": "one night the radio voice doesn't answer — and you keep the light anyway, for them. The deepest watch is the one kept after the last companion is gone; devotion that needs no witness."
+     },
+     {
+      "id": "for-the-unseen",
+      "name": "For the Ships You Never See",
+      "map": {
+       "cozy": [
+        "the Light"
+       ],
+       "warm": [
+        "the Voice",
+        "the Visitor"
+       ],
+       "intense": [
+        "the Light"
+       ]
+      },
+      "deepening": "you tend the lamp for ships that pass in fog and never know your name. «vigil as devotion» at its purest: the keeping IS the meaning — no reward, no thanks, no audience — and that is enough."
+     }
+    ],
+    "perSet": [
+     {
+      "id": "the-line",
+      "cohesion": "cohesive",
+      "contrast": "distinct",
+      "safe": "safe",
+      "resonance": "strong",
+      "note": "A tangible, human anchor for legacy makes the abstract theme deeply resonant."
+     },
+     {
+      "id": "the-silence",
+      "cohesion": "cohesive",
+      "contrast": "distinct",
+      "safe": "risky",
+      "resonance": "weak",
+      "note": "Risks melodrama and framing solitude as a deficit, undermining the core brief."
+     },
+     {
+      "id": "for-the-unseen",
+      "cohesion": "cohesive",
+      "contrast": "partial",
+      "safe": "safe",
+      "resonance": "strong",
+      "note": "Conceptually pure but risks feeling emotionally abstract and lacking tonal contrast."
+     }
+    ],
+    "winner": "the-line",
+    "winnerName": "The Line of Keepers",
+    "why": "It externalizes the abstract theme of legacy into a concrete, human element, providing the most emotionally resonant and cohesive journey.",
+    "runnerUp": "for-the-unseen",
+    "runnerUpGem": "Its pure focus on the act itself—that devotion needs no audience to be valid—is a powerful counterpoint to the winner's focus on legacy."
+   },
+   "mirror": {
+    "kind": "fellow traveler",
+    "premise": "the audience's own problem, witnessed in another KEEPER you'll never meet — «vigil as devotion» enacted at a distance (another light kept across the dark), received vicariously (solitude as fullness, never a figure to rescue; not the protagonist)",
+    "conditions": [
+     {
+      "id": "solitude-fullness",
+      "label": "solitude as FULLNESS, not deficit — the other keeper isn't lonely-to-be-rescued; they keep their own watch with dignity, by choice",
+      "from": "Tomas (long solitude)"
+     },
+     {
+      "id": "poignant",
+      "label": "poignant, never grim — bittersweet + meaningful; mortality held gently, the night always holds; no dread",
+      "from": "Voss/Rao (poignancy + positivity)"
+     },
+     {
+      "id": "restraint",
+      "label": "restraint — the unsaid; the mirror is a distant LIGHT, a few radio words, a name in a logbook — never a melodramatic figure or a speech",
+      "from": "Okonkwo (elegiac)"
+     },
+     {
+      "id": "never-meet",
+      "label": "you never JOIN them — the comfort is KNOWING, not meeting; another watch kept across a dark you'll never cross",
+      "from": "Tomas/Voss"
+     }
+    ],
+    "perTone": [
+     {
+      "tone": "cozy",
+      "text": "far across the water another light blinks on at your hour — someone keeping a watch you’ll never share, and somehow that’s company."
+     },
+     {
+      "tone": "warm",
+      "text": "the radio carries a few words from a keeper three headlands down — weather, nothing more — and you both leave the set on a while after, not talking, just on."
+     },
+     {
+      "tone": "intense",
+      "text": "a hand older than yours wrote these same nights in the logbook — the same fog, the same lamp — gone now; but the light they kept is the one you’re keeping. you’re not the first. you won’t be the last."
+     }
+    ],
+    "vet": {
+     "perCondition": [
+      {
+       "id": "solitude-fullness",
+       "met": "yes",
+       "note": "All tones present the other keeper's watch as a dignified, chosen state, not a deficit to be solved."
+      },
+      {
+       "id": "poignant",
+       "met": "yes",
+       "note": "The writing masterfully achieves bittersweet meaning without ever tipping into bleakness or dread."
+      },
+      {
+       "id": "restraint",
+       "met": "yes",
+       "note": "The mirror is conveyed through elegantly understated means—a light, silence, a logbook—avoiding all melodrama."
+      },
+      {
+       "id": "never-meet",
+       "met": "yes",
+       "note": "The design inherently and explicitly prevents a meeting, reinforcing the core theme of knowing, not joining."
+      }
+     ],
+     "perTone": [
+      {
+       "tone": "cozy",
+       "holds": "yes",
+       "note": "A perfectly calibrated, gentle introduction to the core metaphor of shared vigil."
+      },
+      {
+       "tone": "warm",
+       "holds": "yes",
+       "note": "Excellent use of shared silence; it deepens the connection while respecting the solitude."
+      },
+      {
+       "tone": "intense",
+       "holds": "yes",
+       "note": "Hits the core themes of legacy and mortality with masterful poignancy and restraint."
+      }
+     ],
+     "safe": "safe",
+     "oneLine": "Approved: a masterclass in restraint that meets all conditions to deliver a profoundly resonant and safe experience."
+    }
+   },
+   "subrangeAudit": {
+    "tones": [
+     "cozy",
+     "warm",
+     "intense"
+    ],
+    "focal": [
+     "the Light",
+     "the Voice",
+     "the Keeper-before"
+    ],
+    "cohesion": "cohesive",
+    "contrast": "distinct",
+    "safeFloor": "safe",
+    "perTone": [
+     {
+      "tone": "cozy",
+      "holds": "yes",
+      "note": "Perfectly grounds the experience in quiet, sensory mindfulness and self-contained purpose."
+     },
+     {
+      "tone": "warm",
+      "holds": "yes",
+      "note": "Beautifully introduces connection-at-a-distance, enriching solitude without compromising it."
+     },
+     {
+      "tone": "intense",
+      "holds": "yes",
+      "note": "Masterfully handles themes of legacy and mortality, finding profound comfort in continuity."
+     }
+    ],
+    "fixes": [],
+    "oneLine": "This set brilliantly refracts a single act of devotion through the prisms of self, other, and legacy, offering a truly meaningful tonal choice."
+   }
+  }
+ ],
+ "scenes": [
+  "lighting the lamp",
+  "the dark settles",
+  "the fog comes in",
+  "the fog thins",
+  "first light"
+ ]
+}

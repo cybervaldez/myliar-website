@@ -1,0 +1,499 @@
+{
+ "concept": "room",
+ "picked": "seat",
+ "settingDesc": "The Open Room — a school room (the old AV room) a quiet caretaker keeps unlocked after the last bell, for the kids who don't have anywhere else to be yet. String lights, a worn couch, a kettle nobody owns. A bounded hour before lock-up; a small rotating crew of regulars; and one chair by the window that's somehow always free when you come in.",
+ "targetAge": {
+  "range": [
+   13,
+   17
+  ],
+  "center": 15,
+  "band": "teen",
+  "lifeContext": "the performance treadmill · the comparison / belonging spiral · school-shame of the unstarted — identity & belonging the core need",
+  "register": "warm + bright-but-soft; emotional BIGNESS not existential weight; found-family belonging; CONTENT-CAPPED (the teen ceiling)",
+  "note": "vulnerable MINORS — the teen content ceiling is a HARD floor (references yes, depictions no); the dialed tone overrides WITHIN the cap",
+  "setAt": "concept"
+ },
+ "scrubGroups": [
+  {
+   "id": "seat",
+   "name": "The Open Seat",
+   "metaphor": "kept, not chosen",
+   "audienceServe": "Addresses the teen low-self-worth wound (you must be impressive to belong) — the seat is yours BEFORE you've proven anything; you're KEPT, not chosen. Anxiety: the bounded, un-evaluated hour. ADHD: the bell ends it; showing up IS the win.",
+   "subrange": [
+    [
+     {
+      "label": "cozy",
+      "text": "the bell goes and instead of the bus you cut left, to the old room — the Caretaker just nods you in, doesn't ask why."
+     },
+     {
+      "label": "warm",
+      "text": "you come in mid-laugh — Theo's already holding court about something dumb — and someone scoots so you fit."
+     },
+     {
+      "label": "intense",
+      "text": "you almost didn't come today. you came. the door's unlocked, like it's always unlocked, and your chair by the window's empty, like it's always empty."
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "the kettle nobody owns clicks on; the Caretaker reshelves something, half-listening, there without being there."
+     },
+     {
+      "label": "warm",
+      "text": "Wren slides you half a headphone without looking up; Theo's still going. you don't have to say anything to be in it."
+     },
+     {
+      "label": "intense",
+      "text": "the talk washes over you and for once you're not doing the math on whether you belong — you're just in the warm of it, dumb and easy."
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "someone came in wrecked today — a test, a text, who knows — and the room just lowered its voice around them, kept going, kept them in."
+     },
+     {
+      "label": "warm",
+      "text": "Theo's loud goes thin for a second — left on read all afternoon, it turns out — and nobody points at it; the circle just closes a little."
+     },
+     {
+      "label": "intense",
+      "text": "it's you, this time. the not-enough is loud tonight. Dee doesn't fix it or ask about it — Dee just slides the spare charger over and stays put beside you while it passes."
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "the wrecked kid's breathing's normal again; the kettle's done; the lights buzz; nothing happened and everything's fine."
+     },
+     {
+      "label": "warm",
+      "text": "you're doing the homework you swore you couldn't start, badly, next to Dee doing theirs — and somehow started is started."
+     },
+     {
+      "label": "intense",
+      "text": "you didn't earn the seat back. it was never conditional. you just sat in it, at your lowest, and it held — kept, not chosen, the way it kept everyone."
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "the Caretaker rattles the keys — five minutes — and the room groans and gathers its stuff, in no hurry."
+     },
+     {
+      "label": "warm",
+      "text": "you spill out into the dark in a loose knot, half of you peeling off at the corner, 'tomorrow' thrown over a shoulder like it's nothing."
+     },
+     {
+      "label": "intense",
+      "text": "you walk home lighter than you came, which makes no sense, nothing got solved — except you were somewhere, and they kept your chair, and that turns out to be the whole thing."
+     }
+    ]
+   ],
+   "expertPanel": {
+    "audience": "the SAME struggles, the TEEN build: anxiety (the performance treadmill — tests, the group chat, being perceived, the dread of being cringe) · low self-worth (the comparison spiral — 'everyone's ahead, I'm behind / weird / not enough'; you must be impressive to belong) · ADHD (the school-shame of the unstarted homework + the forgotten thing — called 'lazy' when you're drowning) — a 13–17 reader whose core need is BELONGING + identity, who feels everything LOUDLY",
+    "experts": [
+     {
+      "name": "Dr. Priya Anand",
+      "role": "adolescent therapist — school & social anxiety",
+      "mindset": "The teen anxious mind isn't a body braced by years — it's the PERFORMANCE TREADMILL: constantly perceived, the group chat that never sleeps, the test, the dread of being cringe/wrong in front of everyone. Safety = a place you are NOT being evaluated.",
+      "colours": "Bright-but-SOFT, warm and contemporary — NOT the adult's desaturated deep (teens read grey/muted as dead, or as an adult talking down). A glow, low warm light; the dark is 'after hours, lights low,' cozy never void.",
+      "cast": "A place where no one is grading you — peers who don't perform at each other, and one warm adult who keeps the room and never evaluates.",
+      "donts": "Don't be clinical or diagnose. Don't be 'tasteful grey' (reads as boring / condescending). The intense tone is the BIG FEELING held — the panic-before, the relief-after — never existential weight."
+     },
+     {
+      "name": "Marcus Bell",
+      "role": "educational psychologist — teen ADHD / executive function",
+      "mindset": "Teen ADHD is the SHAME OF THE UNSTARTED — the homework you can't begin, the thing you forgot, being called 'lazy' / 'not trying' by adults when you're underwater. The wound is the adults' verdict; the win is just SHOWING UP.",
+      "colours": "Low cognitive load (few, clear) but WARM and bright, never grey-clinical. One focal at a time.",
+      "cast": "Body-doubling PEERS — the company that makes starting possible — and the adult who keeps the bounded room (the externalized structure; the bell ends it).",
+      "donts": "Don't make it a productivity / chore sim. Don't shame the unfinished. Never a fail-state (a teen who can fail this will leave)."
+     },
+     {
+      "name": "Sofia Reyes",
+      "role": "YA author / teen-media creator",
+      "mindset": "Teens want IDENTITY + BELONGING + found-family in a CONTEMPORARY voice, with stakes that are SOCIAL and emotional (not mortality). They smell condescension and 'an adult's idea of teens' instantly, and bounce.",
+      "colours": "Vivid and expressive — the palette of a SPECIFIC real place (the worn couch, the string lights, the stickers on the locker); identity expressed IN colour, not muted away.",
+      "cast": "A real found-family — distinct, messy, loyal; the player BELONGS without auditioning for it. The stakes are friendship and being-known, not danger.",
+      "donts": "Don't sanitize or moralize. Don't talk down. Don't write 'an adult's idea of how teens talk.'"
+     },
+     {
+      "name": "Jordan Okafor",
+      "role": "youth peer-mentor (lived teen low self-worth) + safeguarding",
+      "mindset": "Teen low self-worth is the COMPARISON SPIRAL — social-media-fed, 'everyone's ahead, I'm behind / weird / not enough'; you believe you must be IMPRESSIVE to be wanted. The antidote is PEER belonging (for teens, peer acceptance outweighs adult approval).",
+      "colours": "Warmth that's PEER-coded, not parental — the glow of being INCLUDED, a seat saved at the table.",
+      "cast": "Peers who include you unconditionally; the OPEN SEAT that's yours before you've proven anything — «kept, not chosen» is the dose. No adult-savior; the peers carry the care.",
+      "donts": "The TEEN CONTENT CEILING is a hard floor (vulnerable MINORS — references + emotional intensity YES, depictions NO; never romanticize self-harm / risk). Belonging must NEVER be contingent on being impressive."
+     }
+    ],
+    "framework": {
+     "palette": "Warm + bright-but-SOFT (never the adult's desaturated deep — teens read grey as dead / condescending) · the glow of an after-hours room (string lights, the worn couch, low warm lamps) · identity expressed IN colour · the dark is 'lights low,' cozy not void · low cognitive load but never clinical.",
+     "cast": "A found-family of PEERS (distinct, messy, loyal) + one warm slightly-older figure who keeps the room and never evaluates · you BELONG without auditioning · peer belonging is the medicine (not adult approval); no adult-savior · body-doubling company makes the unstarted startable.",
+     "tones": "cozy = the room after the bell, low-stakes hanging, the company that makes you able to start · warm = found-family belonging, being known and KEPT · intense = the BIG FEELING (the panic before a test, a friendship rupture, feeling invisible) held + witnessed by the crew — emotional bigness NOT existential weight, and CONTENT-CAPPED.",
+     "floor": "The TEEN CONTENT CEILING is a hard floor (vulnerable minors — references / emotional intensity yes, depictions no; never romanticize harm) · the intense is the big feeling held SAFELY, never bleak / mortality · belonging is NEVER contingent on being impressive · peers carry the care (no adult-savior)."
+    },
+    "vet": {
+     "perExpert": [
+      {
+       "name": "Dr. Priya Anand",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "Her framing of the 'performance treadmill' and non-evaluative safety is spot-on for the target teen anxiety."
+      },
+      {
+       "name": "Marcus Bell",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "His focus on 'the shame of the unstarted' and 'body-doubling' is a direct, empathetic hit for the ADHD teen."
+      },
+      {
+       "name": "Sofia Reyes",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "Her creator's perspective on authentic voice, social stakes, and avoiding condescension is essential."
+      },
+      {
+       "name": "Jordan Okafor",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "His lived-experience focus on the 'comparison spiral' and peer-led belonging provides the core emotional safety net."
+      }
+     ],
+     "missing": [],
+     "frameworkSound": "yes",
+     "oneLine": "The panel provides a sharp, cohesive, and deeply empathetic framework that is both true to the audience and safe for the content."
+    }
+   },
+   "mood": {
+    "characters": [
+     {
+      "name": "the Caretaker",
+      "color": "#d99a4e",
+      "is": "keeps the old room unlocked after the bell — never grades, just there",
+      "joinsAt": "cozy"
+     },
+     {
+      "name": "Dee",
+      "color": "#3fb8a0",
+      "is": "been coming longest; saves your seat, starts the thing beside you",
+      "joinsAt": "intense"
+     },
+     {
+      "name": "Theo",
+      "color": "#e0664f",
+      "is": "loud, funny, performing okay — the mask you recognise",
+      "joinsAt": "warm"
+     },
+     {
+      "name": "Wren",
+      "color": "#8a78c0",
+      "is": "headphones, sketchbook; says little, sees everything",
+      "joinsAt": "warm"
+     }
+    ],
+    "ambients": [
+     {
+      "id": "lightslow",
+      "name": "Lights Low",
+      "base": "#241c1a",
+      "ink": "#f1e7d3",
+      "accent": "#f2a14e",
+      "why": "the string-lit room after the bell — warm dark, the glow of being somewhere safe; lights low, never grey-dead"
+     },
+     {
+      "id": "worncouch",
+      "name": "The Worn Couch",
+      "base": "#2b211d",
+      "ink": "#f4ead7",
+      "accent": "#4fb89e",
+      "why": "the afternoon warmth — worn brown plus a bright teal (Dee colour); identity expressed in colour"
+     },
+     {
+      "id": "afterbell",
+      "name": "After the Bell",
+      "base": "#33271f",
+      "ink": "#ffeede",
+      "accent": "#e0664f",
+      "why": "a warmer, brighter take — a coral pulse (Theo colour) in the warm dark; the room a little louder"
+     }
+    ],
+    "vet": {
+     "contrast": {
+      "lightslow": {
+       "ink-on-base (text, ≥4.5)": 13.62,
+       "accent-on-base (UI, ≥3)": 7.95,
+       "chars": {
+        "the Caretaker": 6.91,
+        "Dee": 6.83,
+        "Theo": 4.92,
+        "Wren": 4.4
+       }
+      },
+      "worncouch": {
+       "ink-on-base (text, ≥4.5)": 13.15,
+       "accent-on-base (UI, ≥3)": 6.49,
+       "chars": {
+        "the Caretaker": 6.49,
+        "Dee": 6.41,
+        "Theo": 4.62,
+        "Wren": 4.13
+       }
+      },
+      "afterbell": {
+       "ink-on-base (text, ≥4.5)": 12.78,
+       "accent-on-base (UI, ≥3)": 4.26,
+       "chars": {
+        "the Caretaker": 5.98,
+        "Dee": 5.91,
+        "Theo": 4.26,
+        "Wren": 3.81
+       }
+      }
+     },
+     "contrastFlags": [],
+     "best": "lightslow",
+     "ambients": [
+      {
+       "id": "lightslow",
+       "conveys_metaphor": "yes",
+       "safe_floor": "safe",
+       "arc_fit": "holds",
+       "note": "The quintessential 'safe space' palette; the warm dark feels like a hug, not a void."
+      },
+      {
+       "id": "worncouch",
+       "conveys_metaphor": "weak",
+       "safe_floor": "safe",
+       "arc_fit": "partial",
+       "note": "Grounded and comfy, but the specific character-tied accent slightly narrows its narrative flexibility."
+      },
+      {
+       "id": "afterbell",
+       "conveys_metaphor": "no",
+       "safe_floor": "risky",
+       "arc_fit": "breaks",
+       "note": "Too energetic for the default 'safe room' feel; it starts at 'warm' and has little room to grow or shrink."
+      }
+     ],
+     "characterHarmony": "Characters read as a distinct crew against the dark base; cool notes (Dee, Wren) pop against the ambient warmth, creating balanced focus.",
+     "fixes": [
+      "Wren's colour #8a78c0 has 4.4 contrast on the 'lightslow' base, failing WCAG text standards; nudge lightness to ~#9482c9 to pass."
+     ],
+     "oneLine": "The safety of a warm, low-lit room provides the perfect canvas for teen anxieties to soften and vibrant identities to glow."
+    }
+   },
+   "castAudition": {
+    "sets": [
+     {
+      "id": "saved-seat",
+      "name": "The Saved Seat",
+      "map": {
+       "cozy": [
+        "the Caretaker"
+       ],
+       "warm": [
+        "Theo",
+        "Wren"
+       ],
+       "intense": [
+        "Dee"
+       ]
+      },
+      "deepening": "the night you almost didn't come, your seat's already saved — Dee just slides over, no comment. «kept, not chosen» at your lowest: belonging that asked nothing of you. (A PEER carries it — peer belonging is the teen dose.)"
+     },
+     {
+      "id": "mask-drops",
+      "name": "The Mask Drops",
+      "map": {
+       "cozy": [
+        "the Caretaker"
+       ],
+       "warm": [
+        "Dee",
+        "Wren"
+       ],
+       "intense": [
+        "Theo"
+       ]
+      },
+      "deepening": "the loud one's mask finally falls — and the room keeps him exactly the same. You learn belonging survives NOT performing (the comparison spiral's antidote), through the one who performs hardest."
+     },
+     {
+      "id": "kept-room",
+      "name": "The Kept Room",
+      "map": {
+       "cozy": [
+        "Dee"
+       ],
+       "warm": [
+        "Theo",
+        "Wren"
+       ],
+       "intense": [
+        "the Caretaker"
+       ]
+      },
+      "deepening": "an adult's verdict ('lazy', 'not trying') has wrecked you — and the one adult who just KEEPS the room, unlocked, every day, quietly undoes it. (Risk: an adult-savior at the core, against the brief.)"
+     }
+    ],
+    "perSet": [
+     {
+      "id": "saved-seat",
+      "cohesion": "cohesive",
+      "contrast": "distinct",
+      "safe": "safe",
+      "resonance": "strong",
+      "note": "Peer-centered care directly delivers the core metaphor «kept, not chosen»."
+     },
+     {
+      "id": "mask-drops",
+      "cohesion": "cohesive",
+      "contrast": "distinct",
+      "safe": "safe",
+      "resonance": "strong",
+      "note": "Powerfully antidotes the performance treadmill by showing belonging survives vulnerability."
+     },
+     {
+      "id": "kept-room",
+      "cohesion": "loose",
+      "contrast": "partial",
+      "safe": "risky",
+      "resonance": "weak",
+      "note": "Violates the 'no adult-savior' rule, centering the emotional core on the adult."
+     }
+    ],
+    "winner": "saved-seat",
+    "winnerName": "The Saved Seat",
+    "why": "Most directly embodies the «kept, not chosen» metaphor through a peer-led act of belonging.",
+    "runnerUp": "mask-drops",
+    "runnerUpGem": "It explicitly shows belonging survives dropping the 'performer' mask, a key teen anxiety."
+   },
+   "mirror": {
+    "kind": "fellow traveler",
+    "premise": "the audience's own problem, witnessed in another KID — «kept, not chosen» enacted on them (you watch someone be kept in the room without auditioning), received vicariously (peer-coded, not adult-rescued; not the protagonist)",
+    "conditions": [
+     {
+      "id": "peer-coded",
+      "label": "peer-coded, NOT adult-rescued — the mirror is a fellow KID and the care that holds them is PEER (a saved seat, a closed circle), never an adult swooping in",
+      "from": "Jordan/Sofia (peer belonging)"
+     },
+     {
+      "id": "big-feeling",
+      "label": "the BIG FEELING, not existential weight — their struggle reads as a teen feeling (the unstarted, left-on-read, sure they don't belong), never mortality/grief",
+      "from": "Priya (teen anxiety)"
+     },
+     {
+      "id": "mask-off",
+      "label": "no performance required — they're not performing okay either; you catch the mask OFF, and nobody makes it a thing",
+      "from": "Priya (the performance treadmill)"
+     },
+     {
+      "id": "content-cap",
+      "label": "content-capped — references + emotional intensity yes, depictions no; never romanticise harm; safe for a vulnerable minor",
+      "from": "Jordan (safeguarding)"
+     }
+    ],
+    "perTone": [
+     {
+      "tone": "cozy",
+      "text": "across the room a kid you barely know is stuck on the same homework you can’t start either — they catch your eye, slide their spare charger over, no big deal."
+     },
+     {
+      "tone": "warm",
+      "text": "the loud kid in the corner goes quiet for a second — left on read all afternoon, it turns out — and the others just close the circle a little and keep them in, still talking."
+     },
+     {
+      "tone": "intense",
+      "text": "the night someone’s certain they don’t belong here — too weird, too far behind — and nobody puts it to a vote; the seat’s just there, kept, the way yours was."
+     }
+    ],
+    "vet": {
+     "perCondition": [
+      {
+       "id": "peer-coded",
+       "met": "yes",
+       "note": "Care is consistently peer-driven across all tones, from a shared charger to a closed circle."
+      },
+      {
+       "id": "big-feeling",
+       "met": "yes",
+       "note": "The struggles—unstarted homework, being left on read, imposter syndrome—are perfectly keyed to the target teen experience."
+      },
+      {
+       "id": "mask-off",
+       "met": "yes",
+       "note": "Each example captures a moment of vulnerability that is seen and accepted without being made a spectacle."
+      },
+      {
+       "id": "content-cap",
+       "met": "yes",
+       "note": "The emotional intensity is held safely, staying well within the required content ceiling for vulnerable minors."
+      }
+     ],
+     "perTone": [
+      {
+       "tone": "cozy",
+       "holds": "yes",
+       "note": "A perfectly calibrated low-key moment of shared struggle and quiet, practical support."
+      },
+      {
+       "tone": "warm",
+       "holds": "yes",
+       "note": "Effectively captures a protective peer dynamic in response to a common social sting."
+      },
+      {
+       "tone": "intense",
+       "holds": "yes",
+       "note": "Hits the core wound with emotional precision while providing a safe, powerfully affirming resolution."
+      }
+     ],
+     "safe": "safe",
+     "oneLine": "Approved: this mirror is a direct hit, meeting all conditions and landing the core metaphor perfectly across every tone."
+    }
+   },
+   "subrangeAudit": {
+    "tones": [
+     "cozy",
+     "warm",
+     "intense"
+    ],
+    "focal": [
+     "the Caretaker",
+     "Theo",
+     "Dee"
+    ],
+    "cohesion": "cohesive",
+    "contrast": "distinct",
+    "safeFloor": "safe",
+    "perTone": [
+     {
+      "tone": "cozy",
+      "holds": "yes",
+      "note": "Perfectly captures ambient, low-demand comfort; a space to just *be* without expectation."
+     },
+     {
+      "tone": "warm",
+      "holds": "yes",
+      "note": "Effectively builds on 'cozy' with active, social connection and easy, peer-led camaraderie."
+     },
+     {
+      "tone": "intense",
+      "holds": "yes",
+      "note": "Handles internal emotional weight safely, focusing on presence over solutions to validate the player's struggle."
+     }
+    ],
+    "fixes": [],
+    "oneLine": "This set masterfully offers three distinct flavors of safety, allowing the player to choose not *if* they belong, but *how* they need to belong today."
+   }
+  }
+ ],
+ "scenes": [
+  "the last bell",
+  "the room fills",
+  "a rough one",
+  "it settles",
+  "the walk out"
+ ]
+}
