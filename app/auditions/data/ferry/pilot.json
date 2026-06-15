@@ -309,6 +309,52 @@
      "achievementIcons": [
       "flat icon on the deep-indigo base · a pale-silver line · the cold-cyan accent for the earned glow · one warm amber note when the achievement is about being carried"
      ]
+    },
+    "prose": {
+     "objectSeeds": {
+      "dominant": [
+       "the dark water",
+       "the cold iron rail",
+       "the slate sky",
+       "the black swell",
+       "the wet deck",
+       "the far shore's faint line"
+      ],
+      "accent": [
+       "the lamp's amber pool",
+       "the galley glow",
+       "the brass kettle",
+       "warm hands round a cup"
+      ]
+     },
+     "diction": {
+      "cool": [
+       "slate",
+       "steel",
+       "cold",
+       "still",
+       "deep",
+       "far",
+       "dark",
+       "hushed"
+      ],
+      "warm": [
+       "amber",
+       "glow",
+       "close",
+       "warm",
+       "lit",
+       "near"
+      ]
+     },
+     "rules": [
+      "NEVER name the colour — render it through the objects + a sensation (Chekhov: the glint, not “blue”)",
+      "PAIR every colour beat with a non-visual sense — cold iron under the hand, salt and diesel, the kettle's tick (sight alone doesn't immerse)",
+      "DICTION: the exact word carries the tone — “slate” sky reads colder than “silver”; cool = still/deep/far, warm = close/lit",
+      "ONE mood paragraph — blend the objects, never an inventory list",
+      "IYASHIKEI: foreground texture — the rustle, the warm cup, the engine's hum — over plot"
+     ],
+     "example": "Below, the galley holds its amber pool of lamp-light against the cold dark past the porthole. The kettle ticks; steam beads the glass. Out there the deep slides by, slate and still, and asks nothing of you."
     }
    }
   }

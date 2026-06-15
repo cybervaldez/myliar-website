@@ -260,7 +260,8 @@ type Character = { name: string; color: string; is: string; joinsAt: string };
 type VetA = { id: string; conveys_metaphor: string; safe_floor: string; arc_fit: string; note: string };
 type Vet = { best: string; ambients: VetA[]; characterHarmony: string; contrastFlags: string[]; oneLine: string };
 type Prompts = { characters: string[]; objects: string[]; trophy: string[]; items: string[]; achievementIcons: string[] };
-type Mood = { ambients: Ambient[]; characters: Character[]; eli5: string; vet?: Vet; prompts?: Prompts };
+type Prose = { objectSeeds: { dominant: string[]; accent: string[] }; diction: { cool: string[]; warm: string[] }; rules: string[]; example: string };
+type Mood = { ambients: Ambient[]; characters: Character[]; eli5: string; vet?: Vet; prompts?: Prompts; prose?: Prose };
 type StoryT = { id: string; env: string[]; subrange?: Tone[][]; mood?: Mood };
 const TJOIN: Record<string, number> = { cozy: 0, warm: 1, intense: 2 };
 export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] }) {
@@ -404,6 +405,31 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
             );
           })}
           <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginTop: 9, borderTop: "1px solid var(--ink-soft)", paddingTop: 7 }}>↳ these feed the asset / icon prompts downstream — the colour language a generator reads, derived from the picked ambient. Examples; re-derive if the palette changes.</div>
+        </div>
+      )}
+
+      {/* PALETTE → PROSE — colour as TEXT: the palette steers which objects a scene seeds + how the
+          prose is worded (deep-research: research-color-in-text.md) */}
+      {story.mood?.prose && A && (
+        <div style={{ border: `2px solid ${forest}`, background: paper, padding: "11px 13px", marginTop: 14 }}>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>✍ PALETTE → PROSE — the palette also steers the WRITING <span style={{ color: margin, fontWeight: 400 }}>· deep-research</span></div>
+          <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginBottom: 9 }}>no pixels here: colour lives in the OBJECTS a scene seeds + the WORDS used (the hue is never named).</div>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>SEED THE SCENE — the palette's objects</div>
+          <div style={{ fontSize: 11, color: ink, lineHeight: 1.5, marginBottom: 8 }}>
+            <div><b style={{ color: A.accent }}>cool ◂</b> {story.mood!.prose!.objectSeeds.dominant.join(" · ")}</div>
+            <div><b style={{ color: "var(--spot-red)" }}>warm ▸</b> {story.mood!.prose!.objectSeeds.accent.join(" · ")}</div>
+          </div>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>DICTION — the exact word carries the tone</div>
+          <div style={{ fontSize: 11, color: ink, lineHeight: 1.5, marginBottom: 8 }}>
+            <div><b style={{ color: A.accent }}>cool</b> {story.mood!.prose!.diction.cool.join(", ")}</div>
+            <div><b style={{ color: "var(--spot-red)" }}>warm</b> {story.mood!.prose!.diction.warm.join(", ")}</div>
+          </div>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>THE RULES</div>
+          <div style={{ display: "grid", gap: 3, marginBottom: 9 }}>
+            {story.mood!.prose!.rules.map((r, i) => <div key={i} style={{ fontSize: 10.5, color: ink, lineHeight: 1.45, paddingLeft: 11, position: "relative" }}><span style={{ position: "absolute", left: 0, color: margin }}>·</span>{r}</div>)}
+          </div>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 4 }}>↳ A BEAT, PALETTE-STEERED <span style={{ color: margin, fontWeight: 400 }}>(example — shown in the palette)</span></div>
+          <div style={{ background: A.base, color: A.ink, border: `2px solid ${A.accent}`, padding: "11px 13px", fontSize: 14, lineHeight: 1.6, fontStyle: "italic" }}>{story.mood!.prose!.example}</div>
         </div>
       )}
     </div>
