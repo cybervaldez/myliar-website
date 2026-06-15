@@ -25,12 +25,12 @@ export const stepNo = (k: string) => "①②③④⑤⑥"[STEP_DEFS.findIndex((s
 
 // THE SLATE — the master SETTING ledger (every setting/world auditioned). Cross-campaign by nature:
 // settings are the grouping ground; a picked setting becomes a campaign that spawns its stories.
-export const SLATE = slate as unknown as { settings: { id: string; title: string; line: string; world: string }[] } & StepData;
+export const SLATE = slate as unknown as { settings: { id: string; title: string; line: string; world: string; nativeAge?: string }[] } & StepData;
 export const SLATE_STATUS: Record<string, string> = { ferry: "building", lighthouse: "available", cloudhouse: "available" };
 
 // per-step normalizers → Item[]. concept = the SETTINGS slate; pilot = the MOMENTS (story-doors).
 const NORM: Record<string, (d: { [k: string]: unknown }) => Item[]> = {
-  concept: (d) => (d as unknown as typeof SLATE).settings.map((s, k) => ({ key: s.id, idx: k + 1, title: s.title, sub: s.line, body: s.world })),
+  concept: (d) => (d as unknown as typeof SLATE).settings.map((s, k) => ({ key: s.id, idx: k + 1, title: s.title, sub: s.nativeAge ? `${s.line}  ·  🎯 ${s.nativeAge}` : s.line, body: s.world })),
   // the pilot is SCRUB GROUPS — each rendered as the SCENE arc (the scrubber): one row per scene (the
   // surrounding WEATHER, the stage) + its arc bar (calm → the storm → first light). NOT the story's tone.
   pilot: (d) => {

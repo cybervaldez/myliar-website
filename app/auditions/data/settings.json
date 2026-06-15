@@ -4,19 +4,22 @@
    "id": "ferry",
    "title": "The Night Ferry",
    "line": "The kettle's always on.",
-   "world": "A small night ferry that crosses the same dark strait, every night, and always comes back. A crew of four; the crossing is the one hour nobody can ask anything more of you. Night, water, lamps, a kettle — a world that holds whether the strait is glass-calm or running heavy."
+   "world": "A small night ferry that crosses the same dark strait, every night, and always comes back. A crew of four; the crossing is the one hour nobody can ask anything more of you. Night, water, lamps, a kettle — a world that holds whether the strait is glass-calm or running heavy.",
+   "nativeAge": "adult → mature (burnout / limited-time) — WIDE range, cozy↔depth; centers adult, reaches both"
   },
   {
    "id": "lighthouse",
    "title": "The Lighthouse Coast",
    "line": "The light holds.",
-   "world": "A lone white-stone lighthouse on a mossy islet in rolling fog. A fixed point you tend — the lamp, the glass, the long watch. A coast that holds whether the night is still or the fog rolls in thick."
+   "world": "A lone white-stone lighthouse on a mossy islet in rolling fog. A fixed point you tend — the lamp, the glass, the long watch. A coast that holds whether the night is still or the fog rolls in thick.",
+   "nativeAge": "mature adult — solitude / the long watch / depth-intense (an INTENSE-keyed setting)"
   },
   {
    "id": "cloudhouse",
    "title": "The Sky Station",
    "line": "Your seat is kept.",
-   "world": "A soft-lit sky station moored above sleeping hills. You read one patch of sky and make one small mark, and a rough little constellation is allowed to count. A station that holds whether the night is clear or the weather turns."
+   "world": "A soft-lit sky station moored above sleeping hills. You read one patch of sky and make one small mark, and a rough little constellation is allowed to count. A station that holds whether the night is clear or the weather turns.",
+   "nativeAge": "younger → broad — light / whimsical cozy; the most age-accessible"
   }
  ],
  "results": {
