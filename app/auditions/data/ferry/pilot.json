@@ -133,7 +133,7 @@
      },
      {
       "label": "intense",
-      "text": "out in it, the deck heaving — the manifest-keeper, dry and certain beside you: “your carry’s down here at full weight. set it down — it’s already written.”"
+      "text": "out in it, the deck heaving — the Deckhand's hand on your shoulder: “stop steering. let her carry you.”"
      }
     ],
     [
@@ -209,13 +209,13 @@
       "name": "the Manifest-keeper",
       "color": "#5b817c",
       "is": "your carry, logged at full weight — quiet, precise",
-      "joinsAt": "intense"
+      "joinsAt": "warm"
      },
      {
       "name": "the Deckhand",
       "color": "#c98a3e",
       "is": "the warm hand on your shoulder — “let her carry you”",
-      "joinsAt": "warm"
+      "joinsAt": "intense"
      }
     ],
     "eli5": "FEW colors when it's cozy (one feeling: safe — the deep + the galley warmth); MORE as it turns intense (the storm: the whole crew at once). The number of colors IS how much is happening. The cold deep is the sea that doesn't care; the warm colors are the people — because the warmth that lets you let go is a person's hand, not the water.",
@@ -260,28 +260,28 @@
        "conveys_metaphor": "yes",
        "safe_floor": "safe",
        "arc_fit": "holds",
-       "note": "Directly embodies the core metaphor of a vast, indifferent force that safely holds you."
+       "note": "Its deep, indifferent cool directly serves the core metaphor, but the darkness needs careful handling in layout to avoid feeling heavy."
       },
       {
        "id": "Iyashikei Mist",
        "conveys_metaphor": "weak",
        "safe_floor": "safe",
        "arc_fit": "partial",
-       "note": "Excellent for the cozy floor and iyashikei feel, but lacks the metaphor's depth and power."
+       "note": "The safest floor for the audience, perfectly hitting the iyashikei brief, but it weakens the core 'Dark Water' metaphor of surrender."
       },
       {
        "id": "Carried to Dawn",
        "conveys_metaphor": "yes",
        "safe_floor": "safe",
-       "arc_fit": "holds",
-       "note": "Strong narrative arc, but the dual-temperature base might feel less unified than a single-key palette."
+       "arc_fit": "partial",
+       "note": "Beautifully encapsulates the story's resolution, but having that hope baked into the base ambient may flatten the emotional journey."
       }
      ],
-     "characterHarmony": "The warm Cook and Deckhand provide focused, supportive notes against the cool, steady ambient and crew.",
+     "characterHarmony": "The cool-toned crew harmonise as part of the steady ambient, allowing the warm-toned Cook and Deckhand to emerge as clear, supportive focal points.",
      "fixes": [
-      "Manifest-keeper #5b817c vs base #0e1822 contrast (4.16) is too low for text; nudge lighter to ~#638c86 for 4.5+."
+      "Manifest-keeper #5b817c vs base contrast (4.16) is low for text; recommend lightening to meet 4.5:1."
      ],
-     "oneLine": "A deep, cool monochrome creates a vast, safe space where a single warm hue feels like a profound act of care."
+     "oneLine": "The vast, indifferent cool is the safe foundation; human warmth is the specific, focused support that emerges from it."
     },
     "prompts": {
      "characters": [
@@ -364,7 +364,7 @@
     "focal": [
      "the Cook",
      "the Pilot",
-     "the Manifest-keeper"
+     "the Deckhand"
     ],
     "cohesion": "cohesive",
     "contrast": "distinct",
@@ -373,28 +373,28 @@
      {
       "tone": "cozy",
       "holds": "yes",
-      "note": "Perfectly lands the sheltered, cared-for feeling; a pure iyashikei experience of safety."
+      "note": "Perfectly establishes a baseline of sanctuary and care, insulating the player from the overwhelm."
      },
      {
       "tone": "warm",
       "holds": "yes",
-      "note": "Excellent bridge tone, offering presence with the world from a place of supported observation."
+      "note": "Excellent bridge tone, using observation of competence to model trust and safety from a slight distance."
      },
      {
       "tone": "intense",
       "holds": "yes",
-      "note": "Masterfully reframes intensity as embodied presence, not threat, directly serving the core metaphor."
+      "note": "Masterfully handles intensity as embodied presence, directly teaching the core metaphor without violating the safety floor."
      }
     ],
     "fixes": [],
-    "oneLine": "This set masterfully maps emotional intensity to physical space—galley, threshold, open deck—making tonal choice an embodied one."
+    "oneLine": "This set brilliantly maps emotional intensity to physical space—from the sheltered galley to the exposed deck—offering a clear and safe spectrum of engagement with the core metaphor."
    },
    "expertPanel": {
     "audience": "anxiety (the braced, hypervigilant body) · low self-worth (care must be earned; I'm a burden) · ADHD/overwhelm (no spare working memory; too many open loops)",
     "experts": [
      {
       "name": "Mara Oduya",
-      "role": "art therapist — anxiety & somatic",
+      "role": "AGE/REGISTER — art therapist (anxiety & somatic)",
       "mindset": "The anxious body is BRACED — hypervigilant, scanning for the next thing to lunge at it, never fully exhaling. They read a room's temperature before its content. They don't need stimulation; they need a signal it's safe to unclench.",
       "colours": "Desaturated, low-contrast — held-deep blue-greens that say 'nothing here moves suddenly.' NO alarm-red, no hard high-contrast edges (the eye reads them as threat). ONE low-saturation warm point (the galley lamp) = a hearth, never a spotlight. The dark is soft, not a void.",
       "cast": "A presence that is CALM FIRST — the Cook's steadiness is contagious; an overwhelmed nervous system co-regulates off a settled other. The calm is the medicine, before any words.",
@@ -402,7 +402,7 @@
      },
      {
       "name": "Devin Sato",
-      "role": "game designer — lived ADHD / overwhelm",
+      "role": "AGE/REGISTER — game designer (lived ADHD / overwhelm)",
       "mindset": "The overwhelmed mind has too many open loops and zero spare working memory. Every extra choice, colour, or character on screen is a tax. It bounces the instant the first screen asks it to MANAGE anything. «Surrender as support» is exactly right — the world should do the carrying so the player manages nothing.",
       "colours": "LOW count at cozy — two, maybe three. The palette GROWS only as the player chooses to go deeper (depth is opt-in, never dumped). No flashing, no two focal points competing for the eye.",
       "cast": "ONE focal character per tone — a single warm face, never a crowd at the floor. The crew can exist around the edge, but the frame holds one (Cook → Pilot/Keeper → Deckhand, as the player descends).",
@@ -410,7 +410,7 @@
      },
      {
       "name": "Lena Hart",
-      "role": "iyashikei creator — cozy games for the burnt-out",
+      "role": "GENRE — iyashikei creator (cozy games for the burnt-out)",
       "mindset": "This audience does NOT want to be fixed — being fixed implies they're broken, which is the wound. They want to be ACCOMPANIED. The fantasy is: someone competent is near, the night is bounded, and nothing is required of me.",
       "colours": "The texture of comfort is multisensory-implied — colours that read as warm light on worn wood, steam off the pot, the blanket-weight of the dark. The palette should feel TOUCHED, not designed.",
       "cast": "Quiet competence that WITNESSES, never coaches-at. The intense tone = a DEEPER witness (they see you at your lowest and simply stay), not a louder or higher-stakes one. Escalate by deepening presence, never by raising stakes.",
@@ -418,11 +418,19 @@
      },
      {
       "name": "Sam Reyes",
-      "role": "peer counselor — lived low self-worth",
+      "role": "AGE/REGISTER — peer counselor (lived low self-worth)",
       "mindset": "The core belief is 'I'm a burden; care must be earned; if they really knew me they'd leave.' They flinch from warmth that feels conditional or performed, and they quietly TEST whether the care survives their worst night.",
       "colours": "No saccharine warmth — the bright pink/gold that performs care reads as fake to them. The warmth must be LOW and TRUE (a steady amber). The deep blue-green carries the whole metaphor: the water holds you whether or not you deserve it.",
       "cast": "A cast that gives care UNCONDITIONALLY — «the indifferent deep that carries you anyway» IS the medicine: you don't have to hold yourself up, and nothing is asked back. The Manifest-keeper's lane (your carry logged at full weight, same ink as everyone's) is the self-worth dose.",
       "donts": "Care must never be contingent on the player 'doing well.' No praising performance. The intense tone must never feel like a test the player can fail."
+     },
+     {
+      "name": "Haruki Sone",
+      "role": "GENRE — iyashikei critic (the canon: Midnight Diner · Mushishi · ARIA · Spiritfarer)",
+      "mindset": "I know what makes healing slice-of-life LAND: the keeper is a near-SILENT witness (Midnight Diner), not a mentor; the warmth lives in the GOODBYE and the small gesture, never the systems (Spiritfarer's lesson); a tranquil frame can carry real darkness without breaking (Mushishi); and 'nothing happens' is the FEATURE, not a defect (ARIA). The nightly RITUAL is the warmth engine.",
+      "colours": "the canon's palette is restrained + lived-in — lamplight on worn wood, the dark water held at a calm distance; never the slick, never the saccharine.",
+      "cast": "the crew WITNESS each rider and let them go — the episodic per-night vignette over a quiet throughline; the keeper logs your carry 'at full weight' and releases it.",
+      "donts": "no Spiritfarer grind/chores gating the warmth · the dark strait is ATMOSPHERIC, never a threat mechanic · don't let the perpetual RETURN dilute the goodbye payoff."
      }
     ],
     "framework": {
@@ -437,30 +445,36 @@
        "name": "Mara Oduya",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "Her somatic focus on anxiety is precise and her recommendations directly mitigate hypervigilance."
+       "note": "Her somatic focus on anxiety is precise and directly translates into actionable visual and character design principles."
       },
       {
        "name": "Devin Sato",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "His focus on cognitive load and minimizing demands is a crucial, specific insight for the ADHD/overwhelm audience."
+       "note": "His focus on cognitive load is critical, providing clear, restrictive rules that protect the player's limited working memory."
       },
       {
        "name": "Lena Hart",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "Her distinction between 'accompanying' and 'fixing' is a vital safeguard against making the player feel like a problem."
+       "note": "Her 'accompany, don't fix' insight is a foundational genre principle that also serves as a core safety rule for the audience."
       },
       {
        "name": "Sam Reyes",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "His framing of unconditional, non-performative care is essential for an audience that expects to be rejected."
+       "note": "His framing of unconditional care as an indifferent, environmental force is a powerful and safe metaphor for this audience."
+      },
+      {
+       "name": "Haruki Sone",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "His canon-based analysis provides robust genre guardrails, specifically rejecting mechanics that would harm the audience experience."
       }
      ],
      "missing": [],
      "frameworkSound": "yes",
-     "oneLine": "This panel demonstrates a rare, unified expertise, producing a brief that is both deeply empathetic and concretely actionable."
+     "oneLine": "The panel's synthesis is a masterclass in designing for a vulnerable audience, earning the right to brief the project."
     }
    },
    "castAudition": {
@@ -524,15 +538,15 @@
       "contrast": "distinct",
       "safe": "safe",
       "resonance": "strong",
-      "note": "A classic, embodied progression from ambient care to direct physical comfort."
+      "note": "The most embodied and direct expression of «Surrender as support»."
      },
      {
       "id": "unlit-middle",
       "cohesion": "loose",
-      "contrast": "partial",
-      "safe": "risky",
+      "contrast": "distinct",
+      "safe": "safe",
       "resonance": "partial",
-      "note": "The core metaphor is powerful but risks triggering anxiety in this specific audience."
+      "note": "A powerful metaphor for executive dysfunction, but less emotionally cohesive."
      },
      {
       "id": "full-weight",
@@ -540,14 +554,14 @@
       "contrast": "distinct",
       "safe": "safe",
       "resonance": "strong",
-      "note": "A subtle, mature take on being 'held' that deeply serves the low self-worth audience."
+      "note": "A subtle, profound take that deeply resonates with the iyashikei lens."
      }
     ],
-    "winner": "full-weight",
-    "winnerName": "Logged at Full Weight",
-    "why": "It best embodies 'unconditional witnessing' for the mature target audience, using stillness and validation to address the core wound of low self-worth.",
-    "runnerUp": "warm-hand",
-    "runnerUpGem": "Its direct, physical embodiment of care is a powerful anchor that the more abstract winner lacks."
+    "winner": "warm-hand",
+    "winnerName": "The Warm Hand",
+    "why": "It offers the most cohesive, embodied progression of care that directly addresses the audience's physical anxiety.",
+    "runnerUp": "full-weight",
+    "runnerUpGem": "Its concept of unconditional validation—being 'logged at full weight'—is a profound gem for the low self-worth audience."
    },
    "consults": [
     {
@@ -594,7 +608,7 @@
    ],
    "mirror": {
     "kind": "fellow traveler",
-    "premise": "the audience's own problem, witnessed in another passenger — «surrender as support» enacted on them, received vicariously (not a rival, not the protagonist)",
+    "premise": "the audience's own problem, witnessed in another PASSENGER — «surrender as support» enacted on them (you watch someone be carried), received vicariously (not a rival, not the protagonist)",
     "conditions": [
      {
       "id": "ambient",
@@ -613,7 +627,7 @@
      },
      {
       "id": "fellow-traveler",
-      "label": "a fellow traveler, not a rival/problem — shares the quiet space; never an adversary, never a thing to be fixed (fixing pathologizes the player too)",
+      "label": "a fellow traveler, not a rival/problem — shares the quiet space; never an adversary, never a thing to be fixed",
       "from": "Lena (iyashikei)"
      }
     ],
@@ -634,45 +648,45 @@
     "vet": {
      "perCondition": [
       {
-       "id": "[ambient]",
+       "id": "ambient",
        "met": "yes",
-       "note": "The character remains an environmental detail, never becoming a managed task or a cognitive load."
+       "note": "The vignettes are self-contained and observational, successfully avoiding any sense of a quest or tracked state."
       },
       {
-       "id": "[fatigue]",
+       "id": "fatigue",
        "met": "yes",
-       "note": "The portrayal is consistently one of quiet exhaustion and bracing, avoiding any sense of active alarm."
+       "note": "The language focuses on weariness and internal bracing, not active, alarming distress."
       },
       {
-       "id": "[mundane-care]",
+       "id": "mundane-care",
        "met": "yes",
-       "note": "The care is consistently non-performative, routine, and unearned, directly addressing the core wound."
+       "note": "The actions are normalized and non-performative, reinforcing that care is a default state, not an intervention."
       },
       {
-       "id": "[fellow-traveler]",
+       "id": "fellow-traveler",
        "met": "yes",
-       "note": "The character is a peer to be witnessed, never a problem to be fixed, preserving the iyashikei space."
+       "note": "The framing maintains a respectful distance, allowing for vicarious experience without creating a social obligation."
       }
      ],
      "perTone": [
       {
        "tone": "cozy",
        "holds": "yes",
-       "note": "Establishes a gentle parallel of shared tiredness and shared routine care."
+       "note": "The 'same as yours' detail is a masterful touch, immediately establishing the mirror and the mundane nature of the care."
       },
       {
        "tone": "warm",
        "holds": "yes",
-       "note": "Effectively escalates to visible internal bracing, met with quiet, non-interventional presence."
+       "note": "The Pilot's silent companionship is a strong embodiment of support without intrusion, fitting the warm register perfectly."
       },
       {
        "tone": "intense",
        "holds": "yes",
-       "note": "Powerfully lands the 'surrender' beat with unconditional, bureaucratic acceptance—intense in theme, not threat."
+       "note": "This lands the core metaphor of 'surrender as support' with powerful, restrained language that deepens presence without raising threat."
       }
      ],
      "safe": "safe",
-     "oneLine": "Approved; the execution is subtle, safe, and powerfully lands the core theme for all audience threads."
+     "oneLine": "Approved; the mirror is a masterclass in quiet resonance, landing the core metaphor safely across all tones."
     }
    }
   }
@@ -885,5 +899,10 @@
   "valorises": "LOW-arousal positive states — calm, peacefulness, contentment (LAP)",
   "expression": "indirect, restrained, the unsaid; harmony over assertion; the meaningful pause (ma)",
   "nudge": "toward stillness + restraint + the implied — let silence and small gestures carry the weight"
+ },
+ "genre": {
+  "name": "cozy night-ferry iyashikei (healing slice-of-life)",
+  "honour": "the EPISODIC per-rider witness (board → witness → release, Midnight Diner) · the warmth in the GOODBYE / the small gesture, not the systems (Spiritfarer) · a tranquil frame can hold dark weight (Mushishi) · 'nothing happens, beautifully' is a FEATURE (ARIA) · the nightly RITUAL as a warmth engine",
+  "traps": "Spiritfarer's management/grind busywork (never gate warmth behind chores) · the dark strait as a contrast-THREAT (it's atmospheric, never a threat mechanic) · the perpetual RETURN diluting the goodbye payoff (the open bet)"
  }
 }
