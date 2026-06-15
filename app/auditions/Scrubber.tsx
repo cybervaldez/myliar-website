@@ -263,7 +263,6 @@ type Prompts = { characters: string[]; objects: string[]; trophy: string[]; item
 type Prose = { objectSeeds: { dominant: string[]; accent: string[] }; diction: { cool: string[]; warm: string[] }; rules: string[]; example: string };
 type Mood = { ambients: Ambient[]; characters: Character[]; eli5: string; vet?: Vet; prompts?: Prompts; prose?: Prose };
 type StoryT = { id: string; env: string[]; subrange?: Tone[][]; mood?: Mood };
-const TJOIN: Record<string, number> = { cozy: 0, warm: 1, intense: 2 };
 export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] }) {
   const main = useScrub(0.1);                                   // ONE scrub: segment = scene, within = tone
   const [amb, setAmb] = useState(0);                           // the picked ambient mood (the audition)
@@ -279,11 +278,10 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
   const hot = (l?: string) => (l === "intense" ? "var(--spot-red)" : forest);
   const A = story.mood?.ambients?.[amb];
   const artInk = A?.ink ?? ink, artBg = A?.base ?? paper;
-  // the palette GROWS with the tone (a colour = a mood): cozy = few · intense = many
-  const swatches = (A ? [{ c: A.base, label: "the deep", join: 0 }, { c: A.ink, label: "the light", join: 0 }, { c: A.accent, label: "the carry", join: 1 }, ...(story.mood?.characters ?? []).map((ch) => ({ c: ch.color, label: ch.name, join: TJOIN[ch.joinsAt] ?? 0 }))] : []).filter((s) => s.join <= ti);
-  // readable text on a coloured chip (perceived luminance) + the character speaking at this tone
+  // the ambient palette GROWS slightly with the tone (the carry joins as it warms)
+  const swatches = (A ? [{ c: A.base, label: "the deep", join: 0 }, { c: A.ink, label: "the light", join: 0 }, { c: A.accent, label: "the carry", join: 1 }] : []).filter((s) => s.join <= ti);
+  // readable text on a coloured chip (perceived luminance)
   const readOn = (hex: string) => { const c = hex.replace("#", ""); const [r, g, b] = [0, 2, 4].map((i) => parseInt(c.slice(i, i + 2), 16)); return 0.299 * r + 0.587 * g + 0.114 * b > 140 ? "#11181f" : "#eef2f6"; };
-  const speaker = story.mood?.characters?.find((c) => TJOIN[c.joinsAt] === ti) ?? [...(story.mood?.characters ?? [])].filter((c) => TJOIN[c.joinsAt] <= ti).slice(-1)[0];
   const vet = story.mood?.vet;
   const vetA = vet?.ambients?.find((x) => x.id === A?.name || x.id === A?.id);
   const vcol = (s?: string) => (s === "yes" || s === "safe" || s === "holds" ? forest : s === "weak" || s === "partial" || s === "risky" ? amber : "var(--spot-red)");
@@ -325,8 +323,8 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
         </div>
       )}
 
-      {/* THE TONE & MOOD — pick the ambient palette (the mood) · it grows with the subrange · a glimpse
-          of the crew (derived from the deep) · ELI5 the colours */}
+      {/* THE TONE & MOOD — pick the ambient palette (the mood) · it grows with the subrange · ELI5 the
+          colours. The CREW's own palettes move to the subrange step (the cast-set makeup). */}
       {A && (
         <div style={{ border: `2px solid ${forest}`, background: paper, padding: "11px 13px", marginTop: 14 }}>
           <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>🎨 TONE &amp; MOOD — pick the ambient palette (the mood)</div>
@@ -346,18 +344,11 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
               {vet!.oneLine && <div style={{ color: margin, marginTop: 3 }}>↳ {vet!.oneLine}</div>}
             </div>
           )}
-          <div style={{ fontSize: 10, color: margin, marginBottom: 5 }}>↳ a glimpse of the crew <span style={{ fontStyle: "italic" }}>(each colour derived from the deep; together they harmonise — the warm ones are the people)</span></div>
-          <div style={{ display: "grid", gap: 4, marginBottom: 10 }}>
-            {story.mood!.characters.map((ch) => { const onNow = (TJOIN[ch.joinsAt] ?? 0) <= ti; return (
-              <div key={ch.name} style={{ display: "flex", gap: 8, alignItems: "center", opacity: onNow ? 1 : 0.38 }}>
-                <div style={{ width: 12, height: 12, background: ch.color, border: `1px solid ${ink}`, flexShrink: 0 }} />
-                <div style={{ fontSize: 11, lineHeight: 1.4 }}><b style={{ color: ink }}>{ch.name}</b> <span style={{ color: soft }}>— {ch.is}</span> <span style={{ fontSize: 9, color: margin }}>· enters at {ch.joinsAt}</span></div>
-              </div> ); })}
-          </div>
+          <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginBottom: 10, borderLeft: `2px solid var(--ink-soft)`, paddingLeft: 8 }}>↳ the crew’s own palettes (and their asset prompts) are auditioned in the <b style={{ color: forest }}>SUBRANGE step</b> — the cast-set makeup — not here. This page sets the <b>ambient ground</b> they’ll wear.</div>
           <div style={{ fontSize: 10.5, color: ink, lineHeight: 1.5, borderTop: "1px solid var(--ink-soft)", paddingTop: 8 }}><span style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: forest }}>WHY THESE COLOURS · ELI5 </span>{story.mood!.eli5}</div>
           <div style={{ fontSize: 10, color: soft, fontStyle: "italic", marginTop: 5, marginBottom: 11 }}>↳ {A.name}: {A.why}</div>
           {/* the palette swatches — placed LAST so the colours sit right above the UI built from them */}
-          <div style={{ fontSize: 10, color: margin, marginBottom: 4 }}>the palette at <b style={{ color: hot(beat?.label) }}>{beat?.label ?? "—"}</b> · <b style={{ color: ink }}>{swatches.length} colours</b> = {swatches.length} moods <span style={{ fontStyle: "italic" }}>(more as it turns intense)</span></div>
+          <div style={{ fontSize: 10, color: margin, marginBottom: 4 }}>the ambient palette at <b style={{ color: hot(beat?.label) }}>{beat?.label ?? "—"}</b> · <b style={{ color: ink }}>{swatches.length} colours</b> <span style={{ fontStyle: "italic" }}>(the carry joins as it warms)</span></div>
           <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
             {swatches.map((s, i) => (
               <div key={i} style={{ textAlign: "center" }}>
@@ -374,7 +365,6 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
         <div style={{ marginTop: 14 }}>
           <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 8 }}>🖥 UI FROM THE AMBIENT — the chrome wears the mood</div>
           <div style={{ background: A.base, border: `2px solid ${A.accent}`, padding: "12px 14px 13px", boxShadow: "3px 3px 0 rgba(0,0,0,.22)" }}>
-            {speaker && <div style={{ display: "inline-block", background: speaker.color, color: readOn(speaker.color), fontFamily: "var(--theme-body)", fontWeight: 700, fontSize: 11, padding: "2px 10px", marginBottom: 8, letterSpacing: ".02em" }}>{speaker.name}</div>}
             <div style={{ color: A.ink, fontSize: 14.5, lineHeight: 1.55 }}>{beat?.text ?? "…"} <span style={{ color: A.accent }}>▾</span></div>
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 9, flexWrap: "wrap" }}>
@@ -384,15 +374,15 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
               <span style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "62%", background: A.accent, opacity: 0.85 }} />
             </span>
           </div>
-          <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginTop: 6 }}>the dialogue box · choices · the stat bar — all from the ambient (base · ink · accent); the speaker’s name takes the character’s colour. <span style={{ color: "var(--spot-red)" }}>The line is an example.</span></div>
+          <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginTop: 6 }}>the dialogue box · choices · the stat bar — all from the ambient (base · ink · accent). <span style={{ color: "var(--spot-red)" }}>The line is an example.</span></div>
         </div>
       )}
 
       {/* PROMPT-FRIENDLY COLOURS — natural-language colour phrases from the palette, for generating assets */}
       {story.mood?.prompts && (
         <div style={{ border: `2px solid ${forest}`, background: paper, padding: "11px 13px", marginTop: 14 }}>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 7 }}>🧩 PROMPT-FRIENDLY COLOURS — for generating assets <span style={{ color: margin, fontWeight: 400 }}>· examples, derived from the palette</span></div>
-          {([["characters", "CHARACTERS"], ["objects", "OBJECTS"], ["trophy", "TROPHY"], ["items", "ITEMS"], ["achievementIcons", "ACHIEVEMENT ICONS"]] as const).map(([k, label]) => {
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 7 }}>🧩 PROMPT-FRIENDLY COLOURS — the world’s assets <span style={{ color: margin, fontWeight: 400 }}>· objects · trophies · items · icons (character prompts live in the subrange step)</span></div>
+          {([["objects", "OBJECTS"], ["trophy", "TROPHY"], ["items", "ITEMS"], ["achievementIcons", "ACHIEVEMENT ICONS"]] as const).map(([k, label]) => {
             const list = story.mood!.prompts![k];
             if (!list?.length) return null;
             return (

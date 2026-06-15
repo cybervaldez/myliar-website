@@ -49,7 +49,7 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
             <StoryBuild story={{ id: story.id, env: story.env, subrange: story.subrange, mood: story.mood }} scenes={p.scenes} />
             <div style={{ border: "2px dashed var(--forest)", background: "var(--paper-shade)", padding: "10px 14px", margin: "16px 0 0", fontSize: 11, color: "var(--ink)", lineHeight: 1.5 }}>
               <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: "var(--forest)", marginBottom: 4 }}>→ HANDS THE NEXT STEPS</div>
-              the <b>ambient palette</b> · the <b>character palettes</b> · the <b>UI theme</b> (the dialogue box) · the <b>asset-prompt colours</b> · the <b>palette→prose recipe</b>. The CAST step locks the characters; the real beats are authored against the prose recipe.
+              the <b>ambient palette</b> · the <b>UI theme</b> (the dialogue box) · the <b>world asset-prompt colours</b> · the <b>palette→prose recipe</b> — the ambient ground every story wears. The <b>SUBRANGE step</b> auditions the <b>cast-set makeup</b> (the crew’s own palettes + prompts); the real beats are authored against the prose recipe.
             </div>
           </>
         )}
