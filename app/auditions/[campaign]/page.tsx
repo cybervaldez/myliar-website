@@ -51,8 +51,11 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
   const pickedStory = pilotRaw?.scrubGroups?.find((g) => g.id === pilotRaw.picked);
   const subranges = (pickedStory?.subrange?.[0] ?? []).map((t) => t.label);
   const audit = pickedStory?.subrangeAudit;
-  // the TARGET AGE — set at the concept, the PRIOR every downstream step narrows to (the dialed tone overrides it)
-  const targetAge = ((c.steps.tone ?? c.steps.pilot) as unknown as { targetAge?: { range: number[]; center: number; band: string; lifeContext: string; register: string; note: string } } | undefined)?.targetAge;
+  // THE FACTOR PROFILE — the orthogonal dials set at the concept, injected into every audition (composable-factors.md)
+  const tonePilot = (c.steps.tone ?? c.steps.pilot) as unknown as { targetAge?: { range: number[]; center: number; band: string; lifeContext: string; register: string; note: string }; genre?: { name: string }; culture?: { name: string } } | undefined;
+  const targetAge = tonePilot?.targetAge;
+  const genre = tonePilot?.genre;
+  const culture = tonePilot?.culture;
 
   return (
     <main style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
@@ -64,11 +67,19 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
       <p style={{ fontSize: 12.5, color: soft, lineHeight: 1.55, margin: "0 0 6px" }}>{c.blurb}</p>
       <p style={{ fontSize: 11, color: margin, margin: "0 0 12px" }}>born from <a href="/auditions/concept" style={{ color: forest }}>the slate</a> · a shared TRUNK (setting · range · mood), then it BRANCHES per tone — each tone its own cast · chat · beats. Each step carries the last's experts forward.</p>
 
-      {targetAge && (
-        <div style={{ border: `2px solid ${forest}`, background: "var(--paper-shade)", padding: "9px 13px", margin: "0 0 20px" }}>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".07em", color: forest }}>🎯 TARGET AGE — the PRIOR the whole flow narrows to (set at the concept)</div>
-          <div style={{ fontSize: 12, color: ink, marginTop: 3, lineHeight: 1.5 }}><b>{targetAge.range[0]}–{targetAge.range[1]}</b> (center ~{targetAge.center}) · <b>{targetAge.band}</b> · {targetAge.lifeContext}<br /><span style={{ color: soft }}>default register: {targetAge.register}</span></div>
-          <div style={{ fontSize: 10, color: margin, marginTop: 4, fontStyle: "italic" }}>every step below narrows to this — but it&rsquo;s a PRIOR, not a gate: the player&rsquo;s <b>dialed tone overrides</b> it (the research: perceived-time &gt; age). {targetAge.note}</div>
+      {(targetAge || genre || culture) && (
+        <div style={{ border: `2px solid ${forest}`, background: "var(--paper-shade)", padding: "10px 13px", margin: "0 0 20px" }}>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".07em", color: forest, marginBottom: 4 }}>🎛 THE FACTOR PROFILE — the orthogonal dials every audition injects (set at the concept)</div>
+          {targetAge && (
+            <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5, marginBottom: 3 }}><b style={{ color: forest }}>AGE</b> {targetAge.range[0]}–{targetAge.range[1]} ({targetAge.band}) · {targetAge.lifeContext} <span style={{ color: margin, fontStyle: "italic" }}>— the register + content ceiling · STRUCTURAL (the dialed tone overrides it)</span></div>
+          )}
+          {genre && (
+            <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5, marginBottom: 3 }}><b style={{ color: forest }}>GENRE</b> {genre.name} <span style={{ color: margin, fontStyle: "italic" }}>— the world&rsquo;s conventions + traps · CRAFT (carried by the genre experts)</span></div>
+          )}
+          {culture && (
+            <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5, marginBottom: 3 }}><b style={{ color: forest }}>CULTURE</b> {culture.name} <span style={{ color: margin, fontStyle: "italic" }}>— the register&rsquo;s arousal tint · FINE moderator (composes, never overrides)</span></div>
+          )}
+          <div style={{ fontSize: 10, color: margin, marginTop: 4, fontStyle: "italic" }}>each injects only what it predicts, at its own strength; none derived from another; the floor always wins. <span style={{ color: soft }}>(model: composable-factors.md)</span></div>
         </div>
       )}
 

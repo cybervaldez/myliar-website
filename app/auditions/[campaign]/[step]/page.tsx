@@ -68,7 +68,7 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
   if (step === "tone") {
     const link = { color: "var(--forest)", fontWeight: 700, textDecoration: "none" } as const;
     if (!c) return <main style={{ maxWidth: 760, margin: "0 auto", padding: 40 }}><p style={{ color: "var(--margin-ink)" }}>No story for {campaign}. <a href="/auditions" style={link}>↑ the board</a></p></main>;
-    const p = (c.steps.tone ?? c.steps.pilot) as unknown as { picked?: string; targetAge?: { range: number[]; center: number; band: string }; scrubGroups: { id: string; name: string; metaphor?: string; mood?: { ambients?: { name: string; base: string }[]; characters: { name: string; color: string; is: string; joinsAt: string }[]; vet?: { best: string }; prompts?: { characters: string[] } }; subrangeAudit?: ToneT["audit"]; expertPanel?: { audience: string; experts: ToneT["experts"]; framework: ToneT["framework"]; vet: ToneT["vet"] }; castAudition?: ToneT["castAudition"]; mirror?: ToneT["mirror"] }[] };
+    const p = (c.steps.tone ?? c.steps.pilot) as unknown as { picked?: string; targetAge?: { range: number[]; center: number; band: string }; genre?: { name: string }; culture?: { name: string }; scrubGroups: { id: string; name: string; metaphor?: string; mood?: { ambients?: { name: string; base: string }[]; characters: { name: string; color: string; is: string; joinsAt: string }[]; vet?: { best: string }; prompts?: { characters: string[] } }; subrangeAudit?: ToneT["audit"]; expertPanel?: { audience: string; experts: ToneT["experts"]; framework: ToneT["framework"]; vet: ToneT["vet"] }; castAudition?: ToneT["castAudition"]; mirror?: ToneT["mirror"] }[] };
     const g = p.scrubGroups.find((x) => x.id === p.picked);
     const ep = g?.expertPanel, au = g?.subrangeAudit;
     const amb = g?.mood?.ambients?.find((a) => a.name === g?.mood?.vet?.best) ?? g?.mood?.ambients?.[0];
@@ -81,7 +81,14 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
         </div>
         <h1 style={{ fontSize: 24, margin: "0 0 2px", color: "var(--ink)" }}>{stepNo("tone")} The Tone · {c.label}</h1>
         {g?.metaphor && <div style={{ fontFamily: "var(--theme-display)", fontSize: 18, color: "var(--forest)", marginBottom: 4 }}>{g.name} «{g.metaphor}»</div>}
-        {p.targetAge && <div style={{ display: "inline-block", border: "1.5px solid var(--forest)", borderRadius: 3, padding: "2px 8px", fontSize: 10.5, color: "var(--ink)", marginBottom: 8 }}>🎯 age <b>{p.targetAge.range[0]}–{p.targetAge.range[1]}</b> · {p.targetAge.band} <span style={{ color: "var(--margin-ink)", fontStyle: "italic" }}>— the prior this audition narrows to (the dialed tone overrides)</span></div>}
+        {(p.targetAge || p.genre || p.culture) && (
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8, alignItems: "center" }}>
+            <span style={{ fontSize: 9.5, color: "var(--margin-ink)", fontFamily: "var(--theme-body)", fontWeight: 700, letterSpacing: ".05em" }}>FACTORS the experts compose:</span>
+            {p.targetAge && <span style={{ border: "1.5px solid var(--forest)", borderRadius: 3, padding: "2px 8px", fontSize: 10.5, color: "var(--ink)" }}>🎯 age <b>{p.targetAge.range[0]}–{p.targetAge.range[1]}</b> · {p.targetAge.band}</span>}
+            {p.genre && <span style={{ border: "1.5px solid var(--forest)", borderRadius: 3, padding: "2px 8px", fontSize: 10.5, color: "var(--ink)" }}>📐 genre <b>{p.genre.name}</b></span>}
+            {p.culture && <span style={{ border: "1.5px solid var(--forest)", borderRadius: 3, padding: "2px 8px", fontSize: 10.5, color: "var(--ink)" }}>🎨 culture <b>{p.culture.name}</b></span>}
+          </div>
+        )}
         <p style={{ fontSize: 12.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: "0 0 16px" }}>{INTRO.tone}</p>
         {!d ? (
           <p style={{ fontSize: 13, color: "var(--margin-ink)" }}>The makeup isn&rsquo;t auditioned yet. Build it on <a href={`/auditions/${campaign}/story`} style={link}>the story step →</a></p>
