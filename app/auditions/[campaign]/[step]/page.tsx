@@ -72,7 +72,7 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
     const g = p.scrubGroups.find((x) => x.id === p.picked);
     const ep = g?.expertPanel, au = g?.subrangeAudit;
     const amb = g?.mood?.ambients?.find((a) => a.name === g?.mood?.vet?.best) ?? g?.mood?.ambients?.[0];
-    const d: ToneT | null = g && ep && au ? { audience: ep.audience, experts: ep.experts, framework: ep.framework, vet: ep.vet, characters: g.mood!.characters, charPrompts: g.mood?.prompts?.characters ?? [], audit: au, ambientName: amb?.name ?? "the ambient", ambientBase: amb?.base ?? "#0e1822", castAudition: g.castAudition, mirror: g.mirror } : null;
+    const d: ToneT | null = g && ep && au ? { audience: ep.audience, experts: ep.experts, framework: ep.framework, vet: ep.vet, characters: g.mood!.characters, charPrompts: g.mood?.prompts?.characters ?? [], audit: au, ambientName: amb?.name ?? "the ambient", ambientBase: amb?.base ?? "#0e1822", castAudition: g.castAudition, mirror: g.mirror, content: (g as { content?: ToneT["content"] }).content } : null;
     return (
       <main style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", fontSize: 12, marginBottom: 4 }}>

@@ -688,6 +688,23 @@
      "safe": "safe",
      "oneLine": "Approved; the mirror is a masterclass in quiet resonance, landing the core metaphor safely across all tones."
     }
+   },
+   "content": {
+    "cozy": {
+     "focal": "the Cook",
+     "coachVoice": "The Cook's presence is a quiet anchor, their voice a low murmur that never asks for a reply. They communicate through action—the slide of a warm bowl, a steady hand on the kettle—letting the shared silence hold more than words could. Their care is a simple, observable fact, offered without condition or expectation.",
+     "sampleLines": [
+      "Eat when you're ready.",
+      "She'll hold.",
+      "The kettle's on again."
+     ],
+     "beats": [
+      "The Cook moves with the ship's first sways, lighting a weighted lamp on the galley table. Its small, steady pool of light doesn't flicker as the sea begins to stir outside.",
+      "During the worst of the storm, the Cook wordlessly passes around thick, mismatched wool socks from a locker, placing a dry pair beside your hand without asking if you need them.",
+      "At dawn, the Cook takes the finished and untouched bowls with the same quiet nod, replacing them with two small cups of a clear, steaming broth that smells of ginger and salt."
+     ],
+     "narrowedBy": "The iyashikei genre's focus on quiet witness and the audience's need for low-load presence pre-decided that care must be shown through silent, steady action, not conversation."
+    }
    }
   }
  ],

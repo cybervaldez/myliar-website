@@ -439,7 +439,8 @@ type CastVerdict = { id: string; cohesion: string; contrast: string; safe: strin
 type CastAudition = { sets: CastSet[]; perSet: CastVerdict[]; winner: string; winnerName: string; why: string; runnerUp: string; runnerUpGem: string };
 type MirrorCond = { id: string; label: string; from: string };
 type MirrorT = { kind: string; premise: string; conditions: MirrorCond[]; perTone: { tone: string; text: string }[]; vet: { perCondition: { id: string; met: string; note: string }[]; perTone: { tone: string; holds: string; note: string }[]; safe: string; oneLine: string } };
-export type ToneT = { audience: string; experts: Expert[]; framework: Framework; vet: ExpertVet; characters: Character[]; charPrompts: string[]; audit: SubAudit; ambientName: string; ambientBase: string; castAudition?: CastAudition; mirror?: MirrorT };
+type ToneContent = { focal: string; coachVoice: string; sampleLines: string[]; beats: string[]; narrowedBy: string };
+export type ToneT = { audience: string; experts: Expert[]; framework: Framework; vet: ExpertVet; characters: Character[]; charPrompts: string[]; audit: SubAudit; ambientName: string; ambientBase: string; castAudition?: CastAudition; mirror?: MirrorT; content?: { [tone: string]: ToneContent } };
 const TONE_C: Record<string, string> = { cozy: "#c0795c", warm: "#6b8ba6", intense: "#c98a3e" };
 const auditGood = (v: string) => ["cohesive", "distinct", "safe", "yes"].includes(v);
 
@@ -580,7 +581,18 @@ export function ToneBuild({ d }: { d: ToneT }) {
         <div style={{ color: soft, fontStyle: "italic", marginTop: 3 }}>↳ {d.audit.oneLine}</div>
       </div>
 
-      <div style={{ fontSize: 10, color: margin, marginTop: 11, fontStyle: "italic", lineHeight: 1.5 }}>↓ this set passes the floor. Generating RIVAL cast-sets to pick the <b>most cohesive</b> (the way the range was picked) is the next tool; then the per-tone CONTENT (chat → beats) is built <b>cozy-first</b>.</div>
+      {d.content && Object.entries(d.content).map(([tone, ct]) => (
+        <div key={tone} style={{ border: `2px solid ${forest}`, background: shade, padding: "11px 14px", marginTop: 13, fontSize: 11, color: ink, lineHeight: 1.55 }}>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 4 }}>▸ THE <span style={{ textTransform: "uppercase" }}>{tone}</span> CONTENT — the floor, built first · focal: {ct.focal}</div>
+          <div><b>coach voice:</b> {ct.coachVoice}</div>
+          <div style={{ marginTop: 5 }}><b>sample lines:</b></div>
+          {ct.sampleLines.map((l, i) => <div key={i} style={{ color: soft, marginLeft: 8, fontStyle: "italic" }}>“{l}”</div>)}
+          <div style={{ marginTop: 5 }}><b>beats:</b></div>
+          {ct.beats.map((b, i) => <div key={i} style={{ color: soft, marginLeft: 8 }}>· {b}</div>)}
+          <div style={{ marginTop: 6, paddingTop: 5, borderTop: `1px solid ${soft}`, fontSize: 10, color: margin, fontStyle: "italic" }}>↳ the factors narrowed this: {ct.narrowedBy}</div>
+        </div>
+      ))}
+      {!d.content && <div style={{ fontSize: 10, color: margin, marginTop: 11, fontStyle: "italic", lineHeight: 1.5 }}>↓ this set passes the floor. The per-tone CONTENT (chat → beats) is built <b>cozy-first</b> (next).</div>}
     </div>
   );
 }

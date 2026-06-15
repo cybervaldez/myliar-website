@@ -134,6 +134,14 @@
       "colours": "the canon's look is lived-in + specific — the stickered locker, string lights, the worn couch; vivid identity colour, never a muted 'tasteful'.",
       "cast": "a found-family of distinct, messy voices; the player belongs without auditioning; the adult keeps the room and stays OUT of the teens' emotional core.",
       "donts": "no after-school-SPECIAL lesson · no 'how-do-you-do-fellow-kids' voice · no sanitising the mess · no adult-savior resolving the teens' world."
+     },
+     {
+      "name": "Bex Adeyemi",
+      "role": "AGE/REGISTER — youth-work facilitator (peer JOY & play)",
+      "mindset": "Belonging for teens isn't only the ABSENCE of being excluded — it's the PRESENCE of shared joy: the in-joke that proves you were there, the running bit, the collaborative dumb fun, the buzz of a room that's actually laughing. The soothe-the-anxiety lens misses that the JOY is the glue. You don't only feel safe here — you have FUN here, and that's what brings you back.",
+      "colours": "warmth with a PULSE — the bright pop of a shared laugh, not only the low calm; the room's identity colours allowed to be LOUD in the good moments (this is where the Western register's higher-arousal positive lives).",
+      "cast": "the crew has a SHARED LANGUAGE — running jokes, a we-were-there shorthand; the warm tone carries real DELIGHT, co-created in the fun, not just granted as refuge.",
+      "donts": "don't make it ALL soothing/heavy — a room that's only a refuge from pain, never a place of joy, reads as a waiting room. Let them be delighted, loudly, together."
      }
     ],
     "framework": {
@@ -148,38 +156,44 @@
        "name": "Dr. Priya Anand",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "Pinpoints the 'performance treadmill' anxiety with specific, age-keyed visual and narrative solutions."
+       "note": "The 'performance treadmill' framing is a sharp, actionable insight specific to this audience's anxiety."
       },
       {
        "name": "Marcus Bell",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "Translates the core ADHD 'shame of the unstarted' into safe, actionable design principles like body-doubling."
+       "note": "Focusing on the 'shame of the unstarted' and providing a 'no fail-state' rule is crucial for the ADHD-keyed audience."
       },
       {
        "name": "Sofia Reyes",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "Expertly defines the contemporary YA genre's promises and its most common, audience-repelling traps."
+       "note": "Her advice is specific to the genre's craft, correctly identifying traps like 'an adult's idea of teens'."
       },
       {
        "name": "Jordan Okafor",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "Provides the core 'kept, not chosen' thesis and the critical safeguarding floor for this vulnerable audience."
+       "note": "The 'kept, not chosen' concept provides the core emotional dose, and the safeguarding floor is clearly defined."
       },
       {
        "name": "Devon Marsh",
        "trueToAudience": "yes",
        "safe": "yes",
-       "note": "Confirms the genre's core mechanics from a critical perspective, reinforcing the 'hangout is the plot' principle."
+       "note": "His distinction between 'who saves you a seat' vs 'who saves the world' perfectly calibrates the genre's stakes."
+      },
+      {
+       "name": "Bex Adeyemi",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "This vital framing prevents the game from becoming a 'waiting room' by centering active, shared joy as the glue."
       }
      ],
      "missing": [
-      "The panel focuses effectively on soothing negative states (anxiety, shame) but doesn't explicitly frame the positive, higher-arousal emotions (shared joy, collaborative excitement, in-jokes) that also forge belonging."
+      "The active, messy process of teen identity formation and experimentation, beyond just the need for belonging."
      ],
      "frameworkSound": "yes",
-     "oneLine": "An exceptionally well-aligned panel whose synthesis provides a clear, safe, and resonant foundation for the project."
+     "oneLine": "The panel delivers a deeply resonant and actionable framework, earning the right to brief the creative team."
     }
    },
    "mood": {
