@@ -47,6 +47,10 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
             </div>
             <p style={{ fontSize: 12.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: "0 0 14px" }}>{INTRO.story}</p>
             <StoryBuild story={{ id: story.id, env: story.env, subrange: story.subrange, mood: story.mood }} scenes={p.scenes} />
+            <div style={{ border: "2px dashed var(--forest)", background: "var(--paper-shade)", padding: "10px 14px", margin: "16px 0 0", fontSize: 11, color: "var(--ink)", lineHeight: 1.5 }}>
+              <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: "var(--forest)", marginBottom: 4 }}>→ HANDS THE NEXT STEPS</div>
+              the <b>ambient palette</b> · the <b>character palettes</b> · the <b>UI theme</b> (the dialogue box) · the <b>asset-prompt colours</b> · the <b>palette→prose recipe</b>. The CAST step locks the characters; the real beats are authored against the prose recipe.
+            </div>
           </>
         )}
         <div style={{ display: "flex", justifyContent: "space-between", borderTop: "1px solid var(--ink-soft)", paddingTop: 12, marginTop: 18, fontSize: 13 }}>
