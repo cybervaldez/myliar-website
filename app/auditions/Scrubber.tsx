@@ -437,14 +437,18 @@ type SubAudit = { tones: string[]; focal: string[]; cohesion: string; contrast: 
 type CastSet = { id: string; name: string; map: { cozy: string[]; warm: string[]; intense: string[] }; deepening: string };
 type CastVerdict = { id: string; cohesion: string; contrast: string; safe: string; resonance: string; note: string };
 type CastAudition = { sets: CastSet[]; perSet: CastVerdict[]; winner: string; winnerName: string; why: string; runnerUp: string; runnerUpGem: string };
-export type SubrangeT = { audience: string; experts: Expert[]; framework: Framework; vet: ExpertVet; characters: Character[]; charPrompts: string[]; audit: SubAudit; ambientName: string; ambientBase: string; castAudition?: CastAudition };
+type MirrorCond = { id: string; label: string; from: string };
+type MirrorT = { kind: string; premise: string; conditions: MirrorCond[]; perTone: { tone: string; text: string }[]; vet: { perCondition: { id: string; met: string; note: string }[]; perTone: { tone: string; holds: string; note: string }[]; safe: string; oneLine: string } };
+export type SubrangeT = { audience: string; experts: Expert[]; framework: Framework; vet: ExpertVet; characters: Character[]; charPrompts: string[]; audit: SubAudit; ambientName: string; ambientBase: string; castAudition?: CastAudition; mirror?: MirrorT };
 const TONE_C: Record<string, string> = { cozy: "#c0795c", warm: "#6b8ba6", intense: "#c98a3e" };
 const auditGood = (v: string) => ["cohesive", "distinct", "safe", "yes"].includes(v);
 
 export function SubrangeBuild({ d }: { d: SubrangeT }) {
   const red = "var(--spot-red)";
   const ca = d.castAudition;
+  const mir = d.mirror;
   const noThe = (n: string) => n.replace(/^the /i, "");
+  const mirrorAt = (t: string) => mir?.perTone.find((m) => m.tone.toLowerCase() === t.toLowerCase());
   const charsAt = (t: string) => d.characters.filter((c) => c.joinsAt.toLowerCase() === t.toLowerCase());
   return (
     <div>
@@ -518,7 +522,30 @@ export function SubrangeBuild({ d }: { d: SubrangeT }) {
 
       {/* ▣ THE WINNING MAKEUP — the per-tone detail of the won set */}
       <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 3 }}>▣ THE WINNING MAKEUP{ca ? ` — ${ca.winnerName}` : ""} · tone-mapped over {d.ambientName}</div>
-      <div style={{ fontSize: 11, color: soft, lineHeight: 1.5, marginBottom: 10 }}>the won set, the crew HOLDING across the tones (the cohesion test) — each character&rsquo;s palette derived from the ambient.</div>
+      <div style={{ fontSize: 11, color: soft, lineHeight: 1.5, marginBottom: 10 }}>the won set, the crew HOLDING across the tones (the cohesion test) — each character&rsquo;s palette derived from the ambient.{mir ? " Plus the FELLOW TRAVELER (↣) — the audience's own problem, witnessed." : ""}</div>
+
+      {/* ✦ THE FELLOW TRAVELER — the mirror, gated against the panel's conditions */}
+      {mir && (
+        <div style={{ border: `2px solid ${forest}`, background: shade, padding: "10px 13px", marginBottom: 12, fontSize: 10.5, color: ink, lineHeight: 1.5 }}>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 3 }}>✦ THE FELLOW TRAVELER — the mirror (audited per the panel)</div>
+          <div style={{ color: soft }}>{mir.premise}. Not a rival, not the protagonist — a <b>fellow traveler</b> you witness, per tone (the care stays constant). The panel set four ship-blocker conditions; each is gated:</div>
+          <div style={{ marginTop: 6, display: "grid", gap: 3 }}>
+            {mir.conditions.map((c) => {
+              const vc = mir.vet.perCondition.find((p) => p.id === c.id);
+              const ok = vc?.met === "yes";
+              return (
+                <div key={c.id} style={{ fontSize: 9.5 }}>
+                  <b style={{ color: ok ? forest : amber }}>{ok ? "✓" : "⚑"} {c.id}</b> <span style={{ color: margin }}>({c.from})</span> <span style={{ color: soft }}>— {c.label.replace(/ —.*/, "")}</span>
+                </div>
+              );
+            })}
+          </div>
+          <div style={{ marginTop: 6, paddingTop: 5, borderTop: `1px solid ${soft}`, fontSize: 9.5, color: margin }}>
+            <b style={{ color: mir.vet.safe === "safe" ? forest : red }}>{mir.vet.safe.toUpperCase()}</b> <span style={{ fontStyle: "italic" }}>— {mir.vet.oneLine}</span>
+          </div>
+        </div>
+      )}
+
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8, marginBottom: 11 }}>
         {d.audit.tones.map((t, i) => {
           const pt = d.audit.perTone.find((p) => p.tone.toLowerCase() === t.toLowerCase());
@@ -533,6 +560,7 @@ export function SubrangeBuild({ d }: { d: SubrangeT }) {
                   <span><b>{c.name.replace(/^the /i, "")}</b> <span style={{ color: soft }}>— {c.is}</span></span>
                 </div>
               ))}
+              {mirrorAt(t) && <div style={{ fontSize: 9.5, color: soft, marginTop: 5, paddingTop: 4, borderTop: `1px dashed ${soft}`, fontStyle: "italic", lineHeight: 1.45 }}><b style={{ color: margin, fontStyle: "normal" }}>↣ the traveler</b> — {mirrorAt(t)!.text}</div>}
               {pt && <div style={{ fontSize: 9, color: pt.holds === "yes" ? forest : amber, fontStyle: "italic", marginTop: 5, paddingTop: 4, borderTop: `1px solid ${soft}` }}>{pt.holds === "yes" ? "✓" : "⚑"} {pt.note}</div>}
             </div>
           );

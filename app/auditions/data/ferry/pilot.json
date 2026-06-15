@@ -550,6 +550,132 @@
     "why": "It most directly addresses the 'low self-worth' wound by making unconditional witnessing the ultimate act of support.",
     "runnerUp": "warm-hand",
     "runnerUpGem": "It offers a powerful, literal, and physical interpretation of being 'carried' that the winner's more abstract approach lacks."
+   },
+   "consults": [
+    {
+     "question": {
+      "id": "mirror-protagonist",
+      "title": "Audition a protagonist/rival who MIRRORS the audience's own problem",
+      "body": "Right now the SUBRANGE makeup auditions the CREW — the coaches/keepers who WITNESS the player. The owner's proposal: ALSO audition, per subrange, a PROTAGONIST/RIVAL character who embodies the AUDIENCE'S OWN PROBLEM — a MIRROR of the player themselves (a fellow passenger who carries the same struggle: the braced/overwhelmed/burden-believing state, who can't let the deep carry them). The player would WITNESS this mirror — and witness them being carried/cared-for anyway — as a way of seeing their own struggle from the outside, with compassion. The metaphor «surrender as support» would be enacted on the mirror, for the player to receive vicariously."
+     },
+     "perExpert": [
+      {
+       "name": "Mara Oduya",
+       "on_the_mark": "partial",
+       "why": "Watching another braced body could be profoundly activating, putting my own system on high alert instead of co-regulating down. If their struggle is too raw, it's a threat signal, not a soothing one.",
+       "risk": "Somatic contagion — the player's nervous system mirrors the mirror's distress, leading to *more* bracing, not less.",
+       "safe_how": "The mirror's state must be presented as *fatigue* from bracing, not active panic. Their struggle should be quiet and internal, inviting gentle witness rather than alarm."
+      },
+      {
+       "name": "Devin Sato",
+       "on_the_mark": "no",
+       "why": "You're adding another character for my brain to track, another open loop. Even if I'm just witnessing, it's a cognitive load I don't have the spoons for; my focus will splinter and I'll just feel more overwhelmed.",
+       "risk": "Cognitive load. The mirror character becomes one more demand on the player's exhausted working memory, turning a refuge into a task.",
+       "safe_how": "The 'mirror' cannot be a separate character to track. Their story must be woven into the environment or the crew's incidental dialogue, as ambient texture rather than a focal point."
+      },
+      {
+       "name": "Lena Hart",
+       "on_the_mark": "yes-with-reframe",
+       "why": "The word 'rival' is an immediate red flag in an iyashikei world; there is no competition, only co-existence. Framing them as a 'problem' re-introduces the 'fixing' dynamic we're trying to escape.",
+       "risk": "Pathologizing the experience. By labeling the mirror's state a 'problem,' the game implies the player is also a 'problem,' reinforcing the shame of being burnt-out.",
+       "safe_how": "The 'rival' must be reframed as a 'fellow traveler.' They aren't a problem to solve, but simply another person on the same journey, sharing the same quiet space."
+      },
+      {
+       "name": "Sam Reyes",
+       "on_the_mark": "yes",
+       "why": "Seeing someone *exactly like me*—difficult, withdrawn, convinced they're a burden—receive unconditional care without having to perform for it can bypass my own defenses. It models a possibility my core belief says can't exist.",
+       "risk": "Comparison and self-invalidation. The player might think, 'Of course *they* get care, they're more worthy/less broken than I am,' if the mirror isn't calibrated perfectly.",
+       "safe_how": "The care shown to the mirror must be incredibly subtle, non-performative, and persistent even when the mirror tries to refuse it. It must feel like quiet, sturdy presence, not a grand gesture."
+      }
+     ],
+     "verdict": "on the mark WITH a reframe",
+     "reframe": "The 'rival' must become a 'fellow traveler' — an ambient, non-demanding presence who shares the space, not a focal point to be managed.",
+     "perTone": "Yes; in cozy tones they are simply tired, in intense tones their struggle is more visible, but the crew's quiet, unconditional care remains the constant.",
+     "oneLine": "A mirror works only if they're not a task to manage or a problem to fix, but quiet proof that even on the worst nights, you're allowed to just be."
+    }
+   ],
+   "mirror": {
+    "kind": "fellow traveler",
+    "premise": "the audience's own problem, witnessed in another passenger — «surrender as support» enacted on them, received vicariously (not a rival, not the protagonist)",
+    "conditions": [
+     {
+      "id": "ambient",
+      "label": "ambient, not tracked — woven into the world + the crew's incidental care; no arc, zero follow-up, never a focal to manage",
+      "from": "Devin (ADHD)"
+     },
+     {
+      "id": "fatigue",
+      "label": "fatigue, not panic — quiet, internal bracing-tiredness; invites gentle witness, never alarm or active distress",
+      "from": "Mara (anxiety)"
+     },
+     {
+      "id": "mundane-care",
+      "label": "mundane, persistent care — the crew's care for them is unremarkable + non-performative + persists even if refused; never a special intervention (earned care = the wound)",
+      "from": "Sam (low self-worth)"
+     },
+     {
+      "id": "fellow-traveler",
+      "label": "a fellow traveler, not a rival/problem — shares the quiet space; never an adversary, never a thing to be fixed (fixing pathologizes the player too)",
+      "from": "Lena (iyashikei)"
+     }
+    ],
+    "perTone": [
+     {
+      "tone": "cozy",
+      "text": "across the galley, another passenger sits over a mug they haven’t touched — just tired, the way you’re tired. the Cook sets a second bowl by them without a word, same as yours."
+     },
+     {
+      "tone": "warm",
+      "text": "at the far rail the same passenger grips the wood too hard, bracing for a swell that isn’t that big. the Pilot drifts over and stands the watch beside them — says nothing, just stays."
+     },
+     {
+      "tone": "intense",
+      "text": "out in the worst of it they’ve stopped trying to hold themselves up. the manifest-keeper logs them in — same ink, full weight — and doesn’t look up to see if they’ve earned it."
+     }
+    ],
+    "vet": {
+     "perCondition": [
+      {
+       "id": "[ambient]",
+       "met": "yes",
+       "note": "The character remains an environmental detail, never becoming a managed task or a cognitive load."
+      },
+      {
+       "id": "[fatigue]",
+       "met": "yes",
+       "note": "The portrayal is consistently one of quiet exhaustion and bracing, avoiding any sense of active alarm."
+      },
+      {
+       "id": "[mundane-care]",
+       "met": "yes",
+       "note": "The care is consistently non-performative, routine, and unearned, directly addressing the core wound."
+      },
+      {
+       "id": "[fellow-traveler]",
+       "met": "yes",
+       "note": "The character is a peer to be witnessed, never a problem to be fixed, preserving the iyashikei space."
+      }
+     ],
+     "perTone": [
+      {
+       "tone": "cozy",
+       "holds": "yes",
+       "note": "Establishes a gentle parallel of shared tiredness and shared routine care."
+      },
+      {
+       "tone": "warm",
+       "holds": "yes",
+       "note": "Effectively escalates to visible internal bracing, met with quiet, non-interventional presence."
+      },
+      {
+       "tone": "intense",
+       "holds": "yes",
+       "note": "Powerfully lands the 'surrender' beat with unconditional, bureaucratic acceptance—intense in theme, not threat."
+      }
+     ],
+     "safe": "safe",
+     "oneLine": "Approved; the execution is subtle, safe, and powerfully lands the core theme for all audience threads."
+    }
    }
   }
  ],
