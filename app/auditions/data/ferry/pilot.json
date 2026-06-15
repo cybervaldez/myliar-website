@@ -164,7 +164,62 @@
       "text": "alone at the bow as the light comes — letting the held thing go, at last, over the side"
      }
     ]
-   ]
+   ],
+   "mood": {
+    "ambients": [
+     {
+      "id": "deep",
+      "name": "The Deep",
+      "base": "#0e1822",
+      "ink": "#b9c7d6",
+      "accent": "#5b93b0",
+      "why": "Cold + dark + low-saturation: the sea is vast and doesn't care — and that's SAFE here, not oppressive. One pale gleam (the moon's road) is the carry: something holds you even when it's too much. Best fit for «surrender as support»."
+     },
+     {
+      "id": "mist",
+      "name": "Iyashikei Mist",
+      "base": "#23272e",
+      "ink": "#e6e1d6",
+      "accent": "#6e918b",
+      "why": "Softer, warmer-grey, hushed — Mushishi-calm. Strongest on the cozy floor (the safest read), but the deep feels less vast / less indifferent."
+     },
+     {
+      "id": "dawn",
+      "name": "Carried to Dawn",
+      "base": "#102530",
+      "ink": "#dde3e6",
+      "accent": "#c79a55",
+      "why": "The cold deep that resolves into a low dawn-gold accent — it carries the arc's 'come home to first light', but two temperatures make it busier than a single cold key."
+     }
+    ],
+    "characters": [
+     {
+      "name": "the Cook",
+      "color": "#b06a4e",
+      "is": "the galley meal that happens anyway, imperfect — homely warmth",
+      "joinsAt": "cozy"
+     },
+     {
+      "name": "the Pilot",
+      "color": "#5f7d96",
+      "is": "the held heading through the dark — the steady cool",
+      "joinsAt": "warm"
+     },
+     {
+      "name": "the Manifest-keeper",
+      "color": "#4e6f6a",
+      "is": "your carry, logged at full weight — quiet, precise",
+      "joinsAt": "warm"
+     },
+     {
+      "name": "the Deckhand",
+      "color": "#c98a3e",
+      "is": "the warm hand on your shoulder — “let her carry you”",
+      "joinsAt": "intense"
+     }
+    ],
+    "eli5": "FEW colors when it's cozy (one feeling: safe — the deep + the galley warmth); MORE as it turns intense (the storm: the whole crew at once). The number of colors IS how much is happening. The cold deep is the sea that doesn't care; the warm colors are the people — because the warmth that lets you let go is a person's hand, not the water."
+   }
   }
  ],
  "results": {

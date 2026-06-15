@@ -255,9 +255,14 @@ function useScrub(initial: number) {
 // world-moment (which segment) AND the tone within it (where in the segment). The art is frozen per
 // world-moment; the story beneath updates as you move within the segment (cozy · warm · intense).
 type Tone = { label: string; text: string };
-type StoryT = { id: string; env: string[]; subrange?: Tone[][] };
+type Ambient = { id: string; name: string; base: string; ink: string; accent: string; why: string };
+type Character = { name: string; color: string; is: string; joinsAt: string };
+type Mood = { ambients: Ambient[]; characters: Character[]; eli5: string };
+type StoryT = { id: string; env: string[]; subrange?: Tone[][]; mood?: Mood };
+const TJOIN: Record<string, number> = { cozy: 0, warm: 1, intense: 2 };
 export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] }) {
   const main = useScrub(0.1);                                   // ONE scrub: segment = scene, within = tone
+  const [amb, setAmb] = useState(0);                           // the picked ambient mood (the audition)
   const N = Math.max(1, scenes.length);
   const seg = Math.min(N - 1, Math.floor(main.v * N));          // the world-moment (the segment)
   const within = clamp(main.v * N - seg, 0, 1);                 // position WITHIN the segment (0..1)
@@ -268,13 +273,17 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
   const variant = VARIANT_OF(story.id);
   const sceneDr = (seg + 0.5) / N;                              // FROZEN per world-moment
   const hot = (l?: string) => (l === "intense" ? "var(--spot-red)" : forest);
+  const A = story.mood?.ambients?.[amb];
+  const artInk = A?.ink ?? ink, artBg = A?.base ?? paper;
+  // the palette GROWS with the tone (a colour = a mood): cozy = few · intense = many
+  const swatches = (A ? [{ c: A.base, label: "the deep", join: 0 }, { c: A.ink, label: "the light", join: 0 }, { c: A.accent, label: "the carry", join: 1 }, ...(story.mood?.characters ?? []).map((ch) => ({ c: ch.color, label: ch.name, join: TJOIN[ch.joinsAt] ?? 0 }))] : []).filter((s) => s.join <= ti);
   return (
     <div>
       {/* ONE scrubber — the art (frozen per world-moment) + a SEGMENTED track. The active segment fills
           with the subrange gradient (cozy→intense); the handle inside it = the tone. */}
       <div {...main.bind} aria-label="the crossing — drag; each scene holds its subrange"
         style={{ border: `2px solid ${forest}`, background: paper, padding: "10px 12px 12px", touchAction: "pan-y", cursor: "ew-resize", userSelect: "none", WebkitUserSelect: "none" }}>
-        <pre style={{ ...mono, fontSize: 12.5, color: ink, background: paper, border: `1.5px solid ${ink}`, padding: "8px 6px", margin: 0, textAlign: "center", overflow: "hidden" }}>{art(variant, sceneDr).join("\n")}</pre>
+        <pre style={{ ...mono, fontSize: 12.5, color: artInk, background: artBg, border: `1.5px solid ${artInk}`, padding: "8px 6px", margin: 0, textAlign: "center", overflow: "hidden", transition: "background .25s, color .25s" }}>{art(variant, sceneDr).join("\n")}</pre>
         {/* the segmented track: passed = solid · active = the subrange gradient · ahead = muted */}
         <div style={{ position: "relative", height: 13, margin: "10px 0 0" }}>
           <div style={{ display: "flex", height: 11, border: `1.5px solid ${ink}` }}>
@@ -302,6 +311,40 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
             <span style={{ fontSize: 9, color: margin }}>{tones.map((t, i) => <span key={i} style={{ color: i === ti ? hot(t.label) : margin, fontWeight: i === ti ? 700 : 400 }}>{i ? " · " : ""}{t.label}</span>)}</span>
           </div>
           <div style={{ fontSize: 14.5, color: ink, lineHeight: 1.55, minHeight: 50 }}>{beat.text}</div>
+        </div>
+      )}
+
+      {/* THE TONE & MOOD — pick the ambient palette (the mood) · it grows with the subrange · a glimpse
+          of the crew (derived from the deep) · ELI5 the colours */}
+      {A && (
+        <div style={{ border: `2px solid ${forest}`, background: paper, padding: "11px 13px", marginTop: 14 }}>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 8 }}>🎨 TONE &amp; MOOD — the ambient palette <span style={{ color: margin, fontWeight: 400 }}>· pick the mood we’re conveying</span></div>
+          <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: 11 }}>
+            {story.mood!.ambients.map((a, i) => { const on = i === amb; return (
+              <button key={a.id} onClick={() => setAmb(i)} style={{ display: "flex", alignItems: "center", gap: 6, cursor: "pointer", border: `2px solid ${on ? forest : "var(--ink-soft)"}`, background: on ? shade : paper, padding: "4px 8px" }}>
+                <span style={{ display: "flex" }}>{[a.base, a.ink, a.accent].map((c, j) => <span key={j} style={{ width: 11, height: 16, background: c, border: `1px solid ${ink}`, marginLeft: j ? -1 : 0 }} />)}</span>
+                <span style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, color: on ? forest : margin }}>{a.name}</span>
+              </button> ); })}
+          </div>
+          <div style={{ fontSize: 10, color: margin, marginBottom: 4 }}>the palette at <b style={{ color: hot(beat?.label) }}>{beat?.label ?? "—"}</b> · <b style={{ color: ink }}>{swatches.length} colours</b> = {swatches.length} moods <span style={{ fontStyle: "italic" }}>(more as it turns intense)</span></div>
+          <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: 11 }}>
+            {swatches.map((s, i) => (
+              <div key={i} style={{ textAlign: "center" }}>
+                <div style={{ width: 38, height: 24, background: s.c, border: `1.5px solid ${ink}` }} />
+                <div style={{ fontSize: 7.5, color: margin, marginTop: 1, maxWidth: 42, lineHeight: 1.1 }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ fontSize: 10, color: margin, marginBottom: 5 }}>↳ a glimpse of the crew <span style={{ fontStyle: "italic" }}>(each colour derived from the deep; together they harmonise — the warm ones are the people)</span></div>
+          <div style={{ display: "grid", gap: 4, marginBottom: 10 }}>
+            {story.mood!.characters.map((ch) => { const onNow = (TJOIN[ch.joinsAt] ?? 0) <= ti; return (
+              <div key={ch.name} style={{ display: "flex", gap: 8, alignItems: "center", opacity: onNow ? 1 : 0.38 }}>
+                <div style={{ width: 12, height: 12, background: ch.color, border: `1px solid ${ink}`, flexShrink: 0 }} />
+                <div style={{ fontSize: 11, lineHeight: 1.4 }}><b style={{ color: ink }}>{ch.name}</b> <span style={{ color: soft }}>— {ch.is}</span> <span style={{ fontSize: 9, color: margin }}>· enters at {ch.joinsAt}</span></div>
+              </div> ); })}
+          </div>
+          <div style={{ fontSize: 10.5, color: ink, lineHeight: 1.5, borderTop: "1px solid var(--ink-soft)", paddingTop: 8 }}><span style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: forest }}>WHY THESE COLOURS · ELI5 </span>{story.mood!.eli5}</div>
+          <div style={{ fontSize: 10, color: soft, fontStyle: "italic", marginTop: 5 }}>↳ {A.name}: {A.why}</div>
         </div>
       )}
     </div>
