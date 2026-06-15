@@ -20,6 +20,7 @@ export const STEP_DEFS = [
   { key: "concept", label: "The Setting" },
   { key: "pilot", label: "The Range" },
   { key: "story", label: "The Story" },
+  { key: "scenes", label: "The Scenes" },
   { key: "tone", label: "The Tone" },
 ];
 export const stepLabel = (k: string) => STEP_DEFS.find((s) => s.key === k)?.label ?? k;
@@ -67,6 +68,14 @@ export const PRIMERS: Record<string, { tldr: string; whatFor: string; impact: st
     mechanic: "the SCRUBBER per environment — the dial = the §8.13 WEATHER arc (cozy → storm-peak at ½ → renewed dawn) + the distinct surrounding ASCII + the two-part title. The WORLD holds (§8.15); the AMPLITUDE of the arc = coziness (the subrange).",
     craft: "Craft: the dial is the SCENE (the surrounding WEATHER — the stage) across the §8.13 arc — calm water · rising wind · the storm · settling sea · first light; the WORLD is the invariant (§8.15). The scene is NOT the story’s tone — that’s the SUBRANGE (cozy↔intense), a separate axis free to contrast any scene.",
   },
+  scenes: {
+    tldr: "the BRANCHING — the 5 world-moments × the 3 tones, each cell its OWN ambient palette + cast. A tone isn’t a time (warm-calm-water OR warm-storm OR warm-dawn all exist).",
+    whatFor: "The story step set ONE ambient ground; here it BRANCHES. Each of the 5 scenes (the weather/time arc) is dialed across the 3 tones — and every scene×tone cell gets its own ambient palette + focal cast. This is where the tree forks: the same warm tone reads differently at calm water, in the storm, and at first light.",
+    impact: "The matrix is what makes the ambient a living RANGE, not one flat backdrop. Cohesion (every cell is recognisably ONE world) AND distinctness (calm-cozy ≠ storm-intense) is the whole game — an incohesive matrix breaks the world; a flat one wastes the branch.",
+    howToChoose: "Read the matrix for two things at once: does every cell still feel like the SAME ferry (one mood-colour vocabulary), and is each cell genuinely DISTINCT (the weather AND the register both moving it)? The intense column stays floor-clipped — deepen, never alarm.",
+    mechanic: "the ambient-palette MATRIX (base/ink/accent per scene×tone) + the cast per tone-column. In-game the dial scrubs the TONE; the SCENE is set by where you are in the crossing — the two compose.",
+    craft: "Craft: tone and time are ORTHOGONAL axes — the emotional register (cozy↔intense) is free to run WITH or AGAINST the surrounding weather. The branch is their product, not a line.",
+  },
   destination: {
     tldr: "the ending THIS story walks toward — its own deepest coach (per-story, §8.14: no shared coach)",
     whatFor: "The destination is the full-REL coach THIS story reaches — built per chosen moment/story (each story has its OWN coach). Author it FIRST for that story, then build the path backward — the ending is what gives every earlier beat its meaning.",
@@ -103,6 +112,7 @@ export const PRIMERS: Record<string, { tldr: string; whatFor: string; impact: st
 export const INTRO: Record<string, string> = {
   concept: "The SETTING meets the room — the surrounding world you’d dwell in, not a story. The audience scores whether it feels safe to LIVE in; the hook-capacity legs score how wide a tonal range it can spawn while holding the floor. The picked setting becomes a campaign that spawns its stories.",
   pilot: "One setting, candidate dynamic ranges — each its OWN environment. The dial scrubs the SCENE — the surrounding WEATHER (the stage): calm water → the storm → first light (the §8.13 arc), the WORLD holding throughout (§8.15). The scene labels are NOT the story’s feeling — the story’s TONE is a SEPARATE axis (the SUBRANGE, cozy ↔ intense), free to MATCH or CONTRAST any scene (a tender beat in the storm, a charged one in the calm). We PICK the most cohesive scene-arc by FEEL — scrub each.",
+  scenes: "The story’s ONE ambient ground now BRANCHES. The 5 world-moments (the weather/time arc) × the 3 tones — each cell its own ambient palette + focal cast. A tone isn’t tied to a time: warm-calm-water, warm-storm, and warm-first-light are three different cells. We audit the MATRIX for COHESION (one recognisable world across every cell) and DISTINCTNESS (each cell genuinely its own — the weather AND the register both moving it), the intense column floor-clipped. The audience EXPERTS come in next, at the Tone — here it’s the structural branch.",
   destination: "The deepest chat THIS story reaches — the full-REL coach (per-story, §8.14: no shared coach). Authored after a moment is chosen; the path is built backward to it. The fleet asks: does the deepest relationship land?",
   story: "The picked range is now a STORY — here we set its AMBIENCE & SETTING: the TONE & MOOD (the ambient palette), the world-moments, the UI + the palette→prose recipe (the real beats are authored later). Scrub the crossing (the world-moments); at each, the SUBRANGE shows EXAMPLE scenes — a cozy one, a warm one, an intense one — so you can feel the range and how a scene can run with or against the surrounding. These are examples (variations), not the authored story. The CREW’s own palettes/prompts are auditioned in the SUBRANGE step, not here.",
   tone: "The MAKEUP for the picked story — auditioned. In the game the reader DIALS THE TONE (cozy → warm → intense, the scrubber is the dial); here we audition the makeup at each. FIRST the EXPERTS (matched to the audience) frame the state of mind → the MAKEUP BRIEF. THEN a candidate cast-SET (the crew tone-mapped cozy → warm → intense, worn OVER the story’s ambient ground) is auditioned for COHESION (one crew across the tones) · CONTRAST (the tones genuinely distinct) · SAFE (every tone holds — the intense deepens PRESENCE, never threat). Pick the most cohesive set; THEN build its per-tone content, cozy-first.",
@@ -134,7 +144,7 @@ export const CAMPAIGNS: Record<string, {
     blurb: "the night-ferry SETTING — a world that holds whether the strait is glass-calm or running heavy; its moments are the doors its stories spawn from",
     // NOTE: the tone step's data lives in the legacy pilot.json fields (subrange[], subrangeAudit) +
     // expertPanel / castAudition / mirror — field names kept; the STEP is officially "the Tone".
-    steps: { pilot: ferryPilot as unknown as StepData, story: ferryPilot as unknown as StepData, tone: ferryPilot as unknown as StepData },
+    steps: { pilot: ferryPilot as unknown as StepData, story: ferryPilot as unknown as StepData, scenes: ferryPilot as unknown as StepData, tone: ferryPilot as unknown as StepData },
     carried: {
       pilot: [{
         step: "① THE SETTING — the Night Ferry",
@@ -142,6 +152,22 @@ export const CAMPAIGNS: Record<string, {
           "won as a hook-engine: a world that holds calm OR heavy — the widest tonal range of the three settings (its hook-capacity legs were all load-bearing)",
           "↳ carry the SAFETY FLOOR across the WHOLE range (the intense pole stays floor-clipped — weight, never ambush)",
           "↳ the range must be the SAME ferry dialed (§8.12) — cohesion is the test, the titles the load-bearing read",
+        ],
+      }],
+      scenes: [{
+        step: "③ THE STORY — the ambient ground + the weather arc",
+        lines: [
+          "the mood-colour VOCABULARY (The Deep · Iyashikei Mist · Carried to Dawn) — the range every cell must stay inside so it reads as ONE world",
+          "↳ the 5 world-moments (the §8.13 weather arc) carry over from the range — they are the ROWS of the matrix",
+          "↳ branch, don’t break: the tone (cozy↔intense) is a SEPARATE axis from the scene — their PRODUCT is the matrix, not a line",
+        ],
+      }],
+      tone: [{
+        step: "④ THE SCENES — the branched matrix",
+        lines: [
+          "the per-cell ambient palette + the cast per tone-column (cozy = the Cook · warm = the Pilot/Keeper · intense = the Deckhand) — the makeup is worn over the CELL, not one flat ground",
+          "↳ the matrix held: cohesive (one ferry) · distinct (calm-cozy ≠ storm-intense) · safe (intense floor-clipped)",
+          "↳ now the audience EXPERTS frame the makeup brief; the mirror / content / supporting-cast build onto the picked cells, cozy-first",
         ],
       }],
     },

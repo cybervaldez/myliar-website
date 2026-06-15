@@ -19,10 +19,11 @@ function chips(campaign: string) {
       return { key: s.key, done: false, star: 0, seed: true };
     }
     if (!hasStep(campaign, s.key)) return { key: s.key, done: false, star: 0, seed: false };
-    // the STORY + TONE steps are the picked range being built (not scored) — done if a range is picked
-    if (s.key === "story" || s.key === "tone") {
-      const p = CAMPAIGNS[campaign].steps.pilot as unknown as { picked?: string };
-      return { key: s.key, done: !!p?.picked, star: s.key === "story" ? -2 : -1, seed: false };
+    // STORY + SCENES + TONE are the picked range being built (not scored) — done if a range is picked
+    if (s.key === "story" || s.key === "scenes" || s.key === "tone") {
+      const p = CAMPAIGNS[campaign].steps.pilot as unknown as { picked?: string; scrubGroups?: { id: string; scenes?: unknown }[] };
+      const done = s.key === "scenes" ? !!p?.scrubGroups?.find((g) => g.id === p.picked)?.scenes : !!p?.picked;
+      return { key: s.key, done, star: s.key === "tone" ? -1 : -2, seed: false };
     }
     const sd = stepDataFor(campaign, s.key)!;
     const st = s.key === "concept"

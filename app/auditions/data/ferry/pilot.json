@@ -737,6 +737,185 @@
       "oneLine": "The writer perfectly captured the brief's 'calm first' principle through quiet, unconditional, and witnessing action."
      }
     }
+   },
+   "support": {
+    "cozy": {
+     "focal": "the Cook",
+     "supporting": [
+      {
+       "who": "The Deckhand",
+       "presence": "Glimpsed for a moment through the galley porthole, their back to us, methodically polishing a brass fitting under a soft deck light."
+      },
+      {
+       "who": "The Ship's Cat",
+       "presence": "A large, ginger cat is curled asleep on a worn chair in the corner, occasionally stirring with a soft, breathy sigh."
+      }
+     ],
+     "honorsFloor": "yes",
+     "note": "They are ambient details of competence and safety, enriching the sanctuary of the galley without introducing characters to track."
+    }
+   },
+   "scenes": {
+    "tones": [
+     "cozy",
+     "warm",
+     "intense"
+    ],
+    "cast": {
+     "cozy": [
+      "the Cook"
+     ],
+     "warm": [
+      "the Pilot",
+      "the Manifest-keeper"
+     ],
+     "intense": [
+      "the Deckhand"
+     ]
+    },
+    "matrix": [
+     {
+      "scene": "calm water",
+      "spark": "▰▱▱▱▱",
+      "cells": [
+       {
+        "tone": "cozy",
+        "base": "#23272e",
+        "ink": "#e6e1d6",
+        "accent": "#c79a55",
+        "label": "Lamplit cabin, still sea"
+       },
+       {
+        "tone": "warm",
+        "base": "#102530",
+        "ink": "#b9c7d6",
+        "accent": "#6e918b",
+        "label": "Chart-table green, calm night"
+       },
+       {
+        "tone": "intense",
+        "base": "#0e1822",
+        "ink": "#b9c7d6",
+        "accent": "#5b93b0",
+        "label": "Deep water, quiet watch"
+       }
+      ]
+     },
+     {
+      "scene": "rising wind",
+      "spark": "▰▰▰▱▱",
+      "cells": [
+       {
+        "tone": "cozy",
+        "base": "#23272e",
+        "ink": "#dde3e6",
+        "accent": "#c79a55",
+        "label": "Wind hums, soup steams"
+       },
+       {
+        "tone": "warm",
+        "base": "#102530",
+        "ink": "#b9c7d6",
+        "accent": "#5b93b0",
+        "label": "Rising swell, steady hand"
+       },
+       {
+        "tone": "intense",
+        "base": "#0e1822",
+        "ink": "#dde3e6",
+        "accent": "#5b93b0",
+        "label": "Salt spray, darkening sky"
+       }
+      ]
+     },
+     {
+      "scene": "the storm",
+      "spark": "▰▰▰▰▰",
+      "cells": [
+       {
+        "tone": "cozy",
+        "base": "#102530",
+        "ink": "#e6e1d6",
+        "accent": "#c79a55",
+        "label": "A warm core, storm outside"
+       },
+       {
+        "tone": "warm",
+        "base": "#0e1822",
+        "ink": "#b9c7d6",
+        "accent": "#6e918b",
+        "label": "Rain-lashed glass, calm within"
+       },
+       {
+        "tone": "intense",
+        "base": "#0e1822",
+        "ink": "#dde3e6",
+        "accent": "#5b93b0",
+        "label": "Storm-dark, held fast"
+       }
+      ]
+     },
+     {
+      "scene": "settling sea",
+      "spark": "▰▰▱▱▱",
+      "cells": [
+       {
+        "tone": "cozy",
+        "base": "#23272e",
+        "ink": "#e6e1d6",
+        "accent": "#c79a55",
+        "label": "Sea settles, quiet warmth"
+       },
+       {
+        "tone": "warm",
+        "base": "#102530",
+        "ink": "#b9c7d6",
+        "accent": "#6e918b",
+        "label": "Post-storm calm, logbook open"
+       },
+       {
+        "tone": "intense",
+        "base": "#0e1822",
+        "ink": "#b9c7d6",
+        "accent": "#5b93b0",
+        "label": "Wet deck, quiet air"
+       }
+      ]
+     },
+     {
+      "scene": "first light",
+      "spark": "▰▱▱▱▱",
+      "cells": [
+       {
+        "tone": "cozy",
+        "base": "#23272e",
+        "ink": "#dde3e6",
+        "accent": "#c79a55",
+        "label": "Dawn on the brass rim"
+       },
+       {
+        "tone": "warm",
+        "base": "#102530",
+        "ink": "#dde3e6",
+        "accent": "#c79a55",
+        "label": "First light on the horizon"
+       },
+       {
+        "tone": "intense",
+        "base": "#0e1822",
+        "ink": "#e6e1d6",
+        "accent": "#c79a55",
+        "label": "Gold light on the rail"
+       }
+      ]
+     }
+    ],
+    "audit": {
+     "coheres": "yes",
+     "distinct": "yes",
+     "safe": "yes",
+     "note": "The world coheres through a consistent vocabulary of deep sea blues, misty greys, and warm brass/dawn accents, shifting in combination to reflect the time and tone."
+    }
    }
   }
  ],

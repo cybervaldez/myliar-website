@@ -7,7 +7,7 @@
 // only the weather arcs. EACH candidate gets its OWN environment, distinct by structure: the STRAIT
 // (two headlands framing a channel), the CROSSING (a far shore on the horizon), the DARK WATER (a
 // vast high-horizon deep). Authored in the ASCII-art commission's demoscene/ANSI tradition.
-import { useState, useRef } from "react";
+import { useState, useRef, Fragment } from "react";
 
 const ink = "var(--ink)", soft = "var(--ink-soft)", paper = "var(--paper)", shade = "var(--paper-shade)", forest = "var(--forest)", margin = "var(--margin-ink)", amber = "#c08a2e";
 const mono: React.CSSProperties = { fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace", whiteSpace: "pre", lineHeight: 1.04, letterSpacing: 0 };
@@ -440,9 +440,59 @@ type CastAudition = { sets: CastSet[]; perSet: CastVerdict[]; winner: string; wi
 type MirrorCond = { id: string; label: string; from: string };
 type MirrorT = { kind: string; premise: string; conditions: MirrorCond[]; perTone: { tone: string; text: string }[]; vet: { perCondition: { id: string; met: string; note: string }[]; perTone: { tone: string; holds: string; note: string }[]; safe: string; oneLine: string } };
 type ToneContent = { focal: string; coachVoice: string; sampleLines: string[]; beats: string[]; narrowedBy: string; vet?: { perExpert: { name: string; honored: string; note: string }[]; safe: string; fixes: string[]; oneLine: string } };
-export type ToneT = { audience: string; experts: Expert[]; framework: Framework; vet: ExpertVet; characters: Character[]; charPrompts: string[]; audit: SubAudit; ambientName: string; ambientBase: string; castAudition?: CastAudition; mirror?: MirrorT; content?: { [tone: string]: ToneContent } };
+type ToneSupport = { focal: string; supporting: { who: string; presence: string }[]; honorsFloor: string; note: string };
+export type ToneT = { audience: string; experts: Expert[]; framework: Framework; vet: ExpertVet; characters: Character[]; charPrompts: string[]; audit: SubAudit; ambientName: string; ambientBase: string; castAudition?: CastAudition; mirror?: MirrorT; content?: { [tone: string]: ToneContent }; support?: { [tone: string]: ToneSupport } };
 const TONE_C: Record<string, string> = { cozy: "#c0795c", warm: "#6b8ba6", intense: "#c98a3e" };
 const auditGood = (v: string) => ["cohesive", "distinct", "safe", "yes"].includes(v);
+
+// ④ THE SCENES — the branched matrix: the 5 world-moments × the 3 tones, each cell its own ambient
+// palette + cast. Tone and time are orthogonal — warm-calm-water ≠ warm-storm. Audited for cohesion
+// (one world) + distinctness (each cell its own) + safe (intense floor-clipped).
+type SceneCell = { tone: string; base: string; ink: string; accent: string; label: string };
+export type ScenesT = { tones: string[]; cast: { [tone: string]: string[] }; matrix: { scene: string; spark: string; cells: SceneCell[] }[]; audit: { coheres: string; distinct: string; safe: string; note: string } };
+export function ScenesBuild({ d }: { d: ScenesT }) {
+  const red = "var(--spot-red)";
+  const ok = (v: string) => v === "yes";
+  const cols = `92px repeat(${d.tones.length}, 1fr)`;
+  return (
+    <div>
+      <div style={{ border: `2px dashed ${forest}`, background: shade, padding: "10px 14px", margin: "0 0 14px", fontSize: 11.5, color: ink, lineHeight: 1.5 }}>
+        <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 4 }}>↩ CARRIED FROM THE STORY STEP — the ambient vocabulary + the weather arc</div>
+        <div>the 5 world-moments (the §8.13 weather arc) are the <b>rows</b>; the mood-colour range (The Deep · Iyashikei Mist · Carried to Dawn) is the vocabulary every cell stays inside — so the whole matrix reads as <b>one ferry</b>.</div>
+      </div>
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 3 }}>▸ THE BRANCH — {d.matrix.length} world-moments × {d.tones.length} tones</div>
+      <div style={{ fontSize: 11.5, color: soft, lineHeight: 1.5, marginBottom: 10 }}>each cell its own <b>ambient palette + cast</b>. A tone isn&rsquo;t a time: <b>warm</b> at calm water reads nothing like <b>warm</b> in the storm. In-game the dial scrubs the TONE; the SCENE is set by where you are in the crossing — the two compose.</div>
+      <div style={{ display: "grid", gridTemplateColumns: cols, gap: 3, marginBottom: 12 }}>
+        <div />
+        {d.tones.map((t) => (
+          <div key={t} style={{ textAlign: "center", padding: "1px 0 3px" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: TONE_C[t] ?? forest, textTransform: "capitalize" }}>{t}</div>
+            <div style={{ fontSize: 8.5, color: margin, lineHeight: 1.2 }}>{(d.cast[t] ?? []).map((n) => n.replace(/^the /i, "")).join(" · ")}</div>
+          </div>
+        ))}
+        {d.matrix.map((row) => (
+          <Fragment key={row.scene}>
+            <div style={{ fontSize: 9.5, color: ink, display: "flex", flexDirection: "column", justifyContent: "center", paddingRight: 4 }}>
+              <span style={{ fontWeight: 700, lineHeight: 1.15 }}>{row.scene}</span>
+              <span style={{ fontFamily: "monospace", fontSize: 8, color: margin }}>{row.spark}</span>
+            </div>
+            {row.cells.map((c) => (
+              <div key={c.tone} style={{ background: c.base, color: c.ink, padding: "6px 8px", borderRadius: 3, minHeight: 42, display: "flex", flexDirection: "column", justifyContent: "space-between", borderLeft: `3px solid ${c.accent}` }}>
+                <span style={{ fontSize: 9.5, lineHeight: 1.25 }}>{c.label}</span>
+                <code style={{ fontSize: 7.5, opacity: 0.6 }}>{c.base}</code>
+              </div>
+            ))}
+          </Fragment>
+        ))}
+      </div>
+      <div style={{ border: `1px solid ${soft}`, background: paper, padding: "8px 12px", fontSize: 10.5, color: ink }}>
+        <b style={{ color: forest }}>matrix audit</b> — coheres <b style={{ color: ok(d.audit.coheres) ? forest : red }}>{d.audit.coheres}</b> · distinct <b style={{ color: ok(d.audit.distinct) ? forest : red }}>{d.audit.distinct}</b> · safe <b style={{ color: ok(d.audit.safe) ? forest : red }}>{d.audit.safe}</b>
+        <div style={{ color: soft, marginTop: 3, fontStyle: "italic" }}>{d.audit.note}</div>
+      </div>
+      <div style={{ fontSize: 10, color: margin, marginTop: 11, fontStyle: "italic", lineHeight: 1.5 }}>→ the audience EXPERTS frame the makeup brief next (⑤ the Tone), worn over these cells — cozy-first.</div>
+    </div>
+  );
+}
 
 export function ToneBuild({ d }: { d: ToneT }) {
   const red = "var(--spot-red)";
@@ -453,12 +503,12 @@ export function ToneBuild({ d }: { d: ToneT }) {
   const charsAt = (t: string) => d.characters.filter((c) => c.joinsAt.toLowerCase() === t.toLowerCase());
   return (
     <div>
-      {/* CARRIED — the ambient ground from the story step */}
+      {/* CARRIED — the branched matrix from the SCENES step */}
       <div style={{ border: `2px dashed ${forest}`, background: shade, padding: "10px 14px", margin: "0 0 16px", fontSize: 11.5, color: ink, lineHeight: 1.5 }}>
-        <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 6 }}>↩ CARRIED FROM THE STORY STEP — the ground the makeup is worn over</div>
+        <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 6 }}>↩ CARRIED FROM THE SCENES STEP — the branched matrix the makeup is worn over</div>
         <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
           <span style={{ width: 26, height: 26, background: d.ambientBase, border: `1px solid ${ink}`, display: "inline-block", borderRadius: 3, flexShrink: 0 }} />
-          <span>the ambient palette <b>{d.ambientName}</b> <code style={{ fontSize: 10, color: margin }}>{d.ambientBase}</code> — the world&rsquo;s base mood. Every cast palette below DERIVES from it.</span>
+          <span>the ambient now varies <b>per scene×tone</b> (the matrix); <b>{d.ambientName}</b> <code style={{ fontSize: 10, color: margin }}>{d.ambientBase}</code> is the anchor. The makeup below is worn over those CELLS — cozy-first.</span>
         </div>
       </div>
 
@@ -593,6 +643,13 @@ export function ToneBuild({ d }: { d: ToneT }) {
           {ct.vet && (
             <div style={{ marginTop: 5, fontSize: 9.5, color: margin }}>
               <span style={{ fontFamily: "var(--theme-body)", fontWeight: 700, letterSpacing: ".05em", color: forest }}>✓ THE EXPERTS WEIGH IN</span> {ct.vet.perExpert.filter((p) => p.honored === "yes").length}/{ct.vet.perExpert.length} honored · <b style={{ color: ct.vet.safe === "safe" ? forest : red }}>{ct.vet.safe}</b> · {ct.vet.fixes.length ? `fixes: ${ct.vet.fixes.join("; ")}` : "no fixes"} <span style={{ fontStyle: "italic" }}>— {ct.vet.oneLine}</span>
+            </div>
+          )}
+          {d.support?.[tone] && (
+            <div style={{ marginTop: 6, paddingTop: 5, borderTop: `1px solid ${soft}` }}>
+              <span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".05em", color: forest }}>+ SUPPORTING CAST</span> <span style={{ fontSize: 9.5, color: d.support[tone].honorsFloor === "yes" ? forest : red }}>· floor (one-focal · low-load): {d.support[tone].honorsFloor}</span>
+              {d.support[tone].supporting.map((s, i) => <div key={i} style={{ fontSize: 10, color: soft, marginLeft: 8, marginTop: 2, lineHeight: 1.4 }}><b style={{ color: ink }}>{s.who}</b> — {s.presence}</div>)}
+              <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginTop: 2 }}>↳ {d.support[tone].note}</div>
             </div>
           )}
         </div>

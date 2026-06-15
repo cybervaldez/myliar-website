@@ -32,11 +32,13 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
       return { ...s, done: false, pick: "", star: 0, seed: true };
     }
     if (!has) return { ...s, done: false, pick: "", star: 0, seed: false };
-    // THE STORY + THE TONE are the picked range being BUILT (not scored auditions) — read, don't score
-    if (s.key === "story" || s.key === "tone") {
-      const p = c.steps.pilot as unknown as { picked?: string; scrubGroups: { id: string; name: string }[] };
+    // THE STORY + SCENES + TONE are the picked range being BUILT (not scored auditions) — read, don't score
+    if (s.key === "story" || s.key === "scenes" || s.key === "tone") {
+      const p = c.steps.pilot as unknown as { picked?: string; scrubGroups: { id: string; name: string; scenes?: unknown }[] };
       const picked = p?.scrubGroups?.find((g) => g.id === p.picked);
-      return { ...s, done: !!picked, pick: s.key === "story" ? (picked?.name ?? "") : "the cast-set makeup", star: s.key === "story" ? -2 : -1, seed: false };
+      const pick = s.key === "story" ? (picked?.name ?? "") : s.key === "scenes" ? "the branched matrix" : "the cast-set makeup";
+      const done = s.key === "scenes" ? !!picked?.scenes : !!picked;
+      return { ...s, done, pick, star: s.key === "tone" ? -1 : -2, seed: false };
     }
     const sd = stepDataFor(campaign, s.key)!;
     const top = s.key === "concept"
