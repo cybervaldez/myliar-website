@@ -390,6 +390,80 @@
     ],
     "fixes": [],
     "oneLine": "The set offers three distinct and safe pathways to the core metaphor, scaling perfectly from indirect comfort to direct catharsis."
+   },
+   "expertPanel": {
+    "audience": "anxiety (the braced, hypervigilant body) · low self-worth (care must be earned; I'm a burden) · ADHD/overwhelm (no spare working memory; too many open loops)",
+    "experts": [
+     {
+      "name": "Mara Oduya",
+      "role": "art therapist — anxiety & somatic",
+      "mindset": "The anxious body is BRACED — hypervigilant, scanning for the next thing to lunge at it, never fully exhaling. They read a room's temperature before its content. They don't need stimulation; they need a signal it's safe to unclench.",
+      "colours": "Desaturated, low-contrast — held-deep blue-greens that say 'nothing here moves suddenly.' NO alarm-red, no hard high-contrast edges (the eye reads them as threat). ONE low-saturation warm point (the galley lamp) = a hearth, never a spotlight. The dark is soft, not a void.",
+      "cast": "A presence that is CALM FIRST — the Cook's steadiness is contagious; an overwhelmed nervous system co-regulates off a settled other. The calm is the medicine, before any words.",
+      "donts": "Don't perform urgency or ambush. The intense tone must be WEIGHT (a held depth), never a jump-scare or a rising threat."
+     },
+     {
+      "name": "Devin Sato",
+      "role": "game designer — lived ADHD / overwhelm",
+      "mindset": "The overwhelmed mind has too many open loops and zero spare working memory. Every extra choice, colour, or character on screen is a tax. It bounces the instant the first screen asks it to MANAGE anything. «Surrender as support» is exactly right — the world should do the carrying so the player manages nothing.",
+      "colours": "LOW count at cozy — two, maybe three. The palette GROWS only as the player chooses to go deeper (depth is opt-in, never dumped). No flashing, no two focal points competing for the eye.",
+      "cast": "ONE focal character per tone — a single warm face, never a crowd at the floor. The crew can exist around the edge, but the frame holds one (Cook → Pilot/Keeper → Deckhand, as the player descends).",
+      "donts": "Don't front-load the cast. Don't make the player track state to enjoy the cozy floor. Never require a decision to receive comfort."
+     },
+     {
+      "name": "Lena Hart",
+      "role": "iyashikei creator — cozy games for the burnt-out",
+      "mindset": "This audience does NOT want to be fixed — being fixed implies they're broken, which is the wound. They want to be ACCOMPANIED. The fantasy is: someone competent is near, the night is bounded, and nothing is required of me.",
+      "colours": "The texture of comfort is multisensory-implied — colours that read as warm light on worn wood, steam off the pot, the blanket-weight of the dark. The palette should feel TOUCHED, not designed.",
+      "cast": "Quiet competence that WITNESSES, never coaches-at. The intense tone = a DEEPER witness (they see you at your lowest and simply stay), not a louder or higher-stakes one. Escalate by deepening presence, never by raising stakes.",
+      "donts": "No character diagnoses or 'improves' the player. Don't escalate the intense tone with plot peril — the strait is weather, never an enemy."
+     },
+     {
+      "name": "Sam Reyes",
+      "role": "peer counselor — lived low self-worth",
+      "mindset": "The core belief is 'I'm a burden; care must be earned; if they really knew me they'd leave.' They flinch from warmth that feels conditional or performed, and they quietly TEST whether the care survives their worst night.",
+      "colours": "No saccharine warmth — the bright pink/gold that performs care reads as fake to them. The warmth must be LOW and TRUE (a steady amber). The deep blue-green carries the whole metaphor: the water holds you whether or not you deserve it.",
+      "cast": "A cast that gives care UNCONDITIONALLY — «the indifferent deep that carries you anyway» IS the medicine: you don't have to hold yourself up, and nothing is asked back. The Manifest-keeper's lane (your carry logged at full weight, same ink as everyone's) is the self-worth dose.",
+      "donts": "Care must never be contingent on the player 'doing well.' No praising performance. The intense tone must never feel like a test the player can fail."
+     }
+    ],
+    "framework": {
+     "palette": "Desaturated held-deep blue-greens (the carrying water) · ONE low-saturation warm hearth-point (an earned, true amber — never saccharine) · the palette GROWS only with chosen depth (ADHD opt-in load) · never alarm-red, never hard high-contrast edges, never performed-warm pink.",
+     "cast": "Quiet competence that WITNESSES unconditionally (the self-worth dose) · ONE calm-first focal per tone, co-regulating (anxiety) · the crew HOLDS across all three tones (cohesion) — Cook → Pilot/Keeper → Deckhand as the player descends.",
+     "tones": "cozy = buffered safety (low load, calm presence) · warm = trusted witness (the care survives being known) · intense = carried at your lowest, SAFELY (a deeper witness — WEIGHT, never threat, never a test you can fail).",
+     "floor": "Every expert agrees: the intense tone deepens PRESENCE, it never raises THREAT. Safe at every tone, for every audience thread."
+    },
+    "vet": {
+     "perExpert": [
+      {
+       "name": "Mara Oduya",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "The focus on somatic co-regulation and non-threatening visuals directly addresses the hypervigilant, braced body of anxiety."
+      },
+      {
+       "name": "Devin Sato",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "The principle of 'opt-in cognitive load' is a crucial and specific insight for designing for ADHD-related overwhelm."
+      },
+      {
+       "name": "Lena Hart",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "The 'witness, don't fix' model is a core safety principle that respects the audience's wound without trying to solve it."
+      },
+      {
+       "name": "Sam Reyes",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "Framing support as unconditional and indifferent to 'performance' is a powerful and safe antidote to low self-worth."
+      }
+     ],
+     "missing": [],
+     "frameworkSound": "yes",
+     "oneLine": "This panel's synthesis is a deeply empathetic, specific, and safe framework that earns the right to brief the final creative."
+    }
    }
   }
  ],
