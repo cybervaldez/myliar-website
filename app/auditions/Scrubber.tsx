@@ -251,7 +251,7 @@ function useScrub(initial: number) {
 }
 
 // THE STORY BUILD — the picked story's own page, ONE scrubber. The track is divided into the scene
-// markers; INSIDE the active segment lives the subrange gradient — so a single drag gives BOTH the
+// markers; INSIDE the active segment lives the tone gradient — so a single drag gives BOTH the
 // world-moment (which segment) AND the tone within it (where in the segment). The art is frozen per
 // world-moment; the story beneath updates as you move within the segment (cozy · warm · intense).
 type Tone = { label: string; text: string };
@@ -288,11 +288,11 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
   return (
     <div>
       {/* ONE scrubber — the art (frozen per world-moment) + a SEGMENTED track. The active segment fills
-          with the subrange gradient (cozy→intense); the handle inside it = the tone. */}
-      <div {...main.bind} aria-label="the crossing — drag; each scene holds its subrange"
+          with the tone gradient (cozy→intense); the handle inside it = the tone. */}
+      <div {...main.bind} aria-label="the crossing — drag; each scene holds its tone"
         style={{ border: `2px solid ${forest}`, background: paper, padding: "10px 12px 12px", touchAction: "pan-y", cursor: "ew-resize", userSelect: "none", WebkitUserSelect: "none" }}>
         <pre style={{ ...mono, fontSize: 12.5, color: artInk, background: artBg, border: `1.5px solid ${artInk}`, padding: "8px 6px", margin: 0, textAlign: "center", overflow: "hidden", transition: "background .25s, color .25s" }}>{art(variant, sceneDr).join("\n")}</pre>
-        {/* the segmented track: passed = solid · active = the subrange gradient · ahead = muted */}
+        {/* the segmented track: passed = solid · active = the tone gradient · ahead = muted */}
         <div style={{ position: "relative", height: 13, margin: "10px 0 0" }}>
           <div style={{ display: "flex", height: 11, border: `1.5px solid ${ink}` }}>
             {scenes.map((_, i) => (
@@ -323,8 +323,8 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
         </div>
       )}
 
-      {/* THE TONE & MOOD — pick the ambient palette (the mood) · it grows with the subrange · ELI5 the
-          colours. The CREW's own palettes move to the subrange step (the cast-set makeup). */}
+      {/* THE TONE & MOOD — pick the ambient palette (the mood) · it grows with the tone · ELI5 the
+          colours. The CREW's own palettes move to the tone step (the cast-set makeup). */}
       {A && (
         <div style={{ border: `2px solid ${forest}`, background: paper, padding: "11px 13px", marginTop: 14 }}>
           <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>🎨 TONE &amp; MOOD — pick the ambient palette (the mood)</div>
@@ -381,7 +381,7 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
       {/* PROMPT-FRIENDLY COLOURS — natural-language colour phrases from the palette, for generating assets */}
       {story.mood?.prompts && (
         <div style={{ border: `2px solid ${forest}`, background: paper, padding: "11px 13px", marginTop: 14 }}>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 7 }}>🧩 PROMPT-FRIENDLY COLOURS — the world’s assets <span style={{ color: margin, fontWeight: 400 }}>· objects · trophies · items · icons (character prompts live in the subrange step)</span></div>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 7 }}>🧩 PROMPT-FRIENDLY COLOURS — the world’s assets <span style={{ color: margin, fontWeight: 400 }}>· objects · trophies · items · icons (character prompts live in the tone step)</span></div>
           {([["objects", "OBJECTS"], ["trophy", "TROPHY"], ["items", "ITEMS"], ["achievementIcons", "ACHIEVEMENT ICONS"]] as const).map(([k, label]) => {
             const list = story.mood!.prompts![k];
             if (!list?.length) return null;
@@ -426,7 +426,7 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
   );
 }
 
-// THE SUBRANGE BUILD — the picked story's MAKEUP, auditioned. (1) EXPERTS FIRST: a panel matched to
+// THE TONE BUILD — the picked story's MAKEUP, auditioned (in-game the reader DIALS THE TONE). EXPERTS
 // the audience frames the state of mind → the MAKEUP BRIEF. (2) THE CAST-SET AUDITION: the crew, tone-
 // mapped (cozy → warm → intense, worn over the story's ambient ground), judged for cohesion · contrast
 // · safe. The makeup lives HERE (not the story step) — the story step is the ambient ground it wears.
@@ -439,11 +439,11 @@ type CastVerdict = { id: string; cohesion: string; contrast: string; safe: strin
 type CastAudition = { sets: CastSet[]; perSet: CastVerdict[]; winner: string; winnerName: string; why: string; runnerUp: string; runnerUpGem: string };
 type MirrorCond = { id: string; label: string; from: string };
 type MirrorT = { kind: string; premise: string; conditions: MirrorCond[]; perTone: { tone: string; text: string }[]; vet: { perCondition: { id: string; met: string; note: string }[]; perTone: { tone: string; holds: string; note: string }[]; safe: string; oneLine: string } };
-export type SubrangeT = { audience: string; experts: Expert[]; framework: Framework; vet: ExpertVet; characters: Character[]; charPrompts: string[]; audit: SubAudit; ambientName: string; ambientBase: string; castAudition?: CastAudition; mirror?: MirrorT };
+export type ToneT = { audience: string; experts: Expert[]; framework: Framework; vet: ExpertVet; characters: Character[]; charPrompts: string[]; audit: SubAudit; ambientName: string; ambientBase: string; castAudition?: CastAudition; mirror?: MirrorT };
 const TONE_C: Record<string, string> = { cozy: "#c0795c", warm: "#6b8ba6", intense: "#c98a3e" };
 const auditGood = (v: string) => ["cohesive", "distinct", "safe", "yes"].includes(v);
 
-export function SubrangeBuild({ d }: { d: SubrangeT }) {
+export function ToneBuild({ d }: { d: ToneT }) {
   const red = "var(--spot-red)";
   const ca = d.castAudition;
   const mir = d.mirror;

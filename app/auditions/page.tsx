@@ -13,8 +13,8 @@ const statusCounts = Object.values(SLATE_STATUS).reduce((m: Record<string, numbe
 function chips(campaign: string) {
   return STEP_DEFS.map((s) => {
     if (!hasStep(campaign, s.key)) return { key: s.key, done: false, star: 0 };
-    // the STORY + SUBRANGE steps are the picked range being built (not scored) — done if a range is picked
-    if (s.key === "story" || s.key === "subrange") {
+    // the STORY + TONE steps are the picked range being built (not scored) — done if a range is picked
+    if (s.key === "story" || s.key === "tone") {
       const p = CAMPAIGNS[campaign].steps.pilot as unknown as { picked?: string };
       return { key: s.key, done: !!p?.picked, star: s.key === "story" ? -2 : -1 };
     }
@@ -41,7 +41,7 @@ export default function Board() {
         <ul style={{ margin: 0, paddingLeft: 18, fontSize: 12.5, color: ink, lineHeight: 1.62 }}>
           <li><b>The slate</b> = every SETTING (the worlds), the idea bank. Picks are <span style={{ color: forest }}>building</span>; the rest sit <span style={{ color: margin }}>in the bank</span>, revivable — never re-pick a taken setting.</li>
           <li>A setting is a <b>HOOK-ENGINE</b>: build the world + its safety floor once, then spawn many tonal <b>MOMENTS</b> — each a door a *different* reader walks through. Wide tonal range = wide net.</li>
-          <li>The moments are kept as a <b>RANGE</b> (no pick — the scrub’s subrange). Each moment spawns its own story (own cast/coach, §8.14) — built on demand.</li>
+          <li>The moments are kept as a <b>RANGE</b> (no pick — the scrub’s tone). Each moment spawns its own story (own cast/coach, §8.14) — built on demand.</li>
           <li>The <b style={{ color: amber }}>★ build-value</b> star folds audience + hook-capacity, weighted by what matters to our mechanics.</li>
         </ul>
       </div>

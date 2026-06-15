@@ -3,7 +3,7 @@
 // reference (how other stories solved this step — the idea bank). Concept resolves to the shared
 // SLATE. Next 16: params async. NOT canon.
 import StepBoard from "../../StepBoard";
-import Scrubber, { StoryBuild, SubrangeBuild, type SubrangeT } from "../../Scrubber";
+import Scrubber, { StoryBuild, ToneBuild, type ToneT } from "../../Scrubber";
 import { star, avg } from "../../score";
 import { CAMPAIGNS, STEP_DEFS, INTRO, PRIMERS, SLATE_STATUS, stepLabel, stepNo, hasStep, stepDataFor, crossRef, allParams, whyPicked } from "../../registry";
 
@@ -55,35 +55,36 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
         )}
         <div style={{ display: "flex", justifyContent: "space-between", borderTop: "1px solid var(--ink-soft)", paddingTop: 12, marginTop: 18, fontSize: 13 }}>
           <a href={`/auditions/${campaign}/pilot`} style={link}>← ② Range</a>
-          <a href={`/auditions/${campaign}/subrange`} style={link}>next: ④ The Subrange →</a>
+          <a href={`/auditions/${campaign}/tone`} style={link}>next: ④ The Tone →</a>
         </div>
       </main>
     );
   }
 
-  // THE SUBRANGE — the picked story's MAKEUP, auditioned: experts-first → the makeup brief → the cast-
-  // set audition (the crew tone-mapped, judged for cohesion · contrast · safe). Worn over the story
-  // step's ambient ground. (Multi-candidate rival sets are the next tool; this audits the assembled set.)
-  if (step === "subrange") {
+  // THE TONE — the picked story's MAKEUP, auditioned: experts-first → the makeup brief → the cast-set
+  // audition (the crew tone-mapped, judged for cohesion · contrast · safe). Worn over the story step's
+  // ambient ground. In the game the reader DIALS THE TONE (the scrubber is the dial). (Data lives in the
+  // legacy pilot.json subrange[]/subrangeAudit fields — names kept; the step is officially "the Tone".)
+  if (step === "tone") {
     const link = { color: "var(--forest)", fontWeight: 700, textDecoration: "none" } as const;
     if (!c) return <main style={{ maxWidth: 760, margin: "0 auto", padding: 40 }}><p style={{ color: "var(--margin-ink)" }}>No story for {campaign}. <a href="/auditions" style={link}>↑ the board</a></p></main>;
-    const p = c.steps.pilot as unknown as { picked?: string; scrubGroups: { id: string; name: string; metaphor?: string; mood?: { ambients?: { name: string; base: string }[]; characters: { name: string; color: string; is: string; joinsAt: string }[]; vet?: { best: string }; prompts?: { characters: string[] } }; subrangeAudit?: SubrangeT["audit"]; expertPanel?: { audience: string; experts: SubrangeT["experts"]; framework: SubrangeT["framework"]; vet: SubrangeT["vet"] }; castAudition?: SubrangeT["castAudition"]; mirror?: SubrangeT["mirror"] }[] };
+    const p = c.steps.pilot as unknown as { picked?: string; scrubGroups: { id: string; name: string; metaphor?: string; mood?: { ambients?: { name: string; base: string }[]; characters: { name: string; color: string; is: string; joinsAt: string }[]; vet?: { best: string }; prompts?: { characters: string[] } }; subrangeAudit?: ToneT["audit"]; expertPanel?: { audience: string; experts: ToneT["experts"]; framework: ToneT["framework"]; vet: ToneT["vet"] }; castAudition?: ToneT["castAudition"]; mirror?: ToneT["mirror"] }[] };
     const g = p.scrubGroups.find((x) => x.id === p.picked);
     const ep = g?.expertPanel, au = g?.subrangeAudit;
     const amb = g?.mood?.ambients?.find((a) => a.name === g?.mood?.vet?.best) ?? g?.mood?.ambients?.[0];
-    const d: SubrangeT | null = g && ep && au ? { audience: ep.audience, experts: ep.experts, framework: ep.framework, vet: ep.vet, characters: g.mood!.characters, charPrompts: g.mood?.prompts?.characters ?? [], audit: au, ambientName: amb?.name ?? "the ambient", ambientBase: amb?.base ?? "#0e1822", castAudition: g.castAudition, mirror: g.mirror } : null;
+    const d: ToneT | null = g && ep && au ? { audience: ep.audience, experts: ep.experts, framework: ep.framework, vet: ep.vet, characters: g.mood!.characters, charPrompts: g.mood?.prompts?.characters ?? [], audit: au, ambientName: amb?.name ?? "the ambient", ambientBase: amb?.base ?? "#0e1822", castAudition: g.castAudition, mirror: g.mirror } : null;
     return (
       <main style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", fontSize: 12, marginBottom: 4 }}>
           <a href="/auditions" style={{ color: "var(--margin-ink)", textDecoration: "none" }}>↑ the board</a>
           <span style={{ fontSize: 10, letterSpacing: ".12em", color: "var(--spot-red)", fontFamily: "var(--theme-body)", fontWeight: 700 }}>NOT CANON</span>
         </div>
-        <h1 style={{ fontSize: 24, margin: "0 0 2px", color: "var(--ink)" }}>{stepNo("subrange")} The Subrange · {c.label}</h1>
+        <h1 style={{ fontSize: 24, margin: "0 0 2px", color: "var(--ink)" }}>{stepNo("tone")} The Tone · {c.label}</h1>
         {g?.metaphor && <div style={{ fontFamily: "var(--theme-display)", fontSize: 18, color: "var(--forest)", marginBottom: 4 }}>{g.name} «{g.metaphor}»</div>}
-        <p style={{ fontSize: 12.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: "0 0 16px" }}>{INTRO.subrange}</p>
+        <p style={{ fontSize: 12.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: "0 0 16px" }}>{INTRO.tone}</p>
         {!d ? (
           <p style={{ fontSize: 13, color: "var(--margin-ink)" }}>The makeup isn&rsquo;t auditioned yet. Build it on <a href={`/auditions/${campaign}/story`} style={link}>the story step →</a></p>
-        ) : <SubrangeBuild d={d} />}
+        ) : <ToneBuild d={d} />}
         <div style={{ display: "flex", justifyContent: "space-between", borderTop: "1px solid var(--ink-soft)", paddingTop: 12, marginTop: 20, fontSize: 13 }}>
           <a href={`/auditions/${campaign}/story`} style={link}>← ③ The Story</a>
           <span style={{ color: "var(--margin-ink)" }}>next: the per-tone content (chat → beats), cozy-first →</span>

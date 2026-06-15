@@ -22,8 +22,8 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
   const order = STEP_DEFS.map((s) => {
     const has = hasStep(campaign, s.key);
     if (!has) return { ...s, done: false, pick: "", star: 0 };
-    // THE STORY + THE SUBRANGE are the picked range being BUILT (not scored auditions) — read, don't score
-    if (s.key === "story" || s.key === "subrange") {
+    // THE STORY + THE TONE are the picked range being BUILT (not scored auditions) — read, don't score
+    if (s.key === "story" || s.key === "tone") {
       const p = c.steps.pilot as unknown as { picked?: string; scrubGroups: { id: string; name: string }[] };
       const picked = p?.scrubGroups?.find((g) => g.id === p.picked);
       return { ...s, done: !!picked, pick: s.key === "story" ? (picked?.name ?? "") : "the cast-set makeup", star: s.key === "story" ? -2 : -1 };
@@ -35,7 +35,7 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
     return { ...s, done: true, pick: top.title, star: top.star };
   });
 
-  // after the shared TRUNK (setting · range · mood) the pipeline BRANCHES per SUBRANGE (the tone) —
+  // after the shared TRUNK (setting · range · mood) the pipeline BRANCHES per TONE —
   // each tone is its own cast + chat + beats (the cast is tone-dependent). Start with the coziest.
   const pilotRaw = c.steps.pilot as unknown as { picked?: string; scrubGroups: { id: string; subrange?: { label: string }[][]; subrangeAudit?: { perTone: { tone: string; holds: string; note: string }[] } }[] } | undefined;
   const pickedStory = pilotRaw?.scrubGroups?.find((g) => g.id === pilotRaw.picked);
@@ -50,7 +50,7 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
       </div>
       <h1 style={{ fontSize: 28, margin: "0 0 2px", color: ink }}>{c.label}</h1>
       <p style={{ fontSize: 12.5, color: soft, lineHeight: 1.55, margin: "0 0 6px" }}>{c.blurb}</p>
-      <p style={{ fontSize: 11, color: margin, margin: "0 0 20px" }}>born from <a href="/auditions/concept" style={{ color: forest }}>the slate</a> · a shared TRUNK (setting · range · mood), then it BRANCHES per subrange — each tone its own cast · chat · beats. Each step carries the last's experts forward.</p>
+      <p style={{ fontSize: 11, color: margin, margin: "0 0 20px" }}>born from <a href="/auditions/concept" style={{ color: forest }}>the slate</a> · a shared TRUNK (setting · range · mood), then it BRANCHES per tone — each tone its own cast · chat · beats. Each step carries the last's experts forward.</p>
 
       {order.map((s, k) => (
         <div key={s.key}>
@@ -75,7 +75,7 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
       {subranges.length > 0 && (
         <>
           <div style={{ borderLeft: `2px dashed ${forest}`, height: 14, margin: "0 0 0 16px" }} />
-          <div style={{ fontSize: 10, color: margin, margin: "0 0 4px 24px", fontStyle: "italic", lineHeight: 1.5 }}>↓ once the <a href={`/auditions/${campaign}/subrange`} style={{ color: forest, fontWeight: 700 }}>④ subrange audition</a> picks a cohesive cast-set, its per-tone CONTENT (chat + beats) gets built — cozy-first:</div>
+          <div style={{ fontSize: 10, color: margin, margin: "0 0 4px 24px", fontStyle: "italic", lineHeight: 1.5 }}>↓ once the <a href={`/auditions/${campaign}/tone`} style={{ color: forest, fontWeight: 700 }}>④ tone audition</a> picks a cohesive cast-set, its per-tone CONTENT (chat + beats) gets built — cozy-first:</div>
           {subranges.map((tone, i) => {
             const active = i === 0;
             const col = active ? forest : "var(--ink-soft)";
