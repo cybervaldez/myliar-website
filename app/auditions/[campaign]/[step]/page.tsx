@@ -67,11 +67,11 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
   if (step === "subrange") {
     const link = { color: "var(--forest)", fontWeight: 700, textDecoration: "none" } as const;
     if (!c) return <main style={{ maxWidth: 760, margin: "0 auto", padding: 40 }}><p style={{ color: "var(--margin-ink)" }}>No story for {campaign}. <a href="/auditions" style={link}>↑ the board</a></p></main>;
-    const p = c.steps.pilot as unknown as { picked?: string; scrubGroups: { id: string; name: string; metaphor?: string; mood?: { ambients?: { name: string; base: string }[]; characters: { name: string; color: string; is: string; joinsAt: string }[]; vet?: { best: string }; prompts?: { characters: string[] } }; subrangeAudit?: SubrangeT["audit"]; expertPanel?: { audience: string; experts: SubrangeT["experts"]; framework: SubrangeT["framework"]; vet: SubrangeT["vet"] } }[] };
+    const p = c.steps.pilot as unknown as { picked?: string; scrubGroups: { id: string; name: string; metaphor?: string; mood?: { ambients?: { name: string; base: string }[]; characters: { name: string; color: string; is: string; joinsAt: string }[]; vet?: { best: string }; prompts?: { characters: string[] } }; subrangeAudit?: SubrangeT["audit"]; expertPanel?: { audience: string; experts: SubrangeT["experts"]; framework: SubrangeT["framework"]; vet: SubrangeT["vet"] }; castAudition?: SubrangeT["castAudition"] }[] };
     const g = p.scrubGroups.find((x) => x.id === p.picked);
     const ep = g?.expertPanel, au = g?.subrangeAudit;
     const amb = g?.mood?.ambients?.find((a) => a.name === g?.mood?.vet?.best) ?? g?.mood?.ambients?.[0];
-    const d: SubrangeT | null = g && ep && au ? { audience: ep.audience, experts: ep.experts, framework: ep.framework, vet: ep.vet, characters: g.mood!.characters, charPrompts: g.mood?.prompts?.characters ?? [], audit: au, ambientName: amb?.name ?? "the ambient", ambientBase: amb?.base ?? "#0e1822" } : null;
+    const d: SubrangeT | null = g && ep && au ? { audience: ep.audience, experts: ep.experts, framework: ep.framework, vet: ep.vet, characters: g.mood!.characters, charPrompts: g.mood?.prompts?.characters ?? [], audit: au, ambientName: amb?.name ?? "the ambient", ambientBase: amb?.base ?? "#0e1822", castAudition: g.castAudition } : null;
     return (
       <main style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", fontSize: 12, marginBottom: 4 }}>

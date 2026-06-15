@@ -434,12 +434,17 @@ type Expert = { name: string; role: string; mindset: string; colours: string; ca
 type Framework = { palette: string; cast: string; tones: string; floor: string };
 type ExpertVet = { perExpert: { name: string; trueToAudience: string; safe: string; note: string }[]; missing: string[]; frameworkSound: string; oneLine: string };
 type SubAudit = { tones: string[]; focal: string[]; cohesion: string; contrast: string; safeFloor: string; perTone: { tone: string; holds: string; note: string }[]; oneLine: string };
-export type SubrangeT = { audience: string; experts: Expert[]; framework: Framework; vet: ExpertVet; characters: Character[]; charPrompts: string[]; audit: SubAudit; ambientName: string; ambientBase: string };
+type CastSet = { id: string; name: string; map: { cozy: string[]; warm: string[]; intense: string[] }; deepening: string };
+type CastVerdict = { id: string; cohesion: string; contrast: string; safe: string; resonance: string; note: string };
+type CastAudition = { sets: CastSet[]; perSet: CastVerdict[]; winner: string; winnerName: string; why: string; runnerUp: string; runnerUpGem: string };
+export type SubrangeT = { audience: string; experts: Expert[]; framework: Framework; vet: ExpertVet; characters: Character[]; charPrompts: string[]; audit: SubAudit; ambientName: string; ambientBase: string; castAudition?: CastAudition };
 const TONE_C: Record<string, string> = { cozy: "#c0795c", warm: "#6b8ba6", intense: "#c98a3e" };
 const auditGood = (v: string) => ["cohesive", "distinct", "safe", "yes"].includes(v);
 
 export function SubrangeBuild({ d }: { d: SubrangeT }) {
   const red = "var(--spot-red)";
+  const ca = d.castAudition;
+  const noThe = (n: string) => n.replace(/^the /i, "");
   const charsAt = (t: string) => d.characters.filter((c) => c.joinsAt.toLowerCase() === t.toLowerCase());
   return (
     <div>
@@ -485,9 +490,35 @@ export function SubrangeBuild({ d }: { d: SubrangeT }) {
         </div>
       </div>
 
-      {/* ⑃ THE CAST-SET AUDITION */}
-      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 3 }}>⑃ THE CAST-SET AUDITION — one crew, three tones</div>
-      <div style={{ fontSize: 11.5, color: soft, lineHeight: 1.5, marginBottom: 10 }}>a candidate SET = the four-crew makeup worn over <b>{d.ambientName}</b>, tone-mapped (the crew HOLDS across the tones — that&rsquo;s the cohesion test). Judged for <b>COHESION</b> · <b>CONTRAST</b> · <b>SAFE</b>.</div>
+      {/* ⑃ THE CAST-SET AUDITION — rival makeups */}
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 3 }}>⑃ THE CAST-SET AUDITION — rival makeups, judged against the brief</div>
+      <div style={{ fontSize: 11.5, color: soft, lineHeight: 1.5, marginBottom: 9 }}>the crew is FIXED (4 hands); the rivals differ in <b>who carries the intense &ldquo;surrender at your lowest&rdquo;</b>. Each is judged for <b>COHESION · CONTRAST · SAFE · RESONANCE</b> — pick the most cohesive.</div>
+      {ca && (
+        <>
+          <div style={{ display: "grid", gap: 8, marginBottom: 9 }}>
+            {ca.sets.map((s) => {
+              const verdict = ca.perSet.find((p) => p.id === s.id);
+              const won = s.id === ca.winner, runner = s.id === ca.runnerUp;
+              return (
+                <div key={s.id} style={{ border: `2px ${won ? "solid" : "dashed"} ${won ? forest : soft}`, background: won ? shade : paper, padding: "9px 12px", fontSize: 10.5, color: ink, lineHeight: 1.5 }}>
+                  <div><b style={{ fontSize: 12, color: won ? forest : ink }}>{s.name}</b> {won && <span style={{ fontSize: 9, color: forest, fontWeight: 700 }}>★ MOST COHESIVE</span>}{runner && <span style={{ fontSize: 9, color: amber }}>· runner-up</span>}</div>
+                  <div style={{ fontSize: 9.5, color: margin, marginTop: 2 }}>cozy: {s.map.cozy.map(noThe).join(" + ")} · warm: {s.map.warm.map(noThe).join(" + ")} · <b style={{ color: TONE_C.intense }}>intense: {s.map.intense.map(noThe).join(" + ")}</b></div>
+                  <div style={{ color: soft, marginTop: 3 }}>{s.deepening}</div>
+                  {verdict && <div style={{ fontSize: 9, color: margin, marginTop: 4 }}>cohesion <b style={{ color: auditGood(verdict.cohesion) ? forest : amber }}>{verdict.cohesion}</b> · contrast <b style={{ color: auditGood(verdict.contrast) ? forest : amber }}>{verdict.contrast}</b> · safe <b style={{ color: auditGood(verdict.safe) ? forest : red }}>{verdict.safe}</b> · resonance <b style={{ color: verdict.resonance === "strong" ? forest : amber }}>{verdict.resonance}</b> <span style={{ fontStyle: "italic" }}>— {verdict.note}</span></div>}
+                </div>
+              );
+            })}
+          </div>
+          <div style={{ fontSize: 10.5, color: ink, marginBottom: 15, lineHeight: 1.5 }}>
+            <div><b style={{ color: forest }}>★ why {ca.winnerName} won:</b> {ca.why}</div>
+            <div style={{ color: margin, marginTop: 2, fontStyle: "italic" }}>↳ runner-up gem to fold back later: {ca.runnerUpGem}</div>
+          </div>
+        </>
+      )}
+
+      {/* ▣ THE WINNING MAKEUP — the per-tone detail of the won set */}
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 3 }}>▣ THE WINNING MAKEUP{ca ? ` — ${ca.winnerName}` : ""} · tone-mapped over {d.ambientName}</div>
+      <div style={{ fontSize: 11, color: soft, lineHeight: 1.5, marginBottom: 10 }}>the won set, the crew HOLDING across the tones (the cohesion test) — each character&rsquo;s palette derived from the ambient.</div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8, marginBottom: 11 }}>
         {d.audit.tones.map((t, i) => {
           const pt = d.audit.perTone.find((p) => p.tone.toLowerCase() === t.toLowerCase());

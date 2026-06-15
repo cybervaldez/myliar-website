@@ -26,7 +26,7 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
     if (s.key === "story" || s.key === "subrange") {
       const p = c.steps.pilot as unknown as { picked?: string; scrubGroups: { id: string; name: string }[] };
       const picked = p?.scrubGroups?.find((g) => g.id === p.picked);
-      return { ...s, done: !!picked, pick: s.key === "story" ? (picked?.name ?? "") : "the cast-set makeup", star: -1 };
+      return { ...s, done: !!picked, pick: s.key === "story" ? (picked?.name ?? "") : "the cast-set makeup", star: s.key === "story" ? -2 : -1 };
     }
     const sd = stepDataFor(campaign, s.key)!;
     const top = s.key === "concept"
@@ -58,7 +58,7 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
             <a href={`/auditions/${campaign}/${s.key}`} style={{ display: "block", textDecoration: "none", border: `2px solid var(--ink-soft)`, background: paper, padding: "12px 15px", color: ink }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10 }}>
                 <span style={{ fontSize: 14 }}><b style={{ color: forest }}>{stepNo(s.key)} {s.label}</b> <span style={{ color: margin, fontSize: 12 }}>— “{s.pick}”</span></span>
-                <span style={{ color: s.star < 0 ? forest : amber, fontSize: s.star < 0 ? 11 : 13, whiteSpace: "nowrap", fontWeight: s.star < 0 ? 700 : 400 }}>{s.star < 0 ? "● building" : starStr(s.star)}</span>
+                <span style={{ color: s.star < 0 ? forest : amber, fontSize: s.star < 0 ? 11 : 13, whiteSpace: "nowrap", fontWeight: s.star < 0 ? 700 : 400 }}>{s.star === -2 ? "✓ set" : s.star === -1 ? "● building" : starStr(s.star)}</span>
               </div>
               {c.carried[s.key] && (
                 <div style={{ fontSize: 10.5, color: margin, marginTop: 4, lineHeight: 1.45 }}>↩ carried in: {c.carried[s.key].map((x) => x.step.replace(/ —.*/, "")).join(" · ")}</div>

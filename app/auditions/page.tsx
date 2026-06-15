@@ -16,7 +16,7 @@ function chips(campaign: string) {
     // the STORY + SUBRANGE steps are the picked range being built (not scored) — done if a range is picked
     if (s.key === "story" || s.key === "subrange") {
       const p = CAMPAIGNS[campaign].steps.pilot as unknown as { picked?: string };
-      return { key: s.key, done: !!p?.picked, star: -1 };
+      return { key: s.key, done: !!p?.picked, star: s.key === "story" ? -2 : -1 };
     }
     const sd = stepDataFor(campaign, s.key)!;
     const st = s.key === "concept"
@@ -70,7 +70,7 @@ export default function Board() {
                 <span key={ch.key} style={{ display: "flex", alignItems: "center" }}>
                   {ch.done ? (
                     <a href={`/auditions/${campaign}/${ch.key}`} style={{ textDecoration: "none", border: `1.5px solid ${forest}`, color: ink, fontSize: 11, padding: "3px 8px", lineHeight: 1.3, display: "inline-block" }}>
-                      <b style={{ color: forest }}>{stepNo(ch.key)} {STEP_DEFS[k].label.replace(/^The /, "")}</b> <span style={{ color: ch.star < 0 ? forest : amber }}>{ch.star < 0 ? "●" : starStr(ch.star)}</span>
+                      <b style={{ color: forest }}>{stepNo(ch.key)} {STEP_DEFS[k].label.replace(/^The /, "")}</b> <span style={{ color: ch.star < 0 ? forest : amber }}>{ch.star === -2 ? "✓" : ch.star === -1 ? "●" : starStr(ch.star)}</span>
                     </a>
                   ) : (
                     <span style={{ border: `1.5px dashed var(--ink-soft)`, color: margin, fontSize: 11, padding: "3px 8px", display: "inline-block" }}>{stepNo(ch.key)} {STEP_DEFS[k].label.replace(/^The /, "")} · next</span>
