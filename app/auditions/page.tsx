@@ -13,8 +13,8 @@ const statusCounts = Object.values(SLATE_STATUS).reduce((m: Record<string, numbe
 function chips(campaign: string) {
   return STEP_DEFS.map((s) => {
     if (!hasStep(campaign, s.key)) return { key: s.key, done: false, star: 0 };
-    // the STORY step is the picked range being built (not scored) — mark done if a range is picked
-    if (s.key === "story") {
+    // the STORY + SUBRANGE steps are the picked range being built (not scored) — done if a range is picked
+    if (s.key === "story" || s.key === "subrange") {
       const p = CAMPAIGNS[campaign].steps.pilot as unknown as { picked?: string };
       return { key: s.key, done: !!p?.picked, star: -1 };
     }

@@ -22,11 +22,11 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
   const order = STEP_DEFS.map((s) => {
     const has = hasStep(campaign, s.key);
     if (!has) return { ...s, done: false, pick: "", star: 0 };
-    // THE STORY is the picked range being BUILT (not an audition) — read the pick, don't score it
-    if (s.key === "story") {
+    // THE STORY + THE SUBRANGE are the picked range being BUILT (not scored auditions) — read, don't score
+    if (s.key === "story" || s.key === "subrange") {
       const p = c.steps.pilot as unknown as { picked?: string; scrubGroups: { id: string; name: string }[] };
       const picked = p?.scrubGroups?.find((g) => g.id === p.picked);
-      return { ...s, done: !!picked, pick: picked?.name ?? "", star: -1 };
+      return { ...s, done: !!picked, pick: s.key === "story" ? (picked?.name ?? "") : "the cast-set makeup", star: -1 };
     }
     const sd = stepDataFor(campaign, s.key)!;
     const top = s.key === "concept"
@@ -37,11 +37,10 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
 
   // after the shared TRUNK (setting · range · mood) the pipeline BRANCHES per SUBRANGE (the tone) —
   // each tone is its own cast + chat + beats (the cast is tone-dependent). Start with the coziest.
-  const pilotRaw = c.steps.pilot as unknown as { picked?: string; scrubGroups: { id: string; subrange?: { label: string }[][]; subrangeAudit?: { cohesion: string; contrast: string; safeFloor: string; perTone: { tone: string; holds: string; note: string }[]; oneLine: string }; expertPanel?: { audience: string; experts: { name: string; role: string }[]; framework: { floor: string }; vet?: { frameworkSound: string; missing: string[]; oneLine: string } } }[] } | undefined;
+  const pilotRaw = c.steps.pilot as unknown as { picked?: string; scrubGroups: { id: string; subrange?: { label: string }[][]; subrangeAudit?: { perTone: { tone: string; holds: string; note: string }[] } }[] } | undefined;
   const pickedStory = pilotRaw?.scrubGroups?.find((g) => g.id === pilotRaw.picked);
   const subranges = (pickedStory?.subrange?.[0] ?? []).map((t) => t.label);
   const audit = pickedStory?.subrangeAudit;
-  const panel = pickedStory?.expertPanel;
 
   return (
     <main style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
@@ -76,43 +75,16 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
       {subranges.length > 0 && (
         <>
           <div style={{ borderLeft: `2px dashed ${forest}`, height: 14, margin: "0 0 0 16px" }} />
-          <div style={{ border: `2px solid ${forest}`, background: "var(--paper-shade)", padding: "11px 15px", marginBottom: 4 }}>
-            <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>⑃ THE SUBRANGE — the workbench (audition candidate cast-SETS · pick the most cohesive)</div>
-            <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5 }}>the trunk above is the SETTING + the RANGE/metaphor. HERE is the SUBRANGE — the big step (the chatbot lives here). A candidate is a complete SET — its <b>MAKEUP</b>: the <b>cast</b> (its own palettes + prompts) + the tones (cozy · warm · intense), worn over the ambient palette + setting established at the <b>STORY step</b>. Audition candidate sets for <b>COHESION</b> (one crew / one world across the tones) + <b>CONTRAST</b> (distinct tones) + <b>SAFE</b>; pick the most cohesive. THEN build the per-tone CONTENT (chat/beats) — <b>cozy-first</b> (the de-risk, after a set wins).</div>
-            {panel && (
-              <div style={{ fontSize: 10.5, color: ink, marginTop: 8, padding: "7px 9px", border: "1px solid var(--ink-soft)", background: "var(--paper)", lineHeight: 1.5 }}>
-                <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".06em", color: forest }}>⓪ EXPERTS FIRST — the opening move (frame the audience, THEN build the makeup)</div>
-                <div style={{ color: soft, marginTop: 3 }}>brief experts <b>matched to the audience</b> ({panel.audience.replace(/ \([^)]*\)/g, "")}) on the setting + metaphor + tones; their synthesis = the <b>makeup brief</b> the cast-set audition is judged against.</div>
-                <div style={{ marginTop: 5, display: "flex", flexWrap: "wrap", gap: "3px 10px" }}>
-                  {panel.experts.map((e) => (
-                    <span key={e.name} style={{ fontSize: 10 }}><b style={{ color: ink }}>{e.name}</b> <span style={{ color: margin }}>· {e.role.replace(/^.*— /, "")}</span></span>
-                  ))}
-                </div>
-                <div style={{ marginTop: 5, color: ink, fontStyle: "italic" }}>↳ the brief's floor: {panel.framework.floor}</div>
-                {panel.vet && (
-                  <div style={{ marginTop: 4, fontSize: 9.5, color: margin }}>
-                    <span style={{ fontFamily: "var(--theme-body)", fontWeight: 700, letterSpacing: ".05em", color: forest }}>VET</span> framework <b style={{ color: panel.vet.frameworkSound === "yes" ? forest : amber }}>{panel.vet.frameworkSound}</b> · {panel.vet.missing.length ? `missing: ${panel.vet.missing.join(", ")}` : "no facet missed"} <span style={{ fontStyle: "italic" }}>— {panel.vet.oneLine}</span>
-                  </div>
-                )}
-              </div>
-            )}
-            {audit && (
-              <div style={{ fontSize: 10.5, color: ink, marginTop: 7, paddingTop: 6, borderTop: "1px solid var(--ink-soft)", lineHeight: 1.5 }}>
-                <span style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".06em", color: forest }}>🎭 TONAL VET</span> cohesion <b style={{ color: audit.cohesion === "cohesive" ? forest : amber }}>{audit.cohesion}</b> · contrast <b style={{ color: audit.contrast === "distinct" ? forest : amber }}>{audit.contrast}</b> · floor <b style={{ color: audit.safeFloor === "safe" ? forest : red }}>{audit.safeFloor}</b>
-                <div style={{ color: soft, fontStyle: "italic", marginTop: 2 }}>↳ {audit.oneLine}</div>
-              </div>
-            )}
-          </div>
-          <div style={{ fontSize: 10, color: margin, margin: "9px 0 4px 24px", fontStyle: "italic" }}>↓ once a set wins, build its per-tone CONTENT (chat + beats) — cozy-first:</div>
+          <div style={{ fontSize: 10, color: margin, margin: "0 0 4px 24px", fontStyle: "italic", lineHeight: 1.5 }}>↓ once the <a href={`/auditions/${campaign}/subrange`} style={{ color: forest, fontWeight: 700 }}>④ subrange audition</a> picks a cohesive cast-set, its per-tone CONTENT (chat + beats) gets built — cozy-first:</div>
           {subranges.map((tone, i) => {
             const active = i === 0;
             const col = active ? forest : "var(--ink-soft)";
-            const pt = audit?.perTone?.find((p) => p.tone === tone);
+            const pt = audit?.perTone?.find((p) => p.tone.toLowerCase() === tone.toLowerCase());
             return (
               <div key={tone} style={{ marginLeft: 24, borderLeft: `2px ${active ? "solid" : "dashed"} ${col}`, paddingLeft: 14, marginBottom: 8 }}>
                 <div style={{ border: `2px ${active ? "solid" : "dashed"} ${col}`, background: active ? paper : "transparent", padding: "10px 14px", opacity: active ? 1 : 0.7 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10 }}>
-                    <span style={{ fontSize: 13.5 }}><b style={{ color: active ? forest : margin, textTransform: "capitalize" }}>{tone}</b> <span style={{ fontSize: 11, color: margin }}>subrange</span></span>
+                    <span style={{ fontSize: 13.5 }}><b style={{ color: active ? forest : margin, textTransform: "capitalize" }}>{tone}</b> <span style={{ fontSize: 11, color: margin }}>content</span></span>
                     <span style={{ fontSize: 10.5, color: active ? forest : margin, fontWeight: active ? 700 : 400, whiteSpace: "nowrap" }}>{active ? "● START — the floor" : "○ later"}</span>
                   </div>
                   <div style={{ fontSize: 11, color: soft, marginTop: 4 }}>the per-tone content — the chat <span style={{ color: margin }}>→</span> the beats{active ? "" : <span style={{ color: margin, fontStyle: "italic" }}> · after the cozy branch ships</span>}</div>

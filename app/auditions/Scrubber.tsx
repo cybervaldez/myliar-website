@@ -426,6 +426,106 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
   );
 }
 
+// THE SUBRANGE BUILD — the picked story's MAKEUP, auditioned. (1) EXPERTS FIRST: a panel matched to
+// the audience frames the state of mind → the MAKEUP BRIEF. (2) THE CAST-SET AUDITION: the crew, tone-
+// mapped (cozy → warm → intense, worn over the story's ambient ground), judged for cohesion · contrast
+// · safe. The makeup lives HERE (not the story step) — the story step is the ambient ground it wears.
+type Expert = { name: string; role: string; mindset: string; colours: string; cast: string; donts: string };
+type Framework = { palette: string; cast: string; tones: string; floor: string };
+type ExpertVet = { perExpert: { name: string; trueToAudience: string; safe: string; note: string }[]; missing: string[]; frameworkSound: string; oneLine: string };
+type SubAudit = { tones: string[]; focal: string[]; cohesion: string; contrast: string; safeFloor: string; perTone: { tone: string; holds: string; note: string }[]; oneLine: string };
+export type SubrangeT = { audience: string; experts: Expert[]; framework: Framework; vet: ExpertVet; characters: Character[]; charPrompts: string[]; audit: SubAudit; ambientName: string; ambientBase: string };
+const TONE_C: Record<string, string> = { cozy: "#c0795c", warm: "#6b8ba6", intense: "#c98a3e" };
+const auditGood = (v: string) => ["cohesive", "distinct", "safe", "yes"].includes(v);
+
+export function SubrangeBuild({ d }: { d: SubrangeT }) {
+  const red = "var(--spot-red)";
+  const charsAt = (t: string) => d.characters.filter((c) => c.joinsAt.toLowerCase() === t.toLowerCase());
+  return (
+    <div>
+      {/* CARRIED — the ambient ground from the story step */}
+      <div style={{ border: `2px dashed ${forest}`, background: shade, padding: "10px 14px", margin: "0 0 16px", fontSize: 11.5, color: ink, lineHeight: 1.5 }}>
+        <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 6 }}>↩ CARRIED FROM THE STORY STEP — the ground the makeup is worn over</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
+          <span style={{ width: 26, height: 26, background: d.ambientBase, border: `1px solid ${ink}`, display: "inline-block", borderRadius: 3, flexShrink: 0 }} />
+          <span>the ambient palette <b>{d.ambientName}</b> <code style={{ fontSize: 10, color: margin }}>{d.ambientBase}</code> — the world&rsquo;s base mood. Every cast palette below DERIVES from it.</span>
+        </div>
+      </div>
+
+      {/* ⓪ EXPERTS FIRST */}
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 3 }}>⓪ EXPERTS FIRST — frame the audience, then build the makeup</div>
+      <div style={{ fontSize: 11.5, color: soft, lineHeight: 1.5, marginBottom: 9 }}>experts <b>matched to the audience</b> ({d.audience}) framed the state of mind; their synthesis is the MAKEUP BRIEF the audition judges against.</div>
+      <div style={{ display: "grid", gap: 8, marginBottom: 14 }}>
+        {d.experts.map((e) => {
+          const v = d.vet.perExpert.find((p) => p.name === e.name);
+          return (
+            <div key={e.name} style={{ border: `1px solid ${soft}`, background: paper, padding: "9px 12px", fontSize: 11, color: ink, lineHeight: 1.5 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8 }}>
+                <span><b style={{ fontSize: 12 }}>{e.name}</b> <span style={{ color: margin, fontSize: 10.5 }}>· {e.role}</span></span>
+                {v && <span style={{ fontSize: 9, color: v.trueToAudience === "yes" && v.safe === "yes" ? forest : amber, whiteSpace: "nowrap" }}>✓ true-to-audience · safe</span>}
+              </div>
+              <div style={{ color: soft, marginTop: 3 }}>{e.mindset}</div>
+              <div style={{ marginTop: 4 }}><span style={{ color: margin }}>↳ colours:</span> {e.colours}</div>
+              <div><span style={{ color: margin }}>↳ cast:</span> {e.cast}</div>
+              <div><span style={{ color: red }}>⚑ don&rsquo;ts:</span> {e.donts}</div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* THE MAKEUP BRIEF */}
+      <div style={{ border: `2px solid ${forest}`, background: shade, padding: "11px 14px", marginBottom: 16, fontSize: 11, color: ink, lineHeight: 1.55 }}>
+        <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".07em", color: forest, marginBottom: 5 }}>▣ THE MAKEUP BRIEF — what the cast-set audition judges against</div>
+        <div><b>palette</b> · {d.framework.palette}</div>
+        <div style={{ marginTop: 3 }}><b>cast</b> · {d.framework.cast}</div>
+        <div style={{ marginTop: 3 }}><b>tones</b> · {d.framework.tones}</div>
+        <div style={{ marginTop: 5, color: forest, fontStyle: "italic" }}>⚑ the floor (unanimous): {d.framework.floor}</div>
+        <div style={{ marginTop: 6, paddingTop: 5, borderTop: `1px solid ${soft}`, fontSize: 9.5, color: margin }}>
+          <b style={{ color: forest }}>VET</b> framework <b style={{ color: d.vet.frameworkSound === "yes" ? forest : amber }}>{d.vet.frameworkSound}</b> · {d.vet.missing.length ? `missing: ${d.vet.missing.join(", ")}` : "no facet missed"} <span style={{ fontStyle: "italic" }}>— {d.vet.oneLine}</span>
+        </div>
+      </div>
+
+      {/* ⑃ THE CAST-SET AUDITION */}
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 3 }}>⑃ THE CAST-SET AUDITION — one crew, three tones</div>
+      <div style={{ fontSize: 11.5, color: soft, lineHeight: 1.5, marginBottom: 10 }}>a candidate SET = the four-crew makeup worn over <b>{d.ambientName}</b>, tone-mapped (the crew HOLDS across the tones — that&rsquo;s the cohesion test). Judged for <b>COHESION</b> · <b>CONTRAST</b> · <b>SAFE</b>.</div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8, marginBottom: 11 }}>
+        {d.audit.tones.map((t, i) => {
+          const pt = d.audit.perTone.find((p) => p.tone.toLowerCase() === t.toLowerCase());
+          const col = TONE_C[t.toLowerCase()] ?? soft;
+          return (
+            <div key={t} style={{ border: `2px solid ${col}`, background: paper, padding: "9px 10px", fontSize: 10.5, color: ink }}>
+              <div style={{ fontWeight: 700, textTransform: "capitalize", color: col, fontSize: 12.5 }}>{t}</div>
+              <div style={{ fontSize: 9, color: margin, marginBottom: 6 }}>focal: {d.audit.focal[i]}</div>
+              {charsAt(t).map((c) => (
+                <div key={c.name} style={{ display: "flex", gap: 6, alignItems: "flex-start", marginBottom: 4 }}>
+                  <span style={{ width: 13, height: 13, background: c.color, border: `1px solid ${ink}`, flexShrink: 0, marginTop: 1, borderRadius: 2 }} />
+                  <span><b>{c.name.replace(/^the /i, "")}</b> <span style={{ color: soft }}>— {c.is}</span></span>
+                </div>
+              ))}
+              {pt && <div style={{ fontSize: 9, color: pt.holds === "yes" ? forest : amber, fontStyle: "italic", marginTop: 5, paddingTop: 4, borderTop: `1px solid ${soft}` }}>{pt.holds === "yes" ? "✓" : "⚑"} {pt.note}</div>}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* the cast prompts */}
+      <div style={{ border: `1px solid ${soft}`, background: shade, padding: "9px 12px", marginBottom: 11, fontSize: 10, color: ink, lineHeight: 1.55 }}>
+        <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 4 }}>🎨 CAST PROMPTS — prompt-friendly, each derived from the ambient</div>
+        {d.charPrompts.map((p, i) => <div key={i} style={{ color: soft, marginBottom: 2 }}>· {p}</div>)}
+      </div>
+
+      {/* the verdict */}
+      <div style={{ border: `2px solid ${forest}`, background: shade, padding: "10px 14px", fontSize: 11, color: ink }}>
+        <span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".06em", color: forest }}>🎭 TONAL VET</span>{" "}
+        cohesion <b style={{ color: auditGood(d.audit.cohesion) ? forest : amber }}>{d.audit.cohesion}</b> · contrast <b style={{ color: auditGood(d.audit.contrast) ? forest : amber }}>{d.audit.contrast}</b> · floor <b style={{ color: auditGood(d.audit.safeFloor) ? forest : red }}>{d.audit.safeFloor}</b>
+        <div style={{ color: soft, fontStyle: "italic", marginTop: 3 }}>↳ {d.audit.oneLine}</div>
+      </div>
+
+      <div style={{ fontSize: 10, color: margin, marginTop: 11, fontStyle: "italic", lineHeight: 1.5 }}>↓ this set passes the floor. Generating RIVAL cast-sets to pick the <b>most cohesive</b> (the way the range was picked) is the next tool; then the per-tone CONTENT (chat → beats) is built <b>cozy-first</b>.</div>
+    </div>
+  );
+}
+
 // THE WORLD-BUILDER'S READ — the review lens for this step (replaces the audience cards here): it
 // explains the BUILDING BLOCKS each candidate hands the next step (the user's call — worldbuilders
 // fit this step better than audience).

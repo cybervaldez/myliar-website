@@ -18,6 +18,7 @@ export const STEP_DEFS = [
   { key: "concept", label: "The Setting" },
   { key: "pilot", label: "The Range" },
   { key: "story", label: "The Story" },
+  { key: "subrange", label: "The Subrange" },
 ];
 export const stepLabel = (k: string) => STEP_DEFS.find((s) => s.key === k)?.label ?? k;
 export const stepNo = (k: string) => "①②③④⑤⑥"[STEP_DEFS.findIndex((s) => s.key === k)] ?? "•";
@@ -102,6 +103,7 @@ export const INTRO: Record<string, string> = {
   pilot: "One setting, candidate dynamic ranges — each its OWN environment. The dial scrubs the SCENE — the surrounding WEATHER (the stage): calm water → the storm → first light (the §8.13 arc), the WORLD holding throughout (§8.15). The scene labels are NOT the story’s feeling — the story’s TONE is a SEPARATE axis (the SUBRANGE, cozy ↔ intense), free to MATCH or CONTRAST any scene (a tender beat in the storm, a charged one in the calm). We PICK the most cohesive scene-arc by FEEL — scrub each.",
   destination: "The deepest chat THIS story reaches — the full-REL coach (per-story, §8.14: no shared coach). Authored after a moment is chosen; the path is built backward to it. The fleet asks: does the deepest relationship land?",
   story: "The picked range is now a STORY — here we set its AMBIENCE & SETTING: the TONE & MOOD (the ambient palette), the world-moments, the UI + the palette→prose recipe (the real beats are authored later). Scrub the crossing (the world-moments); at each, the SUBRANGE shows EXAMPLE scenes — a cozy one, a warm one, an intense one — so you can feel the range and how a scene can run with or against the surrounding. These are examples (variations), not the authored story. The CREW’s own palettes/prompts are auditioned in the SUBRANGE step, not here.",
+  subrange: "The MAKEUP for the picked story — auditioned. FIRST the EXPERTS (matched to the audience) frame the state of mind → the MAKEUP BRIEF. THEN a candidate cast-SET (the crew tone-mapped cozy → warm → intense, worn OVER the story’s ambient ground) is auditioned for COHESION (one crew across the tones) · CONTRAST (the tones genuinely distinct) · SAFE (every tone holds — the intense deepens PRESENCE, never threat). Pick the most cohesive set; THEN build its per-tone content, cozy-first.",
 };
 
 // §8.19 HARD RULE — every PICKED step (status building/shipped) ships a plain-language ELI5 "why this
@@ -128,7 +130,7 @@ export const CAMPAIGNS: Record<string, {
   ferry: {
     label: "The Night Ferry", pick: "ferry",
     blurb: "the night-ferry SETTING — a world that holds whether the strait is glass-calm or running heavy; its moments are the doors its stories spawn from",
-    steps: { pilot: ferryPilot as unknown as StepData, story: ferryPilot as unknown as StepData },
+    steps: { pilot: ferryPilot as unknown as StepData, story: ferryPilot as unknown as StepData, subrange: ferryPilot as unknown as StepData },
     carried: {
       pilot: [{
         step: "① THE SETTING — the Night Ferry",
