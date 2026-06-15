@@ -260,28 +260,35 @@
        "conveys_metaphor": "yes",
        "safe_floor": "safe",
        "arc_fit": "holds",
-       "note": "The quintessential 'safe space' palette; the warm dark feels like a hug, not a void."
+       "note": "Classic cozy lofi vibe; feels like a safe, quiet haven from the world."
       },
       {
        "id": "worncouch",
-       "conveys_metaphor": "weak",
+       "conveys_metaphor": "yes",
        "safe_floor": "safe",
-       "arc_fit": "partial",
-       "note": "Grounded and comfy, but the specific character-tied accent slightly narrows its narrative flexibility."
+       "arc_fit": "holds",
+       "note": "Grounded and earthy, with a pop of personality that speaks to found family."
       },
       {
        "id": "afterbell",
-       "conveys_metaphor": "no",
-       "safe_floor": "risky",
-       "arc_fit": "breaks",
-       "note": "Too energetic for the default 'safe room' feel; it starts at 'warm' and has little room to grow or shrink."
+       "conveys_metaphor": "weak",
+       "safe_floor": "safe",
+       "arc_fit": "partial",
+       "note": "Higher energy and more expressive upfront; feels less like a quiet retreat."
       }
      ],
-     "characterHarmony": "Characters read as a distinct crew against the dark base; cool notes (Dee, Wren) pop against the ambient warmth, creating balanced focus.",
+     "characterHarmony": "The distinct hues create a vibrant found-family, with Dee's cooler teal popping as the initial anchor against the warmer tones.",
      "fixes": [
-      "Wren's colour #8a78c0 has 4.4 contrast on the 'lightslow' base, failing WCAG text standards; nudge lightness to ~#9482c9 to pass."
+      {
+       "color": "#8a78c0",
+       "note": "Wren's purple has insufficient text contrast (3.81-4.4) against all bases; needs to be lightened to pass WCAG AA (4.5:1)."
+      },
+      {
+       "color": "#e0664f",
+       "note": "Theo's coral, used as accent and character color in 'afterbell', fails text contrast (4.26) and should be lightened if used for text."
+      }
      ],
-     "oneLine": "The safety of a warm, low-lit room provides the perfect canvas for teen anxieties to soften and vibrant identities to glow."
+     "oneLine": "The palette's strength is a warm, dark 'safe room' that lets the vibrant character hues represent belonging and expressed identity."
     }
    },
    "castAudition": {
@@ -345,7 +352,7 @@
       "contrast": "distinct",
       "safe": "safe",
       "resonance": "strong",
-      "note": "Peer-centered care directly delivers the core metaphor «kept, not chosen»."
+      "note": "The core theme «kept, not chosen» is enacted directly upon the player by a peer."
      },
      {
       "id": "mask-drops",
@@ -353,22 +360,22 @@
       "contrast": "distinct",
       "safe": "safe",
       "resonance": "strong",
-      "note": "Powerfully antidotes the performance treadmill by showing belonging survives vulnerability."
+      "note": "Powerfully models that belonging outlasts performance, an antidote to the comparison spiral."
      },
      {
       "id": "kept-room",
-      "cohesion": "loose",
-      "contrast": "partial",
+      "cohesion": "disjoint",
+      "contrast": "distinct",
       "safe": "risky",
       "resonance": "weak",
-      "note": "Violates the 'no adult-savior' rule, centering the emotional core on the adult."
+      "note": "Violates the 'no adult-savior' rule, centering the adult in the core emotional beat."
      }
     ],
     "winner": "saved-seat",
     "winnerName": "The Saved Seat",
-    "why": "Most directly embodies the «kept, not chosen» metaphor through a peer-led act of belonging.",
+    "why": "It most directly delivers the core «kept, not chosen» theme to the player through a peer's action.",
     "runnerUp": "mask-drops",
-    "runnerUpGem": "It explicitly shows belonging survives dropping the 'performer' mask, a key teen anxiety."
+    "runnerUpGem": "It externalizes the player's fear of failure onto a character, making the lesson on unconditional belonging observable and safe."
    },
    "mirror": {
     "kind": "fellow traveler",
@@ -471,21 +478,21 @@
      {
       "tone": "cozy",
       "holds": "yes",
-      "note": "Perfectly captures ambient, low-demand comfort; a space to just *be* without expectation."
+      "note": "Effectively establishes a baseline of quiet, ambient safety where presence is the only requirement."
      },
      {
       "tone": "warm",
       "holds": "yes",
-      "note": "Effectively builds on 'cozy' with active, social connection and easy, peer-led camaraderie."
+      "note": "Successfully shifts the focus to low-stakes, gentle social connection and peer-led warmth."
      },
      {
       "tone": "intense",
       "holds": "yes",
-      "note": "Handles internal emotional weight safely, focusing on presence over solutions to validate the player's struggle."
+      "note": "Powerfully centers the player's internal struggle, validating big feelings while reinforcing unconditional belonging."
      }
     ],
     "fixes": [],
-    "oneLine": "This set masterfully offers three distinct flavors of safety, allowing the player to choose not *if* they belong, but *how* they need to belong today."
+    "oneLine": "This set masterfully refracts the core theme of unconditional belonging through three distinct, safe, and cohesive emotional lenses."
    }
   }
  ],
@@ -495,5 +502,68 @@
   "a rough one",
   "it settles",
   "the walk out"
- ]
+ ],
+ "rangeCandidates": [
+  {
+   "id": "seat",
+   "name": "The Open Seat",
+   "throughline": "belonging you don't audition for — the chair's yours before you've proven anything; you're kept, not chosen",
+   "env": [
+    "a free chair by the window, no name on it",
+    "the room fills; nobody checks your worth at the door",
+    "someone's sure they don't belong — the seat holds anyway",
+    "you sit at your lowest and it holds, unconditional",
+    "you leave having simply been somewhere that kept you"
+   ],
+   "metaphor": "Acceptance without audition",
+   "verdict": "distinct",
+   "audienceServe": "Speaks to low self-worth and the comparison spiral of not being 'enough' to belong.",
+   "floorFlags": [],
+   "wbRead": "Frames a story about a character learning to accept unearned grace, externalized by the ever-present chair."
+  },
+  {
+   "id": "bell",
+   "name": "The Last Bell",
+   "throughline": "the day ends whether or not you finished — the bell closes the hour; showing up IS the win, the unstarted is allowed to stay unstarted",
+   "env": [
+    "the last bell, the bus skipped, the room instead",
+    "the hour deepens, the homework still half-begun",
+    "the spike — nothing's done, you're behind, you're lazy",
+    "the half-done thing set down, the kettle clicking off",
+    "the keys rattle: the hour ends, finished or not, and that's allowed"
+   ],
+   "metaphor": "Permission to be incomplete",
+   "verdict": "distinct",
+   "audienceServe": "Speaks directly to ADHD-related school-shame and the pressure of the unfinished.",
+   "floorFlags": [],
+   "wbRead": "Frames a story about a character whose worth is tied to productivity, finding relief in a space where 'done' is not the goal."
+  },
+  {
+   "id": "circle",
+   "name": "The Circle",
+   "throughline": "no audition to belong — the un-evaluated hour; nobody is grading you, the performance treadmill stops at the door",
+   "env": [
+    "the door shuts on the perceived, performed day",
+    "the circle, nobody performing okay at anyone",
+    "the loud mask cracks and nobody points at it",
+    "you stop doing the math on whether you belong",
+    "you walk out un-graded, lighter, having proved nothing"
+   ],
+   "metaphor": "Belonging without performance",
+   "verdict": "distinct",
+   "audienceServe": "Speaks to social anxiety and the exhausting performance treadmill of being perceived.",
+   "floorFlags": [],
+   "wbRead": "Frames a story about a character terrified of their social 'mask' cracking, and the freedom that comes after."
+  }
+ ],
+ "worldbuild": {
+  "richest": "bell",
+  "note": "The richest metaphors are structural: healing comes from how the world itself is bounded (by time, by space), not just from the people in it."
+ },
+ "culture": {
+  "name": "Western (Anglo-contemporary)",
+  "valorises": "higher-arousal positive states — excitement, expressiveness (HAP), within the cozy floor",
+  "expression": "direct, named feelings, spoken warmth, the explicit gesture",
+  "nudge": "toward a touch more directness + expressed emotion (still calm-floored) — the said over the merely implied"
+ }
 }

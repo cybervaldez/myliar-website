@@ -496,5 +496,11 @@
   "the fog comes in",
   "the fog thins",
   "first light"
- ]
+ ],
+ "culture": {
+  "name": "Western (Anglo-contemporary)",
+  "valorises": "higher-arousal positive states — excitement, expressiveness (HAP), within the cozy floor",
+  "expression": "direct, named feelings, spoken warmth, the explicit gesture",
+  "nudge": "toward a touch more directness + expressed emotion (still calm-floored) — the said over the merely implied"
+ }
 }

@@ -253,37 +253,35 @@
       }
      },
      "contrastFlags": [],
-     "best": "deep",
+     "best": "The Deep",
      "ambients": [
       {
        "id": "The Deep",
        "conveys_metaphor": "yes",
        "safe_floor": "safe",
        "arc_fit": "holds",
-       "note": "The vast, indifferent deep is perfectly captured, making 'surrender' feel like a safe default."
+       "note": "Directly embodies the core metaphor of a vast, indifferent force that safely holds you."
       },
       {
        "id": "Iyashikei Mist",
        "conveys_metaphor": "weak",
        "safe_floor": "safe",
        "arc_fit": "partial",
-       "note": "Prioritises immediate cozy over the core metaphor, making the 'deep' feel less vast and indifferent."
+       "note": "Excellent for the cozy floor and iyashikei feel, but lacks the metaphor's depth and power."
       },
       {
        "id": "Carried to Dawn",
-       "conveys_metaphor": "weak",
+       "conveys_metaphor": "yes",
        "safe_floor": "safe",
-       "arc_fit": "breaks",
-       "note": "Foreshadows the entire arc in the base palette, undermining the journey from dark water to first light."
+       "arc_fit": "holds",
+       "note": "Strong narrative arc, but the dual-temperature base might feel less unified than a single-key palette."
       }
      ],
-     "characterHarmony": "The cool-toned Pilot and Manifest-keeper derive beautifully, while the Deckhand's gold pops as the intended warm focus.",
+     "characterHarmony": "The warm Cook and Deckhand provide focused, supportive notes against the cool, steady ambient and crew.",
      "fixes": [
-      "Manifest-keeper #4e6f6a -> #5B817C (to pass 4.5 contrast for text)",
-      "Pilot #5f7d96 -> #6B8BA6 (to pass 4.5 contrast for text)",
-      "Cook #b06a4e -> #C0795C (to pass 4.5 contrast for text)"
+      "Manifest-keeper #5b817c vs base #0e1822 contrast (4.16) is too low for text; nudge lighter to ~#638c86 for 4.5+."
      ],
-     "oneLine": "A deep, monochromatic cool base isn't oppressive; it's a safe, indifferent void that allows a single warm note to signify support."
+     "oneLine": "A deep, cool monochrome creates a vast, safe space where a single warm hue feels like a profound act of care."
     },
     "prompts": {
      "characters": [
@@ -375,21 +373,21 @@
      {
       "tone": "cozy",
       "holds": "yes",
-      "note": "The classic safe-harbor, grounding the player in a warm, sensory-rich interior away from the storm."
+      "note": "Perfectly lands the sheltered, cared-for feeling; a pure iyashikei experience of safety."
      },
      {
       "tone": "warm",
       "holds": "yes",
-      "note": "A liminal space between shelter and storm, perfect for feeling present without the burden of responsibility."
+      "note": "Excellent bridge tone, offering presence with the world from a place of supported observation."
      },
      {
       "tone": "intense",
       "holds": "yes",
-      "note": "Successfully transforms the storm into a tool for catharsis, focusing on the weight of release, not the threat of danger."
+      "note": "Masterfully reframes intensity as embodied presence, not threat, directly serving the core metaphor."
      }
     ],
     "fixes": [],
-    "oneLine": "This set masterfully offers three distinct, safe pathways to 'surrender': retreating into care, trusting in competence, or actively letting go."
+    "oneLine": "This set masterfully maps emotional intensity to physical space—galley, threshold, open deck—making tonal choice an embodied one."
    },
    "expertPanel": {
     "audience": "anxiety (the braced, hypervigilant body) · low self-worth (care must be earned; I'm a burden) · ADHD/overwhelm (no spare working memory; too many open loops)",
@@ -482,7 +480,7 @@
         "the Deckhand"
        ]
       },
-      "deepening": "the Deckhand's hand on your shoulder — “let her carry you” — surrender as being physically HELD. The most literal read of «the deep carries you»: you stop holding yourself up and a body takes the weight."
+      "deepening": "the Deckhand's hand on your shoulder — “let her carry you” — surrender as being physically HELD."
      },
      {
       "id": "unlit-middle",
@@ -499,7 +497,7 @@
         "the Pilot"
        ]
       },
-      "deepening": "the Pilot holds the heading through the dark while you stop steering — surrender as letting someone else KEEP THE COURSE when you can't see. Companionship in zero-visibility; the calm voice in the unlit middle."
+      "deepening": "the Pilot holds the heading while you stop steering — surrender as letting someone KEEP THE COURSE when you can't see."
      },
      {
       "id": "full-weight",
@@ -516,7 +514,7 @@
         "the Manifest-keeper"
        ]
       },
-      "deepening": "the Manifest-keeper logs your carry at full weight at your lowest — surrender as letting your WORTH BE RECORDED by someone else when you can't hold it yourself. The self-worth dose carried into the intense tone."
+      "deepening": "the Manifest-keeper logs your carry at full weight at your lowest — surrender as letting your WORTH BE RECORDED when you can't hold it yourself."
      }
     ],
     "perSet": [
@@ -526,15 +524,15 @@
       "contrast": "distinct",
       "safe": "safe",
       "resonance": "strong",
-      "note": "A direct, embodied interpretation of 'being carried' through physical support."
+      "note": "A classic, embodied progression from ambient care to direct physical comfort."
      },
      {
       "id": "unlit-middle",
       "cohesion": "loose",
-      "contrast": "distinct",
-      "safe": "safe",
+      "contrast": "partial",
+      "safe": "risky",
       "resonance": "partial",
-      "note": "Focuses on surrendering control, but the tonal shift to the Pilot feels abrupt."
+      "note": "The core metaphor is powerful but risks triggering anxiety in this specific audience."
      },
      {
       "id": "full-weight",
@@ -542,14 +540,14 @@
       "contrast": "distinct",
       "safe": "safe",
       "resonance": "strong",
-      "note": "A deeply internal, validating take on surrender that directly targets self-worth."
+      "note": "A subtle, mature take on being 'held' that deeply serves the low self-worth audience."
      }
     ],
     "winner": "full-weight",
     "winnerName": "Logged at Full Weight",
-    "why": "It most directly addresses the 'low self-worth' wound by making unconditional witnessing the ultimate act of support.",
+    "why": "It best embodies 'unconditional witnessing' for the mature target audience, using stillness and validation to address the core wound of low self-worth.",
     "runnerUp": "warm-hand",
-    "runnerUpGem": "It offers a powerful, literal, and physical interpretation of being 'carried' that the winner's more abstract approach lacks."
+    "runnerUpGem": "Its direct, physical embodiment of care is a powerful anchor that the more abstract winner lacks."
    },
    "consults": [
     {
@@ -881,5 +879,11 @@
   "register": "cozy + warm core with an intense-as-DEPTH (poignancy) ceiling — calm tipping into weight, never thrill",
   "note": "PROVISIONAL prior (playtest-calibrate, do not hard-code); the dialed tone overrides; content rating = All Ages",
   "setAt": "concept"
+ },
+ "culture": {
+  "name": "East-Asian (iyashikei lineage)",
+  "valorises": "LOW-arousal positive states — calm, peacefulness, contentment (LAP)",
+  "expression": "indirect, restrained, the unsaid; harmony over assertion; the meaningful pause (ma)",
+  "nudge": "toward stillness + restraint + the implied — let silence and small gestures carry the weight"
  }
 }

@@ -1,0 +1,125 @@
+{
+ "concept": "isekai",
+ "picked": "slate",
+ "settingDesc": "The Second Life — you fall asleep at your desk one last time and wake in a small walled town in another world, where the guild ranks you by how RESTED you are, the day's work is only ever enough, and no one knows the you that burned out. A cozy slow-life isekai.",
+ "genre": {
+  "name": "slow-life isekai (cozy)",
+  "honour": "the fresh-start TRANSPORT (no history follows you), the literal SKILL-SYSTEM (you level up at LIVING — cooking, mending, resting), the cozy progression, the second-chance wish-fulfilment",
+  "traps": "the OP power-fantasy that heals nothing · the GRIND that turns rest into a productivity-sim · escapism that DELETES the wound instead of tending it · reward-as-validation (the harem/loot pattern)"
+ },
+ "targetAge": {
+  "range": [
+   27,
+   52
+  ],
+  "center": 38,
+  "band": "adult → mature (burnout)",
+  "lifeContext": "overwork burnout · the wish for a clean slate · ADHD/overwhelm · low self-worth",
+  "register": "cozy + warm core, intense-as-DEPTH (the wound under the wish); calm — the second chance that HEALS, not escapes",
+  "note": "PROVISIONAL; the dialed tone overrides; content All-Ages/Teen (mild fantasy peril)",
+  "setAt": "concept"
+ },
+ "scrubGroups": [
+  {
+   "id": "slate",
+   "name": "The Second Life",
+   "metaphor": "a clean slate that still keeps you",
+   "audienceServe": "Addresses overwork-burnout + low self-worth — the isekai fresh-start wish made non-hollow: the new world doesn't ERASE the you that broke, it KEEPS you and lets you relearn living at a survivable pace.",
+   "subrange": [
+    [
+     {
+      "label": "cozy"
+     },
+     {
+      "label": "warm"
+     },
+     {
+      "label": "intense"
+     }
+    ]
+   ],
+   "expertPanel": {
+    "audience": "the same struggle, the ISEKAI-for-burnout frame: overwork burnout (you'd give anything for a clean slate) · low self-worth (in the old world you were only your output) · ADHD/overwhelm — an adult who fantasises about STARTING OVER somewhere the rules are kinder",
+    "experts": [
+     {
+      "name": "Dr. Hannah Mori",
+      "role": "AGE/REGISTER — burnout & rest therapist (adult)",
+      "mindset": "The burnt-out adult has forgotten how to rest without guilt — the body still braces for the next demand even when none is coming. They don't want a power-up; they want a world where doing-enough IS enough. The fantasy is permission, not triumph.",
+      "colours": "Warm hearth-light in a kind town — the cozy glow of somewhere the day ends on time; never the cold high-stakes palette of an adventure isekai.",
+      "cast": "Townsfolk who let the day's work be only the day's work; a guild that asks how you slept. The calm is the medicine.",
+      "donts": "No urgency, no stakes-escalation, no 'save the world'. The intense tone is the WOUND under the wish (the burnout faced gently), never peril."
+     },
+     {
+      "name": "Sam Park",
+      "role": "AGE/REGISTER — low self-worth peer counselor",
+      "mindset": "In the old world you were only your output; you believe you must EARN your place. The isekai fresh-start is the precise dose — no history follows you here, nobody knows the you that broke — but it only heals if the new world KEEPS you BEFORE you've proven anything.",
+      "colours": "Warmth that's unconditional, not a reward you unlock — the town lamp lit before you've done a thing.",
+      "cast": "People who accept the newcomer with no résumé; the worth is given, not graded. No reward-as-validation.",
+      "donts": "Never make belonging contingent on leveling up or being useful. The fresh start must not feel EARNED."
+     },
+     {
+      "name": "Yuki Tanaka",
+      "role": "GENRE — slow-life isekai author / critic",
+      "mindset": "I know the cozy-isekai canon: the fresh-start transport, the literal skill-system, rest-as-progression, the second-chance wish. The genre's PROMISE is a kinder ruleset; its TRAP is the OP power-fantasy and the grind — escapism that DELETES the wound instead of tending it. A good slow-life isekai heals the burnout; a bad one just lets you win.",
+      "colours": "Honour the genre's warmth — a hand-drawn fantasy town, soft and lived-in; avoid the slick stat-screen RPG look that signals 'grind ahead'.",
+      "cast": "The world itself accepts the newcomer (the transport convention); a mentor of LIVING-skills, never a combat trainer; no harem, no chosen-one.",
+      "donts": "No OP-MC, no power-fantasy, no escapism that erases the old life — the new world must KEEP the you that broke and let you tend it."
+     },
+     {
+      "name": "Marco Reyes",
+      "role": "GENRE/SYSTEMS — cozy-progression game designer",
+      "mindset": "The literal skill-system is the genre's signature — but it must reward LIVING (cooking, mending, resting, tending), not grinding. The level-up reads 'you rested today', not 'you killed the boss'. The instant a stat-bar rewards output, the burnout audience is back on the treadmill they fled.",
+      "colours": "The progression UI is gentle + diegetic (a guild ledger, a recipe learned) — never an aggressive XP bar; one calm accent, low cognitive load (ADHD).",
+      "cast": "The system is a character: a kind ruleset that ranks REST; the quests are chores-made-meaningful, never a kill-count.",
+      "donts": "No grind, no productivity-sim, no fail-state, no number-go-up dopamine loop. Progression = relearning a survivable pace."
+     }
+    ],
+    "framework": {
+     "palette": "Warm hearth-light in a kind hand-drawn town (the cozy-isekai look), never the slick high-stakes RPG palette · one calm accent, low load (ADHD) · the gentle fantasy glow of a world where the day ends on time.",
+     "cast": "Townsfolk who KEEP the newcomer before he's proven anything (the fresh-start dose, no résumé) · a mentor of LIVING-skills not combat · the SYSTEM is a kind character that ranks REST · no harem, no chosen-one, no adult-savior.",
+     "tones": "cozy = the kind town, the day's-work-is-enough · warm = being known here without your old failures · intense = the WOUND under the wish — you didn't escape the burnout, you face it gently in a world that finally lets you (DEPTH, never peril).",
+     "floor": "GENRE + AGE composed: the fresh start must HEAL the burnout, never escape it — NO OP power-fantasy, NO grind/productivity-sim, NO escapism that deletes the wound; the new world KEEPS you, and the skill-system rewards REST not output. Calm, no stakes-escalation, content stays cozy."
+    },
+    "vet": {
+     "perExpert": [
+      {
+       "name": "Dr. Hannah Mori",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "Her framing of rest-guilt and internal wounds is precise, audience-specific, and therapeutically sound."
+      },
+      {
+       "name": "Sam Park",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "His focus on unconditional belonging directly counters the core wound of productivity-based self-worth."
+      },
+      {
+       "name": "Yuki Tanaka",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "Her genre analysis is sharp, correctly identifying the genre traps most damaging to this specific audience."
+      },
+      {
+       "name": "Marco Reyes",
+       "trueToAudience": "yes",
+       "safe": "yes",
+       "note": "He translates the project's therapeutic goals into concrete, safe, and audience-aware system mechanics."
+      }
+     ],
+     "missing": [
+      "The mechanics of social interaction for a player prone to overwhelm and social burnout."
+     ],
+     "frameworkSound": "yes",
+     "oneLine": "The panel's synthesis is a sharp, safe, and coherent brief, fully earning the right to guide the cast and makeup audition."
+    }
+   }
+  }
+ ],
+ "culture": {
+  "name": "East-Asian (iyashikei lineage)",
+  "valorises": "LOW-arousal positive states — calm, peacefulness, contentment (LAP)",
+  "expression": "indirect, restrained, the unsaid; harmony over assertion; the meaningful pause (ma)",
+  "nudge": "toward stillness + restraint + the implied — let silence and small gestures carry the weight"
+ }
+}
