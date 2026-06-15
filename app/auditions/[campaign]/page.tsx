@@ -76,8 +76,8 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
         <>
           <div style={{ borderLeft: `2px dashed ${forest}`, height: 14, margin: "0 0 0 16px" }} />
           <div style={{ border: `2px solid ${forest}`, background: "var(--paper-shade)", padding: "11px 15px", marginBottom: 4 }}>
-            <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>⑃ THE SUBRANGE AUDITION — the fork (audition the 3 tones as a SET)</div>
-            <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5 }}>the trunk above is the SHARED colour-<b>language</b>. The fork is itself an AUDITION: at one <b>world-moment</b> (the surrounding held constant), the 3 tones (cozy · warm · intense) are the candidates — do they <b>COHERE</b> (one world / one metaphor) AND <b>CONTRAST</b> (genuinely distinct, not three samey shades), each staying <b>SAFE</b>? Then each tone branch runs its own <b>mood → cast → chat → beats</b> — itself an audition (the cast is tone-dependent; the chatbot lives here). <b>Build the coziest first</b>.</div>
+            <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>⑃ THE SUBRANGE — the workbench (audition candidate cast-SETS · pick the most cohesive)</div>
+            <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5 }}>the trunk above is the SETTING + the RANGE/metaphor. HERE is the SUBRANGE — the big step (the chatbot lives here). A candidate is a complete SET — its <b>MAKEUP</b>: the palette/mood + the cast + the tones (cozy · warm · intense), assembled together (the palette/mood live here, not before — they're part of the makeup). Audition candidate sets for <b>COHESION</b> (one crew / one world across the tones) + <b>CONTRAST</b> (distinct tones) + <b>SAFE</b>; pick the most cohesive. THEN build the per-tone CONTENT (chat/beats) — <b>cozy-first</b> (the de-risk, after a set wins).</div>
             {audit && (
               <div style={{ fontSize: 10.5, color: ink, marginTop: 7, paddingTop: 6, borderTop: "1px solid var(--ink-soft)", lineHeight: 1.5 }}>
                 <span style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".06em", color: forest }}>🎭 TONAL VET</span> cohesion <b style={{ color: audit.cohesion === "cohesive" ? forest : amber }}>{audit.cohesion}</b> · contrast <b style={{ color: audit.contrast === "distinct" ? forest : amber }}>{audit.contrast}</b> · floor <b style={{ color: audit.safeFloor === "safe" ? forest : red }}>{audit.safeFloor}</b>
@@ -85,12 +85,7 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
               </div>
             )}
           </div>
-          {/* THE CAST — auditioned across the WHOLE range (the ensemble as a SET), so selections cohere */}
-          <div style={{ borderLeft: `2px dashed ${forest}`, height: 12, margin: "0 0 0 16px" }} />
-          <div style={{ border: `2px solid ${forest}`, background: paper, padding: "11px 15px", marginBottom: 4 }}>
-            <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>④ THE CAST — across the WHOLE range (the ensemble, as a SET)</div>
-            <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5 }}>NOT one subrange at a time: the crew is auditioned across ALL tones together — each member · their identity + voice · how they present at cozy / warm / intense — so the reader's <b>selections cohere</b> (the cozy Cook and the intense Deckhand are one crew). <b>Cohesion</b> (one ensemble) + <b>contrast</b> (each tone's lead distinct). The chatbot lives here; reviewed by the <b>/writers-room</b>. THEN the per-tone branches below build the chat + beats — starting cozy.</div>
-          </div>
+          <div style={{ fontSize: 10, color: margin, margin: "9px 0 4px 24px", fontStyle: "italic" }}>↓ once a set wins, build its per-tone CONTENT (chat + beats) — cozy-first:</div>
           {subranges.map((tone, i) => {
             const active = i === 0;
             const col = active ? forest : "var(--ink-soft)";
@@ -102,9 +97,9 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
                     <span style={{ fontSize: 13.5 }}><b style={{ color: active ? forest : margin, textTransform: "capitalize" }}>{tone}</b> <span style={{ fontSize: 11, color: margin }}>subrange</span></span>
                     <span style={{ fontSize: 10.5, color: active ? forest : margin, fontWeight: active ? 700 : 400, whiteSpace: "nowrap" }}>{active ? "● START — the floor" : "○ later"}</span>
                   </div>
-                  <div style={{ fontSize: 11, color: soft, marginTop: 4 }}>the mood (this tone) <span style={{ color: margin }}>→</span> the chat <span style={{ color: margin }}>→</span> the beats{active ? "" : <span style={{ color: margin, fontStyle: "italic" }}> · after the cozy branch ships</span>} <span style={{ color: margin, fontStyle: "italic" }}>(using the shared cast)</span></div>
+                  <div style={{ fontSize: 11, color: soft, marginTop: 4 }}>the per-tone content — the chat <span style={{ color: margin }}>→</span> the beats{active ? "" : <span style={{ color: margin, fontStyle: "italic" }}> · after the cozy branch ships</span>}</div>
                   {pt && <div style={{ fontSize: 9.5, color: pt.holds === "yes" ? forest : amber, fontStyle: "italic", marginTop: 3 }}>{pt.holds === "yes" ? "✓" : "⚑"} {pt.note}</div>}
-                  {active && <div style={{ fontSize: 11, color: forest, marginTop: 5, fontWeight: 700 }}>→ lock this tone's mood + its chat (next)</div>}
+                  {active && <div style={{ fontSize: 11, color: forest, marginTop: 5, fontWeight: 700 }}>→ build this tone's content (next)</div>}
                 </div>
               </div>
             );
