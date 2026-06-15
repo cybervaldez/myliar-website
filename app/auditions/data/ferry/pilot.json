@@ -195,19 +195,19 @@
     "characters": [
      {
       "name": "the Cook",
-      "color": "#b06a4e",
+      "color": "#c0795c",
       "is": "the galley meal that happens anyway, imperfect — homely warmth",
       "joinsAt": "cozy"
      },
      {
       "name": "the Pilot",
-      "color": "#5f7d96",
+      "color": "#6b8ba6",
       "is": "the held heading through the dark — the steady cool",
       "joinsAt": "warm"
      },
      {
       "name": "the Manifest-keeper",
-      "color": "#4e6f6a",
+      "color": "#5b817c",
       "is": "your carry, logged at full weight — quiet, precise",
       "joinsAt": "warm"
      },
@@ -218,7 +218,73 @@
       "joinsAt": "intense"
      }
     ],
-    "eli5": "FEW colors when it's cozy (one feeling: safe — the deep + the galley warmth); MORE as it turns intense (the storm: the whole crew at once). The number of colors IS how much is happening. The cold deep is the sea that doesn't care; the warm colors are the people — because the warmth that lets you let go is a person's hand, not the water."
+    "eli5": "FEW colors when it's cozy (one feeling: safe — the deep + the galley warmth); MORE as it turns intense (the storm: the whole crew at once). The number of colors IS how much is happening. The cold deep is the sea that doesn't care; the warm colors are the people — because the warmth that lets you let go is a person's hand, not the water.",
+    "vet": {
+     "contrast": {
+      "deep": {
+       "ink-on-base (text, ≥4.5)": 10.41,
+       "accent-on-base (UI, ≥3)": 5.33,
+       "chars": {
+        "the Cook": 5.23,
+        "the Pilot": 5.01,
+        "the Manifest-keeper": 4.16,
+        "the Deckhand": 6.13
+       }
+      },
+      "mist": {
+       "ink-on-base (text, ≥4.5)": 11.49,
+       "accent-on-base (UI, ≥3)": 4.34,
+       "chars": {
+        "the Cook": 4.38,
+        "the Pilot": 4.19,
+        "the Manifest-keeper": 3.48,
+        "the Deckhand": 5.13
+       }
+      },
+      "dawn": {
+       "ink-on-base (text, ≥4.5)": 12.19,
+       "accent-on-base (UI, ≥3)": 6.15,
+       "chars": {
+        "the Cook": 4.61,
+        "the Pilot": 4.41,
+        "the Manifest-keeper": 3.67,
+        "the Deckhand": 5.41
+       }
+      }
+     },
+     "contrastFlags": [],
+     "best": "deep",
+     "ambients": [
+      {
+       "id": "The Deep",
+       "conveys_metaphor": "yes",
+       "safe_floor": "safe",
+       "arc_fit": "holds",
+       "note": "The vast, indifferent deep is perfectly captured, making 'surrender' feel like a safe default."
+      },
+      {
+       "id": "Iyashikei Mist",
+       "conveys_metaphor": "weak",
+       "safe_floor": "safe",
+       "arc_fit": "partial",
+       "note": "Prioritises immediate cozy over the core metaphor, making the 'deep' feel less vast and indifferent."
+      },
+      {
+       "id": "Carried to Dawn",
+       "conveys_metaphor": "weak",
+       "safe_floor": "safe",
+       "arc_fit": "breaks",
+       "note": "Foreshadows the entire arc in the base palette, undermining the journey from dark water to first light."
+      }
+     ],
+     "characterHarmony": "The cool-toned Pilot and Manifest-keeper derive beautifully, while the Deckhand's gold pops as the intended warm focus.",
+     "fixes": [
+      "Manifest-keeper #4e6f6a -> #5B817C (to pass 4.5 contrast for text)",
+      "Pilot #5f7d96 -> #6B8BA6 (to pass 4.5 contrast for text)",
+      "Cook #b06a4e -> #C0795C (to pass 4.5 contrast for text)"
+     ],
+     "oneLine": "A deep, monochromatic cool base isn't oppressive; it's a safe, indifferent void that allows a single warm note to signify support."
+    }
    }
   }
  ],

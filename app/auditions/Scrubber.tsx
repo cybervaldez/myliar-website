@@ -257,7 +257,9 @@ function useScrub(initial: number) {
 type Tone = { label: string; text: string };
 type Ambient = { id: string; name: string; base: string; ink: string; accent: string; why: string };
 type Character = { name: string; color: string; is: string; joinsAt: string };
-type Mood = { ambients: Ambient[]; characters: Character[]; eli5: string };
+type VetA = { id: string; conveys_metaphor: string; safe_floor: string; arc_fit: string; note: string };
+type Vet = { best: string; ambients: VetA[]; characterHarmony: string; contrastFlags: string[]; oneLine: string };
+type Mood = { ambients: Ambient[]; characters: Character[]; eli5: string; vet?: Vet };
 type StoryT = { id: string; env: string[]; subrange?: Tone[][]; mood?: Mood };
 const TJOIN: Record<string, number> = { cozy: 0, warm: 1, intense: 2 };
 export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] }) {
@@ -277,6 +279,12 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
   const artInk = A?.ink ?? ink, artBg = A?.base ?? paper;
   // the palette GROWS with the tone (a colour = a mood): cozy = few · intense = many
   const swatches = (A ? [{ c: A.base, label: "the deep", join: 0 }, { c: A.ink, label: "the light", join: 0 }, { c: A.accent, label: "the carry", join: 1 }, ...(story.mood?.characters ?? []).map((ch) => ({ c: ch.color, label: ch.name, join: TJOIN[ch.joinsAt] ?? 0 }))] : []).filter((s) => s.join <= ti);
+  // readable text on a coloured chip (perceived luminance) + the character speaking at this tone
+  const readOn = (hex: string) => { const c = hex.replace("#", ""); const [r, g, b] = [0, 2, 4].map((i) => parseInt(c.slice(i, i + 2), 16)); return 0.299 * r + 0.587 * g + 0.114 * b > 140 ? "#11181f" : "#eef2f6"; };
+  const speaker = story.mood?.characters?.find((c) => TJOIN[c.joinsAt] === ti) ?? [...(story.mood?.characters ?? [])].filter((c) => TJOIN[c.joinsAt] <= ti).slice(-1)[0];
+  const vet = story.mood?.vet;
+  const vetA = vet?.ambients?.find((x) => x.id === A?.name || x.id === A?.id);
+  const vcol = (s?: string) => (s === "yes" || s === "safe" || s === "holds" ? forest : s === "weak" || s === "partial" || s === "risky" ? amber : "var(--spot-red)");
   return (
     <div>
       {/* ONE scrubber — the art (frozen per world-moment) + a SEGMENTED track. The active segment fills
@@ -318,14 +326,23 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
           of the crew (derived from the deep) · ELI5 the colours */}
       {A && (
         <div style={{ border: `2px solid ${forest}`, background: paper, padding: "11px 13px", marginTop: 14 }}>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 8 }}>🎨 TONE &amp; MOOD — the ambient palette <span style={{ color: margin, fontWeight: 400 }}>· pick the mood we’re conveying</span></div>
-          <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: 11 }}>
-            {story.mood!.ambients.map((a, i) => { const on = i === amb; return (
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>🎨 TONE &amp; MOOD — pick the ambient palette (the mood)</div>
+          <div style={{ fontSize: 10, color: margin, marginBottom: 8, lineHeight: 1.5 }}>the GATES: it must <b>convey the metaphor</b> · stay <b>safe</b> (never oppressive) · <b>hold across the arc</b> · pass <b>contrast</b>. Reviewed by a VN colour director + WCAG.</div>
+          <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: 9 }}>
+            {story.mood!.ambients.map((a, i) => { const on = i === amb, best = a.id === vet?.best; return (
               <button key={a.id} onClick={() => setAmb(i)} style={{ display: "flex", alignItems: "center", gap: 6, cursor: "pointer", border: `2px solid ${on ? forest : "var(--ink-soft)"}`, background: on ? shade : paper, padding: "4px 8px" }}>
                 <span style={{ display: "flex" }}>{[a.base, a.ink, a.accent].map((c, j) => <span key={j} style={{ width: 11, height: 16, background: c, border: `1px solid ${ink}`, marginLeft: j ? -1 : 0 }} />)}</span>
-                <span style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, color: on ? forest : margin }}>{a.name}</span>
+                <span style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, color: on ? forest : margin }}>{best ? "✓ " : ""}{a.name}</span>
               </button> ); })}
           </div>
+          {vetA && (
+            <div style={{ border: `1.5px dashed ${forest}`, background: shade, padding: "8px 11px", marginBottom: 10, fontSize: 10.5, lineHeight: 1.5, color: ink }}>
+              <span style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".06em", color: forest }}>🎨 COLOUR VET · {A!.name}</span>{A!.id === vet?.best && <span style={{ color: forest, fontWeight: 700 }}> · recommended</span>}
+              <span style={{ marginLeft: 6 }}>metaphor <b style={{ color: vcol(vetA.conveys_metaphor) }}>{vetA.conveys_metaphor}</b> · safe <b style={{ color: vcol(vetA.safe_floor) }}>{vetA.safe_floor}</b> · arc <b style={{ color: vcol(vetA.arc_fit) }}>{vetA.arc_fit}</b> · contrast <b style={{ color: vet!.contrastFlags.length ? "var(--spot-red)" : forest }}>{vet!.contrastFlags.length ? "flags" : "all pass"}</b></span>
+              <div style={{ color: soft, fontStyle: "italic", marginTop: 3 }}>{vetA.note}</div>
+              {vet!.oneLine && <div style={{ color: margin, marginTop: 3 }}>↳ {vet!.oneLine}</div>}
+            </div>
+          )}
           <div style={{ fontSize: 10, color: margin, marginBottom: 4 }}>the palette at <b style={{ color: hot(beat?.label) }}>{beat?.label ?? "—"}</b> · <b style={{ color: ink }}>{swatches.length} colours</b> = {swatches.length} moods <span style={{ fontStyle: "italic" }}>(more as it turns intense)</span></div>
           <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: 11 }}>
             {swatches.map((s, i) => (
@@ -345,6 +362,25 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
           </div>
           <div style={{ fontSize: 10.5, color: ink, lineHeight: 1.5, borderTop: "1px solid var(--ink-soft)", paddingTop: 8 }}><span style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: forest }}>WHY THESE COLOURS · ELI5 </span>{story.mood!.eli5}</div>
           <div style={{ fontSize: 10, color: soft, fontStyle: "italic", marginTop: 5 }}>↳ {A.name}: {A.why}</div>
+        </div>
+      )}
+
+      {/* UI FROM THE AMBIENT — the chrome wears the mood; the DIALOGUE BOX is the centrepiece */}
+      {A && (
+        <div style={{ marginTop: 14 }}>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 8 }}>🖥 UI FROM THE AMBIENT — the chrome wears the mood</div>
+          <div style={{ background: A.base, border: `2px solid ${A.accent}`, padding: "12px 14px 13px", boxShadow: "3px 3px 0 rgba(0,0,0,.22)" }}>
+            {speaker && <div style={{ display: "inline-block", background: speaker.color, color: readOn(speaker.color), fontFamily: "var(--theme-body)", fontWeight: 700, fontSize: 11, padding: "2px 10px", marginBottom: 8, letterSpacing: ".02em" }}>{speaker.name}</div>}
+            <div style={{ color: A.ink, fontSize: 14.5, lineHeight: 1.55 }}>{beat?.text ?? "…"} <span style={{ color: A.accent }}>▾</span></div>
+          </div>
+          <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 9, flexWrap: "wrap" }}>
+            <span style={{ background: A.accent, color: readOn(A.accent), fontFamily: "var(--theme-body)", fontWeight: 700, fontSize: 11, padding: "5px 11px", border: `1.5px solid ${A.ink}` }}>▸ stay with it</span>
+            <span style={{ background: A.base, color: A.ink, fontFamily: "var(--theme-body)", fontWeight: 700, fontSize: 11, padding: "5px 11px", border: `1.5px solid ${A.accent}` }}>let go</span>
+            <span style={{ flex: 1, minWidth: 110, height: 11, background: A.base, border: `1.5px solid ${A.accent}`, position: "relative", display: "inline-block" }}>
+              <span style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "62%", background: A.accent, opacity: 0.85 }} />
+            </span>
+          </div>
+          <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginTop: 6 }}>the dialogue box · choices · the stat bar — all from the ambient (base · ink · accent); the speaker’s name takes the character’s colour.</div>
         </div>
       )}
     </div>

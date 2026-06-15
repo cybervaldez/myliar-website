@@ -26,7 +26,7 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
   if (step === "story") {
     const link = { color: "var(--forest)", fontWeight: 700, textDecoration: "none" } as const;
     if (!c) return <main style={{ maxWidth: 760, margin: "0 auto", padding: 40 }}><p style={{ color: "var(--margin-ink)" }}>No story for {campaign}. <a href="/auditions" style={link}>↑ the board</a></p></main>;
-    const p = c.steps.pilot as unknown as { scenes: string[]; picked?: string; scrubGroups: { id: string; name: string; settingTitle: string; throughline: string; env: string[]; buildingBlock: string; metaphor?: string; audienceServe?: string; subrange?: { label: string; text: string }[][]; mood?: { ambients: { id: string; name: string; base: string; ink: string; accent: string; why: string }[]; characters: { name: string; color: string; is: string; joinsAt: string }[]; eli5: string } }[] };
+    const p = c.steps.pilot as unknown as { scenes: string[]; picked?: string; scrubGroups: { id: string; name: string; settingTitle: string; throughline: string; env: string[]; buildingBlock: string; metaphor?: string; audienceServe?: string; subrange?: { label: string; text: string }[][]; mood?: { ambients: { id: string; name: string; base: string; ink: string; accent: string; why: string }[]; characters: { name: string; color: string; is: string; joinsAt: string }[]; eli5: string; vet?: { best: string; ambients: { id: string; conveys_metaphor: string; safe_floor: string; arc_fit: string; note: string }[]; characterHarmony: string; contrastFlags: string[]; oneLine: string } } }[] };
     const story = p.scrubGroups.find((g) => g.id === p.picked);
     return (
       <main style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
