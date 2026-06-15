@@ -76,7 +76,7 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
           <div style={{ borderLeft: `2px dashed ${forest}`, height: 14, margin: "0 0 0 16px" }} />
           <div style={{ border: `2px solid ${forest}`, background: "var(--paper-shade)", padding: "11px 15px", marginBottom: 4 }}>
             <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>⑃ THE SUBRANGE BRANCHES — here the pipeline forks</div>
-            <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5 }}>the trunk above (setting · range · mood) is shared; from here each <b>tone</b> is its OWN <b>cast → chat → beats</b> — the cast is tone-dependent (the chatbot lives here). <b>Build the coziest first</b> (the floor — the safest entry); the rest extrapolate up from it.</div>
+            <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5 }}>the trunk above is the SHARED foundation — the setting · the range/metaphor · the colour-<b>language</b> (the base palette · the characters' colours · the prose rules · the rule that the palette GROWS with the tone). From here each <b>tone LOCKS its own mood</b> (which colours are active · the focal coach · the felt intensity), then runs its own <b>cast → chat → beats</b> — the cast is tone-dependent (the chatbot lives here). <b>Build the coziest first</b> (the floor); the rest extrapolate up.</div>
           </div>
           {subranges.map((tone, i) => {
             const active = i === 0;
@@ -88,8 +88,8 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
                     <span style={{ fontSize: 13.5 }}><b style={{ color: active ? forest : margin, textTransform: "capitalize" }}>{tone}</b> <span style={{ fontSize: 11, color: margin }}>subrange</span></span>
                     <span style={{ fontSize: 10.5, color: active ? forest : margin, fontWeight: active ? 700 : 400, whiteSpace: "nowrap" }}>{active ? "● START — the floor" : "○ later"}</span>
                   </div>
-                  <div style={{ fontSize: 11, color: soft, marginTop: 4 }}>④ Cast <span style={{ color: margin }}>→</span> ⑤ Chat <span style={{ color: margin }}>→</span> the beats{active ? "" : <span style={{ color: margin, fontStyle: "italic" }}> · after the cozy branch ships</span>}</div>
-                  {active && <div style={{ fontSize: 11, color: forest, marginTop: 5, fontWeight: 700 }}>→ the cast is next (per this subrange)</div>}
+                  <div style={{ fontSize: 11, color: soft, marginTop: 4 }}>the mood <span style={{ color: margin }}>→</span> the cast <span style={{ color: margin }}>→</span> the chat <span style={{ color: margin }}>→</span> the beats{active ? "" : <span style={{ color: margin, fontStyle: "italic" }}> · after the cozy branch ships</span>}</div>
+                  {active && <div style={{ fontSize: 11, color: forest, marginTop: 5, fontWeight: 700 }}>→ lock this tone's mood, then the cast (next)</div>}
                 </div>
               </div>
             );
