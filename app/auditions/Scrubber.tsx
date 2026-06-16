@@ -468,7 +468,7 @@ export function ScenesBuild({ d }: { d: ScenesT }) {
 // THE AUDITION PEEK — the autopick stays the headline; this opens the AUDITION PROCESS (the alternatives
 // that weren't picked + why the winner won) in a MODAL, so the other choices are inspectable WITHOUT
 // polluting the main view. Reusable across every step.
-export type AuditionCand = { name: string; fit?: string; note?: string; picked?: boolean };
+export type AuditionCand = { name: string; fit?: string; note?: string; detail?: string; mono?: boolean; picked?: boolean };
 export function AuditionPeek({ label, candidates, why, gatedBy }: { label: string; candidates: AuditionCand[]; why?: string; gatedBy?: string }) {
   const [open, setOpen] = useState(false);
   const fitCol = (f?: string) => (f === "strong" ? forest : f === "off" || f === "weak" ? "var(--spot-red)" : amber);
@@ -492,6 +492,7 @@ export function AuditionPeek({ label, candidates, why, gatedBy }: { label: strin
                     {c.picked && <span style={{ fontSize: 9.5, color: forest, fontWeight: 700, whiteSpace: "nowrap" }}>✓ AUTOPICKED</span>}
                   </div>
                   {c.note && <div style={{ color: soft, fontSize: 11, marginTop: 1 }}>{c.note}</div>}
+                  {c.detail && <div style={{ color: ink, fontSize: c.mono ? 9.5 : 11, marginTop: 4, lineHeight: c.mono ? 1.35 : 1.5, whiteSpace: c.mono ? "pre" : "pre-line", fontFamily: c.mono ? "ui-monospace, Menlo, monospace" : undefined, overflowX: c.mono ? "auto" : undefined, borderTop: `1px solid ${soft}`, paddingTop: 4 }}>{c.detail}</div>}
                 </div>
               ))}
             </div>

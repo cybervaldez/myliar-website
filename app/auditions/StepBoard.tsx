@@ -4,6 +4,7 @@
 // the audience WHY · the legs' forward notes), then prev/next nav. §8.10/§8.17: no pick — strengths
 // reinforce, gems fix.
 import { type Item, type StepData, type Read, type SourceStudy, TARGET, PLABEL, starStr, reason, avg, spread, legKeys, getLeg, legMean, star } from "./score";
+import { AuditionPeek } from "./Scrubber";
 
 type Nav = { href: string; label: string } | null;
 
@@ -18,14 +19,20 @@ const STATUS: Record<string, { txt: string; col: string }> = {
 
 export type Primer = { tldr: string; whatFor: string; impact: string; howToChoose: string; mechanic?: string; craft?: string };
 
-export default function StepBoard({ stepLabel, intro, whyPicked, primer, prepend, sourceStudy, data, items, carried, status, reference, prev, next }: {
+export default function StepBoard({ stepLabel, intro, whyPicked, primer, prepend, sourceStudy, data, items, carried, status, reference, prev, next, pickedKey, gatedBy }: {
   stepLabel: string; intro: string; whyPicked?: { text?: string; pending?: boolean }; primer?: Primer; prepend?: React.ReactNode; sourceStudy?: SourceStudy; data: StepData; items: Item[];
   carried?: { step: string; lines: string[] }[]; status?: Record<string, string>;
-  reference?: { campaign: string; label: string; title: string; star: number }[]; prev?: Nav; next?: Nav;
+  reference?: { campaign: string; label: string; title: string; star: number }[]; prev?: Nav; next?: Nav; pickedKey?: string; gatedBy?: string;
 }) {
   const LEGK = legKeys(data);
   const get = (p: string, i: number) => (data.results[p] || []).find((r) => r.index === i);
   const navLink = (n: Nav, dir: string) => n ? <a href={n.href} style={{ color: forest, fontWeight: 700, textDecoration: "none" }}>{dir === "prev" ? "← " : ""}{n.label}{dir === "next" ? " →" : ""}</a> : <span style={{ color: margin }}>{dir === "prev" ? "← back" : "next: tbd →"}</span>;
+  // PICK-FIRST: when the pick is known, only the PICKED candidate gets its full section; the runner-ups
+  // collapse into the "see the audition" modal (no context pollution). Otherwise all show (fallback).
+  const sorted = items.slice().sort((a, b) => star(data, b.idx) - star(data, a.idx));
+  const pickedItem = pickedKey ? sorted.find((it) => it.key === pickedKey) : undefined;
+  const shown = pickedItem ? sorted.filter((it) => it.key === pickedKey) : sorted;
+  const auditionCands = pickedItem ? sorted.map((it) => ({ name: it.title, fit: `${star(data, it.idx).toFixed(1)}★`, note: it.sub, detail: it.body, mono: it.mono, picked: it.key === pickedKey })) : [];
 
   return (
     <main className="aud-main" style={{ padding: "24px 20px 80px" }}>
@@ -116,7 +123,13 @@ export default function StepBoard({ stepLabel, intro, whyPicked, primer, prepend
         </div>
       )}
 
-      {items.slice().sort((a, b) => star(data, b.idx) - star(data, a.idx)).map((it) => {
+      {pickedItem && (
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, flexWrap: "wrap", margin: "0 0 10px" }}>
+          <span style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".05em", color: forest }}>✓ THE AUTOPICK — full audition below; {auditionCands.length - 1} runner-up{auditionCands.length - 1 === 1 ? "" : "s"} in the modal →</span>
+          <AuditionPeek label={stepLabel.replace(/^[①②③④⑤⑥•]\s*/, "").replace(/ ·.*/, "")} candidates={auditionCands} why={whyPicked?.text} gatedBy={gatedBy} />
+        </div>
+      )}
+      {shown.map((it) => {
         const i = it.idx, sr = spread(data, i, "relate"), ss = spread(data, i, "feelsSafe"), lm = legMean(data, i), thr = get("thrill_seeker", i), repelHeld = !thr?.wouldPlay;
         const nLB = LEGK.filter((e) => getLeg(data, e, i)?.canBuild === "load-bearing").length;
         const nGem = (LEGK.length - nLB) + TARGET.filter((p) => (get(p, i)?.feelsSafe ?? 5) < 4 || (get(p, i)?.relate ?? 5) < 3).length + (repelHeld ? 0 : 1);

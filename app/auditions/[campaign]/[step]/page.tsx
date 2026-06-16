@@ -125,6 +125,10 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
     prepend = <Scrubber scenes={raw.scenes} groups={groups} richest={rich} picked={pick} note={raw.worldbuild?.note} />;
   }
 
+  const pickedKey = step === "concept" ? c.pick : undefined;
+  const fct = c.steps.pilot as unknown as { targetAge?: { range: number[]; band: string }; genre?: { name: string }; culture?: { name: string } } | undefined;
+  const gateStr = fct ? ([fct.targetAge && `🎯 ${fct.targetAge.range?.[0]}–${fct.targetAge.range?.[1]} ${fct.targetAge.band ?? ""}`.trim(), fct.genre && `📐 ${fct.genre.name}`, fct.culture && `🎨 ${fct.culture.name}`].filter(Boolean).join(" · ") || undefined) : undefined;
+
   return (
     <StepBoard
       stepLabel={`${stepNo(step)} ${stepLabel(step)} · ${c.label}`}
@@ -140,6 +144,8 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
       reference={crossRef(campaign, step)}
       prev={prev}
       next={next}
+      pickedKey={pickedKey}
+      gatedBy={gateStr}
     />
   );
 }
