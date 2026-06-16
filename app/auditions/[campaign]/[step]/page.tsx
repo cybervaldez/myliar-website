@@ -3,9 +3,9 @@
 // reference (how other stories solved this step — the idea bank). Concept resolves to the shared
 // SLATE. Next 16: params async. NOT canon.
 import StepBoard from "../../StepBoard";
-import Scrubber, { StoryBuild, ScenesBuild, ToneBuild, type ToneT, type ScenesT } from "../../Scrubber";
+import Scrubber, { StoryBuild, ScenesBuild, BranchLinks, ToneBuild, type ToneT, type ScenesT } from "../../Scrubber";
 import { star, avg } from "../../score";
-import { CAMPAIGNS, STEP_DEFS, INTRO, PRIMERS, SLATE_STATUS, stepLabel, stepNo, hasStep, stepDataFor, crossRef, allParams, whyPicked } from "../../registry";
+import { CAMPAIGNS, STEP_DEFS, INTRO, PRIMERS, SLATE_STATUS, stepLabel, stepNo, hasStep, stepDataFor, crossRef, allParams, whyPicked, sceneBranchesFor } from "../../registry";
 
 export async function generateStaticParams() {
   return allParams();
@@ -49,7 +49,7 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
             <StoryBuild story={{ id: story.id, env: story.env, subrange: story.subrange, mood: story.mood }} scenes={p.scenes} />
             <div style={{ border: "2px dashed var(--forest)", background: "var(--paper-shade)", padding: "10px 14px", margin: "16px 0 0", fontSize: 11, color: "var(--ink)", lineHeight: 1.5 }}>
               <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: "var(--forest)", marginBottom: 4 }}>→ HANDS THE NEXT STEPS</div>
-              the <b>ambient palette</b> · the <b>UI theme</b> (the dialogue box) · the <b>world asset-prompt colours</b> · the <b>palette→prose recipe</b> — the ambient ground. The <b>SCENES step</b> BRANCHES it (the 5 world-moments × the tones → a palette + cast per cell); the <b>TONE step</b> then auditions the cast-set makeup over those cells.
+              the <b>UI theme</b> (the dialogue box) · the <b>world asset-prompt colours</b> · the <b>palette→prose recipe</b> — the setting build. The <b>SCENES step</b> auditions the palettes + coach + supporting cast, then BRANCHES into the 5 weather-moments where the cast is honed (the ambient-palette audition moved there).
             </div>
           </>
         )}
@@ -61,54 +61,27 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
     );
   }
 
-  // ④ THE SCENES — the BRANCHING: the 5 world-moments × the 3 tones → an ambient-palette MATRIX + the
-  // cast per tone. The story's one ambient ground forks here (warm-calm-water ≠ warm-storm). The
-  // audience experts come in NEXT (the Tone); here it's the structural branch (coheres · distinct · safe).
+  // ④ THE SCENES — THE AUDITION HUB (palettes + coach + supporting cast, experts-framed) that BRANCHES
+  // into the 5 weather-moments (/scenes/<moment>). The old "Tone" step is FOLDED in here; tone is a dial
+  // inside each branch. The ambient-palette audition moved here from the Story step (2026-06-16).
   if (step === "scenes") {
     const link = { color: "var(--forest)", fontWeight: 700, textDecoration: "none" } as const;
     if (!c) return <main style={{ maxWidth: 760, margin: "0 auto", padding: 40 }}><p style={{ color: "var(--margin-ink)" }}>No story for {campaign}. <a href="/auditions" style={link}>↑ the board</a></p></main>;
-    const p = (c.steps.scenes ?? c.steps.pilot) as unknown as { picked?: string; scrubGroups: { id: string; name: string; metaphor?: string; scenes?: ScenesT }[] };
+    const p = (c.steps.scenes ?? c.steps.pilot) as unknown as { picked?: string; targetAge?: { range: number[]; band: string }; genre?: { name: string }; culture?: { name: string }; scrubGroups: { id: string; name: string; metaphor?: string; scenes?: ScenesT; mood?: { ambients?: { name: string; base: string }[]; characters: { name: string; color: string; is: string; joinsAt: string }[]; vet?: { best: string }; prompts?: { characters: string[] } }; subrangeAudit?: ToneT["audit"]; expertPanel?: { audience: string; experts: ToneT["experts"]; framework: ToneT["framework"]; vet: ToneT["vet"] }; castAudition?: ToneT["castAudition"]; mirror?: ToneT["mirror"] }[] };
     const g = p.scrubGroups.find((x) => x.id === p.picked);
     const sc = g?.scenes;
-    return (
-      <main className="aud-main" style={{ padding: "24px 20px 80px" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", fontSize: 12, marginBottom: 4 }}>
-          <a href="/auditions" style={{ color: "var(--margin-ink)", textDecoration: "none" }}>↑ the board</a>
-          <span style={{ fontSize: 10, letterSpacing: ".12em", color: "var(--spot-red)", fontFamily: "var(--theme-body)", fontWeight: 700 }}>NOT CANON</span>
-        </div>
-        <h1 style={{ fontSize: 24, margin: "0 0 2px", color: "var(--ink)" }}>{stepNo("scenes")} The Scenes · {c.label}</h1>
-        {g?.metaphor && <div style={{ fontFamily: "var(--theme-display)", fontSize: 18, color: "var(--forest)", marginBottom: 4 }}>{g.name} «{g.metaphor}»</div>}
-        <p className="aud-prose" style={{ fontSize: 12.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: "0 0 16px" }}>{INTRO.scenes}</p>
-        {!sc ? (
-          <p style={{ fontSize: 13, color: "var(--margin-ink)" }}>The matrix isn&rsquo;t branched yet. Build it from <a href={`/auditions/${campaign}/story`} style={link}>the story step →</a></p>
-        ) : <ScenesBuild d={sc} />}
-        <div style={{ display: "flex", justifyContent: "space-between", borderTop: "1px solid var(--ink-soft)", paddingTop: 12, marginTop: 20, fontSize: 13 }}>
-          <a href={`/auditions/${campaign}/story`} style={link}>← ③ The Story</a>
-          <a href={`/auditions/${campaign}/tone`} style={link}>next: ⑤ The Tone →</a>
-        </div>
-      </main>
-    );
-  }
-
-  // THE TONE — the picked story's MAKEUP, auditioned: experts-first → the makeup brief → the cast-set
-  // audition (the crew tone-mapped, judged for cohesion · contrast · safe). Worn over the story step's
-  // ambient ground. In the game the reader DIALS THE TONE (the scrubber is the dial). (Data lives in the
-  // legacy pilot.json subrange[]/subrangeAudit fields — names kept; the step is officially "the Tone".)
-  if (step === "tone") {
-    const link = { color: "var(--forest)", fontWeight: 700, textDecoration: "none" } as const;
-    if (!c) return <main style={{ maxWidth: 760, margin: "0 auto", padding: 40 }}><p style={{ color: "var(--margin-ink)" }}>No story for {campaign}. <a href="/auditions" style={link}>↑ the board</a></p></main>;
-    const p = (c.steps.tone ?? c.steps.pilot) as unknown as { picked?: string; targetAge?: { range: number[]; center: number; band: string }; genre?: { name: string }; culture?: { name: string }; scrubGroups: { id: string; name: string; metaphor?: string; mood?: { ambients?: { name: string; base: string }[]; characters: { name: string; color: string; is: string; joinsAt: string }[]; vet?: { best: string }; prompts?: { characters: string[] } }; subrangeAudit?: ToneT["audit"]; expertPanel?: { audience: string; experts: ToneT["experts"]; framework: ToneT["framework"]; vet: ToneT["vet"] }; castAudition?: ToneT["castAudition"]; mirror?: ToneT["mirror"] }[] };
-    const g = p.scrubGroups.find((x) => x.id === p.picked);
     const ep = g?.expertPanel, au = g?.subrangeAudit;
     const amb = g?.mood?.ambients?.find((a) => a.name === g?.mood?.vet?.best) ?? g?.mood?.ambients?.[0];
-    const d: ToneT | null = g && ep && au ? { audience: ep.audience, experts: ep.experts, framework: ep.framework, vet: ep.vet, characters: g.mood!.characters, charPrompts: g.mood?.prompts?.characters ?? [], audit: au, ambientName: amb?.name ?? "the ambient", ambientBase: amb?.base ?? "#0e1822", castAudition: g.castAudition, mirror: g.mirror, content: (g as { content?: ToneT["content"] }).content, support: (g as { support?: ToneT["support"] }).support } : null;
+    // the audition payload (experts · coach · supporting cast) — content/support are honed per-branch, omitted here
+    const d: ToneT | null = g && ep && au ? { audience: ep.audience, experts: ep.experts, framework: ep.framework, vet: ep.vet, characters: g.mood!.characters, charPrompts: g.mood?.prompts?.characters ?? [], audit: au, ambientName: amb?.name ?? "the ambient", ambientBase: amb?.base ?? "#0e1822", castAudition: g.castAudition, mirror: g.mirror } : null;
+    const branches = sceneBranchesFor(campaign);
     return (
       <main className="aud-main" style={{ padding: "24px 20px 80px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", fontSize: 12, marginBottom: 4 }}>
           <a href="/auditions" style={{ color: "var(--margin-ink)", textDecoration: "none" }}>↑ the board</a>
           <span style={{ fontSize: 10, letterSpacing: ".12em", color: "var(--spot-red)", fontFamily: "var(--theme-body)", fontWeight: 700 }}>NOT CANON</span>
         </div>
-        <h1 style={{ fontSize: 24, margin: "0 0 2px", color: "var(--ink)" }}>{stepNo("tone")} The Tone · {c.label}</h1>
+        <h1 style={{ fontSize: 24, margin: "0 0 2px", color: "var(--ink)" }}>{stepNo("scenes")} The Scenes · {c.label} <span style={{ fontSize: 13, color: "var(--margin-ink)", fontWeight: 400 }}>— the audition hub</span></h1>
         {g?.metaphor && <div style={{ fontFamily: "var(--theme-display)", fontSize: 18, color: "var(--forest)", marginBottom: 4 }}>{g.name} «{g.metaphor}»</div>}
         {(p.targetAge || p.genre || p.culture) && (
           <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8, alignItems: "center" }}>
@@ -118,13 +91,20 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
             {p.culture && <span style={{ border: "1.5px solid var(--forest)", borderRadius: 3, padding: "2px 8px", fontSize: 10.5, color: "var(--ink)" }}>🎨 culture <b>{p.culture.name}</b></span>}
           </div>
         )}
-        <p className="aud-prose" style={{ fontSize: 12.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: "0 0 16px" }}>{INTRO.tone}</p>
-        {!d ? (
-          <p style={{ fontSize: 13, color: "var(--margin-ink)" }}>The makeup isn&rsquo;t auditioned yet. Build it on <a href={`/auditions/${campaign}/story`} style={link}>the story step →</a></p>
-        ) : <ToneBuild d={d} />}
+        <p className="aud-prose" style={{ fontSize: 12.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: "0 0 16px" }}>{INTRO.scenes}</p>
+        {!sc ? (
+          <p style={{ fontSize: 13, color: "var(--margin-ink)" }}>The scene palettes aren&rsquo;t auditioned yet. Build them from <a href={`/auditions/${campaign}/story`} style={link}>the story step →</a></p>
+        ) : <ScenesBuild d={sc} />}
+        {branches.length > 0 && <BranchLinks campaign={campaign} branches={branches} />}
+        {d && (
+          <div style={{ marginTop: 22, borderTop: "2px solid var(--ink-soft)", paddingTop: 16 }}>
+            <div style={{ fontFamily: "var(--theme-body)", fontSize: 12.5, fontWeight: 700, letterSpacing: ".05em", color: "var(--forest)", marginBottom: 8 }}>⓪ THE AUDITION — experts · coach · supporting cast (mirror / rival)</div>
+            <ToneBuild d={d} inHub />
+          </div>
+        )}
         <div style={{ display: "flex", justifyContent: "space-between", borderTop: "1px solid var(--ink-soft)", paddingTop: 12, marginTop: 20, fontSize: 13 }}>
-          <a href={`/auditions/${campaign}/scenes`} style={link}>← ④ The Scenes</a>
-          <span style={{ color: "var(--margin-ink)" }}>next: the per-tone content (chat → beats), cozy-first →</span>
+          <a href={`/auditions/${campaign}/story`} style={link}>← ③ The Story</a>
+          <span style={{ color: "var(--margin-ink)" }}>↑ pick a weather-moment above to hone its cast →</span>
         </div>
       </main>
     );

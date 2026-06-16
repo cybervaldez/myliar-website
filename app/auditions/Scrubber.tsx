@@ -323,40 +323,11 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
         </div>
       )}
 
-      {/* THE TONE & MOOD — pick the ambient palette (the mood) · it grows with the tone · ELI5 the
-          colours. The CREW's own palettes move to the tone step (the cast-set makeup). */}
+      {/* the ambient-palette AUDITION moved to the SCENES step (2026-06-16) — auditioned per weather-moment
+          there. This page keeps the SETTING build (UI · asset colours · prose recipe) from the base ambient. */}
       {A && (
-        <div style={{ border: `2px solid ${forest}`, background: paper, padding: "11px 13px", marginTop: 14 }}>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>🎨 TONE &amp; MOOD — pick the ambient palette (the mood)</div>
-          <div style={{ fontSize: 10, color: margin, marginBottom: 8, lineHeight: 1.5 }}>the GATES: it must <b>convey the metaphor</b> · stay <b>safe</b> (never oppressive) · <b>hold across the arc</b> · pass <b>contrast</b>. Reviewed by a VN colour director + WCAG.</div>
-          <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: 9 }}>
-            {story.mood!.ambients.map((a, i) => { const on = i === amb, best = a.id === vet?.best; return (
-              <button key={a.id} onClick={() => setAmb(i)} style={{ display: "flex", alignItems: "center", gap: 6, cursor: "pointer", border: `2px solid ${on ? forest : "var(--ink-soft)"}`, background: on ? shade : paper, padding: "4px 8px" }}>
-                <span style={{ display: "flex" }}>{[a.base, a.ink, a.accent].map((c, j) => <span key={j} style={{ width: 11, height: 16, background: c, border: `1px solid ${ink}`, marginLeft: j ? -1 : 0 }} />)}</span>
-                <span style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, color: on ? forest : margin }}>{best ? "✓ " : ""}{a.name}</span>
-              </button> ); })}
-          </div>
-          {vetA && (
-            <div style={{ border: `1.5px dashed ${forest}`, background: shade, padding: "8px 11px", marginBottom: 10, fontSize: 10.5, lineHeight: 1.5, color: ink }}>
-              <span style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".06em", color: forest }}>🎨 COLOUR VET · {A!.name}</span>{A!.id === vet?.best && <span style={{ color: forest, fontWeight: 700 }}> · recommended</span>}
-              <span style={{ marginLeft: 6 }}>metaphor <b style={{ color: vcol(vetA.conveys_metaphor) }}>{vetA.conveys_metaphor}</b> · safe <b style={{ color: vcol(vetA.safe_floor) }}>{vetA.safe_floor}</b> · arc <b style={{ color: vcol(vetA.arc_fit) }}>{vetA.arc_fit}</b> · contrast <b style={{ color: vet!.contrastFlags.length ? "var(--spot-red)" : forest }}>{vet!.contrastFlags.length ? "flags" : "all pass"}</b></span>
-              <div style={{ color: soft, fontStyle: "italic", marginTop: 3 }}>{vetA.note}</div>
-              {vet!.oneLine && <div style={{ color: margin, marginTop: 3 }}>↳ {vet!.oneLine}</div>}
-            </div>
-          )}
-          <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginBottom: 10, borderLeft: `2px solid var(--ink-soft)`, paddingLeft: 8 }}>↳ the crew’s own palettes (and their asset prompts) are auditioned in the <b style={{ color: forest }}>SUBRANGE step</b> — the cast-set makeup — not here. This page sets the <b>ambient ground</b> they’ll wear.</div>
-          <div style={{ fontSize: 10.5, color: ink, lineHeight: 1.5, borderTop: "1px solid var(--ink-soft)", paddingTop: 8 }}><span style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: forest }}>WHY THESE COLOURS · ELI5 </span>{story.mood!.eli5}</div>
-          <div style={{ fontSize: 10, color: soft, fontStyle: "italic", marginTop: 5, marginBottom: 11 }}>↳ {A.name}: {A.why}</div>
-          {/* the palette swatches — placed LAST so the colours sit right above the UI built from them */}
-          <div style={{ fontSize: 10, color: margin, marginBottom: 4 }}>the ambient palette at <b style={{ color: hot(beat?.label) }}>{beat?.label ?? "—"}</b> · <b style={{ color: ink }}>{swatches.length} colours</b> <span style={{ fontStyle: "italic" }}>(the carry joins as it warms)</span></div>
-          <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
-            {swatches.map((s, i) => (
-              <div key={i} style={{ textAlign: "center" }}>
-                <div style={{ width: 38, height: 24, background: s.c, border: `1.5px solid ${ink}` }} />
-                <div style={{ fontSize: 7.5, color: margin, marginTop: 1, maxWidth: 42, lineHeight: 1.1 }}>{s.label}</div>
-              </div>
-            ))}
-          </div>
+        <div style={{ border: `1.5px dashed ${forest}`, background: shade, padding: "9px 12px", marginTop: 14, fontSize: 11, color: ink, lineHeight: 1.55 }}>
+          <span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".06em", color: forest }}>🎨 AMBIENT PALETTE → MOVED to the SCENES step</span> — the palette is now auditioned <b>per weather-moment</b> at the Scenes hub (the matrix). Below, the SETTING build (UI · asset colours · prose recipe) is shown from the base ambient <b>{A.name}</b> <code style={{ fontSize: 9.5, color: margin }}>{A.base}</code>.
         </div>
       )}
 
@@ -494,7 +465,77 @@ export function ScenesBuild({ d }: { d: ScenesT }) {
   );
 }
 
-export function ToneBuild({ d }: { d: ToneT }) {
+// THE BRANCH LINKS — the 5 weather-moment sub-pages the Scenes hub forks into.
+type BranchLite = { key: string; label: string; spark: string; cells: { tone: string; base: string }[] };
+export function BranchLinks({ campaign, branches, active }: { campaign: string; branches: BranchLite[]; active?: string }) {
+  return (
+    <div style={{ marginTop: 6 }}>
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>▸ THE BRANCHES — the 5 weather-moments (hone each →)</div>
+      <div className="aud-grid2" style={{ display: "grid", gap: 7 }}>
+        {branches.map((b) => {
+          const on = b.key === active;
+          return (
+            <a key={b.key} href={`/auditions/${campaign}/scenes/${b.key}`} style={{ display: "block", textDecoration: "none", border: `2px solid ${on ? forest : "var(--ink-soft)"}`, background: on ? shade : paper, padding: "8px 11px", color: ink }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
+                <span style={{ fontWeight: 700, fontSize: 13, textTransform: "capitalize" }}>{b.label}</span>
+                <span style={{ display: "flex", gap: 2 }}>{b.cells.map((c) => <span key={c.tone} style={{ width: 14, height: 14, background: c.base, borderRadius: 2, border: `1px solid ${ink}` }} />)}</span>
+              </div>
+              <div style={{ fontFamily: "monospace", fontSize: 9.5, color: margin }}>{b.spark}</div>
+              <div style={{ fontSize: 10.5, color: forest, marginTop: 2 }}>hone the cast + characters →</div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// THE WEATHER-MOMENT BRANCH — one scene honed: its palette (dialed cozy→intense), the tone dial, the cast.
+export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[] };
+export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: string }) {
+  return (
+    <div>
+      <div style={{ border: `2px dashed ${forest}`, background: shade, padding: "9px 13px", marginBottom: 16, fontSize: 12, color: ink, lineHeight: 1.5 }}>
+        <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>↩ FROM THE SCENES AUDITION — this weather-moment&rsquo;s picks</div>
+        <div>the palette + coach + supporting cast picked at the <a href={`/auditions/${campaign}/scenes`} style={{ color: forest, fontWeight: 700 }}>scenes hub</a>, honed here for <b style={{ textTransform: "capitalize" }}>{b.label}</b> <span style={{ fontFamily: "monospace", color: margin }}>{b.spark}</span>. The TONE is dialed WITHIN (cozy ↔ intense).</div>
+      </div>
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>▸ THE PALETTE — {b.label} dialed cozy → intense</div>
+      <div style={{ display: "grid", gridTemplateColumns: `repeat(${b.cells.length}, 1fr)`, gap: 6, marginBottom: 16 }}>
+        {b.cells.map((c) => (
+          <div key={c.tone} style={{ background: c.base, color: c.ink, padding: "10px 11px", borderRadius: 3, borderLeft: `4px solid ${c.accent}`, minHeight: 60 }}>
+            <div style={{ fontSize: 10, fontWeight: 700, textTransform: "capitalize", opacity: 0.85 }}>{c.tone}</div>
+            <div style={{ fontSize: 12, marginTop: 3 }}>{c.label}</div>
+            <code style={{ fontSize: 8.5, opacity: 0.6 }}>{c.base}</code>
+          </div>
+        ))}
+      </div>
+      {b.toneText?.length > 0 && (
+        <>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>▸ THE TONE DIAL — {b.label} at each tone</div>
+          <div style={{ display: "grid", gap: 8, marginBottom: 16 }}>
+            {b.toneText.map((t) => (
+              <div key={t.label} style={{ borderLeft: `3px solid ${TONE_C[t.label.toLowerCase()] ?? forest}`, paddingLeft: 10, fontSize: 12.5, color: ink, lineHeight: 1.55 }}>
+                <b style={{ color: TONE_C[t.label.toLowerCase()] ?? forest, textTransform: "capitalize" }}>{t.label}</b> — {t.text}
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>▸ THE CAST — to hone for this moment</div>
+      <div className="aud-grid2" style={{ display: "grid", gap: 7 }}>
+        {b.characters.map((c) => (
+          <div key={c.name} style={{ border: `1px solid ${soft}`, background: paper, padding: "8px 11px", fontSize: 12, color: ink }}>
+            <b>{c.name}</b> <span style={{ color: margin, fontSize: 10.5 }}>· joins at {c.joinsAt}</span>
+            <div style={{ color: soft, fontSize: 11, marginTop: 1 }}>{c.is}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{ fontSize: 10.5, color: margin, marginTop: 14, fontStyle: "italic", lineHeight: 1.5 }}>↳ the honing bench for <b style={{ textTransform: "capitalize" }}>{b.label}</b> — the cast voice, the characters, and the per-moment content get polished here (cozy-first; the storm deepens presence, never threat).</div>
+    </div>
+  );
+}
+
+export function ToneBuild({ d, inHub }: { d: ToneT; inHub?: boolean }) {
   const red = "var(--spot-red)";
   const ca = d.castAudition;
   const mir = d.mirror;
@@ -503,14 +544,15 @@ export function ToneBuild({ d }: { d: ToneT }) {
   const charsAt = (t: string) => d.characters.filter((c) => c.joinsAt.toLowerCase() === t.toLowerCase());
   return (
     <div>
-      {/* CARRIED — the branched matrix from the SCENES step */}
-      <div style={{ border: `2px dashed ${forest}`, background: shade, padding: "10px 14px", margin: "0 0 16px", fontSize: 11.5, color: ink, lineHeight: 1.5 }}>
-        <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 6 }}>↩ CARRIED FROM THE SCENES STEP — the branched matrix the makeup is worn over</div>
-        <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
-          <span style={{ width: 26, height: 26, background: d.ambientBase, border: `1px solid ${ink}`, display: "inline-block", borderRadius: 3, flexShrink: 0 }} />
-          <span>the ambient now varies <b>per scene×tone</b> (the matrix); <b>{d.ambientName}</b> <code style={{ fontSize: 10, color: margin }}>{d.ambientBase}</code> is the anchor. The makeup below is worn over those CELLS — cozy-first.</span>
+      {!inHub && (
+        <div style={{ border: `2px dashed ${forest}`, background: shade, padding: "10px 14px", margin: "0 0 16px", fontSize: 11.5, color: ink, lineHeight: 1.5 }}>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 6 }}>↩ CARRIED FROM THE SCENES STEP — the branched matrix the makeup is worn over</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
+            <span style={{ width: 26, height: 26, background: d.ambientBase, border: `1px solid ${ink}`, display: "inline-block", borderRadius: 3, flexShrink: 0 }} />
+            <span>the ambient now varies <b>per scene×tone</b> (the matrix); <b>{d.ambientName}</b> <code style={{ fontSize: 10, color: margin }}>{d.ambientBase}</code> is the anchor. The makeup below is worn over those CELLS — cozy-first.</span>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* ⓪ EXPERTS FIRST */}
       <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 3 }}>⓪ EXPERTS FIRST — frame the audience, then build the makeup</div>

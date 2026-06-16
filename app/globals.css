@@ -501,4 +501,11 @@ a:hover {
 @media (min-width:860px){
   .aud-grid2{ grid-template-columns:1fr 1fr; }      /* tall stacked card-grids → two columns */
 }
+/* DESKTOP: scale the whole audition shell up a notch so the dense small text is comfortable and the
+   screen estate is used (mobile/tablet untouched). zoom scales fonts + spacing uniformly; the widened
+   shell keeps the scaled width inside the viewport (1060 × 1.12 ≈ 1187 < 1280). */
+@media (min-width:1280px){
+  .aud-main{ zoom:1.12; }
+  .aud-spine{ zoom:1.1; }
+}
 

@@ -1,7 +1,7 @@
 // /auditions/<campaign> — one story's SPINE: its pipeline, step by step, born from the shared slate.
 // Each step card links into its audition and shows the pick + ★ + what it carried in. Next 16: params
 // async. NOT canon.
-import { CAMPAIGNS, STEP_DEFS, SLATE, campaignKeys, hasStep, stepDataFor, stepNo, stepLabel, isSeed } from "../registry";
+import { CAMPAIGNS, STEP_DEFS, SLATE, campaignKeys, hasStep, stepDataFor, stepNo, stepLabel, isSeed, sceneBranchesFor } from "../registry";
 import { star, starStr, topOf } from "../score";
 
 export async function generateStaticParams() {
@@ -32,13 +32,13 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
       return { ...s, done: false, pick: "", star: 0, seed: true };
     }
     if (!has) return { ...s, done: false, pick: "", star: 0, seed: false };
-    // THE STORY + SCENES + TONE are the picked range being BUILT (not scored auditions) — read, don't score
-    if (s.key === "story" || s.key === "scenes" || s.key === "tone") {
+    // THE STORY + SCENES are the picked range being BUILT (not scored auditions) — read, don't score
+    if (s.key === "story" || s.key === "scenes") {
       const p = c.steps.pilot as unknown as { picked?: string; scrubGroups: { id: string; name: string; scenes?: unknown }[] };
       const picked = p?.scrubGroups?.find((g) => g.id === p.picked);
-      const pick = s.key === "story" ? (picked?.name ?? "") : s.key === "scenes" ? "the branched matrix" : "the cast-set makeup";
+      const pick = s.key === "story" ? (picked?.name ?? "") : "the audition hub → 5 branches";
       const done = s.key === "scenes" ? !!picked?.scenes : !!picked;
-      return { ...s, done, pick, star: s.key === "tone" ? -1 : -2, seed: false };
+      return { ...s, done, pick, star: -2, seed: false };
     }
     const sd = stepDataFor(campaign, s.key)!;
     const top = s.key === "concept"
@@ -47,12 +47,9 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
     return { ...s, done: true, pick: top.title, star: top.star, seed: false };
   });
 
-  // after the shared TRUNK (setting · range · mood) the pipeline BRANCHES per TONE —
-  // each tone is its own cast + chat + beats (the cast is tone-dependent). Start with the coziest.
-  const pilotRaw = (c.steps.tone ?? c.steps.pilot) as unknown as { picked?: string; scrubGroups: { id: string; subrange?: { label: string }[][]; subrangeAudit?: { perTone: { tone: string; holds: string; note: string }[] } }[] } | undefined;
-  const pickedStory = pilotRaw?.scrubGroups?.find((g) => g.id === pilotRaw.picked);
-  const subranges = (pickedStory?.subrange?.[0] ?? []).map((t) => t.label);
-  const audit = pickedStory?.subrangeAudit;
+  // after the shared TRUNK (setting · range · story), the SCENES audition BRANCHES into the 5
+  // weather-moments — each its own page where the cast is honed (the tone is a dial inside each).
+  const branches = sceneBranchesFor(campaign);
   // THE FACTOR PROFILE — the orthogonal dials set at the concept, injected into every audition (composable-factors.md)
   const tonePilot = (c.steps.tone ?? c.steps.pilot) as unknown as { targetAge?: { range: number[]; center: number; band: string; lifeContext: string; register: string; note: string }; genre?: { name: string }; culture?: { name: string } } | undefined;
   const targetAge = tonePilot?.targetAge;
@@ -105,28 +102,21 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
         </div>
       ))}
 
-      {subranges.length > 0 && (
+      {branches.length > 0 && (
         <>
           <div style={{ borderLeft: `2px dashed ${forest}`, height: 14, margin: "0 0 0 16px" }} />
-          <div style={{ fontSize: 10, color: margin, margin: "0 0 4px 24px", fontStyle: "italic", lineHeight: 1.5 }}>↓ once the <a href={`/auditions/${campaign}/tone`} style={{ color: forest, fontWeight: 700 }}>④ tone audition</a> picks a cohesive cast-set, its per-tone CONTENT (chat + beats) gets built — cozy-first:</div>
-          {subranges.map((tone, i) => {
-            const active = i === 0;
-            const col = active ? forest : "var(--ink-soft)";
-            const pt = audit?.perTone?.find((p) => p.tone.toLowerCase() === tone.toLowerCase());
-            return (
-              <div key={tone} style={{ marginLeft: 24, borderLeft: `2px ${active ? "solid" : "dashed"} ${col}`, paddingLeft: 14, marginBottom: 8 }}>
-                <div style={{ border: `2px ${active ? "solid" : "dashed"} ${col}`, background: active ? paper : "transparent", padding: "10px 14px", opacity: active ? 1 : 0.7 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10 }}>
-                    <span style={{ fontSize: 13.5 }}><b style={{ color: active ? forest : margin, textTransform: "capitalize" }}>{tone}</b> <span style={{ fontSize: 11, color: margin }}>content</span></span>
-                    <span style={{ fontSize: 10.5, color: active ? forest : margin, fontWeight: active ? 700 : 400, whiteSpace: "nowrap" }}>{active ? "● START — the floor" : "○ later"}</span>
-                  </div>
-                  <div style={{ fontSize: 11, color: soft, marginTop: 4 }}>the per-tone content — the chat <span style={{ color: margin }}>→</span> the beats{active ? "" : <span style={{ color: margin, fontStyle: "italic" }}> · after the cozy branch ships</span>}</div>
-                  {pt && <div style={{ fontSize: 9.5, color: pt.holds === "yes" ? forest : amber, fontStyle: "italic", marginTop: 3 }}>{pt.holds === "yes" ? "✓" : "⚑"} {pt.note}</div>}
-                  {active && <div style={{ fontSize: 11, color: forest, marginTop: 5, fontWeight: 700 }}>→ build this tone's content (next)</div>}
+          <div style={{ fontSize: 10, color: margin, margin: "0 0 6px 24px", fontStyle: "italic", lineHeight: 1.5 }}>↓ the <a href={`/auditions/${campaign}/scenes`} style={{ color: forest, fontWeight: 700 }}>④ scenes audition</a> branches into the 5 weather-moments — each honed individually (the tone dialed within):</div>
+          {branches.map((b) => (
+            <div key={b.key} style={{ marginLeft: 24, borderLeft: `2px solid ${forest}`, paddingLeft: 14, marginBottom: 7 }}>
+              <a href={`/auditions/${campaign}/scenes/${b.key}`} style={{ display: "block", textDecoration: "none", border: `2px solid var(--ink-soft)`, background: paper, padding: "9px 13px", color: ink }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
+                  <span style={{ fontSize: 13.5 }}><b style={{ color: forest, textTransform: "capitalize" }}>{b.label}</b> <span style={{ fontFamily: "monospace", fontSize: 9.5, color: margin }}>{b.spark}</span></span>
+                  <span style={{ display: "flex", gap: 2 }}>{b.cells.map((cc) => <span key={cc.tone} style={{ width: 13, height: 13, background: cc.base, borderRadius: 2, border: `1px solid ${ink}` }} />)}</span>
                 </div>
-              </div>
-            );
-          })}
+                <div style={{ fontSize: 10.5, color: forest, marginTop: 3 }}>hone the cast + characters →</div>
+              </a>
+            </div>
+          ))}
         </>
       )}
     </main>

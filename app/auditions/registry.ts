@@ -16,12 +16,14 @@ import lighthousePilot from "./data/lighthouse/pilot.json";
 // The campaign-level flow is just two steps now: the SETTING and its MOMENTS. The story-build steps
 // (destination/struggle/cast/motif) are PER-STORY — built on demand once a moment is chosen — so they
 // are not campaign-level steps here. (The pre-hook-engine version lives at /auditions-v1.)
+// Restructured 2026-06-16: the "Tone" step is FOLDED into Scenes (tone is now a DIAL inside each
+// weather-moment branch, not a step). Scenes is the AUDITION HUB (palettes + coach + mirror/rival),
+// branching into the 5 weather-moment sub-pages (/scenes/<moment>) where the cast is honed.
 export const STEP_DEFS = [
   { key: "concept", label: "The Setting" },
   { key: "pilot", label: "The Range" },
   { key: "story", label: "The Story" },
   { key: "scenes", label: "The Scenes" },
-  { key: "tone", label: "The Tone" },
 ];
 export const stepLabel = (k: string) => STEP_DEFS.find((s) => s.key === k)?.label ?? k;
 export const stepNo = (k: string) => "①②③④⑤⑥"[STEP_DEFS.findIndex((s) => s.key === k)] ?? "•";
@@ -112,7 +114,7 @@ export const PRIMERS: Record<string, { tldr: string; whatFor: string; impact: st
 export const INTRO: Record<string, string> = {
   concept: "The SETTING meets the room — the surrounding world you’d dwell in, not a story. The audience scores whether it feels safe to LIVE in; the hook-capacity legs score how wide a tonal range it can spawn while holding the floor. The picked setting becomes a campaign that spawns its stories.",
   pilot: "One setting, candidate dynamic ranges — each its OWN environment. The dial scrubs the SCENE — the surrounding WEATHER (the stage): calm water → the storm → first light (the §8.13 arc), the WORLD holding throughout (§8.15). The scene labels are NOT the story’s feeling — the story’s TONE is a SEPARATE axis (the SUBRANGE, cozy ↔ intense), free to MATCH or CONTRAST any scene (a tender beat in the storm, a charged one in the calm). We PICK the most cohesive scene-arc by FEEL — scrub each.",
-  scenes: "The story’s ONE ambient ground now BRANCHES. The 5 world-moments (the weather/time arc) × the 3 tones — each cell its own ambient palette + focal cast. A tone isn’t tied to a time: warm-calm-water, warm-storm, and warm-first-light are three different cells. We audit the MATRIX for COHESION (one recognisable world across every cell) and DISTINCTNESS (each cell genuinely its own — the weather AND the register both moving it), the intense column floor-clipped. The audience EXPERTS come in next, at the Tone — here it’s the structural branch.",
+  scenes: "The AUDITION HUB — and where the tree BRANCHES. Framed by the audience EXPERTS, we audition the shared building blocks: the SCENE PALETTES (per weather-moment), the COACH (the cast-set), and the SUPPORTING CAST (mirror / rival). The picks then BRANCH into the 5 weather-moments below (calm water → the storm → first light) — each its OWN page where the cast + characters are HONED, the TONE dialed within (cozy ↔ intense, free to run with or against the weather). The ambient palette lives here now (moved from the Story step); a “scene” is a weather-moment, never the tone (§8.13 holds).",
   destination: "The deepest chat THIS story reaches — the full-REL coach (per-story, §8.14: no shared coach). Authored after a moment is chosen; the path is built backward to it. The fleet asks: does the deepest relationship land?",
   story: "The picked range is now a STORY — here we set its AMBIENCE & SETTING: the TONE & MOOD (the ambient palette), the world-moments, the UI + the palette→prose recipe (the real beats are authored later). Scrub the crossing (the world-moments); at each, the SUBRANGE shows EXAMPLE scenes — a cozy one, a warm one, an intense one — so you can feel the range and how a scene can run with or against the surrounding. These are examples (variations), not the authored story. The CREW’s own palettes/prompts are auditioned in the SUBRANGE step, not here.",
   tone: "The MAKEUP for the picked story — auditioned. In the game the reader DIALS THE TONE (cozy → warm → intense, the scrubber is the dial); here we audition the makeup at each. FIRST the EXPERTS (matched to the audience) frame the state of mind → the MAKEUP BRIEF. THEN a candidate cast-SET (the crew tone-mapped cozy → warm → intense, worn OVER the story’s ambient ground) is auditioned for COHESION (one crew across the tones) · CONTRAST (the tones genuinely distinct) · SAFE (every tone holds — the intense deepens PRESENCE, never threat). Pick the most cohesive set; THEN build its per-tone content, cozy-first.",
@@ -230,6 +232,22 @@ export function stepDataFor(campaign: string, step: string): { data: StepData; i
   if (!d || !NORM[step]) return null;
   return { data: d, items: NORM[step](d as unknown as { [k: string]: unknown }), isSlate: false };
 }
+
+// THE WEATHER-MOMENT BRANCHES — the 5 sub-pages the Scenes hub forks into (each a §8.13 weather-moment,
+// honed individually; the tone is dialed WITHIN). Derived from the picked group's scenes matrix.
+type SceneCellT = { tone: string; base: string; ink: string; accent: string; label: string };
+export type SceneBranchT = { key: string; label: string; spark: string; cells: SceneCellT[] };
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+export function sceneBranchesFor(campaign: string): SceneBranchT[] {
+  const p = CAMPAIGNS[campaign]?.steps.scenes as unknown as { picked?: string; scrubGroups?: { id: string; scenes?: { matrix?: { scene: string; spark: string; cells: SceneCellT[] }[] } }[] } | undefined;
+  const g = p?.scrubGroups?.find((x) => x.id === p?.picked);
+  return (g?.scenes?.matrix ?? []).map((r) => ({ key: slug(r.scene), label: r.scene, spark: r.spark, cells: r.cells }));
+}
+export function sceneBranch(campaign: string, key: string): SceneBranchT | null {
+  return sceneBranchesFor(campaign).find((b) => b.key === key) ?? null;
+}
+// every campaign that has the Scenes step (for the branch routes' static params)
+export const campaignsWithScenes = () => campaignKeys().filter((c) => hasStep(c, "scenes"));
 
 // every static path: each campaign × each step it has auditioned
 export function allParams(): { campaign: string; step: string }[] {
