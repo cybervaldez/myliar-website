@@ -465,6 +465,69 @@ export function ScenesBuild({ d }: { d: ScenesT }) {
   );
 }
 
+// ④ THE SCENES HUB — the RANGE / top-down PORTFOLIO view. We audition a LOT here on purpose: it's about
+// COVERING RANGE — across the 5 branches, is the variety healthy + the balance right? The PREMISE is
+// auditioned here; the CAST + premise HONING happen INSIDE each scene. Carries the prior experts (gating)
+// + draws a future-step review.
+export type RangeT = {
+  premises: { scene: string; premise: string }[];
+  range: { variety: string; overlap: string; balance: string; skew: string; coverage: string; gaps: string; variety_add: string; note: string };
+  rangeReview?: { verdict: string; flag: string };
+  expertsGate?: { name: string; role: string }[];
+  branches: { key: string; label: string; spark: string; cells: { tone: string; base: string }[] }[];
+  honing?: { [key: string]: { castPick?: string } };
+};
+export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
+  const red = "var(--spot-red)";
+  const ok = (v: string) => ["strong", "balanced", "complete", "yes"].includes(v);
+  const premiseOf = (label: string) => d.premises.find((p) => p.scene.toLowerCase() === label.toLowerCase())?.premise;
+  return (
+    <div>
+      <div style={{ border: `2px dashed ${forest}`, background: shade, padding: "10px 14px", marginBottom: 14, fontSize: 11.5, color: ink, lineHeight: 1.55 }}>
+        <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".07em", color: forest, marginBottom: 3 }}>▸ WHY WE AUDITION A LOT HERE — it&rsquo;s about COVERING RANGE</div>
+        Scenes is the ONE top-down view — every branch visible at once. So this step&rsquo;s job is the PORTFOLIO: across the 5 weather-moments, is the <b>variety</b> healthy and the <b>balance</b> right (not five versions of one beat)? The <b>premises</b> are auditioned here; the <b>cast + the honing</b> happen INSIDE each scene below.
+      </div>
+      <div style={{ border: `2px solid ${forest}`, background: paper, padding: "11px 14px", marginBottom: 14, fontSize: 11.5, color: ink, lineHeight: 1.5 }}>
+        <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>⓪ THE RANGE AUDIT — variety · balance · coverage</div>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "4px 16px", marginBottom: 6 }}>
+          {([["variety", d.range.variety, d.range.overlap], ["balance", d.range.balance, d.range.skew], ["coverage", d.range.coverage, d.range.gaps]] as const).map(([k, v, sub]) => (
+            <span key={k}>{k} <b style={{ color: ok(v) ? forest : red }}>{v}</b>{sub && sub !== "none" && <span style={{ color: margin, fontSize: 10 }}> · {sub}</span>}</span>
+          ))}
+        </div>
+        <div style={{ fontSize: 11, color: ink }}><b style={{ color: forest }}>+ ADD variety:</b> {d.range.variety_add}</div>
+        <div style={{ fontSize: 10.5, color: soft, fontStyle: "italic", marginTop: 3 }}>{d.range.note}</div>
+      </div>
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>▸ THE 5 SCENES — premise auditioned here · hone the cast inside each →</div>
+      <div className="aud-grid2" style={{ display: "grid", gap: 8, marginBottom: 14 }}>
+        {d.branches.map((b) => {
+          const cast = d.honing?.[b.key]?.castPick;
+          return (
+            <a key={b.key} href={`/auditions/${campaign}/scenes/${b.key}`} style={{ display: "block", textDecoration: "none", border: `2px solid var(--ink-soft)`, background: paper, padding: "9px 12px", color: ink }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginBottom: 3 }}>
+                <span style={{ fontWeight: 700, fontSize: 13, textTransform: "capitalize", color: forest }}>{b.label} <span style={{ fontFamily: "monospace", fontSize: 9, color: margin }}>{b.spark}</span></span>
+                <span style={{ display: "flex", gap: 2 }}>{b.cells.map((c) => <span key={c.tone} style={{ width: 13, height: 13, background: c.base, borderRadius: 2, border: `1px solid ${ink}` }} />)}</span>
+              </div>
+              {premiseOf(b.label) && <div style={{ fontSize: 11, color: ink, lineHeight: 1.4 }}>{premiseOf(b.label)}</div>}
+              {cast && <div style={{ fontSize: 9.5, color: margin, marginTop: 3, fontStyle: "italic" }}>cast: {cast.split("—")[0].trim()}</div>}
+              <div style={{ fontSize: 10, color: forest, marginTop: 3 }}>hone this scene →</div>
+            </a>
+          );
+        })}
+      </div>
+      {d.expertsGate && d.expertsGate.length > 0 && (
+        <div style={{ fontSize: 10, color: margin, borderLeft: `3px solid ${forest}`, paddingLeft: 9, marginBottom: 7, lineHeight: 1.5 }}>
+          <b style={{ fontFamily: "var(--theme-body)", color: forest }}>⌖ GATED BY</b> the prior step&rsquo;s experts: {d.expertsGate.map((e) => e.name).join(" · ")} — their floor holds across the whole range.
+        </div>
+      )}
+      {d.rangeReview && (
+        <div style={{ fontSize: 10, color: margin, borderLeft: `3px solid ${d.rangeReview.verdict === "yes" ? forest : red}`, paddingLeft: 9, lineHeight: 1.5 }}>
+          <b style={{ fontFamily: "var(--theme-body)", color: d.rangeReview.verdict === "yes" ? forest : red }}>↪ FUTURE-STEP REVIEW</b> (a downstream content-writer on this range): <b>{d.rangeReview.verdict}</b> — {d.rangeReview.flag}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // THE BRANCH LINKS — the 5 weather-moment sub-pages the Scenes hub forks into.
 type BranchLite = { key: string; label: string; spark: string; cells: { tone: string; base: string }[] };
 export function BranchLinks({ campaign, branches, active }: { campaign: string; branches: BranchLite[]; active?: string }) {
@@ -491,14 +554,32 @@ export function BranchLinks({ campaign, branches, active }: { campaign: string; 
 }
 
 // THE WEATHER-MOMENT BRANCH — one scene honed: its palette (dialed cozy→intense), the tone dial, the cast.
-export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[] };
+export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[] };
 export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: string }) {
+  const h = b.honing;
   return (
     <div>
       <div style={{ border: `2px dashed ${forest}`, background: shade, padding: "9px 13px", marginBottom: 16, fontSize: 12, color: ink, lineHeight: 1.5 }}>
-        <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>↩ FROM THE SCENES AUDITION — this weather-moment&rsquo;s picks</div>
-        <div>the palette + coach + supporting cast picked at the <a href={`/auditions/${campaign}/scenes`} style={{ color: forest, fontWeight: 700 }}>scenes hub</a>, honed here for <b style={{ textTransform: "capitalize" }}>{b.label}</b> <span style={{ fontFamily: "monospace", color: margin }}>{b.spark}</span>. The TONE is dialed WITHIN (cozy ↔ intense).</div>
+        <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>↩ CARRIED FROM THE SCENES HUB — this weather-moment&rsquo;s premise + palette</div>
+        <div>the premise was auditioned for RANGE at the <a href={`/auditions/${campaign}/scenes`} style={{ color: forest, fontWeight: 700 }}>scenes hub</a>; here it&rsquo;s HONED for <b style={{ textTransform: "capitalize" }}>{b.label}</b> <span style={{ fontFamily: "monospace", color: margin }}>{b.spark}</span> — the cast auditioned, the tone dialed within (cozy ↔ intense).</div>
       </div>
+      {(b.premise || h?.premiseHoned) && (
+        <div style={{ border: `2px solid ${forest}`, background: paper, padding: "10px 13px", marginBottom: 16, fontSize: 12.5, color: ink, lineHeight: 1.55 }}>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 4 }}>▸ THE PREMISE — honed for this moment</div>
+          {h?.premiseHoned ? <div>{h.premiseHoned}</div> : <div>{b.premise}</div>}
+          {b.premise && h?.premiseHoned && <div style={{ fontSize: 10, color: margin, fontStyle: "italic", marginTop: 5, borderTop: `1px solid ${soft}`, paddingTop: 5 }}>↩ from the hub (the range pick): {b.premise}</div>}
+        </div>
+      )}
+      {h?.castPick && (
+        <>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>▸ THE CAST AUDITION — who carries this moment <span style={{ color: margin, fontWeight: 400, fontSize: 10 }}>(auditioned HERE, not the hub)</span></div>
+          <div style={{ border: `2px solid ${forest}`, background: shade, padding: "9px 12px", marginBottom: 6, fontSize: 12, color: ink, lineHeight: 1.5 }}>
+            <span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".05em", color: forest }}>FOCAL</span> {h.castPick}
+            {h.supporting && h.supporting !== "none" && <div style={{ marginTop: 4, fontSize: 11, color: soft }}><span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, color: forest }}>+ SUPPORTING</span> {h.supporting}</div>}
+          </div>
+          <div style={{ fontSize: 9.5, color: margin, marginBottom: 16, fontStyle: "italic" }}>from the crew pool: {b.characters.map((c) => c.name.replace(/^the /i, "")).join(" · ")} — the §8.13 floor allows ONE focal, never a crowd.</div>
+        </>
+      )}
       <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>▸ THE PALETTE — {b.label} dialed cozy → intense</div>
       <div style={{ display: "grid", gridTemplateColumns: `repeat(${b.cells.length}, 1fr)`, gap: 6, marginBottom: 16 }}>
         {b.cells.map((c) => (
@@ -521,16 +602,17 @@ export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: str
           </div>
         </>
       )}
-      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>▸ THE CAST — to hone for this moment</div>
-      <div className="aud-grid2" style={{ display: "grid", gap: 7 }}>
-        {b.characters.map((c) => (
-          <div key={c.name} style={{ border: `1px solid ${soft}`, background: paper, padding: "8px 11px", fontSize: 12, color: ink }}>
-            <b>{c.name}</b> <span style={{ color: margin, fontSize: 10.5 }}>· joins at {c.joinsAt}</span>
-            <div style={{ color: soft, fontSize: 11, marginTop: 1 }}>{c.is}</div>
-          </div>
-        ))}
-      </div>
-      <div style={{ fontSize: 10.5, color: margin, marginTop: 14, fontStyle: "italic", lineHeight: 1.5 }}>↳ the honing bench for <b style={{ textTransform: "capitalize" }}>{b.label}</b> — the cast voice, the characters, and the per-moment content get polished here (cozy-first; the storm deepens presence, never threat).</div>
+      {b.expertsGate && b.expertsGate.length > 0 && (
+        <div style={{ fontSize: 10, color: margin, borderLeft: `3px solid ${forest}`, paddingLeft: 9, marginBottom: 7, lineHeight: 1.5 }}>
+          <b style={{ fontFamily: "var(--theme-body)", color: forest }}>⌖ GATED BY</b> the hub&rsquo;s experts: {b.expertsGate.map((e) => e.name).join(" · ")} — their floor holds in this moment.
+        </div>
+      )}
+      {h?.review && (
+        <div style={{ fontSize: 10, color: margin, borderLeft: `3px solid ${forest}`, paddingLeft: 9, marginBottom: 7, lineHeight: 1.5 }}>
+          <b style={{ fontFamily: "var(--theme-body)", color: forest }}>↪ FUTURE-STEP REVIEW</b> (a downstream content-writer on this scene&rsquo;s buildability): {h.review}
+        </div>
+      )}
+      <div style={{ fontSize: 10.5, color: margin, marginTop: 10, fontStyle: "italic", lineHeight: 1.5 }}>↳ the honing bench for <b style={{ textTransform: "capitalize" }}>{b.label}</b> — the cast voice, the characters, and the per-moment content get polished here (cozy-first; the storm deepens presence, never threat).</div>
     </div>
   );
 }

@@ -915,6 +915,96 @@
      "distinct": "yes",
      "safe": "yes",
      "note": "The world coheres through a consistent vocabulary of deep sea blues, misty greys, and warm brass/dawn accents, shifting in combination to reflect the time and tone."
+    },
+    "premises": [
+     {
+      "scene": "calm water",
+      "premise": "The Manifest-Keeper, finding you awake, quietly invites you to help sort a small crate of forgotten trinkets, each a half-told story of a past traveler."
+     },
+     {
+      "scene": "rising wind",
+      "premise": "The Deckhand is securing loose lines on deck; they nod for you to hold a rope taut, a simple, steadying task that makes you part of the boat's preparation."
+     },
+     {
+      "scene": "the storm",
+      "premise": "The Pilot silently gestures for you to stand in the shelter of the wheelhouse, where you witness their quiet, focused dance with the helm, trusting their hands and the ship's strength."
+     },
+     {
+      "scene": "settling sea",
+      "premise": "The storm has passed but your body hasn't gotten the message. The scene is a quiet, internal moment of noticing your own held tension and learning to release it, breath by breath."
+     },
+     {
+      "scene": "first light",
+      "premise": "Alone at the bow as the far shore resolves in the new light, you perform a small, final gesture of letting go—of the past, of a fear—committing it to the deep that carried you."
+     }
+    ],
+    "range": {
+     "variety": "strong",
+     "overlap": "none",
+     "balance": "balanced",
+     "skew": "none",
+     "coverage": "complete",
+     "gaps": "none",
+     "variety_add": "A moment of shared, unspoken understanding with another passenger, acknowledging the journey without needing to narrate it.",
+     "note": "The range effectively moves the player through different modes of engagement: task, observation, introspection, and ritual."
+    },
+    "rangeReview": {
+     "verdict": "yes",
+     "flag": "Each premise centers on a unique character, player role (helper, witness, self-observer), and thematic focus, providing clear directorial anchors."
+    },
+    "expertsGate": [
+     {
+      "name": "Mara Oduya",
+      "role": "AGE/REGISTER — art therapist (anxiety & somatic)"
+     },
+     {
+      "name": "Devin Sato",
+      "role": "AGE/REGISTER — game designer (lived ADHD / overwhelm)"
+     },
+     {
+      "name": "Lena Hart",
+      "role": "GENRE — iyashikei creator (cozy games for the burnt-out)"
+     },
+     {
+      "name": "Sam Reyes",
+      "role": "AGE/REGISTER — peer counselor (lived low self-worth)"
+     },
+     {
+      "name": "Haruki Sone",
+      "role": "GENRE — iyashikei critic (the canon: Midnight Diner · Mushishi · ARIA · Spiritfarer)"
+     }
+    ],
+    "honing": {
+     "calm-water": {
+      "castPick": "the Manifest-keeper — their quiet, precise accounting of the player's 'carry' mirrors the deep, still water, establishing the journey's theme of witnessing weight without judgment.",
+      "supporting": "none",
+      "premiseHoned": "By an open porthole, the moonlight catches the ink on the manifest, a quiet acknowledgment of the weight you carry, reflected in the glass-black water outside.",
+      "review": "Strong, quiet opening; establishes the core loop of witnessing weight without judgment."
+     },
+     "rising-wind": {
+      "castPick": "the Deckhand — their physical, grounding presence and the line 'let her carry you' directly addresses the somatic experience of the swell, offering permission to release control.",
+      "supporting": "the Pilot",
+      "premiseHoned": "The first deep lift of the swell is a surprise breath from the sea. The Deckhand steadies you with a hand on your shoulder, their presence an unspoken invitation to let go.",
+      "review": "Excellent somatic anchor; directly addresses the theme of letting go for the overwhelmed player."
+     },
+     "the-storm": {
+      "castPick": "the Pilot — their steady cool and unwavering focus provides a calm center in the chaos, reframing the storm not as a threat, but as an immense, survivable presence.",
+      "supporting": "none",
+      "premiseHoned": "In the wheelhouse, the world outside is immense, dark motion. The Pilot doesn't fight the sea; they hold the course with small, constant adjustments, a quiet anchor.",
+      "review": "Successfully reframes a 'storm' as a moment of profound, held stillness, avoiding genre-breaking threat mechanics."
+     },
+     "settling-sea": {
+      "castPick": "the Cook — their simple, imperfect meal is a grounding ritual of continuity, offering homely warmth and nourishment after the intensity has passed.",
+      "supporting": "the Deckhand",
+      "premiseHoned": "In the warm galley, the rocking has eased to a gentle sway. The Cook wordlessly places a bowl of simple, hot soup before you, a nourishing ritual marking the return to calm.",
+      "review": "Perfectly lands the emotional denouement with a sensory experience that reinforces the iyashikei promise."
+     },
+     "first-light": {
+      "castPick": "the Manifest-keeper — they bring the journey full circle, their presence bookending the narrative of 'weight' with a final, quiet observation on how perspective shifts with the dawn.",
+      "supporting": "none",
+      "premiseHoned": "At the rail, the first light touches the water. The Manifest-keeper stands with you, not looking at their log, but at the horizon, acknowledging the journey's passage in shared silence.",
+      "review": "Provides a poignant and symmetrical closing beat, transforming the initial premise of 'weight' into one of perspective."
+     }
     }
    }
   }

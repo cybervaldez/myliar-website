@@ -3,7 +3,7 @@
 // reference (how other stories solved this step — the idea bank). Concept resolves to the shared
 // SLATE. Next 16: params async. NOT canon.
 import StepBoard from "../../StepBoard";
-import Scrubber, { StoryBuild, ScenesBuild, BranchLinks, ToneBuild, type ToneT, type ScenesT } from "../../Scrubber";
+import Scrubber, { StoryBuild, SceneRange, type RangeT } from "../../Scrubber";
 import { star, avg } from "../../score";
 import { CAMPAIGNS, STEP_DEFS, INTRO, PRIMERS, SLATE_STATUS, stepLabel, stepNo, hasStep, stepDataFor, crossRef, allParams, whyPicked, sceneBranchesFor } from "../../registry";
 
@@ -67,14 +67,12 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
   if (step === "scenes") {
     const link = { color: "var(--forest)", fontWeight: 700, textDecoration: "none" } as const;
     if (!c) return <main style={{ maxWidth: 760, margin: "0 auto", padding: 40 }}><p style={{ color: "var(--margin-ink)" }}>No story for {campaign}. <a href="/auditions" style={link}>↑ the board</a></p></main>;
-    const p = (c.steps.scenes ?? c.steps.pilot) as unknown as { picked?: string; targetAge?: { range: number[]; band: string }; genre?: { name: string }; culture?: { name: string }; scrubGroups: { id: string; name: string; metaphor?: string; scenes?: ScenesT; mood?: { ambients?: { name: string; base: string }[]; characters: { name: string; color: string; is: string; joinsAt: string }[]; vet?: { best: string }; prompts?: { characters: string[] } }; subrangeAudit?: ToneT["audit"]; expertPanel?: { audience: string; experts: ToneT["experts"]; framework: ToneT["framework"]; vet: ToneT["vet"] }; castAudition?: ToneT["castAudition"]; mirror?: ToneT["mirror"] }[] };
+    const p = (c.steps.scenes ?? c.steps.pilot) as unknown as { picked?: string; targetAge?: { range: number[]; band: string }; genre?: { name: string }; culture?: { name: string }; scrubGroups: { id: string; name: string; metaphor?: string; scenes?: { premises?: RangeT["premises"]; range?: RangeT["range"]; rangeReview?: RangeT["rangeReview"]; expertsGate?: RangeT["expertsGate"]; honing?: RangeT["honing"] } }[] };
     const g = p.scrubGroups.find((x) => x.id === p.picked);
     const sc = g?.scenes;
-    const ep = g?.expertPanel, au = g?.subrangeAudit;
-    const amb = g?.mood?.ambients?.find((a) => a.name === g?.mood?.vet?.best) ?? g?.mood?.ambients?.[0];
-    // the audition payload (experts · coach · supporting cast) — content/support are honed per-branch, omitted here
-    const d: ToneT | null = g && ep && au ? { audience: ep.audience, experts: ep.experts, framework: ep.framework, vet: ep.vet, characters: g.mood!.characters, charPrompts: g.mood?.prompts?.characters ?? [], audit: au, ambientName: amb?.name ?? "the ambient", ambientBase: amb?.base ?? "#0e1822", castAudition: g.castAudition, mirror: g.mirror } : null;
     const branches = sceneBranchesFor(campaign);
+    // the RANGE payload — premises + variety/balance/coverage + the reviews; cast is honed per-branch
+    const rd: RangeT | null = sc?.premises && sc?.range ? { premises: sc.premises, range: sc.range, rangeReview: sc.rangeReview, expertsGate: sc.expertsGate, branches, honing: sc.honing } : null;
     return (
       <main className="aud-main" style={{ padding: "24px 20px 80px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", fontSize: 12, marginBottom: 4 }}>
@@ -92,15 +90,8 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
           </div>
         )}
         <p className="aud-prose" style={{ fontSize: 12.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: "0 0 16px" }}>{INTRO.scenes}</p>
-        {!sc ? (
-          <p style={{ fontSize: 13, color: "var(--margin-ink)" }}>The scene palettes aren&rsquo;t auditioned yet. Build them from <a href={`/auditions/${campaign}/story`} style={link}>the story step →</a></p>
-        ) : <ScenesBuild d={sc} />}
-        {branches.length > 0 && <BranchLinks campaign={campaign} branches={branches} />}
-        {d && (
-          <div style={{ marginTop: 22, borderTop: "2px solid var(--ink-soft)", paddingTop: 16 }}>
-            <div style={{ fontFamily: "var(--theme-body)", fontSize: 12.5, fontWeight: 700, letterSpacing: ".05em", color: "var(--forest)", marginBottom: 8 }}>⓪ THE AUDITION — experts · coach · supporting cast (mirror / rival)</div>
-            <ToneBuild d={d} inHub />
-          </div>
+        {rd ? <SceneRange d={rd} campaign={campaign} /> : (
+          <p style={{ fontSize: 13, color: "var(--margin-ink)" }}>The range isn&rsquo;t auditioned yet. Run <code>scene-range.mjs</code>, or build palettes from <a href={`/auditions/${campaign}/story`} style={link}>the story step →</a></p>
         )}
         <div style={{ display: "flex", justifyContent: "space-between", borderTop: "1px solid var(--ink-soft)", paddingTop: 12, marginTop: 20, fontSize: 13 }}>
           <a href={`/auditions/${campaign}/story`} style={link}>← ③ The Story</a>
