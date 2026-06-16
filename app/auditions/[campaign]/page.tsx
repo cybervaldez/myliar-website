@@ -22,12 +22,12 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
   const seed = isSeed(campaign);
   const order = STEP_DEFS.map((s) => {
     const has = hasStep(campaign, s.key);
-    // SEEDS (age-prior demos): only the TONE step is live; the rest are folded in (shown as · seed)
+    // SEEDS (age-prior demos): only the SCENES step is live; the rest are folded in (shown as · seed)
     if (seed) {
-      if (s.key === "tone") {
-        const p = c.steps.tone as unknown as { picked?: string; scrubGroups: { id: string; name: string }[] };
+      if (s.key === "scenes") {
+        const p = c.steps.scenes as unknown as { picked?: string; scrubGroups: { id: string; name: string; scenes?: unknown }[] };
         const picked = p?.scrubGroups?.find((g) => g.id === p.picked);
-        return { ...s, done: !!picked, pick: "the makeup", star: -1, seed: false };
+        return { ...s, done: !!picked?.scenes, pick: "the audition hub → 5 branches", star: -1, seed: false };
       }
       return { ...s, done: false, pick: "", star: 0, seed: true };
     }
@@ -51,7 +51,7 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
   // weather-moments — each its own page where the cast is honed (the tone is a dial inside each).
   const branches = sceneBranchesFor(campaign);
   // THE FACTOR PROFILE — the orthogonal dials set at the concept, injected into every audition (composable-factors.md)
-  const tonePilot = (c.steps.tone ?? c.steps.pilot) as unknown as { targetAge?: { range: number[]; center: number; band: string; lifeContext: string; register: string; note: string }; genre?: { name: string }; culture?: { name: string } } | undefined;
+  const tonePilot = (c.steps.scenes ?? c.steps.tone ?? c.steps.pilot) as unknown as { targetAge?: { range: number[]; center: number; band: string; lifeContext: string; register: string; note: string }; genre?: { name: string }; culture?: { name: string } } | undefined;
   const targetAge = tonePilot?.targetAge;
   const genre = tonePilot?.genre;
   const culture = tonePilot?.culture;
@@ -96,7 +96,7 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
               <div style={{ fontSize: 11.5, color: soft, marginTop: 3 }}>open →</div>
             </a>
           ) : (
-            <div style={{ border: `2px dashed var(--ink-soft)`, padding: "12px 15px", color: margin, fontSize: 14 }}><b>{stepNo(s.key)} {s.label}</b> <span style={{ fontSize: 12 }}>— {s.seed ? "seed · folded into the tone step" : "next"}</span></div>
+            <div style={{ border: `2px dashed var(--ink-soft)`, padding: "12px 15px", color: margin, fontSize: 14 }}><b>{stepNo(s.key)} {s.label}</b> <span style={{ fontSize: 12 }}>— {s.seed ? "seed · folded into the scenes step" : "next"}</span></div>
           )}
           {k < order.length - 1 && <div style={{ borderLeft: `2px dashed ${forest}`, height: 12, margin: "0 0 0 16px" }} />}
         </div>

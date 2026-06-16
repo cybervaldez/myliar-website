@@ -519,6 +519,480 @@
     ],
     "fixes": [],
     "oneLine": "This set offers three distinct, cohesive, and safe emotional pathways through the same core narrative of unconditional belonging."
+   },
+   "scenes": {
+    "tones": [
+     "cozy",
+     "warm",
+     "intense"
+    ],
+    "cast": {
+     "cozy": [
+      "the Caretaker"
+     ],
+     "intense": [
+      "Dee"
+     ],
+     "warm": [
+      "Theo",
+      "Wren"
+     ]
+    },
+    "matrix": [
+     {
+      "scene": "the last bell",
+      "spark": "",
+      "cells": [
+       {
+        "tone": "cozy",
+        "base": "#3a2e26",
+        "ink": "#ffeede",
+        "accent": "#e8a96d",
+        "label": "sunbeam on dust"
+       },
+       {
+        "tone": "warm",
+        "base": "#33271f",
+        "ink": "#ffeede",
+        "accent": "#e0664f",
+        "label": "first light through"
+       },
+       {
+        "tone": "intense",
+        "base": "#2e231c",
+        "ink": "#fde8d4",
+        "accent": "#e55a3e",
+        "label": "sharp afternoon shadow"
+       }
+      ]
+     },
+     {
+      "scene": "the room fills",
+      "spark": "",
+      "cells": [
+       {
+        "tone": "cozy",
+        "base": "#2b211d",
+        "ink": "#f4ead7",
+        "accent": "#4fb89e",
+        "label": "finding the corner"
+       },
+       {
+        "tone": "warm",
+        "base": "#281f1b",
+        "ink": "#f1e7d3",
+        "accent": "#f2a14e",
+        "label": "golden hour chatter"
+       },
+       {
+        "tone": "intense",
+        "base": "#251d1a",
+        "ink": "#ffeede",
+        "accent": "#ee824a",
+        "label": "too many voices"
+       }
+      ]
+     },
+     {
+      "scene": "a rough one",
+      "spark": "",
+      "cells": [
+       {
+        "tone": "cozy",
+        "base": "#241c1a",
+        "ink": "#e0d8c9",
+        "accent": "#4fb89e",
+        "label": "held in the dark"
+       },
+       {
+        "tone": "warm",
+        "base": "#33271f",
+        "ink": "#ffeede",
+        "accent": "#e0664f",
+        "label": "the hard conversation"
+       },
+       {
+        "tone": "intense",
+        "base": "#1f1816",
+        "ink": "#ffeede",
+        "accent": "#f05a3f",
+        "label": "the feeling crests"
+       }
+      ]
+     },
+     {
+      "scene": "it settles",
+      "spark": "",
+      "cells": [
+       {
+        "tone": "cozy",
+        "base": "#2b211d",
+        "ink": "#f4ead7",
+        "accent": "#d19256",
+        "label": "sinking into quiet"
+       },
+       {
+        "tone": "warm",
+        "base": "#241c1a",
+        "ink": "#f1e7d3",
+        "accent": "#f2a14e",
+        "label": "warm lamp, low light"
+       },
+       {
+        "tone": "intense",
+        "base": "#292220",
+        "ink": "#e9e1d1",
+        "accent": "#4fb89e",
+        "label": "the quiet after"
+       }
+      ]
+     },
+     {
+      "scene": "the walk out",
+      "spark": "",
+      "cells": [
+       {
+        "tone": "cozy",
+        "base": "#221a17",
+        "ink": "#dcd4c8",
+        "accent": "#4a9e88",
+        "label": "warmth left behind"
+       },
+       {
+        "tone": "warm",
+        "base": "#2d231c",
+        "ink": "#f1e7d3",
+        "accent": "#f2a14e",
+        "label": "under the streetlight"
+       },
+       {
+        "tone": "intense",
+        "base": "#1a1514",
+        "ink": "#f9f1e0",
+        "accent": "#e0664f",
+        "label": "one last light"
+       }
+      ]
+     }
+    ],
+    "audit": {
+     "coheres": "yes",
+     "distinct": "yes",
+     "safe": "yes",
+     "note": "The world coheres through a consistent vocabulary of warm, low light (inks), dark wood/worn fabric (bases), and emotional signifiers (accents), shifting in intensity and temperature."
+    },
+    "premises": [
+     {
+      "scene": "the last bell",
+      "premise": "The bell releases you from a day of trying to be the 'right' kind of person. You find yourself walking to the one room where the only requirement for entry is just... being you."
+     },
+     {
+      "scene": "the room fills",
+      "premise": "The room buzzes to life as the group reassembles, their shared history on full display. You're offered a snack or a smile, a small gesture that feels like an anchor against the fear of being overlooked."
+     },
+     {
+      "scene": "a rough one",
+      "premise": "The weight of a school failure you've been carrying all day becomes unbearable. You pull into yourself, convinced you're a fraud, but someone quietly sits with you, offering not solutions, but simple, solid company."
+     },
+     {
+      "scene": "it settles",
+      "premise": "The storm in your head has quieted, and the room is just a room again. You notice someone has started a group doodle on a whiteboard, and you're handed a pen without a word—a simple, unspoken invitation back in."
+     },
+     {
+      "scene": "the walk out",
+      "premise": "As the group breaks apart for the night, you walk home alone but not lonely. The feeling of unconditional belonging from the room feels like a shield, making the thought of tomorrow's challenges feel a little less daunting."
+     }
+    ],
+    "range": {
+     "variety": "strong",
+     "overlap": "none",
+     "balance": "balanced",
+     "skew": "none",
+     "coverage": "complete",
+     "gaps": "none",
+     "variety_add": "A beat of shared, spontaneous joy or play, like the group collectively making up new, ridiculous rules for a board game, to showcase active, positive connection.",
+     "note": "The range effectively maps an internal emotional arc onto the five scenes, but could benefit from a more explicitly joyful, collaborative beat to round out the social dynamic."
+    },
+    "rangeReview": {
+     "verdict": "yes",
+     "flag": "The writer should ensure the 'peak' scene's intensity comes from internal vulnerability, not interpersonal conflict, to maintain the 'found-family' feel."
+    },
+    "expertsGate": [
+     {
+      "name": "Dr. Priya Anand",
+      "role": "AGE/REGISTER — adolescent therapist (school & social anxiety)"
+     },
+     {
+      "name": "Marcus Bell",
+      "role": "AGE/REGISTER — educational psychologist (teen ADHD / executive function)"
+     },
+     {
+      "name": "Sofia Reyes",
+      "role": "GENRE — YA author / teen-media creator"
+     },
+     {
+      "name": "Jordan Okafor",
+      "role": "AGE/REGISTER — youth peer-mentor (low self-worth) + safeguarding"
+     },
+     {
+      "name": "Devon Marsh",
+      "role": "GENRE — coming-of-age critic (the found-family canon: the misfit table, the after-school hangout)"
+     },
+     {
+      "name": "Bex Adeyemi",
+      "role": "AGE/REGISTER — youth-work facilitator (peer JOY & play)"
+     }
+    ],
+    "gatedBy": {
+     "age": "13–17 teen",
+     "genre": "contemporary YA slice-of-life (the after-school found-family)",
+     "culture": "Western (Anglo-contemporary)"
+    },
+    "coverage": {
+     "map": [
+      {
+       "scene": "the last bell",
+       "cast": "The Caretaker",
+       "role": "Self-Observer",
+       "structure": "Interior-Noticing"
+      },
+      {
+       "scene": "the room fills",
+       "cast": "Dee",
+       "role": "Participant",
+       "structure": "Ritual-Gesture"
+      },
+      {
+       "scene": "a rough one",
+       "cast": "Wren",
+       "role": "Witness",
+       "structure": "Shared-Stillness"
+      },
+      {
+       "scene": "it settles",
+       "cast": "Theo",
+       "role": "Collaborator",
+       "structure": "Gentle-Task"
+      },
+      {
+       "scene": "the walk out",
+       "cast": "Dee",
+       "role": "Integrator",
+       "structure": "Reflective-Coda"
+      }
+     ],
+     "claims": {
+      "cast": [
+       "The Caretaker",
+       "Dee",
+       "Wren",
+       "Theo"
+      ],
+      "role": [
+       "Self-Observer",
+       "Participant",
+       "Witness",
+       "Collaborator",
+       "Integrator"
+      ],
+      "structure": [
+       "Interior-Noticing",
+       "Ritual-Gesture",
+       "Shared-Stillness",
+       "Gentle-Task",
+       "Reflective-Coda"
+      ]
+     },
+     "conflicts": [
+      {
+       "scenes": [
+        2,
+        5
+       ],
+       "dimension": "cast",
+       "issue": "Dee is the focal cast for two scenes, creating a potential overlap.",
+       "resolution": "Justified as narrative bookending. In Scene 2, Dee actively establishes the group's welcome. In Scene 5, her brief farewell acts as a catalyst for the player's internal reflection on belonging, reinforcing her role as the group's consistent anchor. The functions are distinct."
+      }
+     ],
+     "note": "The allocation provides strong, non-redundant coverage, mapping a clear emotional arc for the player across the five scenes from passive observation to active integration."
+    },
+    "honing": {
+     "the-last-bell": {
+      "castPick": "The Caretaker — as a non-participant, their perspective is uniquely suited to observe the room's transition from an empty classroom to a sanctuary, embodying the 'Self-Observer' role.",
+      "supporting": "none",
+      "premiseHoned": "The final bell releases a tide of noise that fades down the hall, leaving a quiet hum. From his desk, the Caretaker feels the shift in the air, the moment the room sheds its 'school' skin and waits, ready to become a refuge. He doesn't tidy up yet; this is the part he likes best.",
+      "review": "Establishes the room as a distinct character and sanctuary before the main cast even arrives.",
+      "slot": {
+       "scene": "the last bell",
+       "cast": "The Caretaker",
+       "role": "Self-Observer",
+       "structure": "Interior-Noticing"
+      },
+      "castAudition": [
+       {
+        "name": "The Caretaker",
+        "fit": "strong",
+        "note": "his non-judgmental presence establishes the room as a sanctuary separate from the school."
+       },
+       {
+        "name": "Dee",
+        "fit": "viable",
+        "note": "her early arrival signals the start of the peer gathering but doesn't set the room's foundational tone."
+       },
+       {
+        "name": "Theo",
+        "fit": "off",
+        "note": "his high-energy persona is premature for this moment of quiet, post-school transition."
+       },
+       {
+        "name": "Wren",
+        "fit": "viable",
+        "note": "her quiet relief reflects the scene's mood, but she is a recipient of the safe space, not its enabler."
+       }
+      ],
+      "whyWon": "The Caretaker's presence uniquely frames the room's core promise — a non-evaluative haven — making him the essential anchor for the story's first beat."
+     },
+     "the-room-fills": {
+      "castPick": "Dee — as the group's unofficial anchor, her role as 'Participant' is defined by the small, welcoming 'Ritual-Gesture' that signals the start of their time together.",
+      "supporting": "Theo",
+      "premiseHoned": "Dee lays out a small packet of biscuits by an empty chair, a silent, practiced welcome. As the others trickle in, each with their own energy—Theo's loud joke, Wren's quiet nod—her small offering becomes the group's gravitational center, the first act of their shared language.",
+      "review": "Grounds the 'found-family' dynamic in a simple, tangible action that feels authentic and earned.",
+      "slot": {
+       "scene": "the room fills",
+       "cast": "Dee",
+       "role": "Participant",
+       "structure": "Ritual-Gesture"
+      },
+      "castAudition": [
+       {
+        "name": "The Caretaker",
+        "fit": "off",
+        "note": "his role is to be a quiet fixture, not the focus of the emerging social dynamic."
+       },
+       {
+        "name": "Dee",
+        "fit": "strong",
+        "note": "her role as the social anchor who saves seats actively builds the 'found-family' welcome."
+       },
+       {
+        "name": "Theo",
+        "fit": "viable",
+        "note": "he adds energy and volume to the room but doesn't embody the core act of making space for others."
+       },
+       {
+        "name": "Wren",
+        "fit": "off",
+        "note": "her observational stance positions her as a recipient of the welcome, not its initiator."
+       }
+      ],
+      "whyWon": "Dee's specific action of saving a seat is the most direct and active embodiment of the genre's 'found-family' promise, creating belonging rather than just inhabiting it."
+     },
+     "a-rough-one": {
+      "castPick": "Wren — her 'sees everything' nature makes her the ideal 'Witness'; she offers support not through words but through the potent, non-intrusive act of 'Shared-Stillness'.",
+      "supporting": "Theo",
+      "premiseHoned": "Wren notices the usual spark in Theo is gone, replaced by a tense quietness as he stares at a crumpled test paper. She doesn't ask what's wrong. She just pulls her sketchbook to the same table and begins to draw, her silent presence a steady anchor next to his storm.",
+      "review": "A powerful, non-verbal scene that showcases deep peer support without resorting to dialogue.",
+      "slot": {
+       "scene": "a rough one",
+       "cast": "Wren",
+       "role": "Witness",
+       "structure": "Shared-Stillness"
+      },
+      "castAudition": [
+       {
+        "name": "The Caretaker",
+        "fit": "off",
+        "note": "his direct intervention would violate the genre rule against an 'adult-savior' resolving teen problems."
+       },
+       {
+        "name": "Dee",
+        "fit": "viable",
+        "note": "she would offer direct verbal support, which fits the culture lens but could feel prescriptive."
+       },
+       {
+        "name": "Theo",
+        "fit": "viable",
+        "note": "he would use humor to deflect the tension, a realistic but less emotionally resonant approach."
+       },
+       {
+        "name": "Wren",
+        "fit": "strong",
+        "note": "her quiet, observant empathy allows for a subtle, non-performative act of genuine support."
+       }
+      ],
+      "whyWon": "Wren's quiet, observant nature facilitates support through a 'small real detail' — a non-verbal gesture that feels more authentic and less like a moral lesson than overt dialogue would."
+     },
+     "it-settles": {
+      "castPick": "Theo — emerging from a moment of vulnerability, his re-entry as a 'Collaborator' via a 'Gentle-Task' provides a low-stakes path back to the group's warmth.",
+      "supporting": "Wren",
+      "premiseHoned": "The heavy mood has lifted, leaving a fragile quiet. On the whiteboard, a silly, sprawling doodle has begun. Wren wordlessly holds out a marker to Theo. It's not a demand to be funny or loud, just a simple invitation to add a line, to be part of something small and shared again.",
+      "review": "Beautifully visualizes the process of emotional recovery and gentle re-integration within a group.",
+      "slot": {
+       "scene": "it settles",
+       "cast": "Theo",
+       "role": "Collaborator",
+       "structure": "Gentle-Task"
+      },
+      "castAudition": [
+       {
+        "name": "The Caretaker",
+        "fit": "off",
+        "note": "his presence is ambient and foundational, not the active social energy of the settled group."
+       },
+       {
+        "name": "Dee",
+        "fit": "viable",
+        "note": "her focus on one-to-one connection is part of the scene, but not its central energetic driver."
+       },
+       {
+        "name": "Theo",
+        "fit": "strong",
+        "note": "his performative humor effectively resets the group's energy to a warm, positive baseline."
+       },
+       {
+        "name": "Wren",
+        "fit": "viable",
+        "note": "her quiet contentment perfectly reflects the settled mood but doesn't actively create it for the group."
+       }
+      ],
+      "whyWon": "Theo's humor is the ideal catalyst to shift the group's energy after a tense moment, embodying the 'peer JOY' and higher-arousal positive state valorized by the culture lens."
+     },
+     "the-walk-out": {
+      "castPick": "Dee — as a core member, she is the perfect 'Integrator' to carry the feeling of the room outwards, framing the episode's end with a 'Reflective-Coda'.",
+      "supporting": "none",
+      "premiseHoned": "Walking home, the evening air is cool, but Dee feels the warmth of the room still clinging to her. The day's anxieties haven't vanished, but they feel smaller, buffered by the unconditional acceptance she just left. She is walking alone, but she is not lonely.",
+      "review": "Provides a resonant, hopeful closing note that emphasizes the lasting impact of the safe space.",
+      "slot": {
+       "scene": "the walk out",
+       "cast": "Dee",
+       "role": "Integrator",
+       "structure": "Reflective-Coda"
+      },
+      "castAudition": [
+       {
+        "name": "The Caretaker",
+        "fit": "viable",
+        "note": "his quiet acknowledgment provides a warm bookend but lacks the peer-to-peer emotional core."
+       },
+       {
+        "name": "Dee",
+        "fit": "strong",
+        "note": "her role as social anchor naturally extends to ensuring the group's connection persists after they leave."
+       },
+       {
+        "name": "Theo",
+        "fit": "viable",
+        "note": "his loud exit provides a final burst of energy but is less focused on future connection."
+       },
+       {
+        "name": "Wren",
+        "fit": "off",
+        "note": "her departure would be quiet and internal, not driving the scene's social conclusion."
+       }
+      ],
+      "whyWon": "Dee is best positioned to carry the found-family's warmth beyond the physical room, reinforcing the social bonds and the promise of continuity that is core to the genre."
+     }
+    }
    }
   }
  ],

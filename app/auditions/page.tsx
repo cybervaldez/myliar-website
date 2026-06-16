@@ -13,9 +13,9 @@ const statusCounts = Object.values(SLATE_STATUS).reduce((m: Record<string, numbe
 function chips(campaign: string) {
   const seed = isSeed(campaign);
   return STEP_DEFS.map((s) => {
-    // SEEDS (age-prior demos): only the TONE step is live; the rest fold into it (shown as · seed)
+    // SEEDS (age-prior demos): only the SCENES step is live; the rest fold into it (shown as · seed)
     if (seed) {
-      if (s.key === "tone") { const p = CAMPAIGNS[campaign].steps.tone as unknown as { picked?: string }; return { key: s.key, done: !!p?.picked, star: -1, seed: false }; }
+      if (s.key === "scenes") { const p = CAMPAIGNS[campaign].steps.scenes as unknown as { picked?: string; scrubGroups?: { id: string; scenes?: unknown }[] }; const done = !!p?.scrubGroups?.find((g) => g.id === p.picked)?.scenes; return { key: s.key, done, star: -1, seed: false }; }
       return { key: s.key, done: false, star: 0, seed: true };
     }
     if (!hasStep(campaign, s.key)) return { key: s.key, done: false, star: 0, seed: false };

@@ -502,6 +502,476 @@
     ],
     "fixes": [],
     "oneLine": "The set creates three distinct emotional pathways (sensory, social, existential) through the same core experience, perfectly upholding the project's floor of meaningful solitude."
+   },
+   "scenes": {
+    "tones": [
+     "cozy",
+     "warm",
+     "intense"
+    ],
+    "cast": {
+     "cozy": [
+      "the Light"
+     ],
+     "warm": [
+      "the Voice",
+      "the Visitor"
+     ],
+     "intense": [
+      "the Keeper-before"
+     ]
+    },
+    "matrix": [
+     {
+      "scene": "lighting the lamp",
+      "spark": "",
+      "cells": [
+       {
+        "tone": "cozy",
+        "base": "#1a2026",
+        "ink": "#d7dee4",
+        "accent": "#d9b25e",
+        "label": "First flicker, held"
+       },
+       {
+        "tone": "warm",
+        "base": "#1a2026",
+        "ink": "#dfe4e6",
+        "accent": "#e0c068",
+        "label": "The lamp's full glow"
+       },
+       {
+        "tone": "intense",
+        "base": "#141a1f",
+        "ink": "#cdd5db",
+        "accent": "#c79a4e",
+        "label": "The old promise"
+       }
+      ]
+     },
+     {
+      "scene": "the dark settles",
+      "spark": "",
+      "cells": [
+       {
+        "tone": "cozy",
+        "base": "#141a1f",
+        "ink": "#d7dee4",
+        "accent": "#d9b25e",
+        "label": "Safe within the dark"
+       },
+       {
+        "tone": "warm",
+        "base": "#1a2026",
+        "ink": "#cdd5db",
+        "accent": "#d9b25e",
+        "label": "Night's quiet company"
+       },
+       {
+        "tone": "intense",
+        "base": "#141a1f",
+        "ink": "#cdd5db",
+        "accent": "#c79a4e",
+        "label": "The long dark's weight"
+       }
+      ]
+     },
+     {
+      "scene": "the fog comes in",
+      "spark": "",
+      "cells": [
+       {
+        "tone": "cozy",
+        "base": "#222a2e",
+        "ink": "#dfe4e6",
+        "accent": "#d9b25e",
+        "label": "Wrapped in grey wool"
+       },
+       {
+        "tone": "warm",
+        "base": "#222a2e",
+        "ink": "#d7dee4",
+        "accent": "#e0c068",
+        "label": "The fog's soft press"
+       },
+       {
+        "tone": "intense",
+        "base": "#1a2026",
+        "ink": "#cdd5db",
+        "accent": "#c79a4e",
+        "label": "The world erased"
+       }
+      ]
+     },
+     {
+      "scene": "the fog thins",
+      "spark": "",
+      "cells": [
+       {
+        "tone": "cozy",
+        "base": "#222a2e",
+        "ink": "#dfe4e6",
+        "accent": "#d9b25e",
+        "label": "First shapes return"
+       },
+       {
+        "tone": "warm",
+        "base": "#2f383d",
+        "ink": "#dfe4e6",
+        "accent": "#d9b25e",
+        "label": "The veil is lifting"
+       },
+       {
+        "tone": "intense",
+        "base": "#1a2026",
+        "ink": "#dfe4e6",
+        "accent": "#c79a4e",
+        "label": "What the fog left"
+       }
+      ]
+     },
+     {
+      "scene": "first light",
+      "spark": "",
+      "cells": [
+       {
+        "tone": "cozy",
+        "base": "#222a2e",
+        "ink": "#dfe4e6",
+        "accent": "#e6c67c",
+        "label": "Dawn on the rail"
+       },
+       {
+        "tone": "warm",
+        "base": "#2f383d",
+        "ink": "#f0f2f3",
+        "accent": "#d9b25e",
+        "label": "The watch is done"
+       },
+       {
+        "tone": "intense",
+        "base": "#141a1f",
+        "ink": "#d7dee4",
+        "accent": "#c79a4e",
+        "label": "Another day earned"
+       }
+      ]
+     }
+    ],
+    "audit": {
+     "coheres": "yes",
+     "distinct": "yes",
+     "safe": "yes",
+     "note": "The constant presence of a tarnished gold accent (#d9b25e, #c79a4e) grounds every moment in the lamp's vigil, unifying the world."
+    },
+    "premises": [
+     {
+      "scene": "lighting the lamp",
+      "premise": "The lamp's wick is from a bundle left by the previous keeper, an inheritance you've stretched for months. Tonight, you light the last one."
+     },
+     {
+      "scene": "the dark settles",
+      "premise": "The logbook falls open to an entry from 50 years ago tonight, describing a near-disaster in handwriting that might be your late mentor's."
+     },
+     {
+      "scene": "the fog comes in",
+      "premise": "The foghorn's rhythm becomes a physical presence, a heartbeat for the tower. With the world gone, the light is a companion for you and the islet alone."
+     },
+     {
+      "scene": "the fog thins",
+      "premise": "As the fog parts, the radio catches a faint song from your youth, a fragile, unexpected signal from a life you thought was entirely past."
+     },
+     {
+      "scene": "first light",
+      "premise": "A small, unfamiliar fishing boat passes and dips its flag in salute. Your vigil was not just for the vast, unseen world, but for the near and the known."
+     }
+    ],
+    "range": {
+     "variety": "strong",
+     "overlap": "none",
+     "balance": "balanced",
+     "skew": "none",
+     "coverage": "complete",
+     "gaps": "none",
+     "variety_add": "A beat focusing on a non-human life form sharing the islet, whose cyclical, instinctual watch mirrors the keeper's own.",
+     "note": "The premises offer a strong emotional arc and thematic variety, shifting focus from personal history to introspective duty to renewed connection."
+    },
+    "rangeReview": {
+     "verdict": "yes",
+     "flag": "The writer must ensure the 'intense' premises (2 & 5) build poignancy through internal realization, not external plot or threat."
+    },
+    "expertsGate": [
+     {
+      "name": "Dr. Eleanor Voss",
+      "role": "AGE/REGISTER — grief & meaning counselor (later-life / bereavement)"
+     },
+     {
+      "name": "Tomas Reynir",
+      "role": "AGE/REGISTER — veteran of long solitude (a keeper)"
+     },
+     {
+      "name": "Margaret Okonkwo",
+      "role": "GENRE — elegiac literary editor (quiet / literary fiction)"
+     },
+     {
+      "name": "Dr. Aniket Rao",
+      "role": "AGE/REGISTER — gerontologist (socioemotional selectivity)"
+     },
+     {
+      "name": "Aoife Brennan",
+      "role": "GENRE — elegiac-canon critic (Woolf's lighthouse · the lone-keeper literary tradition)"
+     }
+    ],
+    "gatedBy": {
+     "age": "40–68 mature adult",
+     "genre": "literary elegiac (the quiet, contemplative lone-keeper)",
+     "culture": "Western — literary-elegiac (restrained)"
+    },
+    "coverage": {
+     "map": [
+      {
+       "scene": "lighting the lamp",
+       "cast": "the Keeper-before",
+       "role": "participant",
+       "structure": "ritual-gesture"
+      },
+      {
+       "scene": "the dark settles",
+       "cast": "the Keeper-before",
+       "role": "witness",
+       "structure": "interior-noticing"
+      },
+      {
+       "scene": "the fog comes in",
+       "cast": "the Light",
+       "role": "self-observer",
+       "structure": "sensory-immersion"
+      },
+      {
+       "scene": "the fog thins",
+       "cast": "the Voice",
+       "role": "receiver",
+       "structure": "found-moment"
+      },
+      {
+       "scene": "first light",
+       "cast": "the Visitor",
+       "role": "guardian",
+       "structure": "reciprocal-acknowledgement"
+      }
+     ],
+     "claims": {
+      "cast": [
+       "the Keeper-before",
+       "the Light",
+       "the Voice",
+       "the Visitor"
+      ],
+      "role": [
+       "participant",
+       "witness",
+       "self-observer",
+       "receiver",
+       "guardian"
+      ],
+      "structure": [
+       "ritual-gesture",
+       "interior-noticing",
+       "sensory-immersion",
+       "found-moment",
+       "reciprocal-acknowledgement"
+      ]
+     },
+     "conflicts": [
+      {
+       "scenes": [
+        1,
+        2
+       ],
+       "dimension": "cast",
+       "issue": "Both scenes focalize 'the Keeper-before', risking redundancy.",
+       "resolution": "Differentiated the manifestation and interaction. Scene 1 uses a physical object (wick) to frame the player as a 'participant' in a legacy. Scene 2 uses a narrative text (logbook) to frame the player as a 'witness' to a past event. The modality (physical vs. narrative) and player role (participant vs. witness) are distinct, justifying the shared cast focus."
+      }
+     ],
+     "note": "Yes, the allocation provides strong, non-redundant coverage by assigning a unique emotional and structural territory to each scene, ensuring a varied yet cohesive player experience."
+    },
+    "honing": {
+     "lighting-the-lamp": {
+      "castPick": "the Keeper-before, whose presence is made tangible through the inherited object; their past action enables the present ritual, making them a direct participant.",
+      "supporting": "the Light",
+      "premiseHoned": "The last wick, stiff with wax and age, is drawn from the oilcloth bundle. The hand that rolled it is long gone, but the gesture of lighting it is the same, a slow, practiced motion that joins two lifetimes in a single, rising flame.",
+      "review": "Strong anchor; the physical object carries the emotional weight of legacy perfectly.",
+      "slot": {
+       "scene": "lighting the lamp",
+       "cast": "the Keeper-before",
+       "role": "participant",
+       "structure": "ritual-gesture"
+      },
+      "castAudition": [
+       {
+        "name": "the Light",
+        "fit": "viable",
+        "note": "its activation is the scene's core event but it lacks agency"
+       },
+       {
+        "name": "the Voice",
+        "fit": "off",
+        "note": "its focus on external connection is irrelevant to this internal ritual"
+       },
+       {
+        "name": "the Keeper-before",
+        "fit": "strong",
+        "note": "their presence is felt through the inherited ritual and worn object"
+       },
+       {
+        "name": "the Visitor",
+        "fit": "off",
+        "note": "their seasonal, external nature is antithetical to this daily, internal duty"
+       }
+      ],
+      "whyWon": "The Keeper-before won because the act is a legacy ritual, making their past action a direct, tangible presence in the current moment, which resonates more deeply with the theme of legacy than the Light's passive activation."
+     },
+     "the-dark-settles": {
+      "castPick": "the Keeper-before, whose past self is revealed in the logbook; you are not interacting with them, but bearing witness to a moment of their life, frozen in ink.",
+      "supporting": "none",
+      "premiseHoned": "A draft turns a page in the log. The ink, faded to sepia, describes a storm from this exact night, fifty years gone. You trace the familiar, spidery script of your mentor, not reading the words of disaster so much as witnessing the tremor that still lives in the lines.",
+      "review": "Builds the world's history through a quiet, resonant discovery.",
+      "slot": {
+       "scene": "the dark settles",
+       "cast": "the Keeper-before",
+       "role": "witness",
+       "structure": "interior-noticing"
+      },
+      "castAudition": [
+       {
+        "name": "the Light",
+        "fit": "viable",
+        "note": "it provides the scene's context but the focus is on the keeper's internal experience of darkness"
+       },
+       {
+        "name": "the Voice",
+        "fit": "strong",
+        "note": "it offers a direct counterpoint to the encroaching isolation of the night"
+       },
+       {
+        "name": "the Keeper-before",
+        "fit": "strong",
+        "note": "their past is made present and intimate through the logbook's text"
+       },
+       {
+        "name": "the Visitor",
+        "fit": "off",
+        "note": "they are a creature of daylight and brief connection, not the long, quiet dark"
+       }
+      ],
+      "whyWon": "The Keeper-before won because engaging with their logbook as night falls creates a direct, intimate link to a shared past, making the solitude feel witnessed and inherited rather than merely endured."
+     },
+     "the-fog-comes-in": {
+      "castPick": "the Light, which, when robbed of its function by the fog, turns inward; its world shrinks to the lens and the swirling vapor, forcing an observation of its own existence.",
+      "supporting": "none",
+      "premiseHoned": "The fog erases the sea, the sky. All that remains is the tower's deep, resonant hum and the slow, sweeping pulse of the beam. The light no longer reaches for anything; it simply turns, illuminating the thick, swirling particles of its own small world.",
+      "review": "Excellent atmospheric potential; the personification of the light is subtle and effective.",
+      "slot": {
+       "scene": "the fog comes in",
+       "cast": "the Light",
+       "role": "self-observer",
+       "structure": "sensory-immersion"
+      },
+      "castAudition": [
+       {
+        "name": "the Light",
+        "fit": "strong",
+        "note": "the fog directly negates its purpose, turning its gaze inward"
+       },
+       {
+        "name": "the Voice",
+        "fit": "viable",
+        "note": "the weather can affect its signal, enhancing the sense of isolation"
+       },
+       {
+        "name": "the Keeper-before",
+        "fit": "viable",
+        "note": "their logbook can frame the current weather as a shared, timeless trial"
+       },
+       {
+        "name": "the Visitor",
+        "fit": "off",
+        "note": "their connection is to arrival/departure, not the atmospheric condition itself"
+       }
+      ],
+      "whyWon": "The Light won because the fog creates an immediate existential conflict for it, directly challenging its very reason for being and forcing a contemplative, inward focus that perfectly aligns with the elegiac tone."
+     },
+     "the-fog-thins": {
+      "castPick": "the Voice, as the radio becomes a conduit for a fragile, unintentional signal; the moment is defined by the passive act of receiving a ghost from the airwaves.",
+      "supporting": "the Light",
+      "premiseHoned": "The fog doesn't break, it thins to a silver gauze. In the static's ebb and flow, a thread of melody surfaces—a half-forgotten tune from a distant station, or a distant decade. It is not a message, just a signal caught for a moment before the static claims it again.",
+      "review": "A poignant and well-earned moment of connection that feels fragile, not forced.",
+      "slot": {
+       "scene": "the fog thins",
+       "cast": "the Voice",
+       "role": "receiver",
+       "structure": "found-moment"
+      },
+      "castAudition": [
+       {
+        "name": "the Light",
+        "fit": "strong",
+        "note": "its function is restored, representing a return of clarity and purpose"
+       },
+       {
+        "name": "the Voice",
+        "fit": "strong",
+        "note": "the clearing atmosphere allows a fragile, unexpected connection to emerge"
+       },
+       {
+        "name": "the Keeper-before",
+        "fit": "off",
+        "note": "their perspective is historical, less suited for this moment of immediate atmospheric change"
+       },
+       {
+        "name": "the Visitor",
+        "fit": "viable",
+        "note": "it creates anticipation for future connection, a sense of the world returning"
+       }
+      ],
+      "whyWon": "The Voice won because its fragile, unintentional appearance as the fog clears offers a more poignant and surprising moment of connection than the Light's predictable return to function, embodying the theme of finding meaning in unexpected, fleeting moments."
+     },
+     "first-light": {
+      "castPick": "the Visitor, whose simple, unexpected gesture of salute defines the keeper's vigil; their acknowledgement transforms the keeper from a solitary watcher into a guardian.",
+      "supporting": "the Light",
+      "premiseHoned": "Dawn breaks grey on the water. A lone fishing boat, not a supply vessel but a stranger, chugs past the rocks. A figure at the stern raises a hand, then dips the small flag on its mast—a silent, fleeting exchange. The light has kept them safe, and their salute keeps you.",
+      "review": "Provides a powerful, understated resolution to the theme of purpose in solitude.",
+      "slot": {
+       "scene": "first light",
+       "cast": "the Visitor",
+       "role": "guardian",
+       "structure": "reciprocal-acknowledgement"
+      },
+      "castAudition": [
+       {
+        "name": "the Light",
+        "fit": "strong",
+        "note": "its nightly duty ends, representing a cyclical yielding to the natural world"
+       },
+       {
+        "name": "the Voice",
+        "fit": "viable",
+        "note": "its signal changes with the dawn, marking a shift from night's intimacy to day's routine"
+       },
+       {
+        "name": "the Keeper-before",
+        "fit": "strong",
+        "note": "the completion of the night's log entry adds a new layer to their shared history"
+       },
+       {
+        "name": "the Visitor",
+        "fit": "strong",
+        "note": "their unexpected salute provides external validation for the keeper's solitary vigil"
+       }
+      ],
+      "whyWon": "The Visitor won because their simple gesture of acknowledgement from afar transforms the entire meaning of the watch, reframing the keeper's solitude not as isolation but as a vital, witnessed guardianship, providing a powerful and emotionally resonant conclusion."
+     }
+    }
    }
   }
  ],

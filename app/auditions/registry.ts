@@ -209,13 +209,13 @@ export const CAMPAIGNS: Record<string, {
   room: {
     label: "The Open Room", pick: "room",
     blurb: "the TEEN demo — a school room a caretaker keeps unlocked after the bell; the same audience (anxiety · low self-worth · ADHD) dialed to TEEN. «kept, not chosen».",
-    steps: { tone: roomPilot as unknown as StepData },
+    steps: { scenes: roomPilot as unknown as StepData },
     carried: {},
   },
   lighthouse: {
     label: "The Lighthouse Coast", pick: "lighthouse",
     blurb: "the MATURE demo — a lone lighthouse, the long watch; the same audience dialed to MATURE/depth. «vigil as devotion».",
-    steps: { tone: lighthousePilot as unknown as StepData },
+    steps: { scenes: lighthousePilot as unknown as StepData },
     carried: {},
   },
 };
