@@ -919,23 +919,23 @@
     "premises": [
      {
       "scene": "calm water",
-      "premise": "The Manifest-Keeper, finding you awake, quietly invites you to help sort a small crate of forgotten trinkets, each a half-told story of a past traveler."
+      "premise": "The Manifest-Keeper invites you to add a small, personal object to the ship’s log—not for its value, but to have its presence witnessed before the crossing begins."
      },
      {
       "scene": "rising wind",
-      "premise": "The Deckhand is securing loose lines on deck; they nod for you to hold a rope taut, a simple, steadying task that makes you part of the boat's preparation."
+      "premise": "As the swell begins, the Deckhand shows you a simple, practical knot for securing a line, a small, steadying action to share as the boat begins to move."
      },
      {
       "scene": "the storm",
-      "premise": "The Pilot silently gestures for you to stand in the shelter of the wheelhouse, where you witness their quiet, focused dance with the helm, trusting their hands and the ship's strength."
+      "premise": "In the wheelhouse, you watch the Pilot, who isn't fighting the immense waves but guiding the ship *with* them in a display of focused, non-verbal surrender."
      },
      {
       "scene": "settling sea",
-      "premise": "The storm has passed but your body hasn't gotten the message. The scene is a quiet, internal moment of noticing your own held tension and learning to release it, breath by breath."
+      "premise": "Long after the worst has passed, the Manifest-Keeper finds you still white-knuckled on a railing and gently places a warm cloth over your hands, a wordless invitation to let go."
      },
      {
       "scene": "first light",
-      "premise": "Alone at the bow as the far shore resolves in the new light, you perform a small, final gesture of letting go—of the past, of a fear—committing it to the deep that carried you."
+      "premise": "As dawn breaks, the Deckhand joins you at the rail and quietly asks what you saw in the dark—not the storm, but the feeling of being carried through it."
      }
     ],
     "range": {
@@ -945,12 +945,12 @@
      "skew": "none",
      "coverage": "complete",
      "gaps": "none",
-     "variety_add": "A moment of shared, unspoken understanding with another passenger, acknowledging the journey without needing to narrate it.",
-     "note": "The range effectively moves the player through different modes of engagement: task, observation, introspection, and ritual."
+     "variety_add": "An interaction with another passenger who is vocalizing their fear, where the player's only action is to listen, deepening the theme of support as presence, not problem-solving.",
+     "note": "The range provides distinct emotional and interactive beats that map well to the core arc and character interactions."
     },
     "rangeReview": {
      "verdict": "yes",
-     "flag": "Each premise centers on a unique character, player role (helper, witness, self-observer), and thematic focus, providing clear directorial anchors."
+     "flag": "Each premise centers on a unique interaction with a different crew member, providing a clear narrative and emotional anchor for its respective scene."
     },
     "expertsGate": [
      {
@@ -976,35 +976,141 @@
     ],
     "honing": {
      "calm-water": {
-      "castPick": "the Manifest-keeper — their quiet, precise accounting of the player's 'carry' mirrors the deep, still water, establishing the journey's theme of witnessing weight without judgment.",
+      "castPick": "The Manifest-Keeper — their role is about witnessing and recording, which perfectly frames this initial act of acknowledging the player's personal 'carry'.",
       "supporting": "none",
-      "premiseHoned": "By an open porthole, the moonlight catches the ink on the manifest, a quiet acknowledgment of the weight you carry, reflected in the glass-black water outside.",
-      "review": "Strong, quiet opening; establishes the core loop of witnessing weight without judgment."
+      "premiseHoned": "As a quiet, grounding ritual before the journey, the Manifest-Keeper invites you to select a small personal object and watch as they log its presence, its weight now officially held and witnessed by the ship.",
+      "review": "Strong, simple opening; the physical object provides a tangible anchor for the player's emotional state.",
+      "slot": {
+       "cast": "Manifest-Keeper",
+       "role": "participant",
+       "structure": "ritual-gesture"
+      }
      },
      "rising-wind": {
-      "castPick": "the Deckhand — their physical, grounding presence and the line 'let her carry you' directly addresses the somatic experience of the swell, offering permission to release control.",
-      "supporting": "the Pilot",
-      "premiseHoned": "The first deep lift of the swell is a surprise breath from the sea. The Deckhand steadies you with a hand on your shoulder, their presence an unspoken invitation to let go.",
-      "review": "Excellent somatic anchor; directly addresses the theme of letting go for the overwhelmed player."
+      "castPick": "The Deckhand — their practical, hands-on nature makes them the ideal teacher for a small, grounding task as the world begins to feel unsteady.",
+      "supporting": "none",
+      "premiseHoned": "As the deck begins to tilt with the first swells, the Deckhand meets your anxiety with a gentle task, guiding your hands through the motions of a simple, useful knot—a shared focus against the rising wind.",
+      "review": "Good use of a haptic metaphor; the knot-tying can be a simple, satisfying micro-game.",
+      "slot": {
+       "cast": "Deckhand",
+       "role": "learner",
+       "structure": "gentle-task"
+      }
      },
      "the-storm": {
-      "castPick": "the Pilot — their steady cool and unwavering focus provides a calm center in the chaos, reframing the storm not as a threat, but as an immense, survivable presence.",
+      "castPick": "The Pilot — as the embodiment of calm competence, their presence is the entire point; they hold the center without words, modeling a different way of being with overwhelming force.",
       "supporting": "none",
-      "premiseHoned": "In the wheelhouse, the world outside is immense, dark motion. The Pilot doesn't fight the sea; they hold the course with small, constant adjustments, a quiet anchor.",
-      "review": "Successfully reframes a 'storm' as a moment of profound, held stillness, avoiding genre-breaking threat mechanics."
+      "premiseHoned": "You are invited into the quiet of the wheelhouse to simply witness the Pilot, who meets the storm not with force, but with a focused, yielding grace, their hands steady on the wheel as they guide the ship in a dance with the waves.",
+      "review": "Purely atmospheric and character-defining; success depends on nailing the non-verbal animation and soundscape.",
+      "slot": {
+       "cast": "Pilot",
+       "role": "witness",
+       "structure": "witnessed-competence"
+      }
      },
      "settling-sea": {
-      "castPick": "the Cook — their simple, imperfect meal is a grounding ritual of continuity, offering homely warmth and nourishment after the intensity has passed.",
-      "supporting": "the Deckhand",
-      "premiseHoned": "In the warm galley, the rocking has eased to a gentle sway. The Cook wordlessly places a bowl of simple, hot soup before you, a nourishing ritual marking the return to calm.",
-      "review": "Perfectly lands the emotional denouement with a sensory experience that reinforces the iyashikei promise."
+      "castPick": "The Manifest-Keeper — returning to their role of quiet observation, they notice what the player may not: the lingering physical tension after the danger has passed.",
+      "supporting": "none",
+      "premiseHoned": "In the quiet aftermath, the Manifest-Keeper finds you at the rail, and without a word, lays a warm, damp cloth over your white-knuckled hands, a gentle gesture that draws your attention to the tension you're still holding.",
+      "review": "A powerful, wordless beat that externalizes an internal state; very resonant for burnout.",
+      "slot": {
+       "cast": "Manifest-Keeper",
+       "role": "self-observer",
+       "structure": "interior-noticing"
+      }
      },
      "first-light": {
-      "castPick": "the Manifest-keeper — they bring the journey full circle, their presence bookending the narrative of 'weight' with a final, quiet observation on how perspective shifts with the dawn.",
+      "castPick": "The Deckhand — their warmth and directness make them the right person to gently broach the emotional core of the journey, moving from shared action to shared feeling.",
       "supporting": "none",
-      "premiseHoned": "At the rail, the first light touches the water. The Manifest-keeper stands with you, not looking at their log, but at the horizon, acknowledging the journey's passage in shared silence.",
-      "review": "Provides a poignant and symmetrical closing beat, transforming the initial premise of 'weight' into one of perspective."
+      "premiseHoned": "As the first light touches the water, the Deckhand joins you, their presence comfortable and undemanding. After a shared silence, they ask you to reflect on the feeling of being carried through the dark, inviting you to give voice to the experience.",
+      "review": "Provides crucial emotional closure; the dialogue options here must be carefully crafted to feel authentic and unforced.",
+      "slot": {
+       "cast": "Deckhand",
+       "role": "reflector",
+       "structure": "shared-reflection"
+      }
      }
+    },
+    "coverage": {
+     "map": [
+      {
+       "scene": "calm water",
+       "title": "calm water",
+       "cast": "Manifest-Keeper",
+       "role": "participant",
+       "structure": "ritual-gesture"
+      },
+      {
+       "scene": "rising wind",
+       "title": "rising wind",
+       "cast": "Deckhand",
+       "role": "learner",
+       "structure": "gentle-task"
+      },
+      {
+       "scene": "the storm",
+       "title": "the storm",
+       "cast": "Pilot",
+       "role": "witness",
+       "structure": "witnessed-competence"
+      },
+      {
+       "scene": "settling sea",
+       "title": "settling sea",
+       "cast": "Manifest-Keeper",
+       "role": "self-observer",
+       "structure": "interior-noticing"
+      },
+      {
+       "scene": "first light",
+       "title": "first light",
+       "cast": "Deckhand",
+       "role": "reflector",
+       "structure": "shared-reflection"
+      }
+     ],
+     "claims": {
+      "cast": [
+       "Manifest-Keeper",
+       "Deckhand",
+       "Pilot"
+      ],
+      "role": [
+       "participant",
+       "learner",
+       "witness",
+       "self-observer",
+       "reflector"
+      ],
+      "structure": [
+       "ritual-gesture",
+       "gentle-task",
+       "witnessed-competence",
+       "interior-noticing",
+       "shared-reflection"
+      ]
+     },
+     "conflicts": [
+      {
+       "scenes": [
+        1,
+        4
+       ],
+       "dimension": "cast",
+       "issue": "The Manifest-Keeper is the focal cast for two scenes, risking redundancy.",
+       "resolution": "The two scenes intentionally contrast the character's function: Scene 1 showcases their formal role (witnessing an object for the log), while Scene 4 reveals their personal, attentive nature (witnessing the player's inner state). This creates a character arc from precision-as-duty to precision-as-care."
+      },
+      {
+       "scenes": [
+        2,
+        5
+       ],
+       "dimension": "cast",
+       "issue": "The Deckhand is the focal cast for two scenes, risking redundancy.",
+       "resolution": "The scenes show a progression of the Deckhand's support. Scene 2 offers practical, in-the-moment grounding (a physical task), while Scene 5 provides reflective, post-experience integration (a gentle conversation). This moves the relationship from shared action to shared understanding."
+      }
+     ],
+     "note": "Yes, this allocation provides strong, non-redundant coverage by mapping a clear emotional and interactive arc for the player across distinct roles and structures."
     }
    }
   }

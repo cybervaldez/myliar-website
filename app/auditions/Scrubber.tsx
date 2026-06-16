@@ -469,9 +469,11 @@ export function ScenesBuild({ d }: { d: ScenesT }) {
 // COVERING RANGE — across the 5 branches, is the variety healthy + the balance right? The PREMISE is
 // auditioned here; the CAST + premise HONING happen INSIDE each scene. Carries the prior experts (gating)
 // + draws a future-step review.
+type CoverageT = { map: { scene: string; cast: string; role: string; structure: string }[]; claims: { cast: string[]; role: string[]; structure: string[] }; conflicts: { scenes: (string | number)[]; dimension: string; issue: string; resolution: string }[]; note: string };
 export type RangeT = {
   premises: { scene: string; premise: string }[];
   range: { variety: string; overlap: string; balance: string; skew: string; coverage: string; gaps: string; variety_add: string; note: string };
+  coverage?: CoverageT;
   rangeReview?: { verdict: string; flag: string };
   expertsGate?: { name: string; role: string }[];
   branches: { key: string; label: string; spark: string; cells: { tone: string; base: string }[] }[];
@@ -497,6 +499,28 @@ export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
         <div style={{ fontSize: 11, color: ink }}><b style={{ color: forest }}>+ ADD variety:</b> {d.range.variety_add}</div>
         <div style={{ fontSize: 10.5, color: soft, fontStyle: "italic", marginTop: 3 }}>{d.range.note}</div>
       </div>
+      {d.coverage && (
+        <div style={{ border: `2px solid ${forest}`, background: shade, padding: "11px 14px", marginBottom: 14, fontSize: 11, color: ink, lineHeight: 1.5 }}>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 3 }}>▣ THE COVERAGE MAP — the conflict-preventer (carried into each scene)</div>
+          <div style={{ fontSize: 10.5, color: soft, marginBottom: 8 }}>each scene auditions on its OWN page, blind to its siblings — so the hub ALLOCATES distinct territory here (cast · role · structure) so they don&rsquo;t collide. Carried into every scene as its constraint.</div>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(74px,auto) 1fr 1fr 1.2fr", gap: "3px 10px", fontSize: 10.5, marginBottom: 8 }}>
+            {["SCENE", "CAST", "ROLE", "STRUCTURE"].map((h) => <div key={h} style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".05em", color: margin }}>{h}</div>)}
+            {d.coverage.map.map((m) => (
+              <Fragment key={m.scene}>
+                <div style={{ fontWeight: 700, color: forest, textTransform: "capitalize" }}>{m.scene}</div>
+                <div>{m.cast}</div>
+                <div>{m.role}</div>
+                <div>{m.structure}</div>
+              </Fragment>
+            ))}
+          </div>
+          <div style={{ fontSize: 9.5, color: margin, lineHeight: 1.5 }}>↳ <b style={{ color: forest }}>coverage spread:</b> roles [{d.coverage.claims.role.join(" · ")}] · structures [{d.coverage.claims.structure.join(" · ")}]</div>
+          {d.coverage.conflicts?.map((cf, i) => (
+            <div key={i} style={{ fontSize: 9.5, color: amber, marginTop: 4, borderLeft: `2px solid ${amber}`, paddingLeft: 7, lineHeight: 1.45 }}>⚑ <b>{cf.dimension} overlap</b> (scenes {Array.isArray(cf.scenes) ? cf.scenes.join(" & ") : cf.scenes}): {cf.issue} <span style={{ color: forest }}>→ resolved: {cf.resolution}</span></div>
+          ))}
+          {d.coverage.note && <div style={{ fontSize: 9.5, color: soft, fontStyle: "italic", marginTop: 4 }}>{d.coverage.note}</div>}
+        </div>
+      )}
       <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>▸ THE 5 SCENES — premise auditioned here · hone the cast inside each →</div>
       <div className="aud-grid2" style={{ display: "grid", gap: 8, marginBottom: 14 }}>
         {d.branches.map((b) => {
@@ -554,7 +578,7 @@ export function BranchLinks({ campaign, branches, active }: { campaign: string; 
 }
 
 // THE WEATHER-MOMENT BRANCH — one scene honed: its palette (dialed cozy→intense), the tone dial, the cast.
-export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[] };
+export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string } };
 export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: string }) {
   const h = b.honing;
   return (
@@ -563,6 +587,14 @@ export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: str
         <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>↩ CARRIED FROM THE SCENES HUB — this weather-moment&rsquo;s premise + palette</div>
         <div>the premise was auditioned for RANGE at the <a href={`/auditions/${campaign}/scenes`} style={{ color: forest, fontWeight: 700 }}>scenes hub</a>; here it&rsquo;s HONED for <b style={{ textTransform: "capitalize" }}>{b.label}</b> <span style={{ fontFamily: "monospace", color: margin }}>{b.spark}</span> — the cast auditioned, the tone dialed within (cozy ↔ intense).</div>
       </div>
+      {b.slot && (
+        <div style={{ border: `2px solid ${forest}`, background: paper, padding: "9px 12px", marginBottom: 16, fontSize: 11, color: ink, lineHeight: 1.5 }}>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 3 }}>▣ YOUR COVERAGE SLOT — allocated by the hub (stay in your lane, don&rsquo;t duplicate a sibling)</div>
+          <div>cast <b>{b.slot.cast}</b> · role <b>{b.slot.role}</b> · structure <b>{b.slot.structure}</b></div>
+          {b.siblingClaims && <div style={{ fontSize: 9.5, color: margin, marginTop: 4 }}>↳ siblings own (taken): roles [{b.siblingClaims.role.filter((r) => r !== b.slot!.role).join(" · ")}] · structures [{b.siblingClaims.structure.filter((s) => s !== b.slot!.structure).join(" · ")}]</div>}
+          {b.conflict && <div style={{ fontSize: 9.5, color: "#c08a2e", marginTop: 4, borderLeft: `2px solid #c08a2e`, paddingLeft: 7 }}>⚑ shares its {b.conflict.dimension} with a sibling → kept distinct: {b.conflict.resolution}</div>}
+        </div>
+      )}
       {(b.premise || h?.premiseHoned) && (
         <div style={{ border: `2px solid ${forest}`, background: paper, padding: "10px 13px", marginBottom: 16, fontSize: 12.5, color: ink, lineHeight: 1.55 }}>
           <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 4 }}>▸ THE PREMISE — honed for this moment</div>

@@ -25,14 +25,17 @@ export default async function SceneBranchPage({ params }: { params: Promise<{ ca
   const b = idx >= 0 ? branches[idx] : null;
   if (!c || !b) return <main className="aud-main" style={{ padding: 40 }}><p style={{ color: "var(--margin-ink)" }}>No scene “{scene}” for {campaign}. <a href={`/auditions/${campaign}/scenes`} style={link}>↑ the scenes hub</a></p></main>;
 
-  const p = c.steps.scenes as unknown as { picked?: string; scrubGroups: { id: string; mood?: { characters: { name: string; color: string; is: string; joinsAt: string }[] }; subrange?: { label: string; text: string }[][]; scenes?: { premises?: { scene: string; premise: string }[]; honing?: { [k: string]: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string } }; expertsGate?: { name: string; role: string }[] } }[] };
+  const p = c.steps.scenes as unknown as { picked?: string; scrubGroups: { id: string; mood?: { characters: { name: string; color: string; is: string; joinsAt: string }[] }; subrange?: { label: string; text: string }[][]; scenes?: { premises?: { scene: string; premise: string }[]; honing?: { [k: string]: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string; slot?: { cast: string; role: string; structure: string } } }; expertsGate?: { name: string; role: string }[]; coverage?: { map?: { scene: string; cast: string; role: string; structure: string }[]; claims?: { cast: string[]; role: string[]; structure: string[] }; conflicts?: { scenes: (string | number)[]; dimension: string; issue: string; resolution: string }[] } } }[] };
   const g = p.scrubGroups.find((x) => x.id === p.picked);
   const characters = g?.mood?.characters ?? [];
   const toneText = g?.subrange?.[idx] ?? [];
   const premise = g?.scenes?.premises?.find((x) => x.scene.toLowerCase() === b.label.toLowerCase())?.premise;
   const honing = g?.scenes?.honing?.[b.key];
   const expertsGate = g?.scenes?.expertsGate;
-  const view: SceneBranchView = { key: b.key, label: b.label, spark: b.spark, cells: b.cells, characters, toneText, premise, honing, expertsGate };
+  const cov = g?.scenes?.coverage;
+  const slot = honing?.slot ?? cov?.map?.find((m) => m.scene.toLowerCase() === b.label.toLowerCase());
+  const cf = cov?.conflicts?.find((x) => (x.scenes || []).map(String).includes(String(idx + 1)));
+  const view: SceneBranchView = { key: b.key, label: b.label, spark: b.spark, cells: b.cells, characters, toneText, premise, honing, expertsGate, slot, siblingClaims: cov?.claims, conflict: cf ? { dimension: cf.dimension, resolution: cf.resolution } : undefined };
   const prev = idx > 0 ? branches[idx - 1] : null;
   const next = idx < branches.length - 1 ? branches[idx + 1] : null;
 
