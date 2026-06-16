@@ -60,14 +60,14 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
   const culture = tonePilot?.culture;
 
   return (
-    <main style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
+    <main className="aud-spine" style={{ padding: "24px 20px 80px" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", fontSize: 12, marginBottom: 4 }}>
         <a href="/auditions" style={{ color: margin, textDecoration: "none" }}>↑ the board</a>
         <span style={{ fontSize: 10, letterSpacing: ".12em", color: red, fontFamily: "var(--theme-body)", fontWeight: 700 }}>NOT CANON</span>
       </div>
       <h1 style={{ fontSize: 28, margin: "0 0 2px", color: ink }}>{c.label}</h1>
-      <p style={{ fontSize: 12.5, color: soft, lineHeight: 1.55, margin: "0 0 6px" }}>{c.blurb}</p>
-      <p style={{ fontSize: 11, color: margin, margin: "0 0 12px" }}>born from <a href="/auditions/concept" style={{ color: forest }}>the slate</a> · a shared TRUNK (setting · range · mood), then it BRANCHES per tone — each tone its own cast · chat · beats. Each step carries the last's experts forward.</p>
+      <p className="aud-prose" style={{ fontSize: 12.5, color: soft, lineHeight: 1.55, margin: "0 0 6px" }}>{c.blurb}</p>
+      <p className="aud-prose" style={{ fontSize: 11, color: margin, margin: "0 0 12px" }}>born from <a href="/auditions/concept" style={{ color: forest }}>the slate</a> · a shared TRUNK (setting · range · mood), then it BRANCHES at the SCENES step (the 5 world-moments × the tones) — each cell its own palette + cast, then the tone wears its makeup. Each step carries the last&rsquo;s experts forward.</p>
 
       {(targetAge || genre || culture) && (
         <div style={{ border: `2px solid ${forest}`, background: "var(--paper-shade)", padding: "10px 13px", margin: "0 0 20px" }}>

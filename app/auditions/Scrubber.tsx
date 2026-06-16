@@ -515,7 +515,7 @@ export function ToneBuild({ d }: { d: ToneT }) {
       {/* ⓪ EXPERTS FIRST */}
       <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 3 }}>⓪ EXPERTS FIRST — frame the audience, then build the makeup</div>
       <div style={{ fontSize: 11.5, color: soft, lineHeight: 1.5, marginBottom: 9 }}>experts <b>matched to the audience</b> ({d.audience}) framed the state of mind; their synthesis is the MAKEUP BRIEF the audition judges against.</div>
-      <div style={{ display: "grid", gap: 8, marginBottom: 14 }}>
+      <div className="aud-grid2" style={{ display: "grid", gap: 8, marginBottom: 14 }}>
         {d.experts.map((e) => {
           const v = d.vet.perExpert.find((p) => p.name === e.name);
           return (

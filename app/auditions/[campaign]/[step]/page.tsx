@@ -29,7 +29,7 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
     const p = c.steps.pilot as unknown as { scenes: string[]; picked?: string; scrubGroups: { id: string; name: string; settingTitle: string; throughline: string; env: string[]; buildingBlock: string; metaphor?: string; audienceServe?: string; subrange?: { label: string; text: string }[][]; mood?: { ambients: { id: string; name: string; base: string; ink: string; accent: string; why: string }[]; characters: { name: string; color: string; is: string; joinsAt: string }[]; eli5: string; vet?: { best: string; ambients: { id: string; conveys_metaphor: string; safe_floor: string; arc_fit: string; note: string }[]; characterHarmony: string; contrastFlags: string[]; oneLine: string }; prompts?: { characters: string[]; objects: string[]; trophy: string[]; items: string[]; achievementIcons: string[] }; prose?: { objectSeeds: { dominant: string[]; accent: string[] }; diction: { cool: string[]; warm: string[] }; rules: string[]; example: string } } }[] };
     const story = p.scrubGroups.find((g) => g.id === p.picked);
     return (
-      <main style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
+      <main className="aud-main" style={{ padding: "24px 20px 80px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", fontSize: 12, marginBottom: 4 }}>
           <a href="/auditions" style={{ color: "var(--margin-ink)", textDecoration: "none" }}>↑ the board</a>
           <span style={{ fontSize: 10, letterSpacing: ".12em", color: "var(--spot-red)", fontFamily: "var(--theme-body)", fontWeight: 700 }}>NOT CANON</span>
@@ -45,7 +45,7 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
               <div><b>struggle:</b> {story.buildingBlock}</div>
               {story.audienceServe && <div style={{ color: "var(--ink-soft)", fontStyle: "italic" }}>↳ serves: {story.audienceServe}</div>}
             </div>
-            <p style={{ fontSize: 12.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: "0 0 14px" }}>{INTRO.story}</p>
+            <p className="aud-prose" style={{ fontSize: 12.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: "0 0 14px" }}>{INTRO.story}</p>
             <StoryBuild story={{ id: story.id, env: story.env, subrange: story.subrange, mood: story.mood }} scenes={p.scenes} />
             <div style={{ border: "2px dashed var(--forest)", background: "var(--paper-shade)", padding: "10px 14px", margin: "16px 0 0", fontSize: 11, color: "var(--ink)", lineHeight: 1.5 }}>
               <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: "var(--forest)", marginBottom: 4 }}>→ HANDS THE NEXT STEPS</div>
@@ -71,14 +71,14 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
     const g = p.scrubGroups.find((x) => x.id === p.picked);
     const sc = g?.scenes;
     return (
-      <main style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
+      <main className="aud-main" style={{ padding: "24px 20px 80px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", fontSize: 12, marginBottom: 4 }}>
           <a href="/auditions" style={{ color: "var(--margin-ink)", textDecoration: "none" }}>↑ the board</a>
           <span style={{ fontSize: 10, letterSpacing: ".12em", color: "var(--spot-red)", fontFamily: "var(--theme-body)", fontWeight: 700 }}>NOT CANON</span>
         </div>
         <h1 style={{ fontSize: 24, margin: "0 0 2px", color: "var(--ink)" }}>{stepNo("scenes")} The Scenes · {c.label}</h1>
         {g?.metaphor && <div style={{ fontFamily: "var(--theme-display)", fontSize: 18, color: "var(--forest)", marginBottom: 4 }}>{g.name} «{g.metaphor}»</div>}
-        <p style={{ fontSize: 12.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: "0 0 16px" }}>{INTRO.scenes}</p>
+        <p className="aud-prose" style={{ fontSize: 12.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: "0 0 16px" }}>{INTRO.scenes}</p>
         {!sc ? (
           <p style={{ fontSize: 13, color: "var(--margin-ink)" }}>The matrix isn&rsquo;t branched yet. Build it from <a href={`/auditions/${campaign}/story`} style={link}>the story step →</a></p>
         ) : <ScenesBuild d={sc} />}
@@ -103,7 +103,7 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
     const amb = g?.mood?.ambients?.find((a) => a.name === g?.mood?.vet?.best) ?? g?.mood?.ambients?.[0];
     const d: ToneT | null = g && ep && au ? { audience: ep.audience, experts: ep.experts, framework: ep.framework, vet: ep.vet, characters: g.mood!.characters, charPrompts: g.mood?.prompts?.characters ?? [], audit: au, ambientName: amb?.name ?? "the ambient", ambientBase: amb?.base ?? "#0e1822", castAudition: g.castAudition, mirror: g.mirror, content: (g as { content?: ToneT["content"] }).content, support: (g as { support?: ToneT["support"] }).support } : null;
     return (
-      <main style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
+      <main className="aud-main" style={{ padding: "24px 20px 80px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", fontSize: 12, marginBottom: 4 }}>
           <a href="/auditions" style={{ color: "var(--margin-ink)", textDecoration: "none" }}>↑ the board</a>
           <span style={{ fontSize: 10, letterSpacing: ".12em", color: "var(--spot-red)", fontFamily: "var(--theme-body)", fontWeight: 700 }}>NOT CANON</span>
@@ -118,7 +118,7 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
             {p.culture && <span style={{ border: "1.5px solid var(--forest)", borderRadius: 3, padding: "2px 8px", fontSize: 10.5, color: "var(--ink)" }}>🎨 culture <b>{p.culture.name}</b></span>}
           </div>
         )}
-        <p style={{ fontSize: 12.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: "0 0 16px" }}>{INTRO.tone}</p>
+        <p className="aud-prose" style={{ fontSize: 12.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: "0 0 16px" }}>{INTRO.tone}</p>
         {!d ? (
           <p style={{ fontSize: 13, color: "var(--margin-ink)" }}>The makeup isn&rsquo;t auditioned yet. Build it on <a href={`/auditions/${campaign}/story`} style={link}>the story step →</a></p>
         ) : <ToneBuild d={d} />}

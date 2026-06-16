@@ -28,13 +28,13 @@ export default function StepBoard({ stepLabel, intro, whyPicked, primer, prepend
   const navLink = (n: Nav, dir: string) => n ? <a href={n.href} style={{ color: forest, fontWeight: 700, textDecoration: "none" }}>{dir === "prev" ? "← " : ""}{n.label}{dir === "next" ? " →" : ""}</a> : <span style={{ color: margin }}>{dir === "prev" ? "← back" : "next: tbd →"}</span>;
 
   return (
-    <main style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
+    <main className="aud-main" style={{ padding: "24px 20px 80px" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", fontSize: 12, marginBottom: 4 }}>
         <a href="/auditions" style={{ color: margin, textDecoration: "none" }}>↑ the board</a>
         <span style={{ fontSize: 10, letterSpacing: ".12em", color: red, fontFamily: "var(--theme-body)", fontWeight: 700 }}>NOT CANON</span>
       </div>
       <h1 style={{ fontSize: 24, margin: "0 0 4px", color: ink }}>{stepLabel}</h1>
-      <p style={{ fontSize: 12.5, color: soft, lineHeight: 1.55, margin: "0 0 12px" }}>{intro}</p>
+      <p className="aud-prose" style={{ fontSize: 12.5, color: soft, lineHeight: 1.55, margin: "0 0 12px" }}>{intro}</p>
 
       {/* §8.19 — every PICKED step ships an ELI5 "why this won" (distinct from the primer's "what is this step") */}
       {whyPicked?.text && (

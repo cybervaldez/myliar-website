@@ -35,7 +35,7 @@ function chips(campaign: string) {
 
 export default function Board() {
   return (
-    <main style={{ maxWidth: 760, margin: "0 auto", padding: "28px 20px 80px" }}>
+    <main className="aud-main" style={{ padding: "28px 20px 80px" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
         <span style={{ fontSize: 10, letterSpacing: ".14em", color: forest, fontFamily: "var(--theme-body)", fontWeight: 700 }}>RESTARTED FROM CONCEPT · 2026-06-14</span>
         <span style={{ fontSize: 10, letterSpacing: ".12em", color: red, fontFamily: "var(--theme-body)", fontWeight: 700 }}>NOT CANON</span>
