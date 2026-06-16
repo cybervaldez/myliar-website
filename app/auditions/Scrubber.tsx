@@ -465,6 +465,44 @@ export function ScenesBuild({ d }: { d: ScenesT }) {
   );
 }
 
+// THE AUDITION PEEK — the autopick stays the headline; this opens the AUDITION PROCESS (the alternatives
+// that weren't picked + why the winner won) in a MODAL, so the other choices are inspectable WITHOUT
+// polluting the main view. Reusable across every step.
+export type AuditionCand = { name: string; fit?: string; note?: string; picked?: boolean };
+export function AuditionPeek({ label, candidates, why, gatedBy }: { label: string; candidates: AuditionCand[]; why?: string; gatedBy?: string }) {
+  const [open, setOpen] = useState(false);
+  const fitCol = (f?: string) => (f === "strong" ? forest : f === "off" || f === "weak" ? "var(--spot-red)" : amber);
+  if (!candidates?.length) return null;
+  return (
+    <>
+      <button onClick={() => setOpen(true)} style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".04em", color: forest, background: "none", border: `1.5px solid ${forest}`, borderRadius: 3, padding: "3px 9px", cursor: "pointer" }}>▸ see the audition <span style={{ color: margin, fontWeight: 400 }}>({candidates.length} tried)</span></button>
+      {open && (
+        <div onClick={() => setOpen(false)} style={{ position: "fixed", inset: 0, background: "rgba(26,22,15,.55)", zIndex: 60, display: "flex", alignItems: "flex-start", justifyContent: "center", padding: "6vh 16px", overflowY: "auto", cursor: "zoom-out" }}>
+          <div onClick={(e) => e.stopPropagation()} style={{ cursor: "auto", maxWidth: 560, width: "100%", background: paper, border: `2px solid ${ink}`, boxShadow: "6px 6px 0 rgba(0,0,0,.25)", padding: "14px 16px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10, marginBottom: 8 }}>
+              <div style={{ fontFamily: "var(--theme-body)", fontSize: 12.5, fontWeight: 700, color: forest }}>{label} — the audition</div>
+              <button onClick={() => setOpen(false)} style={{ border: "none", background: "none", fontSize: 21, lineHeight: 1, cursor: "pointer", color: margin }}>×</button>
+            </div>
+            {gatedBy && <div style={{ fontSize: 9.5, color: margin, marginBottom: 9, borderLeft: `2px solid ${forest}`, paddingLeft: 7 }}>⌖ composed under {gatedBy}</div>}
+            <div style={{ display: "grid", gap: 6 }}>
+              {candidates.map((c, i) => (
+                <div key={i} style={{ border: `${c.picked ? 2 : 1}px solid ${c.picked ? forest : soft}`, background: c.picked ? shade : paper, padding: "7px 10px", fontSize: 11.5, color: ink, lineHeight: 1.45 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8 }}>
+                    <span><b>{c.name}</b> {c.fit && <span style={{ fontSize: 9.5, color: fitCol(c.fit), fontWeight: 700 }}>· {c.fit}</span>}</span>
+                    {c.picked && <span style={{ fontSize: 9.5, color: forest, fontWeight: 700, whiteSpace: "nowrap" }}>✓ AUTOPICKED</span>}
+                  </div>
+                  {c.note && <div style={{ color: soft, fontSize: 11, marginTop: 1 }}>{c.note}</div>}
+                </div>
+              ))}
+            </div>
+            {why && <div style={{ fontSize: 10.5, color: ink, marginTop: 9, borderTop: `1px solid ${soft}`, paddingTop: 7, lineHeight: 1.5 }}><b style={{ color: forest }}>why the pick won:</b> {why}</div>}
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
 // ④ THE SCENES HUB — the RANGE / top-down PORTFOLIO view. We audition a LOT here on purpose: it's about
 // COVERING RANGE — across the 5 branches, is the variety healthy + the balance right? The PREMISE is
 // auditioned here; the CAST + premise HONING happen INSIDE each scene. Carries the prior experts (gating)
@@ -474,6 +512,7 @@ export type RangeT = {
   premises: { scene: string; premise: string }[];
   range: { variety: string; overlap: string; balance: string; skew: string; coverage: string; gaps: string; variety_add: string; note: string };
   coverage?: CoverageT;
+  gatedBy?: string;
   rangeReview?: { verdict: string; flag: string };
   expertsGate?: { name: string; role: string }[];
   branches: { key: string; label: string; spark: string; cells: { tone: string; base: string }[] }[];
@@ -502,7 +541,8 @@ export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
       {d.coverage && (
         <div style={{ border: `2px solid ${forest}`, background: shade, padding: "11px 14px", marginBottom: 14, fontSize: 11, color: ink, lineHeight: 1.5 }}>
           <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 3 }}>▣ THE COVERAGE MAP — the conflict-preventer (carried into each scene)</div>
-          <div style={{ fontSize: 10.5, color: soft, marginBottom: 8 }}>each scene auditions on its OWN page, blind to its siblings — so the hub ALLOCATES distinct territory here (cast · role · structure) so they don&rsquo;t collide. Carried into every scene as its constraint.</div>
+          <div style={{ fontSize: 10.5, color: soft, marginBottom: 6 }}>each scene auditions on its OWN page, blind to its siblings — so the hub ALLOCATES distinct territory here (cast · role · structure) so they don&rsquo;t collide. Carried into every scene as its constraint.</div>
+          {d.gatedBy && <div style={{ fontSize: 9.5, color: margin, marginBottom: 8, borderLeft: `2px solid ${forest}`, paddingLeft: 7 }}>⌖ every slot composed under {d.gatedBy} — the age · genre · culture gate runs through the whole allocation.</div>}
           <div style={{ display: "grid", gridTemplateColumns: "minmax(74px,auto) 1fr 1fr 1.2fr", gap: "3px 10px", fontSize: 10.5, marginBottom: 8 }}>
             {["SCENE", "CAST", "ROLE", "STRUCTURE"].map((h) => <div key={h} style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".05em", color: margin }}>{h}</div>)}
             {d.coverage.map.map((m) => (
@@ -578,7 +618,7 @@ export function BranchLinks({ campaign, branches, active }: { campaign: string; 
 }
 
 // THE WEATHER-MOMENT BRANCH — one scene honed: its palette (dialed cozy→intense), the tone dial, the cast.
-export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string } };
+export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; gatedBy?: string };
 export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: string }) {
   const h = b.honing;
   return (
@@ -591,6 +631,7 @@ export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: str
         <div style={{ border: `2px solid ${forest}`, background: paper, padding: "9px 12px", marginBottom: 16, fontSize: 11, color: ink, lineHeight: 1.5 }}>
           <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 3 }}>▣ YOUR COVERAGE SLOT — allocated by the hub (stay in your lane, don&rsquo;t duplicate a sibling)</div>
           <div>cast <b>{b.slot.cast}</b> · role <b>{b.slot.role}</b> · structure <b>{b.slot.structure}</b></div>
+          {b.gatedBy && <div style={{ fontSize: 9.5, color: margin, marginTop: 4 }}>↳ this slot composed under {b.gatedBy}</div>}
           {b.siblingClaims && <div style={{ fontSize: 9.5, color: margin, marginTop: 4 }}>↳ siblings own (taken): roles [{b.siblingClaims.role.filter((r) => r !== b.slot!.role).join(" · ")}] · structures [{b.siblingClaims.structure.filter((s) => s !== b.slot!.structure).join(" · ")}]</div>}
           {b.conflict && <div style={{ fontSize: 9.5, color: "#c08a2e", marginTop: 4, borderLeft: `2px solid #c08a2e`, paddingLeft: 7 }}>⚑ shares its {b.conflict.dimension} with a sibling → kept distinct: {b.conflict.resolution}</div>}
         </div>
@@ -604,7 +645,10 @@ export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: str
       )}
       {h?.castPick && (
         <>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>▸ THE CAST AUDITION — who carries this moment <span style={{ color: margin, fontWeight: 400, fontSize: 10 }}>(auditioned HERE, not the hub)</span></div>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginBottom: 6, flexWrap: "wrap" }}>
+            <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest }}>▸ THE CAST AUDITION — who carries this moment <span style={{ color: margin, fontWeight: 400, fontSize: 10 }}>(autopicked HERE)</span></div>
+            <AuditionPeek label="the cast" candidates={b.castAudition ?? []} why={b.whyWon} gatedBy={b.gatedBy} />
+          </div>
           <div style={{ border: `2px solid ${forest}`, background: shade, padding: "9px 12px", marginBottom: 6, fontSize: 12, color: ink, lineHeight: 1.5 }}>
             <span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".05em", color: forest }}>FOCAL</span> {h.castPick}
             {h.supporting && h.supporting !== "none" && <div style={{ marginTop: 4, fontSize: 11, color: soft }}><span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, color: forest }}>+ SUPPORTING</span> {h.supporting}</div>}

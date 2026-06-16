@@ -918,24 +918,24 @@
     },
     "premises": [
      {
-      "scene": "calm water",
-      "premise": "The Manifest-Keeper invites you to add a small, personal object to the ship’s log—not for its value, but to have its presence witnessed before the crossing begins."
+      "scene": "1",
+      "premise": "The quiet manifest-keeper invites you to find a name on her list, a fellow passenger's. This small act of witness prompts a reflection on your own reasons for this journey."
      },
      {
-      "scene": "rising wind",
-      "premise": "As the swell begins, the Deckhand shows you a simple, practical knot for securing a line, a small, steadying action to share as the boat begins to move."
+      "scene": "2",
+      "premise": "The Deckhand, securing lines, wordlessly offers you one to hold. It isn't a request for help, but an invitation to feel the sea's deep rhythm as the first swells arrive."
      },
      {
-      "scene": "the storm",
-      "premise": "In the wheelhouse, you watch the Pilot, who isn't fighting the immense waves but guiding the ship *with* them in a display of focused, non-verbal surrender."
+      "scene": "3",
+      "premise": "The Pilot gestures for you to stand in the wheelhouse doorway. From this place of protected witness, you watch the immense, indifferent waves, feeling the ship endure."
      },
      {
-      "scene": "settling sea",
-      "premise": "Long after the worst has passed, the Manifest-Keeper finds you still white-knuckled on a railing and gently places a warm cloth over your hands, a wordless invitation to let go."
+      "scene": "4",
+      "premise": "The Cook wordlessly hands you a heavy, warm bowl. The simple, grounding act of holding it helps you release the storm's lingering tension from your body."
      },
      {
-      "scene": "first light",
-      "premise": "As dawn breaks, the Deckhand joins you at the rail and quietly asks what you saw in the dark—not the storm, but the feeling of being carried through it."
+      "scene": "5",
+      "premise": "As dawn breaks, you find a small, carved bird left by an unseen passenger. It’s a silent acknowledgement of the shared passage as the far shore appears on the horizon."
      }
     ],
     "range": {
@@ -945,12 +945,12 @@
      "skew": "none",
      "coverage": "complete",
      "gaps": "none",
-     "variety_add": "An interaction with another passenger who is vocalizing their fear, where the player's only action is to listen, deepening the theme of support as presence, not problem-solving.",
-     "note": "The range provides distinct emotional and interactive beats that map well to the core arc and character interactions."
+     "variety_add": "A moment of observing non-human life, like bioluminescent plankton or a distant whale call, indifferent to the storm, reinforcing the deep's living presence.",
+     "note": "The range provides distinct emotional and interactive hooks for each phase of the arc, focusing on different modes of quiet interaction."
     },
     "rangeReview": {
      "verdict": "yes",
-     "flag": "Each premise centers on a unique interaction with a different crew member, providing a clear narrative and emotional anchor for its respective scene."
+     "flag": "Success depends on the writer's ability to convey weight through non-verbal cues and the unsaid, honoring the 'ma' (meaningful pause)."
     },
     "expertsGate": [
      {
@@ -976,141 +976,262 @@
     ],
     "honing": {
      "calm-water": {
-      "castPick": "The Manifest-Keeper — their role is about witnessing and recording, which perfectly frames this initial act of acknowledging the player's personal 'carry'.",
+      "castPick": "The Manifest-keeper — their quiet, precise nature is a perfect mirror for the glass-still water, turning the external scene into a prompt for internal accounting.",
       "supporting": "none",
-      "premiseHoned": "As a quiet, grounding ritual before the journey, the Manifest-Keeper invites you to select a small personal object and watch as they log its presence, its weight now officially held and witnessed by the ship.",
-      "review": "Strong, simple opening; the physical object provides a tangible anchor for the player's emotional state.",
+      "premiseHoned": "Watching the perfect, unbroken reflection of the moon on the water, the Manifest-keeper takes a quiet moment to log the weight they carry inside, observing it with the same dispassionate care as the ship's cargo.",
+      "review": "Establishes a strong, quiet baseline for the character's internal journey.",
       "slot": {
-       "cast": "Manifest-Keeper",
-       "role": "participant",
-       "structure": "ritual-gesture"
-      }
-     },
-     "rising-wind": {
-      "castPick": "The Deckhand — their practical, hands-on nature makes them the ideal teacher for a small, grounding task as the world begins to feel unsteady.",
-      "supporting": "none",
-      "premiseHoned": "As the deck begins to tilt with the first swells, the Deckhand meets your anxiety with a gentle task, guiding your hands through the motions of a simple, useful knot—a shared focus against the rising wind.",
-      "review": "Good use of a haptic metaphor; the knot-tying can be a simple, satisfying micro-game.",
-      "slot": {
-       "cast": "Deckhand",
-       "role": "learner",
-       "structure": "gentle-task"
-      }
-     },
-     "the-storm": {
-      "castPick": "The Pilot — as the embodiment of calm competence, their presence is the entire point; they hold the center without words, modeling a different way of being with overwhelming force.",
-      "supporting": "none",
-      "premiseHoned": "You are invited into the quiet of the wheelhouse to simply witness the Pilot, who meets the storm not with force, but with a focused, yielding grace, their hands steady on the wheel as they guide the ship in a dance with the waves.",
-      "review": "Purely atmospheric and character-defining; success depends on nailing the non-verbal animation and soundscape.",
-      "slot": {
-       "cast": "Pilot",
-       "role": "witness",
-       "structure": "witnessed-competence"
-      }
-     },
-     "settling-sea": {
-      "castPick": "The Manifest-Keeper — returning to their role of quiet observation, they notice what the player may not: the lingering physical tension after the danger has passed.",
-      "supporting": "none",
-      "premiseHoned": "In the quiet aftermath, the Manifest-Keeper finds you at the rail, and without a word, lays a warm, damp cloth over your white-knuckled hands, a gentle gesture that draws your attention to the tension you're still holding.",
-      "review": "A powerful, wordless beat that externalizes an internal state; very resonant for burnout.",
-      "slot": {
-       "cast": "Manifest-Keeper",
+       "scene": "calm water",
+       "cast": "The Manifest-keeper",
        "role": "self-observer",
        "structure": "interior-noticing"
-      }
+      },
+      "castAudition": [
+       {
+        "name": "The Manifest-keeper",
+        "fit": "strong",
+        "note": "their quiet, observational precision perfectly mirrors the water's stillness"
+       },
+       {
+        "name": "The Cook",
+        "fit": "viable",
+        "note": "their gentle presence offers a background warmth but lacks the scene's core stillness"
+       },
+       {
+        "name": "The Pilot",
+        "fit": "viable",
+        "note": "their steady competence is reassuring but less emotionally present than a shared quiet"
+       },
+       {
+        "name": "The Deckhand",
+        "fit": "off",
+        "note": "their active comfort feels intrusive in a moment of pure tranquility"
+       }
+      ],
+      "whyWon": "The Manifest-keeper's non-intrusive, witnessing presence best embodies the scene's low-arousal calm and the 'nothing happens, beautifully' iyashikei principle."
+     },
+     "rising-wind": {
+      "castPick": "The Pilot — their steady, cool competence is the focus, reassuring the player not with words but with small, expert actions that meet the rising sea.",
+      "supporting": "The Deckhand",
+      "premiseHoned": "From the wheelhouse doorway, the player witnesses the Pilot's hands on the wheel, making minute, calm adjustments that harmonize with the sea's growing swell, embodying a competence that soothes rather than excites.",
+      "review": "A powerful, non-verbal scene that builds trust in the world's safety through character.",
+      "slot": {
+       "scene": "rising wind",
+       "cast": "The Pilot",
+       "role": "witness",
+       "structure": "witnessed-competence"
+      },
+      "castAudition": [
+       {
+        "name": "The Pilot",
+        "fit": "strong",
+        "note": "their cool competence provides a direct, functional anchor against the rising uncertainty"
+       },
+       {
+        "name": "The Cook",
+        "fit": "viable",
+        "note": "their continued ritual of preparing a meal offers a powerful, indirect form of stability"
+       },
+       {
+        "name": "The Deckhand",
+        "fit": "viable",
+        "note": "their offer of direct comfort is a valid response but could feel premature"
+       },
+       {
+        "name": "The Manifest-keeper",
+        "fit": "off",
+        "note": "their quiet focus feels disconnected and too passive for the rising external energy"
+       }
+      ],
+      "whyWon": "As the environment becomes uncertain, the Pilot's steady hand on the wheel is the most direct and grounding reassurance against overwhelm."
+     },
+     "the-storm": {
+      "castPick": "The Deckhand — their role as a grounding, warm presence is essential here, transforming a potentially terrifying moment into an experience of being held and supported.",
+      "supporting": "none",
+      "premiseHoned": "As the boat heaves in the dark troughs, the Deckhand invites the player to a simple, grounding task below deck—methodically polishing a brass compass—the rhythmic motion and their quiet presence an anchor in the chaos.",
+      "review": "Transforms a potential high-arousal threat into a core moment of somatic grounding.",
+      "slot": {
+       "scene": "the storm",
+       "cast": "The Deckhand",
+       "role": "participant",
+       "structure": "gentle-task"
+      },
+      "castAudition": [
+       {
+        "name": "The Deckhand",
+        "fit": "strong",
+        "note": "their direct, somatic comfort is the perfect antidote to the scene's peak overwhelm"
+       },
+       {
+        "name": "The Pilot",
+        "fit": "viable",
+        "note": "their unseen competence is the foundation of safety, but it's too remote for immediate comfort"
+       },
+       {
+        "name": "The Cook",
+        "fit": "viable",
+        "note": "their persistence is a symbol of hope, but less immediate than physical reassurance"
+       },
+       {
+        "name": "The Manifest-keeper",
+        "fit": "off",
+        "note": "their quiet, precise nature is completely invalidated by the scene's raw chaos"
+       }
+      ],
+      "whyWon": "The Deckhand's offer of direct, physical comfort ('a warm hand on your shoulder') meets the player's acute need for a human anchor in a moment of crisis."
+     },
+     "settling-sea": {
+      "castPick": "The Cook — embodying homely warmth and restoration, their simple offer of shared work in the galley is the perfect ritual for marking the return to calm.",
+      "supporting": "The Manifest-keeper",
+      "premiseHoned": "In the warm galley, the Cook wordlessly hands the player a knife and a vegetable. The simple, shared labor of preparing a meal becomes a physical act of release, mirroring the easing of the sea.",
+      "review": "Excellent use of a simple, communal activity to externalize an internal emotional shift.",
+      "slot": {
+       "scene": "settling sea",
+       "cast": "The Cook",
+       "role": "helper",
+       "structure": "shared-labor"
+      },
+      "castAudition": [
+       {
+        "name": "The Cook",
+        "fit": "strong",
+        "note": "their offer of simple, imperfect nourishment perfectly matches the need for gentle recovery"
+       },
+       {
+        "name": "The Deckhand",
+        "fit": "viable",
+        "note": "their continued presence is kind, but the need has shifted from crisis intervention to quiet care"
+       },
+       {
+        "name": "The Pilot",
+        "fit": "off",
+        "note": "their cool competence feels detached now that the crisis has passed and warmth is needed"
+       },
+       {
+        "name": "The Manifest-keeper",
+        "fit": "off",
+        "note": "their observational stance doesn't offer the restorative warmth the moment requires"
+       }
+      ],
+      "whyWon": "After the intensity of the storm, the Cook's homely ritual provides a tangible, restorative warmth that grounds the player in safety and care."
      },
      "first-light": {
-      "castPick": "The Deckhand — their warmth and directness make them the right person to gently broach the emotional core of the journey, moving from shared action to shared feeling.",
+      "castPick": "The Manifest-keeper — having started as an observer of burdens, their final act as a celebrant of release brings their personal journey to a quiet, poignant close.",
       "supporting": "none",
-      "premiseHoned": "As the first light touches the water, the Deckhand joins you, their presence comfortable and undemanding. After a shared silence, they ask you to reflect on the feeling of being carried through the dark, inviting you to give voice to the experience.",
-      "review": "Provides crucial emotional closure; the dialogue options here must be carefully crafted to feel authentic and unforced.",
+      "premiseHoned": "At the stern, in the first light, the Manifest-keeper performs a small, precise ritual: taking a single stone from their pocket, representing a logged weight, and gently releasing it into the ship's wake.",
+      "review": "Provides a poignant and satisfying character arc conclusion through a single, powerful gesture.",
       "slot": {
-       "cast": "Deckhand",
-       "role": "reflector",
-       "structure": "shared-reflection"
-      }
+       "scene": "first light",
+       "cast": "The Manifest-keeper",
+       "role": "celebrant",
+       "structure": "ritual-gesture"
+      },
+      "castAudition": [
+       {
+        "name": "The Manifest-keeper",
+        "fit": "strong",
+        "note": "their role as a quiet witness perfectly frames the reflective weight of the journey's end"
+       },
+       {
+        "name": "The Pilot",
+        "fit": "viable",
+        "note": "their steady presence signifies the journey's completion, a quiet shared accomplishment"
+       },
+       {
+        "name": "The Cook",
+        "fit": "viable",
+        "note": "their warmth is a welcome backdrop, but less specific to the poignancy of arrival"
+       },
+       {
+        "name": "The Deckhand",
+        "fit": "off",
+        "note": "their direct comfort feels intrusive on a moment of personal, quiet reflection"
+       }
+      ],
+      "whyWon": "The Manifest-keeper's final, silent act of 'logging the carry' validates the passenger's entire journey, offering a poignant, non-verbal closure."
      }
     },
     "coverage": {
      "map": [
       {
        "scene": "calm water",
-       "title": "calm water",
-       "cast": "Manifest-Keeper",
-       "role": "participant",
-       "structure": "ritual-gesture"
-      },
-      {
-       "scene": "rising wind",
-       "title": "rising wind",
-       "cast": "Deckhand",
-       "role": "learner",
-       "structure": "gentle-task"
-      },
-      {
-       "scene": "the storm",
-       "title": "the storm",
-       "cast": "Pilot",
-       "role": "witness",
-       "structure": "witnessed-competence"
-      },
-      {
-       "scene": "settling sea",
-       "title": "settling sea",
-       "cast": "Manifest-Keeper",
+       "cast": "The Manifest-keeper",
        "role": "self-observer",
        "structure": "interior-noticing"
       },
       {
+       "scene": "rising wind",
+       "cast": "The Pilot",
+       "role": "witness",
+       "structure": "witnessed-competence"
+      },
+      {
+       "scene": "the storm",
+       "cast": "The Deckhand",
+       "role": "participant",
+       "structure": "gentle-task"
+      },
+      {
+       "scene": "settling sea",
+       "cast": "The Cook",
+       "role": "helper",
+       "structure": "shared-labor"
+      },
+      {
        "scene": "first light",
-       "title": "first light",
-       "cast": "Deckhand",
-       "role": "reflector",
-       "structure": "shared-reflection"
+       "cast": "The Manifest-keeper",
+       "role": "celebrant",
+       "structure": "ritual-gesture"
       }
      ],
      "claims": {
       "cast": [
-       "Manifest-Keeper",
-       "Deckhand",
-       "Pilot"
+       "The Manifest-keeper",
+       "The Pilot",
+       "The Deckhand",
+       "The Cook"
       ],
       "role": [
-       "participant",
-       "learner",
-       "witness",
        "self-observer",
-       "reflector"
+       "witness",
+       "participant",
+       "helper",
+       "celebrant"
       ],
       "structure": [
-       "ritual-gesture",
-       "gentle-task",
-       "witnessed-competence",
        "interior-noticing",
-       "shared-reflection"
+       "witnessed-competence",
+       "gentle-task",
+       "shared-labor",
+       "ritual-gesture"
       ]
      },
      "conflicts": [
       {
        "scenes": [
         1,
-        4
-       ],
-       "dimension": "cast",
-       "issue": "The Manifest-Keeper is the focal cast for two scenes, risking redundancy.",
-       "resolution": "The two scenes intentionally contrast the character's function: Scene 1 showcases their formal role (witnessing an object for the log), while Scene 4 reveals their personal, attentive nature (witnessing the player's inner state). This creates a character arc from precision-as-duty to precision-as-care."
-      },
-      {
-       "scenes": [
-        2,
         5
        ],
        "dimension": "cast",
-       "issue": "The Deckhand is the focal cast for two scenes, risking redundancy.",
-       "resolution": "The scenes show a progression of the Deckhand's support. Scene 2 offers practical, in-the-moment grounding (a physical task), while Scene 5 provides reflective, post-experience integration (a gentle conversation). This moves the relationship from shared action to shared understanding."
+       "issue": "Both scenes use 'The Manifest-keeper', risking redundancy.",
+       "resolution": "The repetition is intentional, creating a narrative frame. Scene 1's role ('self-observer') is about acknowledging one's carried weight, while Scene 5's role ('celebrant') is about integrating the journey. The distinct roles and structures ('interior-noticing' vs. 'ritual-gesture') ensure the experiences are unique, providing thematic closure."
+      },
+      {
+       "scenes": [
+        3,
+        4
+       ],
+       "dimension": "structure",
+       "issue": "Both 'gentle-task' and 'shared-labor' involve simple actions and could feel similar.",
+       "resolution": "The contexts are oppositional. Scene 3's task is an internal, somatic anchor against overwhelm (survival). Scene 4's labor is external and collaborative, focused on restoration and re-engagement with another person (recovery)."
       }
      ],
-     "note": "Yes, this allocation provides strong, non-redundant coverage by mapping a clear emotional and interactive arc for the player across distinct roles and structures."
+     "note": "This allocation provides a clear emotional arc with distinct player roles and interaction structures for each scene, using the repeated cast member to create a strong narrative frame."
+    },
+    "gatedBy": {
+     "age": "27–47 adult → mature",
+     "genre": "cozy night-ferry iyashikei (healing slice-of-life)",
+     "culture": "East-Asian (iyashikei lineage)"
     }
    }
   }

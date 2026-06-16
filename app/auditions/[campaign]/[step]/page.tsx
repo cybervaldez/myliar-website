@@ -72,7 +72,8 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
     const sc = g?.scenes;
     const branches = sceneBranchesFor(campaign);
     // the RANGE payload — premises + variety/balance/coverage + the coverage MAP + the reviews; cast honed per-branch
-    const rd: RangeT | null = sc?.premises && sc?.range ? { premises: sc.premises, range: sc.range, coverage: sc.coverage, rangeReview: sc.rangeReview, expertsGate: sc.expertsGate, branches, honing: sc.honing } : null;
+    const gatedBy = [p.targetAge && `🎯 ${p.targetAge.range?.[0]}–${p.targetAge.range?.[1]} ${p.targetAge.band ?? ""}`.trim(), p.genre && `📐 ${p.genre.name}`, p.culture && `🎨 ${p.culture.name}`].filter(Boolean).join(" · ") || undefined;
+    const rd: RangeT | null = sc?.premises && sc?.range ? { premises: sc.premises, range: sc.range, coverage: sc.coverage, gatedBy, rangeReview: sc.rangeReview, expertsGate: sc.expertsGate, branches, honing: sc.honing } : null;
     return (
       <main className="aud-main" style={{ padding: "24px 20px 80px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", fontSize: 12, marginBottom: 4 }}>
