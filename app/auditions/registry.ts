@@ -132,6 +132,10 @@ const WHY_PICKED: Record<string, Record<string, string>> = {
     concept: "We added the Open Room as the TEEN demo and the whole audience felt it instantly — anxious, low-self-worth, and cozy-fans all gave it a clean 5/5 (relate + safe), and the thrill-seeker repel held exactly as it should (r1: no stakes to chase). It’s a school room a caretaker keeps unlocked after the bell — an un-graded hour where showing up IS the win. Its safety floor, story-spawn, and persistence are all load-bearing for teens, so it earns a slot as the teen-keyed mirror of the same struggle.",
     pilot: "We picked The Open Seat because for teens the deepest turn is «kept, not chosen» — belonging you don’t audition for, the chair that’s yours before you’ve proven anything. The Last Bell (showing up is enough) and The Circle (the un-graded hour) are both strong, but the Seat speaks most directly to the comparison/belonging spiral that defines the age — so the story is built on the seat.",
   },
+  lighthouse: {
+    concept: "The Lighthouse Coast is the MATURE-keyed mirror of the same struggle (solitude · low self-worth · the long watch). It holds the safety floor for adults who carry weight quietly, and reaches the depth-intense end of the range the ferry’s cozier hooks can’t — so it earns its slot as the adult pole of the demo.",
+    pilot: "We picked The Long Watch («vigil as devotion») because for this mature audience the deepest turn is that the discipline of keeping a single light steady IS the devotion — purpose in the faithful, repeated act. The Last Threshold (the boundary between worlds) tested less safe — its dissolving line unsettled the anxious panel (s1) — and The Keeper’s Logbook (a life measured against those before) is strong but more elegiac than active. The Watch holds the floor AND the depth, so the story is built on the watch.",
+  },
 };
 export const whyPicked = (campaign: string, step: string): { text?: string; pending?: boolean } => {
   const t = WHY_PICKED[campaign]?.[step];
@@ -227,9 +231,18 @@ export const CAMPAIGNS: Record<string, {
   },
   lighthouse: {
     label: "The Lighthouse Coast", pick: "lighthouse",
-    blurb: "the MATURE demo — a lone lighthouse, the long watch; the same audience dialed to MATURE/depth. «vigil as devotion».",
-    steps: { scenes: lighthousePilot as unknown as StepData },
-    carried: {},
+    blurb: "the MATURE demo, now FULL-BUILD — a lone lighthouse, the long watch; the same audience dialed to MATURE/depth. «vigil as devotion». (Reproducibility test: the whole flow re-run, range candidates generated from scratch.)",
+    steps: { pilot: lighthousePilot as unknown as StepData, story: lighthousePilot as unknown as StepData, scenes: lighthousePilot as unknown as StepData },
+    carried: {
+      pilot: [{ step: "① THE SETTING — the Lighthouse Coast", lines: [
+        "the MATURE-keyed mirror of the same struggle — solitude, the long watch, depth-intense (a slate setting)",
+        "↳ depth-intense is keyed to ADULTS; the intense pole deepens PRESENCE, never raises THREAT",
+      ] }],
+      scenes: [{ step: "③ THE STORY — the ambient ground + the weather arc", lines: [
+        "the mood-colour vocabulary (The Lamp-room · Fog and Stone · The Long Dark) — the range every cell stays inside",
+        "↳ the 5 world-moments (lighting the lamp → the fog comes in → first light) carry over as the matrix rows",
+      ] }],
+    },
   },
 };
 

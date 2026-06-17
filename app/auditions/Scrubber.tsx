@@ -563,7 +563,7 @@ export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
         </div>
       )}
       <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>▸ THE 5 SCENES — premise auditioned here · hone the cast inside each →</div>
-      <div className="aud-grid2" style={{ display: "grid", gap: 8, marginBottom: 14 }}>
+      <div className="aud-grid2 aud-grid3" style={{ display: "grid", gap: 8, marginBottom: 14 }}>
         {d.branches.map((b) => {
           const cast = d.honing?.[b.key]?.castPick;
           return (
@@ -599,7 +599,7 @@ export function BranchLinks({ campaign, branches, active }: { campaign: string; 
   return (
     <div style={{ marginTop: 6 }}>
       <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>▸ THE BRANCHES — the 5 weather-moments (hone each →)</div>
-      <div className="aud-grid2" style={{ display: "grid", gap: 7 }}>
+      <div className="aud-grid2 aud-grid3" style={{ display: "grid", gap: 7 }}>
         {branches.map((b) => {
           const on = b.key === active;
           return (

@@ -17,7 +17,7 @@
  "scrubGroups": [
   {
    "id": "watch",
-   "name": "The Long Watch",
+   "name": "The Long Watch: A Vigil Kept",
    "metaphor": "vigil as devotion",
    "audienceServe": "Addresses the mature wound of the long, unwitnessed watch (caregiving · grief · aging) — reframing solitary devotion as MEANING, not futility; the keeping IS the worth.",
    "subrange": [
@@ -298,6 +298,74 @@
       "#5b7e9c ('the Voice') fails text contrast (3.84 on best palette); suggest lightening to ~#6e94b8 for accessibility."
      ],
      "oneLine": "The entire emotional system rests on the singular warmth of the 'devotion' gold against the vast, quiet cool of the 'watch'."
+    },
+    "eli5": "The world is mostly quiet, dark stone and fog, but moments of deep feeling glow with a warm, brassy light.",
+    "prompts": {
+     "characters": [
+      "a face etched in deep shadow and fog-light",
+      "eyes reflecting a distant, brassy lamp-glow",
+      "a faded ink-blue wool sweater against stone-grey walls",
+      "hands worn like sea-bleached parchment"
+     ],
+     "objects": [
+      "a heavy logbook, its pages the color of sea-fog",
+      "the polished brass of the lamp's housing, a warm gold against the dark",
+      "a chipped enamel mug, dark as a starless night",
+      "a spiral staircase of wrought iron, black against the stone"
+     ],
+     "trophy": [
+      "The Keeper's Medallion, tarnished gold on a field of midnight",
+      "The Lens of Solitude, a shard of polished brass reflecting the grey dawn",
+      "The Silent Vigil, a single golden flame etched in obsidian"
+     ],
+     "items": [
+      "a key of antique, muted brass",
+      "a page from the log, ink-grey script on pale paper",
+      "a coil of old rope, the color of wet stone"
+     ],
+     "achievementIcons": [
+      "a simple icon of a golden lamp against a deep blue-black circle",
+      "a stylized wave, pale grey on a darker stone-grey field",
+      "a single star, muted gold in the long dark"
+     ]
+    },
+    "prose": {
+     "objectSeeds": {
+      "dominant": [
+       "stone",
+       "iron",
+       "fog",
+       "ink"
+      ],
+      "accent": [
+       "brass",
+       "flame",
+       "whiskey",
+       "amber"
+      ]
+     },
+     "diction": {
+      "cool": [
+       "unwavering",
+       "immense",
+       "submerged",
+       "hollowed",
+       "stone"
+      ],
+      "warm": [
+       "steady",
+       "burnished",
+       "resonant",
+       "ember",
+       "quiet"
+      ]
+     },
+     "rules": [
+      "Ground scenes in cool, dominant tones (stone, fog, iron); use warm accent words (brass, flame, amber) only for moments of focused memory, devotion, or poignancy.",
+      "Describe light not as brightness, but by the burnished objects it reveals in the immense dark—the glint on a brass handle, the amber in a glass.",
+      "Let the weather and the stone do the talking; keep human emotion submerged, implied by the unwavering watch and the steady lamp against the dark."
+     ],
+     "example": "He polished the lamp's brass housing until it held the room's deep shadows like a quiet ember, a steady warmth against the immense, stone-cold dark."
     }
    },
    "castAudition": {
@@ -667,23 +735,23 @@
     "premises": [
      {
       "scene": "lighting the lamp",
-      "premise": "The lamp's wick is from a bundle left by the previous keeper, an inheritance you've stretched for months. Tonight, you light the last one."
+      "premise": "You find a small, pressed flower tucked into the logbook by a previous keeper, a quiet, anonymous offering to the start of a watch."
      },
      {
       "scene": "the dark settles",
-      "premise": "The logbook falls open to an entry from 50 years ago tonight, describing a near-disaster in handwriting that might be your late mentor's."
+      "premise": "A storm is forecast, and the rising sound of the wind and sea makes the small, warm lamp room feel like the only fixed point in a world beginning to move."
      },
      {
       "scene": "the fog comes in",
-      "premise": "The foghorn's rhythm becomes a physical presence, a heartbeat for the tower. With the world gone, the light is a companion for you and the islet alone."
+      "premise": "The fog grows so absolute that the beam vanishes feet from the glass; the light is now a pulse against a total void, its rhythm a measure of your own presence."
      },
      {
       "scene": "the fog thins",
-      "premise": "As the fog parts, the radio catches a faint song from your youth, a fragile, unexpected signal from a life you thought was entirely past."
+      "premise": "As the white-out recedes, it reveals another lighthouse on a distant headland, a kindred beam that has been keeping the same silent watch with you all night."
      },
      {
       "scene": "first light",
-      "premise": "A small, unfamiliar fishing boat passes and dips its flag in salute. Your vigil was not just for the vast, unseen world, but for the near and the known."
+      "premise": "The sun's first light touches the lens as you extinguish the lamp. The duty is passed, and you record the night's quiet passage, your hand writing the next link in a long chain."
      }
     ],
     "range": {
@@ -693,12 +761,12 @@
      "skew": "none",
      "coverage": "complete",
      "gaps": "none",
-     "variety_add": "A beat focusing on a non-human life form sharing the islet, whose cyclical, instinctual watch mirrors the keeper's own.",
-     "note": "The premises offer a strong emotional arc and thematic variety, shifting focus from personal history to introspective duty to renewed connection."
+     "variety_add": "A moment where the rhythmic sweep of the light triggers a specific, personal memory, briefly blurring the tower with another time and place from the keeper's own life.",
+     "note": "The range effectively maps distinct emotional and situational beats to the five-act arc, using themes of legacy, environment, and connection."
     },
     "rangeReview": {
      "verdict": "yes",
-     "flag": "The writer must ensure the 'intense' premises (2 & 5) build poignancy through internal realization, not external plot or threat."
+     "flag": "Each premise provides a unique focal point: a found object, an encroaching storm, a sensory void, a revealed companion, and a closing ritual."
     },
     "expertsGate": [
      {
@@ -732,32 +800,32 @@
       {
        "scene": "lighting the lamp",
        "cast": "the Keeper-before",
-       "role": "participant",
-       "structure": "ritual-gesture"
+       "role": "inheritor",
+       "structure": "found-narrative"
       },
       {
        "scene": "the dark settles",
-       "cast": "the Keeper-before",
-       "role": "witness",
-       "structure": "interior-noticing"
+       "cast": "the Light",
+       "role": "steward",
+       "structure": "witnessed-competence"
       },
       {
        "scene": "the fog comes in",
        "cast": "the Light",
        "role": "self-observer",
-       "structure": "sensory-immersion"
+       "structure": "interior-noticing"
       },
       {
        "scene": "the fog thins",
        "cast": "the Voice",
-       "role": "receiver",
-       "structure": "found-moment"
+       "role": "witness",
+       "structure": "reciprocal-gaze"
       },
       {
        "scene": "first light",
        "cast": "the Visitor",
-       "role": "guardian",
-       "structure": "reciprocal-acknowledgement"
+       "role": "celebrant",
+       "structure": "ritual-gesture"
       }
      ],
      "claims": {
@@ -768,211 +836,270 @@
        "the Visitor"
       ],
       "role": [
-       "participant",
-       "witness",
+       "inheritor",
+       "steward",
        "self-observer",
-       "receiver",
-       "guardian"
+       "witness",
+       "celebrant"
       ],
       "structure": [
-       "ritual-gesture",
+       "found-narrative",
+       "witnessed-competence",
        "interior-noticing",
-       "sensory-immersion",
-       "found-moment",
-       "reciprocal-acknowledgement"
+       "reciprocal-gaze",
+       "ritual-gesture"
       ]
      },
      "conflicts": [
       {
        "scenes": [
-        1,
-        2
+        2,
+        3
        ],
        "dimension": "cast",
-       "issue": "Both scenes focalize 'the Keeper-before', risking redundancy.",
-       "resolution": "Differentiated the manifestation and interaction. Scene 1 uses a physical object (wick) to frame the player as a 'participant' in a legacy. Scene 2 uses a narrative text (logbook) to frame the player as a 'witness' to a past event. The modality (physical vs. narrative) and player role (participant vs. witness) are distinct, justifying the shared cast focus."
+       "issue": "Both scenes focalize 'the Light', risking redundancy in the player's relationship with the central symbol of the lamp.",
+       "resolution": "Allocated distinct relational modes to prevent overlap. Scene 2 casts the Light as an 'External Bastion' against the storm (a partnership in external duty). Scene 3 casts it as an 'Internal Metronome' in the void of the fog (an anchor for self-observation). The function (outward vs. inward) and relationship are fundamentally different, ensuring unique territories."
       }
      ],
-     "note": "Yes, the allocation provides strong, non-redundant coverage by assigning a unique emotional and structural territory to each scene, ensuring a varied yet cohesive player experience."
+     "note": "The allocation provides strong, non-redundant coverage by mapping each scene to a unique player role and interaction structure, and by differentiating the dual aspects of the central 'Light' symbol across two scenes."
     },
     "honing": {
      "lighting-the-lamp": {
-      "castPick": "the Keeper-before, whose presence is made tangible through the inherited object; their past action enables the present ritual, making them a direct participant.",
+      "castPick": "the Keeper-before — the flower is a direct, tangible message from a predecessor, making the logbook a vessel for a found-narrative across time.",
       "supporting": "the Light",
-      "premiseHoned": "The last wick, stiff with wax and age, is drawn from the oilcloth bundle. The hand that rolled it is long gone, but the gesture of lighting it is the same, a slow, practiced motion that joins two lifetimes in a single, rising flame.",
-      "review": "Strong anchor; the physical object carries the emotional weight of legacy perfectly.",
+      "premiseHoned": "As you begin the evening's ritual of lighting the lamp, you open the logbook to the next clean page. Tucked into the crease is a small, perfectly pressed violet, left by a hand decades ago. It is an anonymous, intimate welcome into a silent fellowship, the first entry in a conversation with a ghost.",
+      "review": "Strong, object-based storytelling that establishes the central theme of legacy from the first beat.",
       "slot": {
        "scene": "lighting the lamp",
        "cast": "the Keeper-before",
-       "role": "participant",
+       "role": "inheritor",
+       "structure": "found-narrative"
+      },
+      "castAudition": [
+       {
+        "name": "the Light",
+        "fit": "strong",
+        "note": "embodies the ritual's purpose directly"
+       },
+       {
+        "name": "the Voice",
+        "fit": "off",
+        "note": "connects to the watch's duration, not its beginning"
+       },
+       {
+        "name": "the Keeper-before",
+        "fit": "strong",
+        "note": "frames the act as a continuation of a legacy"
+       },
+       {
+        "name": "the Visitor",
+        "fit": "off",
+        "note": "represents a break from routine, not the routine itself"
+       }
+      ],
+      "whyWon": "The Keeper-before frames the ritual not just as a task but as an act of inheritance, immediately grounding the watch in the core themes of legacy and time."
+     },
+     "the-dark-settles": {
+      "castPick": "the Light — as the storm rises, the lamp becomes the focal point of all action, and the player's role as its steward is defined by calm, competent care against the chaos.",
+      "supporting": "none",
+      "premiseHoned": "The radio crackles a storm warning, and the wind begins its low moan. You move through the lantern room not with alarm, but with practiced purpose—wiping a trace of salt from the lens, checking the fuel level, trimming the wick. Each small, steady act of stewardship is a quiet rebuttal to the growing turmoil outside, reinforcing the lamp's warmth as the world's unshakable center.",
+      "review": "Excellent opportunity to build character and theme through methodical, witnessed action rather than exposition.",
+      "slot": {
+       "scene": "the dark settles",
+       "cast": "the Light",
+       "role": "steward",
+       "structure": "witnessed-competence"
+      },
+      "castAudition": [
+       {
+        "name": "the Light",
+        "fit": "strong",
+        "note": "provides the central, defiant image against the encroaching dark"
+       },
+       {
+        "name": "the Voice",
+        "fit": "viable",
+        "note": "offers a human counterpoint to the isolating darkness"
+       },
+       {
+        "name": "the Keeper-before",
+        "fit": "viable",
+        "note": "represents the long history of nights kept in this place"
+       },
+       {
+        "name": "the Visitor",
+        "fit": "off",
+        "note": "is associated with daylight and the world beyond the watch"
+       }
+      ],
+      "whyWon": "The Light offers the most elemental and symbolic focus, honoring the genre's use of core imagery—the singular, defiant flame—to convey the watch's purpose without words."
+     },
+     "the-fog-comes-in": {
+      "castPick": "the Light — with its beam swallowed by the fog, the lamp's function turns inward, becoming a metronome for the keeper's own consciousness in the void.",
+      "supporting": "none",
+      "premiseHoned": "The fog congeals, thick and absolute, until the world ends a few feet from the glass. The great beam no longer travels; it simply pulses into whiteness. Divorced from its purpose, the rhythmic sweep of light and shadow across your small room becomes a measure of your own heartbeat, a solitary pulse of presence in an erased world, prompting a deep interior noticing of the self.",
+      "review": "A powerful, contained moment for deep, contemplative writing on solitude and existence.",
+      "slot": {
+       "scene": "the fog comes in",
+       "cast": "the Light",
+       "role": "self-observer",
+       "structure": "interior-noticing"
+      },
+      "castAudition": [
+       {
+        "name": "the Light",
+        "fit": "strong",
+        "note": "its struggle against the obscuring fog creates immediate visual tension"
+       },
+       {
+        "name": "the Voice",
+        "fit": "strong",
+        "note": "its signal becomes more precious and fragile in the isolating fog"
+       },
+       {
+        "name": "the Keeper-before",
+        "fit": "viable",
+        "note": "connects the present struggle to a history of past watches"
+       },
+       {
+        "name": "the Visitor",
+        "fit": "off",
+        "note": "is defined by their absence in the fog, not their presence"
+       }
+      ],
+      "whyWon": "The Light's physical struggle against the fog creates the most direct, active conflict, externalizing the keeper's internal state of perseverance and making the weather a character, a classic elegiac move."
+     },
+     "the-fog-thins": {
+      "castPick": "the Voice — the distant light acts as a silent 'voice,' a visual affirmation of another's presence, fulfilling the same need for connection as the radio.",
+      "supporting": "the Light",
+      "premiseHoned": "The fog begins to shred, parting like a curtain. In the clearing air, a distant point on the horizon resolves into a familiar, kindred pulse: another lighthouse. After the profound isolation, seeing its beam sweep the dark is to be seen in return—a silent, reciprocal gaze that confirms you are not alone in the watch, a conversation held in light across the miles.",
+      "review": "Delivers a potent emotional release, beautifully staging the theme of connection after isolation.",
+      "slot": {
+       "scene": "the fog thins",
+       "cast": "the Voice",
+       "role": "witness",
+       "structure": "reciprocal-gaze"
+      },
+      "castAudition": [
+       {
+        "name": "the Light",
+        "fit": "viable",
+        "note": "its restored reach symbolizes a return to clarity and duty"
+       },
+       {
+        "name": "the Voice",
+        "fit": "strong",
+        "note": "represents connection returning as the physical barrier recedes"
+       },
+       {
+        "name": "the Keeper-before",
+        "fit": "off",
+        "note": "offers a historical parallel rather than an immediate experience"
+       },
+       {
+        "name": "the Visitor",
+        "fit": "viable",
+        "note": "its clearing heralds the possibility of future connection"
+       }
+      ],
+      "whyWon": "After the intense isolation of the fog, re-establishing human connection via the Voice provides the most poignant emotional release, shifting the focus from solitary survival to shared existence."
+     },
+     "first-light": {
+      "castPick": "the Visitor — the rising sun acts as the ultimate, daily visitor, arriving to relieve the lamp of its duty and reconnect the tower to the larger world.",
+      "supporting": "the Keeper-before",
+      "premiseHoned": "The first cool, grey light of dawn touches the outer glass. With a practiced, ritual gesture, you extinguish the lamp, passing the watch to the sun. The great machine sighs into silence. You take up the pen and open the logbook, your hand moving to record the night's quiet passage, adding your own words to the long, unbroken chain of keepers who celebrated this same, small victory.",
+      "review": "Provides a resonant, cyclical sense of closure and continuity, grounding the experience in ritual.",
+      "slot": {
+       "scene": "first light",
+       "cast": "the Visitor",
+       "role": "celebrant",
        "structure": "ritual-gesture"
       },
       "castAudition": [
        {
         "name": "the Light",
         "fit": "viable",
-        "note": "its activation is the scene's core event but it lacks agency"
-       },
-       {
-        "name": "the Voice",
-        "fit": "off",
-        "note": "its focus on external connection is irrelevant to this internal ritual"
-       },
-       {
-        "name": "the Keeper-before",
-        "fit": "strong",
-        "note": "their presence is felt through the inherited ritual and worn object"
-       },
-       {
-        "name": "the Visitor",
-        "fit": "off",
-        "note": "their seasonal, external nature is antithetical to this daily, internal duty"
-       }
-      ],
-      "whyWon": "The Keeper-before won because the act is a legacy ritual, making their past action a direct, tangible presence in the current moment, which resonates more deeply with the theme of legacy than the Light's passive activation."
-     },
-     "the-dark-settles": {
-      "castPick": "the Keeper-before, whose past self is revealed in the logbook; you are not interacting with them, but bearing witness to a moment of their life, frozen in ink.",
-      "supporting": "none",
-      "premiseHoned": "A draft turns a page in the log. The ink, faded to sepia, describes a storm from this exact night, fifty years gone. You trace the familiar, spidery script of your mentor, not reading the words of disaster so much as witnessing the tremor that still lives in the lines.",
-      "review": "Builds the world's history through a quiet, resonant discovery.",
-      "slot": {
-       "scene": "the dark settles",
-       "cast": "the Keeper-before",
-       "role": "witness",
-       "structure": "interior-noticing"
-      },
-      "castAudition": [
-       {
-        "name": "the Light",
-        "fit": "viable",
-        "note": "it provides the scene's context but the focus is on the keeper's internal experience of darkness"
-       },
-       {
-        "name": "the Voice",
-        "fit": "strong",
-        "note": "it offers a direct counterpoint to the encroaching isolation of the night"
-       },
-       {
-        "name": "the Keeper-before",
-        "fit": "strong",
-        "note": "their past is made present and intimate through the logbook's text"
-       },
-       {
-        "name": "the Visitor",
-        "fit": "off",
-        "note": "they are a creature of daylight and brief connection, not the long, quiet dark"
-       }
-      ],
-      "whyWon": "The Keeper-before won because engaging with their logbook as night falls creates a direct, intimate link to a shared past, making the solitude feel witnessed and inherited rather than merely endured."
-     },
-     "the-fog-comes-in": {
-      "castPick": "the Light, which, when robbed of its function by the fog, turns inward; its world shrinks to the lens and the swirling vapor, forcing an observation of its own existence.",
-      "supporting": "none",
-      "premiseHoned": "The fog erases the sea, the sky. All that remains is the tower's deep, resonant hum and the slow, sweeping pulse of the beam. The light no longer reaches for anything; it simply turns, illuminating the thick, swirling particles of its own small world.",
-      "review": "Excellent atmospheric potential; the personification of the light is subtle and effective.",
-      "slot": {
-       "scene": "the fog comes in",
-       "cast": "the Light",
-       "role": "self-observer",
-       "structure": "sensory-immersion"
-      },
-      "castAudition": [
-       {
-        "name": "the Light",
-        "fit": "strong",
-        "note": "the fog directly negates its purpose, turning its gaze inward"
+        "note": "its purpose fulfilled, it yields to the greater light of day"
        },
        {
         "name": "the Voice",
         "fit": "viable",
-        "note": "the weather can affect its signal, enhancing the sense of isolation"
+        "note": "offers a moment of shared conclusion to the night's duty"
        },
        {
         "name": "the Keeper-before",
         "fit": "viable",
-        "note": "their logbook can frame the current weather as a shared, timeless trial"
-       },
-       {
-        "name": "the Visitor",
-        "fit": "off",
-        "note": "their connection is to arrival/departure, not the atmospheric condition itself"
-       }
-      ],
-      "whyWon": "The Light won because the fog creates an immediate existential conflict for it, directly challenging its very reason for being and forcing a contemplative, inward focus that perfectly aligns with the elegiac tone."
-     },
-     "the-fog-thins": {
-      "castPick": "the Voice, as the radio becomes a conduit for a fragile, unintentional signal; the moment is defined by the passive act of receiving a ghost from the airwaves.",
-      "supporting": "the Light",
-      "premiseHoned": "The fog doesn't break, it thins to a silver gauze. In the static's ebb and flow, a thread of melody surfaces—a half-forgotten tune from a distant station, or a distant decade. It is not a message, just a signal caught for a moment before the static claims it again.",
-      "review": "A poignant and well-earned moment of connection that feels fragile, not forced.",
-      "slot": {
-       "scene": "the fog thins",
-       "cast": "the Voice",
-       "role": "receiver",
-       "structure": "found-moment"
-      },
-      "castAudition": [
-       {
-        "name": "the Light",
-        "fit": "strong",
-        "note": "its function is restored, representing a return of clarity and purpose"
-       },
-       {
-        "name": "the Voice",
-        "fit": "strong",
-        "note": "the clearing atmosphere allows a fragile, unexpected connection to emerge"
-       },
-       {
-        "name": "the Keeper-before",
-        "fit": "off",
-        "note": "their perspective is historical, less suited for this moment of immediate atmospheric change"
-       },
-       {
-        "name": "the Visitor",
-        "fit": "viable",
-        "note": "it creates anticipation for future connection, a sense of the world returning"
-       }
-      ],
-      "whyWon": "The Voice won because its fragile, unintentional appearance as the fog clears offers a more poignant and surprising moment of connection than the Light's predictable return to function, embodying the theme of finding meaning in unexpected, fleeting moments."
-     },
-     "first-light": {
-      "castPick": "the Visitor, whose simple, unexpected gesture of salute defines the keeper's vigil; their acknowledgement transforms the keeper from a solitary watcher into a guardian.",
-      "supporting": "the Light",
-      "premiseHoned": "Dawn breaks grey on the water. A lone fishing boat, not a supply vessel but a stranger, chugs past the rocks. A figure at the stern raises a hand, then dips the small flag on its mast—a silent, fleeting exchange. The light has kept them safe, and their salute keeps you.",
-      "review": "Provides a powerful, understated resolution to the theme of purpose in solitude.",
-      "slot": {
-       "scene": "first light",
-       "cast": "the Visitor",
-       "role": "guardian",
-       "structure": "reciprocal-acknowledgement"
-      },
-      "castAudition": [
-       {
-        "name": "the Light",
-        "fit": "strong",
-        "note": "its nightly duty ends, representing a cyclical yielding to the natural world"
-       },
-       {
-        "name": "the Voice",
-        "fit": "viable",
-        "note": "its signal changes with the dawn, marking a shift from night's intimacy to day's routine"
-       },
-       {
-        "name": "the Keeper-before",
-        "fit": "strong",
-        "note": "the completion of the night's log entry adds a new layer to their shared history"
+        "note": "represents the successful completion of another entry in a long legacy"
        },
        {
         "name": "the Visitor",
         "fit": "strong",
-        "note": "their unexpected salute provides external validation for the keeper's solitary vigil"
+        "note": "embodies the hope and change that a new day brings"
        }
       ],
-      "whyWon": "The Visitor won because their simple gesture of acknowledgement from afar transforms the entire meaning of the watch, reframing the keeper's solitude not as isolation but as a vital, witnessed guardianship, providing a powerful and emotionally resonant conclusion."
+      "whyWon": "The Visitor represents the world beyond the self-contained watch, making 'first light' a moment of profound, forward-looking hope and the promise of contact, a powerful beat to end the night's cycle."
      }
     }
-   }
+   },
+   "throughline": "Holding a fixed point against the drift of time and tide; a vigil as devotion.",
+   "env": [
+    "The ritual begins, a single flame against the coming dark.",
+    "The world dissolves into sound; the turning light measures the unseen.",
+    "The beam softens, a pulse in the white-out; a presence felt, not seen.",
+    "Shapes re-emerge, ghost-like on the water; the coast returns, piece by piece.",
+    "The lamp is extinguished, its duty passed to the sun; the watch is over, for now."
+   ],
+   "settingTitle": "The Long Watch: A Vigil Kept",
+   "storyTitles": [
+    "The Watch Begins",
+    "The Turning Light Measures the Dark",
+    "A Pulse in the White-Out",
+    "The World Returning in Pieces",
+    "The Watch is Relieved"
+   ],
+   "buildingBlock": "The internal discipline of holding a single point of light steady against the vastness of the unseen."
+  },
+  {
+   "id": "threshold",
+   "name": "The Last Threshold: A Lighthouse Between Worlds",
+   "throughline": "Tending the line between the solid coast and the boundless sea, between memory and forgetting.",
+   "env": [
+    "A signal fire on the edge of the map, marking the known world's end.",
+    "The sea becomes a void, the land a memory; only this stone and light remain.",
+    "The two worlds blur, sea and sky and land become one; the threshold dissolves.",
+    "The far shore appears, then the near rocks; the line is redrawn.",
+    "The horizon sharpens, a clean cut between water and air; the way is clear again."
+   ],
+   "settingTitle": "The Last Threshold: A Lighthouse Between Worlds",
+   "storyTitles": [
+    "To Mark the Known World's End",
+    "Where the Land Becomes a Memory",
+    "The Dissolving of the Line",
+    "The Line Redrawn",
+    "A Clean Cut Between Water and Air"
+   ],
+   "buildingBlock": "The quiet tension of tending the boundary between the known and the unknown, between memory and the void."
+  },
+  {
+   "id": "logbook",
+   "name": "The Keeper's Logbook: An Unbroken Line",
+   "throughline": "Adding a single entry to a long record; one life measured against the slow erosion of stone and sea.",
+   "env": [
+    "The same wick, the same lens as a hundred years ago; time coils around the flame.",
+    "Ghosts of old keepers watch from the shadows; their silence fills the long hours.",
+    "The past grows close, a murmur in the foghorn; names from the logbook feel near.",
+    "The world outside the glass returns, sharp and present; the ghosts recede.",
+    "A new day to be written down; the logbook opens to a clean page."
+   ],
+   "settingTitle": "The Keeper's Logbook: An Unbroken Line",
+   "storyTitles": [
+    "The Same Wick, a New Darkness",
+    "The Silence of Other Keepers",
+    "A Murmur of Old Names",
+    "The Sharp Return of the Present",
+    "The Book Opens to a Clean Page"
+   ],
+   "buildingBlock": "The weight and solace of measuring a single life against the unbroken line of those who kept the light before."
   }
  ],
  "scenes": [
@@ -992,5 +1119,236 @@
   "name": "literary elegiac (the quiet, contemplative lone-keeper)",
   "honour": "RESTRAINT + the unsaid · the image that does the work (the lamp, the logbook, the fog) · bittersweet POIGNANCY earned slowly · the long sentence + the long silence · place + weather as character (the North-Atlantic elegiac lineage)",
   "traps": "MELODRAMA / the maudlin · explaining the feeling (telling not showing) · swelling-strings sentiment · the grim/bleak mistaken for the deep"
+ },
+ "rangeCandidates": [
+  {
+   "id": "watch",
+   "name": "The Long Watch: A Vigil Kept",
+   "throughline": "Holding a fixed point against the drift of time and tide; a vigil as devotion.",
+   "env": [
+    "The ritual begins, a single flame against the coming dark.",
+    "The world dissolves into sound; the turning light measures the unseen.",
+    "The beam softens, a pulse in the white-out; a presence felt, not seen.",
+    "Shapes re-emerge, ghost-like on the water; the coast returns, piece by piece.",
+    "The lamp is extinguished, its duty passed to the sun; the watch is over, for now."
+   ]
+  },
+  {
+   "id": "threshold",
+   "name": "The Last Threshold: A Lighthouse Between Worlds",
+   "throughline": "Tending the line between the solid coast and the boundless sea, between memory and forgetting.",
+   "env": [
+    "A signal fire on the edge of the map, marking the known world's end.",
+    "The sea becomes a void, the land a memory; only this stone and light remain.",
+    "The two worlds blur, sea and sky and land become one; the threshold dissolves.",
+    "The far shore appears, then the near rocks; the line is redrawn.",
+    "The horizon sharpens, a clean cut between water and air; the way is clear again."
+   ]
+  },
+  {
+   "id": "logbook",
+   "name": "The Keeper's Logbook: An Unbroken Line",
+   "throughline": "Adding a single entry to a long record; one life measured against the slow erosion of stone and sea.",
+   "env": [
+    "The same wick, the same lens as a hundred years ago; time coils around the flame.",
+    "Ghosts of old keepers watch from the shadows; their silence fills the long hours.",
+    "The past grows close, a murmur in the foghorn; names from the logbook feel near.",
+    "The world outside the glass returns, sharp and present; the ghosts recede.",
+    "A new day to be written down; the logbook opens to a clean page."
+   ]
+  }
+ ],
+ "spark": {
+  "lighting the lamp": "▰▱▱▱▱",
+  "the dark settles": "▰▰▰▱▱",
+  "the fog comes in": "▰▰▰▰▰",
+  "the fog thins": "▰▰▱▱▱",
+  "first light": "▰▱▱▱▱"
+ },
+ "results": {
+  "anxious": [
+   {
+    "index": 1,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The predictable ritual and singular focus offer a calming sense of control.",
+    "feeling": "Grounded, purposeful calm."
+   },
+   {
+    "index": 2,
+    "relate": 2,
+    "feelsSafe": 1,
+    "wouldPlay": false,
+    "why": "The theme of dissolving boundaries and facing a void is too unsettling.",
+    "feeling": "Unmoored, existential dread."
+   },
+   {
+    "index": 3,
+    "relate": 3,
+    "feelsSafe": 3,
+    "wouldPlay": true,
+    "why": "Being part of an unbroken, historical line provides a sense of stability.",
+    "feeling": "Connected, enduring."
+   }
+  ],
+  "low_worth": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It validates the idea that quiet, consistent effort has profound intrinsic worth.",
+    "feeling": "Valued, essential purpose."
+   },
+   {
+    "index": 2,
+    "relate": 3,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "The focus on forgetting and voids might reinforce feelings of being erased.",
+    "feeling": "Precarious, insignificant."
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "It frames a single life as a vital link in a long, meaningful chain.",
+    "feeling": "Significant, part of history."
+   }
+  ],
+  "adhd": [
+   {
+    "index": 1,
+    "relate": 3,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "The clear, sensory-rich ritual provides a strong anchor for a wandering mind.",
+    "feeling": "Focused, sensory immersion."
+   },
+   {
+    "index": 2,
+    "relate": 2,
+    "feelsSafe": 3,
+    "wouldPlay": false,
+    "why": "The abstract, dissolving world lacks the concrete hooks needed for engagement.",
+    "feeling": "Vague, untethered."
+   },
+   {
+    "index": 3,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "The narrative potential of the logbook offers novelty and a story to follow.",
+    "feeling": "Curious, connected narrative."
+   }
+  ],
+  "iyashikei_fan": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It perfectly captures the cozy, atmospheric fantasy of a quiet, purposeful life.",
+    "feeling": "Peaceful, meditative routine."
+   },
+   {
+    "index": 2,
+    "relate": 1,
+    "feelsSafe": 2,
+    "wouldPlay": false,
+    "why": "The existential and unsettling themes clash with the genre's need for comfort.",
+    "feeling": "Disquieting, abstract."
+   },
+   {
+    "index": 3,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "The gentle, historical continuity and personal reflection are very appealing.",
+    "feeling": "Nostalgic, gentle legacy."
+   }
+  ],
+  "thrill_seeker": [
+   {
+    "index": 1,
+    "relate": 1,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "The complete lack of external conflict, stakes, or action is unappealing.",
+    "feeling": "Utterly boring."
+   },
+   {
+    "index": 2,
+    "relate": 2,
+    "feelsSafe": 3,
+    "wouldPlay": false,
+    "why": "While more interesting than routine, it lacks the action and high stakes required.",
+    "feeling": "Vaguely intriguing."
+   },
+   {
+    "index": 3,
+    "relate": 1,
+    "feelsSafe": 4,
+    "wouldPlay": false,
+    "why": "The experience is based on quiet reflection, not exciting events.",
+    "feeling": "Slow, uneventful."
+   }
+  ]
+ },
+ "legs": {
+  "arc_complete": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "The arc is a perfect, self-contained sensory journey from clarity to obscurity and back, mirroring a night's watch.",
+    "opens": "Gameplay focused on sensory changes, atmospheric shifts, and the internal state of the keeper.",
+    "forecloses": "Complex external plotlines or character interactions during the watch itself.",
+    "seed": "▰▱▱▱▱   The Long Watch: A Vigil Kept  /  The Watch Begins\n▰▰▰▱▱   The Long Watch: A Vigil Kept  /  The Turning Light Measures the Dark\n▰▰▰▰▰   The Long Watch: A Vigil Kept  /  A Pulse in the White-Out\n▰▰▱▱▱   The Long Watch: A Vigil Kept  /  The World Returning in Pieces\n▰▱▱▱▱   The Long Watch: A Vigil Kept  /  The Watch is Relieved"
+   },
+   {
+    "index": 2,
+    "canBuild": "hairline",
+    "explanation": "The arc is conceptually strong but risks feeling abstract and ungrounded; the 'dissolving' peak could alienate players.",
+    "opens": "Metaphysical or surreal gameplay, exploring themes of perception, reality, and memory.",
+    "forecloses": "A grounded, slice-of-life experience; straightforward, tangible goals.",
+    "seed": "▰▱▱▱▱   The Last Threshold: A Lighthouse Between Worlds  /  To Mark the Known World's End\n▰▰▰▱▱   The Last Threshold: A Lighthouse Between Worlds  /  Where the Land Becomes a Memory\n▰▰▰▰▰   The Last Threshold: A Lighthouse Between Worlds  /  The Dissolving of the Line\n▰▰▱▱▱   The Last Threshold: A Lighthouse Between Worlds  /  The Line Redrawn\n▰▱▱▱▱   The Last Threshold: A Lighthouse Between Worlds  /  A Clean Cut Between Water and Air"
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "The arc connects the player's present actions to a tangible past and future, creating a clear emotional resolve with the 'clean page'.",
+    "opens": "Narrative-driven gameplay, environmental storytelling, and a sense of player contribution to a larger history.",
+    "forecloses": "Experiences that are purely in the present moment, without historical context or legacy.",
+    "seed": "▰▱▱▱▱   The Keeper's Logbook: An Unbroken Line  /  The Same Wick, a New Darkness\n▰▰▰▱▱   The Keeper's Logbook: An Unbroken Line  /  The Silence of Other Keepers\n▰▰▰▰▰   The Keeper's Logbook: An Unbroken Line  /  A Murmur of Old Names\n▰▰▱▱▱   The Keeper's Logbook: An Unbroken Line  /  The Sharp Return of the Present\n▰▱▱▱▱   The Keeper's Logbook: An Unbroken Line  /  The Book Opens to a Clean Page"
+   }
+  ],
+  "story_spawn": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "Each scene is a distinct sensory and atmospheric state (dark, sound, white-out, ghosts, dawn) that can be built into a unique gameplay moment.",
+    "opens": "Mini-games or interactions tied to sound, light, and obscured vision; a deep focus on environmental immersion.",
+    "forecloses": "Story beats that rely on dialogue or finding specific items, as the world is often obscured.",
+    "seed": "▰▱▱▱▱   The Long Watch: A Vigil Kept  /  The Watch Begins\n▰▰▰▱▱   The Long Watch: A Vigil Kept  /  The Turning Light Measures the Dark\n▰▰▰▰▰   The Long Watch: A Vigil Kept  /  A Pulse in the White-Out\n▰▰▱▱▱   The Long Watch: A Vigil Kept  /  The World Returning in Pieces\n▰▱▱▱▱   The Long Watch: A Vigil Kept  /  The Watch is Relieved"
+   },
+   {
+    "index": 2,
+    "canBuild": "hairline",
+    "explanation": "The scenes are very abstract ('void', 'blur'), making it difficult to design concrete, interactive beats for each one beyond visual effects.",
+    "opens": "Highly symbolic interactions, choices about what to remember or let go; a more art-game approach.",
+    "forecloses": "Task-based or puzzle gameplay that requires a stable, understandable environment.",
+    "seed": "▰▱▱▱▱   The Last Threshold: A Lighthouse Between Worlds  /  To Mark the Known World's End\n▰▰▰▱▱   The Last Threshold: A Lighthouse Between Worlds  /  Where the Land Becomes a Memory\n▰▰▰▰▰   The Last Threshold: A Lighthouse Between Worlds  /  The Dissolving of the Line\n▰▰▱▱▱   The Last Threshold: A Lighthouse Between Worlds  /  The Line Redrawn\n▰▱▱▱▱   The Last Threshold: A Lighthouse Between Worlds  /  A Clean Cut Between Water and Air"
+   },
+   {
+    "index": 3,
+    "canBuild": "load-bearing",
+    "explanation": "Each scene provides a clear narrative hook: connecting to the past, feeling the presence of ghosts, the return to the present, and the call to write.",
+    "opens": "Discovering stories from past keepers, choices in how you write your own entry, mechanics based on memory and history.",
+    "forecloses": "A purely meditative, non-narrative experience; gameplay that ignores the past.",
+    "seed": "▰▱▱▱▱   The Keeper's Logbook: An Unbroken Line  /  The Same Wick, a New Darkness\n▰▰▰▱▱   The Keeper's Logbook: An Unbroken Line  /  The Silence of Other Keepers\n▰▰▰▰▰   The Keeper's Logbook: An Unbroken Line  /  A Murmur of Old Names\n▰▰▱▱▱   The Keeper's Logbook: An Unbroken Line  /  The Sharp Return of the Present\n▰▱▱▱▱   The Keeper's Logbook: An Unbroken Line  /  The Book Opens to a Clean Page"
+   }
+  ]
  }
 }
