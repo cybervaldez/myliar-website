@@ -31,7 +31,7 @@ export const stepNo = (k: string) => "①②③④⑤⑥"[STEP_DEFS.findIndex((s
 // THE SLATE — the master SETTING ledger (every setting/world auditioned). Cross-campaign by nature:
 // settings are the grouping ground; a picked setting becomes a campaign that spawns its stories.
 export const SLATE = slate as unknown as { settings: { id: string; title: string; line: string; world: string; nativeAge?: string }[] } & StepData;
-export const SLATE_STATUS: Record<string, string> = { ferry: "building", lighthouse: "available", cloudhouse: "available" };
+export const SLATE_STATUS: Record<string, string> = { ferry: "building", lighthouse: "available", cloudhouse: "available", room: "available" };
 
 // per-step normalizers → Item[]. concept = the SETTINGS slate; pilot = the MOMENTS (story-doors).
 const NORM: Record<string, (d: { [k: string]: unknown }) => Item[]> = {
@@ -128,6 +128,10 @@ const WHY_PICKED: Record<string, Record<string, string>> = {
     concept: "We picked the Night Ferry because everyone we showed it to felt safe and ‘got it’ instantly — a clean sweep (relate 5.0 / safe 5.0). It’s a boat that crosses the dark water every night and asks nothing of you: a place to set a bad day down and let it go. The other ideas were good but lonelier (the lighthouse) or too small to grow many stories from (the sky station). The ferry gives the most kinds of gentle story while always feeling safe — so it earns the slot.",
     pilot: "We picked The Dark Water because its metaphor — surrender as support — is the richest of the three. The Strait (pressure as passage) and the Crossing (destination as hope) are about getting THROUGH a hard thing or getting TO a far thing; The Dark Water is about the hard thing itself — the vast, overwhelming sea — turning out to be what holds you up. For someone worn out by trying to manage everything, ‘the world that feels like too much is actually carrying you’ is the deepest, kindest turn the night can make. It was the world-builder’s richest pick and stayed safe (≥4.8). The other two stay in the bank; this story is built on the deep.",
   },
+  room: {
+    concept: "We added the Open Room as the TEEN demo and the whole audience felt it instantly — anxious, low-self-worth, and cozy-fans all gave it a clean 5/5 (relate + safe), and the thrill-seeker repel held exactly as it should (r1: no stakes to chase). It’s a school room a caretaker keeps unlocked after the bell — an un-graded hour where showing up IS the win. Its safety floor, story-spawn, and persistence are all load-bearing for teens, so it earns a slot as the teen-keyed mirror of the same struggle.",
+    pilot: "We picked The Open Seat because for teens the deepest turn is «kept, not chosen» — belonging you don’t audition for, the chair that’s yours before you’ve proven anything. The Last Bell (showing up is enough) and The Circle (the un-graded hour) are both strong, but the Seat speaks most directly to the comparison/belonging spiral that defines the age — so the story is built on the seat.",
+  },
 };
 export const whyPicked = (campaign: string, step: string): { text?: string; pending?: boolean } => {
   const t = WHY_PICKED[campaign]?.[step];
@@ -208,9 +212,18 @@ export const CAMPAIGNS: Record<string, {
   // folded in (no fleet-scored range). `isSeed` gates the render so the spine/board don't choke.
   room: {
     label: "The Open Room", pick: "room",
-    blurb: "the TEEN demo — a school room a caretaker keeps unlocked after the bell; the same audience (anxiety · low self-worth · ADHD) dialed to TEEN. «kept, not chosen».",
-    steps: { scenes: roomPilot as unknown as StepData },
-    carried: {},
+    blurb: "the TEEN demo, now FULL-BUILD — a school room a caretaker keeps unlocked after the bell; the same audience (anxiety · low self-worth · ADHD) dialed to TEEN. «kept, not chosen». (Reproducibility test: the whole flow re-run for a fresh campaign.)",
+    steps: { pilot: roomPilot as unknown as StepData, story: roomPilot as unknown as StepData, scenes: roomPilot as unknown as StepData },
+    carried: {
+      pilot: [{ step: "① THE SETTING — the Open Room", lines: [
+        "won for TEENS as a hook-engine: a bounded, un-graded room — the safety floor LOAD-BEARING, story-spawn wide (the thrill-seeker repel held: r1/s5)",
+        "↳ carry the TEEN content ceiling as a HARD floor (references yes, depictions no); the dialed tone overrides WITHIN the cap",
+      ] }],
+      scenes: [{ step: "③ THE STORY — the ambient ground + the weather arc", lines: [
+        "the mood-colour vocabulary (Lights Low · The Worn Couch · After the Bell) — the range every cell stays inside",
+        "↳ the 5 world-moments (the last bell → a rough one → the walk out) carry over from the range as the matrix rows",
+      ] }],
+    },
   },
   lighthouse: {
     label: "The Lighthouse Coast", pick: "lighthouse",

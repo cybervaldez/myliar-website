@@ -20,6 +20,13 @@
    "line": "Your seat is kept.",
    "world": "A soft-lit sky station moored above sleeping hills. You read one patch of sky and make one small mark, and a rough little constellation is allowed to count. A station that holds whether the night is clear or the weather turns.",
    "nativeAge": "younger → broad — light / whimsical cozy; the most age-accessible"
+  },
+  {
+   "id": "room",
+   "title": "The Open Room",
+   "line": "The seat's already yours.",
+   "world": "The Open Room — a school room (the old AV room) a quiet caretaker keeps unlocked after the last bell, for the kids who don't have anywhere else to be yet. String lights, a worn couch, a kettle nobody owns. A bounded hour before lock-up; a small rotating crew of regulars; and one chair by the window that's somehow always free when you come in.",
+   "nativeAge": "13–17 teen"
   }
  ],
  "results": {
@@ -47,6 +54,14 @@
     "wouldPlay": false,
     "why": "While the gentle, low-pressure task is appealing, the inherent precarity of being in a sky station during bad weather is too frightening.",
     "feeling": "Gentle but precarious"
+   },
+   {
+    "index": 4,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It's a quiet, predictable space with no demands on me.",
+    "feeling": "Calm, seen"
    }
   ],
   "low_worth": [
@@ -73,6 +88,14 @@
     "wouldPlay": true,
     "why": "The explicit validation that a small, imperfect effort is enough feels deeply safe and exactly what I need.",
     "feeling": "Gently valued"
+   },
+   {
+    "index": 4,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This is a place where I don't have to pretend I'm okay.",
+    "feeling": "Accepted, belonging"
    }
   ],
   "adhd": [
@@ -99,6 +122,14 @@
     "wouldPlay": true,
     "why": "The explicit permission for a small, imperfect contribution to be enough removes all the pressure and fear of failure associated with starting and finishing tasks.",
     "feeling": "Gentle acceptance"
+   },
+   {
+    "index": 4,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "I can just exist here without a to-do list or being judged.",
+    "feeling": "Unpressured, free"
    }
   ],
   "iyashikei_fan": [
@@ -125,6 +156,14 @@
     "wouldPlay": true,
     "why": "It promises a gentle, non-demanding purpose where small, imperfect contributions are valued, which feels deeply safe and restorative.",
     "feeling": "Gentle, accepted belonging"
+   },
+   {
+    "index": 4,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It's the perfect cozy, found-family vibe I love.",
+    "feeling": "Warm, comfortable"
    }
   ],
   "thrill_seeker": [
@@ -151,6 +190,14 @@
     "wouldPlay": false,
     "why": "This world offers ultimate safety and gentle purpose, but its complete lack of stakes or challenge makes it feel utterly lifeless to me.",
     "feeling": "Numbed by quiet"
+   },
+   {
+    "index": 4,
+    "relate": 1,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "There's nothing to do, no conflict to overcome here.",
+    "feeling": "Bored, confined"
    }
   ]
  },
@@ -179,6 +226,11 @@
     "opens": "Stories of quiet purpose, wonder, scientific discovery, the feeling of being small in the universe.",
     "forecloses": "Grounded, visceral conflict; stories about community on the ground; fast-paced action.",
     "seed": "The constellation you've been charting for weeks isn't where it should be. The change is small, just a single mark, but it breaks every known law of the sky."
+   },
+   {
+    "index": 4,
+    "canBuild": "hairline",
+    "explanation": "Excels at quiet, introspective tones but struggles to support high-energy or high-stakes genres."
    }
   ],
   "safety_floor": [
@@ -205,6 +257,11 @@
     "opens": "Gentle purpose and accepted imperfection.",
     "forecloses": "High-stakes action or direct worldly conflict.",
     "seed": "What happens when a star you're watching goes out?"
+   },
+   {
+    "index": 4,
+    "canBuild": "load-bearing",
+    "explanation": "The setting's core design is a predictable, low-demand sanctuary, which is ideal."
    }
   ],
   "story_spawn": [
@@ -231,6 +288,11 @@
     "opens": "Gentle sci-fi, stories of quiet purpose, finding meaning in small data, a community of observers.",
     "forecloses": "High-action conflict, stories of survival against the elements, grounded realism.",
     "seed": "One of the rough constellations begins to move."
+   },
+   {
+    "index": 4,
+    "canBuild": "load-bearing",
+    "explanation": "The 'found family' of regulars provides a perfect engine for diverse interpersonal stories."
    }
   ],
   "persistence": [
@@ -257,6 +319,11 @@
     "opens": "Quiet observation; finding meaning in small patterns; a sense of gentle purpose.",
     "forecloses": "Ground-level concerns; fast-paced action; stories without introspection.",
     "seed": "One night, a mark you made the night before has moved on its own."
+   },
+   {
+    "index": 4,
+    "canBuild": "load-bearing",
+    "explanation": "Its reliability, comfort, and personal invitation (the chair) make it a highly dwelleable space."
    }
   ]
  }

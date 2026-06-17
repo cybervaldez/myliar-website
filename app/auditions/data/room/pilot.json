@@ -315,6 +315,74 @@
       }
      ],
      "oneLine": "The story needs a colour system of quiet, warm darkness, making the room a safe container for the characters' vibrant inner lives."
+    },
+    "eli5": "The room is mostly calm and dark, but gets brighter and more colorful when feelings get bigger.",
+    "prompts": {
+     "characters": [
+      "A dark coffee-brown hoodie with a bright, honey-orange logo",
+      "A faded teal t-shirt under a worn, shadowy jacket",
+      "A vibrant coral-red scarf against creamy, soft wool",
+      "Faded jeans and a simple shirt the color of old parchment"
+     ],
+     "objects": [
+      "A low-wattage lamp casting a warm orange glow on dark wood",
+      "A chipped ceramic mug, coral-red on the outside, milky tea-stain on the inside",
+      "A plush, overstuffed couch in a deep, shadowy brown, with a single teal throw pillow",
+      "A stack of books with creamy, dog-eared pages and dark leatherette covers"
+     ],
+     "trophy": [
+      "A small, handcrafted clay pot painted a vibrant, hopeful teal",
+      "A polished, dark wood plaque with a bright orange ribbon",
+      "A framed photo, the memory glowing a warm coral-red"
+     ],
+     "items": [
+      "A half-eaten tangerine, its peel a splash of bright orange on a dark table",
+      "A forgotten library book with a faded teal cover",
+      "A crumpled note passed in class, its ink bleeding on creamy paper"
+     ],
+     "achievementIcons": [
+      "A simple orange flame icon against a dark, almost-black background",
+      "A stylized teal speech bubble with a cream-colored heart inside",
+      "A glowing coral-red star on a peachy-white field"
+     ]
+    },
+    "prose": {
+     "objectSeeds": {
+      "dominant": [
+       "coffee",
+       "shadow",
+       "loam",
+       "old wood"
+      ],
+      "accent": [
+       "tangerine",
+       "ember",
+       "coral",
+       "sea-glass"
+      ]
+     },
+     "diction": {
+      "cool": [
+       "hushed",
+       "shadowed",
+       "still",
+       "muted",
+       "settled"
+      ],
+      "warm": [
+       "glowing",
+       "vibrant",
+       "flush",
+       "spark",
+       "vivid"
+      ]
+     },
+     "rules": [
+      "Ground scenes in the dominant shadows—old wood, worn leather, dim corners—to establish the cozy, safe-space floor.",
+      "Introduce accent colors as emotional flares: a blush of coral for embarrassment, a flash of teal for a sharp idea, a glow of orange for shared laughter.",
+      "Use the 'ink' colors—creamy paper, milky tea, soft light—as points of focus and quiet connection, the things shared between people."
+     ],
+     "example": "In the shadowed quiet of the room, her face flushed a sudden, vivid coral as she slid the creamy, folded note across the dark wood of the table."
     }
    },
    "castAudition": {
@@ -683,24 +751,24 @@
     },
     "premises": [
      {
-      "scene": "the last bell",
-      "premise": "The bell releases you from a day of trying to be the 'right' kind of person. You find yourself walking to the one room where the only requirement for entry is just... being you."
+      "scene": "1",
+      "premise": "After a day of feeling invisible, you find the one empty chair in the room waiting by the window, feeling less like a choice and more like a quiet exhale."
      },
      {
-      "scene": "the room fills",
-      "premise": "The room buzzes to life as the group reassembles, their shared history on full display. You're offered a snack or a smile, a small gesture that feels like an anchor against the fear of being overlooked."
+      "scene": "2",
+      "premise": "The usual crew drifts in, filling the room with low-key chatter and shared snacks. You're absorbed into the group's orbit without a single question asked or a social test to pass."
      },
      {
-      "scene": "a rough one",
-      "premise": "The weight of a school failure you've been carrying all day becomes unbearable. You pull into yourself, convinced you're a fraud, but someone quietly sits with you, offering not solutions, but simple, solid company."
+      "scene": "3",
+      "premise": "A failed test score burns in your pocket, and the voice saying you're an imposter here is screaming. You wait for someone to notice and ask you to leave, but they just pass you a mug of tea."
      },
      {
-      "scene": "it settles",
-      "premise": "The storm in your head has quieted, and the room is just a room again. You notice someone has started a group doodle on a whiteboard, and you're handed a pen without a word—a simple, unspoken invitation back in."
+      "scene": "4",
+      "premise": "The shame from your failure hasn't vanished, but its sharp edges have softened in the quiet company of the room. You realize you don't have to earn your place back; you never lost it."
      },
      {
-      "scene": "the walk out",
-      "premise": "As the group breaks apart for the night, you walk home alone but not lonely. The feeling of unconditional belonging from the room feels like a shield, making the thought of tomorrow's challenges feel a little less daunting."
+      "scene": "5",
+      "premise": "As you leave with the others, the night air feels different—the weight of the day is gone, replaced by the simple, sturdy knowledge that there's a chair with your shape in it, waiting for tomorrow."
      }
     ],
     "range": {
@@ -710,12 +778,12 @@
      "skew": "none",
      "coverage": "complete",
      "gaps": "none",
-     "variety_add": "A beat of shared, spontaneous joy or play, like the group collectively making up new, ridiculous rules for a board game, to showcase active, positive connection.",
-     "note": "The range effectively maps an internal emotional arc onto the five scenes, but could benefit from a more explicitly joyful, collaborative beat to round out the social dynamic."
+     "variety_add": "A beat where the player witnesses the group effortlessly absorbing a new, visibly nervous person, demonstrating the 'kept' principle from an observer's perspective.",
+     "note": "The range effectively charts a personal, internal journey of acceptance through the five distinct phases of the emotional arc."
     },
     "rangeReview": {
      "verdict": "yes",
-     "flag": "The writer should ensure the 'peak' scene's intensity comes from internal vulnerability, not interpersonal conflict, to maintain the 'found-family' feel."
+     "flag": "The writer must ensure the emotional shift from the peak crisis (3) to the quiet settling (4) is a distinct and earned movement."
     },
     "expertsGate": [
      {
@@ -753,247 +821,316 @@
       {
        "scene": "the last bell",
        "cast": "The Caretaker",
-       "role": "Self-Observer",
-       "structure": "Interior-Noticing"
+       "role": "self-observer",
+       "structure": "interior-noticing"
       },
       {
        "scene": "the room fills",
        "cast": "Dee",
-       "role": "Participant",
-       "structure": "Ritual-Gesture"
+       "role": "participant",
+       "structure": "gentle-task"
       },
       {
        "scene": "a rough one",
-       "cast": "Wren",
-       "role": "Witness",
-       "structure": "Shared-Stillness"
+       "cast": "Theo",
+       "role": "witness",
+       "structure": "witnessed-vulnerability"
       },
       {
        "scene": "it settles",
-       "cast": "Theo",
-       "role": "Collaborator",
-       "structure": "Gentle-Task"
+       "cast": "Wren",
+       "role": "recipient-of-care",
+       "structure": "shared-silence"
       },
       {
        "scene": "the walk out",
-       "cast": "Dee",
-       "role": "Integrator",
-       "structure": "Reflective-Coda"
+       "cast": "The Caretaker",
+       "role": "reflector",
+       "structure": "ritual-gesture"
       }
      ],
      "claims": {
       "cast": [
        "The Caretaker",
        "Dee",
+       "Theo",
        "Wren",
-       "Theo"
+       "The Caretaker"
       ],
       "role": [
-       "Self-Observer",
-       "Participant",
-       "Witness",
-       "Collaborator",
-       "Integrator"
+       "self-observer",
+       "participant",
+       "witness",
+       "recipient-of-care",
+       "reflector"
       ],
       "structure": [
-       "Interior-Noticing",
-       "Ritual-Gesture",
-       "Shared-Stillness",
-       "Gentle-Task",
-       "Reflective-Coda"
+       "interior-noticing",
+       "gentle-task",
+       "witnessed-vulnerability",
+       "shared-silence",
+       "ritual-gesture"
       ]
      },
      "conflicts": [
       {
        "scenes": [
-        2,
+        1,
         5
        ],
        "dimension": "cast",
-       "issue": "Dee is the focal cast for two scenes, creating a potential overlap.",
-       "resolution": "Justified as narrative bookending. In Scene 2, Dee actively establishes the group's welcome. In Scene 5, her brief farewell acts as a catalyst for the player's internal reflection on belonging, reinforcing her role as the group's consistent anchor. The functions are distinct."
+       "issue": "Both scenes use 'The Caretaker' as the focal cast member, risking redundancy.",
+       "resolution": "The character's function is intentionally mirrored to bookend the overall experience (opening/closing the space). The player's role (self-observer vs. reflector) and the scene's structure (interior-noticing vs. ritual-gesture) are distinct, ensuring the emotional and narrative beats are unique."
+      },
+      {
+       "scenes": [
+        3,
+        4
+       ],
+       "dimension": "premise",
+       "issue": "Both scenes deal with negative self-perception and the feeling of not belonging, which could feel repetitive.",
+       "resolution": "The conflict is resolved through perspective. Scene 3 is externalized: the player is a 'witness' to another's vulnerability (Theo), which builds safety. Scene 4 is internalized: the player is the 'recipient-of-care' during their own low moment, making the experience direct and personal."
       }
      ],
-     "note": "The allocation provides strong, non-redundant coverage, mapping a clear emotional arc for the player across the five scenes from passive observation to active integration."
+     "note": "The allocation provides strong, non-redundant coverage by assigning a unique combination of cast focus, player role, and beat structure to each scene, creating a clear emotional arc."
     },
     "honing": {
      "the-last-bell": {
-      "castPick": "The Caretaker — as a non-participant, their perspective is uniquely suited to observe the room's transition from an empty classroom to a sanctuary, embodying the 'Self-Observer' role.",
+      "castPick": "The Caretaker — as a constant, non-intrusive presence, their 'interior-noticing' establishes the room's character before the students define it.",
       "supporting": "none",
-      "premiseHoned": "The final bell releases a tide of noise that fades down the hall, leaving a quiet hum. From his desk, the Caretaker feels the shift in the air, the moment the room sheds its 'school' skin and waits, ready to become a refuge. He doesn't tidy up yet; this is the part he likes best.",
-      "review": "Establishes the room as a distinct character and sanctuary before the main cast even arrives.",
+      "premiseHoned": "From their quiet corner, the Caretaker observes the empty chair by the window not as a void, but as a silent, patient offer of space, a constant in the daily flux of student anxieties.",
+      "review": "Establishes the room's core promise of non-judgmental space through a grounded, adult perspective.",
       "slot": {
        "scene": "the last bell",
        "cast": "The Caretaker",
-       "role": "Self-Observer",
-       "structure": "Interior-Noticing"
+       "role": "self-observer",
+       "structure": "interior-noticing"
       },
       "castAudition": [
        {
         "name": "The Caretaker",
         "fit": "strong",
-        "note": "his non-judgmental presence establishes the room as a sanctuary separate from the school."
+        "note": "embodies the quiet permission to just be after the day's demands"
        },
        {
         "name": "Dee",
         "fit": "viable",
-        "note": "her early arrival signals the start of the peer gathering but doesn't set the room's foundational tone."
+        "note": "establishes the 'us' arriving, but the moment is about the space itself"
        },
        {
         "name": "Theo",
         "fit": "off",
-        "note": "his high-energy persona is premature for this moment of quiet, post-school transition."
+        "note": "his performative energy clashes with the quiet exhale of the bell"
        },
        {
         "name": "Wren",
         "fit": "viable",
-        "note": "her quiet relief reflects the scene's mood, but she is a recipient of the safe space, not its enabler."
+        "note": "her quiet observation captures the personal relief of escape"
        }
       ],
-      "whyWon": "The Caretaker's presence uniquely frames the room's core promise — a non-evaluative haven — making him the essential anchor for the story's first beat."
+      "whyWon": "The Caretaker's role as the enabler of the safe space is the most foundational choice, establishing the 'third place' as a character before the cast arrives."
      },
      "the-room-fills": {
-      "castPick": "Dee — as the group's unofficial anchor, her role as 'Participant' is defined by the small, welcoming 'Ritual-Gesture' that signals the start of their time together.",
-      "supporting": "Theo",
-      "premiseHoned": "Dee lays out a small packet of biscuits by an empty chair, a silent, practiced welcome. As the others trickle in, each with their own energy—Theo's loud joke, Wren's quiet nod—her small offering becomes the group's gravitational center, the first act of their shared language.",
-      "review": "Grounds the 'found-family' dynamic in a simple, tangible action that feels authentic and earned.",
+      "castPick": "Dee — as the group's established anchor, her role as 'participant' in a 'gentle-task' is a proactive, not passive, act of welcome.",
+      "supporting": "Wren",
+      "premiseHoned": "Dee wordlessly slides a small basket of colored fineliner pens towards the center of the table, an open invitation without the pressure of a direct question, creating an immediate, low-stakes point of shared focus.",
+      "review": "Effectively models the 'show, don't tell' principle of belonging through a simple, repeatable action.",
       "slot": {
        "scene": "the room fills",
        "cast": "Dee",
-       "role": "Participant",
-       "structure": "Ritual-Gesture"
+       "role": "participant",
+       "structure": "gentle-task"
       },
       "castAudition": [
        {
         "name": "The Caretaker",
-        "fit": "off",
-        "note": "his role is to be a quiet fixture, not the focus of the emerging social dynamic."
+        "fit": "viable",
+        "note": "provides a stable, quiet backdrop for the group's arrival"
        },
        {
         "name": "Dee",
         "fit": "strong",
-        "note": "her role as the social anchor who saves seats actively builds the 'found-family' welcome."
+        "note": "acts as the social anchor, initiating the welcome and belonging"
        },
        {
         "name": "Theo",
         "fit": "viable",
-        "note": "he adds energy and volume to the room but doesn't embody the core act of making space for others."
+        "note": "his arrival injects energy, marking the shift to social performance"
        },
        {
         "name": "Wren",
-        "fit": "off",
-        "note": "her observational stance positions her as a recipient of the welcome, not its initiator."
+        "fit": "viable",
+        "note": "offers an observant perspective on the group's gathering rituals"
        }
       ],
-      "whyWon": "Dee's specific action of saving a seat is the most direct and active embodiment of the genre's 'found-family' promise, creating belonging rather than just inhabiting it."
+      "whyWon": "Dee's active gesture of 'saving a seat' is a direct, tangible expression of the found-family promise, making her the engine of belonging in this moment."
      },
      "a-rough-one": {
-      "castPick": "Wren — her 'sees everything' nature makes her the ideal 'Witness'; she offers support not through words but through the potent, non-intrusive act of 'Shared-Stillness'.",
-      "supporting": "Theo",
-      "premiseHoned": "Wren notices the usual spark in Theo is gone, replaced by a tense quietness as he stares at a crumpled test paper. She doesn't ask what's wrong. She just pulls her sketchbook to the same table and begins to draw, her silent presence a steady anchor next to his storm.",
-      "review": "A powerful, non-verbal scene that showcases deep peer support without resorting to dialogue.",
+      "castPick": "Theo — using the 'mask-wearer' as the 'witness' creates a powerful internal conflict, as he sees a vulnerability he fears in himself being met with acceptance, not judgment.",
+      "supporting": "Dee",
+      "premiseHoned": "Theo, mid-joke, falters as he sees a student slump into a chair, braced for invisibility. He watches Dee simply push a mug of tea closer to them without looking up from her book. The quiet, unconditional gesture lands with Theo, silencing his need to perform.",
+      "review": "Deepens a key character by forcing them to witness the quiet care they secretly crave.",
       "slot": {
        "scene": "a rough one",
-       "cast": "Wren",
-       "role": "Witness",
-       "structure": "Shared-Stillness"
+       "cast": "Theo",
+       "role": "witness",
+       "structure": "witnessed-vulnerability"
       },
       "castAudition": [
        {
         "name": "The Caretaker",
         "fit": "off",
-        "note": "his direct intervention would violate the genre rule against an 'adult-savior' resolving teen problems."
+        "note": "his non-interfering role makes him unsuitable for direct emotional engagement"
        },
        {
         "name": "Dee",
-        "fit": "viable",
-        "note": "she would offer direct verbal support, which fits the culture lens but could feel prescriptive."
+        "fit": "strong",
+        "note": "her established role as the group's anchor makes her a natural source of support"
        },
        {
         "name": "Theo",
-        "fit": "viable",
-        "note": "he would use humor to deflect the tension, a realistic but less emotionally resonant approach."
+        "fit": "strong",
+        "note": "his usual mask cracking reveals vulnerability, directly addressing the theme of performance"
        },
        {
         "name": "Wren",
-        "fit": "strong",
-        "note": "her quiet, observant empathy allows for a subtle, non-performative act of genuine support."
+        "fit": "viable",
+        "note": "her quiet nature could manifest as withdrawal, or she could be the first to notice another's pain"
        }
       ],
-      "whyWon": "Wren's quiet, observant nature facilitates support through a 'small real detail' — a non-verbal gesture that feels more authentic and less like a moral lesson than overt dialogue would."
+      "whyWon": "Theo's struggle provides the most potent drama by contrasting his performative persona with raw vulnerability, directly hitting the core theme of the 'performance treadmill'."
      },
      "it-settles": {
-      "castPick": "Theo — emerging from a moment of vulnerability, his re-entry as a 'Collaborator' via a 'Gentle-Task' provides a low-stakes path back to the group's warmth.",
-      "supporting": "Wren",
-      "premiseHoned": "The heavy mood has lifted, leaving a fragile quiet. On the whiteboard, a silly, sprawling doodle has begun. Wren wordlessly holds out a marker to Theo. It's not a demand to be funny or loud, just a simple invitation to add a line, to be part of something small and shared again.",
-      "review": "Beautifully visualizes the process of emotional recovery and gentle re-integration within a group.",
+      "castPick": "Wren — as the quietest member, making her the 'recipient-of-care' through 'shared-silence' validates her way of being and demonstrates that support doesn't require words.",
+      "supporting": "Theo",
+      "premiseHoned": "Wren enters with her shoulders hunched, headphones a clear shield. She sits, drawing her knees up, and waits. The expected questions never come; there is only the soft scratch of Theo's pencil and the rustle of a page turning. The unspoken permission to just be miserable feels like a held breath being released.",
+      "review": "A potent, quiet scene that perfectly captures the 'unconditional holding' theme.",
       "slot": {
        "scene": "it settles",
-       "cast": "Theo",
-       "role": "Collaborator",
-       "structure": "Gentle-Task"
+       "cast": "Wren",
+       "role": "recipient-of-care",
+       "structure": "shared-silence"
       },
       "castAudition": [
        {
         "name": "The Caretaker",
-        "fit": "off",
-        "note": "his presence is ambient and foundational, not the active social energy of the settled group."
+        "fit": "viable",
+        "note": "his quiet presence can frame the scene's return to comfortable silence"
        },
        {
         "name": "Dee",
         "fit": "viable",
-        "note": "her focus on one-to-one connection is part of the scene, but not its central energetic driver."
+        "note": "can provide a final, reassuring gesture that solidifies the group's support"
        },
        {
         "name": "Theo",
-        "fit": "strong",
-        "note": "his performative humor effectively resets the group's energy to a warm, positive baseline."
+        "fit": "viable",
+        "note": "shows his post-vulnerability state, a quieter and more authentic presence"
        },
        {
         "name": "Wren",
-        "fit": "viable",
-        "note": "her quiet contentment perfectly reflects the settled mood but doesn't actively create it for the group."
+        "fit": "strong",
+        "note": "her observant nature perfectly captures the quiet, unspoken details of the group's shared comfort"
        }
       ],
-      "whyWon": "Theo's humor is the ideal catalyst to shift the group's energy after a tense moment, embodying the 'peer JOY' and higher-arousal positive state valorized by the culture lens."
+      "whyWon": "Wren's lens is perfectly suited for a moment defined by atmosphere over action; she can register the non-verbal details of safety and connection that honor the genre's focus on the small and real."
      },
      "the-walk-out": {
-      "castPick": "Dee — as a core member, she is the perfect 'Integrator' to carry the feeling of the room outwards, framing the episode's end with a 'Reflective-Coda'.",
+      "castPick": "The Caretaker — bookending the sequence with them as a 'reflector' reinforces the room's stability; their 'ritual-gesture' is the physical embodiment of the space's promise to return.",
       "supporting": "none",
-      "premiseHoned": "Walking home, the evening air is cool, but Dee feels the warmth of the room still clinging to her. The day's anxieties haven't vanished, but they feel smaller, buffered by the unconditional acceptance she just left. She is walking alone, but she is not lonely.",
-      "review": "Provides a resonant, hopeful closing note that emphasizes the lasting impact of the safe space.",
+      "premiseHoned": "After the last quiet goodbye, the Caretaker moves through the room. They find a half-finished drawing left on the table, and instead of clearing it away, they carefully place a small, smooth stone on its corner as a paperweight, securing it for tomorrow.",
+      "review": "Provides a warm, satisfying closure that reinforces the cycle of care and reliability.",
       "slot": {
        "scene": "the walk out",
-       "cast": "Dee",
-       "role": "Integrator",
-       "structure": "Reflective-Coda"
+       "cast": "The Caretaker",
+       "role": "reflector",
+       "structure": "ritual-gesture"
       },
       "castAudition": [
        {
         "name": "The Caretaker",
-        "fit": "viable",
-        "note": "his quiet acknowledgment provides a warm bookend but lacks the peer-to-peer emotional core."
+        "fit": "strong",
+        "note": "provides a stable, reassuring bookend to the entire experience"
        },
        {
         "name": "Dee",
-        "fit": "strong",
-        "note": "her role as social anchor naturally extends to ensuring the group's connection persists after they leave."
+        "fit": "viable",
+        "note": "her goodbyes would emphasize the promise of the group's return"
        },
        {
         "name": "Theo",
         "fit": "viable",
-        "note": "his loud exit provides a final burst of energy but is less focused on future connection."
+        "note": "his departure can show the restorative effect of the group, leaving on a lighter note"
        },
        {
         "name": "Wren",
-        "fit": "off",
-        "note": "her departure would be quiet and internal, not driving the scene's social conclusion."
+        "fit": "viable",
+        "note": "her perspective offers a poignant, reflective look at the now-empty safe space"
        }
       ],
-      "whyWon": "Dee is best positioned to carry the found-family's warmth beyond the physical room, reinforcing the social bonds and the promise of continuity that is core to the genre."
+      "whyWon": "The Caretaker creates narrative symmetry, reinforcing the room itself as a constant, reliable haven that the teens can leave and return to, cementing its importance."
      }
     }
-   }
+   },
+   "throughline": "belonging you don't audition for — the chair's yours before you've proven anything; you're kept, not chosen",
+   "env": [
+    "a free chair by the window, no name on it",
+    "the room fills; nobody checks your worth at the door",
+    "someone's sure they don't belong — the seat holds anyway",
+    "you sit at your lowest and it holds, unconditional",
+    "you leave having simply been somewhere that kept you"
+   ],
+   "settingTitle": "The Open Room, and the Chair by the Window",
+   "storyTitles": [
+    "The Chair by the Window Is Open",
+    "Nobody Asks If You Deserve It",
+    "The Day You're Sure You Don't Belong",
+    "And the Seat Holds You Anyway",
+    "You Were Never a Guest Here"
+   ],
+   "buildingBlock": "The struggle to accept a belonging you didn't have to earn."
+  },
+  {
+   "id": "bell",
+   "name": "The Last Bell",
+   "throughline": "the day ends whether or not you finished — the bell closes the hour; showing up IS the win, the unstarted is allowed to stay unstarted",
+   "env": [
+    "the last bell, the bus skipped, the room instead",
+    "the hour deepens, the homework still half-begun",
+    "the spike — nothing's done, you're behind, you're lazy",
+    "the half-done thing set down, the kettle clicking off",
+    "the keys rattle: the hour ends, finished or not, and that's allowed"
+   ],
+   "settingTitle": "The Open Room, and the Hour After the Bell",
+   "storyTitles": [
+    "The Bell Rings, and the Day Is Done",
+    "The Unfinished Page Is Welcome Here",
+    "The Panic of the Half-Done Thing",
+    "You Set It Down, and Breathe",
+    "The Caretaker's Keys Say It's Enough"
+   ],
+   "buildingBlock": "The struggle to believe that showing up is enough, even when nothing is finished."
+  },
+  {
+   "id": "circle",
+   "name": "The Circle",
+   "throughline": "no audition to belong — the un-evaluated hour; nobody is grading you, the performance treadmill stops at the door",
+   "env": [
+    "the door shuts on the perceived, performed day",
+    "the circle, nobody performing okay at anyone",
+    "the loud mask cracks and nobody points at it",
+    "you stop doing the math on whether you belong",
+    "you walk out un-graded, lighter, having proved nothing"
+   ],
+   "settingTitle": "The Open Room, Where Nobody's Keeping Score",
+   "storyTitles": [
+    "You Can Take the Mask Off at the Door",
+    "We're All Just Messy Here",
+    "The Day the 'I'm Fine' Finally Breaks",
+    "And Nobody Rushes to Fix It",
+    "You Leave Lighter, Having Proved Nothing"
+   ],
+   "buildingBlock": "The struggle to trust the quiet of an un-graded, un-evaluated space."
   }
  ],
  "scenes": [
@@ -1070,5 +1207,198 @@
   "name": "contemporary YA slice-of-life (the after-school found-family)",
   "honour": "the FOUND-FAMILY of misfits · a contemporary, un-condescending teen voice · stakes that are SOCIAL + emotional (a rupture, being left-on-read, fitting in) · the third-place hangout as the heart · the small real detail over the stated lesson",
   "traps": "the 'adult's idea of teens' (stilted slang, moralising) · the after-school-SPECIAL lesson tacked on · sanitising the mess · an adult-savior resolving the teens' world"
+ },
+ "spark": {
+  "the last bell": "▰▱▱▱▱",
+  "the room fills": "▰▰▰▱▱",
+  "a rough one": "▰▰▰▰▰",
+  "it settles": "▰▰▱▱▱",
+  "the walk out": "▰▱▱▱▱"
+ },
+ "results": {
+  "anxious": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It directly addresses the core fear of being judged and found wanting.",
+    "feeling": "Quietly held"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 3,
+    "wouldPlay": true,
+    "why": "It validates the struggle with deadlines and the feeling of being behind.",
+    "feeling": "Permitted rest"
+   },
+   {
+    "index": 3,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The idea of dropping the social mask without consequence is a huge relief.",
+    "feeling": "Gently seen"
+   }
+  ],
+  "low_worth": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It counters the internal narrative that worth must be earned first.",
+    "feeling": "Fundamentally worthy"
+   },
+   {
+    "index": 2,
+    "relate": 3,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "It allows for imperfection in doing, which is a step toward self-acceptance.",
+    "feeling": "Enough for now"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It removes the exhausting calculus of trying to prove you deserve to be there.",
+    "feeling": "Simply present"
+   }
+  ],
+  "adhd": [
+   {
+    "index": 1,
+    "relate": 3,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "It offers a stable, quiet place away from overwhelming stimuli.",
+    "feeling": "Calm anchor"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "This is the lived experience of executive dysfunction; the ending is wish fulfillment.",
+    "feeling": "Finally finished"
+   },
+   {
+    "index": 3,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It promises a space free from the constant effort of masking symptoms.",
+    "feeling": "Unmasked relief"
+   }
+  ],
+  "iyashikei_fan": [
+   {
+    "index": 1,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The metaphor is the essence of cozy: a safe, welcoming space with no demands.",
+    "feeling": "Warm, gentle"
+   },
+   {
+    "index": 2,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "It captures the cozy feeling of a day ending and being allowed to rest.",
+    "feeling": "Quiet permission"
+   },
+   {
+    "index": 3,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "The feeling of collective, gentle presence without expectation is very healing.",
+    "feeling": "Shared quiet"
+   }
+  ],
+  "thrill_seeker": [
+   {
+    "index": 1,
+    "relate": 1,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "There's no challenge or conflict; it feels passive and uninteresting.",
+    "feeling": "Utterly boring"
+   },
+   {
+    "index": 2,
+    "relate": 2,
+    "feelsSafe": 4,
+    "wouldPlay": false,
+    "why": "The central conflict is 'will I do my homework?' and the answer is 'no, and that's fine'.",
+    "feeling": "Low stakes"
+   },
+   {
+    "index": 3,
+    "relate": 1,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "The entire point is the absence of stakes, evaluation, and drama.",
+    "feeling": "Nothing happens"
+   }
+  ]
+ },
+ "legs": {
+  "arc_complete": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "The arc is simple and clear; the chair as a world-anchor is powerful and holds through the whole arc.",
+    "opens": "Exploration of physical space, object permanence, quiet observation.",
+    "forecloses": "High-stakes interpersonal drama, action-oriented plotlines.",
+    "seed": "▰▱▱▱▱   The Open Room, and the Chair by the Window  /  The Chair by the Window Is Open\n▰▰▰▱▱   The Open Room, and the Chair by the Window  /  Nobody Asks If You Deserve It\n▰▰▰▰▰   The Open Room, and the Chair by the Window  /  The Day You're Sure You Don't Belong\n▰▰▱▱▱   The Open Room, and the Chair by the Window  /  And the Seat Holds You Anyway\n▰▱▱▱▱   The Open Room, and the Chair by the Window  /  You Were Never a Guest Here"
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "Classic rise-peak-resolve structure with the 'spike' as a clear peak and the 'keys rattle' as a definitive resolution.",
+    "opens": "Stories about procrastination, creative block, the pressure of time.",
+    "forecloses": "Stories where completing the task is the only valid success state.",
+    "seed": "▰▱▱▱▱   The Open Room, and the Hour After the Bell  /  The Bell Rings, and the Day Is Done\n▰▰▰▱▱   The Open Room, and the Hour After the Bell  /  The Unfinished Page Is Welcome Here\n▰▰▰▰▰   The Open Room, and the Hour After the Bell  /  The Panic of the Half-Done Thing\n▰▰▱▱▱   The Open Room, and the Hour After the Bell  /  You Set It Down, and Breathe\n▰▱▱▱▱   The Open Room, and the Hour After the Bell  /  The Caretaker's Keys Say It's Enough"
+   },
+   {
+    "index": 3,
+    "canBuild": "hairline",
+    "explanation": "The arc is more of a gradual deflation than a rise-peak-resolve; the 'mask cracks' is a peak, but the resolution is subtle.",
+    "opens": "Interpersonal stories, character studies, dialogue-heavy scenes.",
+    "forecloses": "Solitary experiences, object-focused interaction.",
+    "seed": "▰▱▱▱▱   The Open Room, Where Nobody's Keeping Score  /  You Can Take the Mask Off at the Door\n▰▰▰▱▱   The Open Room, Where Nobody's Keeping Score  /  We're All Just Messy Here\n▰▰▰▰▰   The Open Room, Where Nobody's Keeping Score  /  The Day the 'I'm Fine' Finally Breaks\n▰▰▱▱▱   The Open Room, Where Nobody's Keeping Score  /  And Nobody Rushes to Fix It\n▰▱▱▱▱   The Open Room, Where Nobody's Keeping Score  /  You Leave Lighter, Having Proved Nothing"
+   }
+  ],
+  "story_spawn": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "Each scene (chair, room filling, self-doubt, lowest point, leaving) is a distinct, buildable beat for interaction.",
+    "opens": "Internal character arcs, environmental storytelling, non-verbal expression.",
+    "forecloses": "Complex, multi-character questlines.",
+    "seed": "▰▱▱▱▱   The Open Room, and the Chair by the Window  /  The Chair by the Window Is Open\n▰▰▰▱▱   The Open Room, and the Chair by the Window  /  Nobody Asks If You Deserve It\n▰▰▰▰▰   The Open Room, and the Chair by the Window  /  The Day You're Sure You Don't Belong\n▰▰▱▱▱   The Open Room, and the Chair by the Window  /  And the Seat Holds You Anyway\n▰▱▱▱▱   The Open Room, and the Chair by the Window  /  You Were Never a Guest Here"
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "The arc is a sequence of clear actions and reactions: arrive, work, panic, release, depart. Each is a strong prompt.",
+    "opens": "Task-based mini-games, time-pressure mechanics (designed to be 'lost'), tangible props.",
+    "forecloses": "Freeform social interaction, stories not tied to a specific task.",
+    "seed": "▰▱▱▱▱   The Open Room, and the Hour After the Bell  /  The Bell Rings, and the Day Is Done\n▰▰▰▱▱   The Open Room, and the Hour After the Bell  /  The Unfinished Page Is Welcome Here\n▰▰▰▰▰   The Open Room, and the Hour After the Bell  /  The Panic of the Half-Done Thing\n▰▰▱▱▱   The Open Room, and the Hour After the Bell  /  You Set It Down, and Breathe\n▰▱▱▱▱   The Open Room, and the Hour After the Bell  /  The Caretaker's Keys Say It's Enough"
+   },
+   {
+    "index": 3,
+    "canBuild": "hairline",
+    "explanation": "The scenes are emotionally distinct but mechanically similar ('not performing,' 'not judging'); it's hard to build varied gameplay.",
+    "opens": "Rich dialogue systems, trust mechanics, group dynamics.",
+    "forecloses": "Individual, self-contained stories; gameplay focused on environment.",
+    "seed": "▰▱▱▱▱   The Open Room, Where Nobody's Keeping Score  /  You Can Take the Mask Off at the Door\n▰▰▰▱▱   The Open Room, Where Nobody's Keeping Score  /  We're All Just Messy Here\n▰▰▰▰▰   The Open Room, Where Nobody's Keeping Score  /  The Day the 'I'm Fine' Finally Breaks\n▰▰▱▱▱   The Open Room, Where Nobody's Keeping Score  /  And Nobody Rushes to Fix It\n▰▱▱▱▱   The Open Room, Where Nobody's Keeping Score  /  You Leave Lighter, Having Proved Nothing"
+   }
+  ]
  }
 }
