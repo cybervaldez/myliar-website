@@ -327,72 +327,12 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
           there. This page keeps the SETTING build (UI · asset colours · prose recipe) from the base ambient. */}
       {A && (
         <div style={{ border: `1.5px dashed ${forest}`, background: shade, padding: "9px 12px", marginTop: 14, fontSize: 11, color: ink, lineHeight: 1.55 }}>
-          <span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".06em", color: forest }}>🎨 AMBIENT PALETTE → MOVED to the SCENES step</span> — the palette is now auditioned <b>per weather-moment</b> at the Scenes hub (the matrix). Below, the SETTING build (UI · asset colours · prose recipe) is shown from the base ambient <b>{A.name}</b> <code style={{ fontSize: 9.5, color: margin }}>{A.base}</code>.
+          <span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".06em", color: forest }}>🎨 AMBIENT PALETTE + its UI → MOVED to the SCENES step</span> — the palette is auditioned <b>per weather-moment</b> at the Scenes hub (the matrix), and the ambient-derived UI — the <b>UI-from-palette</b> (dialogue box), the <b>prompt-friendly colours</b>, and the <b>palette→prose</b> recipe — now lives on <b>each scene page</b>, each using its own palette. The Story step keeps the world-moments scrubber + the setting.
         </div>
       )}
 
-      {/* UI FROM THE AMBIENT — the chrome wears the mood; the DIALOGUE BOX is the centrepiece */}
-      {A && (
-        <div style={{ marginTop: 14 }}>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 8 }}>🖥 UI FROM THE AMBIENT — the chrome wears the mood</div>
-          <div style={{ background: A.base, border: `2px solid ${A.accent}`, padding: "12px 14px 13px", boxShadow: "3px 3px 0 rgba(0,0,0,.22)" }}>
-            <div style={{ color: A.ink, fontSize: 14.5, lineHeight: 1.55 }}>{beat?.text ?? "…"} <span style={{ color: A.accent }}>▾</span></div>
-          </div>
-          <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 9, flexWrap: "wrap" }}>
-            <span style={{ background: A.accent, color: readOn(A.accent), fontFamily: "var(--theme-body)", fontWeight: 700, fontSize: 11, padding: "5px 11px", border: `1.5px solid ${A.ink}` }}>▸ stay with it</span>
-            <span style={{ background: A.base, color: A.ink, fontFamily: "var(--theme-body)", fontWeight: 700, fontSize: 11, padding: "5px 11px", border: `1.5px solid ${A.accent}` }}>let go</span>
-            <span style={{ flex: 1, minWidth: 110, height: 11, background: A.base, border: `1.5px solid ${A.accent}`, position: "relative", display: "inline-block" }}>
-              <span style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "62%", background: A.accent, opacity: 0.85 }} />
-            </span>
-          </div>
-          <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginTop: 6 }}>the dialogue box · choices · the stat bar — all from the ambient (base · ink · accent). <span style={{ color: "var(--spot-red)" }}>The line is an example.</span></div>
-        </div>
-      )}
-
-      {/* PROMPT-FRIENDLY COLOURS — natural-language colour phrases from the palette, for generating assets */}
-      {story.mood?.prompts && (
-        <div style={{ border: `2px solid ${forest}`, background: paper, padding: "11px 13px", marginTop: 14 }}>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 7 }}>🧩 PROMPT-FRIENDLY COLOURS — the world’s assets <span style={{ color: margin, fontWeight: 400 }}>· objects · trophies · items · icons (character prompts live in the tone step)</span></div>
-          {([["objects", "OBJECTS"], ["trophy", "TROPHY"], ["items", "ITEMS"], ["achievementIcons", "ACHIEVEMENT ICONS"]] as const).map(([k, label]) => {
-            const list = story.mood!.prompts![k];
-            if (!list?.length) return null;
-            return (
-              <div key={k} style={{ marginTop: 8 }}>
-                <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>{label}</div>
-                <div style={{ display: "grid", gap: 3 }}>
-                  {list.map((s, i) => <div key={i} style={{ fontSize: 11, color: ink, lineHeight: 1.45, paddingLeft: 11, position: "relative" }}><span style={{ position: "absolute", left: 0, color: margin }}>·</span>{s}</div>)}
-                </div>
-              </div>
-            );
-          })}
-          <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginTop: 9, borderTop: "1px solid var(--ink-soft)", paddingTop: 7 }}>↳ these feed the asset / icon prompts downstream — the colour language a generator reads, derived from the picked ambient. Examples; re-derive if the palette changes.</div>
-        </div>
-      )}
-
-      {/* PALETTE → PROSE — colour as TEXT: the palette steers which objects a scene seeds + how the
-          prose is worded (deep-research: research-color-in-text.md) */}
-      {story.mood?.prose && A && (
-        <div style={{ border: `2px solid ${forest}`, background: paper, padding: "11px 13px", marginTop: 14 }}>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>✍ PALETTE → PROSE — the palette also steers the WRITING <span style={{ color: margin, fontWeight: 400 }}>· deep-research</span></div>
-          <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginBottom: 9 }}>no pixels here: colour lives in the OBJECTS a scene seeds + the WORDS used (the hue is never named).</div>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>SEED THE SCENE — the palette's objects</div>
-          <div style={{ fontSize: 11, color: ink, lineHeight: 1.5, marginBottom: 8 }}>
-            <div><b style={{ color: A.accent }}>cool ◂</b> {story.mood!.prose!.objectSeeds.dominant.join(" · ")}</div>
-            <div><b style={{ color: "var(--spot-red)" }}>warm ▸</b> {story.mood!.prose!.objectSeeds.accent.join(" · ")}</div>
-          </div>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>DICTION — the exact word carries the tone</div>
-          <div style={{ fontSize: 11, color: ink, lineHeight: 1.5, marginBottom: 8 }}>
-            <div><b style={{ color: A.accent }}>cool</b> {story.mood!.prose!.diction.cool.join(", ")}</div>
-            <div><b style={{ color: "var(--spot-red)" }}>warm</b> {story.mood!.prose!.diction.warm.join(", ")}</div>
-          </div>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>THE RULES</div>
-          <div style={{ display: "grid", gap: 3, marginBottom: 9 }}>
-            {story.mood!.prose!.rules.map((r, i) => <div key={i} style={{ fontSize: 10.5, color: ink, lineHeight: 1.45, paddingLeft: 11, position: "relative" }}><span style={{ position: "absolute", left: 0, color: margin }}>·</span>{r}</div>)}
-          </div>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 4 }}>↳ A BEAT, PALETTE-STEERED <span style={{ color: margin, fontWeight: 400 }}>(example — shown in the palette)</span></div>
-          <div style={{ background: A.base, color: A.ink, border: `2px solid ${A.accent}`, padding: "11px 13px", fontSize: 14, lineHeight: 1.6, fontStyle: "italic" }}>{story.mood!.prose!.example}</div>
-        </div>
-      )}
+      {/* the ambient-derived UI (UI-from-palette · prompt colours · palette→prose) moved to each SCENE page
+          (2026-06-17) — each weather-moment derives them from its OWN palette. */}
     </div>
   );
 }
@@ -619,7 +559,7 @@ export function BranchLinks({ campaign, branches, active }: { campaign: string; 
 }
 
 // THE WEATHER-MOMENT BRANCH — one scene honed: its palette (dialed cozy→intense), the tone dial, the cast.
-export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; gatedBy?: string };
+export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; gatedBy?: string; paletteUI?: { prompts?: { objects?: string[]; characters?: string[]; items?: string[] }; prose?: { objectSeeds?: { dominant?: string[]; accent?: string[] }; diction?: { cool?: string[]; warm?: string[] }; rule?: string } } };
 export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: string }) {
   const h = b.honing;
   return (
@@ -676,6 +616,39 @@ export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: str
                 <b style={{ color: TONE_C[t.label.toLowerCase()] ?? forest, textTransform: "capitalize" }}>{t.label}</b> — {t.text}
               </div>
             ))}
+          </div>
+        </>
+      )}
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>▸ UI FROM THE PALETTE — the dialogue box in this moment</div>
+      <div style={{ display: "grid", gridTemplateColumns: `repeat(${b.cells.length}, 1fr)`, gap: 8, marginBottom: 16 }}>
+        {b.cells.map((c) => (
+          <div key={c.tone}>
+            <div style={{ fontSize: 9.5, fontWeight: 700, textTransform: "capitalize", color: TONE_C[c.tone] ?? forest, marginBottom: 3 }}>{c.tone}</div>
+            <div style={{ background: c.base, border: `2px solid ${c.accent}`, padding: "9px 10px 10px", boxShadow: "2px 2px 0 rgba(0,0,0,.2)" }}>
+              <div style={{ color: c.ink, fontSize: 11, lineHeight: 1.5 }}>{(b.toneText?.find((t) => t.label.toLowerCase() === c.tone)?.text ?? "…").slice(0, 58)}… <span style={{ color: c.accent }}>▾</span></div>
+              <div style={{ display: "flex", gap: 5, marginTop: 7 }}>
+                <span style={{ background: c.accent, color: c.base, fontFamily: "var(--theme-body)", fontWeight: 700, fontSize: 9, padding: "3px 7px", border: `1px solid ${c.ink}` }}>▸ stay</span>
+                <span style={{ background: c.base, color: c.ink, fontFamily: "var(--theme-body)", fontWeight: 700, fontSize: 9, padding: "3px 7px", border: `1px solid ${c.accent}` }}>let go</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      {b.paletteUI?.prompts && (
+        <>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 5 }}>▸ PROMPT-FRIENDLY COLOURS — assets from this scene&rsquo;s palette</div>
+          <div style={{ fontSize: 11, color: ink, lineHeight: 1.6, marginBottom: 16 }}>
+            {([["objects", b.paletteUI.prompts.objects], ["characters", b.paletteUI.prompts.characters], ["items", b.paletteUI.prompts.items]] as const).map(([k, list]) => (list && list.length ? <div key={k}><span style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".07em", color: margin }}>{k.toUpperCase()}</span> {list.join(" · ")}</div> : null))}
+          </div>
+        </>
+      )}
+      {b.paletteUI?.prose && (
+        <>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 5 }}>▸ PALETTE → PROSE — the writing this palette steers <span style={{ color: margin, fontWeight: 400, fontSize: 10 }}>(the hue never named)</span></div>
+          <div style={{ fontSize: 11, color: ink, lineHeight: 1.6, marginBottom: 16 }}>
+            {b.paletteUI.prose.objectSeeds && <div><span style={{ color: margin }}>seeds:</span> {(b.paletteUI.prose.objectSeeds.dominant ?? []).join(" · ")} <span style={{ color: "var(--spot-red)" }}>▸</span> {(b.paletteUI.prose.objectSeeds.accent ?? []).join(" · ")}</div>}
+            {b.paletteUI.prose.diction && <div><span style={{ color: margin }}>diction:</span> <b>cool</b> {(b.paletteUI.prose.diction.cool ?? []).join(", ")} · <b>warm</b> {(b.paletteUI.prose.diction.warm ?? []).join(", ")}</div>}
+            {b.paletteUI.prose.rule && <div style={{ fontStyle: "italic", color: soft, marginTop: 2 }}>↳ {b.paletteUI.prose.rule}</div>}
           </div>
         </>
       )}

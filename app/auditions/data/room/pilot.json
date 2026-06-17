@@ -1070,6 +1070,223 @@
       ],
       "whyWon": "The Caretaker creates narrative symmetry, reinforcing the room itself as a constant, reliable haven that the teens can leave and return to, cementing its importance."
      }
+    },
+    "paletteUI": {
+     "the-last-bell": {
+      "prompts": {
+       "objects": [
+        "dust motes dancing in a sharp sunbeam",
+        "deep umber shadows pooling under old wooden desks",
+        "worn floorboards glowing with a honeyed, afternoon light"
+       ],
+       "characters": [
+        "a figure silhouetted against a glaring window",
+        "a tired face warmed by a sliver of intense orange light"
+       ],
+       "items": [
+        "a leather-bound book the color of dried apricot",
+        "a forgotten tea mug with a rust-colored rim"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "woodgrain",
+         "dust",
+         "shadow"
+        ],
+        "accent": [
+         "ember",
+         "sunbeam"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "hushed",
+         "settled",
+         "worn"
+        ],
+        "warm": [
+         "sharp",
+         "slice",
+         "glint"
+        ]
+       },
+       "rule": "Describe the light by what it touches and the shapes it cuts from the dark."
+      }
+     },
+     "the-room-fills": {
+      "prompts": {
+       "objects": [
+        "a dark corner with a single teal-cushioned chair",
+        "warm lamplight spilling a pool of gold on the floor",
+        "a crowded bookshelf, spines lost in deep brown shadow"
+       ],
+       "characters": [
+        "a circle of friends bathed in amber light, voices rising",
+        "a quiet figure half-hidden in a deep green armchair"
+       ],
+       "items": [
+        "a bright orange backpack dropped by the door",
+        "a steaming mug casting a warm halo on a dark wood table"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "corner",
+         "velvet",
+         "murmur"
+        ],
+        "accent": [
+         "lantern",
+         "chatter"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "nestled",
+         "deep",
+         "absorbed"
+        ],
+        "warm": [
+         "bright",
+         "spill",
+         "loud"
+        ]
+       },
+       "rule": "Focus on the sound and temperature of the light, not its color."
+      }
+     },
+     "a-rough-one": {
+      "prompts": {
+       "objects": [
+        "a room almost entirely in shadow, details blurred",
+        "a single, sharp light source casting a hot, reddish glow",
+        "a comforting teal blanket draped over a chair, a cool island"
+       ],
+       "characters": [
+        "faces tight with emotion, lit from below by a phone screen",
+        "a comforting hand on a shoulder, barely visible in the gloom"
+       ],
+       "items": [
+        "a phone screen glowing with an urgent, fiery notification",
+        "a single tear catching a sliver of intense light"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "void",
+         "hollow",
+         "stillness"
+        ],
+        "accent": [
+         "pulse",
+         "wound"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "held",
+         "breath",
+         "close"
+        ],
+        "warm": [
+         "raw",
+         "sharp",
+         "flush"
+        ]
+       },
+       "rule": "Contrast the physical stillness of the room with the sharp, hot spike of emotion."
+      }
+     },
+     "it-settles": {
+      "prompts": {
+       "objects": [
+        "a single lamp casting a soft, honeyed glow across the room",
+        "the deep, peaceful shadow of a quiet space at day's end",
+        "a well-loved armchair with a faded teal throw"
+       ],
+       "characters": [
+        "figures relaxed into soft furniture, sinking into the quiet",
+        "a gentle smile shared in the low, warm light"
+       ],
+       "items": [
+        "a half-empty mug of tea, its surface like polished amber",
+        "an open book, its pages the color of old cream"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "wool",
+         "wood",
+         "hush"
+        ],
+        "accent": [
+         "honey",
+         "glow"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "soft",
+         "sinking",
+         "settled"
+        ],
+        "warm": [
+         "steady",
+         "warmth",
+         "ease"
+        ]
+       },
+       "rule": "Describe the quality of the silence, using light and texture as its measure."
+      }
+     },
+     "the-walk-out": {
+      "prompts": {
+       "objects": [
+        "the deep night framed by the warm doorway",
+        "a single streetlight painting the pavement a lonely gold",
+        "the memory of a comforting, deep green room left behind"
+       ],
+       "characters": [
+        "figures huddled together in a pool of orange light",
+        "a last look back into the comforting darkness of the room"
+       ],
+       "items": [
+        "a phone lighting up a face with a final, warm-toned message",
+        "the sharp red taillight of a departing car"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "asphalt",
+         "night",
+         "threshold"
+        ],
+        "accent": [
+         "beacon",
+         "ember"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "fading",
+         "crisp",
+         "empty"
+        ],
+        "warm": [
+         "lingering",
+         "clutch",
+         "ache"
+        ]
+       },
+       "rule": "Frame the scene from the edge of the light, where the warmth ends and the cool night begins."
+      }
+     }
     }
    },
    "throughline": "belonging you don't audition for — the chair's yours before you've proven anything; you're kept, not chosen",

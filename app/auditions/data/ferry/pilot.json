@@ -1232,6 +1232,223 @@
      "age": "27–47 adult → mature",
      "genre": "cozy night-ferry iyashikei (healing slice-of-life)",
      "culture": "East-Asian (iyashikei lineage)"
+    },
+    "paletteUI": {
+     "calm-water": {
+      "prompts": {
+       "objects": [
+        "Deep indigo water under a starless sky",
+        "A cabin interior of dark wood warmed by a single brass lamp",
+        "The soft verdigris glow of a navigation chart on a table"
+       ],
+       "characters": [
+        "A figure silhouetted against a lamplit window, watching the still water",
+        "A quiet ferryman with eyes the color of a calm night sea"
+       ],
+       "items": [
+        "A steaming mug of tea, its rim catching the golden light",
+        "An old brass compass, its needle perfectly steady"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "sea",
+         "shadow",
+         "wood"
+        ],
+        "accent": [
+         "brass",
+         "lamp"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "still",
+         "deep",
+         "hushed"
+        ],
+        "warm": [
+         "glow",
+         "steady",
+         "warmth"
+        ]
+       },
+       "rule": "Describe light only by what it touches, never by its source."
+      }
+     },
+     "rising-wind": {
+      "prompts": {
+       "objects": [
+        "The dark sea swelling into soft, slate-blue peaks",
+        "Golden steam rising from a bowl of soup in a dim cabin",
+        "Salt spray misting across a near-black, tilting deck"
+       ],
+       "characters": [
+        "A passenger wrapped in a heavy wool coat, face turned to the wind",
+        "The ferryman's steady hand on the helm, knuckles pale against the dark wood"
+       ],
+       "items": [
+        "A flickering lantern casting long, dancing shadows",
+        "A worn leather-bound book, its pages held down by a brass weight"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "swell",
+         "sky",
+         "spray"
+        ],
+        "accent": [
+         "steam",
+         "lantern"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "rising",
+         "humming",
+         "biting"
+        ],
+        "warm": [
+         "steady",
+         "core",
+         "contained"
+        ]
+       },
+       "rule": "Focus on the sound and feel of the wind; the visuals are secondary."
+      }
+     },
+     "the-storm": {
+      "prompts": {
+       "objects": [
+        "Rain-streaked windows showing a churning, storm-dark sea",
+        "The deep teal-black of the wheelhouse, instruments glowing a soft sea-green",
+        "A small, defiant point of golden lamplight in the immense dark"
+       ],
+       "characters": [
+        "A passenger sleeping soundly, trusting the ferry's strength",
+        "The ferryman, a calm silhouette against the chaos, watching the waves"
+       ],
+       "items": [
+        "A heavy blanket, a pool of warmth in the cool cabin",
+        "A brass thermos, gleaming softly in the dim light"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "rain",
+         "glass",
+         "hull"
+        ],
+        "accent": [
+         "ember",
+         "broth"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "lashed",
+         "muffled",
+         "yielding"
+        ],
+        "warm": [
+         "held",
+         "core",
+         "unbroken"
+        ]
+       },
+       "rule": "Contrast the motion outside with the stillness inside; the storm is a rhythm, not a threat."
+      }
+     },
+     "settling-sea": {
+      "prompts": {
+       "objects": [
+        "The wet deck gleaming, reflecting a slate-blue, clearing sky",
+        "The ferry's wake, a soft sea-green line in the dark water",
+        "A cabin warmed by a low-burning lamp, its brass base polished by time"
+       ],
+       "characters": [
+        "A figure standing at the rail, breathing the clean, post-storm air",
+        "The ferryman making an entry in a logbook, the page lit by a green-shaded lamp"
+       ],
+       "items": [
+        "A cup of coffee, its surface a still, dark pool",
+        "A damp coil of rope on the deck, smelling of salt and rain"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "deck",
+         "wake",
+         "air"
+        ],
+        "accent": [
+         "ink",
+         "coffee"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "settled",
+         "washed",
+         "still"
+        ],
+        "warm": [
+         "easing",
+         "quiet",
+         "trace"
+        ]
+       },
+       "rule": "Describe everything as wet, heavy, and settled. Emphasize the weight of the calm."
+      }
+     },
+     "first-light": {
+      "prompts": {
+       "objects": [
+        "The horizon, a thin line of antique gold against a deep indigo sky",
+        "The dark, wet metal of the ferry rail catching the first hint of sun",
+        "The deep shadows of the cabin beginning to soften and lift"
+       ],
+       "characters": [
+        "A passenger watching the dawn, their face illuminated by a soft, warm light",
+        "The ferryman polishing a brass fitting, a small, final ritual"
+       ],
+       "items": [
+        "A worn wooden passenger token, gleaming gold in a palm",
+        "A final, steaming cup of tea, its surface reflecting the new light"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "horizon",
+         "shadow",
+         "water"
+        ],
+        "accent": [
+         "rim",
+         "thread"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "fading",
+         "lifting",
+         "final"
+        ],
+        "warm": [
+         "tracing",
+         "gilding",
+         "touching"
+        ]
+       },
+       "rule": "Light is a physical thing—a line, a touch, a weight—that arrives before the sun itself."
+      }
+     }
     }
    }
   }

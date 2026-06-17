@@ -507,3 +507,21 @@ a:hover {
 @media (min-width:860px){  .aud-grid2{ grid-template-columns:1fr 1fr; } }
 @media (min-width:1280px){ .aud-grid3{ grid-template-columns:repeat(3,1fr); } }
 
+/* ── LAYOUT MODES — pick-and-choose (the switcher sets data-aud-layout on <html>) ─────
+   column (default) = the centered reading column above.
+   shell = a fixed left NAV rail + the content shifted right (docs/IDE shape).
+   dashboard = wide, full-bleed-ish content + denser grids (control-surface shape).
+   The mode selectors (attr+class) out-specify the base rules, so they win cleanly. */
+.aud-nav-rail{ display:none; }
+@media (min-width:1180px){
+  [data-aud-layout="shell"] .aud-nav-rail{ display:block; position:fixed; left:0; top:0; bottom:0; width:240px;
+    overflow-y:auto; border-right:2px solid var(--ink-soft); background:var(--paper-shade); padding:16px 8px 48px; z-index:40; }
+  [data-aud-layout="shell"] .aud-main{ margin-left:268px; margin-right:24px; max-width:1200px; zoom:1; }
+  [data-aud-layout="shell"] .aud-spine{ margin-left:268px; margin-right:24px; max-width:1000px; zoom:1; }
+  [data-aud-layout="dashboard"] .aud-main{ max-width:1700px; zoom:1; }
+  [data-aud-layout="dashboard"] .aud-spine{ max-width:1120px; }
+  [data-aud-layout="dashboard"] .aud-grid2{ grid-template-columns:repeat(2,1fr); }
+  [data-aud-layout="dashboard"] .aud-grid3{ grid-template-columns:repeat(4,1fr); }
+}
+@media (min-width:2000px){ [data-aud-layout="dashboard"] .aud-main{ zoom:1.12; } }  /* QHD/4K: a touch bigger, still fits */
+

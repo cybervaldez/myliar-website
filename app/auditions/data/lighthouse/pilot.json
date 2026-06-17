@@ -1039,6 +1039,223 @@
       ],
       "whyWon": "The Visitor represents the world beyond the self-contained watch, making 'first light' a moment of profound, forward-looking hope and the promise of contact, a powerful beat to end the night's cycle."
      }
+    },
+    "paletteUI": {
+     "lighting-the-lamp": {
+      "prompts": {
+       "objects": [
+        "a lantern room of deep indigo and first-flicker gold",
+        "the lamp's heart, a core of warm honey against near-black iron",
+        "a promise kept in antique brass and deep-sea dark"
+       ],
+       "characters": [
+        "a keeper's silhouette etched in old gold against the coming night",
+        "hands cupped in bronze light, a face lost to shadow"
+       ],
+       "items": [
+        "a brass matchbox catching a glint of honeyed light",
+        "an open logbook, its pages the colour of pale straw in the new glow"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "shadow",
+         "iron",
+         "sea-dark"
+        ],
+        "accent": [
+         "ember",
+         "honey"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "hollowed",
+         "steady",
+         "deepening"
+        ],
+        "warm": [
+         "kindled",
+         "gilded",
+         "cupped"
+        ]
+       },
+       "rule": "Describe the light only by what it touches."
+      }
+     },
+     "the-dark-settles": {
+      "prompts": {
+       "objects": [
+        "a circle of old gold on a floor of absolute black",
+        "the tower's stone, a deep indigo holding a single warm breath",
+        "a windowpane showing only night, reflecting a bronze filament"
+       ],
+       "characters": [
+        "a figure seated in a pool of pale honey-light",
+        "a face turned toward the dark, half in shadow, half in antique gold"
+       ],
+       "items": [
+        "a steaming mug, its rim catching a thin line of gold",
+        "a worn book, its cover the colour of deep night, its title gilded"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "void",
+         "ink",
+         "stone"
+        ],
+        "accent": [
+         "filament",
+         "hearth"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "vast",
+         "still",
+         "absolute"
+        ],
+        "warm": [
+         "pooled",
+         "held",
+         "tracing"
+        ]
+       },
+       "rule": "Let the silence be a presence; describe the sounds that punctuate it, not the quiet itself."
+      }
+     },
+     "the-fog-comes-in": {
+      "prompts": {
+       "objects": [
+        "a lantern room wrapped in charcoal wool, its light a diffuse gold",
+        "a soft grey pressing against the glass, turning the lamp's glow to warm butter",
+        "the world outside erased, just deep indigo dark and a halo of tarnished brass"
+       ],
+       "characters": [
+        "a keeper moving through a room of soft grey and muted gold light",
+        "a silhouette blurred by the fog-softened glow, a ghost of brass and shadow"
+       ],
+       "items": [
+        "a brass foghorn, its surface a dull gold in the charcoal air",
+        "a logbook page, its edges softened by the damp, grey-gold light"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "shroud",
+         "wool",
+         "breath"
+        ],
+        "accent": [
+         "halo",
+         "smear"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "muffled",
+         "dissolved",
+         "indistinct"
+        ],
+        "warm": [
+         "glowing",
+         "diffuse",
+         "softened"
+        ]
+       },
+       "rule": "Treat the fog as a physical substance—something that can be touched, that presses, that wraps."
+      }
+     },
+     "the-fog-thins": {
+      "prompts": {
+       "objects": [
+        "the first shapes of rocks, dark slate against a thinning charcoal veil",
+        "a wet railing, a line of dull gold against the grey-blue morning",
+        "the sea reappearing, a wash of deep indigo beneath a bruised, clearing sky"
+       ],
+       "characters": [
+        "a figure at the glass, watching the slate-grey world reform",
+        "a face catching the first weak light, a study in shadow and pale, tired gold"
+       ],
+       "items": [
+        "a spyglass, its brass body dark bronze, pointed at the returning horizon",
+        "a cold cup on a sill, its surface reflecting the soft grey light"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "slate",
+         "veil",
+         "ghost"
+        ],
+        "accent": [
+         "glint",
+         "trace"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "emerging",
+         "damp",
+         "skeletal"
+        ],
+        "warm": [
+         "returning",
+         "revealed",
+         "etched"
+        ]
+       },
+       "rule": "Focus on the edges of things as they reappear from the grey, as if the world is being sketched back into existence."
+      }
+     },
+     "first-light": {
+      "prompts": {
+       "objects": [
+        "the horizon, a thin line of pale butter-gold on a slate-grey sea",
+        "the lamp's flame, now a weak bronze against the growing light",
+        "the dark iron of the railing, touched with the day's first pale gold"
+       ],
+       "characters": [
+        "the keeper, a silhouette of deep charcoal against the brightening sky",
+        "a tired face, its lines carved by shadow, catching a sliver of pale dawn"
+       ],
+       "items": [
+        "the logbook closed, its dark cover holding the last of the night",
+        "a hand resting on the cold glass, fingers traced with the new, weak light"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "iron",
+         "slate",
+         "charcoal"
+        ],
+        "accent": [
+         "thread",
+         "sliver"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "extinguished",
+         "fading",
+         "cold"
+        ],
+        "warm": [
+         "earned",
+         "traced",
+         "breaking"
+        ]
+       },
+       "rule": "Contrast the fading warmth of the lamp with the cold, growing light of the dawn."
+      }
+     }
     }
    },
    "throughline": "Holding a fixed point against the drift of time and tide; a vigil as devotion.",

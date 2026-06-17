@@ -40,7 +40,8 @@ export default async function SceneBranchPage({ params }: { params: Promise<{ ca
   const castAudition = (honing?.castAudition || []).map((cc) => ({ name: cc.name, fit: cc.fit, note: cc.note, picked: norm(cc.name) === pickName }));
   const gb = g?.scenes?.gatedBy;
   const gatedBy = gb ? [gb.age && `🎯 ${gb.age}`, gb.genre && `📐 ${gb.genre}`, gb.culture && `🎨 ${gb.culture}`].filter(Boolean).join(" · ") : undefined;
-  const view: SceneBranchView = { key: b.key, label: b.label, spark: b.spark, cells: b.cells, characters, toneText, premise, honing, expertsGate, slot, siblingClaims: cov?.claims, conflict: cf ? { dimension: cf.dimension, resolution: cf.resolution } : undefined, castAudition, whyWon: honing?.whyWon, gatedBy };
+  const paletteUI = (g?.scenes as { paletteUI?: { [k: string]: SceneBranchView["paletteUI"] } } | undefined)?.paletteUI?.[b.key];
+  const view: SceneBranchView = { key: b.key, label: b.label, spark: b.spark, cells: b.cells, characters, toneText, premise, honing, expertsGate, slot, siblingClaims: cov?.claims, conflict: cf ? { dimension: cf.dimension, resolution: cf.resolution } : undefined, castAudition, whyWon: honing?.whyWon, gatedBy, paletteUI };
   const prev = idx > 0 ? branches[idx - 1] : null;
   const next = idx < branches.length - 1 ? branches[idx + 1] : null;
 
