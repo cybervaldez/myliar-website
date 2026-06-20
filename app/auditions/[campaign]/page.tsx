@@ -66,22 +66,12 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
       <p className="aud-prose" style={{ fontSize: 12.5, color: soft, lineHeight: 1.55, margin: "0 0 6px" }}>{c.blurb}</p>
       <p className="aud-prose" style={{ fontSize: 11, color: margin, margin: "0 0 12px" }}>born from <a href="/auditions/concept" style={{ color: forest }}>the slate</a> · a shared TRUNK (setting · range · mood), then it BRANCHES at the SCENES step (the 5 world-moments × the tones) — each cell its own palette + cast, then the tone wears its makeup. Each step carries the last&rsquo;s experts forward.</p>
 
-      {(targetAge || genre || culture) && (
-        <div style={{ border: `2px solid ${forest}`, background: "var(--paper-shade)", padding: "10px 13px", margin: "0 0 20px" }}>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".07em", color: forest, marginBottom: 4 }}>🎛 THE FACTOR PROFILE — the orthogonal dials every audition injects (set at the concept)</div>
-          {targetAge && (
-            <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5, marginBottom: 3 }}><b style={{ color: forest }}>AGE</b> {targetAge.range[0]}–{targetAge.range[1]} ({targetAge.band}) · {targetAge.lifeContext} <span style={{ color: margin, fontStyle: "italic" }}>— the register + content ceiling · STRUCTURAL (the dialed tone overrides it)</span></div>
-          )}
-          {genre && (
-            <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5, marginBottom: 3 }}><b style={{ color: forest }}>GENRE</b> {genre.name} <span style={{ color: margin, fontStyle: "italic" }}>— the world&rsquo;s conventions + traps · CRAFT (carried by the genre experts)</span></div>
-          )}
-          {culture && (
-            <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5, marginBottom: 3 }}><b style={{ color: forest }}>CULTURE</b> {culture.name} <span style={{ color: margin, fontStyle: "italic" }}>— the register&rsquo;s arousal tint · FINE moderator (composes, never overrides)</span></div>
-          )}
-          <div style={{ fontSize: 10, color: margin, marginTop: 4, fontStyle: "italic" }}>each injects only what it predicts, at its own strength; none derived from another; the floor always wins. <span style={{ color: soft }}>(model: composable-factors.md)</span></div>
-        </div>
-      )}
+      <div className="aud-digest" style={{ border: `2px solid ${forest}`, background: "var(--paper-shade)", padding: "8px 13px", margin: "0 0 18px", fontSize: 11, color: ink, lineHeight: 1.5 }}>
+        <span style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".06em", color: forest }}>▣ BUILD-CONTEXT</span> <b>the audition spine</b> — {order.filter((s) => s.done).length}/{order.length} steps built{targetAge ? ` · 🎯 age ${targetAge.range[0]}–${targetAge.range[1]}` : ""}{genre ? ` · 📐 ${genre.name}` : ""}{culture ? ` · 🎨 ${culture.name}` : ""}{branches.length ? " · ⑤ scene branches" : ""}
+      </div>
 
+      <div className="aud-body">
+        <div className="aud-meat">
       {order.map((s, k) => (
         <div key={s.key}>
           {s.done ? (
@@ -119,6 +109,26 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
           ))}
         </>
       )}
+        </div>
+        <aside className="aud-context">
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 8 }}>▣ BUILD-CONTEXT <span style={{ color: margin, fontWeight: 400, fontStyle: "italic" }}>— for the AI building this</span></div>
+          {(targetAge || genre || culture) && (
+            <div style={{ border: `2px solid ${forest}`, background: "var(--paper-shade)", padding: "10px 13px" }}>
+              <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".07em", color: forest, marginBottom: 4 }}>🎛 THE FACTOR PROFILE — the orthogonal dials every audition injects (set at the concept)</div>
+              {targetAge && (
+                <div style={{ fontSize: 11, color: ink, lineHeight: 1.5, marginBottom: 3 }}><b style={{ color: forest }}>AGE</b> {targetAge.range[0]}–{targetAge.range[1]} ({targetAge.band}) · {targetAge.lifeContext} <span style={{ color: margin, fontStyle: "italic" }}>— register + content ceiling · STRUCTURAL (the dialed tone overrides it)</span></div>
+              )}
+              {genre && (
+                <div style={{ fontSize: 11, color: ink, lineHeight: 1.5, marginBottom: 3 }}><b style={{ color: forest }}>GENRE</b> {genre.name} <span style={{ color: margin, fontStyle: "italic" }}>— conventions + traps · CRAFT (carried by the genre experts)</span></div>
+              )}
+              {culture && (
+                <div style={{ fontSize: 11, color: ink, lineHeight: 1.5, marginBottom: 3 }}><b style={{ color: forest }}>CULTURE</b> {culture.name} <span style={{ color: margin, fontStyle: "italic" }}>— arousal tint · FINE moderator (composes, never overrides)</span></div>
+              )}
+              <div style={{ fontSize: 10, color: margin, marginTop: 4, fontStyle: "italic" }}>each injects only what it predicts, at its own strength; none derived from another; the floor always wins. <span style={{ color: soft }}>(model: composable-factors.md)</span></div>
+            </div>
+          )}
+        </aside>
+      </div>
     </main>
   );
 }

@@ -43,6 +43,10 @@ export default function StepBoard({ stepLabel, intro, whyPicked, primer, prepend
       <h1 style={{ fontSize: 24, margin: "0 0 4px", color: ink }}>{stepLabel}</h1>
       <p className="aud-prose" style={{ fontSize: 12.5, color: soft, lineHeight: 1.55, margin: "0 0 12px" }}>{intro}</p>
 
+      <div className="aud-digest" style={{ border: `2px solid ${forest}`, background: shade, padding: "8px 13px", margin: "0 0 14px", fontSize: 11, color: ink, lineHeight: 1.5 }}>
+        <span style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".06em", color: forest }}>▣ BUILD-CONTEXT</span> <b>{stepLabel.replace(/^[①②③④⑤⑥•]\s*/, "").replace(/ ·.*/, "")}</b>{pickedItem ? <> · pick <b style={{ color: forest }}>“{pickedItem.title}”</b> <span style={{ color: amber }}>{star(data, pickedItem.idx).toFixed(1)}★</span> · {auditionCands.length - 1} runner-up{auditionCands.length - 1 === 1 ? "" : "s"} in the modal</> : ` · ${shown.length} in audition`}{gatedBy ? ` · ${gatedBy}` : ""}
+      </div>
+
       {/* §8.19 — every PICKED step ships an ELI5 "why this won" (distinct from the primer's "what is this step") */}
       {whyPicked?.text && (
         <div style={{ border: `2px solid ${forest}`, background: shade, padding: "10px 14px", margin: "0 0 14px" }}>
@@ -56,72 +60,9 @@ export default function StepBoard({ stepLabel, intro, whyPicked, primer, prepend
         </div>
       )}
 
+      <div className="aud-body">
+        <div className="aud-meat">
       {prepend}
-
-      {primer && (
-        <details style={{ border: `2px solid ${forest}`, background: shade, margin: "0 0 16px", padding: "0" }}>
-          <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 14px", fontFamily: "var(--theme-body)", fontSize: 11.5, fontWeight: 700, color: forest, letterSpacing: ".02em" }}>
-            ▸ What is this step? — ELI5 <span style={{ color: margin, fontWeight: 400, fontStyle: "italic" }}>· {primer.tldr}</span>
-          </summary>
-          <div style={{ padding: "2px 14px 13px", display: "grid", gap: 8 }}>
-            {([["What it’s for", primer.whatFor], ["How it shapes the story", primer.impact], ["How to pick the right one", primer.howToChoose]] as const).map(([h, body]) => (
-              <div key={h} style={{ fontSize: 12, color: ink, lineHeight: 1.55 }}>
-                <div style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: margin }}>{h.toUpperCase()}</div>
-                {body}
-              </div>
-            ))}
-            {primer.mechanic && (
-              <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5, borderTop: `1px solid var(--ink-soft)`, paddingTop: 7 }}>
-                <span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: forest }}>⚙ PLAYS TO (our mechanics)</span> {primer.mechanic}
-              </div>
-            )}
-            {primer.craft && <div style={{ fontSize: 10.5, color: margin, fontStyle: "italic", lineHeight: 1.5, borderTop: `1px solid var(--ink-soft)`, paddingTop: 7 }}>{primer.craft}</div>}
-          </div>
-        </details>
-      )}
-
-      {sourceStudy && (
-        <details style={{ border: `2px solid ${amber}`, background: paper, margin: "0 0 16px" }}>
-          <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 14px", fontFamily: "var(--theme-body)", fontSize: 11.5, fontWeight: 700, color: amber, letterSpacing: ".02em" }}>
-            📚 SOURCE STUDY — what made successful stories in this vein work <span style={{ color: margin, fontWeight: 400, fontStyle: "italic" }}>· studied before the summary (§8.18)</span>
-            {sourceStudy.method && <span style={{ marginLeft: 6, fontSize: 9, color: sourceStudy.method === "deep-research" ? forest : margin, border: `1px solid ${sourceStudy.method === "deep-research" ? forest : margin}`, borderRadius: 3, padding: "0 5px" }}>{sourceStudy.method === "deep-research" ? "deep-research · verified" : "ultrathink · reasoned"}</span>}
-            {sourceStudy.preliminary && <span style={{ marginLeft: 6, fontSize: 9, color: red, border: `1px solid ${red}`, borderRadius: 3, padding: "0 5px" }}>PRELIMINARY · verifying</span>}
-          </summary>
-          <div style={{ padding: "2px 14px 13px", fontSize: 12, color: ink, lineHeight: 1.55 }}>
-            <div style={{ fontSize: 11, color: margin, fontStyle: "italic", marginBottom: 8 }}>the vein: {sourceStudy.vein}</div>
-            <div style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: margin, marginBottom: 4 }}>PRECEDENTS — WHAT MADE EACH WORK</div>
-            <div style={{ display: "grid", gap: 5, marginBottom: 9 }}>
-              {sourceStudy.works.map((w) => (
-                <div key={w.title} style={{ borderLeft: `2px solid ${amber}`, paddingLeft: 8 }}><b>{w.title}</b> — {w.what}</div>
-              ))}
-            </div>
-            <div style={{ fontSize: 11.5, lineHeight: 1.5 }}><span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: forest }}>↳ BORROW</span> {sourceStudy.borrow.join(" · ")}</div>
-            <div style={{ fontSize: 11.5, lineHeight: 1.5, marginTop: 5 }}><span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: red }}>⚠ AVOID</span> {sourceStudy.avoid.join(" · ")}</div>
-          </div>
-        </details>
-      )}
-
-      {carried && carried.length > 0 && (
-        <div style={{ border: `2px dashed ${forest}`, background: shade, padding: "11px 14px", margin: "0 0 14px" }}>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".1em", color: forest, marginBottom: 5 }}>↩ CARRIED FORWARD — this story's previous experts (look-back)</div>
-          {carried.map((c) => (
-            <div key={c.step} style={{ fontSize: 11.5, color: ink, lineHeight: 1.5, marginBottom: 3 }}>
-              <b style={{ color: margin }}>{c.step}</b> {c.lines.map((l, j) => <span key={j}>{j ? " · " : " "}{l}</span>)}
-            </div>
-          ))}
-        </div>
-      )}
-
-      {reference && reference.length > 0 && (
-        <div style={{ border: `2px dotted ${margin}`, background: paper, padding: "10px 14px", margin: "0 0 18px" }}>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".1em", color: margin, marginBottom: 5 }}>▸ THIS STEP IN OTHER STORIES — the idea bank (reference, not a rule)</div>
-          {reference.map((r) => (
-            <div key={r.campaign} style={{ fontSize: 11.5, color: ink, lineHeight: 1.5 }}>
-              <a href={`/auditions/${r.campaign}/`} style={{ color: forest, fontWeight: 700, textDecoration: "none" }}>{r.label}</a> picked <b>“{r.title}”</b> <span style={{ color: amber }}>{starStr(r.star)}</span>
-            </div>
-          ))}
-        </div>
-      )}
 
       {pickedItem && (
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, flexWrap: "wrap", margin: "0 0 10px" }}>
@@ -172,6 +113,76 @@ export default function StepBoard({ stepLabel, intro, whyPicked, primer, prepend
           </section>
         );
       })}
+        </div>
+        <aside className="aud-context">
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 8 }}>▣ BUILD-CONTEXT <span style={{ color: margin, fontWeight: 400, fontStyle: "italic" }}>— for the AI building this</span></div>
+
+      {primer && (
+        <details style={{ border: `2px solid ${forest}`, background: shade, margin: "0 0 14px", padding: "0" }}>
+          <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 14px", fontFamily: "var(--theme-body)", fontSize: 11.5, fontWeight: 700, color: forest, letterSpacing: ".02em" }}>
+            ▸ What is this step? — ELI5 <span style={{ color: margin, fontWeight: 400, fontStyle: "italic" }}>· {primer.tldr}</span>
+          </summary>
+          <div style={{ padding: "2px 14px 13px", display: "grid", gap: 8 }}>
+            {([["What it’s for", primer.whatFor], ["How it shapes the story", primer.impact], ["How to pick the right one", primer.howToChoose]] as const).map(([h, body]) => (
+              <div key={h} style={{ fontSize: 12, color: ink, lineHeight: 1.55 }}>
+                <div style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: margin }}>{h.toUpperCase()}</div>
+                {body}
+              </div>
+            ))}
+            {primer.mechanic && (
+              <div style={{ fontSize: 11.5, color: ink, lineHeight: 1.5, borderTop: `1px solid var(--ink-soft)`, paddingTop: 7 }}>
+                <span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: forest }}>⚙ PLAYS TO (our mechanics)</span> {primer.mechanic}
+              </div>
+            )}
+            {primer.craft && <div style={{ fontSize: 10.5, color: margin, fontStyle: "italic", lineHeight: 1.5, borderTop: `1px solid var(--ink-soft)`, paddingTop: 7 }}>{primer.craft}</div>}
+          </div>
+        </details>
+      )}
+
+      {sourceStudy && (
+        <details style={{ border: `2px solid ${amber}`, background: paper, margin: "0 0 14px" }}>
+          <summary style={{ cursor: "pointer", listStyle: "none", padding: "10px 14px", fontFamily: "var(--theme-body)", fontSize: 11.5, fontWeight: 700, color: amber, letterSpacing: ".02em" }}>
+            📚 SOURCE STUDY — what made successful stories in this vein work <span style={{ color: margin, fontWeight: 400, fontStyle: "italic" }}>· studied before the summary (§8.18)</span>
+            {sourceStudy.method && <span style={{ marginLeft: 6, fontSize: 9, color: sourceStudy.method === "deep-research" ? forest : margin, border: `1px solid ${sourceStudy.method === "deep-research" ? forest : margin}`, borderRadius: 3, padding: "0 5px" }}>{sourceStudy.method === "deep-research" ? "deep-research · verified" : "ultrathink · reasoned"}</span>}
+            {sourceStudy.preliminary && <span style={{ marginLeft: 6, fontSize: 9, color: red, border: `1px solid ${red}`, borderRadius: 3, padding: "0 5px" }}>PRELIMINARY · verifying</span>}
+          </summary>
+          <div style={{ padding: "2px 14px 13px", fontSize: 12, color: ink, lineHeight: 1.55 }}>
+            <div style={{ fontSize: 11, color: margin, fontStyle: "italic", marginBottom: 8 }}>the vein: {sourceStudy.vein}</div>
+            <div style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: margin, marginBottom: 4 }}>PRECEDENTS — WHAT MADE EACH WORK</div>
+            <div style={{ display: "grid", gap: 5, marginBottom: 9 }}>
+              {sourceStudy.works.map((w) => (
+                <div key={w.title} style={{ borderLeft: `2px solid ${amber}`, paddingLeft: 8 }}><b>{w.title}</b> — {w.what}</div>
+              ))}
+            </div>
+            <div style={{ fontSize: 11.5, lineHeight: 1.5 }}><span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: forest }}>↳ BORROW</span> {sourceStudy.borrow.join(" · ")}</div>
+            <div style={{ fontSize: 11.5, lineHeight: 1.5, marginTop: 5 }}><span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: red }}>⚠ AVOID</span> {sourceStudy.avoid.join(" · ")}</div>
+          </div>
+        </details>
+      )}
+
+      {carried && carried.length > 0 && (
+        <div style={{ border: `2px dashed ${forest}`, background: shade, padding: "11px 14px", margin: "0 0 14px" }}>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".1em", color: forest, marginBottom: 5 }}>↩ CARRIED FORWARD — this story's previous experts (look-back)</div>
+          {carried.map((c) => (
+            <div key={c.step} style={{ fontSize: 11.5, color: ink, lineHeight: 1.5, marginBottom: 3 }}>
+              <b style={{ color: margin }}>{c.step}</b> {c.lines.map((l, j) => <span key={j}>{j ? " · " : " "}{l}</span>)}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {reference && reference.length > 0 && (
+        <div style={{ border: `2px dotted ${margin}`, background: paper, padding: "10px 14px", margin: "0 0 4px" }}>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10.5, fontWeight: 700, letterSpacing: ".1em", color: margin, marginBottom: 5 }}>▸ THIS STEP IN OTHER STORIES — the idea bank (reference, not a rule)</div>
+          {reference.map((r) => (
+            <div key={r.campaign} style={{ fontSize: 11.5, color: ink, lineHeight: 1.5 }}>
+              <a href={`/auditions/${r.campaign}/`} style={{ color: forest, fontWeight: 700, textDecoration: "none" }}>{r.label}</a> picked <b>“{r.title}”</b> <span style={{ color: amber }}>{starStr(r.star)}</span>
+            </div>
+          ))}
+        </div>
+      )}
+        </aside>
+      </div>
 
       <div style={{ display: "flex", justifyContent: "space-between", borderTop: `1px solid var(--ink-soft)`, paddingTop: 12, marginTop: 8, fontSize: 13 }}>
         {navLink(prev ?? null, "prev")}{navLink(next ?? null, "next")}
