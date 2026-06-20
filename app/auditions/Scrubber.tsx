@@ -465,10 +465,11 @@ export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
   const premiseOf = (label: string) => d.premises.find((p) => p.scene.toLowerCase() === label.toLowerCase())?.premise;
   return (
     <div>
-      <div style={{ border: `2px dashed ${forest}`, background: shade, padding: "10px 14px", marginBottom: 14, fontSize: 11.5, color: ink, lineHeight: 1.55 }}>
-        <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".07em", color: forest, marginBottom: 3 }}>▸ WHY WE AUDITION A LOT HERE — it&rsquo;s about COVERING RANGE</div>
-        Scenes is the ONE top-down view — every branch visible at once. So this step&rsquo;s job is the PORTFOLIO: across the 5 weather-moments, is the <b>variety</b> healthy and the <b>balance</b> right (not five versions of one beat)? The <b>premises</b> are auditioned here; the <b>cast + the honing</b> happen INSIDE each scene below.
+      <div className="aud-digest" style={{ border: `2px solid ${forest}`, background: shade, padding: "8px 13px", marginBottom: 14, fontSize: 11, color: ink, lineHeight: 1.5 }}>
+        <span style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".06em", color: forest }}>▣ BUILD-CONTEXT</span> <b>THE RANGE HUB</b> — top-down portfolio of the 5 weather-moments · variety <b style={{ color: ok(d.range.variety) ? forest : red }}>{d.range.variety}</b> · balance <b style={{ color: ok(d.range.balance) ? forest : red }}>{d.range.balance}</b> · coverage <b style={{ color: ok(d.range.coverage) ? forest : red }}>{d.range.coverage}</b>{d.gatedBy ? ` · ${d.gatedBy}` : ""}{d.rangeReview ? " · ↪ reviewed downstream" : ""}
       </div>
+      <div className="aud-body">
+        <div className="aud-meat">
       <div style={{ border: `2px solid ${forest}`, background: paper, padding: "11px 14px", marginBottom: 14, fontSize: 11.5, color: ink, lineHeight: 1.5 }}>
         <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>⓪ THE RANGE AUDIT — variety · balance · coverage</div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "4px 16px", marginBottom: 6 }}>
@@ -519,16 +520,24 @@ export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
           );
         })}
       </div>
-      {d.expertsGate && d.expertsGate.length > 0 && (
-        <div style={{ fontSize: 10, color: margin, borderLeft: `3px solid ${forest}`, paddingLeft: 9, marginBottom: 7, lineHeight: 1.5 }}>
-          <b style={{ fontFamily: "var(--theme-body)", color: forest }}>⌖ GATED BY</b> the prior step&rsquo;s experts: {d.expertsGate.map((e) => e.name).join(" · ")} — their floor holds across the whole range.
         </div>
-      )}
-      {d.rangeReview && (
-        <div style={{ fontSize: 10, color: margin, borderLeft: `3px solid ${d.rangeReview.verdict === "yes" ? forest : red}`, paddingLeft: 9, lineHeight: 1.5 }}>
-          <b style={{ fontFamily: "var(--theme-body)", color: d.rangeReview.verdict === "yes" ? forest : red }}>↪ FUTURE-STEP REVIEW</b> (a downstream content-writer on this range): <b>{d.rangeReview.verdict}</b> — {d.rangeReview.flag}
-        </div>
-      )}
+        <aside className="aud-context">
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 8 }}>▣ BUILD-CONTEXT <span style={{ color: margin, fontWeight: 400, fontStyle: "italic" }}>— for the AI building this</span></div>
+          <div style={{ fontSize: 10, color: margin, borderLeft: `2px solid ${forest}`, paddingLeft: 9, marginBottom: 9, lineHeight: 1.5 }}>
+            <b style={{ fontFamily: "var(--theme-body)", color: forest }}>▸ WHY AUDITION A LOT HERE</b> — Scenes is the ONE top-down view: every branch at once. The job is the PORTFOLIO — across the 5 weather-moments, is the variety healthy + the balance right (not five versions of one beat)? Premises are auditioned here; the cast + honing happen INSIDE each scene.
+          </div>
+          {d.expertsGate && d.expertsGate.length > 0 && (
+            <div style={{ fontSize: 10, color: margin, borderLeft: `2px solid ${forest}`, paddingLeft: 9, marginBottom: 9, lineHeight: 1.5 }}>
+              <b style={{ fontFamily: "var(--theme-body)", color: forest }}>⌖ GATED BY</b> the prior step&rsquo;s experts: {d.expertsGate.map((e) => e.name).join(" · ")} — their floor holds across the whole range.
+            </div>
+          )}
+          {d.rangeReview && (
+            <div style={{ fontSize: 10, color: margin, borderLeft: `2px solid ${d.rangeReview.verdict === "yes" ? forest : red}`, paddingLeft: 9, lineHeight: 1.5 }}>
+              <b style={{ fontFamily: "var(--theme-body)", color: d.rangeReview.verdict === "yes" ? forest : red }}>↪ FUTURE-STEP REVIEW</b> (a downstream content-writer on this range): <b>{d.rangeReview.verdict}</b> — {d.rangeReview.flag}
+            </div>
+          )}
+        </aside>
+      </div>
     </div>
   );
 }

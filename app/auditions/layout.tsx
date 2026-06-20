@@ -8,7 +8,7 @@ export default function AuditionsLayout({ children }: { children: React.ReactNod
     <>
       {/* before paint: force Parchment & Ink for the auditions tool (creative-liberty target; the game keeps
           its packs) + restore the saved layout mode. No flash; the attributes are always present. */}
-      <script dangerouslySetInnerHTML={{ __html: "try{var r=document.documentElement;r.dataset.pack='parchment';r.dataset.audLayout=localStorage.getItem('audLayout')||'column'}catch(e){}" }} />
+      <script dangerouslySetInnerHTML={{ __html: "try{var r=document.documentElement;r.dataset.pack='parchment';r.dataset.audLayout=localStorage.getItem('audLayout')||'shell'}catch(e){}" }} />
       <NavRail />
       {children}
       <LayoutSwitcher />

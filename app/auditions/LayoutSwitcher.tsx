@@ -10,9 +10,9 @@ const MODES: [string, string, string][] = [
 ];
 
 export default function LayoutSwitcher() {
-  const [mode, setMode] = useState("column");
+  const [mode, setMode] = useState("shell");
   useEffect(() => {
-    const m = localStorage.getItem("audLayout") || "column";
+    const m = localStorage.getItem("audLayout") || "shell";
     setMode(m);
     document.documentElement.dataset.audLayout = m;
   }, []);

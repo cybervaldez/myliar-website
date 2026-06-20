@@ -1,14 +1,10 @@
 @import "tailwindcss";
 
-/* ── Theme fonts (self-hosted; see docs/design/theme-system.md) ───── */
-/* Maplestory = the Vibrant Realm theme's register font (not a user choice). */
-@font-face{font-family:'Maplestory';src:url('/fonts/Maplestory-Light.woff2') format('woff2');font-weight:300;font-display:swap;}
-@font-face{font-family:'Maplestory';src:url('/fonts/Maplestory-Bold.woff2') format('woff2');font-weight:700;font-display:swap;}
-
-/* ── Theme system — 3 packs × light/dark drive the semantic palette ──
-   The whole site re-skins because components use semantic tokens
-   (bg-paper / text-ink / text-forest …) that resolve to these vars.
-   :root = Parchment & Ink · light (the default). */
+/* ── Theme system — the WEBSITE is Parchment & Ink only (light + dark) ──
+   The website re-skins via semantic tokens (bg-paper / text-ink / text-forest …)
+   that resolve to these vars. The GAME's other packs (Vibrant / DOS / Corner +
+   the Maplestory font) live in app/campaign-themes.css, imported only by the
+   /play + gallery route layouts — NOT here. :root = Parchment & Ink · light. */
 :root {
   --paper: #f2ebdd;
   --paper-shade: #e9e1cf;
@@ -30,46 +26,8 @@
   --paper:#241d10; --paper-shade:#2e2614; --ink:#ece0c4; --ink-soft:#c3b48f;
   --forest:#9ab87a; --forest-dim:#7d9a60; --spot-red:#e0594f; --margin-ink:#b3a684;
 }
-/* Vibrant Realm · light (sky / MapleStory) */
-:root[data-pack="vibrant"][data-mode="light"]{
-  --paper:#f6e9c9; --paper-shade:#ecdcb4; --ink:#4a3a22; --ink-soft:#6f5a38;
-  --forest:#2d6a8f; --forest-dim:#4ea3d8; --spot-red:#e8632a; --margin-ink:#8a7550;
-  --theme-display:'Maplestory',sans-serif; --theme-body:'Maplestory',sans-serif;
-  --panel-radius:12px; --panel-shadow:inset 0 3px 0 rgba(255,255,255,.45), 0 5px 0 rgba(0,0,0,.18);
-}
-/* Vibrant Realm · dark (night wood) */
-:root[data-pack="vibrant"][data-mode="dark"]{
-  --paper:#3c2f1e; --paper-shade:#4d3e28; --ink:#f0e3c6; --ink-soft:#c2b189;
-  --forest:#7cc7ee; --forest-dim:#9bd3f0; --spot-red:#f5b942; --margin-ink:#b8a984;
-  --theme-display:'Maplestory',sans-serif; --theme-body:'Maplestory',sans-serif;
-  --panel-radius:12px; --panel-shadow:inset 0 3px 0 rgba(255,255,255,.14), 0 5px 0 rgba(0,0,0,.45);
-}
-/* DOS-era · light (green CRT) */
-:root[data-pack="dos"][data-mode="light"]{
-  --paper:#00140a; --paper-shade:#021a0c; --ink:#43ff8d; --ink-soft:#2aa860;
-  --forest:#6dffa3; --forest-dim:#3fcf7d; --spot-red:#b6ff5a; --margin-ink:#2aa860;
-  --theme-display:'Courier New',ui-monospace,monospace; --theme-body:'Courier New',ui-monospace,monospace;
-  --panel-radius:0px; --panel-shadow:0 0 14px rgba(80,255,140,.18);
-}
-/* DOS-era · dark (amber CRT) */
-:root[data-pack="dos"][data-mode="dark"]{
-  --paper:#160d00; --paper-shade:#1a1000; --ink:#ffc24d; --ink-soft:#c98a1f;
-  --forest:#ffce5e; --forest-dim:#e0a93a; --spot-red:#ffe08a; --margin-ink:#c98a1f;
-  --theme-display:'Courier New',ui-monospace,monospace; --theme-body:'Courier New',ui-monospace,monospace;
-  --panel-radius:0px; --panel-shadow:0 0 14px rgba(255,176,0,.18);
-}
-/* The Corner · light (gym daylight — The Wingman's native theme) */
-:root[data-pack="corner"][data-mode="light"]{
-  --paper:#e8e2d6; --paper-shade:#dad2c2; --ink:#1c1a17; --ink-soft:#45403a;
-  --forest:#2e5266; --forest-dim:#4c778c; --spot-red:#b23a2e; --margin-ink:#6e665a;
-  --panel-radius:0px; --panel-shadow:5px 5px 0 rgba(28,26,23,0.18);
-}
-/* The Corner · dark (late session, single light) */
-:root[data-pack="corner"][data-mode="dark"]{
-  --paper:#17150f; --paper-shade:#201d15; --ink:#ece4d2; --ink-soft:#b5ab93;
-  --forest:#6fa8be; --forest-dim:#58899c; --spot-red:#e0705f; --margin-ink:#9a9078;
-  --panel-radius:0px; --panel-shadow:5px 5px 0 rgba(0,0,0,0.4);
-}
+/* (Vibrant / DOS / Corner packs moved to app/campaign-themes.css — game-only.) */
+
 /* Tailwind v4 design-token bridge — exposes the palette + fonts as
    utility classes (e.g. bg-paper, text-forest, font-display). The
    --font-* vars are populated by next/font in layout.tsx. */
@@ -113,11 +71,7 @@ body {
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.55  0 0 0 0 0.50  0 0 0 0 0.40  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
     var(--paper);
 }
-/* DOS scanlines */
-:root[data-pack="dos"] body::after{
-  content:''; position:fixed; inset:0; pointer-events:none; z-index:50;
-  background:repeating-linear-gradient(rgba(0,0,0,0) 0 2px, rgba(0,0,0,.18) 2px 3px);
-}
+/* (DOS scanlines moved to app/campaign-themes.css — game-only.) */
 
 /* Display headlines — themeable face. */
 h1, h2, h3, .display {
@@ -537,5 +491,16 @@ a:hover {
   [data-aud-layout="shell"] .aud-context{ margin-top:0; padding-top:0; border-top:none; position:sticky; top:14px; }
   [data-aud-layout="dashboard"] .aud-body{ display:grid; grid-template-columns:minmax(0,1.7fr) minmax(0,1fr); gap:30px; align-items:start; }
   [data-aud-layout="dashboard"] .aud-context{ margin-top:0; padding-top:0; border-top:none; }
+}
+/* bigger TEXT on tablet/desktop, per layout. shell zeroed zoom for the rail, so it gets its own scale-up
+   where there's slack (the rail's 268px margin eats budget, so shell scales later than column). */
+@media (min-width:1440px){
+  [data-aud-layout="column"] .aud-main{ zoom:1.3; }
+  [data-aud-layout="shell"] .aud-main{ max-width:940px; zoom:1.12; }
+}
+@media (min-width:1800px){
+  [data-aud-layout="column"] .aud-main{ zoom:1.42; }
+  [data-aud-layout="shell"] .aud-main{ max-width:1080px; zoom:1.22; }
+  [data-aud-layout="dashboard"] .aud-main{ zoom:1.15; }
 }
 
