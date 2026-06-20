@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scenes Hub — UI directions (pick one)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f2ebdd; --shade:#e9e1cf; --paper2:#ece4d0;
+    --ink:#2a2620; --soft:#5c5648; --inksoft:#c2b48f;
+    --forest:#2d4a2b; --red:#b81f1c; --margin:#8a8270; --amber:#b8860b;
+    --body:'Lora',Georgia,serif; --ui:'PT Sans',system-ui,sans-serif; --disp:'Anton',sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);margin:0;line-height:1.55;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.55  0 0 0 0 0.50  0 0 0 0 0.40  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");}
+  .ui{font-family:var(--ui)}
+  /* page chrome */
+  .top{position:sticky;top:0;z-index:10;background:var(--ink);color:var(--paper);padding:9px 16px;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;box-shadow:0 2px 0 rgba(0,0,0,.25)}
+  .top b{font-family:var(--ui);letter-spacing:.04em;font-size:13px}
+  .top a{color:#e8d9a8;font-family:var(--ui);font-size:12px;text-decoration:none;border-bottom:1px solid #e8d9a8;padding-bottom:1px}
+  .wrap{max-width:760px;margin:0 auto;padding:22px 18px 90px}
+  .intro{font-size:13px;color:var(--soft);margin:0 0 26px}
+  .intro b{color:var(--ink)}
+  /* the option frame */
+  .opt{margin:0 0 40px;border:2px solid var(--ink);background:var(--paper);box-shadow:6px 6px 0 rgba(42,38,32,.16)}
+  .opt-tab{background:var(--forest);color:#f3ecd8;font-family:var(--ui);font-weight:700;letter-spacing:.05em;font-size:12px;padding:7px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .opt-tab .rec{background:#f3ecd8;color:var(--forest);font-size:10px;padding:1px 7px;border-radius:3px}
+  .opt-note{font-family:var(--ui);font-size:11.5px;color:var(--soft);font-style:italic;padding:8px 14px 0}
+  .opt-note b{font-style:normal;color:var(--ink)}
+  .stage{padding:14px}
+  /* generic hub bits */
+  .digest{border:2px solid var(--forest);background:var(--shade);padding:8px 13px;margin:0 0 14px;font-size:11px;line-height:1.5}
+  .digest .k{font-family:var(--ui);font-size:9px;font-weight:700;letter-spacing:.06em;color:var(--forest)}
+  .ok{color:var(--forest);font-weight:700}
+  .secH{font-family:var(--ui);font-size:12px;font-weight:700;letter-spacing:.05em;color:var(--forest);margin:0 0 6px}
+  .panel{border:2px solid var(--forest);padding:11px 14px;margin:0 0 14px;font-size:11.5px}
+  /* health strip */
+  .strip{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;border:1.5px solid var(--inksoft);background:var(--paper2);padding:7px 12px;margin:0 0 14px;font-size:11px}
+  .pill{font-family:var(--ui);font-size:10px;font-weight:700;letter-spacing:.03em;border:1.5px solid var(--forest);color:var(--forest);border-radius:11px;padding:1px 9px}
+  .strip .add{color:var(--soft);font-style:italic}
+  .strip .add b{color:var(--forest);font-style:normal}
+  /* verdict banner (B) */
+  .verdict{border:2.5px solid var(--forest);background:var(--shade);padding:12px 15px;margin:0 0 16px}
+  .verdict h3{font-family:var(--ui);font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--forest);margin:0 0 8px}
+  .vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px 18px}
+  .vcell .lab{font-family:var(--ui);font-size:9.5px;letter-spacing:.06em;color:var(--margin)}
+  .vcell .val{font-family:var(--disp);font-size:19px;color:var(--forest);letter-spacing:.02em}
+  .vadd{font-size:11px;color:var(--soft);margin-top:8px;border-top:1px solid var(--inksoft);padding-top:7px}
+  .vadd b{color:var(--forest)}
+  /* scene cards */
+  .scenes{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:0 0 16px}
+  .scenes.compact{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+  .scene{display:block;text-decoration:none;color:var(--ink);border:2px solid var(--inksoft);background:var(--paper);transition:transform .1s,box-shadow .1s,border-color .1s}
+  .scene:hover{transform:translateY(-2px);box-shadow:4px 4px 0 rgba(42,38,32,.16);border-color:var(--forest)}
+  .scene.hero{border-width:2px}
+  .pbar{display:flex;height:0}
+  .scene.hero .pbar{height:12px}
+  .pbar span{flex:1}
+  .scene.compact-c .pbar{height:7px}
+  .scard{padding:9px 12px}
+  .scard.hero{padding:11px 13px 12px}
+  .sname{font-family:var(--disp);letter-spacing:.02em;color:var(--ink)}
+  .scene.hero .sname{font-size:18px}
+  .sname-sm{font-weight:700;font-size:13px;text-transform:capitalize;color:var(--forest)}
+  .spark{font-family:var(--ui);font-size:9.5px;color:var(--margin);font-style:italic}
+  .swatches{display:flex;gap:2px}
+  .swatches span{width:13px;height:13px;border:1px solid var(--ink);border-radius:2px}
+  .premise{font-size:11.5px;line-height:1.45;margin:5px 0 0}
+  .scene.hero .premise{font-size:12px}
+  .scast{font-size:10px;color:var(--margin);font-style:italic;margin-top:5px}
+  .sgo{font-size:10px;color:var(--forest);margin-top:4px;font-family:var(--ui);font-weight:700}
+  .srow{display:flex;justify-content:space-between;align-items:center;gap:8px}
+  /* coverage map */
+  details.cov{border:2px solid var(--inksoft);background:var(--paper2);margin:0 0 12px}
+  details.cov[open]{background:var(--shade)}
+  details.cov summary{cursor:pointer;list-style:none;font-family:var(--ui);font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--soft);padding:9px 13px;display:flex;justify-content:space-between}
+  details.cov summary::-webkit-details-marker{display:none}
+  .cov-body{padding:2px 13px 12px}
+  .cov-intro{font-size:10.5px;color:var(--soft);margin:0 0 7px}
+  .cov-grid{display:grid;grid-template-columns:minmax(70px,auto) 1fr 1fr 1.1fr;gap:3px 10px;font-size:10.5px}
+  .cov-grid .h{font-family:var(--ui);font-size:9px;font-weight:700;letter-spacing:.05em;color:var(--margin)}
+  .cov-grid .sc{font-weight:700;color:var(--forest);text-transform:capitalize}
+  .cov.muted{opacity:.92}
+  .cov-inline{border:1.5px dashed var(--inksoft);background:var(--paper2);padding:9px 13px;margin:0 0 14px}
+  .cov-inline .secH{color:var(--margin);font-size:11px}
+  .spread{font-size:9.5px;color:var(--margin);margin-top:7px}
+  .spread b{color:var(--forest)}
+  .flag{font-size:9.5px;color:var(--amber);border-left:2px solid var(--amber);padding-left:7px;margin-top:5px;line-height:1.45}
+  .flag b{color:var(--amber)}
+  .note{font-size:10px;color:var(--soft);font-style:italic;margin-top:4px}
+  .add-line{font-size:11px;margin-top:6px}
+  .add-line b{color:var(--forest)}
+  .anchor{scroll-margin-top:52px}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <b>SCENES HUB — UI DIRECTIONS</b>
+  <span class="ui" style="font-size:12px;color:#cbbd96">pick one →</span>
+  <a href="#a">A · Portfolio-first</a>
+  <a href="#b">B · Verdict-first</a>
+  <a href="#c">C · Keep order, restyle</a>
+</div>
+
+<div class="wrap">
+  <p class="intro">Same data (the Night Ferry's 5 weather-moments), three layouts of the <b>meat column</b>. The digest stays on top and the build-context aside stays in the right rail (not shown here) in all three. The differences: <b>where the portfolio sits</b>, <b>how loud the analysis is</b>, and <b>how heavy the cards feel</b>. Coverage maps marked <b>⌄</b> are click-to-open.</p>
+
+  <!-- ============================ OPTION A ============================ -->
+  <section class="opt anchor" id="a">
+    <div class="opt-tab"><span>OPTION A — PORTFOLIO-FIRST</span><span class="rec">recommended</span></div>
+    <div class="opt-note"><b>The move:</b> the 5 scenes are the hero, right under the digest. The audit shrinks to a one-line health strip (the digest already carries the verdict). Coverage collapses to a reference you open when you need it.</div>
+    <div class="stage">
+
+      <div class="digest"><span class="k">▣ BUILD-CONTEXT</span> <b>THE RANGE HUB</b> — top-down portfolio of the 5 weather-moments · variety <span class="ok">strong</span> · balance <span class="ok">balanced</span> · coverage <span class="ok">complete</span> · 🎯 13–17 · 📐 quiet drama · 🎨 reserved · ↪ reviewed downstream</div>
+
+      <div class="secH">▸ THE 5 WEATHER-MOMENTS — the portfolio · hone the cast inside each →</div>
+      <div class="scenes">
+        <a class="scene hero">
+          <div class="pbar"><span style="background:#3b5a6b"></span><span style="background:#c98a5e"></span><span style="background:#7a4a3a"></span></div>
+          <div class="scard hero">
+            <div class="srow"><span class="sname">CALM WATER</span><span class="spark">warm · dusk</span></div>
+            <div class="premise">The ferry pulls out while the water's still glass. Nothing's wrong yet — which is its own kind of tension.</div>
+            <div class="srow" style="margin-top:6px"><span class="scast">cast · Mara, the deckhand</span><span class="sgo">hone →</span></div>
+          </div>
+        </a>
+        <a class="scene hero">
+          <div class="pbar"><span style="background:#6b7d80"></span><span style="background:#9aa8a5"></span><span style="background:#43575a"></span></div>
+          <div class="scard hero">
+            <div class="srow"><span class="sname">THE FOG</span><span class="spark">cool · thickening</span></div>
+            <div class="premise">The shoreline disappears. The horn starts. You can't see the bow from the stern.</div>
+            <div class="srow" style="margin-top:6px"><span class="scast">cast · Eli, the navigator</span><span class="sgo">hone →</span></div>
+          </div>
+        </a>
+        <a class="scene hero">
+          <div class="pbar"><span style="background:#2a2f3a"></span><span style="background:#b23a2e"></span><span style="background:#5a2420"></span></div>
+          <div class="scard hero">
+            <div class="srow"><span class="sname">THE SWELL</span><span class="spark">intense · pitch</span></div>
+            <div class="premise">The deck tilts past where it should. Someone's first crossing, and they're not handling it.</div>
+            <div class="srow" style="margin-top:6px"><span class="scast">cast · Wren, the old hand</span><span class="sgo">hone →</span></div>
+          </div>
+        </a>
+        <a class="scene hero">
+          <div class="pbar"><span style="background:#14182a"></span><span style="background:#2e3a5c"></span><span style="background:#4a5680"></span></div>
+          <div class="scard hero">
+            <div class="srow"><span class="sname">NIGHT CROSSING</span><span class="spark">quiet · 3am</span></div>
+            <div class="premise">Middle of the water, middle of the night. The engine's the only sound and everyone's pretending to sleep.</div>
+            <div class="srow" style="margin-top:6px"><span class="scast">cast · Sol, the insomniac</span><span class="sgo">hone →</span></div>
+          </div>
+        </a>
+        <a class="scene hero">
+          <div class="pbar"><span style="background:#c98a8a"></span><span style="background:#e0b48a"></span><span style="background:#8a5a6a"></span></div>
+          <div class="scard hero">
+            <div class="srow"><span class="sname">THE WAKE</span><span class="spark">warm · first light</span></div>
+            <div class="premise">Lights on the far shore. The crossing's nearly over and nobody's quite ready to go back to land.</div>
+            <div class="srow" style="margin-top:6px"><span class="scast">cast · the whole deck</span><span class="sgo">hone →</span></div>
+          </div>
+        </a>
+      </div>
+
+      <div class="strip">
+        <span class="ui" style="font-size:10px;font-weight:700;letter-spacing:.05em;color:var(--forest)">⓪ RANGE HEALTH</span>
+        <span class="pill">variety ✓ strong</span>
+        <span class="pill">balance ✓ balanced</span>
+        <span class="pill">coverage ✓ complete</span>
+        <span class="add">— <b>+ add:</b> a lighter beat; the range is all weight</span>
+      </div>
+
+      <details class="cov">
+        <summary>▣ THE COVERAGE MAP — the allocation (cast · role · structure, carried into each scene) <span>⌄ open</span></summary>
+        <div class="cov-body">
+          <div class="cov-intro">each scene auditions on its OWN page, blind to its siblings — so the hub allocates distinct territory here so they don't collide.</div>
+          <div class="cov-grid">
+            <div class="h">SCENE</div><div class="h">CAST</div><div class="h">ROLE</div><div class="h">STRUCTURE</div>
+            <div class="sc">calm water</div><div>Mara, deckhand</div><div>steady witness</div><div>slow-open</div>
+            <div class="sc">the fog</div><div>Eli, navigator</div><div>the worried one</div><div>tension-build</div>
+            <div class="sc">the swell</div><div>Wren, old hand</div><div>calm-in-chaos</div><div>crisis-peak</div>
+            <div class="sc">night crossing</div><div>Sol, insomniac</div><div>the confessor</div><div>quiet two-hander</div>
+            <div class="sc">the wake</div><div>the deck</div><div>the chorus</div><div>resolution</div>
+          </div>
+          <div class="spread">↳ <b>coverage spread:</b> roles [witness · worried · calm · confessor · chorus] · structures [slow-open · build · peak · two-hander · resolution]</div>
+          <div class="flag">⚑ <b>role overlap</b> (calm water &amp; night crossing both "quiet observers") → resolved: night crossing made a two-hander confession, not observation.</div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ============================ OPTION B ============================ -->
+  <section class="opt anchor" id="b">
+    <div class="opt-tab"><span>OPTION B — VERDICT-FIRST</span><span></span></div>
+    <div class="opt-note"><b>The move:</b> lead with a bold RANGE VERDICT — "is this set good?" answered loud — then the portfolio (more compact cards), then coverage collapsed. Strong if judging the set's health is the first thing you do here, but it <b>double-counts the digest</b>.</div>
+    <div class="stage">
+
+      <div class="digest"><span class="k">▣ BUILD-CONTEXT</span> <b>THE RANGE HUB</b> — top-down portfolio of the 5 weather-moments · variety <span class="ok">strong</span> · balance <span class="ok">balanced</span> · coverage <span class="ok">complete</span> · 🎯 13–17 · 📐 quiet drama · 🎨 reserved</div>
+
+      <div class="verdict">
+        <h3>⓪ RANGE VERDICT — variety · balance · coverage</h3>
+        <div class="vgrid">
+          <div class="vcell"><div class="lab">VARIETY</div><div class="val">STRONG</div></div>
+          <div class="vcell"><div class="lab">BALANCE</div><div class="val">BALANCED</div></div>
+          <div class="vcell"><div class="lab">COVERAGE</div><div class="val">COMPLETE</div></div>
+        </div>
+        <div class="vadd"><b>+ add variety:</b> a lighter beat — the range is all weight; one scene could breathe.</div>
+      </div>
+
+      <div class="secH">▸ THE 5 WEATHER-MOMENTS — hone the cast inside each →</div>
+      <div class="scenes compact">
+        <a class="scene compact-c">
+          <div class="pbar"><span style="background:#3b5a6b"></span><span style="background:#c98a5e"></span><span style="background:#7a4a3a"></span></div>
+          <div class="scard"><div class="srow"><span class="sname-sm">calm water <span class="spark">warm · dusk</span></span></div><div class="premise">Water's still glass. Nothing's wrong yet — its own kind of tension.</div><div class="scast">cast · Mara</div><div class="sgo">hone →</div></div>
+        </a>
+        <a class="scene compact-c">
+          <div class="pbar"><span style="background:#6b7d80"></span><span style="background:#9aa8a5"></span><span style="background:#43575a"></span></div>
+          <div class="scard"><div class="srow"><span class="sname-sm">the fog <span class="spark">cool · thickening</span></span></div><div class="premise">Shoreline gone. The horn starts. Can't see bow from stern.</div><div class="scast">cast · Eli</div><div class="sgo">hone →</div></div>
+        </a>
+        <a class="scene compact-c">
+          <div class="pbar"><span style="background:#2a2f3a"></span><span style="background:#b23a2e"></span><span style="background:#5a2420"></span></div>
+          <div class="scard"><div class="srow"><span class="sname-sm">the swell <span class="spark">intense · pitch</span></span></div><div class="premise">Deck tilts past where it should. Someone's first crossing.</div><div class="scast">cast · Wren</div><div class="sgo">hone →</div></div>
+        </a>
+        <a class="scene compact-c">
+          <div class="pbar"><span style="background:#14182a"></span><span style="background:#2e3a5c"></span><span style="background:#4a5680"></span></div>
+          <div class="scard"><div class="srow"><span class="sname-sm">night crossing <span class="spark">quiet · 3am</span></span></div><div class="premise">Engine's the only sound; everyone's pretending to sleep.</div><div class="scast">cast · Sol</div><div class="sgo">hone →</div></div>
+        </a>
+        <a class="scene compact-c">
+          <div class="pbar"><span style="background:#c98a8a"></span><span style="background:#e0b48a"></span><span style="background:#8a5a6a"></span></div>
+          <div class="scard"><div class="srow"><span class="sname-sm">the wake <span class="spark">warm · first light</span></span></div><div class="premise">Lights on the far shore. Nobody's ready to go back to land.</div><div class="scast">cast · the deck</div><div class="sgo">hone →</div></div>
+        </a>
+      </div>
+
+      <details class="cov">
+        <summary>▣ THE COVERAGE MAP — the allocation grid <span>⌄ open</span></summary>
+        <div class="cov-body">
+          <div class="cov-grid">
+            <div class="h">SCENE</div><div class="h">CAST</div><div class="h">ROLE</div><div class="h">STRUCTURE</div>
+            <div class="sc">calm water</div><div>Mara</div><div>steady witness</div><div>slow-open</div>
+            <div class="sc">the fog</div><div>Eli</div><div>the worried one</div><div>tension-build</div>
+            <div class="sc">the swell</div><div>Wren</div><div>calm-in-chaos</div><div>crisis-peak</div>
+            <div class="sc">night crossing</div><div>Sol</div><div>the confessor</div><div>quiet two-hander</div>
+            <div class="sc">the wake</div><div>the deck</div><div>the chorus</div><div>resolution</div>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ============================ OPTION C ============================ -->
+  <section class="opt anchor" id="c">
+    <div class="opt-tab"><span>OPTION C — KEEP ORDER, RESTYLE</span><span></span></div>
+    <div class="opt-note"><b>The move:</b> lowest-disruption — keep audit → coverage → scenes, but fix the weight. Slim the audit to a strip, mute the coverage to clearly-secondary (still inline), and promote the scene cards to hero. Same flow, better hierarchy.</div>
+    <div class="stage">
+
+      <div class="digest"><span class="k">▣ BUILD-CONTEXT</span> <b>THE RANGE HUB</b> — top-down portfolio of the 5 weather-moments · variety <span class="ok">strong</span> · balance <span class="ok">balanced</span> · coverage <span class="ok">complete</span> · 🎯 13–17 · 📐 quiet drama · 🎨 reserved</div>
+
+      <div class="strip">
+        <span class="ui" style="font-size:10px;font-weight:700;letter-spacing:.05em;color:var(--forest)">⓪ RANGE AUDIT</span>
+        <span class="pill">variety ✓ strong</span>
+        <span class="pill">balance ✓ balanced</span>
+        <span class="pill">coverage ✓ complete</span>
+        <span class="add">— <b>+ add:</b> a lighter beat</span>
+      </div>
+
+      <div class="cov-inline cov muted">
+        <div class="secH">▸ THE COVERAGE MAP — the allocation (carried into each scene · reference)</div>
+        <div class="cov-grid">
+          <div class="h">SCENE</div><div class="h">CAST</div><div class="h">ROLE</div><div class="h">STRUCTURE</div>
+          <div class="sc">calm water</div><div>Mara</div><div>steady witness</div><div>slow-open</div>
+          <div class="sc">the fog</div><div>Eli</div><div>the worried one</div><div>tension-build</div>
+          <div class="sc">the swell</div><div>Wren</div><div>calm-in-chaos</div><div>crisis-peak</div>
+          <div class="sc">night crossing</div><div>Sol</div><div>the confessor</div><div>quiet two-hander</div>
+          <div class="sc">the wake</div><div>the deck</div><div>the chorus</div><div>resolution</div>
+        </div>
+        <div class="spread">↳ <b>coverage spread:</b> roles [witness · worried · calm · confessor · chorus]</div>
+      </div>
+
+      <div class="secH">▸ THE 5 SCENES — premise auditioned here · hone the cast inside each →</div>
+      <div class="scenes">
+        <a class="scene hero">
+          <div class="pbar"><span style="background:#3b5a6b"></span><span style="background:#c98a5e"></span><span style="background:#7a4a3a"></span></div>
+          <div class="scard hero"><div class="srow"><span class="sname">CALM WATER</span><span class="spark">warm · dusk</span></div><div class="premise">The water's still glass. Nothing's wrong yet — its own kind of tension.</div><div class="srow" style="margin-top:6px"><span class="scast">cast · Mara</span><span class="sgo">hone →</span></div></div>
+        </a>
+        <a class="scene hero">
+          <div class="pbar"><span style="background:#6b7d80"></span><span style="background:#9aa8a5"></span><span style="background:#43575a"></span></div>
+          <div class="scard hero"><div class="srow"><span class="sname">THE FOG</span><span class="spark">cool · thickening</span></div><div class="premise">The shoreline disappears. The horn starts. Can't see the bow from the stern.</div><div class="srow" style="margin-top:6px"><span class="scast">cast · Eli</span><span class="sgo">hone →</span></div></div>
+        </a>
+        <a class="scene hero">
+          <div class="pbar"><span style="background:#2a2f3a"></span><span style="background:#b23a2e"></span><span style="background:#5a2420"></span></div>
+          <div class="scard hero"><div class="srow"><span class="sname">THE SWELL</span><span class="spark">intense · pitch</span></div><div class="premise">The deck tilts past where it should. Someone's first crossing, and they're not handling it.</div><div class="srow" style="margin-top:6px"><span class="scast">cast · Wren</span><span class="sgo">hone →</span></div></div>
+        </a>
+        <a class="scene hero">
+          <div class="pbar"><span style="background:#14182a"></span><span style="background:#2e3a5c"></span><span style="background:#4a5680"></span></div>
+          <div class="scard hero"><div class="srow"><span class="sname">NIGHT CROSSING</span><span class="spark">quiet · 3am</span></div><div class="premise">Middle of the water, middle of the night. The engine's the only sound.</div><div class="srow" style="margin-top:6px"><span class="scast">cast · Sol</span><span class="sgo">hone →</span></div></div>
+        </a>
+        <a class="scene hero">
+          <div class="pbar"><span style="background:#c98a8a"></span><span style="background:#e0b48a"></span><span style="background:#8a5a6a"></span></div>
+          <div class="scard hero"><div class="srow"><span class="sname">THE WAKE</span><span class="spark">warm · first light</span></div><div class="premise">Lights on the far shore. Nobody's quite ready to go back to land.</div><div class="srow" style="margin-top:6px"><span class="scast">cast · the deck</span><span class="sgo">hone →</span></div></div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <p class="intro" style="margin-top:0">Tell me <b>A</b>, <b>B</b>, or <b>C</b> (or a mix — e.g. "A but keep coverage inline like C") and I'll build it into the real <code>SceneRange</code> component.</p>
+</div>
+
+</body>
+</html>
