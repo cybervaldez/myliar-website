@@ -456,7 +456,7 @@ export type RangeT = {
   gatedBy?: string;
   rangeReview?: { verdict: string; flag: string };
   expertsGate?: { name: string; role: string }[];
-  branches: { key: string; label: string; spark: string; cells: { tone: string; base: string }[] }[];
+  branches: { key: string; label: string; spark: string; cells: { tone: string; base: string; accent?: string; ink?: string; label?: string }[] }[];
   honing?: { [key: string]: { castPick?: string } };
 };
 export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
@@ -477,7 +477,9 @@ export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
           const cast = d.honing?.[b.key]?.castPick;
           return (
             <a key={b.key} className="aud-scene" href={`/auditions/${campaign}/scenes/${b.key}`} style={{ display: "block", textDecoration: "none", border: `2px solid var(--ink-soft)`, background: paper, color: ink }}>
-              <div style={{ display: "flex", height: 12 }}>{b.cells.map((c) => <span key={c.tone} style={{ flex: 1, background: c.base }} />)}</div>
+              {/* palette bar: per tone cell, its ambient GROUND (base) over its characterful ACCENT — the
+                  accent is what differs by tone/scene (brass · chart-green · water-blue), so the bar reads. */}
+              <div style={{ display: "flex", height: 16 }}>{b.cells.map((c) => <span key={c.tone} title={c.label} style={{ flex: 1, background: c.accent ? `linear-gradient(${c.base} 0 50%, ${c.accent} 50%)` : c.base }} />)}</div>
               <div style={{ padding: "11px 13px 12px" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8 }}>
                   <span style={{ fontFamily: "var(--theme-display)", fontSize: 18, color: ink, textTransform: "uppercase", letterSpacing: ".02em", lineHeight: 1.1 }}>{b.label}</span>
