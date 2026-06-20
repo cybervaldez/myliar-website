@@ -6,8 +6,9 @@ import LayoutSwitcher from "./LayoutSwitcher";
 export default function AuditionsLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      {/* set the layout on <html> BEFORE paint (no flash; the attribute is always present) */}
-      <script dangerouslySetInnerHTML={{ __html: "try{document.documentElement.dataset.audLayout=localStorage.getItem('audLayout')||'column'}catch(e){}" }} />
+      {/* before paint: force Parchment & Ink for the auditions tool (creative-liberty target; the game keeps
+          its packs) + restore the saved layout mode. No flash; the attributes are always present. */}
+      <script dangerouslySetInnerHTML={{ __html: "try{var r=document.documentElement;r.dataset.pack='parchment';r.dataset.audLayout=localStorage.getItem('audLayout')||'column'}catch(e){}" }} />
       <NavRail />
       {children}
       <LayoutSwitcher />

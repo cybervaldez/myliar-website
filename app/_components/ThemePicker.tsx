@@ -7,10 +7,10 @@
 
 import { useEffect, useState } from "react";
 
+// Website side is Parchment & Ink only (2026-06-20) — Vibrant/DOS were pulled from the website switcher
+// for design focus; the GAME's campaigns still apply their packs programmatically (PlayRunner), untouched.
 const PACKS: [string, string][] = [
   ["parchment", "Parchment & Ink"],
-  ["vibrant", "Vibrant Realm"],
-  ["dos", "DOS-era"],
 ];
 const MODES: [string, string][] = [
   ["light", "☀ Light"],
