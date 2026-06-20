@@ -596,24 +596,24 @@
       "cells": [
        {
         "tone": "cozy",
-        "base": "#1a2026",
-        "ink": "#d7dee4",
-        "accent": "#d9b25e",
-        "label": "First flicker, held"
+        "base": "#8d7f6f",
+        "ink": "#3b352e",
+        "accent": "#a86f7d",
+        "label": "a keeper's quiet gift"
        },
        {
         "tone": "warm",
-        "base": "#1a2026",
-        "ink": "#dfe4e6",
-        "accent": "#e0c068",
-        "label": "The lamp's full glow"
+        "base": "#7a6c5d",
+        "ink": "#e0d6c9",
+        "accent": "#b57a88",
+        "label": "a story between lines"
        },
        {
         "tone": "intense",
-        "base": "#141a1f",
-        "ink": "#cdd5db",
-        "accent": "#c79a4e",
-        "label": "The old promise"
+        "base": "#61564b",
+        "ink": "#e0d6c9",
+        "accent": "#c28493",
+        "label": "a presence held close"
        }
       ]
      },
@@ -623,24 +623,24 @@
       "cells": [
        {
         "tone": "cozy",
-        "base": "#141a1f",
-        "ink": "#d7dee4",
-        "accent": "#d9b25e",
-        "label": "Safe within the dark"
+        "base": "#4a5568",
+        "ink": "#e2e8f0",
+        "accent": "#c89b3c",
+        "label": "forecast holds, sky waits"
        },
        {
         "tone": "warm",
-        "base": "#1a2026",
-        "ink": "#cdd5db",
-        "accent": "#d9b25e",
-        "label": "Night's quiet company"
+        "base": "#3a4454",
+        "ink": "#e2e8f0",
+        "accent": "#d4af37",
+        "label": "the air grows heavy"
        },
        {
         "tone": "intense",
-        "base": "#141a1f",
-        "ink": "#cdd5db",
-        "accent": "#c79a4e",
-        "label": "The long dark's weight"
+        "base": "#2d3748",
+        "ink": "#e2e8f0",
+        "accent": "#e0c56e",
+        "label": "holding against the drift"
        }
       ]
      },
@@ -650,24 +650,24 @@
       "cells": [
        {
         "tone": "cozy",
-        "base": "#222a2e",
-        "ink": "#dfe4e6",
-        "accent": "#d9b25e",
-        "label": "Wrapped in grey wool"
+        "base": "#4a4441",
+        "ink": "#c9c4c1",
+        "accent": "#d1c7b8",
+        "label": "the sound is muffled"
        },
        {
         "tone": "warm",
-        "base": "#222a2e",
-        "ink": "#d7dee4",
-        "accent": "#e0c068",
-        "label": "The fog's soft press"
+        "base": "#3b3633",
+        "ink": "#c9c4c1",
+        "accent": "#e0d8ca",
+        "label": "wrapped in the fog"
        },
        {
         "tone": "intense",
-        "base": "#1a2026",
-        "ink": "#cdd5db",
-        "accent": "#c79a4e",
-        "label": "The world erased"
+        "base": "#2d2926",
+        "ink": "#c9c4c1",
+        "accent": "#eee5d6",
+        "label": "alone, but present"
        }
       ]
      },
@@ -677,24 +677,24 @@
       "cells": [
        {
         "tone": "cozy",
-        "base": "#222a2e",
-        "ink": "#dfe4e6",
-        "accent": "#d9b25e",
-        "label": "First shapes return"
+        "base": "#5e5d71",
+        "ink": "#dcdce3",
+        "accent": "#ffffff",
+        "label": "the fog begins to part"
        },
        {
         "tone": "warm",
-        "base": "#2f383d",
-        "ink": "#dfe4e6",
-        "accent": "#d9b25e",
-        "label": "The veil is lifting"
+        "base": "#4e4d5f",
+        "ink": "#dcdce3",
+        "accent": "#f0f8ff",
+        "label": "another watch kept"
        },
        {
         "tone": "intense",
-        "base": "#1a2026",
-        "ink": "#dfe4e6",
-        "accent": "#c79a4e",
-        "label": "What the fog left"
+        "base": "#3e3d4d",
+        "ink": "#dcdce3",
+        "accent": "#e6f2ff",
+        "label": "not the only one awake"
        }
       ]
      },
@@ -704,24 +704,24 @@
       "cells": [
        {
         "tone": "cozy",
-        "base": "#222a2e",
-        "ink": "#dfe4e6",
-        "accent": "#e6c67c",
-        "label": "Dawn on the rail"
+        "base": "#a88d7c",
+        "ink": "#4a3f3a",
+        "accent": "#e6cda5",
+        "label": "the duty is passed"
        },
        {
         "tone": "warm",
-        "base": "#2f383d",
-        "ink": "#f0f2f3",
-        "accent": "#d9b25e",
-        "label": "The watch is done"
+        "base": "#9b7f71",
+        "ink": "#4a3f3a",
+        "accent": "#f0d8b3",
+        "label": "a night's quiet passage"
        },
        {
         "tone": "intense",
-        "base": "#141a1f",
-        "ink": "#d7dee4",
-        "accent": "#c79a4e",
-        "label": "Another day earned"
+        "base": "#8e7266",
+        "ink": "#f0e9e6",
+        "accent": "#f9e3c1",
+        "label": "the next link in a chain"
        }
       ]
      }
@@ -897,7 +897,111 @@
         "note": "represents a break from routine, not the routine itself"
        }
       ],
-      "whyWon": "The Keeper-before frames the ritual not just as a task but as an act of inheritance, immediately grounding the watch in the core themes of legacy and time."
+      "whyWon": "The Keeper-before frames the ritual not just as a task but as an act of inheritance, immediately grounding the watch in the core themes of legacy and time.",
+      "paletteAudition": {
+       "candidates": [
+        {
+         "id": "1a",
+         "name": "Logbook & Brass",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#5a4d41",
+           "ink": "#e4dcd3",
+           "accent": "#e8b74e",
+           "label": "quiet study, evening light"
+          },
+          {
+           "tone": "warm",
+           "base": "#4d4136",
+           "ink": "#e4dcd3",
+           "accent": "#f2c761",
+           "label": "lamp lit, pages turn"
+          },
+          {
+           "tone": "intense",
+           "base": "#3c322a",
+           "ink": "#e4dcd3",
+           "accent": "#ffd77a",
+           "label": "memory held in light"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A classic, warm palette centered on the comforting glow of brass and wood.",
+         "picked": false
+        },
+        {
+         "id": "1b",
+         "name": "Pressed Flower & Parchment",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#8d7f6f",
+           "ink": "#3b352e",
+           "accent": "#a86f7d",
+           "label": "a keeper's quiet gift"
+          },
+          {
+           "tone": "warm",
+           "base": "#7a6c5d",
+           "ink": "#e0d6c9",
+           "accent": "#b57a88",
+           "label": "a story between lines"
+          },
+          {
+           "tone": "intense",
+           "base": "#61564b",
+           "ink": "#e0d6c9",
+           "accent": "#c28493",
+           "label": "a presence held close"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A softer, more poetic palette using the flower's faded color as a poignant, unique accent.",
+         "picked": true
+        },
+        {
+         "id": "1c",
+         "name": "Amber & Ink",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#6e5c4c",
+           "ink": "#f0e6d8",
+           "accent": "#d49a3f",
+           "label": "first watch, lamp glow"
+          },
+          {
+           "tone": "warm",
+           "base": "#5e4d3d",
+           "ink": "#f0e6d8",
+           "accent": "#e6a948",
+           "label": "room filled with light"
+          },
+          {
+           "tone": "intense",
+           "base": "#4a3d30",
+           "ink": "#f0e6d8",
+           "accent": "#f5b851",
+           "label": "the world held outside"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "Focuses on the quality of the lamplight itself—thick and warm like preserved amber.",
+         "picked": false
+        }
+       ],
+       "winner": "1b",
+       "whyWon": "Its unique, poignant accent color directly honors the premise, setting a perfect elegiac tone from the start.",
+       "runnerUp": "1a",
+       "runnerUpGem": "The unambiguous warmth and classicism of its brass accent on dark wood."
+      }
      },
      "the-dark-settles": {
       "castPick": "the Light — as the storm rises, the lamp becomes the focal point of all action, and the player's role as its steward is defined by calm, competent care against the chaos.",
@@ -932,7 +1036,111 @@
         "note": "is associated with daylight and the world beyond the watch"
        }
       ],
-      "whyWon": "The Light offers the most elemental and symbolic focus, honoring the genre's use of core imagery—the singular, defiant flame—to convey the watch's purpose without words."
+      "whyWon": "The Light offers the most elemental and symbolic focus, honoring the genre's use of core imagery—the singular, defiant flame—to convey the watch's purpose without words.",
+      "paletteAudition": {
+       "candidates": [
+        {
+         "id": "2a",
+         "name": "North Sea & Lantern",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#2c3e50",
+           "ink": "#bdc3c7",
+           "accent": "#f39c12",
+           "label": "wind rising, sea stirs"
+          },
+          {
+           "tone": "warm",
+           "base": "#233140",
+           "ink": "#bdc3c7",
+           "accent": "#f1c40f",
+           "label": "glass pane, rising tide"
+          },
+          {
+           "tone": "intense",
+           "base": "#1a2530",
+           "ink": "#bdc3c7",
+           "accent": "#f5d55a",
+           "label": "the only fixed point"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "blurs",
+         "safe": "safe",
+         "note": "A classic and effective blue/orange contrast that clearly communicates 'warmth against the cold'.",
+         "picked": false
+        },
+        {
+         "id": "2b",
+         "name": "Gale & Hearth",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#314f4f",
+           "ink": "#d1dddb",
+           "accent": "#e88d4e",
+           "label": "sound of the coming storm"
+          },
+          {
+           "tone": "warm",
+           "base": "#263e3e",
+           "ink": "#d1dddb",
+           "accent": "#e67e22",
+           "label": "shelter from the wind"
+          },
+          {
+           "tone": "intense",
+           "base": "#1b2d2d",
+           "ink": "#d1dddb",
+           "accent": "#d35400",
+           "label": "a world beginning to move"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "Uses a deep sea-green base for a more specific North Atlantic feel, with a coppery, hearth-like accent.",
+         "picked": false
+        },
+        {
+         "id": "2c",
+         "name": "Iron Sky & Brass",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#4a5568",
+           "ink": "#e2e8f0",
+           "accent": "#c89b3c",
+           "label": "forecast holds, sky waits"
+          },
+          {
+           "tone": "warm",
+           "base": "#3a4454",
+           "ink": "#e2e8f0",
+           "accent": "#d4af37",
+           "label": "the air grows heavy"
+          },
+          {
+           "tone": "intense",
+           "base": "#2d3748",
+           "ink": "#e2e8f0",
+           "accent": "#e0c56e",
+           "label": "holding against the drift"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A restrained, sophisticated take using a heavy slate-blue to imply weight and pressure, not just cold.",
+         "picked": true
+        }
+       ],
+       "winner": "2c",
+       "whyWon": "The 'Iron Sky' concept is the most literary and restrained, perfectly fitting the elegiac tone over more common storm palettes.",
+       "runnerUp": "2b",
+       "runnerUpGem": "Its deep teal base evokes a specific, churning sea that feels authentic to the North Atlantic setting."
+      }
      },
      "the-fog-comes-in": {
       "castPick": "the Light — with its beam swallowed by the fog, the lamp's function turns inward, becoming a metronome for the keeper's own consciousness in the void.",
@@ -967,7 +1175,111 @@
         "note": "is defined by their absence in the fog, not their presence"
        }
       ],
-      "whyWon": "The Light's physical struggle against the fog creates the most direct, active conflict, externalizing the keeper's internal state of perseverance and making the weather a character, a classic elegiac move."
+      "whyWon": "The Light's physical struggle against the fog creates the most direct, active conflict, externalizing the keeper's internal state of perseverance and making the weather a character, a classic elegiac move.",
+      "paletteAudition": {
+       "candidates": [
+        {
+         "id": "3a",
+         "name": "Void & Pulse",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#333333",
+           "ink": "#a0a0a0",
+           "accent": "#b0b09d",
+           "label": "fog against the glass"
+          },
+          {
+           "tone": "warm",
+           "base": "#222222",
+           "ink": "#a0a0a0",
+           "accent": "#c4c4b1",
+           "label": "beam swallowed by white"
+          },
+          {
+           "tone": "intense",
+           "base": "#1a1a1a",
+           "ink": "#a0a0a0",
+           "accent": "#d8d8c5",
+           "label": "a light for myself"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A direct, near-black interpretation of the void, where the light is a soft, neutral pulse against nothingness.",
+         "picked": false
+        },
+        {
+         "id": "3b",
+         "name": "Wet Slate & Moiré",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#424949",
+           "ink": "#c3c7c7",
+           "accent": "#9fb1a9",
+           "label": "a silent, white sea"
+          },
+          {
+           "tone": "warm",
+           "base": "#343a3a",
+           "ink": "#c3c7c7",
+           "accent": "#a7bba9",
+           "label": "the world erased"
+          },
+          {
+           "tone": "intense",
+           "base": "#272c2c",
+           "ink": "#c3c7c7",
+           "accent": "#b3c5ad",
+           "label": "the measure of my own heart"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A cool, blue-tinged grey that feels damp and atmospheric, with a unique phosphorescent accent.",
+         "picked": false
+        },
+        {
+         "id": "3c",
+         "name": "Wool & Breath",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#4a4441",
+           "ink": "#c9c4c1",
+           "accent": "#d1c7b8",
+           "label": "the sound is muffled"
+          },
+          {
+           "tone": "warm",
+           "base": "#3b3633",
+           "ink": "#c9c4c1",
+           "accent": "#e0d8ca",
+           "label": "wrapped in the fog"
+          },
+          {
+           "tone": "intense",
+           "base": "#2d2926",
+           "ink": "#c9c4c1",
+           "accent": "#eee5d6",
+           "label": "alone, but present"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A warmer, brownish-grey that frames the fog as an enclosing, protective blanket, making solitude feel full.",
+         "picked": true
+        }
+       ],
+       "winner": "3c",
+       "whyWon": "It reframes the 'void' as an intimate, enclosing warmth, a complex and poignant take that serves the theme of 'solitude as fullness'.",
+       "runnerUp": "3b",
+       "runnerUpGem": "The 'wet slate' atmosphere and unique phosphorescent accent are incredibly evocative of a cold, coastal fog."
+      }
      },
      "the-fog-thins": {
       "castPick": "the Voice — the distant light acts as a silent 'voice,' a visual affirmation of another's presence, fulfilling the same need for connection as the radio.",
@@ -1002,7 +1314,111 @@
         "note": "its clearing heralds the possibility of future connection"
        }
       ],
-      "whyWon": "After the intense isolation of the fog, re-establishing human connection via the Voice provides the most poignant emotional release, shifting the focus from solitary survival to shared existence."
+      "whyWon": "After the intense isolation of the fog, re-establishing human connection via the Voice provides the most poignant emotional release, shifting the focus from solitary survival to shared existence.",
+      "paletteAudition": {
+       "candidates": [
+        {
+         "id": "4a",
+         "name": "Receding Mist & Kindred",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#6b7280",
+           "ink": "#e5e7eb",
+           "accent": "#a0d2eb",
+           "label": "the white-out recedes"
+          },
+          {
+           "tone": "warm",
+           "base": "#5a616e",
+           "ink": "#e5e7eb",
+           "accent": "#89c2d9",
+           "label": "a shape on the headland"
+          },
+          {
+           "tone": "intense",
+           "base": "#4b5563",
+           "ink": "#e5e7eb",
+           "accent": "#72b2c6",
+           "label": "a shared, silent watch"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A clean, functional palette that shows the world returning in cool greys and a clear blue accent.",
+         "picked": false
+        },
+        {
+         "id": "4b",
+         "name": "Amethyst & Signal",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#5e5d71",
+           "ink": "#dcdce3",
+           "accent": "#ffffff",
+           "label": "the fog begins to part"
+          },
+          {
+           "tone": "warm",
+           "base": "#4e4d5f",
+           "ink": "#dcdce3",
+           "accent": "#f0f8ff",
+           "label": "another watch kept"
+          },
+          {
+           "tone": "intense",
+           "base": "#3e3d4d",
+           "ink": "#dcdce3",
+           "accent": "#e6f2ff",
+           "label": "not the only one awake"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "Uses a unique amethyst base for the pre-dawn hour, making the moment of reveal feel magical and quiet.",
+         "picked": true
+        },
+        {
+         "id": "4c",
+         "name": "Washed Slate & Silver",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#70798c",
+           "ink": "#f0f2f5",
+           "accent": "#b6c2d9",
+           "label": "a clearing in the night"
+          },
+          {
+           "tone": "warm",
+           "base": "#616a7b",
+           "ink": "#f0f2f5",
+           "accent": "#cad4e6",
+           "label": "a light answers a light"
+          },
+          {
+           "tone": "intense",
+           "base": "#525a69",
+           "ink": "#f0f2f5",
+           "accent": "#dde2ed",
+           "label": "a silent understanding"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A crisp, clean blue-grey palette that evokes the feeling of clear air after a dense fog.",
+         "picked": false
+        }
+       ],
+       "winner": "4b",
+       "whyWon": "The amethyst hue is the most emotionally specific and memorable choice, elevating a weather change into a quiet revelation.",
+       "runnerUp": "4c",
+       "runnerUpGem": "Its 'washed slate' clarity provides a powerful and satisfying sensory contrast to the previous scene's muffled fog."
+      }
      },
      "first-light": {
       "castPick": "the Visitor — the rising sun acts as the ultimate, daily visitor, arriving to relieve the lamp of its duty and reconnect the tower to the larger world.",
@@ -1037,223 +1453,327 @@
         "note": "embodies the hope and change that a new day brings"
        }
       ],
-      "whyWon": "The Visitor represents the world beyond the self-contained watch, making 'first light' a moment of profound, forward-looking hope and the promise of contact, a powerful beat to end the night's cycle."
+      "whyWon": "The Visitor represents the world beyond the self-contained watch, making 'first light' a moment of profound, forward-looking hope and the promise of contact, a powerful beat to end the night's cycle.",
+      "paletteAudition": {
+       "candidates": [
+        {
+         "id": "5a",
+         "name": "Sun on Brass & Extinguished Lamp",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#a88d7c",
+           "ink": "#4a3f3a",
+           "accent": "#e6cda5",
+           "label": "the duty is passed"
+          },
+          {
+           "tone": "warm",
+           "base": "#9b7f71",
+           "ink": "#4a3f3a",
+           "accent": "#f0d8b3",
+           "label": "a night's quiet passage"
+          },
+          {
+           "tone": "intense",
+           "base": "#8e7266",
+           "ink": "#f0e9e6",
+           "accent": "#f9e3c1",
+           "label": "the next link in a chain"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A thematically strong palette linking the first sunlight to the lamp's brass, closing the narrative loop.",
+         "picked": true
+        },
+        {
+         "id": "5b",
+         "name": "Horizon & Ink",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#bca297",
+           "ink": "#5c4a42",
+           "accent": "#f7cba4",
+           "label": "the edge of the new day"
+          },
+          {
+           "tone": "warm",
+           "base": "#b09386",
+           "ink": "#5c4a42",
+           "accent": "#ffd5b1",
+           "label": "recording the watch"
+          },
+          {
+           "tone": "intense",
+           "base": "#a38578",
+           "ink": "#f7f1ee",
+           "accent": "#ffdfbe",
+           "label": "the long watch ends"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "blurs",
+         "safe": "safe",
+         "note": "A classic, warm sunrise palette with soft peach and orange tones that feels hopeful and gentle.",
+         "picked": false
+        },
+        {
+         "id": "5c",
+         "name": "Lens & Iris",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#ada3a8",
+           "ink": "#4d484a",
+           "accent": "#fdebad",
+           "label": "light touches the lens"
+          },
+          {
+           "tone": "warm",
+           "base": "#a0969b",
+           "ink": "#4d484a",
+           "accent": "#ffe399",
+           "label": "a new day's color"
+          },
+          {
+           "tone": "intense",
+           "base": "#93898e",
+           "ink": "#f5f2f3",
+           "accent": "#ffdd80",
+           "label": "the chain continues"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A sophisticated and delicate palette pairing cool lavender-greys with a pale gold accent for a subtle dawn.",
+         "picked": false
+        }
+       ],
+       "winner": "5a",
+       "whyWon": "It provides the strongest narrative closure by thematically connecting the sun's light with the lamp's brass, honoring the vigil.",
+       "runnerUp": "5c",
+       "runnerUpGem": "Its unexpected and elegant pairing of lavender-grey and pale gold is beautifully restrained and memorable."
+      }
      }
     },
     "paletteUI": {
      "lighting-the-lamp": {
       "prompts": {
        "objects": [
-        "a lantern room of deep indigo and first-flicker gold",
-        "the lamp's heart, a core of warm honey against near-black iron",
-        "a promise kept in antique brass and deep-sea dark"
+        "walls of weathered, tea-stain stone",
+        "the air tinged with the colour of a faded rose",
+        "shadows the colour of deep, dried lavender"
        ],
        "characters": [
-        "a keeper's silhouette etched in old gold against the coming night",
-        "hands cupped in bronze light, a face lost to shadow"
+        "hands the colour of worn leather",
+        "a face etched with the memory of mauve sunsets"
        ],
        "items": [
-        "a brass matchbox catching a glint of honeyed light",
-        "an open logbook, its pages the colour of pale straw in the new glow"
+        "a brass lamp catching a dusty rose reflection",
+        "a logbook with pages like pressed flowers"
        ]
       },
       "prose": {
        "objectSeeds": {
         "dominant": [
-         "shadow",
-         "iron",
-         "sea-dark"
+         "stone",
+         "driftwood",
+         "shadow"
         ],
         "accent": [
-         "ember",
-         "honey"
+         "hearth-glow",
+         "memory"
         ]
        },
        "diction": {
         "cool": [
-         "hollowed",
-         "steady",
-         "deepening"
+         "quiet",
+         "worn",
+         "etched"
         ],
         "warm": [
-         "kindled",
-         "gilded",
-         "cupped"
+         "steady",
+         "kindle",
+         "trace"
         ]
        },
-       "rule": "Describe the light only by what it touches."
+       "rule": "Describe light not as a colour, but as a quality of warmth felt on the skin or a remembered blush on a surface."
       }
      },
      "the-dark-settles": {
       "prompts": {
        "objects": [
-        "a circle of old gold on a floor of absolute black",
-        "the tower's stone, a deep indigo holding a single warm breath",
-        "a windowpane showing only night, reflecting a bronze filament"
+        "the sea, a sheet of deep slate",
+        "the sky, the colour of a bruised plum",
+        "a horizon line of tarnished gold"
        ],
        "characters": [
-        "a figure seated in a pool of pale honey-light",
-        "a face turned toward the dark, half in shadow, half in antique gold"
+        "a silhouette against the deepening indigo",
+        "eyes reflecting a distant, brassy light"
        ],
        "items": [
-        "a steaming mug, its rim catching a thin line of gold",
-        "a worn book, its cover the colour of deep night, its title gilded"
+        "a compass with a face of old, worn brass",
+        "a lantern casting a weak, honeyed glow"
        ]
       },
       "prose": {
        "objectSeeds": {
         "dominant": [
-         "void",
-         "ink",
-         "stone"
+         "slate",
+         "iron",
+         "sea-dusk"
         ],
         "accent": [
-         "filament",
-         "hearth"
+         "brass",
+         "ember"
         ]
        },
        "diction": {
         "cool": [
-         "vast",
-         "still",
-         "absolute"
+         "heavy",
+         "settles",
+         "deepening"
         ],
         "warm": [
-         "pooled",
-         "held",
-         "tracing"
+         "holds",
+         "gleam",
+         "steady"
         ]
        },
-       "rule": "Let the silence be a presence; describe the sounds that punctuate it, not the quiet itself."
+       "rule": "Render the encroaching dark as a physical weight or pressure, the light as a singular, defiant point against it."
       }
      },
      "the-fog-comes-in": {
       "prompts": {
        "objects": [
-        "a lantern room wrapped in charcoal wool, its light a diffuse gold",
-        "a soft grey pressing against the glass, turning the lamp's glow to warm butter",
-        "the world outside erased, just deep indigo dark and a halo of tarnished brass"
+        "the world outside, a wash of wet charcoal",
+        "wet stone the colour of dark earth",
+        "a wall of bone-white mist"
        ],
        "characters": [
-        "a keeper moving through a room of soft grey and muted gold light",
-        "a silhouette blurred by the fog-softened glow, a ghost of brass and shadow"
+        "a figure in a coat the colour of wet ash",
+        "a face as pale as sea-bleached shell"
        ],
        "items": [
-        "a brass foghorn, its surface a dull gold in the charcoal air",
-        "a logbook page, its edges softened by the damp, grey-gold light"
+        "a ceramic mug of pale, steaming milk",
+        "a book with pages the colour of old linen"
        ]
       },
       "prose": {
        "objectSeeds": {
         "dominant": [
-         "shroud",
-         "wool",
-         "breath"
+         "soot",
+         "shale",
+         "wet-wool"
         ],
         "accent": [
-         "halo",
-         "smear"
+         "bone",
+         "milk-glass"
         ]
        },
        "diction": {
         "cool": [
          "muffled",
-         "dissolved",
-         "indistinct"
+         "dissolves",
+         "shrouded"
         ],
         "warm": [
-         "glowing",
-         "diffuse",
-         "softened"
+         "wrapped",
+         "present",
+         "breath"
         ]
        },
-       "rule": "Treat the fog as a physical substance—something that can be touched, that presses, that wraps."
+       "rule": "Focus on the absence of sight and the amplification of other senses—the damp, the chill, the muffled sound—to describe the world's erasure."
       }
      },
      "the-fog-thins": {
       "prompts": {
        "objects": [
-        "the first shapes of rocks, dark slate against a thinning charcoal veil",
-        "a wet railing, a line of dull gold against the grey-blue morning",
-        "the sea reappearing, a wash of deep indigo beneath a bruised, clearing sky"
+        "a sea of deep lavender-grey",
+        "the horizon, a clean line of pure white",
+        "rocks like bruised plums in the new light"
        ],
        "characters": [
-        "a figure at the glass, watching the slate-grey world reform",
-        "a face catching the first weak light, a study in shadow and pale, tired gold"
+        "a silhouette against a pale, opalescent sky",
+        "eyes the colour of a storm-clearing twilight"
        ],
        "items": [
-        "a spyglass, its brass body dark bronze, pointed at the returning horizon",
-        "a cold cup on a sill, its surface reflecting the soft grey light"
+        "a windowpane beaded with colourless drops",
+        "a silver watch face catching the first clean light"
        ]
       },
       "prose": {
        "objectSeeds": {
         "dominant": [
+         "heather",
          "slate",
-         "veil",
-         "ghost"
+         "twilight"
         ],
         "accent": [
-         "glint",
-         "trace"
+         "salt",
+         "ghost-light"
         ]
        },
        "diction": {
         "cool": [
-         "emerging",
-         "damp",
-         "skeletal"
+         "thins",
+         "parts",
+         "emerges"
         ],
         "warm": [
-         "returning",
-         "revealed",
-         "etched"
+         "reveals",
+         "kept",
+         "awake"
         ]
        },
-       "rule": "Focus on the edges of things as they reappear from the grey, as if the world is being sketched back into existence."
+       "rule": "Treat the returning world as a photographic development, shapes slowly gaining definition and contrast out of a uniform haze."
       }
      },
      "first-light": {
       "prompts": {
        "objects": [
-        "the horizon, a thin line of pale butter-gold on a slate-grey sea",
-        "the lamp's flame, now a weak bronze against the growing light",
-        "the dark iron of the railing, touched with the day's first pale gold"
+        "sandstone cliffs the colour of biscuit",
+        "the sea, a sheet of hammered, pale gold",
+        "a sky the colour of weak tea with milk"
        ],
        "characters": [
-        "the keeper, a silhouette of deep charcoal against the brightening sky",
-        "a tired face, its lines carved by shadow, catching a sliver of pale dawn"
+        "a face weathered as old, sun-bleached wood",
+        "hands cupping a mug of honey-coloured liquid"
        ],
        "items": [
-        "the logbook closed, its dark cover holding the last of the night",
-        "a hand resting on the cold glass, fingers traced with the new, weak light"
+        "a worn wooden table catching the pale gold light",
+        "a logbook with pages the colour of old parchment"
        ]
       },
       "prose": {
        "objectSeeds": {
         "dominant": [
-         "iron",
-         "slate",
-         "charcoal"
+         "clay",
+         "sandstone",
+         "worn-leather"
         ],
         "accent": [
-         "thread",
-         "sliver"
+         "parchment",
+         "honey"
         ]
        },
        "diction": {
         "cool": [
-         "extinguished",
-         "fading",
-         "cold"
+         "passed",
+         "fades",
+         "passage"
         ],
         "warm": [
-         "earned",
-         "traced",
-         "breaking"
+         "warms",
+         "gilds",
+         "stirs"
         ]
        },
-       "rule": "Contrast the fading warmth of the lamp with the cold, growing light of the dawn."
+       "rule": "Describe the light by what it touches and transforms—stone, water, wood—rather than describing the source or its hue directly."
       }
      }
     }

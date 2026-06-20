@@ -613,24 +613,24 @@
       "cells": [
        {
         "tone": "cozy",
-        "base": "#3a2e26",
-        "ink": "#ffeede",
-        "accent": "#e8a96d",
-        "label": "sunbeam on dust"
+        "base": "#FFF1E0",
+        "ink": "#5C4B3E",
+        "accent": "#FFB76B",
+        "label": "sunlit dust motes"
        },
        {
         "tone": "warm",
-        "base": "#33271f",
-        "ink": "#ffeede",
-        "accent": "#e0664f",
-        "label": "first light through"
+        "base": "#FFE4C4",
+        "ink": "#544336",
+        "accent": "#FFA54F",
+        "label": "warm afternoon glow"
        },
        {
         "tone": "intense",
-        "base": "#2e231c",
-        "ink": "#fde8d4",
-        "accent": "#e55a3e",
-        "label": "sharp afternoon shadow"
+        "base": "#F0C8A0",
+        "ink": "#47382B",
+        "accent": "#E5943A",
+        "label": "direct setting sun"
        }
       ]
      },
@@ -640,24 +640,24 @@
       "cells": [
        {
         "tone": "cozy",
-        "base": "#2b211d",
-        "ink": "#f4ead7",
-        "accent": "#4fb89e",
-        "label": "finding the corner"
+        "base": "#4A4E69",
+        "ink": "#F2E9E4",
+        "accent": "#F2C94C",
+        "label": "dusk outside, lamp on"
        },
        {
         "tone": "warm",
-        "base": "#281f1b",
-        "ink": "#f1e7d3",
-        "accent": "#f2a14e",
-        "label": "golden hour chatter"
+        "base": "#3A3D54",
+        "ink": "#EADFD9",
+        "accent": "#EAA82C",
+        "label": "voices fill the dark"
        },
        {
         "tone": "intense",
-        "base": "#251d1a",
-        "ink": "#ffeede",
-        "accent": "#ee824a",
-        "label": "too many voices"
+        "base": "#2A2D3D",
+        "ink": "#E3D5CF",
+        "accent": "#E0930B",
+        "label": "intimate, shadowed corner"
        }
       ]
      },
@@ -667,24 +667,24 @@
       "cells": [
        {
         "tone": "cozy",
-        "base": "#241c1a",
-        "ink": "#e0d8c9",
-        "accent": "#4fb89e",
-        "label": "held in the dark"
+        "base": "#2C3E50",
+        "ink": "#BDC3C7",
+        "accent": "#F1C40F",
+        "label": "streetlight through rain"
        },
        {
         "tone": "warm",
-        "base": "#33271f",
-        "ink": "#ffeede",
-        "accent": "#e0664f",
-        "label": "the hard conversation"
+        "base": "#233140",
+        "ink": "#B0B6B9",
+        "accent": "#D4AC0D",
+        "label": "heavy drops, blurred light"
        },
        {
         "tone": "intense",
-        "base": "#1f1816",
-        "ink": "#ffeede",
-        "accent": "#f05a3f",
-        "label": "the feeling crests"
+        "base": "#1A242F",
+        "ink": "#A6AEB1",
+        "accent": "#B7950B",
+        "label": "face in dark reflection"
        }
       ]
      },
@@ -694,24 +694,24 @@
       "cells": [
        {
         "tone": "cozy",
-        "base": "#2b211d",
-        "ink": "#f4ead7",
-        "accent": "#d19256",
-        "label": "sinking into quiet"
+        "base": "#6C7A89",
+        "ink": "#F0F0F0",
+        "accent": "#FFD580",
+        "label": "distant sodium lamps"
        },
        {
         "tone": "warm",
-        "base": "#241c1a",
-        "ink": "#f1e7d3",
-        "accent": "#f2a14e",
-        "label": "warm lamp, low light"
+        "base": "#596673",
+        "ink": "#E8E8E8",
+        "accent": "#FFC75A",
+        "label": "blue night, warm glow"
        },
        {
         "tone": "intense",
-        "base": "#292220",
-        "ink": "#e9e1d1",
-        "accent": "#4fb89e",
-        "label": "the quiet after"
+        "base": "#45515C",
+        "ink": "#E0E0E0",
+        "accent": "#FFB833",
+        "label": "one window still lit"
        }
       ]
      },
@@ -721,24 +721,24 @@
       "cells": [
        {
         "tone": "cozy",
-        "base": "#221a17",
-        "ink": "#dcd4c8",
-        "accent": "#4a9e88",
-        "label": "warmth left behind"
+        "base": "#D8D8D8",
+        "ink": "#3B3B3B",
+        "accent": "#F2B8B8",
+        "label": "grey street, pink sky"
        },
        {
         "tone": "warm",
-        "base": "#2d231c",
-        "ink": "#f1e7d3",
-        "accent": "#f2a14e",
-        "label": "under the streetlight"
+        "base": "#C4C4C4",
+        "ink": "#323232",
+        "accent": "#EAA7A7",
+        "label": "dawn reflected in puddles"
        },
        {
         "tone": "intense",
-        "base": "#1a1514",
-        "ink": "#f9f1e0",
-        "accent": "#e0664f",
-        "label": "one last light"
+        "base": "#B0B0B0",
+        "ink": "#292929",
+        "accent": "#E29696",
+        "label": "light hitting the asphalt"
        }
       ]
      }
@@ -928,7 +928,111 @@
         "note": "her quiet observation captures the personal relief of escape"
        }
       ],
-      "whyWon": "The Caretaker's role as the enabler of the safe space is the most foundational choice, establishing the 'third place' as a character before the cast arrives."
+      "whyWon": "The Caretaker's role as the enabler of the safe space is the most foundational choice, establishing the 'third place' as a character before the cast arrives.",
+      "paletteAudition": {
+       "candidates": [
+        {
+         "id": "s1c1",
+         "name": "Golden Haze",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#FFF1E0",
+           "ink": "#5C4B3E",
+           "accent": "#FFB76B",
+           "label": "sunlit dust motes"
+          },
+          {
+           "tone": "warm",
+           "base": "#FFE4C4",
+           "ink": "#544336",
+           "accent": "#FFA54F",
+           "label": "warm afternoon glow"
+          },
+          {
+           "tone": "intense",
+           "base": "#F0C8A0",
+           "ink": "#47382B",
+           "accent": "#E5943A",
+           "label": "direct setting sun"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "Classic golden hour palette, very warm and inviting, captures the feeling of release.",
+         "picked": true
+        },
+        {
+         "id": "s1c2",
+         "name": "Faded Sky",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#E0EFFF",
+           "ink": "#3A4F6B",
+           "accent": "#FFDAB9",
+           "label": "pale sky, distant sun"
+          },
+          {
+           "tone": "warm",
+           "base": "#CADCFF",
+           "ink": "#31435A",
+           "accent": "#FFC89C",
+           "label": "blue hour begins"
+          },
+          {
+           "tone": "intense",
+           "base": "#B2C9E8",
+           "ink": "#28374A",
+           "accent": "#FFB57E",
+           "label": "last light on clouds"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A cooler, more serene take on the moment, focusing on the open sky rather than direct warmth.",
+         "picked": false
+        },
+        {
+         "id": "s1c3",
+         "name": "Classroom Patina",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#F5EFE6",
+           "ink": "#6B5B4B",
+           "accent": "#A8C5DA",
+           "label": "chalk dust, cool window"
+          },
+          {
+           "tone": "warm",
+           "base": "#E8DFD3",
+           "ink": "#5E4F41",
+           "accent": "#C8A584",
+           "label": "warm wood, afternoon"
+          },
+          {
+           "tone": "intense",
+           "base": "#D1C6B8",
+           "ink": "#4F4336",
+           "accent": "#B58E6A",
+           "label": "long shadows on floor"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "More grounded and textural, feels like the physical space itself rather than just the light.",
+         "picked": false
+        }
+       ],
+       "winner": "s1c1",
+       "whyWon": "Best captures the initial 'calm/open' arc point with its explicit warmth and sense of release.",
+       "runnerUp": "s1c2",
+       "runnerUpGem": "The accent color provided a beautiful, gentle contrast that felt more unique."
+      }
      },
      "the-room-fills": {
       "castPick": "Dee — as the group's established anchor, her role as 'participant' in a 'gentle-task' is a proactive, not passive, act of welcome.",
@@ -963,7 +1067,111 @@
         "note": "offers an observant perspective on the group's gathering rituals"
        }
       ],
-      "whyWon": "Dee's active gesture of 'saving a seat' is a direct, tangible expression of the found-family promise, making her the engine of belonging in this moment."
+      "whyWon": "Dee's active gesture of 'saving a seat' is a direct, tangible expression of the found-family promise, making her the engine of belonging in this moment.",
+      "paletteAudition": {
+       "candidates": [
+        {
+         "id": "s2c1",
+         "name": "Amber Lamp",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#E6D5B8",
+           "ink": "#5E4D3B",
+           "accent": "#FFBF00",
+           "label": "single warm bulb"
+          },
+          {
+           "tone": "warm",
+           "base": "#D8C0A0",
+           "ink": "#504130",
+           "accent": "#FFAE42",
+           "label": "room fills with light"
+          },
+          {
+           "tone": "intense",
+           "base": "#C2A884",
+           "ink": "#423525",
+           "accent": "#FF9900",
+           "label": "focused, warm circle"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A very direct, classic 'cozy hangout' palette that leans into the found-family genre promise.",
+         "picked": false
+        },
+        {
+         "id": "s2c2",
+         "name": "Worn Leather",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#A0765E",
+           "ink": "#F0EAE4",
+           "accent": "#87CEEB",
+           "label": "old couch, cool evening"
+          },
+          {
+           "tone": "warm",
+           "base": "#8B654E",
+           "ink": "#E8DFD8",
+           "accent": "#D2B48C",
+           "label": "shared space, warm tones"
+          },
+          {
+           "tone": "intense",
+           "base": "#73523F",
+           "ink": "#E0D5CC",
+           "accent": "#C19A6B",
+           "label": "close conversation, deep seats"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "Textural and rich, this palette feels established and lived-in, perfect for a 'third place'.",
+         "picked": false
+        },
+        {
+         "id": "s2c3",
+         "name": "Gathering Shadows",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#4A4E69",
+           "ink": "#F2E9E4",
+           "accent": "#F2C94C",
+           "label": "dusk outside, lamp on"
+          },
+          {
+           "tone": "warm",
+           "base": "#3A3D54",
+           "ink": "#EADFD9",
+           "accent": "#EAA82C",
+           "label": "voices fill the dark"
+          },
+          {
+           "tone": "intense",
+           "base": "#2A2D3D",
+           "ink": "#E3D5CF",
+           "accent": "#E0930B",
+           "label": "intimate, shadowed corner"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "Creates a strong sense of enclosure and intimacy, using the darkness to build anticipation.",
+         "picked": true
+        }
+       ],
+       "winner": "s2c3",
+       "whyWon": "Its use of deepening shadows best represents the 'build' phase of the arc, creating anticipation.",
+       "runnerUp": "s2c2",
+       "runnerUpGem": "The 'Worn Leather' base colors felt incredibly grounded and established the 'found-family' space."
+      }
      },
      "a-rough-one": {
       "castPick": "Theo — using the 'mask-wearer' as the 'witness' creates a powerful internal conflict, as he sees a vulnerability he fears in himself being met with acceptance, not judgment.",
@@ -998,7 +1206,111 @@
         "note": "her quiet nature could manifest as withdrawal, or she could be the first to notice another's pain"
        }
       ],
-      "whyWon": "Theo's struggle provides the most potent drama by contrasting his performative persona with raw vulnerability, directly hitting the core theme of the 'performance treadmill'."
+      "whyWon": "Theo's struggle provides the most potent drama by contrasting his performative persona with raw vulnerability, directly hitting the core theme of the 'performance treadmill'.",
+      "paletteAudition": {
+       "candidates": [
+        {
+         "id": "s3c1",
+         "name": "Rainy Window",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#2C3E50",
+           "ink": "#BDC3C7",
+           "accent": "#F1C40F",
+           "label": "streetlight through rain"
+          },
+          {
+           "tone": "warm",
+           "base": "#233140",
+           "ink": "#B0B6B9",
+           "accent": "#D4AC0D",
+           "label": "heavy drops, blurred light"
+          },
+          {
+           "tone": "intense",
+           "base": "#1A242F",
+           "ink": "#A6AEB1",
+           "accent": "#B7950B",
+           "label": "face in dark reflection"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "Uses a familiar moody setting to ground the emotional peak, making it relatable and not overly dramatic.",
+         "picked": true
+        },
+        {
+         "id": "s3c2",
+         "name": "Unspoken Tension",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#333333",
+           "ink": "#D9D9D9",
+           "accent": "#6C7A89",
+           "label": "quiet, heavy air"
+          },
+          {
+           "tone": "warm",
+           "base": "#252525",
+           "ink": "#CCCCCC",
+           "accent": "#596673",
+           "label": "unsaid words hang"
+          },
+          {
+           "tone": "intense",
+           "base": "#1A1A1A",
+           "ink": "#C0C0C0",
+           "accent": "#45515C",
+           "label": "held breath, near black"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A bold, near-monochromatic choice that maximizes the feeling of closeness and emotional weight.",
+         "picked": false
+        },
+        {
+         "id": "s3c3",
+         "name": "Static Buzz",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#4B0082",
+           "ink": "#E6E6FA",
+           "accent": "#00CED1",
+           "label": "deep indigo, screen glow"
+          },
+          {
+           "tone": "warm",
+           "base": "#3A0066",
+           "ink": "#DADAF0",
+           "accent": "#00B4B8",
+           "label": "bruised purple, humming"
+          },
+          {
+           "tone": "intense",
+           "base": "#2C004C",
+           "ink": "#CECEE6",
+           "accent": "#00A0A3",
+           "label": "overwhelmed, close focus"
+          }
+         ],
+         "cohesion": "drifts",
+         "distinct": "distinct",
+         "safe": "risky",
+         "note": "Introduces a vibrant, almost electric accent that might break the 'safe' rule and feel too sci-fi.",
+         "picked": false
+        }
+       ],
+       "winner": "s3c1",
+       "whyWon": "The 'Rainy Window' metaphor is perfect for YA drama—intense but grounded in a familiar, safe melancholy.",
+       "runnerUp": "s3c2",
+       "runnerUpGem": "Its near-black intensity was unparalleled in conveying pure emotional weight without distraction."
+      }
      },
      "it-settles": {
       "castPick": "Wren — as the quietest member, making her the 'recipient-of-care' through 'shared-silence' validates her way of being and demonstrates that support doesn't require words.",
@@ -1033,7 +1345,111 @@
         "note": "her observant nature perfectly captures the quiet, unspoken details of the group's shared comfort"
        }
       ],
-      "whyWon": "Wren's lens is perfectly suited for a moment defined by atmosphere over action; she can register the non-verbal details of safety and connection that honor the genre's focus on the small and real."
+      "whyWon": "Wren's lens is perfectly suited for a moment defined by atmosphere over action; she can register the non-verbal details of safety and connection that honor the genre's focus on the small and real.",
+      "paletteAudition": {
+       "candidates": [
+        {
+         "id": "s4c1",
+         "name": "Silvered Calm",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#BCC6CC",
+           "ink": "#2F363B",
+           "accent": "#FFFFFF",
+           "label": "moonlight on dust"
+          },
+          {
+           "tone": "warm",
+           "base": "#A7B2B8",
+           "ink": "#2A3034",
+           "accent": "#F5F5F5",
+           "label": "quiet silver wash"
+          },
+          {
+           "tone": "intense",
+           "base": "#939FA5",
+           "ink": "#252A2D",
+           "accent": "#EBEBEB",
+           "label": "stillness, sharp shadows"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A pure, desaturated palette that feels like a deep exhale and a reset after the peak.",
+         "picked": false
+        },
+        {
+         "id": "s4c2",
+         "name": "Sleeping City",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#6C7A89",
+           "ink": "#F0F0F0",
+           "accent": "#FFD580",
+           "label": "distant sodium lamps"
+          },
+          {
+           "tone": "warm",
+           "base": "#596673",
+           "ink": "#E8E8E8",
+           "accent": "#FFC75A",
+           "label": "blue night, warm glow"
+          },
+          {
+           "tone": "intense",
+           "base": "#45515C",
+           "ink": "#E0E0E0",
+           "accent": "#FFB833",
+           "label": "one window still lit"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "Adds a touch of warmth and humanity to the cool night, suggesting life continues calmly.",
+         "picked": true
+        },
+        {
+         "id": "s4c3",
+         "name": "Fading Embers",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#7D7C7A",
+           "ink": "#FFFFFF",
+           "accent": "#E57373",
+           "label": "cool ash, last warmth"
+          },
+          {
+           "tone": "warm",
+           "base": "#6B6A69",
+           "ink": "#F5F5F5",
+           "accent": "#D35F5F",
+           "label": "memory of the fight"
+          },
+          {
+           "tone": "intense",
+           "base": "#585756",
+           "ink": "#EBEBEB",
+           "accent": "#C14B4B",
+           "label": "a single dull coal"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "blurs",
+         "safe": "safe",
+         "note": "Carries a hint of red that, while not alarming, risks blurring with potential 'threat' colors.",
+         "picked": false
+        }
+       ],
+       "winner": "s4c2",
+       "whyWon": "The warm accent in the cool base perfectly captures resolution and lingering connection, not just emptiness.",
+       "runnerUp": "s4c1",
+       "runnerUpGem": "Its pure, cool desaturation was the most direct visual representation of 'settling'."
+      }
      },
      "the-walk-out": {
       "castPick": "The Caretaker — bookending the sequence with them as a 'reflector' reinforces the room's stability; their 'ritual-gesture' is the physical embodiment of the space's promise to return.",
@@ -1068,223 +1484,327 @@
         "note": "her perspective offers a poignant, reflective look at the now-empty safe space"
        }
       ],
-      "whyWon": "The Caretaker creates narrative symmetry, reinforcing the room itself as a constant, reliable haven that the teens can leave and return to, cementing its importance."
+      "whyWon": "The Caretaker creates narrative symmetry, reinforcing the room itself as a constant, reliable haven that the teens can leave and return to, cementing its importance.",
+      "paletteAudition": {
+       "candidates": [
+        {
+         "id": "s5c1",
+         "name": "Dawn's Promise",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#F8E3E3",
+           "ink": "#6A4C4C",
+           "accent": "#A7C7E7",
+           "label": "pink clouds, blue air"
+          },
+          {
+           "tone": "warm",
+           "base": "#F2D0D0",
+           "ink": "#5E4343",
+           "accent": "#9ABBE3",
+           "label": "sun cresting horizon"
+          },
+          {
+           "tone": "intense",
+           "base": "#E8BDBD",
+           "ink": "#523A3A",
+           "accent": "#8DAFD0",
+           "label": "first direct light"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A classic, hopeful dawn palette that clearly signals 'renewal' and a fresh start.",
+         "picked": false
+        },
+        {
+         "id": "s5c2",
+         "name": "Wet Pavement",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#D8D8D8",
+           "ink": "#3B3B3B",
+           "accent": "#F2B8B8",
+           "label": "grey street, pink sky"
+          },
+          {
+           "tone": "warm",
+           "base": "#C4C4C4",
+           "ink": "#323232",
+           "accent": "#EAA7A7",
+           "label": "dawn reflected in puddles"
+          },
+          {
+           "tone": "intense",
+           "base": "#B0B0B0",
+           "ink": "#292929",
+           "accent": "#E29696",
+           "label": "light hitting the asphalt"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "Grounds the hopeful dawn in a contemporary, urban reality, fitting the slice-of-life genre.",
+         "picked": true
+        },
+        {
+         "id": "s5c3",
+         "name": "Clean Slate",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#F5F5F5",
+           "ink": "#666666",
+           "accent": "#C8E6C9",
+           "label": "bright morning mist"
+          },
+          {
+           "tone": "warm",
+           "base": "#EBEBEB",
+           "ink": "#555555",
+           "accent": "#B2D8B5",
+           "label": "mist burning off"
+          },
+          {
+           "tone": "intense",
+           "base": "#E0E0E0",
+           "ink": "#444444",
+           "accent": "#9CCB9E",
+           "label": "sharp, clean air"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A very high-value, low-saturation palette that feels cleansing and almost minimalist.",
+         "picked": false
+        }
+       ],
+       "winner": "s5c2",
+       "whyWon": "Its blend of urban grey with the hopeful pink accent feels most authentic to the YA genre's world.",
+       "runnerUp": "s5c1",
+       "runnerUpGem": "The 'Dawn's Promise' palette had a more potent, unambiguous feeling of emotional optimism."
+      }
      }
     },
     "paletteUI": {
      "the-last-bell": {
       "prompts": {
        "objects": [
-        "dust motes dancing in a sharp sunbeam",
-        "deep umber shadows pooling under old wooden desks",
-        "worn floorboards glowing with a honeyed, afternoon light"
+        "sun-bleached wooden floorboards",
+        "dust motes dancing in a thick shaft of amber light",
+        "walls the color of old, buttery cream"
        ],
        "characters": [
-        "a figure silhouetted against a glaring window",
-        "a tired face warmed by a sliver of intense orange light"
+        "faded denim jacket catching the last of the sun",
+        "hair lit like a honey-gold halo"
        ],
        "items": [
-        "a leather-bound book the color of dried apricot",
-        "a forgotten tea mug with a rust-colored rim"
+        "a dog-eared paperback with a butterscotch-yellow cover",
+        "a half-empty glass of iced tea, glowing like marmalade"
        ]
       },
       "prose": {
        "objectSeeds": {
         "dominant": [
-         "woodgrain",
          "dust",
-         "shadow"
+         "light",
+         "wood"
         ],
         "accent": [
-         "ember",
-         "sunbeam"
+         "honey",
+         "apricot"
         ]
        },
        "diction": {
         "cool": [
-         "hushed",
-         "settled",
-         "worn"
+         "faded",
+         "hazy",
+         "soft"
         ],
         "warm": [
-         "sharp",
-         "slice",
-         "glint"
+         "glow",
+         "warmth",
+         "burnished"
         ]
        },
-       "rule": "Describe the light by what it touches and the shapes it cuts from the dark."
+       "rule": "Describe the light as a physical presence, something that touches and settles on surfaces."
       }
      },
      "the-room-fills": {
       "prompts": {
        "objects": [
-        "a dark corner with a single teal-cushioned chair",
-        "warm lamplight spilling a pool of gold on the floor",
-        "a crowded bookshelf, spines lost in deep brown shadow"
+        "deep indigo shadows pooling in the corners",
+        "a single warm lamp casting a golden circle",
+        "the room painted in shades of twilight blue"
        ],
        "characters": [
-        "a circle of friends bathed in amber light, voices rising",
-        "a quiet figure half-hidden in a deep green armchair"
+        "faces half in shadow, half in lamplight",
+        "a bright yellow hoodie against a deep grey couch"
        ],
        "items": [
-        "a bright orange backpack dropped by the door",
-        "a steaming mug casting a warm halo on a dark wood table"
+        "a steaming mug catching the golden light",
+        "a phone screen casting a small, bright pool on a lap"
        ]
       },
       "prose": {
        "objectSeeds": {
         "dominant": [
-         "corner",
-         "velvet",
-         "murmur"
+         "shadow",
+         "dusk",
+         "velvet"
         ],
         "accent": [
-         "lantern",
-         "chatter"
-        ]
-       },
-       "diction": {
-        "cool": [
-         "nestled",
-         "deep",
-         "absorbed"
-        ],
-        "warm": [
-         "bright",
-         "spill",
-         "loud"
-        ]
-       },
-       "rule": "Focus on the sound and temperature of the light, not its color."
-      }
-     },
-     "a-rough-one": {
-      "prompts": {
-       "objects": [
-        "a room almost entirely in shadow, details blurred",
-        "a single, sharp light source casting a hot, reddish glow",
-        "a comforting teal blanket draped over a chair, a cool island"
-       ],
-       "characters": [
-        "faces tight with emotion, lit from below by a phone screen",
-        "a comforting hand on a shoulder, barely visible in the gloom"
-       ],
-       "items": [
-        "a phone screen glowing with an urgent, fiery notification",
-        "a single tear catching a sliver of intense light"
-       ]
-      },
-      "prose": {
-       "objectSeeds": {
-        "dominant": [
-         "void",
-         "hollow",
-         "stillness"
-        ],
-        "accent": [
-         "pulse",
-         "wound"
-        ]
-       },
-       "diction": {
-        "cool": [
-         "held",
-         "breath",
-         "close"
-        ],
-        "warm": [
-         "raw",
-         "sharp",
-         "flush"
-        ]
-       },
-       "rule": "Contrast the physical stillness of the room with the sharp, hot spike of emotion."
-      }
-     },
-     "it-settles": {
-      "prompts": {
-       "objects": [
-        "a single lamp casting a soft, honeyed glow across the room",
-        "the deep, peaceful shadow of a quiet space at day's end",
-        "a well-loved armchair with a faded teal throw"
-       ],
-       "characters": [
-        "figures relaxed into soft furniture, sinking into the quiet",
-        "a gentle smile shared in the low, warm light"
-       ],
-       "items": [
-        "a half-empty mug of tea, its surface like polished amber",
-        "an open book, its pages the color of old cream"
-       ]
-      },
-      "prose": {
-       "objectSeeds": {
-        "dominant": [
-         "wool",
-         "wood",
-         "hush"
-        ],
-        "accent": [
-         "honey",
-         "glow"
-        ]
-       },
-       "diction": {
-        "cool": [
-         "soft",
-         "sinking",
-         "settled"
-        ],
-        "warm": [
-         "steady",
-         "warmth",
-         "ease"
-        ]
-       },
-       "rule": "Describe the quality of the silence, using light and texture as its measure."
-      }
-     },
-     "the-walk-out": {
-      "prompts": {
-       "objects": [
-        "the deep night framed by the warm doorway",
-        "a single streetlight painting the pavement a lonely gold",
-        "the memory of a comforting, deep green room left behind"
-       ],
-       "characters": [
-        "figures huddled together in a pool of orange light",
-        "a last look back into the comforting darkness of the room"
-       ],
-       "items": [
-        "a phone lighting up a face with a final, warm-toned message",
-        "the sharp red taillight of a departing car"
-       ]
-      },
-      "prose": {
-       "objectSeeds": {
-        "dominant": [
-         "asphalt",
-         "night",
-         "threshold"
-        ],
-        "accent": [
-         "beacon",
+         "lamp",
          "ember"
         ]
        },
        "diction": {
         "cool": [
-         "fading",
-         "crisp",
-         "empty"
+         "hushed",
+         "deep",
+         "fading"
         ],
         "warm": [
-         "lingering",
-         "clutch",
-         "ache"
+         "circle",
+         "sharp",
+         "spill"
         ]
        },
-       "rule": "Frame the scene from the edge of the light, where the warmth ends and the cool night begins."
+       "rule": "Contrast the cool, enveloping dark with sharp, contained pools of warmth."
+      }
+     },
+     "a-rough-one": {
+      "prompts": {
+       "objects": [
+        "rain-streaked windowpane distorting the world outside",
+        "the room in near-total darkness, cut by a blade of streetlight",
+        "wet, dark reflections on a polished table"
+       ],
+       "characters": [
+        "a silhouette against the window, edged in faint, oily yellow",
+        "a face reflected in a dark screen, features blurred by rain"
+       ],
+       "items": [
+        "a forgotten teacup, cold and dark",
+        "keys glistening with a wet, metallic sheen under the streetlight"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "rain",
+         "glass",
+         "asphalt"
+        ],
+        "accent": [
+         "slick",
+         "glimmer"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "blurred",
+         "streaked",
+         "heavy"
+        ],
+        "warm": [
+         "sharp",
+         "sickly",
+         "fractured"
+        ]
+       },
+       "rule": "All light is indirect and distorted, seen through or reflected off a wet surface."
+      }
+     },
+     "it-settles": {
+      "prompts": {
+       "objects": [
+        "the room bathed in the soft blue of late night",
+        "a gentle orange glow seeping in from a distant streetlight",
+        "dusty grey shelves in the deep quiet"
+       ],
+       "characters": [
+        "shoulders relaxed against a slate-blue cushion",
+        "a soft, warm light catching the side of a listening face"
+       ],
+       "items": [
+        "an open book, its pages the color of pale cream under the low light",
+        "a blanket draped over a chair, a wash of muted grey"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "night",
+         "haze",
+         "quiet"
+        ],
+        "accent": [
+         "glow",
+         "sodium"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "muted",
+         "distant",
+         "softened"
+        ],
+        "warm": [
+         "steady",
+         "low",
+         "seeping"
+        ]
+       },
+       "rule": "Describe the quality of the quiet using the interplay of soft, diffuse light and deep, gentle shadow."
+      }
+     },
+     "the-walk-out": {
+      "prompts": {
+       "objects": [
+        "wet grey pavement reflecting a pale rose sky",
+        "concrete buildings still in their morning shadow",
+        "the horizon blushing a soft carnation pink"
+       ],
+       "characters": [
+        "breath misting in the cool grey air",
+        "the side of a face warmed by the first hint of dawn"
+       ],
+       "items": [
+        "a grey backpack with a single pink zipper pull",
+        "steam rising from a paper coffee cup, catching the new light"
+       ]
+      },
+      "prose": {
+       "objectSeeds": {
+        "dominant": [
+         "concrete",
+         "asphalt",
+         "mist"
+        ],
+        "accent": [
+         "dawn",
+         "petal"
+        ]
+       },
+       "diction": {
+        "cool": [
+         "damp",
+         "still",
+         "cool"
+        ],
+        "warm": [
+         "blush",
+         "hint",
+         "faint"
+        ]
+       },
+       "rule": "Frame the scene in monochrome tones, then introduce the accent hue as a tint or reflection on those neutral surfaces."
       }
      }
     }

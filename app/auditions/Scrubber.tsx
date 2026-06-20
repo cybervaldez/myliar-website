@@ -508,7 +508,7 @@ export type RangeT = {
   rangeReview?: { verdict: string; flag: string };
   expertsGate?: { name: string; role: string }[];
   branches: { key: string; label: string; spark: string; cells: { tone: string; base: string; accent?: string; ink?: string; label?: string }[] }[];
-  honing?: { [key: string]: { castPick?: string } };
+  honing?: { [key: string]: { castPick?: string; paletteAudition?: { candidates: PaletteCand[]; whyWon?: string; runnerUpGem?: string } } };
 };
 export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
   const red = "var(--spot-red)";
@@ -583,6 +583,34 @@ export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
               <div key={i} style={{ fontSize: 9.5, color: amber, marginTop: 4, borderLeft: `2px solid ${amber}`, paddingLeft: 7, lineHeight: 1.45 }}>⚑ <b>{cf.dimension} overlap</b> (scenes {Array.isArray(cf.scenes) ? cf.scenes.join(" & ") : cf.scenes}): {cf.issue} <span style={{ color: forest }}>→ resolved: {cf.resolution}</span></div>
             ))}
             {d.coverage.note && <div style={{ fontSize: 9.5, color: soft, fontStyle: "italic", marginTop: 4 }}>{d.coverage.note}</div>}
+          </div>
+        </details>
+      )}
+      {/* THE PALETTE AUDITION lives HERE (top-down) — like the coverage map, palette DISTINCTNESS can only be
+          judged across all 5 at once. Each scene carries its picked palette DOWN as its ground. */}
+      {d.honing && d.branches.some((b) => d.honing?.[b.key]?.paletteAudition) && (
+        <details className="aud-cov" style={{ border: `2px solid var(--ink-soft)`, marginBottom: 12 }}>
+          <summary style={{ cursor: "pointer", listStyle: "none", fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".04em", color: forest, padding: "9px 13px", display: "flex", justifyContent: "space-between", gap: 10 }}>
+            <span>🎨 THE PALETTE AUDITION — each scene&rsquo;s look, auditioned top-down for distinctness (carried into each scene)</span>
+            <span style={{ color: margin, whiteSpace: "nowrap" }}>⌄ open</span>
+          </summary>
+          <div style={{ padding: "2px 13px 12px", fontSize: 11, color: ink, lineHeight: 1.5 }}>
+            <div style={{ fontSize: 10.5, color: soft, marginBottom: 9 }}>like the coverage map, the palette is allocated from the TOP-DOWN view — the one place all 5 are seen at once — so no two weather-moments blur. Each scene carries its picked palette DOWN as its ambient ground (the tone dials within).</div>
+            <div style={{ display: "grid", gap: 8 }}>
+              {d.branches.map((b) => {
+                const pa = d.honing?.[b.key]?.paletteAudition;
+                if (!pa) return null;
+                const win = pa.candidates?.find((c) => c.picked);
+                return (
+                  <div key={b.key} style={{ display: "flex", alignItems: "center", gap: 9, flexWrap: "wrap" }}>
+                    <span style={{ display: "flex", gap: 1, flex: "0 0 auto" }}>{b.cells.map((c) => <span key={c.tone} title={c.label} style={{ width: 22, height: 16, background: c.base, borderBottom: `4px solid ${c.accent ?? c.base}`, border: `1px solid ${ink}` }} />)}</span>
+                    <a href={`/auditions/${campaign}/scenes/${b.key}`} style={{ fontWeight: 700, color: forest, textTransform: "capitalize", flex: "0 0 auto", textDecoration: "none" }}>{b.label}</a>
+                    {win && <span style={{ fontSize: 10, color: margin, fontStyle: "italic" }}>&ldquo;{win.name}&rdquo;</span>}
+                    <span style={{ marginLeft: "auto" }}><PalettePeek candidates={pa.candidates} why={pa.whyWon} runnerUpGem={pa.runnerUpGem} gatedBy={d.gatedBy} /></span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </details>
       )}
@@ -664,10 +692,8 @@ export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: str
           <div style={{ fontSize: 9.5, color: margin, marginBottom: 16, fontStyle: "italic" }}>from the crew pool: {b.characters.map((c) => c.name.replace(/^the /i, "")).join(" · ")} — the §8.13 floor allows ONE focal, never a crowd.</div>
         </>
       )}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginBottom: 6, flexWrap: "wrap" }}>
-        <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest }}>▸ THE PALETTE {b.paletteAudition ? "AUDITION" : ""} — {b.label}, dialed cozy → intense {b.paletteAudition && <span style={{ color: margin, fontWeight: 400, fontSize: 10 }}>(autopicked HERE)</span>}</div>
-        {b.paletteAudition && <PalettePeek candidates={b.paletteAudition.candidates} why={b.paletteAudition.whyWon} runnerUpGem={b.paletteAudition.runnerUpGem} gatedBy={b.gatedBy} />}
-      </div>
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 3 }}>▸ THE PALETTE — {b.label}, dialed cozy → intense</div>
+      <div style={{ fontSize: 9.5, color: margin, marginBottom: 6, fontStyle: "italic" }}>↩ carried from the hub — the palette is auditioned top-down (for distinctness across the range) at the <a href={`/auditions/${campaign}/scenes`} style={{ color: forest, fontStyle: "normal", fontWeight: 700 }}>scenes hub → see the audition</a>; here it&rsquo;s the ground the tone dials within.</div>
       <div style={{ display: "grid", gridTemplateColumns: `repeat(${b.cells.length}, 1fr)`, gap: 6, marginBottom: 16 }}>
         {b.cells.map((c) => (
           <div key={c.tone} style={{ background: c.base, color: c.ink, padding: "10px 11px", borderRadius: 3, borderLeft: `4px solid ${c.accent}`, minHeight: 60 }}>
