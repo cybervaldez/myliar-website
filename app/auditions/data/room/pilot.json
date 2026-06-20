@@ -1807,6 +1807,93 @@
        "rule": "Frame the scene in monochrome tones, then introduce the accent hue as a tint or reflection on those neutral surfaces."
       }
      }
+    },
+    "narrative": {
+     "scenes": [
+      {
+       "scene": "the last bell",
+       "arcs": [
+        {
+         "arc": "the ritual arrival",
+         "note": "marking the transition from school-self to group-self with a small, shared habit"
+        },
+        {
+         "arc": "the shed skin",
+         "note": "consciously leaving the day's anxieties at the door before entering the space"
+        }
+       ]
+      },
+      {
+       "scene": "the room fills",
+       "arcs": [
+        {
+         "arc": "the inside joke",
+         "note": "re-establishing connection through a callback or shared piece of humor that only the group understands"
+        },
+        {
+         "arc": "the clumsy invitation",
+         "note": "making a slightly awkward but earnest attempt to bring someone new into an activity or conversation"
+        },
+        {
+         "arc": "the shared project",
+         "note": "finding an anchor in a simple, collaborative task that pulls the group's focus together"
+        }
+       ]
+      },
+      {
+       "scene": "a rough one",
+       "arcs": [
+        {
+         "arc": "the gentle deflection",
+         "note": "seeing a friend's distress and steering the group's energy to protect them without demanding an explanation"
+        },
+        {
+         "arc": "the borrowed courage",
+         "note": "one person lending their nerve to another to overcome a small, daunting social hurdle"
+        },
+        {
+         "arc": "the honest complaint",
+         "note": "voicing a frustration and having it met not with solutions, but with energetic, validating agreement"
+        }
+       ]
+      },
+      {
+       "scene": "it settles",
+       "arcs": [
+        {
+         "arc": "the quiet alignment",
+         "note": "falling into a comfortable rhythm together, existing in parallel without the need for constant interaction"
+        },
+        {
+         "arc": "the offered comfort",
+         "note": "a simple, explicit gesture of care offered and received without fuss"
+        },
+        {
+         "arc": "the shared discovery",
+         "note": "bonding over a newly discovered piece of media that becomes an instant group touchstone"
+        }
+       ]
+      },
+      {
+       "scene": "the walk out",
+       "arcs": [
+        {
+         "arc": "the hopeful projection",
+         "note": "carrying the group's warmth outward by making casual, optimistic plans for the near future"
+        },
+        {
+         "arc": "the small endowment",
+         "note": "being given a small token or piece of encouragement to face the world outside the room"
+        },
+        {
+         "arc": "the acknowledged change",
+         "note": "recognizing a subtle but definite shift in one's own internal weather since arriving"
+        }
+       ]
+      }
+     ],
+     "spread": "The arcs span from quiet, internal preparation and renewal to active, relational moments of play, gentle protection, and explicit care.",
+     "note": "A healthy balance of internal and relational arcs, though the 'active play' element could be slightly more pronounced in the early-to-mid sections."
     }
    },
    "throughline": "belonging you don't audition for — the chair's yours before you've proven anything; you're kept, not chosen",

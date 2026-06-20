@@ -1969,6 +1969,89 @@
        "rule": "Show the light arriving by the way it changes the texture and color of the dark."
       }
      }
+    },
+    "narrative": {
+     "scenes": [
+      {
+       "scene": "calm water",
+       "arcs": [
+        {
+         "arc": "the quiet arrival",
+         "note": "witnessing a passenger board, their unspoken weariness setting the initial tone of stillness."
+        },
+        {
+         "arc": "the shared silence",
+         "note": "finding a strange, deep comfort in sitting near another without the need to speak."
+        }
+       ]
+      },
+      {
+       "scene": "rising wind",
+       "arcs": [
+        {
+         "arc": "the remembered burden",
+         "note": "an object or sound on the wind triggers a difficult memory for a passenger, making their inner state visible."
+        },
+        {
+         "arc": "the fragile request",
+         "note": "a passenger, braced by the growing wind, finally asks for a small, specific kind of help."
+        },
+        {
+         "arc": "the first confession",
+         "note": "someone whispers a long-held secret not to you, but to the restless water itself."
+        }
+       ]
+      },
+      {
+       "scene": "the storm",
+       "arcs": [
+        {
+         "arc": "the vigil",
+         "note": "staying with someone through their emotional peak, offering only silent, unwavering presence as support."
+        },
+        {
+         "arc": "the letting-go",
+         "note": "a passenger performs a personal ritual, releasing a meaningful object into the churning sea."
+        },
+        {
+         "arc": "the unburdening",
+         "note": "in the catharsis of the storm, a raw story of pain or exhaustion is finally told in full."
+        }
+       ]
+      },
+      {
+       "scene": "settling sea",
+       "arcs": [
+        {
+         "arc": "the quiet mending",
+         "note": "wordlessly repairing a small, storm-tossed object together, a metaphor for recovery."
+        },
+        {
+         "arc": "the shared exhaustion",
+         "note": "a moment of mutual, silent acknowledgement of the ordeal just passed, forging a bond."
+        }
+       ]
+      },
+      {
+       "scene": "first light",
+       "arcs": [
+        {
+         "arc": "the promise to the self",
+         "note": "a passenger articulates a new, small intention for their life ashore, born from the journey."
+        },
+        {
+         "arc": "the handoff",
+         "note": "giving or receiving a small token for the next part of the journey, a warm and final gesture."
+        },
+        {
+         "arc": "the final glance",
+         "note": "watching a passenger disembark, now visibly lighter, and sharing a last, knowing look."
+        }
+       ]
+      }
+     ],
+     "spread": "The arcs range from quiet interior witness ('the remembered burden') to active relational support ('the quiet mending'), and from non-verbal gestures ('the handoff') to pivotal confessions ('the unburdening').",
+     "note": "The balance is healthy, covering internal, relational, giving, and receiving dynamics. The 'active' arcs are deliberately small-scale and metaphorical, which fits the 'witness' focus but could be a point of future expansion if more player agency is desired."
     }
    }
   }

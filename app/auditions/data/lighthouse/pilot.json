@@ -1776,6 +1776,97 @@
        "rule": "Describe the light by what it touches and transforms—stone, water, wood—rather than describing the source or its hue directly."
       }
      }
+    },
+    "narrative": {
+     "scenes": [
+      {
+       "scene": "lighting the lamp",
+       "arcs": [
+        {
+         "arc": "the quiet inheritance",
+         "note": "accepting the unspoken legacy left by a predecessor in a small, found object"
+        },
+        {
+         "arc": "the humble dedication",
+         "note": "choosing a memory or person to hold in mind for the duration of the watch"
+        },
+        {
+         "arc": "the deciphered trace",
+         "note": "piecing together the quiet story of a past keeper from the single clue they left behind"
+        }
+       ]
+      },
+      {
+       "scene": "the dark settles",
+       "arcs": [
+        {
+         "arc": "the measured defense",
+         "note": "shoring up one's inner world against the rising chaos of memory or anxiety"
+        },
+        {
+         "arc": "the chosen anchor",
+         "note": "consciously selecting a single, grounding truth to hold as the world becomes unstable"
+        },
+        {
+         "arc": "the grateful shelter",
+         "note": "feeling a deep, simple gratitude for the physical safety of the tower against the storm"
+        }
+       ]
+      },
+      {
+       "scene": "the fog comes in",
+       "arcs": [
+        {
+         "arc": "the deep listening",
+         "note": "attuning to the self when all external senses are cut off, hearing what rises from the silence"
+        },
+        {
+         "arc": "the witnessed self",
+         "note": "seeing oneself with stark clarity in the total isolation, a reckoning without judgment"
+        },
+        {
+         "arc": "the resonant pulse",
+         "note": "finding meaning by aligning one's own rhythm with the ceaseless, mechanical turning of the light"
+        }
+       ]
+      },
+      {
+       "scene": "the fog thins",
+       "arcs": [
+        {
+         "arc": "the silent salute",
+         "note": "offering a non-verbal acknowledgment to a fellow keeper, a communion across the distance"
+        },
+        {
+         "arc": "the mapped constellation",
+         "note": "realizing one's own place within a larger, unseen network of care and duty"
+        },
+        {
+         "arc": "the mirror held up",
+         "note": "seeing one's own purpose validated and reflected in the sudden appearance of another's light"
+        }
+       ]
+      },
+      {
+       "scene": "first light",
+       "arcs": [
+        {
+         "arc": "the forged link",
+         "note": "consciously adding one's own entry to the long, historical chain of the logbook"
+        },
+        {
+         "arc": "the quiet testament",
+         "note": "leaving a record not of events but of a state of being for a future, unknown keeper"
+        },
+        {
+         "arc": "the earned peace",
+         "note": "inhabiting the profound calm that follows a duty faithfully and fully discharged"
+        }
+       ]
+      }
+     ],
+     "spread": "The arcs move from receiving a legacy (inheritance), to internal fortification (anchor), to a peak of solitary introspection (witnessed self), into distant communion (silent salute), and finally toward creating a legacy (forged link).",
+     "note": "The balance is healthy, covering internal states, historical connection, and communion-at-a-distance; while direct interpersonal arcs are absent, this is a deliberate choice that reinforces the campaign's core theme of generative solitude."
     }
    },
    "throughline": "Holding a fixed point against the drift of time and tide; a vigil as devotion.",

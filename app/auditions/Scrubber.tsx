@@ -510,11 +510,14 @@ export type RangeT = {
   expertsGate?: { name: string; role: string }[];
   branches: { key: string; label: string; spark: string; cells: { tone: string; base: string; accent?: string; ink?: string; label?: string }[] }[];
   honing?: { [key: string]: { castPick?: string; paletteAudition?: { candidates: PaletteCand[]; whyWon?: string; runnerUpGem?: string } } };
+  narrative?: { scene: string; arcs: { arc: string; note?: string }[] }[];
+  narrativeSpread?: string;
 };
 export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
   const red = "var(--spot-red)";
   const ok = (v: string) => ["strong", "balanced", "complete", "yes"].includes(v);
   const premiseOf = (label: string) => d.premises.find((p) => p.scene.toLowerCase() === label.toLowerCase())?.premise;
+  const arcsOf = (label: string) => d.narrative?.find((n) => n.scene.toLowerCase() === label.toLowerCase())?.arcs ?? [];
   return (
     <div>
       <div className="aud-digest" style={{ border: `2px solid ${forest}`, background: shade, padding: "8px 13px", marginBottom: 14, fontSize: 11, color: ink, lineHeight: 1.5 }}>
@@ -523,7 +526,8 @@ export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
       <div className="aud-body">
         <div className="aud-meat">
       {/* PORTFOLIO-FIRST (UI pass, option A): the 5 weather-moments are the hero, right under the digest. */}
-      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12.5, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 7 }}>▸ THE 5 WEATHER-MOMENTS — the portfolio · hone the cast inside each →</div>
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12.5, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: d.narrativeSpread ? 4 : 7 }}>▸ THE 5 WEATHER-MOMENTS — the portfolio · hone the cast inside each →</div>
+      {d.narrativeSpread && <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginBottom: 8, paddingLeft: 2, lineHeight: 1.5 }}>↳ <b style={{ color: forest, fontStyle: "normal" }}>arc spread:</b> {d.narrativeSpread} <span style={{ color: soft }}>— each card lists candidate story-arcs (spread for range, not finalized; chosen at the branch).</span></div>}
       <div className="aud-grid2 aud-grid3" style={{ display: "grid", gap: 10, marginBottom: 16 }}>
         {d.branches.map((b) => {
           const cast = d.honing?.[b.key]?.castPick;
@@ -538,6 +542,14 @@ export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
                   <span style={{ fontFamily: "monospace", fontSize: 9.5, color: margin, whiteSpace: "nowrap" }}>{b.spark}</span>
                 </div>
                 {premiseOf(b.label) && <div style={{ fontSize: 12, color: ink, lineHeight: 1.45, marginTop: 5 }}>{premiseOf(b.label)}</div>}
+                {arcsOf(b.label).length > 0 && (
+                  <div style={{ marginTop: 7, borderTop: `1px solid var(--ink-soft)`, paddingTop: 6 }}>
+                    <div style={{ fontFamily: "var(--theme-body)", fontSize: 8, fontWeight: 700, letterSpacing: ".06em", color: margin }}>↳ POSSIBLE ARCS <span style={{ fontWeight: 400, fontStyle: "italic" }}>· spread for range · chosen at the branch</span></div>
+                    <ul style={{ margin: "3px 0 0", paddingLeft: 14, fontSize: 10.5, color: ink, lineHeight: 1.5 }}>
+                      {arcsOf(b.label).map((a, i) => <li key={i} style={{ marginBottom: 1 }}><b style={{ color: forest }}>{a.arc}</b>{a.note ? <span style={{ color: margin }}> — {a.note}</span> : null}</li>)}
+                    </ul>
+                  </div>
+                )}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginTop: 7 }}>
                   {cast ? <span style={{ fontSize: 10, color: margin, fontStyle: "italic" }}>cast · {cast.split("—")[0].trim()}</span> : <span />}
                   <span style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, color: forest }}>hone →</span>
@@ -597,6 +609,12 @@ export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
           </summary>
           <div style={{ padding: "2px 13px 12px", fontSize: 11, color: ink, lineHeight: 1.5 }}>
             <div style={{ fontSize: 10.5, color: soft, marginBottom: 9 }}>like the coverage map, the palette is allocated from the TOP-DOWN view — the one place all 5 are seen at once — so no two weather-moments blur. Each scene carries its picked palette DOWN as its ambient ground (the tone dials within).</div>
+            <div style={{ border: `1px dashed var(--ink-soft)`, background: paper, padding: "8px 11px", marginBottom: 10, fontSize: 10.5, color: ink, lineHeight: 1.55 }}>
+              <div style={{ fontFamily: "var(--theme-body)", fontSize: 8.5, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 3 }}>◐ USING THE TWO COLOURS — ground + pop (how each plays, in content AND visually)</div>
+              <div><b>base = the GROUND</b> (the lower, dominant band). <i>Visually</i> — the screen fill · the dialogue-box background · the dominant asset/lighting colour: what the eye rests in. <i>In content</i> — the scene&rsquo;s emotional WEATHER, the backdrop the prose breathes in; it steers diction + pace (the cool words, the slow rhythm) without being named.</div>
+              <div style={{ marginTop: 4 }}><b style={{ color: forest }}>accent = the POP</b> (the bright upper band). <i>Visually</i> — highlights · the active button · a rim-light · the one saturated object: it guides attention. <i>In content</i> — the focal SYMBOL the writing lingers on (the brass lamp, the one warm light), the note of hope/tension struck against the ground.</div>
+              <div style={{ marginTop: 4, color: soft, fontStyle: "italic" }}>↳ their CONTRAST is the subtext: dark ground + warm accent = solitude-with-hope · cold ground + cold accent = exposure. The RATIO is the dial — more pop as the tone warms, the accent receding into the ground as it deepens.</div>
+            </div>
             <div style={{ display: "grid", gap: 8 }}>
               {d.branches.map((b) => {
                 const pa = d.honing?.[b.key]?.paletteAudition;
