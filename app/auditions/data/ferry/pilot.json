@@ -780,24 +780,24 @@
       "cells": [
        {
         "tone": "cozy",
-        "base": "#23272e",
-        "ink": "#e6e1d6",
-        "accent": "#c79a55",
-        "label": "Lamplit cabin, still sea"
+        "base": "#2A3B49",
+        "ink": "#D1D5DB",
+        "accent": "#B58950",
+        "label": "Quiet deck, calm sea"
        },
        {
         "tone": "warm",
-        "base": "#102530",
-        "ink": "#b9c7d6",
-        "accent": "#6e918b",
-        "label": "Chart-table green, calm night"
+        "base": "#22303C",
+        "ink": "#D1D5DB",
+        "accent": "#C89F65",
+        "label": "Lamplit cabin, deep water"
        },
        {
         "tone": "intense",
-        "base": "#0e1822",
-        "ink": "#b9c7d6",
-        "accent": "#5b93b0",
-        "label": "Deep water, quiet watch"
+        "base": "#1C2730",
+        "ink": "#D1D5DB",
+        "accent": "#D8A96C",
+        "label": "Staring into the deep"
        }
       ]
      },
@@ -807,24 +807,24 @@
       "cells": [
        {
         "tone": "cozy",
-        "base": "#23272e",
-        "ink": "#dde3e6",
-        "accent": "#c79a55",
-        "label": "Wind hums, soup steams"
+        "base": "#525B64",
+        "ink": "#DCDCDC",
+        "accent": "#8C9DAA",
+        "label": "Sky darkens, sea stirs"
        },
        {
         "tone": "warm",
-        "base": "#102530",
-        "ink": "#b9c7d6",
-        "accent": "#5b93b0",
-        "label": "Rising swell, steady hand"
+        "base": "#454E56",
+        "ink": "#DCDCDC",
+        "accent": "#9CB0C1",
+        "label": "Watching the chop"
        },
        {
         "tone": "intense",
-        "base": "#0e1822",
-        "ink": "#dde3e6",
-        "accent": "#5b93b0",
-        "label": "Salt spray, darkening sky"
+        "base": "#384047",
+        "ink": "#DCDCDC",
+        "accent": "#AEC1D3",
+        "label": "The rising swell"
        }
       ]
      },
@@ -834,24 +834,24 @@
       "cells": [
        {
         "tone": "cozy",
-        "base": "#102530",
-        "ink": "#e6e1d6",
-        "accent": "#c79a55",
-        "label": "A warm core, storm outside"
+        "base": "#202124",
+        "ink": "#B0B0B0",
+        "accent": "#5FAD56",
+        "label": "Rhythm of the waves"
        },
        {
         "tone": "warm",
-        "base": "#0e1822",
-        "ink": "#b9c7d6",
-        "accent": "#6e918b",
-        "label": "Rain-lashed glass, calm within"
+        "base": "#191A1D",
+        "ink": "#B0B0B0",
+        "accent": "#70BF68",
+        "label": "A steady presence"
        },
        {
         "tone": "intense",
-        "base": "#0e1822",
-        "ink": "#dde3e6",
-        "accent": "#5b93b0",
-        "label": "Storm-dark, held fast"
+        "base": "#121315",
+        "ink": "#B0B0B0",
+        "accent": "#81D17A",
+        "label": "Carried through the night"
        }
       ]
      },
@@ -861,24 +861,24 @@
       "cells": [
        {
         "tone": "cozy",
-        "base": "#23272e",
-        "ink": "#e6e1d6",
-        "accent": "#c79a55",
-        "label": "Sea settles, quiet warmth"
+        "base": "#4C4B63",
+        "ink": "#D2D1DD",
+        "accent": "#B4B8C1",
+        "label": "The storm has passed"
        },
        {
         "tone": "warm",
-        "base": "#102530",
-        "ink": "#b9c7d6",
-        "accent": "#6e918b",
-        "label": "Post-storm calm, logbook open"
+        "base": "#403F54",
+        "ink": "#D2D1DD",
+        "accent": "#C2C6CE",
+        "label": "Quiet exhaustion, relief"
        },
        {
         "tone": "intense",
-        "base": "#0e1822",
-        "ink": "#b9c7d6",
-        "accent": "#5b93b0",
-        "label": "Wet deck, quiet air"
+        "base": "#343345",
+        "ink": "#D2D1DD",
+        "accent": "#D0D4DA",
+        "label": "The stillness after"
        }
       ]
      },
@@ -888,24 +888,24 @@
       "cells": [
        {
         "tone": "cozy",
-        "base": "#23272e",
-        "ink": "#dde3e6",
-        "accent": "#c79a55",
-        "label": "Dawn on the brass rim"
+        "base": "#4A4A4F",
+        "ink": "#DCDCDC",
+        "accent": "#E8A88B",
+        "label": "Color bleeds into grey"
        },
        {
         "tone": "warm",
-        "base": "#102530",
-        "ink": "#dde3e6",
-        "accent": "#c79a55",
-        "label": "First light on the horizon"
+        "base": "#3F3F44",
+        "ink": "#DCDCDC",
+        "accent": "#F0B9A2",
+        "label": "The world reappears"
        },
        {
         "tone": "intense",
-        "base": "#0e1822",
-        "ink": "#e6e1d6",
-        "accent": "#c79a55",
-        "label": "Gold light on the rail"
+        "base": "#343439",
+        "ink": "#DCDCDC",
+        "accent": "#F7CABD",
+        "label": "The light holds you"
        }
       ]
      }
@@ -1008,7 +1008,111 @@
         "note": "their active comfort feels intrusive in a moment of pure tranquility"
        }
       ],
-      "whyWon": "The Manifest-keeper's non-intrusive, witnessing presence best embodies the scene's low-arousal calm and the 'nothing happens, beautifully' iyashikei principle."
+      "whyWon": "The Manifest-keeper's non-intrusive, witnessing presence best embodies the scene's low-arousal calm and the 'nothing happens, beautifully' iyashikei principle.",
+      "paletteAudition": {
+       "candidates": [
+        {
+         "id": "A",
+         "name": "Brass & Twilight",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#2A3B49",
+           "ink": "#D1D5DB",
+           "accent": "#B58950",
+           "label": "Quiet deck, calm sea"
+          },
+          {
+           "tone": "warm",
+           "base": "#22303C",
+           "ink": "#D1D5DB",
+           "accent": "#C89F65",
+           "label": "Lamplit cabin, deep water"
+          },
+          {
+           "tone": "intense",
+           "base": "#1C2730",
+           "ink": "#D1D5DB",
+           "accent": "#D8A96C",
+           "label": "Staring into the deep"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "Establishes a strong, classic night-ferry feel with a warm, grounding accent.",
+         "picked": true
+        },
+        {
+         "id": "B",
+         "name": "Verdigris & Stillness",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#2F4F4F",
+           "ink": "#E0E0E0",
+           "accent": "#6A9C89",
+           "label": "Cool air, still water"
+          },
+          {
+           "tone": "warm",
+           "base": "#254040",
+           "ink": "#E0E0E0",
+           "accent": "#7EAD9E",
+           "label": "Reflections on the surface"
+          },
+          {
+           "tone": "intense",
+           "base": "#1A2D2D",
+           "ink": "#E0E0E0",
+           "accent": "#8FBBAA",
+           "label": "The deep's quiet pull"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A unique, contemplative palette that leans into the quiet, cool aspect of the sea.",
+         "picked": false
+        },
+        {
+         "id": "C",
+         "name": "Faded Indigo",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#3E4A63",
+           "ink": "#CED4DA",
+           "accent": "#A97C50",
+           "label": "Fading light, gentle roll"
+          },
+          {
+           "tone": "warm",
+           "base": "#323C50",
+           "ink": "#CED4DA",
+           "accent": "#B88B5F",
+           "label": "Warmth inside, dark outside"
+          },
+          {
+           "tone": "intense",
+           "base": "#262E3D",
+           "ink": "#CED4DA",
+           "accent": "#C3986D",
+           "label": "The weight of night"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "safe",
+         "safe": "safe",
+         "note": "A balanced, gentle introduction that feels safe and slightly melancholic.",
+         "picked": false
+        }
+       ],
+       "winner": "A",
+       "whyWon": "The brass accent provides a strong, tangible point of warmth that grounds the world and the 'cozy night-ferry' genre promise immediately.",
+       "runnerUp": "B",
+       "runnerUpGem": "Its unique verdigris/seafoam identity perfectly captures the restrained, low-arousal mood of the iyashikei lens."
+      }
      },
      "rising-wind": {
       "castPick": "The Pilot — their steady, cool competence is the focus, reassuring the player not with words but with small, expert actions that meet the rising sea.",
@@ -1043,7 +1147,111 @@
         "note": "their quiet focus feels disconnected and too passive for the rising external energy"
        }
       ],
-      "whyWon": "As the environment becomes uncertain, the Pilot's steady hand on the wheel is the most direct and grounding reassurance against overwhelm."
+      "whyWon": "As the environment becomes uncertain, the Pilot's steady hand on the wheel is the most direct and grounding reassurance against overwhelm.",
+      "paletteAudition": {
+       "candidates": [
+        {
+         "id": "A",
+         "name": "Sea Salt & Spray",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#4A5759",
+           "ink": "#EAEAEA",
+           "accent": "#A9B4B6",
+           "label": "First gusts, cabin hum"
+          },
+          {
+           "tone": "warm",
+           "base": "#3D4A4C",
+           "ink": "#EAEAEA",
+           "accent": "#B8C3C5",
+           "label": "Wind against the glass"
+          },
+          {
+           "tone": "intense",
+           "base": "#303C3E",
+           "ink": "#EAEAEA",
+           "accent": "#CAD4D6",
+           "label": "The indifferent power"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A very literal interpretation of the weather, focusing on cool, atmospheric greys and the feeling of spray.",
+         "picked": false
+        },
+        {
+         "id": "B",
+         "name": "Iron & Overcast",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#525B64",
+           "ink": "#DCDCDC",
+           "accent": "#8C9DAA",
+           "label": "Sky darkens, sea stirs"
+          },
+          {
+           "tone": "warm",
+           "base": "#454E56",
+           "ink": "#DCDCDC",
+           "accent": "#9CB0C1",
+           "label": "Watching the chop"
+          },
+          {
+           "tone": "intense",
+           "base": "#384047",
+           "ink": "#DCDCDC",
+           "accent": "#AEC1D3",
+           "label": "The rising swell"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "Communicates a sense of weight and substance, as if the air itself is getting heavier.",
+         "picked": true
+        },
+        {
+         "id": "C",
+         "name": "Deep Moss & Rain",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#4F6353",
+           "ink": "#D8D8D8",
+           "accent": "#9EB3A2",
+           "label": "Rain streaks the window"
+          },
+          {
+           "tone": "warm",
+           "base": "#425345",
+           "ink": "#D8D8D8",
+           "accent": "#AEC5B1",
+           "label": "The sound of weather"
+          },
+          {
+           "tone": "intense",
+           "base": "#354238",
+           "ink": "#D8D8D8",
+           "accent": "#BDD6C1",
+           "label": "Embracing the change"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "An organic, earthy take on the building storm, connecting the sea to something more ancient.",
+         "picked": false
+        }
+       ],
+       "winner": "B",
+       "whyWon": "The iron grey-blue provides the best tonal transition from 'calm water', adding weight and seriousness without losing the core tranquility.",
+       "runnerUp": "C",
+       "runnerUpGem": "The deep moss green is a beautifully unexpected and characterful choice that feels very grounded and natural."
+      }
      },
      "the-storm": {
       "castPick": "The Deckhand — their role as a grounding, warm presence is essential here, transforming a potentially terrifying moment into an experience of being held and supported.",
@@ -1078,7 +1286,111 @@
         "note": "their quiet, precise nature is completely invalidated by the scene's raw chaos"
        }
       ],
-      "whyWon": "The Deckhand's offer of direct, physical comfort ('a warm hand on your shoulder') meets the player's acute need for a human anchor in a moment of crisis."
+      "whyWon": "The Deckhand's offer of direct, physical comfort ('a warm hand on your shoulder') meets the player's acute need for a human anchor in a moment of crisis.",
+      "paletteAudition": {
+       "candidates": [
+        {
+         "id": "A",
+         "name": "Void & Instrument Glow",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#1A1A1D",
+           "ink": "#A9A9A9",
+           "accent": "#4A90E2",
+           "label": "Safe inside the dark"
+          },
+          {
+           "tone": "warm",
+           "base": "#141416",
+           "ink": "#A9A9A9",
+           "accent": "#5A9EED",
+           "label": "The storm's deep hum"
+          },
+          {
+           "tone": "intense",
+           "base": "#0E0E10",
+           "ink": "#A9A9A9",
+           "accent": "#6AAAF0",
+           "label": "Surrender to the power"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A clean, modern take on the storm's peak, emphasizing technology as a source of safety.",
+         "picked": false
+        },
+        {
+         "id": "B",
+         "name": "Ink & Phosphor",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#202124",
+           "ink": "#B0B0B0",
+           "accent": "#5FAD56",
+           "label": "Rhythm of the waves"
+          },
+          {
+           "tone": "warm",
+           "base": "#191A1D",
+           "ink": "#B0B0B0",
+           "accent": "#70BF68",
+           "label": "A steady presence"
+          },
+          {
+           "tone": "intense",
+           "base": "#121315",
+           "ink": "#B0B0B0",
+           "accent": "#81D17A",
+           "label": "Carried through the night"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "Invokes a sense of nostalgia and reliability with its retro-tech accent, reinforcing the 'support' metaphor.",
+         "picked": true
+        },
+        {
+         "id": "C",
+         "name": "Abyss & Amber",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#25212D",
+           "ink": "#BEB8C5",
+           "accent": "#FFC400",
+           "label": "The heart of the storm"
+          },
+          {
+           "tone": "warm",
+           "base": "#1E1A24",
+           "ink": "#BEB8C5",
+           "accent": "#FFD340",
+           "label": "A single point of light"
+          },
+          {
+           "tone": "intense",
+           "base": "#16131B",
+           "ink": "#BEB8C5",
+           "accent": "#FFE175",
+           "label": "Held in the deep"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "risky",
+         "note": "A warm, high-contrast choice that could feel like a comforting hearth or a warning light.",
+         "picked": false
+        }
+       ],
+       "winner": "B",
+       "whyWon": "The phosphor green accent is the most unique and tonally aligned with the iyashikei/age-prior, suggesting old, dependable technology that supports without alarm.",
+       "runnerUp": "A",
+       "runnerUpGem": "Its cool blue accent on near-black is incredibly effective at creating a sense of deep, focused calm."
+      }
      },
      "settling-sea": {
       "castPick": "The Cook — embodying homely warmth and restoration, their simple offer of shared work in the galley is the perfect ritual for marking the return to calm.",
@@ -1113,7 +1425,111 @@
         "note": "their observational stance doesn't offer the restorative warmth the moment requires"
        }
       ],
-      "whyWon": "After the intensity of the storm, the Cook's homely ritual provides a tangible, restorative warmth that grounds the player in safety and care."
+      "whyWon": "After the intensity of the storm, the Cook's homely ritual provides a tangible, restorative warmth that grounds the player in safety and care.",
+      "paletteAudition": {
+       "candidates": [
+        {
+         "id": "A",
+         "name": "Bruised Sky & Silver",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#4C4B63",
+           "ink": "#D2D1DD",
+           "accent": "#B4B8C1",
+           "label": "The storm has passed"
+          },
+          {
+           "tone": "warm",
+           "base": "#403F54",
+           "ink": "#D2D1DD",
+           "accent": "#C2C6CE",
+           "label": "Quiet exhaustion, relief"
+          },
+          {
+           "tone": "intense",
+           "base": "#343345",
+           "ink": "#D2D1DD",
+           "accent": "#D0D4DA",
+           "label": "The stillness after"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A poetic and emotionally resonant palette that captures the melancholy peace of a storm's aftermath.",
+         "picked": true
+        },
+        {
+         "id": "B",
+         "name": "Heather & Fog",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#595163",
+           "ink": "#E4E1E8",
+           "accent": "#A39DAA",
+           "label": "Gentle rocking, soft light"
+          },
+          {
+           "tone": "warm",
+           "base": "#4D4655",
+           "ink": "#E4E1E8",
+           "accent": "#B5AFC0",
+           "label": "Washed clean by rain"
+          },
+          {
+           "tone": "intense",
+           "base": "#413B47",
+           "ink": "#E4E1E8",
+           "accent": "#C6C1D5",
+           "label": "The quiet depth remains"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A very soft, muted take that emphasizes comfort and the gentle dissipation of tension.",
+         "picked": false
+        },
+        {
+         "id": "C",
+         "name": "Worn Slate & Dew",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#626C78",
+           "ink": "#E1E3E6",
+           "accent": "#8DA3B3",
+           "label": "Calm returning slowly"
+          },
+          {
+           "tone": "warm",
+           "base": "#535C66",
+           "ink": "#E1E3E6",
+           "accent": "#9DB5C6",
+           "label": "Breathing out the tension"
+          },
+          {
+           "tone": "intense",
+           "base": "#454E54",
+           "ink": "#E1E3E6",
+           "accent": "#AEC7D8",
+           "label": "Clarity on the horizon"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "blurs",
+         "safe": "safe",
+         "note": "A safe, clean palette that risks feeling too similar to the grey-blues of the 'rising wind' phase.",
+         "picked": false
+        }
+       ],
+       "winner": "A",
+       "whyWon": "The 'bruised sky' violet is a distinct and evocative hue that perfectly captures the feeling of relief mixed with the memory of intensity.",
+       "runnerUp": "B",
+       "runnerUpGem": "Its exceptional softness and muted heather tones are the purest expression of a low-arousal positive state."
+      }
      },
      "first-light": {
       "castPick": "The Manifest-keeper — having started as an observer of burdens, their final act as a celebrant of release brings their personal journey to a quiet, poignant close.",
@@ -1148,7 +1564,111 @@
         "note": "their direct comfort feels intrusive on a moment of personal, quiet reflection"
        }
       ],
-      "whyWon": "The Manifest-keeper's final, silent act of 'logging the carry' validates the passenger's entire journey, offering a poignant, non-verbal closure."
+      "whyWon": "The Manifest-keeper's final, silent act of 'logging the carry' validates the passenger's entire journey, offering a poignant, non-verbal closure.",
+      "paletteAudition": {
+       "candidates": [
+        {
+         "id": "A",
+         "name": "Rose & Ash",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#5C545E",
+           "ink": "#E6E2E8",
+           "accent": "#D6A2A2",
+           "label": "First hint of dawn"
+          },
+          {
+           "tone": "warm",
+           "base": "#524B54",
+           "ink": "#E6E2E8",
+           "accent": "#E2B4B4",
+           "label": "Warmth on the horizon"
+          },
+          {
+           "tone": "intense",
+           "base": "#47414A",
+           "ink": "#E6E2E8",
+           "accent": "#EDC6C6",
+           "label": "A new day's promise"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A gentle, emotional palette where the returning light feels tender and personal.",
+         "picked": false
+        },
+        {
+         "id": "B",
+         "name": "Tarnished Gold & Mist",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#605D59",
+           "ink": "#F0EDE9",
+           "accent": "#BFA583",
+           "label": "Night's grip loosens"
+          },
+          {
+           "tone": "warm",
+           "base": "#54514D",
+           "ink": "#F0EDE9",
+           "accent": "#CAAFA0",
+           "label": "Sunlight through the mist"
+          },
+          {
+           "tone": "intense",
+           "base": "#484542",
+           "ink": "#F0EDE9",
+           "accent": "#D5B99C",
+           "label": "Waking to stillness"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A classic dawn palette, kept grounded and mature by the 'tarnished' quality of the gold.",
+         "picked": false
+        },
+        {
+         "id": "C",
+         "name": "Peach & Charcoal",
+         "cells": [
+          {
+           "tone": "cozy",
+           "base": "#4A4A4F",
+           "ink": "#DCDCDC",
+           "accent": "#E8A88B",
+           "label": "Color bleeds into grey"
+          },
+          {
+           "tone": "warm",
+           "base": "#3F3F44",
+           "ink": "#DCDCDC",
+           "accent": "#F0B9A2",
+           "label": "The world reappears"
+          },
+          {
+           "tone": "intense",
+           "base": "#343439",
+           "ink": "#DCDCDC",
+           "accent": "#F7CABD",
+           "label": "The light holds you"
+          }
+         ],
+         "cohesion": "cohesive",
+         "distinct": "distinct",
+         "safe": "safe",
+         "note": "A high-contrast option that makes the return of light feel significant and deeply warming against the lingering night.",
+         "picked": true
+        }
+       ],
+       "winner": "C",
+       "whyWon": "The strong contrast between the soft peach and the dark charcoal base creates the most impactful and hopeful sense of 'renewal' to end the arc.",
+       "runnerUp": "A",
+       "runnerUpGem": "Its gentle rose-on-ash combination is the most subtle and poetic, perfectly fitting the restrained emotional expression of the genre."
+      }
      }
     },
     "coverage": {
@@ -1237,216 +1757,216 @@
      "calm-water": {
       "prompts": {
        "objects": [
-        "Deep indigo water under a starless sky",
-        "A cabin interior of dark wood warmed by a single brass lamp",
-        "The soft verdigris glow of a navigation chart on a table"
+        "deep indigo sea under a charcoal sky",
+        "a ferry deck washed in slate-blue shadow",
+        "the dark, silent hull of the boat"
        ],
        "characters": [
-        "A figure silhouetted against a lamplit window, watching the still water",
-        "A quiet ferryman with eyes the color of a calm night sea"
+        "a figure wrapped in a night-blue coat",
+        "a face half-lit by old brass"
        ],
        "items": [
-        "A steaming mug of tea, its rim catching the golden light",
-        "An old brass compass, its needle perfectly steady"
+        "a steaming mug the color of dark tea",
+        "a tarnished brass railing catching the lamplight"
        ]
       },
       "prose": {
        "objectSeeds": {
         "dominant": [
          "sea",
-         "shadow",
-         "wood"
+         "deck",
+         "shadow"
         ],
         "accent": [
-         "brass",
-         "lamp"
+         "lamplight",
+         "brass"
         ]
        },
        "diction": {
         "cool": [
          "still",
          "deep",
-         "hushed"
+         "hush"
         ],
         "warm": [
          "glow",
-         "steady",
-         "warmth"
+         "warmth",
+         "amber"
         ]
        },
-       "rule": "Describe light only by what it touches, never by its source."
+       "rule": "Describe the light by what it touches, not its source or color."
       }
      },
      "rising-wind": {
       "prompts": {
        "objects": [
-        "The dark sea swelling into soft, slate-blue peaks",
-        "Golden steam rising from a bowl of soup in a dim cabin",
-        "Salt spray misting across a near-black, tilting deck"
+        "a sea of churning slate grey",
+        "sky the color of gathering storm clouds",
+        "mist clinging to the air like pale smoke"
        ],
        "characters": [
-        "A passenger wrapped in a heavy wool coat, face turned to the wind",
-        "The ferryman's steady hand on the helm, knuckles pale against the dark wood"
+        "a silhouette against a gunmetal sky",
+        "a face pale as sea-spray"
        ],
        "items": [
-        "A flickering lantern casting long, dancing shadows",
-        "A worn leather-bound book, its pages held down by a brass weight"
+        "a silver flask catching the dim light",
+        "a wool scarf the color of faded slate"
        ]
       },
       "prose": {
        "objectSeeds": {
         "dominant": [
-         "swell",
          "sky",
-         "spray"
+         "swell",
+         "stone"
         ],
         "accent": [
-         "steam",
-         "lantern"
+         "foam",
+         "mist"
         ]
        },
        "diction": {
         "cool": [
-         "rising",
-         "humming",
-         "biting"
+         "stir",
+         "gather",
+         "chill"
         ],
         "warm": [
-         "steady",
-         "core",
-         "contained"
+         "breath",
+         "huddle",
+         "steady"
         ]
        },
-       "rule": "Focus on the sound and feel of the wind; the visuals are secondary."
+       "rule": "Focus on the sound and feel of the wind, letting the visuals be secondary."
       }
      },
      "the-storm": {
       "prompts": {
        "objects": [
-        "Rain-streaked windows showing a churning, storm-dark sea",
-        "The deep teal-black of the wheelhouse, instruments glowing a soft sea-green",
-        "A small, defiant point of golden lamplight in the immense dark"
+        "a sea of pure, deep black",
+        "rain-slicked deck reflecting faint phosphorescence",
+        "the absolute void of the night sky"
        ],
        "characters": [
-        "A passenger sleeping soundly, trusting the ferry's strength",
-        "The ferryman, a calm silhouette against the chaos, watching the waves"
+        "a steady form, their face traced by a faint green glow",
+        "eyes reflecting a distant, luminous signal"
        ],
        "items": [
-        "A heavy blanket, a pool of warmth in the cool cabin",
-        "A brass thermos, gleaming softly in the dim light"
+        "a compass dial with glowing green markings",
+        "a lantern casting a soft, verdant light"
        ]
       },
       "prose": {
        "objectSeeds": {
         "dominant": [
-         "rain",
-         "glass",
-         "hull"
+         "void",
+         "abyss",
+         "rain"
         ],
         "accent": [
-         "ember",
-         "broth"
+         "glow",
+         "signal"
         ]
        },
        "diction": {
         "cool": [
-         "lashed",
-         "muffled",
-         "yielding"
+         "lull",
+         "sway",
+         "endless"
         ],
         "warm": [
-         "held",
-         "core",
-         "unbroken"
+         "steady",
+         "presence",
+         "rhythm"
         ]
        },
-       "rule": "Contrast the motion outside with the stillness inside; the storm is a rhythm, not a threat."
+       "rule": "Treat the storm as a constant, rhythmic presence, like a heartbeat, not an event."
       }
      },
      "settling-sea": {
       "prompts": {
        "objects": [
-        "The wet deck gleaming, reflecting a slate-blue, clearing sky",
-        "The ferry's wake, a soft sea-green line in the dark water",
-        "A cabin warmed by a low-burning lamp, its brass base polished by time"
+        "a sea the color of deep twilight lavender",
+        "bruised purple clouds breaking apart",
+        "the deck damp and dark with settled rain"
        ],
        "characters": [
-        "A figure standing at the rail, breathing the clean, post-storm air",
-        "The ferryman making an entry in a logbook, the page lit by a green-shaded lamp"
+        "a figure wrapped in a heavy, heather-grey blanket",
+        "a tired face in the pale, soft light"
        ],
        "items": [
-        "A cup of coffee, its surface a still, dark pool",
-        "A damp coil of rope on the deck, smelling of salt and rain"
+        "a ceramic cup of pale, steaming liquid",
+        "a silver locket, cool to the touch"
        ]
       },
       "prose": {
        "objectSeeds": {
         "dominant": [
-         "deck",
-         "wake",
-         "air"
+         "twilight",
+         "cloud",
+         "haze"
         ],
         "accent": [
-         "ink",
-         "coffee"
+         "steam",
+         "silver"
         ]
        },
        "diction": {
         "cool": [
-         "settled",
-         "washed",
-         "still"
+         "still",
+         "settle",
+         "hush"
         ],
         "warm": [
-         "easing",
-         "quiet",
-         "trace"
+         "relief",
+         "ease",
+         "soft"
         ]
        },
-       "rule": "Describe everything as wet, heavy, and settled. Emphasize the weight of the calm."
+       "rule": "Describe the absence of the storm's motion and sound, focusing on the new stillness."
       }
      },
      "first-light": {
       "prompts": {
        "objects": [
-        "The horizon, a thin line of antique gold against a deep indigo sky",
-        "The dark, wet metal of the ferry rail catching the first hint of sun",
-        "The deep shadows of the cabin beginning to soften and lift"
+        "the horizon, a faint line of soft peach",
+        "charcoal-grey water catching the first blush of dawn",
+        "the dark silhouette of the approaching shore"
        ],
        "characters": [
-        "A passenger watching the dawn, their face illuminated by a soft, warm light",
-        "The ferryman polishing a brass fitting, a small, final ritual"
+        "a face warmed by the new sun",
+        "a hand resting on the rail, bathed in a rosy glow"
        ],
        "items": [
-        "A worn wooden passenger token, gleaming gold in a palm",
-        "A final, steaming cup of tea, its surface reflecting the new light"
+        "a copper-rimmed cup",
+        "a worn book with a cover the color of faded rose"
        ]
       },
       "prose": {
        "objectSeeds": {
         "dominant": [
-         "horizon",
          "shadow",
-         "water"
+         "shore",
+         "graphite"
         ],
         "accent": [
-         "rim",
-         "thread"
+         "blush",
+         "ember"
         ]
        },
        "diction": {
         "cool": [
-         "fading",
-         "lifting",
-         "final"
+         "fade",
+         "trace",
+         "edge"
         ],
         "warm": [
-         "tracing",
-         "gilding",
-         "touching"
+         "hold",
+         "emerge",
+         "kindle"
         ]
        },
-       "rule": "Light is a physical thing—a line, a touch, a weight—that arrives before the sun itself."
+       "rule": "Show the light arriving by the way it changes the texture and color of the dark."
       }
      }
     }

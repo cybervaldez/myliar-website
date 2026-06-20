@@ -444,6 +444,57 @@ export function AuditionPeek({ label, candidates, why, gatedBy }: { label: strin
   );
 }
 
+// THE PALETTE PEEK — the palette's audition (mirror of AuditionPeek, but the candidates ARE palettes). Each
+// is a full cozy/warm/intense cell set, judged cohesion · distinct · safe; the alternatives stay inspectable.
+export type PaletteCand = { id: string; name: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; cohesion?: string; distinct?: string; safe?: string; note?: string; picked?: boolean };
+export function PalettePeek({ candidates, why, runnerUpGem, gatedBy }: { candidates: PaletteCand[]; why?: string; runnerUpGem?: string; gatedBy?: string }) {
+  const [open, setOpen] = useState(false);
+  const vCol = (v?: string) => (["cohesive", "distinct", "safe"].includes(v ?? "") ? forest : ["drifts", "blurs", "risky"].includes(v ?? "") ? "var(--spot-red)" : amber);
+  if (!candidates?.length) return null;
+  return (
+    <>
+      <button onClick={() => setOpen(true)} style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".04em", color: forest, background: "none", border: `1.5px solid ${forest}`, borderRadius: 3, padding: "3px 9px", cursor: "pointer" }}>▸ see the audition <span style={{ color: margin, fontWeight: 400 }}>({candidates.length} tried)</span></button>
+      {open && (
+        <div onClick={() => setOpen(false)} style={{ position: "fixed", inset: 0, background: "rgba(26,22,15,.55)", zIndex: 60, display: "flex", alignItems: "flex-start", justifyContent: "center", padding: "6vh 16px", overflowY: "auto", cursor: "zoom-out" }}>
+          <div onClick={(e) => e.stopPropagation()} style={{ cursor: "auto", maxWidth: 600, width: "100%", background: paper, border: `2px solid ${ink}`, boxShadow: "6px 6px 0 rgba(0,0,0,.25)", padding: "14px 16px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10, marginBottom: 8 }}>
+              <div style={{ fontFamily: "var(--theme-body)", fontSize: 12.5, fontWeight: 700, color: forest }}>the palette — the audition</div>
+              <button onClick={() => setOpen(false)} style={{ border: "none", background: "none", fontSize: 21, lineHeight: 1, cursor: "pointer", color: margin }}>×</button>
+            </div>
+            {gatedBy && <div style={{ fontSize: 9.5, color: margin, marginBottom: 9, borderLeft: `2px solid ${forest}`, paddingLeft: 7 }}>⌖ composed under {gatedBy} — intense pole deepens, never alarms</div>}
+            <div style={{ display: "grid", gap: 8 }}>
+              {candidates.map((c) => (
+                <div key={c.id} style={{ border: `${c.picked ? 2 : 1}px solid ${c.picked ? forest : soft}`, background: c.picked ? shade : paper, padding: "8px 10px" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8, marginBottom: 5 }}>
+                    <span style={{ fontSize: 12, color: ink }}><b>{c.name}</b></span>
+                    {c.picked && <span style={{ fontSize: 9.5, color: forest, fontWeight: 700, whiteSpace: "nowrap" }}>✓ AUTOPICKED</span>}
+                  </div>
+                  <div style={{ display: "flex", gap: 4 }}>
+                    {c.cells.map((cell) => (
+                      <div key={cell.tone} style={{ flex: 1, border: `1px solid ${ink}` }} title={`${cell.base} · ${cell.accent}`}>
+                        <div style={{ background: cell.base, borderBottom: `4px solid ${cell.accent}`, padding: "5px 6px 6px" }}>
+                          <div style={{ color: cell.ink, fontSize: 8.5, fontWeight: 700, textTransform: "capitalize", opacity: 0.9 }}>{cell.tone}</div>
+                          <div style={{ color: cell.ink, fontSize: 9.5, lineHeight: 1.25, marginTop: 1 }}>{cell.label}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "2px 10px", marginTop: 5, fontSize: 9.5, color: margin }}>
+                    {([["cohesion", c.cohesion], ["distinct", c.distinct], ["safe", c.safe]] as const).map(([k, v]) => v ? <span key={k}>{k} <b style={{ color: vCol(v) }}>{v}</b></span> : null)}
+                  </div>
+                  {c.note && <div style={{ color: soft, fontSize: 10.5, marginTop: 3, lineHeight: 1.45 }}>{c.note}</div>}
+                </div>
+              ))}
+            </div>
+            {why && <div style={{ fontSize: 10.5, color: ink, marginTop: 9, borderTop: `1px solid ${soft}`, paddingTop: 7, lineHeight: 1.5 }}><b style={{ color: forest }}>why the pick won:</b> {why}</div>}
+            {runnerUpGem && <div style={{ fontSize: 10, color: margin, marginTop: 4, lineHeight: 1.5 }}><b style={{ color: amber }}>↳ runner-up gem:</b> {runnerUpGem}</div>}
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
 // ④ THE SCENES HUB — the RANGE / top-down PORTFOLIO view. We audition a LOT here on purpose: it's about
 // COVERING RANGE — across the 5 branches, is the variety healthy + the balance right? The PREMISE is
 // auditioned here; the CAST + premise HONING happen INSIDE each scene. Carries the prior experts (gating)
@@ -583,7 +634,7 @@ export function BranchLinks({ campaign, branches, active }: { campaign: string; 
 }
 
 // THE WEATHER-MOMENT BRANCH — one scene honed: its palette (dialed cozy→intense), the tone dial, the cast.
-export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; gatedBy?: string; paletteUI?: { prompts?: { objects?: string[]; characters?: string[]; items?: string[] }; prose?: { objectSeeds?: { dominant?: string[]; accent?: string[] }; diction?: { cool?: string[]; warm?: string[] }; rule?: string } } };
+export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; paletteAudition?: { candidates: PaletteCand[]; whyWon?: string; runnerUpGem?: string }; gatedBy?: string; paletteUI?: { prompts?: { objects?: string[]; characters?: string[]; items?: string[] }; prose?: { objectSeeds?: { dominant?: string[]; accent?: string[] }; diction?: { cool?: string[]; warm?: string[] }; rule?: string } } };
 export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: string }) {
   const h = b.honing;
   return (
@@ -613,7 +664,10 @@ export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: str
           <div style={{ fontSize: 9.5, color: margin, marginBottom: 16, fontStyle: "italic" }}>from the crew pool: {b.characters.map((c) => c.name.replace(/^the /i, "")).join(" · ")} — the §8.13 floor allows ONE focal, never a crowd.</div>
         </>
       )}
-      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>▸ THE PALETTE — {b.label} dialed cozy → intense</div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginBottom: 6, flexWrap: "wrap" }}>
+        <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest }}>▸ THE PALETTE {b.paletteAudition ? "AUDITION" : ""} — {b.label}, dialed cozy → intense {b.paletteAudition && <span style={{ color: margin, fontWeight: 400, fontSize: 10 }}>(autopicked HERE)</span>}</div>
+        {b.paletteAudition && <PalettePeek candidates={b.paletteAudition.candidates} why={b.paletteAudition.whyWon} runnerUpGem={b.paletteAudition.runnerUpGem} gatedBy={b.gatedBy} />}
+      </div>
       <div style={{ display: "grid", gridTemplateColumns: `repeat(${b.cells.length}, 1fr)`, gap: 6, marginBottom: 16 }}>
         {b.cells.map((c) => (
           <div key={c.tone} style={{ background: c.base, color: c.ink, padding: "10px 11px", borderRadius: 3, borderLeft: `4px solid ${c.accent}`, minHeight: 60 }}>
