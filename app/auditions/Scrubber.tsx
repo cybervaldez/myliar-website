@@ -564,19 +564,11 @@ export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: str
   const h = b.honing;
   return (
     <div>
-      <div style={{ border: `2px dashed ${forest}`, background: shade, padding: "9px 13px", marginBottom: 16, fontSize: 12, color: ink, lineHeight: 1.5 }}>
-        <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".08em", color: forest, marginBottom: 3 }}>↩ CARRIED FROM THE SCENES HUB — this weather-moment&rsquo;s premise + palette</div>
-        <div>the premise was auditioned for RANGE at the <a href={`/auditions/${campaign}/scenes`} style={{ color: forest, fontWeight: 700 }}>scenes hub</a>; here it&rsquo;s HONED for <b style={{ textTransform: "capitalize" }}>{b.label}</b> <span style={{ fontFamily: "monospace", color: margin }}>{b.spark}</span> — the cast auditioned, the tone dialed within (cozy ↔ intense).</div>
+      <div className="aud-digest" style={{ border: `2px solid ${forest}`, background: shade, padding: "8px 13px", marginBottom: 14, fontSize: 11, color: ink, lineHeight: 1.5 }}>
+        <span style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".06em", color: forest }}>▣ BUILD-CONTEXT</span> <b style={{ textTransform: "capitalize" }}>{b.label}</b> <span style={{ fontFamily: "monospace", color: margin }}>{b.spark}</span>{b.gatedBy ? ` · ${b.gatedBy}` : ""}{b.slot ? ` · slot ${b.slot.cast} / ${b.slot.role} / ${b.slot.structure}` : ""} · carried from the <a href={`/auditions/${campaign}/scenes`}>hub</a>{h?.review ? " · ↪ reviewed downstream" : ""}
       </div>
-      {b.slot && (
-        <div style={{ border: `2px solid ${forest}`, background: paper, padding: "9px 12px", marginBottom: 16, fontSize: 11, color: ink, lineHeight: 1.5 }}>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 3 }}>▣ YOUR COVERAGE SLOT — allocated by the hub (stay in your lane, don&rsquo;t duplicate a sibling)</div>
-          <div>cast <b>{b.slot.cast}</b> · role <b>{b.slot.role}</b> · structure <b>{b.slot.structure}</b></div>
-          {b.gatedBy && <div style={{ fontSize: 9.5, color: margin, marginTop: 4 }}>↳ this slot composed under {b.gatedBy}</div>}
-          {b.siblingClaims && <div style={{ fontSize: 9.5, color: margin, marginTop: 4 }}>↳ siblings own (taken): roles [{b.siblingClaims.role.filter((r) => r !== b.slot!.role).join(" · ")}] · structures [{b.siblingClaims.structure.filter((s) => s !== b.slot!.structure).join(" · ")}]</div>}
-          {b.conflict && <div style={{ fontSize: 9.5, color: "#c08a2e", marginTop: 4, borderLeft: `2px solid #c08a2e`, paddingLeft: 7 }}>⚑ shares its {b.conflict.dimension} with a sibling → kept distinct: {b.conflict.resolution}</div>}
-        </div>
-      )}
+      <div className="aud-body">
+        <div className="aud-meat">
       {(b.premise || h?.premiseHoned) && (
         <div style={{ border: `2px solid ${forest}`, background: paper, padding: "10px 13px", marginBottom: 16, fontSize: 12.5, color: ink, lineHeight: 1.55 }}>
           <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 4 }}>▸ THE PREMISE — honed for this moment</div>
@@ -652,16 +644,35 @@ export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: str
           </div>
         </>
       )}
-      {b.expertsGate && b.expertsGate.length > 0 && (
-        <div style={{ fontSize: 10, color: margin, borderLeft: `3px solid ${forest}`, paddingLeft: 9, marginBottom: 7, lineHeight: 1.5 }}>
-          <b style={{ fontFamily: "var(--theme-body)", color: forest }}>⌖ GATED BY</b> the hub&rsquo;s experts: {b.expertsGate.map((e) => e.name).join(" · ")} — their floor holds in this moment.
         </div>
-      )}
-      {h?.review && (
-        <div style={{ fontSize: 10, color: margin, borderLeft: `3px solid ${forest}`, paddingLeft: 9, marginBottom: 7, lineHeight: 1.5 }}>
-          <b style={{ fontFamily: "var(--theme-body)", color: forest }}>↪ FUTURE-STEP REVIEW</b> (a downstream content-writer on this scene&rsquo;s buildability): {h.review}
-        </div>
-      )}
+        <aside className="aud-context">
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 9, paddingBottom: 4, borderBottom: `1px solid ${soft}` }}>▣ BUILD-CONTEXT <span style={{ fontWeight: 400, color: margin, fontSize: 8.5 }}>— for the AI building this</span></div>
+          <div style={{ borderLeft: `2px solid ${soft}`, paddingLeft: 9, marginBottom: 11, fontSize: 10.5, color: margin, lineHeight: 1.5 }}>
+            <div style={{ fontFamily: "var(--theme-body)", fontSize: 8.5, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 2 }}>↩ CARRIED FROM THE HUB</div>
+            the premise was auditioned for RANGE at the <a href={`/auditions/${campaign}/scenes`} style={{ color: forest, fontWeight: 700 }}>scenes hub</a>; honed here for <b style={{ textTransform: "capitalize", color: ink }}>{b.label}</b>, the tone dialed within.
+          </div>
+          {b.slot && (
+            <div style={{ borderLeft: `2px solid ${soft}`, paddingLeft: 9, marginBottom: 11, fontSize: 10.5, color: margin, lineHeight: 1.5 }}>
+              <div style={{ fontFamily: "var(--theme-body)", fontSize: 8.5, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 2 }}>▣ COVERAGE SLOT</div>
+              cast <b style={{ color: ink }}>{b.slot.cast}</b> · role <b style={{ color: ink }}>{b.slot.role}</b> · structure <b style={{ color: ink }}>{b.slot.structure}</b>
+              {b.siblingClaims && <div style={{ marginTop: 3 }}>siblings own: roles [{b.siblingClaims.role.filter((r) => r !== b.slot!.role).join(" · ")}] · structures [{b.siblingClaims.structure.filter((s) => s !== b.slot!.structure).join(" · ")}]</div>}
+              {b.conflict && <div style={{ color: "#c08a2e", marginTop: 3 }}>⚑ shares its {b.conflict.dimension} → kept distinct: {b.conflict.resolution}</div>}
+            </div>
+          )}
+          {b.expertsGate && b.expertsGate.length > 0 && (
+            <div style={{ borderLeft: `2px solid ${soft}`, paddingLeft: 9, marginBottom: 11, fontSize: 10.5, color: margin, lineHeight: 1.5 }}>
+              <div style={{ fontFamily: "var(--theme-body)", fontSize: 8.5, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 2 }}>⌖ GATED BY</div>
+              the hub&rsquo;s experts: {b.expertsGate.map((e) => e.name).join(" · ")} — their floor holds here.
+            </div>
+          )}
+          {h?.review && (
+            <div style={{ borderLeft: `2px solid ${soft}`, paddingLeft: 9, marginBottom: 11, fontSize: 10.5, color: margin, lineHeight: 1.5 }}>
+              <div style={{ fontFamily: "var(--theme-body)", fontSize: 8.5, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 2 }}>↪ DOWNSTREAM REVIEW</div>
+              a content-writer on buildability: {h.review}
+            </div>
+          )}
+        </aside>
+      </div>
       <div style={{ fontSize: 10.5, color: margin, marginTop: 10, fontStyle: "italic", lineHeight: 1.5 }}>↳ the honing bench for <b style={{ textTransform: "capitalize" }}>{b.label}</b> — the cast voice, the characters, and the per-moment content get polished here (cozy-first; the storm deepens presence, never threat).</div>
     </div>
   );

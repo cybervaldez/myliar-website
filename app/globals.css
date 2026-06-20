@@ -525,3 +525,17 @@ a:hover {
 }
 @media (min-width:2000px){ [data-aud-layout="dashboard"] .aud-main{ zoom:1.12; } }  /* QHD/4K: a touch bigger, still fits */
 
+/* ── THE TWO-TRACK IA — meat vs build-context (real markup grouping; the 3 layouts position it) ───────
+   The DOM order is always: #digest → .aud-meat → .aud-context (serves the AI: a labeled, grouped,
+   consistently-ordered context block, read after the work). The three layouts then place .aud-context:
+   column = an appendix below · shell = a right rail · dashboard = a facing column. */
+.aud-body{ display:block; }
+.aud-context{ margin-top:18px; padding-top:9px; border-top:2px solid var(--ink-soft); }
+.aud-digest a{ color:var(--forest); font-weight:700; }
+@media (min-width:1024px){
+  [data-aud-layout="shell"] .aud-body{ display:grid; grid-template-columns:minmax(0,1fr) 280px; gap:26px; align-items:start; }
+  [data-aud-layout="shell"] .aud-context{ margin-top:0; padding-top:0; border-top:none; position:sticky; top:14px; }
+  [data-aud-layout="dashboard"] .aud-body{ display:grid; grid-template-columns:minmax(0,1.7fr) minmax(0,1fr); gap:30px; align-items:start; }
+  [data-aud-layout="dashboard"] .aud-context{ margin-top:0; padding-top:0; border-top:none; }
+}
+
