@@ -529,9 +529,9 @@ export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
           const cast = d.honing?.[b.key]?.castPick;
           return (
             <a key={b.key} className="aud-scene" href={`/auditions/${campaign}/scenes/${b.key}`} style={{ display: "block", textDecoration: "none", border: `2px solid var(--ink-soft)`, background: paper, color: ink }}>
-              {/* palette bar: each tone cell's characterful ACCENT (brass · chart-green · water-blue), full
-                  height — no dark band. The near-black ambient GROUND lives on the scene page, not this chip. */}
-              <div style={{ display: "flex", height: 14 }}>{b.cells.map((c) => <span key={c.tone} title={c.label} style={{ flex: 1, background: c.accent ?? c.base }} />)}</div>
+              {/* palette bar: per tone cell, its ACCENT over its ambient GROUND (accent on top so it leads —
+                  the dark base is the lower band, not a top-border). Consistent with the hub audition rows. */}
+              <div style={{ display: "flex", height: 18 }}>{b.cells.map((c) => <span key={c.tone} title={`${c.label} · ${c.accent}`} style={{ flex: 1, background: c.accent ? `linear-gradient(${c.accent} 0 55%, ${c.base} 55%)` : c.base }} />)}</div>
               <div style={{ padding: "11px 13px 12px" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8 }}>
                   <span style={{ fontFamily: "var(--theme-display)", fontSize: 18, color: ink, textTransform: "uppercase", letterSpacing: ".02em", lineHeight: 1.1 }}>{b.label}</span>
@@ -697,10 +697,13 @@ export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: str
       <div style={{ fontSize: 9.5, color: margin, marginBottom: 6, fontStyle: "italic" }}>↩ carried from the hub — the palette is auditioned top-down (for distinctness across the range) at the <a href={`/auditions/${campaign}/scenes`} style={{ color: forest, fontStyle: "normal", fontWeight: 700 }}>scenes hub → see the audition</a>; here it&rsquo;s the ground the tone dials within.</div>
       <div style={{ display: "grid", gridTemplateColumns: `repeat(${b.cells.length}, 1fr)`, gap: 6, marginBottom: 16 }}>
         {b.cells.map((c) => (
-          <div key={c.tone} style={{ background: c.base, color: c.ink, padding: "10px 11px", borderRadius: 3, borderLeft: `4px solid ${c.accent}`, minHeight: 60 }}>
-            <div style={{ fontSize: 10, fontWeight: 700, textTransform: "capitalize", opacity: 0.85 }}>{c.tone}</div>
-            <div style={{ fontSize: 12, marginTop: 3 }}>{c.label}</div>
-            <code style={{ fontSize: 8.5, opacity: 0.6 }}>{c.base}</code>
+          <div key={c.tone} style={{ border: `1px solid ${c.accent}`, borderRadius: 3, overflow: "hidden", minHeight: 64 }} title={`base ${c.base} · accent ${c.accent}`}>
+            <div style={{ background: c.accent, height: 16 }} />
+            <div style={{ background: c.base, color: c.ink, padding: "8px 11px 10px" }}>
+              <div style={{ fontSize: 10, fontWeight: 700, textTransform: "capitalize", opacity: 0.85 }}>{c.tone}</div>
+              <div style={{ fontSize: 12, marginTop: 3 }}>{c.label}</div>
+              <code style={{ fontSize: 8.5, opacity: 0.6 }}>{c.base} · {c.accent}</code>
+            </div>
           </div>
         ))}
       </div>
