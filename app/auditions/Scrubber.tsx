@@ -470,56 +470,69 @@ export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
       </div>
       <div className="aud-body">
         <div className="aud-meat">
-      <div style={{ border: `2px solid ${forest}`, background: paper, padding: "11px 14px", marginBottom: 14, fontSize: 11.5, color: ink, lineHeight: 1.5 }}>
-        <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>⓪ THE RANGE AUDIT — variety · balance · coverage</div>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "4px 16px", marginBottom: 6 }}>
-          {([["variety", d.range.variety, d.range.overlap], ["balance", d.range.balance, d.range.skew], ["coverage", d.range.coverage, d.range.gaps]] as const).map(([k, v, sub]) => (
-            <span key={k}>{k} <b style={{ color: ok(v) ? forest : red }}>{v}</b>{sub && sub !== "none" && <span style={{ color: margin, fontSize: 10 }}> · {sub}</span>}</span>
-          ))}
-        </div>
-        <div style={{ fontSize: 11, color: ink }}><b style={{ color: forest }}>+ ADD variety:</b> {d.range.variety_add}</div>
-        <div style={{ fontSize: 10.5, color: soft, fontStyle: "italic", marginTop: 3 }}>{d.range.note}</div>
-      </div>
-      {d.coverage && (
-        <div style={{ border: `2px solid ${forest}`, background: shade, padding: "11px 14px", marginBottom: 14, fontSize: 11, color: ink, lineHeight: 1.5 }}>
-          <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 3 }}>▣ THE COVERAGE MAP — the conflict-preventer (carried into each scene)</div>
-          <div style={{ fontSize: 10.5, color: soft, marginBottom: 6 }}>each scene auditions on its OWN page, blind to its siblings — so the hub ALLOCATES distinct territory here (cast · role · structure) so they don&rsquo;t collide. Carried into every scene as its constraint.</div>
-          {d.gatedBy && <div style={{ fontSize: 9.5, color: margin, marginBottom: 8, borderLeft: `2px solid ${forest}`, paddingLeft: 7 }}>⌖ every slot composed under {d.gatedBy} — the age · genre · culture gate runs through the whole allocation.</div>}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(74px,auto) 1fr 1fr 1.2fr", gap: "3px 10px", fontSize: 10.5, marginBottom: 8 }}>
-            {["SCENE", "CAST", "ROLE", "STRUCTURE"].map((h) => <div key={h} style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".05em", color: margin }}>{h}</div>)}
-            {d.coverage.map.map((m) => (
-              <Fragment key={m.scene}>
-                <div style={{ fontWeight: 700, color: forest, textTransform: "capitalize" }}>{m.scene}</div>
-                <div>{m.cast}</div>
-                <div>{m.role}</div>
-                <div>{m.structure}</div>
-              </Fragment>
-            ))}
-          </div>
-          <div style={{ fontSize: 9.5, color: margin, lineHeight: 1.5 }}>↳ <b style={{ color: forest }}>coverage spread:</b> roles [{d.coverage.claims.role.join(" · ")}] · structures [{d.coverage.claims.structure.join(" · ")}]</div>
-          {d.coverage.conflicts?.map((cf, i) => (
-            <div key={i} style={{ fontSize: 9.5, color: amber, marginTop: 4, borderLeft: `2px solid ${amber}`, paddingLeft: 7, lineHeight: 1.45 }}>⚑ <b>{cf.dimension} overlap</b> (scenes {Array.isArray(cf.scenes) ? cf.scenes.join(" & ") : cf.scenes}): {cf.issue} <span style={{ color: forest }}>→ resolved: {cf.resolution}</span></div>
-          ))}
-          {d.coverage.note && <div style={{ fontSize: 9.5, color: soft, fontStyle: "italic", marginTop: 4 }}>{d.coverage.note}</div>}
-        </div>
-      )}
-      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>▸ THE 5 SCENES — premise auditioned here · hone the cast inside each →</div>
-      <div className="aud-grid2 aud-grid3" style={{ display: "grid", gap: 8, marginBottom: 14 }}>
+      {/* PORTFOLIO-FIRST (UI pass, option A): the 5 weather-moments are the hero, right under the digest. */}
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 12.5, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 7 }}>▸ THE 5 WEATHER-MOMENTS — the portfolio · hone the cast inside each →</div>
+      <div className="aud-grid2 aud-grid3" style={{ display: "grid", gap: 10, marginBottom: 16 }}>
         {d.branches.map((b) => {
           const cast = d.honing?.[b.key]?.castPick;
           return (
-            <a key={b.key} href={`/auditions/${campaign}/scenes/${b.key}`} style={{ display: "block", textDecoration: "none", border: `2px solid var(--ink-soft)`, background: paper, padding: "9px 12px", color: ink }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginBottom: 3 }}>
-                <span style={{ fontWeight: 700, fontSize: 13, textTransform: "capitalize", color: forest }}>{b.label} <span style={{ fontFamily: "monospace", fontSize: 9, color: margin }}>{b.spark}</span></span>
-                <span style={{ display: "flex", gap: 2 }}>{b.cells.map((c) => <span key={c.tone} style={{ width: 13, height: 13, background: c.base, borderRadius: 2, border: `1px solid ${ink}` }} />)}</span>
+            <a key={b.key} className="aud-scene" href={`/auditions/${campaign}/scenes/${b.key}`} style={{ display: "block", textDecoration: "none", border: `2px solid var(--ink-soft)`, background: paper, color: ink }}>
+              <div style={{ display: "flex", height: 12 }}>{b.cells.map((c) => <span key={c.tone} style={{ flex: 1, background: c.base }} />)}</div>
+              <div style={{ padding: "11px 13px 12px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8 }}>
+                  <span style={{ fontFamily: "var(--theme-display)", fontSize: 18, color: ink, textTransform: "uppercase", letterSpacing: ".02em", lineHeight: 1.1 }}>{b.label}</span>
+                  <span style={{ fontFamily: "monospace", fontSize: 9.5, color: margin, whiteSpace: "nowrap" }}>{b.spark}</span>
+                </div>
+                {premiseOf(b.label) && <div style={{ fontSize: 12, color: ink, lineHeight: 1.45, marginTop: 5 }}>{premiseOf(b.label)}</div>}
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginTop: 7 }}>
+                  {cast ? <span style={{ fontSize: 10, color: margin, fontStyle: "italic" }}>cast · {cast.split("—")[0].trim()}</span> : <span />}
+                  <span style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, color: forest }}>hone →</span>
+                </div>
               </div>
-              {premiseOf(b.label) && <div style={{ fontSize: 11, color: ink, lineHeight: 1.4 }}>{premiseOf(b.label)}</div>}
-              {cast && <div style={{ fontSize: 9.5, color: margin, marginTop: 3, fontStyle: "italic" }}>cast: {cast.split("—")[0].trim()}</div>}
-              <div style={{ fontSize: 10, color: forest, marginTop: 3 }}>hone this scene →</div>
             </a>
           );
         })}
       </div>
+
+      {/* the audit, demoted to a one-line health strip (the digest carries the headline verdict) */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 10px", alignItems: "center", border: `1.5px solid var(--ink-soft)`, background: shade, padding: "7px 12px", marginBottom: 6, fontSize: 11 }}>
+        <span style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".05em", color: forest }}>⓪ RANGE HEALTH</span>
+        {([["variety", d.range.variety], ["balance", d.range.balance], ["coverage", d.range.coverage]] as const).map(([k, v]) => (
+          <span key={k} style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".02em", border: `1.5px solid ${ok(v) ? forest : red}`, color: ok(v) ? forest : red, borderRadius: 11, padding: "1px 9px" }}>{k} {ok(v) ? "✓" : "⚠"} {v}</span>
+        ))}
+        <span style={{ color: soft, fontStyle: "italic" }}>— <b style={{ color: forest, fontStyle: "normal" }}>+ add:</b> {d.range.variety_add}</span>
+      </div>
+      <div style={{ fontSize: 10, color: soft, fontStyle: "italic", marginBottom: 14, paddingLeft: 2 }}>{d.range.note}</div>
+
+      {/* the coverage map, demoted to a click-to-open reference (it's carried into each scene, not acted on here) */}
+      {d.coverage && (
+        <details className="aud-cov" style={{ border: `2px solid var(--ink-soft)`, marginBottom: 12 }}>
+          <summary style={{ cursor: "pointer", listStyle: "none", fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".04em", color: forest, padding: "9px 13px", display: "flex", justifyContent: "space-between", gap: 10 }}>
+            <span>▣ THE COVERAGE MAP — the allocation (cast · role · structure, carried into each scene)</span>
+            <span style={{ color: margin, whiteSpace: "nowrap" }}>⌄ open</span>
+          </summary>
+          <div style={{ padding: "2px 13px 12px", fontSize: 11, color: ink, lineHeight: 1.5 }}>
+            <div style={{ fontSize: 10.5, color: soft, marginBottom: 6 }}>each scene auditions on its OWN page, blind to its siblings — so the hub ALLOCATES distinct territory here so they don&rsquo;t collide. Carried into every scene as its constraint.</div>
+            {d.gatedBy && <div style={{ fontSize: 9.5, color: margin, marginBottom: 8, borderLeft: `2px solid ${forest}`, paddingLeft: 7 }}>⌖ every slot composed under {d.gatedBy} — the age · genre · culture gate runs through the whole allocation.</div>}
+            <div style={{ display: "grid", gridTemplateColumns: "minmax(74px,auto) 1fr 1fr 1.2fr", gap: "3px 10px", fontSize: 10.5, marginBottom: 8 }}>
+              {["SCENE", "CAST", "ROLE", "STRUCTURE"].map((h) => <div key={h} style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".05em", color: margin }}>{h}</div>)}
+              {d.coverage.map.map((m) => (
+                <Fragment key={m.scene}>
+                  <div style={{ fontWeight: 700, color: forest, textTransform: "capitalize" }}>{m.scene}</div>
+                  <div>{m.cast}</div>
+                  <div>{m.role}</div>
+                  <div>{m.structure}</div>
+                </Fragment>
+              ))}
+            </div>
+            <div style={{ fontSize: 9.5, color: margin, lineHeight: 1.5 }}>↳ <b style={{ color: forest }}>coverage spread:</b> roles [{d.coverage.claims.role.join(" · ")}] · structures [{d.coverage.claims.structure.join(" · ")}]</div>
+            {d.coverage.conflicts?.map((cf, i) => (
+              <div key={i} style={{ fontSize: 9.5, color: amber, marginTop: 4, borderLeft: `2px solid ${amber}`, paddingLeft: 7, lineHeight: 1.45 }}>⚑ <b>{cf.dimension} overlap</b> (scenes {Array.isArray(cf.scenes) ? cf.scenes.join(" & ") : cf.scenes}): {cf.issue} <span style={{ color: forest }}>→ resolved: {cf.resolution}</span></div>
+            ))}
+            {d.coverage.note && <div style={{ fontSize: 9.5, color: soft, fontStyle: "italic", marginTop: 4 }}>{d.coverage.note}</div>}
+          </div>
+        </details>
+      )}
         </div>
         <aside className="aud-context">
           <div style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 8 }}>▣ BUILD-CONTEXT <span style={{ color: margin, fontWeight: 400, fontStyle: "italic" }}>— for the AI building this</span></div>

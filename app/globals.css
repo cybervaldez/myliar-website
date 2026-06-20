@@ -503,4 +503,11 @@ a:hover {
   [data-aud-layout="shell"] .aud-main{ max-width:1080px; zoom:1.22; }
   [data-aud-layout="dashboard"] .aud-main{ zoom:1.15; }
 }
+/* scenes-hub portfolio cards — hero lift on hover; the coverage map as a clean <details> */
+.aud-scene{ transition:transform .1s, box-shadow .1s, border-color .1s; }
+.aud-scene:hover{ transform:translateY(-2px); box-shadow:4px 4px 0 rgba(0,0,0,.16); border-color:var(--forest); }
+.aud-cov summary::-webkit-details-marker{ display:none; }
+.aud-cov summary{ transition:background .1s; }
+.aud-cov summary:hover{ background:var(--paper); }
+.aud-cov[open]{ background:var(--paper-shade); }
 
