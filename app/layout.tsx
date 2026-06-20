@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { Anton, Lora, PT_Sans } from "next/font/google";
 import "./globals.css";
-import ThemePicker from "./_components/ThemePicker";
 
-// No-FOUC theme bootstrap — sets data-pack/mode on <html> from the saved
-// Display Theme before first paint. Default = Parchment & Ink · light (the
-// current brand look). Font is theme-driven (Auto only). See theme-system.md.
-const THEME_BOOTSTRAP = `(function(){try{var s=JSON.parse(localStorage.getItem('codex-skin')||'{}');var r=document.documentElement;r.dataset.pack=s.pack||'parchment';r.dataset.mode=s.mode||'light';}catch(e){var r=document.documentElement;r.dataset.pack='parchment';r.dataset.mode='light';}})();`;
+// The WEBSITE is Parchment & Ink only (2026-06-20) — the theme SWITCHER was removed; campaigns lock their
+// own theme programmatically (PlayRunner sets + restores data-pack on /play). So the site base is pinned
+// to Parchment · light; campaign surfaces override it themselves.
+const THEME_BOOTSTRAP = `(function(){try{var r=document.documentElement;r.dataset.pack='parchment';r.dataset.mode='light';}catch(e){}})();`;
 
 // ── Typography mirror of docs/manual.html ──────────────────────────
 // Anton — display caps (h1/h2/h3, AP COUNTER, etc.)
@@ -65,7 +64,6 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col">
         {children}
-        <ThemePicker />
       </body>
     </html>
   );
