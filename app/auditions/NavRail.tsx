@@ -12,6 +12,13 @@ export default function NavRail() {
   const step = parts[2];
   const scene = parts[2] === "scenes" ? parts[3] : undefined;
 
+  // jumping campaigns PRESERVES the current step — clicking "Night Ferry" while on room/scenes opens
+  // ferry/scenes (not the spine). Falls back to the spine if that campaign doesn't have the step.
+  const jumpTo = (ck: string) => {
+    if (step && STEP_DEFS.some((s) => s.key === step) && (hasStep(ck, step) || (isSeed(ck) && step === "scenes"))) return `/auditions/${ck}/${step}`;
+    return `/auditions/${ck}`;
+  };
+
   const Link = ({ href, label, on, indent = 0, dim = false }: { href: string; label: string; on: boolean; indent?: number; dim?: boolean }) => (
     <a href={href} style={{ display: "block", textDecoration: "none", padding: "3px 7px", paddingLeft: 7 + indent * 12, fontSize: indent ? 11 : 11.5, lineHeight: 1.35, color: on ? "var(--forest)" : dim ? "var(--margin-ink)" : "var(--ink)", fontWeight: on ? 700 : 400, background: on ? "var(--paper)" : "transparent", borderLeft: `2px solid ${on ? "var(--forest)" : "transparent"}` }}>{label}</a>
   );
@@ -25,7 +32,7 @@ export default function NavRail() {
         const seed = isSeed(ck);
         return (
           <div key={ck} style={{ marginBottom: onC ? 9 : 1 }}>
-            <Link href={`/auditions/${ck}`} label={c.label} on={onC && !step} />
+            <Link href={jumpTo(ck)} label={c.label} on={onC && !step} />
             {onC && STEP_DEFS.map((s) => {
               if (!hasStep(ck, s.key) && !seed) return null;
               const folded = seed && s.key !== "scenes";

@@ -471,8 +471,9 @@ export function PalettePeek({ candidates, why, runnerUpGem, gatedBy }: { candida
                   </div>
                   <div style={{ display: "flex", gap: 4 }}>
                     {c.cells.map((cell) => (
-                      <div key={cell.tone} style={{ flex: 1, border: `1px solid ${ink}` }} title={`${cell.base} · ${cell.accent}`}>
-                        <div style={{ background: cell.base, borderBottom: `4px solid ${cell.accent}`, padding: "5px 6px 6px" }}>
+                      <div key={cell.tone} style={{ flex: 1, border: `1px solid ${ink}` }} title={`base ${cell.base} · accent ${cell.accent}`}>
+                        <div style={{ background: cell.accent, height: 12 }} />
+                        <div style={{ background: cell.base, padding: "5px 6px 6px" }}>
                           <div style={{ color: cell.ink, fontSize: 8.5, fontWeight: 700, textTransform: "capitalize", opacity: 0.9 }}>{cell.tone}</div>
                           <div style={{ color: cell.ink, fontSize: 9.5, lineHeight: 1.25, marginTop: 1 }}>{cell.label}</div>
                         </div>
@@ -603,7 +604,7 @@ export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
                 const win = pa.candidates?.find((c) => c.picked);
                 return (
                   <div key={b.key} style={{ display: "flex", alignItems: "center", gap: 9, flexWrap: "wrap" }}>
-                    <span style={{ display: "flex", gap: 1, flex: "0 0 auto" }}>{b.cells.map((c) => <span key={c.tone} title={c.label} style={{ width: 22, height: 16, background: c.base, borderBottom: `4px solid ${c.accent ?? c.base}`, border: `1px solid ${ink}` }} />)}</span>
+                    <span style={{ display: "flex", gap: 1, flex: "0 0 auto" }}>{b.cells.map((c) => <span key={c.tone} title={`${c.label} · ${c.accent}`} style={{ width: 24, height: 18, border: `1px solid ${ink}`, background: c.accent ? `linear-gradient(${c.accent} 0 48%, ${c.base} 48%)` : c.base }} />)}</span>
                     <a href={`/auditions/${campaign}/scenes/${b.key}`} style={{ fontWeight: 700, color: forest, textTransform: "capitalize", flex: "0 0 auto", textDecoration: "none" }}>{b.label}</a>
                     {win && <span style={{ fontSize: 10, color: margin, fontStyle: "italic" }}>&ldquo;{win.name}&rdquo;</span>}
                     <span style={{ marginLeft: "auto" }}><PalettePeek candidates={pa.candidates} why={pa.whyWon} runnerUpGem={pa.runnerUpGem} gatedBy={d.gatedBy} /></span>
