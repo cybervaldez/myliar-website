@@ -98,12 +98,13 @@ export default async function CampaignSpine({ params }: { params: Promise<{ camp
           <div style={{ fontSize: 10, color: margin, margin: "0 0 6px 24px", fontStyle: "italic", lineHeight: 1.5 }}>↓ the <a href={`/auditions/${campaign}/scenes`} style={{ color: forest, fontWeight: 700 }}>④ scenes audition</a> branches into the 5 weather-moments — each honed individually (the tone dialed within):</div>
           {branches.map((b) => (
             <div key={b.key} style={{ marginLeft: 24, borderLeft: `2px solid ${forest}`, paddingLeft: 14, marginBottom: 7 }}>
-              <a href={`/auditions/${campaign}/scenes/${b.key}`} style={{ display: "block", textDecoration: "none", border: `2px solid var(--ink-soft)`, background: paper, padding: "9px 13px", color: ink }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
-                  <span style={{ fontSize: 13.5 }}><b style={{ color: forest, textTransform: "capitalize" }}>{b.label}</b> <span style={{ fontFamily: "monospace", fontSize: 9.5, color: margin }}>{b.spark}</span></span>
-                  <span style={{ display: "flex", gap: 2 }}>{b.cells.map((cc) => <span key={cc.tone} style={{ width: 13, height: 13, background: cc.base, borderRadius: 2, border: `1px solid ${ink}` }} />)}</span>
+              <a href={`/auditions/${campaign}/scenes/${b.key}`} style={{ display: "block", textDecoration: "none", border: `2px solid var(--ink-soft)`, background: paper, color: ink }}>
+                {/* the auditioned palette (accent over base) — reflects the scenes hub */}
+                <div style={{ display: "flex", height: 13 }}>{b.cells.map((cc) => <span key={cc.tone} title={cc.label} style={{ flex: 1, background: cc.accent ? `linear-gradient(${cc.accent} 0 55%, ${cc.base} 55%)` : cc.base }} />)}</div>
+                <div style={{ padding: "8px 13px 9px" }}>
+                  <div style={{ fontSize: 13.5 }}><b style={{ color: forest, textTransform: "capitalize" }}>{b.label}</b> <span style={{ fontFamily: "monospace", fontSize: 9.5, color: margin }}>{b.spark}</span></div>
+                  <div style={{ fontSize: 10.5, color: forest, marginTop: 3 }}>hone the cast + characters →</div>
                 </div>
-                <div style={{ fontSize: 10.5, color: forest, marginTop: 3 }}>hone the cast + characters →</div>
               </a>
             </div>
           ))}
