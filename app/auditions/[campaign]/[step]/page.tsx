@@ -67,13 +67,13 @@ export default async function CampaignStepPage({ params }: { params: Promise<{ c
   if (step === "scenes") {
     const link = { color: "var(--forest)", fontWeight: 700, textDecoration: "none" } as const;
     if (!c) return <main style={{ maxWidth: 760, margin: "0 auto", padding: 40 }}><p style={{ color: "var(--margin-ink)" }}>No story for {campaign}. <a href="/auditions" style={link}>↑ the board</a></p></main>;
-    const p = (c.steps.scenes ?? c.steps.pilot) as unknown as { picked?: string; targetAge?: { range: number[]; band: string }; genre?: { name: string }; culture?: { name: string }; scrubGroups: { id: string; name: string; metaphor?: string; scenes?: { premises?: RangeT["premises"]; range?: RangeT["range"]; coverage?: RangeT["coverage"]; rangeReview?: RangeT["rangeReview"]; expertsGate?: RangeT["expertsGate"]; honing?: RangeT["honing"]; narrative?: { scenes: { scene: string; arcs: { arc: string; note?: string }[] }[]; spread?: string } } }[] };
+    const p = (c.steps.scenes ?? c.steps.pilot) as unknown as { picked?: string; targetAge?: { range: number[]; band: string }; genre?: { name: string }; culture?: { name: string }; scrubGroups: { id: string; name: string; metaphor?: string; scenes?: { premises?: RangeT["premises"]; range?: RangeT["range"]; coverage?: RangeT["coverage"]; rangeReview?: RangeT["rangeReview"]; expertsGate?: RangeT["expertsGate"]; honing?: RangeT["honing"]; ensemble?: RangeT["ensemble"]; narrative?: { scenes: { scene: string; arcs: { arc: string; note?: string }[] }[]; spread?: string } } }[] };
     const g = p.scrubGroups.find((x) => x.id === p.picked);
     const sc = g?.scenes;
     const branches = sceneBranchesFor(campaign);
     // the RANGE payload — premises + variety/balance/coverage + the coverage MAP + the reviews; cast honed per-branch
     const gatedBy = [p.targetAge && `🎯 ${p.targetAge.range?.[0]}–${p.targetAge.range?.[1]} ${p.targetAge.band ?? ""}`.trim(), p.genre && `📐 ${p.genre.name}`, p.culture && `🎨 ${p.culture.name}`].filter(Boolean).join(" · ") || undefined;
-    const rd: RangeT | null = sc?.premises && sc?.range ? { premises: sc.premises, range: sc.range, coverage: sc.coverage, gatedBy, rangeReview: sc.rangeReview, expertsGate: sc.expertsGate, branches, honing: sc.honing, narrative: sc.narrative?.scenes, narrativeSpread: sc.narrative?.spread } : null;
+    const rd: RangeT | null = sc?.premises && sc?.range ? { premises: sc.premises, range: sc.range, coverage: sc.coverage, gatedBy, rangeReview: sc.rangeReview, expertsGate: sc.expertsGate, branches, honing: sc.honing, ensemble: sc.ensemble, narrative: sc.narrative?.scenes, narrativeSpread: sc.narrative?.spread } : null;
     return (
       <main className="aud-main" style={{ padding: "24px 20px 80px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", fontSize: 12, marginBottom: 4 }}>

@@ -512,6 +512,7 @@ export type RangeT = {
   honing?: { [key: string]: { castPick?: string; paletteAudition?: { candidates: PaletteCand[]; whyWon?: string; runnerUpGem?: string } } };
   narrative?: { scene: string; arcs: { arc: string; note?: string }[] }[];
   narrativeSpread?: string;
+  ensemble?: { crew: { name: string; energy?: string; quirk?: string; foil?: string }[]; pairs?: { a: string; b: string; dynamic: string }[]; verdict?: string };
 };
 export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
   const red = "var(--spot-red)";
@@ -633,6 +634,37 @@ export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
           </div>
         </details>
       )}
+      {/* THE ENSEMBLE — the film-expert's top-down read of the supporting cast (Stage 2). The per-scene
+          supporting pick is honed on each branch; this is the campaign-wide dynamics map. */}
+      {d.ensemble && (d.ensemble.crew?.length || d.ensemble.verdict) && (
+        <details className="aud-cov" style={{ border: `2px solid var(--ink-soft)`, marginBottom: 12 }}>
+          <summary style={{ cursor: "pointer", listStyle: "none", fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".04em", color: forest, padding: "9px 13px", display: "flex", justifyContent: "space-between", gap: 10 }}>
+            <span>🎬 THE ENSEMBLE — the supporting cast&rsquo;s dynamics (film-expert pass)</span>
+            <span style={{ color: margin, whiteSpace: "nowrap" }}>⌄ open</span>
+          </summary>
+          <div style={{ padding: "2px 13px 12px", fontSize: 11, color: ink, lineHeight: 1.5 }}>
+            <div style={{ fontSize: 10.5, color: soft, marginBottom: 9 }}>a FILM EXPERT reviews the supporting cast for DYNAMICS — each crew member&rsquo;s ensemble energy · quirk · foil, the chemistry pairs, and whether the whole stays distinct + non-redundant. The per-scene supporting presence is auditioned + honed on each branch.</div>
+            {d.ensemble.crew && d.ensemble.crew.length > 0 && (
+              <div style={{ display: "grid", gap: 6, marginBottom: 9 }}>
+                {d.ensemble.crew.map((c) => (
+                  <div key={c.name} style={{ borderLeft: `2px solid ${forest}`, paddingLeft: 9, lineHeight: 1.45 }}>
+                    <b style={{ color: forest }}>{c.name}</b>{c.energy ? <span style={{ color: margin }}> · {c.energy}</span> : null}
+                    {c.quirk && <div style={{ fontSize: 10.5, color: ink }}><span style={{ color: margin }}>quirk:</span> {c.quirk}</div>}
+                    {c.foil && <div style={{ fontSize: 10, color: soft, fontStyle: "italic" }}>↔ foils {c.foil}</div>}
+                  </div>
+                ))}
+              </div>
+            )}
+            {d.ensemble.pairs && d.ensemble.pairs.length > 0 && (
+              <div style={{ fontSize: 10.5, color: ink, marginBottom: 7 }}>
+                <span style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".06em", color: margin }}>CHEMISTRY PAIRS</span>
+                {d.ensemble.pairs.map((p, i) => <div key={i} style={{ marginTop: 2 }}><b style={{ color: forest }}>{p.a} ↔ {p.b}</b> — {p.dynamic}</div>)}
+              </div>
+            )}
+            {d.ensemble.verdict && <div style={{ fontSize: 10, color: soft, fontStyle: "italic", borderTop: `1px solid var(--ink-soft)`, paddingTop: 6 }}>↳ film-expert verdict: {d.ensemble.verdict}</div>}
+          </div>
+        </details>
+      )}
         </div>
         <aside className="aud-context">
           <div style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 8 }}>▣ BUILD-CONTEXT <span style={{ color: margin, fontWeight: 400, fontStyle: "italic" }}>— for the AI building this</span></div>
@@ -681,7 +713,7 @@ export function BranchLinks({ campaign, branches, active }: { campaign: string; 
 }
 
 // THE WEATHER-MOMENT BRANCH — one scene honed: its palette (dialed cozy→intense), the tone dial, the cast.
-export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; arc?: { winner: string; whyWon?: string; candidates: { arc: string; floor?: string; floor_note?: string; yield?: string; picked?: boolean }[]; variance?: string[] }; checkpoints?: { begin: string; middle: { type: string; turn: string; alt?: string }; end: string }; between?: { span: string; grows?: string; relationship?: string }[]; gatedBy?: string; paletteUI?: { prompts?: { objects?: string[]; characters?: string[]; items?: string[] }; prose?: { objectSeeds?: { dominant?: string[]; accent?: string[] }; diction?: { cool?: string[]; warm?: string[] }; rule?: string } } };
+export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; arc?: { winner: string; whyWon?: string; candidates: { arc: string; floor?: string; floor_note?: string; yield?: string; picked?: boolean }[]; variance?: string[] }; checkpoints?: { begin: string; middle: { type: string; turn: string; alt?: string }; end: string }; between?: { span: string; grows?: string; relationship?: string }[]; supportingCast?: { winner: string; whyWon?: string; dynamic?: string; quirk?: string; candidates: { name: string; dynamic?: string; quirk?: string; fit?: string; picked?: boolean }[] }; gatedBy?: string; paletteUI?: { prompts?: { objects?: string[]; characters?: string[]; items?: string[] }; prose?: { objectSeeds?: { dominant?: string[]; accent?: string[] }; diction?: { cool?: string[]; warm?: string[] }; rule?: string } } };
 export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: string }) {
   const h = b.honing;
   return (
@@ -743,6 +775,19 @@ export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: str
             {h.supporting && h.supporting !== "none" && <div style={{ marginTop: 4, fontSize: 11, color: soft }}><span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, color: forest }}>+ SUPPORTING</span> {h.supporting}</div>}
           </div>
           <div style={{ fontSize: 9.5, color: margin, marginBottom: 16, fontStyle: "italic" }}>from the crew pool: {b.characters.map((c) => c.name.replace(/^the /i, "")).join(" · ")} — the §8.13 floor allows ONE focal, never a crowd.</div>
+        </>
+      )}
+      {b.supportingCast && (
+        <>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginBottom: 6, flexWrap: "wrap" }}>
+            <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest }}>▸ THE SUPPORTING CAST — the dynamic <span style={{ color: margin, fontWeight: 400, fontSize: 10 }}>(film-expert pass · ≤1 light presence)</span></div>
+            <AuditionPeek label="the supporting cast" candidates={(b.supportingCast.candidates ?? []).map((c) => ({ name: c.name, fit: c.fit, note: c.dynamic, detail: c.quirk, picked: c.picked }))} why={b.supportingCast.whyWon} gatedBy={b.gatedBy} />
+          </div>
+          <div style={{ border: `2px solid ${forest}`, background: shade, padding: "9px 12px", marginBottom: 16, fontSize: 12, color: ink, lineHeight: 1.5 }}>
+            <span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".05em", color: forest }}>SUPPORTING</span> <b>{b.supportingCast.winner}</b>
+            {b.supportingCast.dynamic && <div style={{ fontSize: 11, color: soft, marginTop: 3 }}><span style={{ color: margin }}>dynamic with the focal:</span> {b.supportingCast.dynamic}</div>}
+            {b.supportingCast.quirk && <div style={{ fontSize: 10.5, color: soft, marginTop: 2, fontStyle: "italic" }}>↳ quirk: {b.supportingCast.quirk}</div>}
+          </div>
         </>
       )}
       <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 3 }}>▸ THE PALETTE — {b.label}, dialed cozy → intense</div>
