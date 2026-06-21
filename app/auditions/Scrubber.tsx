@@ -681,7 +681,7 @@ export function BranchLinks({ campaign, branches, active }: { campaign: string; 
 }
 
 // THE WEATHER-MOMENT BRANCH — one scene honed: its palette (dialed cozy→intense), the tone dial, the cast.
-export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; gatedBy?: string; paletteUI?: { prompts?: { objects?: string[]; characters?: string[]; items?: string[] }; prose?: { objectSeeds?: { dominant?: string[]; accent?: string[] }; diction?: { cool?: string[]; warm?: string[] }; rule?: string } } };
+export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; arc?: { winner: string; whyWon?: string; candidates: { arc: string; floor?: string; floor_note?: string; yield?: string; picked?: boolean }[]; variance?: string[] }; checkpoints?: { begin: string; middle: { type: string; turn: string; alt?: string }; end: string }; between?: { span: string; grows?: string; relationship?: string }[]; gatedBy?: string; paletteUI?: { prompts?: { objects?: string[]; characters?: string[]; items?: string[] }; prose?: { objectSeeds?: { dominant?: string[]; accent?: string[] }; diction?: { cool?: string[]; warm?: string[] }; rule?: string } } };
 export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: string }) {
   const h = b.honing;
   return (
@@ -697,6 +697,40 @@ export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: str
           {h?.premiseHoned ? <div>{h.premiseHoned}</div> : <div>{b.premise}</div>}
           {b.premise && h?.premiseHoned && <div style={{ fontSize: 10, color: margin, fontStyle: "italic", marginTop: 5, borderTop: `1px solid ${soft}`, paddingTop: 5 }}>↩ from the hub (the range pick): {b.premise}</div>}
         </div>
+      )}
+      {b.arc && (
+        <>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginBottom: 6, flexWrap: "wrap" }}>
+            <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest }}>▸ THE STORY SKELETON — the arc + its checkpoints <span style={{ color: margin, fontWeight: 400, fontSize: 10 }}>(picked HERE via the winner rule)</span></div>
+            <AuditionPeek label="the arc" candidates={(b.arc.candidates ?? []).map((c) => ({ name: c.arc, fit: c.floor === "clear" ? "floor clear" : "soft-flag", note: c.yield, detail: c.floor_note, picked: c.picked }))} why={b.arc.whyWon} gatedBy={b.gatedBy} />
+          </div>
+          <div style={{ border: `2px solid ${forest}`, background: shade, padding: "9px 12px", marginBottom: 8, fontSize: 12.5, color: ink, lineHeight: 1.5 }}>
+            <span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".05em", color: forest }}>ARC</span> <b style={{ textTransform: "capitalize" }}>{b.arc.winner}</b>
+            {b.arc.whyWon && <div style={{ fontSize: 10.5, color: soft, marginTop: 3, lineHeight: 1.5 }}>↳ why it won: {b.arc.whyWon}</div>}
+            {b.arc.variance && b.arc.variance.length > 0 && <div style={{ fontSize: 9.5, color: amber, marginTop: 4, borderLeft: `2px solid ${amber}`, paddingLeft: 7, lineHeight: 1.45 }}>⚑ variance (soft-constraint appeal): {b.arc.variance.join(" · ")}</div>}
+          </div>
+          {b.checkpoints && (
+            <div className="aud-grid3" style={{ display: "grid", gap: 8, marginBottom: 6 }}>
+              {([["BEGIN", b.checkpoints.begin, undefined], ["MIDDLE", b.checkpoints.middle?.turn, b.checkpoints.middle?.type], ["END", b.checkpoints.end, undefined]] as const).map(([k, text, type]) => (
+                <div key={k} style={{ border: `1.5px solid var(--ink-soft)`, background: paper, padding: "8px 11px" }}>
+                  <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".07em", color: forest, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 5 }}>{k}{type && <span style={{ fontSize: 8.5, fontWeight: 700, color: type === "environmental" ? forest : amber, border: `1px solid ${type === "environmental" ? forest : amber}`, borderRadius: 3, padding: "0 5px", letterSpacing: ".02em", whiteSpace: "nowrap" }}>{type === "environmental" ? "🌦 weather" : "◐ internal"}</span>}</div>
+                  <div style={{ fontSize: 11.5, color: ink, marginTop: 3, lineHeight: 1.45 }}>{text}</div>
+                </div>
+              ))}
+            </div>
+          )}
+          {b.checkpoints?.middle?.alt && <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginBottom: 8, paddingLeft: 2 }}>↳ turning-point alt considered ({b.checkpoints.middle.type === "environmental" ? "internal" : "environmental"}): {b.checkpoints.middle.alt}</div>}
+          {b.between && b.between.length > 0 && (
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 3 }}>↔ THE BETWEEN — the grows-with-you gaps <span style={{ color: margin, fontWeight: 400, fontStyle: "italic" }}>(what the content step fills)</span></div>
+              {b.between.map((sp, i) => (
+                <div key={i} style={{ borderLeft: `2px solid ${forest}`, paddingLeft: 9, marginTop: 5, fontSize: 11, color: ink, lineHeight: 1.5 }}>
+                  <b style={{ color: forest }}>{sp.span}</b>{sp.grows ? <> — <span style={{ color: margin }}>grows:</span> {sp.grows}</> : null}{sp.relationship ? <> <span style={{ color: margin }}>· bond:</span> {sp.relationship}</> : null}
+                </div>
+              ))}
+            </div>
+          )}
+        </>
       )}
       {h?.castPick && (
         <>

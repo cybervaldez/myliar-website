@@ -1032,7 +1032,49 @@
        "whyWon": "Best captures the initial 'calm/open' arc point with its explicit warmth and sense of release.",
        "runnerUp": "s1c2",
        "runnerUpGem": "The accent color provided a beautiful, gentle contrast that felt more unique."
-      }
+      },
+      "arc": {
+       "candidates": [
+        {
+         "arc": "the ritual arrival",
+         "floor": "clear",
+         "floor_note": "Fits the cozy tone but is less focused on the individual's relationship with the space itself.",
+         "yield": "Establishes group identity through shared habit, with clear sockets for the arriving ensemble.",
+         "picked": false
+        },
+        {
+         "arc": "the shed skin",
+         "floor": "clear",
+         "floor_note": "Perfectly aligns with the premise of the chair as a place to unload the day's anxieties.",
+         "yield": "A powerful grows-with-you beat about self-regulation and the autonomy to leave a 'performance self' at the door.",
+         "picked": true
+        }
+       ],
+       "winner": "the shed skin",
+       "why_won": "Wins on forward-yield for its clear, resonant journey of self-care and autonomy.",
+       "variance": []
+      },
+      "checkpoints": {
+       "begin": "The Caretaker watches the empty chair by the window, seeing it not as a void but as a place to unload the day.",
+       "middle": {
+        "type": "internal",
+        "turn": "They recall the visible shift in a student's posture the first time they truly let the day fall away in that chair.",
+        "alt": "The setting sun hits the chair just so, making the dust motes dance and sanctifying the space for a moment."
+       },
+       "end": "The Caretaker feels a quiet satisfaction in maintaining this space, a silent witness to these small, vital transformations."
+      },
+      "between": [
+       {
+        "span": "begin → middle",
+        "grows": "Recognizing the room as a tool for self-regulation, not just a physical space.",
+        "relationship": "The Caretaker's bond with the purpose of the room deepens through observation."
+       },
+       {
+        "span": "middle → end",
+        "grows": "Internalizing the permission to not perform, solidifying the room's core value.",
+        "relationship": "The Caretaker solidifies their role as a guardian of this feeling, not just a keeper of the room."
+       }
+      ]
      },
      "the-room-fills": {
       "castPick": "Dee — as the group's established anchor, her role as 'participant' in a 'gentle-task' is a proactive, not passive, act of welcome.",
@@ -1171,7 +1213,58 @@
        "whyWon": "Its use of deepening shadows best represents the 'build' phase of the arc, creating anticipation.",
        "runnerUp": "s2c2",
        "runnerUpGem": "The 'Worn Leather' base colors felt incredibly grounded and established the 'found-family' space."
-      }
+      },
+      "arc": {
+       "candidates": [
+        {
+         "arc": "the inside joke",
+         "floor": "clear",
+         "floor_note": "Risks feeling exclusionary if not handled carefully, but fits the established-group vibe.",
+         "yield": "Reinforces existing bonds but offers less opportunity for new growth or inclusion.",
+         "picked": false
+        },
+        {
+         "arc": "the clumsy invitation",
+         "floor": "soft-flag",
+         "floor_note": "The idea of a 'clumsy' invitation conflicts with the premise's 'wordless' and elegant gesture.",
+         "yield": "A resonant beat about social courage, with sockets for the inviter and invitee.",
+         "picked": false
+        },
+        {
+         "arc": "the shared project",
+         "floor": "clear",
+         "floor_note": "Flows directly and elegantly from the premise of the basket of pens.",
+         "yield": "A strong grows-with-you moment about belonging through parallel action, not just conversation, with perfect sockets for the whole group.",
+         "picked": true
+        }
+       ],
+       "winner": "the shared project",
+       "why_won": "Wins on forward-yield for its elegant alignment with the premise and a strong grows-with-you beat.",
+       "variance": [
+        "«the clumsy invitation» flagged for conflicting with the premise's mood, though the emotional core is strong."
+       ]
+      },
+      "checkpoints": {
+       "begin": "Dee wordlessly offers a basket of fineliner pens to the table, an invitation to create without the pressure to talk.",
+       "middle": {
+        "type": "environmental",
+        "turn": "Wren, who had been closed off, hesitantly pulls a specific color from the basket and uncaps it.",
+        "alt": "Dee remembers her own first day, how someone's simple offer of a shared snack made the whole room feel safe."
+       },
+       "end": "A comfortable quiet settles as several students begin to draw, the soft scratching of pens filling the silence."
+      },
+      "between": [
+       {
+        "span": "begin → middle",
+        "grows": "Learning that contribution can be non-verbal and still valuable.",
+        "relationship": "Dee offers a low-stakes invitation; Wren tests its sincerity by considering it."
+       },
+       {
+        "span": "middle → end",
+        "grows": "Discovering the comfort and connection of parallel activity and shared focus.",
+        "relationship": "The group's focus coalesces on the shared task, creating a temporary, unified identity without a word."
+       }
+      ]
      },
      "a-rough-one": {
       "castPick": "Theo — using the 'mask-wearer' as the 'witness' creates a powerful internal conflict, as he sees a vulnerability he fears in himself being met with acceptance, not judgment.",
@@ -1310,7 +1403,56 @@
        "whyWon": "The 'Rainy Window' metaphor is perfect for YA drama—intense but grounded in a familiar, safe melancholy.",
        "runnerUp": "s3c2",
        "runnerUpGem": "Its near-black intensity was unparalleled in conveying pure emotional weight without distraction."
-      }
+      },
+      "arc": {
+       "candidates": [
+        {
+         "arc": "the gentle deflection",
+         "floor": "clear",
+         "floor_note": "Perfectly matches the premise of Dee's quiet gesture protecting another student's vulnerability.",
+         "yield": "A powerful turn for Theo, learning that care can be quiet and that not every silence needs to be filled.",
+         "picked": true
+        },
+        {
+         "arc": "the borrowed courage",
+         "floor": "clear",
+         "floor_note": "Does not align with the premise, which is about offering comfort, not enabling a specific action.",
+         "yield": "A strong potential arc, but not supported by the witnessed gesture of a mug of tea.",
+         "picked": false
+        },
+        {
+         "arc": "the honest complaint",
+         "floor": "clear",
+         "floor_note": "Does not align with the premise, as the student in distress is silent, not complaining.",
+         "yield": "Focuses on verbal validation, whereas the premise is about non-verbal support.",
+         "picked": false
+        }
+       ],
+       "winner": "the gentle deflection",
+       "why_won": "Wins on forward-yield, as it perfectly matches the premise and offers a powerful character turn.",
+       "variance": []
+      },
+      "checkpoints": {
+       "begin": "Theo, mid-joke, sees a student slump into a chair, and he watches Dee slide a mug of tea towards them without a word.",
+       "middle": {
+        "type": "internal",
+        "turn": "The joke dies on Theo's lips as he realizes his loud, performative energy would have been an intrusion, not a comfort.",
+        "alt": "The heavy rain against the window suddenly seems to match the room's subdued mood, validating the quiet."
+       },
+       "end": "Theo falls silent, not out of awkwardness, but out of a newfound respect for holding quiet space for someone else."
+      },
+      "between": [
+       {
+        "span": "begin → middle",
+        "grows": "Learning to read the room and recognize different, quieter forms of care.",
+        "relationship": "Theo witnesses a form of care from Dee that is alien to his own social style."
+       },
+       {
+        "span": "middle → end",
+        "grows": "Gaining the autonomy to choose silence over performance as a valid, even superior, social contribution.",
+        "relationship": "Theo's perception of Dee shifts from a quiet peer to someone socially adept in a way he isn't."
+       }
+      ]
      },
      "it-settles": {
       "castPick": "Wren — as the quietest member, making her the 'recipient-of-care' through 'shared-silence' validates her way of being and demonstrates that support doesn't require words.",
@@ -1449,7 +1591,56 @@
        "whyWon": "The warm accent in the cool base perfectly captures resolution and lingering connection, not just emptiness.",
        "runnerUp": "s4c1",
        "runnerUpGem": "Its pure, cool desaturation was the most direct visual representation of 'settling'."
-      }
+      },
+      "arc": {
+       "candidates": [
+        {
+         "arc": "the quiet alignment",
+         "floor": "clear",
+         "floor_note": "This is a perfect description of the premise in action.",
+         "yield": "The core 'kept, not chosen' theme enacted: learning one's presence is enough, without any need to perform.",
+         "picked": true
+        },
+        {
+         "arc": "the offered comfort",
+         "floor": "clear",
+         "floor_note": "Contradicts the premise, where the comfort comes from the *lack* of an explicit gesture.",
+         "yield": "An arc about receiving direct care, while the premise is about the grace of indirect care (being left alone).",
+         "picked": false
+        },
+        {
+         "arc": "the shared discovery",
+         "floor": "clear",
+         "floor_note": "Contradicts the premise, which is about the grace of non-engagement, not active engagement.",
+         "yield": "Focuses on active bonding, while the premise celebrates passive, ambient belonging.",
+         "picked": false
+        }
+       ],
+       "winner": "the quiet alignment",
+       "why_won": "Wins on forward-yield; it is a perfect thematic and narrative match for the premise.",
+       "variance": []
+      },
+      "checkpoints": {
+       "begin": "Shoulders hunched and headphones on, Wren sits apart, bracing for the inevitable questions about what's wrong.",
+       "middle": {
+        "type": "environmental",
+        "turn": "Several minutes pass, and the only sounds are the soft scratch of Theo's pencil and the rustle of a page.",
+        "alt": "Wren realizes the knot in her stomach is gone, replaced by the simple feeling of being in a room with people."
+       },
+       "end": "Wren slowly pulls one headphone off, letting the quiet, ambient sounds of the room in as her held breath releases."
+      },
+      "between": [
+       {
+        "span": "begin → middle",
+        "grows": "Learning that you can bring your authentic, messy self into a space and still be accepted.",
+        "relationship": "Wren tests the group's promise of safety by being visibly withdrawn and is met with gentle space."
+       },
+       {
+        "span": "middle → end",
+        "grows": "Gaining the autonomy to choose when and how to re-engage after a period of quiet retreat.",
+        "relationship": "The group (personified by Theo's quiet work) passes the test, deepening Wren's trust in the space."
+       }
+      ]
      },
      "the-walk-out": {
       "castPick": "The Caretaker — bookending the sequence with them as a 'reflector' reinforces the room's stability; their 'ritual-gesture' is the physical embodiment of the space's promise to return.",
@@ -1588,7 +1779,56 @@
        "whyWon": "Its blend of urban grey with the hopeful pink accent feels most authentic to the YA genre's world.",
        "runnerUp": "s5c1",
        "runnerUpGem": "The 'Dawn's Promise' palette had a more potent, unambiguous feeling of emotional optimism."
-      }
+      },
+      "arc": {
+       "candidates": [
+        {
+         "arc": "the hopeful projection",
+         "floor": "clear",
+         "floor_note": "Does not fit the premise's quiet, reflective action after everyone has left.",
+         "yield": "An arc about future plans, which is misaligned with the Caretaker's role as a present-moment guardian.",
+         "picked": false
+        },
+        {
+         "arc": "the small endowment",
+         "floor": "clear",
+         "floor_note": "Reverses the roles in the premise; the Caretaker is preserving something, not receiving a token.",
+         "yield": "Focuses on being equipped for the outside, while the premise is about valuing what happened inside.",
+         "picked": false
+        },
+        {
+         "arc": "the acknowledged change",
+         "floor": "clear",
+         "floor_note": "Perfectly fits the Caretaker's gesture of finding and preserving the drawing as evidence of growth.",
+         "yield": "A reflective grows-with-you beat about recognizing and validating subtle progress in others, with a clear socket for the artist.",
+         "picked": true
+        }
+       ],
+       "winner": "the acknowledged change",
+       "why_won": "Wins on forward-yield, as it's the only arc that aligns with the premise's quiet, reflective gesture.",
+       "variance": []
+      },
+      "checkpoints": {
+       "begin": "After the last goodbye, the Caretaker finds a half-finished drawing left on the table, a tangible remnant of the evening.",
+       "middle": {
+        "type": "internal",
+        "turn": "The Caretaker recognizes the artist's style and sees a confidence in the lines that wasn't there weeks ago.",
+        "alt": "A gust of wind from the open window flutters the paper, creating an immediate, gentle urgency to protect it."
+       },
+       "end": "They place a small, smooth stone on its corner, a quiet promise that this work, and its creator, are being held."
+      },
+      "between": [
+       {
+        "span": "begin → middle",
+        "grows": "Learning to see and value evidence of growth in small, everyday artifacts.",
+        "relationship": "The Caretaker reflects on the subtle changes they've witnessed in the students over time."
+       },
+       {
+        "span": "middle → end",
+        "grows": "Taking an active, autonomous role in preserving and validating another person's progress.",
+        "relationship": "The Caretaker's bond with the students is expressed through a protective gesture that will be received tomorrow."
+       }
+      ]
      }
     },
     "paletteUI": {

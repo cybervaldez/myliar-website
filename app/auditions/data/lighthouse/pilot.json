@@ -1001,7 +1001,58 @@
        "whyWon": "Its unique, poignant accent color directly honors the premise, setting a perfect elegiac tone from the start.",
        "runnerUp": "1a",
        "runnerUpGem": "The unambiguous warmth and classicism of its brass accent on dark wood."
-      }
+      },
+      "arc": {
+       "candidates": [
+        {
+         "arc": "the quiet inheritance",
+         "floor": "clear",
+         "floor_note": "Directly engages the premise and fits the elegiac tone of restraint.",
+         "yield": "High yield; the player defines their relationship to a legacy, creating a strong socket for the Keeper-before.",
+         "picked": true
+        },
+        {
+         "arc": "the humble dedication",
+         "floor": "soft-flag",
+         "floor_note": "Shifts focus from the found object to the player's internal state, a slight variance from the premise's focus.",
+         "yield": "Good for player autonomy but weakens the connection to the Keeper-before, making the premise a mere trigger.",
+         "picked": false
+        },
+        {
+         "arc": "the deciphered trace",
+         "floor": "clear",
+         "floor_note": "Fits the premise, but risks violating the 'no sprawl' design pillar.",
+         "yield": "Suggests a puzzle or investigation, which favors 'most content' over 'best content' and an intellectual over emotional journey.",
+         "picked": false
+        }
+       ],
+       "winner": "the quiet inheritance",
+       "why_won": "Won on forward-yield; its emotional journey is the most resonant with the premise and best establishes the Keeper-before.",
+       "variance": [
+        "«the humble dedication» was flagged for shifting the focus away from the found narrative of the premise, though it remains a valid emotional beat."
+       ]
+      },
+      "checkpoints": {
+       "begin": "You open the logbook to a clean page and find a pressed violet, a silent welcome from the keeper before you.",
+       "middle": {
+        "type": "internal",
+        "turn": "A quiet realization that this is not just a job, but a role passed from one solitary soul to another.",
+        "alt": "The lamplight catches the violet's faded color, making it seem almost alive for a moment."
+       },
+       "end": "You close the logbook over the flower, accepting the unspoken connection and your place in the long watch."
+      },
+      "between": [
+       {
+        "span": "begin → middle",
+        "grows": "The player's autonomy in interpreting the meaning of this anonymous, intimate gift.",
+        "relationship": "Establishing the Keeper-before as a felt, gentle presence rather than a historical footnote."
+       },
+       {
+        "span": "middle → end",
+        "grows": "The player's choice to consciously accept this inherited role, defining the start of their own vigil.",
+        "relationship": "Solidifying the bond with the Light as the shared object of devotion connecting the player to their predecessor."
+       }
+      ]
      },
      "the-dark-settles": {
       "castPick": "the Light — as the storm rises, the lamp becomes the focal point of all action, and the player's role as its steward is defined by calm, competent care against the chaos.",
@@ -1140,7 +1191,58 @@
        "whyWon": "The 'Iron Sky' concept is the most literary and restrained, perfectly fitting the elegiac tone over more common storm palettes.",
        "runnerUp": "2b",
        "runnerUpGem": "Its deep teal base evokes a specific, churning sea that feels authentic to the North Atlantic setting."
-      }
+      },
+      "arc": {
+       "candidates": [
+        {
+         "arc": "the measured defense",
+         "floor": "soft-flag",
+         "floor_note": "Risks contradicting the 'not with alarm' premise by introducing anxiety, even if managed.",
+         "yield": "A strong internal arc, but it decenters the focal cast member (the Light) in favor of the self.",
+         "picked": false
+        },
+        {
+         "arc": "the chosen anchor",
+         "floor": "clear",
+         "floor_note": "Perfectly aligns with the premise of 'practiced purpose' as a 'quiet rebuttal'.",
+         "yield": "High yield; the player actively defines their anchor through the act of stewardship, bonding them to the Light.",
+         "picked": true
+        },
+        {
+         "arc": "the grateful shelter",
+         "floor": "clear",
+         "floor_note": "Aligns well with the cozy tone and sense of safety.",
+         "yield": "High yield, but emotionally more passive; focuses on receiving safety rather than actively creating stability.",
+         "picked": false
+        }
+       ],
+       "winner": "the chosen anchor",
+       "why_won": "Won on forward-yield; its active, intentional journey of stewardship best reflects the premise of a 'quiet rebuttal'.",
+       "variance": [
+        "«the measured defense» was flagged for potentially introducing a tone of alarm, which is contrary to the safety floor."
+       ]
+      },
+      "checkpoints": {
+       "begin": "As the radio warns of a storm and the wind rises, you begin your practiced ritual of tending to the lamp.",
+       "middle": {
+        "type": "environmental",
+        "turn": "A powerful gust of wind rattles the lantern room glass, a physical test of the shelter you maintain.",
+        "alt": "A flicker of a memory of a different storm, a past anxiety, rises unbidden and is calmly set aside."
+       },
+       "end": "With the lamp burning steadily, you feel its warmth not just as light, but as the physical form of your resolve."
+      },
+      "between": [
+       {
+        "span": "begin → middle",
+        "grows": "The player's competence in performing the stewardship tasks, finding their own grounding rhythm.",
+        "relationship": "Deepening the bond with the Light as a partner in holding steady against the turmoil."
+       },
+       {
+        "span": "middle → end",
+        "grows": "The player's choice of what specific thought or truth serves as their anchor, personalizing their source of strength.",
+        "relationship": "The Light transforms from a machine being tended to a symbol of the player's own inner fortitude."
+       }
+      ]
      },
      "the-fog-comes-in": {
       "castPick": "the Light — with its beam swallowed by the fog, the lamp's function turns inward, becoming a metronome for the keeper's own consciousness in the void.",
@@ -1279,7 +1381,56 @@
        "whyWon": "It reframes the 'void' as an intimate, enclosing warmth, a complex and poignant take that serves the theme of 'solitude as fullness'.",
        "runnerUp": "3b",
        "runnerUpGem": "The 'wet slate' atmosphere and unique phosphorescent accent are incredibly evocative of a cold, coastal fog."
-      }
+      },
+      "arc": {
+       "candidates": [
+        {
+         "arc": "the deep listening",
+         "floor": "clear",
+         "floor_note": "Directly addresses the sensory deprivation of the premise by turning focus inward.",
+         "yield": "High yield; allows the player to autonomously discover what rises from their own internal silence.",
+         "picked": true
+        },
+        {
+         "arc": "the witnessed self",
+         "floor": "clear",
+         "floor_note": "A strong thematic fit for the solitude and self-observation in the premise.",
+         "yield": "High yield; focuses on a mature, resonant beat of non-judgmental self-acceptance.",
+         "picked": false
+        },
+        {
+         "arc": "the resonant pulse",
+         "floor": "clear",
+         "floor_note": "Connects the internal state directly to the physical presence of the Light.",
+         "yield": "High yield; forges a powerful bond with the Light as a physical, rhythmic presence, like a heartbeat.",
+         "picked": false
+        }
+       ],
+       "winner": "the deep listening",
+       "why_won": "Won on a range tie-break; its focus on what rises from silence is the most direct and distinct response to the premise of an erased world.",
+       "variance": []
+      },
+      "checkpoints": {
+       "begin": "The fog becomes absolute, silencing the world and turning the lamp's beam into a soft, rhythmic pulse within the room.",
+       "middle": {
+        "type": "internal",
+        "turn": "In the profound quiet, a specific, long-unheard inner voice—a memory, a feeling, a question—becomes clear.",
+        "alt": "The rhythmic sweep of light and shadow across a familiar object in the room suddenly makes it seem unfamiliar."
+       },
+       "end": "You are left sitting with this newfound internal clarity, feeling present with yourself in the muffled stillness."
+      },
+      "between": [
+       {
+        "span": "begin → middle",
+        "grows": "The player's growing comfort with unstructured silence, allowing their own thoughts to surface without prompting.",
+        "relationship": "The Light's role shifts from a functional beacon to a quiet, rhythmic companion for introspection."
+       },
+       {
+        "span": "middle → end",
+        "grows": "The player's autonomy in deciding how to hold or respond to what they have 'heard' in the silence.",
+        "relationship": "The player and the Light share a secret intimacy, alone together in the enclosed, foggy world."
+       }
+      ]
      },
      "the-fog-thins": {
       "castPick": "the Voice — the distant light acts as a silent 'voice,' a visual affirmation of another's presence, fulfilling the same need for connection as the radio.",
@@ -1418,7 +1569,56 @@
        "whyWon": "The amethyst hue is the most emotionally specific and memorable choice, elevating a weather change into a quiet revelation.",
        "runnerUp": "4c",
        "runnerUpGem": "Its 'washed slate' clarity provides a powerful and satisfying sensory contrast to the previous scene's muffled fog."
-      }
+      },
+      "arc": {
+       "candidates": [
+        {
+         "arc": "the silent salute",
+         "floor": "clear",
+         "floor_note": "A simple, elegant response to the premise of seeing another light.",
+         "yield": "A beautiful but emotionally thin moment; the connection is fleeting rather than perspective-shifting.",
+         "picked": false
+        },
+        {
+         "arc": "the mapped constellation",
+         "floor": "clear",
+         "floor_note": "Expands the premise from a single connection to a wider context.",
+         "yield": "Highest yield; reframes solitude into solidarity, creating a persistent, world-expanding change in perspective.",
+         "picked": true
+        },
+        {
+         "arc": "the mirror held up",
+         "floor": "clear",
+         "floor_note": "A powerful, affirming interpretation of the reciprocal gaze.",
+         "yield": "High yield, but focuses on individual validation rather than communal connection, offering less forward-yield.",
+         "picked": false
+        }
+       ],
+       "winner": "the mapped constellation",
+       "why_won": "Won on forward-yield; its perspective-shifting journey from solitude to solidarity offers the most resonant and lasting growth.",
+       "variance": []
+      },
+      "checkpoints": {
+       "begin": "As the fog shreds, a familiar, pulsing light emerges from the haze—another lighthouse, keeping its own watch.",
+       "middle": {
+        "type": "environmental",
+        "turn": "The distant beam sweeps across your own tower, a silent acknowledgment that you are seen in return.",
+        "alt": "The thought surfaces: how many other lights are out there, unseen, forming a chain across the dark water?"
+       },
+       "end": "You feel your own small light not as an isolated point, but as one star in a vast, unseen constellation of care."
+      },
+      "between": [
+       {
+        "span": "begin → middle",
+        "grows": "The player's shift in self-perception from being isolated to being part of a pair.",
+        "relationship": "Establishing the Voice (the other keeper) as a tangible, real peer, ending profound isolation."
+       },
+       {
+        "span": "middle → end",
+        "grows": "The player's autonomy in imagining the scale and nature of this wider, unseen network of care.",
+        "relationship": "Expanding the connection from one peer to an entire unseen fellowship, deepening the meaning of the vigil."
+       }
+      ]
      },
      "first-light": {
       "castPick": "the Visitor — the rising sun acts as the ultimate, daily visitor, arriving to relieve the lamp of its duty and reconnect the tower to the larger world.",
@@ -1557,7 +1757,56 @@
        "whyWon": "It provides the strongest narrative closure by thematically connecting the sun's light with the lamp's brass, honoring the vigil.",
        "runnerUp": "5c",
        "runnerUpGem": "Its unexpected and elegant pairing of lavender-grey and pale gold is beautifully restrained and memorable."
-      }
+      },
+      "arc": {
+       "candidates": [
+        {
+         "arc": "the forged link",
+         "floor": "clear",
+         "floor_note": "Directly engages with the premise of adding to the logbook's historical chain.",
+         "yield": "High yield; the player defines their historical contribution, connecting to past and future keepers.",
+         "picked": false
+        },
+        {
+         "arc": "the quiet testament",
+         "floor": "clear",
+         "floor_note": "A more nuanced and emotionally deeper version of 'forged link'.",
+         "yield": "Highest yield; focuses on leaving an intimate emotional legacy, creating the strongest sockets for the Keeper-before and Visitor.",
+         "picked": true
+        },
+        {
+         "arc": "the earned peace",
+         "floor": "clear",
+         "floor_note": "A valid and satisfying emotional beat for the end of the watch.",
+         "yield": "Medium yield; the feeling is emotionally static and has the weakest connection to the ensemble cast and legacy themes.",
+         "picked": false
+        }
+       ],
+       "winner": "the quiet testament",
+       "why_won": "Won on forward-yield; it offers the most profound grows-with-you moment by focusing on emotional, not just historical, legacy.",
+       "variance": []
+      },
+      "checkpoints": {
+       "begin": "In the first grey light of dawn, you perform the ritual of extinguishing the lamp and open the logbook to record the night.",
+       "middle": {
+        "type": "internal",
+        "turn": "You decide not to record the weather or ships seen, but to find words for the night's essential feeling.",
+        "alt": "The sun catches the brass of the cooled lamp, a silent, warm handover from one watch to the next."
+       },
+       "end": "Pen resting on the page, you leave a trace of your inner world for the next keeper, a gift of quiet companionship."
+      },
+      "between": [
+       {
+        "span": "begin → middle",
+        "grows": "The player's autonomy to move beyond rote duty (recording facts) to meaningful, personal expression.",
+        "relationship": "Reflecting on the Keeper-before's entries, understanding the person behind the script."
+       },
+       {
+        "span": "middle → end",
+        "grows": "The player's choice of the specific feeling or insight to leave behind, defining their personal legacy.",
+        "relationship": "Establishing a bond with the future Visitor (the next keeper) through this intimate, asynchronous communication."
+       }
+      ]
      }
     },
     "paletteUI": {

@@ -1112,7 +1112,49 @@
        "whyWon": "The brass accent provides a strong, tangible point of warmth that grounds the world and the 'cozy night-ferry' genre promise immediately.",
        "runnerUp": "B",
        "runnerUpGem": "Its unique verdigris/seafoam identity perfectly captures the restrained, low-arousal mood of the iyashikei lens."
-      }
+      },
+      "arc": {
+       "candidates": [
+        {
+         "arc": "the quiet arrival",
+         "floor": "clear",
+         "floor_note": "Fits the observational role and burnout theme.",
+         "yield": "Establishes the player as a witness, but is more passive than its alternative.",
+         "picked": false
+        },
+        {
+         "arc": "the shared silence",
+         "floor": "clear",
+         "floor_note": "A classic iyashikei beat that valorizes non-verbal presence.",
+         "yield": "Immediately establishes the core 'grows-with-you' loop where presence, not performance, deepens the bond.",
+         "picked": true
+        }
+       ],
+       "winner": "the shared silence",
+       "why_won": "It has a stronger forward-yield, establishing the core non-verbal bond and 'grows-with-you' dynamic from the start.",
+       "variance": []
+      },
+      "checkpoints": {
+       "begin": "On the quiet deck, the player finds a spot near the Manifest-keeper, both watching the moon's reflection on the still water.",
+       "middle": {
+        "type": "internal",
+        "turn": "The player notices their own internal pressure to speak fade, replaced by a deep sense of ease in the mutual quiet.",
+        "alt": "The Manifest-keeper makes a small, non-verbal gesture of acknowledgement, like a slow nod, that deepens the shared moment."
+       },
+       "end": "The moment concludes naturally, leaving the player with a feeling of being seen and accepted without having to perform."
+      },
+      "between": [
+       {
+        "span": "begin → middle",
+        "grows": "The player's autonomy is expressed by choosing to sit, and the bond grows as they realize their presence is enough.",
+        "relationship": "Establishing a baseline of comfortable, non-demanding co-existence."
+       },
+       {
+        "span": "middle → end",
+        "grows": "The player's autonomy solidifies in accepting the silence, and the bond deepens into a shared, unspoken understanding.",
+        "relationship": "Moving from co-existence to a nascent, quiet companionship."
+       }
+      ]
      },
      "rising-wind": {
       "castPick": "The Pilot — their steady, cool competence is the focus, reassuring the player not with words but with small, expert actions that meet the rising sea.",
@@ -1251,7 +1293,56 @@
        "whyWon": "The iron grey-blue provides the best tonal transition from 'calm water', adding weight and seriousness without losing the core tranquility.",
        "runnerUp": "C",
        "runnerUpGem": "The deep moss green is a beautifully unexpected and characterful choice that feels very grounded and natural."
-      }
+      },
+      "arc": {
+       "candidates": [
+        {
+         "arc": "the remembered burden",
+         "floor": "clear",
+         "floor_note": "Fits the witness role and themes of carried weight.",
+         "yield": "A resonant moment of empathy, but the player's role is less active.",
+         "picked": false
+        },
+        {
+         "arc": "the fragile request",
+         "floor": "clear",
+         "floor_note": "Directly engages with the anti-dependency theme.",
+         "yield": "Powerfully links growing autonomy (the vulnerability of asking for help) to the deepening of a bond.",
+         "picked": true
+        },
+        {
+         "arc": "the first confession",
+         "floor": "clear",
+         "floor_note": "A powerful, indirect expression of emotion that fits the iyashikei lens.",
+         "yield": "A strong beat of privileged witness, but the interaction is with the environment, not the player.",
+         "picked": false
+        }
+       ],
+       "winner": "the fragile request",
+       "why_won": "It has the strongest forward-yield, directly linking a passenger's growing autonomy (the vulnerability of asking) to a deepening bond.",
+       "variance": []
+      },
+      "checkpoints": {
+       "begin": "From the wheelhouse doorway, the player watches the Pilot's steady hands as the wind rises, feeling a sense of calm competence.",
+       "middle": {
+        "type": "internal",
+        "turn": "A fellow passenger, braced against the doorway, turns to the player and haltingly asks for a small favor.",
+        "alt": "The rising wind blows a passenger's scarf away, and their quiet, helpless look toward the player is the request itself."
+       },
+       "end": "The request is met with simple, gentle action, and the passenger offers a look of profound, quiet gratitude."
+      },
+      "between": [
+       {
+        "span": "begin → middle",
+        "grows": "Player's autonomy is in observing and feeling grounded by the Pilot; the bond is pre-emptively built on the feeling of safety the crew provides.",
+        "relationship": "Moving from observing competence to being seen as a source of potential support."
+       },
+       {
+        "span": "middle → end",
+        "grows": "The player's autonomy is enacted by fulfilling the request; the bond deepens through the shared vulnerability and mutual trust.",
+        "relationship": "Solidifying the player's role as a safe, supportive presence within the passenger community."
+       }
+      ]
      },
      "the-storm": {
       "castPick": "The Deckhand — their role as a grounding, warm presence is essential here, transforming a potentially terrifying moment into an experience of being held and supported.",
@@ -1390,7 +1481,58 @@
        "whyWon": "The phosphor green accent is the most unique and tonally aligned with the iyashikei/age-prior, suggesting old, dependable technology that supports without alarm.",
        "runnerUp": "A",
        "runnerUpGem": "Its cool blue accent on near-black is incredibly effective at creating a sense of deep, focused calm."
-      }
+      },
+      "arc": {
+       "candidates": [
+        {
+         "arc": "the vigil",
+         "floor": "clear",
+         "floor_note": "Epitomizes 'surrender as support' by making silent presence the core action.",
+         "yield": "A profound 'grows-with-you' beat where the player's autonomy is expressed through restraint and holding space.",
+         "picked": true
+        },
+        {
+         "arc": "the letting-go",
+         "floor": "soft-flag",
+         "floor_note": "Potentially conflicts with the premise of being safely below deck during a storm.",
+         "yield": "A powerful symbolic moment, but more solitary and less interactive for the player.",
+         "picked": false
+        },
+        {
+         "arc": "the unburdening",
+         "floor": "clear",
+         "floor_note": "A classic catharsis beat, requires careful handling to maintain a cozy tone.",
+         "yield": "A strong bonding moment of being trusted, but a more verbal approach than the game's established tone.",
+         "picked": false
+        }
+       ],
+       "winner": "the vigil",
+       "why_won": "It best fits the campaign's range, offering a powerful moment of non-verbal support that contrasts with the storm's chaos.",
+       "variance": [
+        "The 'letting-go' arc was flagged for a potential conflict with the premise's location (below deck), but could be viable if adapted (e.g., using a porthole)."
+       ]
+      },
+      "checkpoints": {
+       "begin": "Led by the Deckhand to a calmer space below deck, the player is given a brass compass and a cloth to polish, the simple rhythm a focus against the storm.",
+       "middle": {
+        "type": "environmental",
+        "turn": "As a particularly large wave hits, a nearby passenger lets out a choked sob, their composure finally breaking.",
+        "alt": "The Deckhand quietly indicates the distressed passenger with a glance, then returns to their own task, modeling non-intrusive presence."
+       },
+       "end": "The passenger's tears subside, and they give the player a look of deep, exhausted relief, the shared, silent presence having been a sufficient anchor."
+      },
+      "between": [
+       {
+        "span": "begin → middle",
+        "grows": "Player's autonomy is in accepting the grounding task; the bond with the Deckhand grows through this simple, shared ritual of calm.",
+        "relationship": "Establishing a pocket of safety and shared purpose amidst external chaos."
+       },
+       {
+        "span": "middle → end",
+        "grows": "Player's autonomy is demonstrated by *not* acting, by holding space instead of fixing; the bond with the other passenger is forged in profound, silent support.",
+        "relationship": "Deepening the player's role from companion to a true, unwavering anchor for others."
+       }
+      ]
      },
      "settling-sea": {
       "castPick": "The Cook — embodying homely warmth and restoration, their simple offer of shared work in the galley is the perfect ritual for marking the return to calm.",
@@ -1529,7 +1671,49 @@
        "whyWon": "The 'bruised sky' violet is a distinct and evocative hue that perfectly captures the feeling of relief mixed with the memory of intensity.",
        "runnerUp": "B",
        "runnerUpGem": "Its exceptional softness and muted heather tones are the purest expression of a low-arousal positive state."
-      }
+      },
+      "arc": {
+       "candidates": [
+        {
+         "arc": "the quiet mending",
+         "floor": "clear",
+         "floor_note": "Fits the shared-labor structure and recovery theme.",
+         "yield": "A good metaphor for recovery, but structurally similar to the 'gentle-task' of the previous scene.",
+         "picked": false
+        },
+        {
+         "arc": "the shared exhaustion",
+         "floor": "clear",
+         "floor_note": "A resonant, low-arousal positive moment that fits the iyashikei lens.",
+         "yield": "Directly connects the physical, shared labor of the premise to a powerful, non-verbal moment of human connection and mutual relief.",
+         "picked": true
+        }
+       ],
+       "winner": "the shared exhaustion",
+       "why_won": "It has a clearer emotional yield, directly connecting the shared physical task from the premise to a resonant human moment of connection.",
+       "variance": []
+      },
+      "checkpoints": {
+       "begin": "In the warm galley, the Cook wordlessly offers the player a knife and a cutting board, an invitation to join in preparing the post-storm meal.",
+       "middle": {
+        "type": "environmental",
+        "turn": "After a period of rhythmic, focused chopping, both the player and the Cook pause at the same moment, the shared silence filled with the weight of the night.",
+        "alt": "The Manifest-keeper enters, looking worn, and the Cook wordlessly hands them a warm drink, a gesture of care the player witnesses."
+       },
+       "end": "The Cook gives a small, weary smile of acknowledgement before resuming the task, the bond forged in shared effort and mutual understanding."
+      },
+      "between": [
+       {
+        "span": "begin → middle",
+        "grows": "Autonomy is in accepting the task and finding a rhythm; the bond with the Cook forms through non-verbal cooperation.",
+        "relationship": "Establishing a collaborative rhythm, a feeling of being useful without pressure."
+       },
+       {
+        "span": "middle → end",
+        "grows": "The player's autonomy is in recognizing and holding the emotional weight of the shared pause; the bond deepens into a shared experience of survival.",
+        "relationship": "Moving from collaborators to comrades who have weathered the same storm."
+       }
+      ]
      },
      "first-light": {
       "castPick": "The Manifest-keeper — having started as an observer of burdens, their final act as a celebrant of release brings their personal journey to a quiet, poignant close.",
@@ -1668,7 +1852,56 @@
        "whyWon": "The strong contrast between the soft peach and the dark charcoal base creates the most impactful and hopeful sense of 'renewal' to end the arc.",
        "runnerUp": "A",
        "runnerUpGem": "Its gentle rose-on-ash combination is the most subtle and poetic, perfectly fitting the restrained emotional expression of the genre."
-      }
+      },
+      "arc": {
+       "candidates": [
+        {
+         "arc": "the promise to the self",
+         "floor": "clear",
+         "floor_note": "A strong resolution beat showing character change.",
+         "yield": "A powerful payoff, but its verbal nature is less aligned with the game's established non-verbal language.",
+         "picked": false
+        },
+        {
+         "arc": "the handoff",
+         "floor": "clear",
+         "floor_note": "A classic, warm iyashikei goodbye gesture.",
+         "yield": "A tangible, non-verbal conclusion that rhymes with the premise's ritual and symbolizes carrying the journey's support forward.",
+         "picked": true
+        },
+        {
+         "arc": "the final glance",
+         "floor": "clear",
+         "floor_note": "A perfectly restrained and poignant final image.",
+         "yield": "A beautiful concluding moment, but less active and forward-looking than its alternative.",
+         "picked": false
+        }
+       ],
+       "winner": "the handoff",
+       "why_won": "It best fits the campaign's range and tone, providing a non-verbal, ritualistic conclusion that powerfully symbolizes the journey's lasting impact.",
+       "variance": []
+      },
+      "checkpoints": {
+       "begin": "At the stern in the first light, the player watches the Manifest-keeper gently release a small stone into the ship's wake.",
+       "middle": {
+        "type": "internal",
+        "turn": "The Manifest-keeper turns to the player, their face calm, and holds out a small, smooth, similar stone—an offering.",
+        "alt": "Another passenger, having completed their own quiet ritual, approaches the player to give them a small, handmade token of thanks."
+       },
+       "end": "The player accepts the token, a tangible piece of the journey to carry forward, a final, warm gesture of shared passage."
+      },
+      "between": [
+       {
+        "span": "begin → middle",
+        "grows": "The player's autonomy is in witnessing and understanding the ritual's meaning; the bond with the Manifest-keeper is at its peak.",
+        "relationship": "Moving from witnessing another's release to being invited into the closure."
+       },
+       {
+        "span": "middle → end",
+        "grows": "Autonomy is in accepting the gift and its meaning; the bond is solidified into a lasting memory, a support that continues after parting.",
+        "relationship": "Concluding the journey with a transfer of care, empowering the player for their own path ahead."
+       }
+      ]
      }
     },
     "coverage": {
