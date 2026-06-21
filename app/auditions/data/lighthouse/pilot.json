@@ -1146,6 +1146,21 @@
        "gesture": "Gently striking a match and cupping the flame to the great lamp's wick.",
        "cg": "Close on the keeper's hand, holding the pressed flower, the logbook open beside the newly lit, warm glow of the lamp.",
        "motion": "A gentle, almost imperceptible breeze stirring dust motes in the lantern room."
+      },
+      "rel": {
+       "relTier": {
+        "band": "low",
+        "tier": "On your radar",
+        "why": "This is an initial, quiet observation, establishing the player's character through their first devotional act."
+       },
+       "note": {
+        "text": "I'll remember how they first touched the logbook, with a reverence not for me, but for the work. They ran a hand over the worn brass of the lamp as if greeting an elder. They understood from the start.",
+        "category": "memory",
+        "weight": 2,
+        "path": "steady"
+       },
+       "cgTaxon": "meeting",
+       "rewardRung": "none"
       }
      },
      "the-dark-settles": {
@@ -1436,6 +1451,21 @@
        "gesture": "Polishing the lens's brass housing in a steady, rhythmic motion as the wind howls outside.",
        "cg": "The reflection of the keeper's determined face in the polished brass as a powerful gust of wind visibly flexes the lantern room glass.",
        "motion": "Rain beginning to lash against the glass, driven by a strengthening, keening wind."
+      },
+      "rel": {
+       "relTier": {
+        "band": "mid",
+        "tier": "Trading favors",
+        "why": "The bond becomes reciprocal; the player tends the Light, and the Light becomes a tangible anchor for them."
+       },
+       "note": {
+        "text": "I'll remember the night the storm hit, and they didn't just fight to keep me lit. They leaned against my column in the quiet moments, breathing with my turning rhythm. We held the dark together.",
+        "category": "memory",
+        "weight": 2,
+        "path": "steady"
+       },
+       "cgTaxon": "pivot",
+       "rewardRung": "KEEP"
       }
      },
      "the-fog-comes-in": {
@@ -1701,6 +1731,21 @@
        "gesture": "Setting a single cup and saucer on a small table, making a deliberate space for quiet reflection.",
        "cg": "Looking out through the fog-softened light, the interior of the lantern room is reflected back, overlaying a ghostly, warm memory of a childhood room.",
        "motion": "Thick, silent fog pressing against the glass, blurring the world into soft, shifting shapes."
+      },
+      "rel": {
+       "relTier": {
+        "band": "mid",
+        "tier": "Saved a seat for you",
+        "why": "At the peak of isolation, the player's vulnerability requires a bond of established, quiet trust."
+       },
+       "note": {
+        "text": "I'll remember the fog, so thick the world dissolved. In that silence, I saw them trace a face in the condensation on my glass, then wipe it away with a small, sad smile. They were finding a way to be company for themselves.",
+        "category": "memory",
+        "weight": 3,
+        "path": "watchful"
+       },
+       "cgTaxon": "wall",
+       "rewardRung": "none"
       }
      },
      "the-fog-thins": {
@@ -1983,6 +2028,21 @@
        "gesture": "—",
        "cg": "Through a tear in the fog, the distant, sweeping beam of another lighthouse illuminates your own tower for a brief, silent moment.",
        "motion": "The fog shredding and pulling apart in slow, rolling ribbons, revealing and obscuring patches of the dark sea and sky."
+      },
+      "rel": {
+       "relTier": {
+        "band": "high",
+        "tier": "Knows where you keep things",
+        "why": "The connection with a peer is about deep, unspoken professional intimacy and shared understanding."
+       },
+       "note": {
+        "text": "I'll never forget that first check-in. Not what they said—it was barely a word. It was the long silence after I signed off. I could hear them breathing on the open channel, just listening to the static. They weren't just looking for a voice; they were mapping the silence to find the rest of us.",
+        "category": "opinion",
+        "weight": 3,
+        "path": "bold"
+       },
+       "cgTaxon": "none",
+       "rewardRung": "MUTUAL"
       }
      },
      "first-light": {
@@ -2265,6 +2325,21 @@
        "gesture": "Arranging a few chosen words on the logbook page, moving them before committing ink to paper.",
        "cg": "The keeper's hand pauses over the logbook, the pen held ready, as the first rays of dawn illuminate the extinguished lamp's intricate, cold brass.",
        "motion": "The soft, slow creep of dawn light across the floor, the shadows shortening and changing color."
+      },
+      "rel": {
+       "relTier": {
+        "band": "high",
+        "tier": "Folded in",
+        "why": "The player is no longer just an occupant but an integral part of the lighthouse's long lineage."
+       },
+       "note": {
+        "text": "I remember seeing them on the jetty as we pulled away. They weren't watching us leave. They were watching the horizon, already keeping the next watch. The last keeper left a logbook; this one leaves a presence you can feel from a mile out.",
+        "category": "opinion",
+        "weight": 3,
+        "path": "steady"
+       },
+       "cgTaxon": "graduation",
+       "rewardRung": "KNOW"
       }
      }
     },
@@ -2673,6 +2748,12 @@
       "genre": "literary elegiac (the quiet, contemplative lone-keeper)",
       "culture": "Western — literary-elegiac (restrained)"
      }
+    },
+    "relCoverage": {
+     "ladderCoverage": "full",
+     "everyNote": "yes",
+     "cgSpread": "yes",
+     "note": "The notes progress from external observation to internal understanding, mapping the player's journey from apprentice to peer within the vigil's lineage."
     }
    },
    "throughline": "Holding a fixed point against the drift of time and tide; a vigil as devotion.",

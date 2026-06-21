@@ -1177,6 +1177,21 @@
        "gesture": "Gently wiping dust motes from the windowsill, caught in the final sunbeam.",
        "cg": "The empty armchair bathed in a warm, golden sunbeam, the impression of someone just having left still visible in the cushions.",
        "motion": "Dust motes dancing slowly in the slanted evening light from the window."
+      },
+      "rel": {
+       "relTier": {
+        "band": "low",
+        "tier": "On your radar",
+        "why": "It's the first quiet observation, a gentle entry into the coach's awareness before any interaction."
+       },
+       "note": {
+        "text": "I remember the first time they stayed. They didn't ask permission, just found a corner and breathed out, like they'd been holding their breath all day. They weren't looking for a grade or a conversation, just a place to land.",
+        "category": "memory",
+        "weight": 1,
+        "path": "steady"
+       },
+       "cgTaxon": "meeting",
+       "rewardRung": "none"
       }
      },
      "the-room-fills": {
@@ -1470,6 +1485,21 @@
        "gesture": "Sliding the basket of colorful pens across the table towards the group, an open invitation.",
        "cg": "An overhead shot of multiple hands reaching for pens, with Wren's hesitant hand just touching a specific, bright color.",
        "motion": "The subtle shift of shadows across the table as evening draws in outside."
+      },
+      "rel": {
+       "relTier": {
+        "band": "low",
+        "tier": "Inside their orbit",
+        "why": "Moves from passive observation to active, low-stakes inclusion by another peer."
+       },
+       "note": {
+        "text": "I'll remember how they looked at the seat I saved. Just a small nod, but it wasn't hesitant. It was like they knew it was theirs to take. They sat, and the whole room just... settled around them.",
+        "category": "memory",
+        "weight": 2,
+        "path": "steady"
+       },
+       "cgTaxon": "pivot",
+       "rewardRung": "MUTUAL"
       }
      },
      "a-rough-one": {
@@ -1761,6 +1791,21 @@
        "gesture": "—",
        "cg": "The reflection of the rain-soaked student in Theo's eyes as his smile fades, the vibrant room muted in the reflection.",
        "motion": "Rain running in rivulets down the large windowpane, blurring the world outside."
+      },
+      "rel": {
+       "relTier": {
+        "band": "mid",
+        "tier": "In your corner",
+        "why": "Witnessing vulnerability and not performing requires a baseline of trust and shared space."
+       },
+       "note": {
+        "text": "I remember the day they were clearly falling apart at the seams. They didn't try to hide it, but they didn't make a show of it either. They just let the quiet of the room hold them. I saw how much strength that took.",
+        "category": "opinion",
+        "weight": 3,
+        "path": "watchful"
+       },
+       "cgTaxon": "wall",
+       "rewardRung": "KEEP"
       }
      },
      "it-settles": {
@@ -2033,6 +2078,21 @@
        "gesture": "Gently arranging a scattered pile of zines on the table, creating a neat, welcoming space between Wren and the newcomer.",
        "cg": "A low-angle shot from the newcomer's POV, looking past the newly arranged zines to see Wren offer a small, shy smile.",
        "motion": "The distant, rhythmic blinking of city lights seen through the window."
+      },
+      "rel": {
+       "relTier": {
+        "band": "mid",
+        "tier": "Saved a seat for you",
+        "why": "The player is now an active agent of the group's ethos, an act of established belonging."
+       },
+       "note": {
+        "text": "I remember they slid the box of biscuits closer to me without a word. No 'you want one?', no big deal. Just an assumption that I was part of this, even in my quiet. They didn't try to pull me out of my bubble, just made the bubble a little warmer.",
+        "category": "memory",
+        "weight": 2,
+        "path": "bold"
+       },
+       "cgTaxon": "pivot",
+       "rewardRung": "DO"
       }
      },
      "the-walk-out": {
@@ -2324,6 +2384,21 @@
        "gesture": "Wiping down the table in a slow, circular rhythm, the cloth moving closer and closer to the abandoned drawing.",
        "cg": "A close-up on the drawing, showing confident, expressive lines, with the Caretaker's hand paused just beside it.",
        "motion": "The shimmering reflection of streetlights on the wet pavement outside the door."
+      },
+      "rel": {
+       "relTier": {
+        "band": "high",
+        "tier": "Folded in",
+        "why": "This long-term, reflective observation sees the player as an integral, custodial part of the room's story."
+       },
+       "note": {
+        "text": "I'll remember them at the door tonight. They were the last to leave, and they paused to push a stray chair back under a table. Not because they were asked, but because it felt like their room to tidy. They belong to this place now.",
+        "category": "opinion",
+        "weight": 3,
+        "path": "steady"
+       },
+       "cgTaxon": "graduation",
+       "rewardRung": "none"
       }
      }
     },
@@ -2728,6 +2803,12 @@
       "genre": "contemporary YA slice-of-life (the after-school found-family)",
       "culture": "Western (Anglo-contemporary)"
      }
+    },
+    "relCoverage": {
+     "ladderCoverage": "full",
+     "everyNote": "yes",
+     "cgSpread": "yes",
+     "note": "The engine connection is healthy; notes consistently deepen the core gift and escalate with player autonomy."
     }
    },
    "throughline": "belonging you don't audition for — the chair's yours before you've proven anything; you're kept, not chosen",

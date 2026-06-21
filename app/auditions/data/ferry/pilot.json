@@ -1257,6 +1257,21 @@
        "gesture": "—",
        "cg": "The Manifest-keeper, a still silhouette against the brassy twilight, subtly relaxes their posture, mirroring the player's internal ease.",
        "motion": "A slow, almost imperceptible swell on the dark water."
+      },
+      "rel": {
+       "relTier": {
+        "band": "low",
+        "tier": "On your radar",
+        "why": "The initial interaction is about quiet observation, not deep trust."
+       },
+       "note": {
+        "text": "I'll remember the way they just sat with the silence. Most people try to fill it. They just let it hold them.",
+        "category": "memory",
+        "weight": 1,
+        "path": "steady"
+       },
+       "cgTaxon": "meeting",
+       "rewardRung": "none"
       }
      },
      "rising-wind": {
@@ -1548,6 +1563,21 @@
        "gesture": "The player gently helps the passenger brace a rattling cabin door against the rising wind.",
        "cg": "The passenger's face, illuminated by a swinging iron lamp, softens with gratitude as the player's hand meets theirs on the doorframe.",
        "motion": "The ship begins a rhythmic, insistent pitch and roll as the wind picks up."
+      },
+      "rel": {
+       "relTier": {
+        "band": "mid",
+        "tier": "In your corner",
+        "why": "The player's presence is now seen as a positive, stabilizing force worth acknowledging."
+       },
+       "note": {
+        "text": "I'll remember glancing back from the helm and seeing them, just breathing. Their calm was a heading the other passengers could follow.",
+        "category": "opinion",
+        "weight": 2,
+        "path": "watchful"
+       },
+       "cgTaxon": "pivot",
+       "rewardRung": "MUTUAL"
       }
      },
      "the-storm": {
@@ -1841,6 +1871,21 @@
        "gesture": "The player carefully trims and refills the swaying forecastle lamp, its steady light a small anchor in the storm.",
        "cg": "A close-up on a nearby passenger's face, briefly illuminated by the newly-brightened lamp, a single phosphorescent tear catching the light.",
        "motion": "The violent, chaotic lurch and crash of the ship in the peak of the storm."
+      },
+      "rel": {
+       "relTier": {
+        "band": "high",
+        "tier": "Folded in",
+        "why": "Sharing a vulnerable, high-stakes moment like a storm vigil requires a deep, established trust."
+       },
+       "note": {
+        "text": "I'll remember when they admitted they were scared, but stayed anyway. That honesty let everyone else be scared too, and that's what got us through.",
+        "category": "memory",
+        "weight": 3,
+        "path": "bold"
+       },
+       "cgTaxon": "wall",
+       "rewardRung": "DO"
       }
      },
      "settling-sea": {
@@ -2112,6 +2157,21 @@
        "gesture": "The player quietly gathers and arranges the scattered tins and utensils on the galley shelves.",
        "cg": "Through the galley porthole, the ship's silver wake pulses with soft light from bioluminescence against the bruised sky.",
        "motion": "A deep, slow, and weary rocking as the sea begins to settle."
+      },
+      "rel": {
+       "relTier": {
+        "band": "mid",
+        "tier": "Saved a seat for you",
+        "why": "The bond is now comfortable enough for quiet, shared moments without the need for words or crisis."
+       },
+       "note": {
+        "text": "I'll remember the morning they just pointed out the window. A pod of dolphins in the wake. I was so focused on the stockpot, I would've missed it.",
+        "category": "memory",
+        "weight": 2,
+        "path": "steady"
+       },
+       "cgTaxon": "none",
+       "rewardRung": "KEEP"
       }
      },
      "first-light": {
@@ -2403,6 +2463,21 @@
        "gesture": "The player rhythmically polishes a small, smooth stone found on the deck, the repetitive motion a calming focus.",
        "cg": "The Manifest-keeper's hand extends, holding a similar stone, their charcoal silhouette framed against the first peach-colored light.",
        "motion": "A gentle, steady forward glide as the ship approaches its destination."
+      },
+      "rel": {
+       "relTier": {
+        "band": "high",
+        "tier": "Named in the will",
+        "why": "Entrusting the player with a final, symbolic ritual signifies the deepest level of earned respect."
+       },
+       "note": {
+        "text": "I'll remember watching them at the rail, looking ahead at the shore, not back at the ferry. They're ready for their own quiet harbors now.",
+        "category": "opinion",
+        "weight": 3,
+        "path": "steady"
+       },
+       "cgTaxon": "graduation",
+       "rewardRung": "KNOW"
       }
      }
     },
@@ -2885,6 +2960,12 @@
       "genre": "cozy night-ferry iyashikei (healing slice-of-life)",
       "culture": "East-Asian (iyashikei lineage)"
      }
+    },
+    "relCoverage": {
+     "ladderCoverage": "full",
+     "everyNote": "yes",
+     "cgSpread": "yes, includes both a wall and a graduation CG",
+     "note": "The engine connection is healthy; notes track the player's growth and deepen the core gift across the full relational arc."
     }
    }
   }

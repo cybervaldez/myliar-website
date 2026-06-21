@@ -509,7 +509,8 @@ export type RangeT = {
   rangeReview?: { verdict: string; flag: string };
   expertsGate?: { name: string; role: string }[];
   branches: { key: string; label: string; spark: string; cells: { tone: string; base: string; accent?: string; ink?: string; label?: string }[] }[];
-  honing?: { [key: string]: { castPick?: string; paletteAudition?: { candidates: PaletteCand[]; whyWon?: string; runnerUpGem?: string } } };
+  honing?: { [key: string]: { castPick?: string; paletteAudition?: { candidates: PaletteCand[]; whyWon?: string; runnerUpGem?: string }; rel?: { relTier?: { band?: string; tier?: string; why?: string }; note?: { text?: string; category?: string; weight?: number; path?: string }; cgTaxon?: string; rewardRung?: string } } };
+  relCoverage?: { ladderCoverage?: string; everyNote?: string; cgSpread?: string; note?: string };
   narrative?: { scene: string; arcs: { arc: string; note?: string }[] }[];
   narrativeSpread?: string;
   ensemble?: { crew: { name: string; energy?: string; quirk?: string; foil?: string }[]; pairs?: { a: string; b: string; dynamic: string }[]; verdict?: string };
@@ -700,6 +701,36 @@ export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
           </div>
         </details>
       )}
+      {/* THE RELATIONSHIP ENGINE — the seam to the note-factory: each scene's NOTE + the REL-tier it fills,
+          spread top-down so the set covers the ladder (story-engine §3.1: a scene with no note is wasted). */}
+      {d.relCoverage && d.honing && d.branches.some((b) => d.honing?.[b.key]?.rel?.note?.text) && (
+        <details className="aud-cov" style={{ border: `2px solid var(--ink-soft)`, marginBottom: 12 }}>
+          <summary style={{ cursor: "pointer", listStyle: "none", fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".04em", color: forest, padding: "9px 13px", display: "flex", justifyContent: "space-between", gap: 10 }}>
+            <span>♥ THE RELATIONSHIP ENGINE — each scene&rsquo;s NOTE + REL-tier (the note-factory, spread up the ladder)</span>
+            <span style={{ color: margin, whiteSpace: "nowrap" }}>⌄ open</span>
+          </summary>
+          <div style={{ padding: "2px 13px 12px", fontSize: 11, color: ink, lineHeight: 1.5 }}>
+            <div style={{ fontSize: 10.5, color: soft, marginBottom: 8 }}>every scene&rsquo;s one job (story-engine §3.1): produce a NOTE — the focal coach&rsquo;s first-person memory of you — that fills REL toward the next tier. Spread top-down so the set covers the ladder (early bonds → Unspoken); the CG-milestone + reward-rung carry from the destination.</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "5px 9px", marginBottom: 9, alignItems: "center" }}>
+              {([["ladder", d.relCoverage.ladderCoverage], ["every-note", d.relCoverage.everyNote], ["CG", d.relCoverage.cgSpread]] as const).map(([k, v]) => v ? (
+                <span key={k} style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, border: `1.5px solid ${/full|yes|wall|graduation/i.test(v) ? forest : amber}`, color: /full|yes|wall|graduation/i.test(v) ? forest : amber, borderRadius: 10, padding: "1px 8px" }}>{k} {v.length > 26 ? v.slice(0, 26) + "…" : v}</span>
+              ) : null)}
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "minmax(70px,auto) auto auto 1fr", gap: "5px 10px", fontSize: 10.5 }}>
+              {["SCENE", "♥ TIER", "🎞/★", "THE NOTE"].map((hd) => <div key={hd} style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".05em", color: margin }}>{hd}</div>)}
+              {d.branches.map((b) => { const rl = d.honing?.[b.key]?.rel; if (!rl?.note?.text) return null; return (
+                <Fragment key={b.key}>
+                  <div style={{ fontWeight: 700, color: forest, textTransform: "capitalize" }}>{b.label}</div>
+                  <div style={{ color: ink }}>{rl.relTier?.tier}</div>
+                  <div style={{ whiteSpace: "nowrap", fontSize: 9 }}>{rl.cgTaxon && rl.cgTaxon !== "none" ? <span style={{ color: rl.cgTaxon === "wall" ? "var(--spot-red)" : forest, fontWeight: 700 }}>🎞{rl.cgTaxon}</span> : null}{rl.rewardRung && rl.rewardRung !== "none" ? <span style={{ color: amber, fontWeight: 700 }}> ★{rl.rewardRung}</span> : null}</div>
+                  <div style={{ fontStyle: "italic", color: soft }}>&ldquo;{(rl.note.text || "").slice(0, 90)}{(rl.note.text || "").length > 90 ? "…" : ""}&rdquo;</div>
+                </Fragment>
+              ); })}
+            </div>
+            {d.relCoverage.note && <div style={{ fontSize: 9.5, color: soft, fontStyle: "italic", marginTop: 7, borderTop: `1px solid var(--ink-soft)`, paddingTop: 6 }}>↳ {d.relCoverage.note}</div>}
+          </div>
+        </details>
+      )}
         </div>
         <aside className="aud-context">
           <div style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 8 }}>▣ BUILD-CONTEXT <span style={{ color: margin, fontWeight: 400, fontStyle: "italic" }}>— for the AI building this</span></div>
@@ -748,7 +779,7 @@ export function BranchLinks({ campaign, branches, active }: { campaign: string; 
 }
 
 // THE WEATHER-MOMENT BRANCH — one scene honed: its palette (dialed cozy→intense), the tone dial, the cast.
-export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; arc?: { winner: string; whyWon?: string; candidates: { arc: string; floor?: string; floor_note?: string; yield?: string; picked?: boolean }[]; variance?: string[] }; checkpoints?: { begin: { text: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: string[] }; middle: { type: string; turn: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: { type?: string; turn: string }[] }; end: { text: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: string[] } }; between?: { span: string; grows?: string; relationship?: string }[]; supportingCast?: { winner: string; whyWon?: string; dynamic?: string; quirk?: string; candidates: { name: string; dynamic?: string; quirk?: string; fit?: string; picked?: boolean }[] }; content?: { beats: { at: string; text: string; grows?: string; bond?: string }[]; review?: { verdict?: string; flag?: string } }; interaction?: { engine?: string; gesture?: string; cg?: string; motion?: string }; gatedBy?: string; paletteUI?: { prompts?: { objects?: string[]; characters?: string[]; items?: string[] }; prose?: { objectSeeds?: { dominant?: string[]; accent?: string[] }; diction?: { cool?: string[]; warm?: string[] }; rule?: string } } };
+export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; arc?: { winner: string; whyWon?: string; candidates: { arc: string; floor?: string; floor_note?: string; yield?: string; picked?: boolean }[]; variance?: string[] }; checkpoints?: { begin: { text: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: string[] }; middle: { type: string; turn: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: { type?: string; turn: string }[] }; end: { text: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: string[] } }; between?: { span: string; grows?: string; relationship?: string }[]; supportingCast?: { winner: string; whyWon?: string; dynamic?: string; quirk?: string; candidates: { name: string; dynamic?: string; quirk?: string; fit?: string; picked?: boolean }[] }; content?: { beats: { at: string; text: string; grows?: string; bond?: string }[]; review?: { verdict?: string; flag?: string } }; interaction?: { engine?: string; gesture?: string; cg?: string; motion?: string }; rel?: { relTier?: { band?: string; tier?: string; why?: string }; note?: { text?: string; category?: string; weight?: number; path?: string }; cgTaxon?: string; rewardRung?: string }; gatedBy?: string; paletteUI?: { prompts?: { objects?: string[]; characters?: string[]; items?: string[] }; prose?: { objectSeeds?: { dominant?: string[]; accent?: string[] }; diction?: { cool?: string[]; warm?: string[] }; rule?: string } } };
 export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: string }) {
   const h = b.honing;
   const cp = b.checkpoints;
@@ -862,6 +893,27 @@ export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: str
             })}
           </div>
           {b.content.review?.flag && <div style={{ fontSize: 9.5, color: soft, fontStyle: "italic", marginBottom: 16 }}>↳ {b.content.review.flag}</div>}
+        </>
+      )}
+      {b.rel?.note?.text && (
+        <>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginBottom: 6, flexWrap: "wrap" }}>
+            <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest }}>▸ THE NOTE — what {h?.castPick ? h.castPick.split("—")[0].trim() : "they"} keeps <span style={{ color: margin, fontWeight: 400, fontSize: 10 }}>(the engine: fills REL · §3.1)</span></div>
+            {b.rel.relTier?.tier && <span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, color: forest, border: `1px solid ${forest}`, borderRadius: 3, padding: "1px 7px", whiteSpace: "nowrap" }}>♥ → {b.rel.relTier.tier}</span>}
+          </div>
+          <div style={{ border: `2px solid ${forest}`, background: shade, padding: "10px 13px", marginBottom: 6, fontSize: 12.5, color: ink, lineHeight: 1.55, fontStyle: "italic" }}>
+            &ldquo;{b.rel.note.text}&rdquo;
+            <div style={{ fontStyle: "normal", marginTop: 5, fontSize: 9, color: margin, display: "flex", gap: 8, flexWrap: "wrap" }}>
+              {b.rel.note.category && <span style={{ fontFamily: "var(--theme-body)", fontWeight: 700, letterSpacing: ".05em" }}>{b.rel.note.category.toUpperCase()}</span>}
+              {b.rel.note.weight ? <span>weight {b.rel.note.weight}</span> : null}
+              {b.rel.note.path && <span>path: {b.rel.note.path}</span>}
+            </div>
+          </div>
+          <div style={{ fontSize: 9.5, color: margin, marginBottom: 16, display: "flex", gap: 10, flexWrap: "wrap", lineHeight: 1.5 }}>
+            {b.rel.relTier?.why && <span><span style={{ color: soft }}>tier:</span> {b.rel.relTier.why}</span>}
+            {b.rel.cgTaxon && b.rel.cgTaxon !== "none" && <span style={{ color: b.rel.cgTaxon === "wall" ? "var(--spot-red)" : forest, fontWeight: 700 }}>🎞 {b.rel.cgTaxon} CG</span>}
+            {b.rel.rewardRung && b.rel.rewardRung !== "none" && <span style={{ color: amber, fontWeight: 700 }}>★ {b.rel.rewardRung} (reward stack)</span>}
+          </div>
         </>
       )}
       {b.interaction && (b.interaction.engine || b.interaction.cg) && (
