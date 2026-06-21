@@ -1135,13 +1135,43 @@
        "variance": []
       },
       "checkpoints": {
-       "begin": "On the quiet deck, the player finds a spot near the Manifest-keeper, both watching the moon's reflection on the still water.",
+       "begin": {
+        "text": "On the quiet deck, the player finds a spot near the Manifest-keeper, both watching the moon's reflection on the still water.",
+        "open": "How does this shared space become comfortable without words?",
+        "rigidity": "locked",
+        "rigidityWhy": "it establishes the game's core premise of non-verbal connection",
+        "alts": [
+         "The Manifest-keeper wordlessly gestures to an empty spot beside them, a clear invitation.",
+         "The player finds a secluded spot, only to realize the Manifest-keeper is already nearby, in their own quiet contemplation."
+        ]
+       },
        "middle": {
         "type": "internal",
         "turn": "The player notices their own internal pressure to speak fade, replaced by a deep sense of ease in the mutual quiet.",
-        "alt": "The Manifest-keeper makes a small, non-verbal gesture of acknowledgement, like a slow nod, that deepens the shared moment."
+        "open": "What external micro-event or internal shift allows the player to release their social anxiety?",
+        "rigidity": "loose",
+        "rigidityWhy": "the specific trigger for the player's internal shift can vary",
+        "alts": [
+         {
+          "type": "environmental",
+          "turn": "A distant, soft sound—a bell, a night bird—briefly breaks the silence, and the Manifest-keeper's lack of reaction deepens the quiet's comfort."
+         },
+         {
+          "type": "internal",
+          "turn": "The player rehearses a greeting in their mind, but the thought dissolves, feeling unnecessary and intrusive."
+         }
+        ]
        },
-       "end": "The moment concludes naturally, leaving the player with a feeling of being seen and accepted without having to perform."
+       "end": {
+        "text": "The moment concludes naturally, leaving the player with a feeling of being seen and accepted without having to perform.",
+        "open": "What small, non-verbal cue signals the end of the shared moment without breaking the peace?",
+        "rigidity": "locked",
+        "rigidityWhy": "it delivers the core payoff of the scene's arc: acceptance through silence",
+        "alts": [
+         "The Manifest-keeper gives a slight, slow nod before turning their gaze back to the water, a gesture of closure.",
+         "A soft breeze marks a natural end, and the player feels free to leave without the need for a formal goodbye."
+        ]
+       }
       },
       "between": [
        {
@@ -1390,13 +1420,43 @@
        "variance": []
       },
       "checkpoints": {
-       "begin": "From the wheelhouse doorway, the player watches the Pilot's steady hands as the wind rises, feeling a sense of calm competence.",
+       "begin": {
+        "text": "From the wheelhouse doorway, the player watches the Pilot's steady hands as the wind rises, feeling a sense of calm competence.",
+        "open": "How is the Pilot's competence conveyed non-verbally, grounding the player as the environment shifts?",
+        "rigidity": "locked",
+        "rigidityWhy": "it sets the scene's contrast between external turbulence and internal steadiness",
+        "alts": [
+         "The player observes the Pilot making a minute, precise adjustment to a dial, an act of quiet mastery.",
+         "The player overhears a snippet of calm, professional communication between the Pilot and another crew member."
+        ]
+       },
        "middle": {
         "type": "internal",
         "turn": "A fellow passenger, braced against the doorway, turns to the player and haltingly asks for a small favor.",
-        "alt": "The rising wind blows a passenger's scarf away, and their quiet, helpless look toward the player is the request itself."
+        "open": "What makes this simple request feel so vulnerable and significant?",
+        "rigidity": "loose",
+        "rigidityWhy": "the nature of the favor and the passenger's specific vulnerability can vary",
+        "alts": [
+         {
+          "type": "environmental",
+          "turn": "The passenger drops something small and essential—a photo, a token—and looks at the player, unable to retrieve it without losing their balance."
+         },
+         {
+          "type": "internal",
+          "turn": "The passenger, looking pale, quietly asks the player if they could fetch them a glass of water, their voice barely audible over the wind."
+         }
+        ]
        },
-       "end": "The request is met with simple, gentle action, and the passenger offers a look of profound, quiet gratitude."
+       "end": {
+        "text": "The request is met with simple, gentle action, and the passenger offers a look of profound, quiet gratitude.",
+        "open": "How does the passenger's non-verbal gratitude convey a depth of feeling far beyond the smallness of the act?",
+        "rigidity": "locked",
+        "rigidityWhy": "this moment reinforces the theme of small, meaningful acts of support",
+        "alts": [
+         "The passenger briefly places a hand over their heart in a gesture of thanks.",
+         "After the favor is done, the passenger simply meets the player's eyes for a long moment, the gratitude clear and profound."
+        ]
+       }
       },
       "between": [
        {
@@ -1647,13 +1707,43 @@
        ]
       },
       "checkpoints": {
-       "begin": "Led by the Deckhand to a calmer space below deck, the player is given a brass compass and a cloth to polish, the simple rhythm a focus against the storm.",
+       "begin": {
+        "text": "Led by the Deckhand to a calmer space below deck, the player is given a brass compass and a cloth to polish, the simple rhythm a focus against the storm.",
+        "open": "How is this simple, grounding task offered as an act of care rather than a chore?",
+        "rigidity": "locked",
+        "rigidityWhy": "it introduces the central metaphor of finding a focus amidst chaos",
+        "alts": [
+         "The Deckhand offers the player a choice of simple tasks: polishing brass or coiling a small length of rope.",
+         "The player finds the Deckhand already polishing the compass and is silently offered a second cloth to join in."
+        ]
+       },
        "middle": {
         "type": "environmental",
         "turn": "As a particularly large wave hits, a nearby passenger lets out a choked sob, their composure finally breaking.",
-        "alt": "The Deckhand quietly indicates the distressed passenger with a glance, then returns to their own task, modeling non-intrusive presence."
+        "open": "How does the environment's intensity finally breach another person's emotional defenses?",
+        "rigidity": "loose",
+        "rigidityWhy": "the specific trigger and the passenger's identity can be flexible",
+        "alts": [
+         {
+          "type": "environmental",
+          "turn": "The lights flicker and die for a moment, and in the sudden darkness, a quiet weeping is heard."
+         },
+         {
+          "type": "internal",
+          "turn": "The player notices a passenger clutching a locket, their knuckles white, before they finally succumb to quiet sobs."
+         }
+        ]
        },
-       "end": "The passenger's tears subside, and they give the player a look of deep, exhausted relief, the shared, silent presence having been a sufficient anchor."
+       "end": {
+        "text": "The passenger's tears subside, and they give the player a look of deep, exhausted relief, the shared, silent presence having been a sufficient anchor.",
+        "open": "What confirms that the player's quiet presence was the support needed, without any action or words required?",
+        "rigidity": "locked",
+        "rigidityWhy": "it delivers the scene's core promise: being present is enough",
+        "alts": [
+         "The passenger offers a weak, watery smile, a gesture of shared survival and thanks.",
+         "As the storm's rhythm lessens, the passenger's breathing evens out, and they give a slow, deliberate blink of acknowledgement."
+        ]
+       }
       },
       "between": [
        {
@@ -1895,13 +1985,43 @@
        "variance": []
       },
       "checkpoints": {
-       "begin": "In the warm galley, the Cook wordlessly offers the player a knife and a cutting board, an invitation to join in preparing the post-storm meal.",
+       "begin": {
+        "text": "In the warm galley, the Cook wordlessly offers the player a knife and a cutting board, an invitation to join in preparing the post-storm meal.",
+        "open": "How does the Cook's gesture communicate trust and inclusion without a single word?",
+        "rigidity": "locked",
+        "rigidityWhy": "it establishes connection through shared, practical effort",
+        "alts": [
+         "The Cook nods towards a basket of vegetables and then to an empty space at the counter, a clear, silent invitation.",
+         "The player begins to help clear a table, and the Cook intercepts them, instead handing them an apron and a bowl."
+        ]
+       },
        "middle": {
         "type": "environmental",
         "turn": "After a period of rhythmic, focused chopping, both the player and the Cook pause at the same moment, the shared silence filled with the weight of the night.",
-        "alt": "The Manifest-keeper enters, looking worn, and the Cook wordlessly hands them a warm drink, a gesture of care the player witnesses."
+        "open": "What external cue triggers this synchronous pause and shared moment of reflection?",
+        "rigidity": "loose",
+        "rigidityWhy": "the specific trigger for the shared pause can be varied to feel organic",
+        "alts": [
+         {
+          "type": "environmental",
+          "turn": "The ship's engine changes pitch, settling into a calmer, steadier hum, and both pause their work to listen."
+         },
+         {
+          "type": "internal",
+          "turn": "The player's arms ache with fatigue, and as they pause to stretch, they notice the Cook has done the exact same thing."
+         }
+        ]
        },
-       "end": "The Cook gives a small, weary smile of acknowledgement before resuming the task, the bond forged in shared effort and mutual understanding."
+       "end": {
+        "text": "The Cook gives a small, weary smile of acknowledgement before resuming the task, the bond forged in shared effort and mutual understanding.",
+        "open": "How does this simple smile convey the entire weight of the shared experience and the new bond?",
+        "rigidity": "locked",
+        "rigidityWhy": "it pays off the arc of connection through shared, grounding work",
+        "alts": [
+         "The Cook pushes a steaming mug of tea towards the player before turning back to the stove.",
+         "The Cook simply nods, a gesture of profound, understated respect, before resuming their work."
+        ]
+       }
       },
       "between": [
        {
@@ -2150,13 +2270,43 @@
        "variance": []
       },
       "checkpoints": {
-       "begin": "At the stern in the first light, the player watches the Manifest-keeper gently release a small stone into the ship's wake.",
+       "begin": {
+        "text": "At the stern in the first light, the player watches the Manifest-keeper gently release a small stone into the ship's wake.",
+        "open": "What about this private ritual makes it feel both deeply personal and universally resonant?",
+        "rigidity": "locked",
+        "rigidityWhy": "this ritual is the symbolic core of the journey's conclusion",
+        "alts": [
+         "The player sees the Manifest-keeper whispering to the stone before letting it go.",
+         "The Manifest-keeper holds the stone up to the first rays of sun before releasing it into the water."
+        ]
+       },
        "middle": {
         "type": "internal",
         "turn": "The Manifest-keeper turns to the player, their face calm, and holds out a small, smooth, similar stone—an offering.",
-        "alt": "Another passenger, having completed their own quiet ritual, approaches the player to give them a small, handmade token of thanks."
+        "open": "What is the unspoken question or meaning contained within this offering?",
+        "rigidity": "loose",
+        "rigidityWhy": "the player's interpretation of the offering is key to their takeaway",
+        "alts": [
+         {
+          "type": "environmental",
+          "turn": "The Manifest-keeper picks up two stones, releases one, and then offers the other to the player, a direct invitation to share the ritual."
+         },
+         {
+          "type": "internal",
+          "turn": "The player feels a sudden, sharp memory of their own burdens, and the offered stone feels like a potential release."
+         }
+        ]
        },
-       "end": "The player accepts the token, a tangible piece of the journey to carry forward, a final, warm gesture of shared passage."
+       "end": {
+        "text": "The player accepts the token, a tangible piece of the journey to carry forward, a final, warm gesture of shared passage.",
+        "open": "How does accepting this token signify the player's growth and readiness to continue on their own?",
+        "rigidity": "locked",
+        "rigidityWhy": "it fulfills the anti-dependency promise: the player leaves more able, with a memory, not a crutch",
+        "alts": [
+         "The player is given the choice to accept the stone or to release it into the wake themselves, symbolizing what they choose to carry or let go.",
+         "Upon accepting the stone, the player feels its surprising warmth, a final infusion of the journey's peace."
+        ]
+       }
       },
       "between": [
        {

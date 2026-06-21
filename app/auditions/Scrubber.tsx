@@ -713,9 +713,16 @@ export function BranchLinks({ campaign, branches, active }: { campaign: string; 
 }
 
 // THE WEATHER-MOMENT BRANCH — one scene honed: its palette (dialed cozy→intense), the tone dial, the cast.
-export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; arc?: { winner: string; whyWon?: string; candidates: { arc: string; floor?: string; floor_note?: string; yield?: string; picked?: boolean }[]; variance?: string[] }; checkpoints?: { begin: string; middle: { type: string; turn: string; alt?: string }; end: string }; between?: { span: string; grows?: string; relationship?: string }[]; supportingCast?: { winner: string; whyWon?: string; dynamic?: string; quirk?: string; candidates: { name: string; dynamic?: string; quirk?: string; fit?: string; picked?: boolean }[] }; content?: { beats: { at: string; text: string; grows?: string; bond?: string }[]; review?: { verdict?: string; flag?: string } }; gatedBy?: string; paletteUI?: { prompts?: { objects?: string[]; characters?: string[]; items?: string[] }; prose?: { objectSeeds?: { dominant?: string[]; accent?: string[] }; diction?: { cool?: string[]; warm?: string[] }; rule?: string } } };
+export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; arc?: { winner: string; whyWon?: string; candidates: { arc: string; floor?: string; floor_note?: string; yield?: string; picked?: boolean }[]; variance?: string[] }; checkpoints?: { begin: { text: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: string[] }; middle: { type: string; turn: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: { type?: string; turn: string }[] }; end: { text: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: string[] } }; between?: { span: string; grows?: string; relationship?: string }[]; supportingCast?: { winner: string; whyWon?: string; dynamic?: string; quirk?: string; candidates: { name: string; dynamic?: string; quirk?: string; fit?: string; picked?: boolean }[] }; content?: { beats: { at: string; text: string; grows?: string; bond?: string }[]; review?: { verdict?: string; flag?: string } }; gatedBy?: string; paletteUI?: { prompts?: { objects?: string[]; characters?: string[]; items?: string[] }; prose?: { objectSeeds?: { dominant?: string[]; accent?: string[] }; diction?: { cool?: string[]; warm?: string[] }; rule?: string } } };
 export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: string }) {
   const h = b.honing;
+  const cp = b.checkpoints;
+  // each checkpoint is a CORRIDOR (the picked direction + open-question + rigidity + the alternates / width)
+  const cpList = cp ? [
+    { k: "BEGIN", text: cp.begin?.text, open: cp.begin?.open, rigidity: cp.begin?.rigidity, alts: cp.begin?.alts ?? [] },
+    { k: "MIDDLE", text: cp.middle?.turn, type: cp.middle?.type, open: cp.middle?.open, rigidity: cp.middle?.rigidity, alts: (cp.middle?.alts ?? []).map((a) => `(${a.type}) ${a.turn}`) },
+    { k: "END", text: cp.end?.text, open: cp.end?.open, rigidity: cp.end?.rigidity, alts: cp.end?.alts ?? [] },
+  ] as { k: string; text?: string; type?: string; open?: string; rigidity?: string; alts: string[] }[] : [];
   return (
     <div>
       <div className="aud-digest" style={{ border: `2px solid ${forest}`, background: shade, padding: "8px 13px", marginBottom: 14, fontSize: 11, color: ink, lineHeight: 1.5 }}>
@@ -741,17 +748,24 @@ export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: str
             {b.arc.whyWon && <div style={{ fontSize: 10.5, color: soft, marginTop: 3, lineHeight: 1.5 }}>↳ why it won: {b.arc.whyWon}</div>}
             {b.arc.variance && b.arc.variance.length > 0 && <div style={{ fontSize: 9.5, color: amber, marginTop: 4, borderLeft: `2px solid ${amber}`, paddingLeft: 7, lineHeight: 1.45 }}>⚑ variance (soft-constraint appeal): {b.arc.variance.join(" · ")}</div>}
           </div>
-          {b.checkpoints && (
-            <div className="aud-grid3" style={{ display: "grid", gap: 8, marginBottom: 6 }}>
-              {([["BEGIN", b.checkpoints.begin, undefined], ["MIDDLE", b.checkpoints.middle?.turn, b.checkpoints.middle?.type], ["END", b.checkpoints.end, undefined]] as const).map(([k, text, type]) => (
+          {cpList.length > 0 && (
+            <div className="aud-grid3" style={{ display: "grid", gap: 8, marginBottom: 8 }}>
+              {cpList.map(({ k, text, type, open, rigidity, alts }) => (
                 <div key={k} style={{ border: `1.5px solid var(--ink-soft)`, background: paper, padding: "8px 11px" }}>
-                  <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".07em", color: forest, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 5 }}>{k}{type && <span style={{ fontSize: 8.5, fontWeight: 700, color: type === "environmental" ? forest : amber, border: `1px solid ${type === "environmental" ? forest : amber}`, borderRadius: 3, padding: "0 5px", letterSpacing: ".02em", whiteSpace: "nowrap" }}>{type === "environmental" ? "🌦 weather" : "◐ internal"}</span>}</div>
+                  <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".07em", color: forest, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 4, flexWrap: "wrap" }}>
+                    <span>{k}</span>
+                    <span style={{ display: "flex", gap: 4 }}>
+                      {rigidity && <span title={rigidity === "locked" ? "pinned by the carried / a north star" : "free to play — the corridor's width"} style={{ fontSize: 8, fontWeight: 700, color: rigidity === "loose" ? forest : margin, border: `1px solid ${rigidity === "loose" ? forest : "var(--ink-soft)"}`, borderRadius: 3, padding: "0 4px", letterSpacing: ".02em", whiteSpace: "nowrap" }}>{rigidity === "loose" ? "↔ loose" : "🔒 locked"}</span>}
+                      {type && <span style={{ fontSize: 8, fontWeight: 700, color: type === "environmental" ? forest : amber, border: `1px solid ${type === "environmental" ? forest : amber}`, borderRadius: 3, padding: "0 4px", letterSpacing: ".02em", whiteSpace: "nowrap" }}>{type === "environmental" ? "🌦 weather" : "◐ internal"}</span>}
+                    </span>
+                  </div>
                   <div style={{ fontSize: 11.5, color: ink, marginTop: 3, lineHeight: 1.45 }}>{text}</div>
+                  {open && <div style={{ fontSize: 9.5, color: margin, marginTop: 4, lineHeight: 1.4 }}><span style={{ color: soft }}>? open:</span> {open}</div>}
+                  {alts.length > 0 && <div style={{ fontSize: 9.5, color: margin, marginTop: 4, borderTop: `1px solid var(--ink-soft)`, paddingTop: 4, lineHeight: 1.45 }}><span style={{ color: soft }}>↳ corridor:</span> {alts.map((a, i) => <span key={i}>{i ? <span style={{ color: "var(--ink-soft)" }}> · </span> : null}{a}</span>)}</div>}
                 </div>
               ))}
             </div>
           )}
-          {b.checkpoints?.middle?.alt && <div style={{ fontSize: 9.5, color: margin, fontStyle: "italic", marginBottom: 8, paddingLeft: 2 }}>↳ turning-point alt considered ({b.checkpoints.middle.type === "environmental" ? "internal" : "environmental"}): {b.checkpoints.middle.alt}</div>}
           {b.between && b.between.length > 0 && (
             <div style={{ marginBottom: 16 }}>
               <div style={{ fontFamily: "var(--theme-body)", fontSize: 10, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 3 }}>↔ THE BETWEEN — the grows-with-you gaps <span style={{ color: margin, fontWeight: 400, fontStyle: "italic" }}>(what the content step fills)</span></div>

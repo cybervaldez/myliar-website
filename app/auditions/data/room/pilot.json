@@ -1055,13 +1055,43 @@
        "variance": []
       },
       "checkpoints": {
-       "begin": "The Caretaker watches the empty chair by the window, seeing it not as a void but as a place to unload the day.",
+       "begin": {
+        "text": "The Caretaker watches the empty chair by the window, seeing it not as a void but as a place to unload the day.",
+        "open": "How does the Caretaker's own day influence their perception of the chair's purpose right now?",
+        "rigidity": "locked",
+        "rigidityWhy": "it establishes the core premise of the space and the Caretaker's role.",
+        "alts": [
+         "The Caretaker feels a pang of loneliness looking at the empty chair before consciously reframing its potential.",
+         "The Caretaker straightens the chair, a small, almost ritualistic gesture of preparation for who might need it."
+        ]
+       },
        "middle": {
         "type": "internal",
         "turn": "They recall the visible shift in a student's posture the first time they truly let the day fall away in that chair.",
-        "alt": "The setting sun hits the chair just so, making the dust motes dance and sanctifying the space for a moment."
+        "open": "What specific detail of that memory makes it so potent for the Caretaker today?",
+        "rigidity": "loose",
+        "rigidityWhy": "the specific memory can vary widely while still serving the same emotional point.",
+        "alts": [
+         {
+          "type": "internal",
+          "turn": "They recall a student who used to avoid the chair entirely, remembering the day they finally chose to sit in it."
+         },
+         {
+          "type": "environmental",
+          "turn": "Their eyes land on a faint scuff mark near the chair's leg, sparking a memory of a student nervously tapping their foot until they finally relaxed."
+         }
+        ]
        },
-       "end": "The Caretaker feels a quiet satisfaction in maintaining this space, a silent witness to these small, vital transformations."
+       "end": {
+        "text": "The Caretaker feels a quiet satisfaction in maintaining this space, a silent witness to these small, vital transformations.",
+        "open": "What small action does this feeling of satisfaction prompt them to do next?",
+        "rigidity": "locked",
+        "rigidityWhy": "it affirms the game's core loop of providing quiet, non-interfering support.",
+        "alts": [
+         "The Caretaker feels a sense of shared purpose, knowing they are just one part of what makes this space work.",
+         "The Caretaker smiles faintly, a private acknowledgment of the unseen work that happens here."
+        ]
+       }
       },
       "between": [
        {
@@ -1312,13 +1342,43 @@
        ]
       },
       "checkpoints": {
-       "begin": "Dee wordlessly offers a basket of fineliner pens to the table, an invitation to create without the pressure to talk.",
+       "begin": {
+        "text": "Dee wordlessly offers a basket of fineliner pens to the table, an invitation to create without the pressure to talk.",
+        "open": "What is Dee's own internal state as they make this offering—are they hopeful, anxious, or simply matter-of-fact?",
+        "rigidity": "locked",
+        "rigidityWhy": "it establishes the scene's central prop and the theme of non-verbal invitation.",
+        "alts": [
+         "Dee carefully arranges a spread of art supplies on the table, a silent welcome.",
+         "Dee starts drawing with a fineliner, leaving a blank sheet of paper and a basket of pens pointedly available next to them."
+        ]
+       },
        "middle": {
         "type": "environmental",
         "turn": "Wren, who had been closed off, hesitantly pulls a specific color from the basket and uncaps it.",
-        "alt": "Dee remembers her own first day, how someone's simple offer of a shared snack made the whole room feel safe."
+        "open": "What about that specific color, or the moment itself, breaks through Wren's hesitation?",
+        "rigidity": "loose",
+        "rigidityWhy": "Wren's specific motivation can be internal or external, allowing for character nuance.",
+        "alts": [
+         {
+          "type": "environmental",
+          "turn": "Wren notices someone else has already started drawing, and the sight of their work gives them the courage to begin."
+         },
+         {
+          "type": "internal",
+          "turn": "Wren remembers a past positive experience with drawing, and the memory overrides their current reluctance."
+         }
+        ]
        },
-       "end": "A comfortable quiet settles as several students begin to draw, the soft scratching of pens filling the silence."
+       "end": {
+        "text": "A comfortable quiet settles as several students begin to draw, the soft scratching of pens filling the silence.",
+        "open": "How does the quality of the silence shift from tense or empty to comfortable and full?",
+        "rigidity": "locked",
+        "rigidityWhy": "it resolves the initial tension and fulfills the promise of the 'shared project' arc.",
+        "alts": [
+         "A few students quietly share colors, a small, unspoken collaboration beginning to form.",
+         "Someone hums softly under their breath, adding another layer to the comfortable, creative quiet."
+        ]
+       }
       },
       "between": [
        {
@@ -1567,13 +1627,43 @@
        "variance": []
       },
       "checkpoints": {
-       "begin": "Theo, mid-joke, sees a student slump into a chair, and he watches Dee slide a mug of tea towards them without a word.",
+       "begin": {
+        "text": "Theo, mid-joke, sees a student slump into a chair, and he watches Dee slide a mug of tea towards them without a word.",
+        "open": "What is the contrast between Theo's joke and the student's visible distress?",
+        "rigidity": "locked",
+        "rigidityWhy": "it sets up the core conflict between Theo's style and the immediate need of the room.",
+        "alts": [
+         "Theo, about to launch into a story, notices Dee subtly shaking their head while gesturing towards a newly arrived, distressed student.",
+         "A student enters looking upset, and Theo's instinct to cheer them up is intercepted by Dee's quiet, immediate action of offering tea."
+        ]
+       },
        "middle": {
         "type": "internal",
         "turn": "The joke dies on Theo's lips as he realizes his loud, performative energy would have been an intrusion, not a comfort.",
-        "alt": "The heavy rain against the window suddenly seems to match the room's subdued mood, validating the quiet."
+        "open": "What specific observation about Dee's action or the student's reaction triggers this realization in Theo?",
+        "rigidity": "loose",
+        "rigidityWhy": "the catalyst for Theo's internal shift can be varied, deepening his character.",
+        "alts": [
+         {
+          "type": "internal",
+          "turn": "Theo remembers a time when someone tried to 'cheer him up' and it only made him feel worse, creating a moment of empathy."
+         },
+         {
+          "type": "environmental",
+          "turn": "Theo sees the student's shoulders relax fractionally at the sight of the tea, a physical cue that quiet comfort was the right call."
+         }
+        ]
        },
-       "end": "Theo falls silent, not out of awkwardness, but out of a newfound respect for holding quiet space for someone else."
+       "end": {
+        "text": "Theo falls silent, not out of awkwardness, but out of a newfound respect for holding quiet space for someone else.",
+        "open": "What does Theo do with his body or his attention that signals this shift from awkward silence to respectful presence?",
+        "rigidity": "locked",
+        "rigidityWhy": "it completes Theo's character arc for the scene, showing growth towards anti-dependency support.",
+        "alts": [
+         "Theo picks up a pen and starts sketching quietly, redirecting his energy into a parallel, non-intrusive activity.",
+         "Theo gives Dee a small, almost imperceptible nod of understanding and respect."
+        ]
+       }
       },
       "between": [
        {
@@ -1822,13 +1912,43 @@
        "variance": []
       },
       "checkpoints": {
-       "begin": "Shoulders hunched and headphones on, Wren sits apart, bracing for the inevitable questions about what's wrong.",
+       "begin": {
+        "text": "Shoulders hunched and headphones on, Wren sits apart, bracing for the inevitable questions about what's wrong.",
+        "open": "What specific memory or fear is fueling Wren's defensive posture and expectation of being questioned?",
+        "rigidity": "locked",
+        "rigidityWhy": "it establishes Wren's internal state and the tension the scene needs to resolve.",
+        "alts": [
+         "Wren enters and immediately finds the furthest corner, putting their headphones on as a clear 'do not disturb' sign.",
+         "Wren sits with their back to most of the room, hoodie up, a clear physical barrier against interaction."
+        ]
+       },
        "middle": {
         "type": "environmental",
         "turn": "Several minutes pass, and the only sounds are the soft scratch of Theo's pencil and the rustle of a page.",
-        "alt": "Wren realizes the knot in her stomach is gone, replaced by the simple feeling of being in a room with people."
+        "open": "As the minutes pass, how does the lack of intrusion begin to challenge Wren's initial defensive assumptions?",
+        "rigidity": "loose",
+        "rigidityWhy": "the specific ambient sounds or lack thereof can be varied to create different textures of quiet.",
+        "alts": [
+         {
+          "type": "environmental",
+          "turn": "The smell of tea brewing or the sight of someone else calmly reading a book provides a sense of normalcy that slowly disarms Wren."
+         },
+         {
+          "type": "internal",
+          "turn": "Wren's internal monologue of bracing for questions slowly runs out of steam, replaced by a growing curiosity about the quiet."
+         }
+        ]
        },
-       "end": "Wren slowly pulls one headphone off, letting the quiet, ambient sounds of the room in as her held breath releases."
+       "end": {
+        "text": "Wren slowly pulls one headphone off, letting the quiet, ambient sounds of the room in as her held breath releases.",
+        "open": "What specific sound does Wren focus on first that confirms it's safe to lower their guard?",
+        "rigidity": "locked",
+        "rigidityWhy": "it's the crucial turning point showing Wren choosing to connect with the space, fulfilling the arc.",
+        "alts": [
+         "Wren lowers the volume on their headphones enough to let the room's ambient sounds blend with their music.",
+         "Wren looks up from their phone for the first time, visually taking in the calm activity of the room."
+        ]
+       }
       },
       "between": [
        {
@@ -2077,13 +2197,43 @@
        "variance": []
       },
       "checkpoints": {
-       "begin": "After the last goodbye, the Caretaker finds a half-finished drawing left on the table, a tangible remnant of the evening.",
+       "begin": {
+        "text": "After the last goodbye, the Caretaker finds a half-finished drawing left on the table, a tangible remnant of the evening.",
+        "open": "Is the drawing left intentionally or forgotten, and how does that potential ambiguity color the Caretaker's discovery?",
+        "rigidity": "locked",
+        "rigidityWhy": "the found object is the catalyst for the entire scene's reflection.",
+        "alts": [
+         "The Caretaker finds a note tucked into a book, a small, private message of thanks.",
+         "While tidying up, the Caretaker notices a collection of used teacups arranged in a surprisingly companionable cluster."
+        ]
+       },
        "middle": {
         "type": "internal",
         "turn": "The Caretaker recognizes the artist's style and sees a confidence in the lines that wasn't there weeks ago.",
-        "alt": "A gust of wind from the open window flutters the paper, creating an immediate, gentle urgency to protect it."
+        "open": "What specific element of the drawing—the subject, a particular line, the use of color—most clearly illustrates this newfound confidence?",
+        "rigidity": "loose",
+        "rigidityWhy": "the specific evidence of growth can be interpreted in many ways, allowing for writer expression.",
+        "alts": [
+         {
+          "type": "internal",
+          "turn": "The Caretaker compares this drawing in their mind to a much more hesitant one the same student made weeks ago, seeing the progress starkly."
+         },
+         {
+          "type": "environmental",
+          "turn": "The Caretaker notices the drawing is on a large, fresh piece of paper, a contrast to the student's earlier habit of drawing on small, hidden scraps."
+         }
+        ]
        },
-       "end": "They place a small, smooth stone on its corner, a quiet promise that this work, and its creator, are being held."
+       "end": {
+        "text": "They place a small, smooth stone on its corner, a quiet promise that this work, and its creator, are being held.",
+        "open": "What is the personal significance of this specific stone to the Caretaker?",
+        "rigidity": "locked",
+        "rigidityWhy": "this final, gentle act embodies the 'kept, not chosen' metaphor and the anti-dependency principle.",
+        "alts": [
+         "They carefully slide the drawing into a protective folder where other such remnants are kept safe.",
+         "They take a photo of the drawing on their phone, a private digital archive of the room's quiet successes."
+        ]
+       }
       },
       "between": [
        {

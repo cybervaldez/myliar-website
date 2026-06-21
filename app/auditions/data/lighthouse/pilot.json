@@ -1033,13 +1033,43 @@
        ]
       },
       "checkpoints": {
-       "begin": "You open the logbook to a clean page and find a pressed violet, a silent welcome from the keeper before you.",
+       "begin": {
+        "text": "You open the logbook to a clean page and find a pressed violet, a silent welcome from the keeper before you.",
+        "open": "How will I respond to this unexpected, intimate gesture from a stranger?",
+        "rigidity": "locked",
+        "rigidityWhy": "it establishes the core premise of unspoken connection.",
+        "alts": [
+         "A faint, handwritten note in the margin: 'Mind the draft from the north window.'",
+         "A single, unfamiliar key is tucked into the spine of the logbook."
+        ]
+       },
        "middle": {
         "type": "internal",
         "turn": "A quiet realization that this is not just a job, but a role passed from one solitary soul to another.",
-        "alt": "The lamplight catches the violet's faded color, making it seem almost alive for a moment."
+        "open": "Does this shared role feel like a comfort or a weight?",
+        "rigidity": "loose",
+        "rigidityWhy": "the player's personal interpretation of legacy is central to the experience.",
+        "alts": [
+         {
+          "type": "internal",
+          "turn": "A flash of resentment: why must this duty always fall to those who are alone?"
+         },
+         {
+          "type": "environmental",
+          "turn": "You notice subtle, worn marks on the desk and chair, evidence of the physical presence of your predecessor."
+         }
+        ]
        },
-       "end": "You close the logbook over the flower, accepting the unspoken connection and your place in the long watch."
+       "end": {
+        "text": "You close the logbook over the flower, accepting the unspoken connection and your place in the long watch.",
+        "open": "What does my first entry in this logbook say about the keeper I will be?",
+        "rigidity": "locked",
+        "rigidityWhy": "it resolves the scene's arc of acceptance and inheritance.",
+        "alts": [
+         "You leave the flower out on the desk, a visible reminder of the connection, not yet ready to hide it away.",
+         "You find another page with a dried flower and place yours beside it, adding to the chain."
+        ]
+       }
       },
       "between": [
        {
@@ -1281,13 +1311,43 @@
        ]
       },
       "checkpoints": {
-       "begin": "As the radio warns of a storm and the wind rises, you begin your practiced ritual of tending to the lamp.",
+       "begin": {
+        "text": "As the radio warns of a storm and the wind rises, you begin your practiced ritual of tending to the lamp.",
+        "open": "Is this ritual a source of comfort against the coming storm, or merely a necessary, mechanical task?",
+        "rigidity": "locked",
+        "rigidityWhy": "it sets the external pressure (storm) against the internal action (ritual).",
+        "alts": [
+         "The radio is silent, but the sudden drop in pressure and the sea's behavior tell you a storm is coming.",
+         "The lamp sputters unexpectedly, forcing you to begin your tending ritual ahead of schedule."
+        ]
+       },
        "middle": {
         "type": "environmental",
         "turn": "A powerful gust of wind rattles the lantern room glass, a physical test of the shelter you maintain.",
-        "alt": "A flicker of a memory of a different storm, a past anxiety, rises unbidden and is calmly set aside."
+        "open": "Can this structure I tend to truly hold against the forces outside?",
+        "rigidity": "loose",
+        "rigidityWhy": "the player's emotional response to the environmental test can vary widely.",
+        "alts": [
+         {
+          "type": "internal",
+          "turn": "A moment of profound doubt in your own ability to see this through the night."
+         },
+         {
+          "type": "environmental",
+          "turn": "A seabird, disoriented by the wind, strikes the glass—a startling, fragile life against the storm."
+         }
+        ]
        },
-       "end": "With the lamp burning steadily, you feel its warmth not just as light, but as the physical form of your resolve."
+       "end": {
+        "text": "With the lamp burning steadily, you feel its warmth not just as light, but as the physical form of your resolve.",
+        "open": "Now that the lamp is secure, where do I direct my attention in the heart of the storm?",
+        "rigidity": "locked",
+        "rigidityWhy": "it solidifies the scene's metaphor of the lamp as an internal anchor.",
+        "alts": [
+         "The lamp burns steadily, but its light seems small and fragile against the immense darkness of the storm.",
+         "You touch the warm glass of the lens, feeling the steady hum of the mechanism as a shared heartbeat."
+        ]
+       }
       },
       "between": [
        {
@@ -1533,13 +1593,43 @@
        "variance": []
       },
       "checkpoints": {
-       "begin": "The fog becomes absolute, silencing the world and turning the lamp's beam into a soft, rhythmic pulse within the room.",
+       "begin": {
+        "text": "The fog becomes absolute, silencing the world and turning the lamp's beam into a soft, rhythmic pulse within the room.",
+        "open": "What will emerge from the self when all external distractions are stripped away?",
+        "rigidity": "locked",
+        "rigidityWhy": "the sensory deprivation is the trigger for the entire scene's internal journey.",
+        "alts": [
+         "The foghorn begins its low, mournful call, replacing the sounds of the sea with a single, repeating note.",
+         "The fog doesn't silence the world, but muffles it, turning familiar sounds strange and distant."
+        ]
+       },
        "middle": {
         "type": "internal",
         "turn": "In the profound quiet, a specific, long-unheard inner voice—a memory, a feeling, a question—becomes clear.",
-        "alt": "The rhythmic sweep of light and shadow across a familiar object in the room suddenly makes it seem unfamiliar."
+        "open": "Is this emerging voice a welcome clarity or an uncomfortable truth?",
+        "rigidity": "loose",
+        "rigidityWhy": "the content of the internal revelation is deeply personal to the player's journey.",
+        "alts": [
+         {
+          "type": "internal",
+          "turn": "Instead of a voice, a profound sense of peace settles, a feeling of being perfectly in place, without need for words."
+         },
+         {
+          "type": "environmental",
+          "turn": "A faint, unidentifiable sound from within the tower—a creak, a drip—becomes the sole focus, a tiny mystery in the quiet."
+         }
+        ]
        },
-       "end": "You are left sitting with this newfound internal clarity, feeling present with yourself in the muffled stillness."
+       "end": {
+        "text": "You are left sitting with this newfound internal clarity, feeling present with yourself in the muffled stillness.",
+        "open": "How does this clarity change the way I inhabit this silence, and this room?",
+        "rigidity": "locked",
+        "rigidityWhy": "it concludes the arc of deep listening with a state of being, not an action.",
+        "alts": [
+         "You feel the need to move, to walk the circular room, processing the clarity through quiet motion.",
+         "You are left with a question, not an answer, but feel a sense of peace in simply holding it."
+        ]
+       }
       },
       "between": [
        {
@@ -1779,13 +1869,43 @@
        "variance": []
       },
       "checkpoints": {
-       "begin": "As the fog shreds, a familiar, pulsing light emerges from the haze—another lighthouse, keeping its own watch.",
+       "begin": {
+        "text": "As the fog shreds, a familiar, pulsing light emerges from the haze—another lighthouse, keeping its own watch.",
+        "open": "After a night of total isolation, what does it mean to see another light and be reminded I am not alone?",
+        "rigidity": "locked",
+        "rigidityWhy": "the appearance of the other lighthouse is the inciting incident for the scene's theme.",
+        "alts": [
+         "The fog thins to reveal the lights of a distant, early-morning fishing boat, a small sign of human life returning.",
+         "The stars appear first, a vast and indifferent pattern, before the specific light of the other tower."
+        ]
+       },
        "middle": {
         "type": "environmental",
         "turn": "The distant beam sweeps across your own tower, a silent acknowledgment that you are seen in return.",
-        "alt": "The thought surfaces: how many other lights are out there, unseen, forming a chain across the dark water?"
+        "open": "Does being seen feel like a comfort, an intrusion, or simply a fact of this shared geography?",
+        "rigidity": "loose",
+        "rigidityWhy": "the player's feeling about being observed is a key moment of vulnerability.",
+        "alts": [
+         {
+          "type": "internal",
+          "turn": "A sudden, unexpected wave of loneliness, realizing the vast distance between your light and theirs."
+         },
+         {
+          "type": "environmental",
+          "turn": "You see your own light reflected back faintly from the haze, a strange moment of self-observation."
+         }
+        ]
        },
-       "end": "You feel your own small light not as an isolated point, but as one star in a vast, unseen constellation of care."
+       "end": {
+        "text": "You feel your own small light not as an isolated point, but as one star in a vast, unseen constellation of care.",
+        "open": "How does this feeling of connection change the meaning of my own small, solitary duty?",
+        "rigidity": "locked",
+        "rigidityWhy": "it resolves the scene's arc from isolation to connection in a poetic, non-literal way.",
+        "alts": [
+         "You feel a sense of quiet duty to that other light, a responsibility to a colleague you'll never meet.",
+         "You raise a cup of tea to the window, a silent toast to the other keeper across the water."
+        ]
+       }
       },
       "between": [
        {
@@ -2025,13 +2145,43 @@
        "variance": []
       },
       "checkpoints": {
-       "begin": "In the first grey light of dawn, you perform the ritual of extinguishing the lamp and open the logbook to record the night.",
+       "begin": {
+        "text": "In the first grey light of dawn, you perform the ritual of extinguishing the lamp and open the logbook to record the night.",
+        "open": "Having passed through the night, what is the one thing that needs to be recorded, to be remembered?",
+        "rigidity": "locked",
+        "rigidityWhy": "it frames the final act of the game as one of reflection and legacy.",
+        "alts": [
+         "You watch the sun break the horizon before extinguishing the lamp, letting the two lights meet for a moment.",
+         "Before opening the logbook, you simply stand and watch the dawn, letting the night's experiences settle."
+        ]
+       },
        "middle": {
         "type": "internal",
         "turn": "You decide not to record the weather or ships seen, but to find words for the night's essential feeling.",
-        "alt": "The sun catches the brass of the cooled lamp, a silent, warm handover from one watch to the next."
+        "open": "Can I find language for an internal experience, and what is lost or gained in the attempt?",
+        "rigidity": "loose",
+        "rigidityWhy": "the player's choice of what to express is the ultimate act of autonomy.",
+        "alts": [
+         {
+          "type": "internal",
+          "turn": "You decide to draw something instead of writing—the shape of the fog, the rhythm of the other light."
+         },
+         {
+          "type": "environmental",
+          "turn": "You look at the pressed violet from the first night, and decide your entry will be a response to it."
+         }
+        ]
        },
-       "end": "Pen resting on the page, you leave a trace of your inner world for the next keeper, a gift of quiet companionship."
+       "end": {
+        "text": "Pen resting on the page, you leave a trace of your inner world for the next keeper, a gift of quiet companionship.",
+        "open": "Having left my mark, am I now more ready to face the day, and my own solitude?",
+        "rigidity": "locked",
+        "rigidityWhy": "it fulfills the anti-dependency promise, leaving a gift that empowers the player to move on.",
+        "alts": [
+         "You close the book without writing, deciding the silence itself is the most honest record of the night.",
+         "You tuck a small, personal token of your own—a feather, a smooth stone—onto the page for the next keeper."
+        ]
+       }
       },
       "between": [
        {
