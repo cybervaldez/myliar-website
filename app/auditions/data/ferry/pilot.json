@@ -1183,6 +1183,44 @@
        "whyWon": "Wins on forward-yield (Rule 2). The Deckhand's quiet, surrendered posture provides a perfect external mirror for the player's internal arc of letting go, directly serving the 'grows-with-you' theme from the start.",
        "dynamic": "Mirrored stillness. The Deckhand's relaxed presence gives the player non-verbal permission to simply be, transforming the Manifest-keeper's focused silence into a shared state of peace.",
        "quirk": "The Deckhand leans against the ship's wall, eyes closed, and for a moment, rests a hand flat against the wood, as if feeling the ship's heartbeat—a gesture of deep, trusting connection."
+      },
+      "content": {
+       "beats": [
+        {
+         "at": "begin",
+         "text": "On the twilight deck, the player finds the Manifest-keeper, a still silhouette against the brass railing, watching the moon's path on the water. Nearby, the Deckhand leans against a bulkhead, their posture an image of ease.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "begin → middle",
+         "text": "The player chooses a spot on a coil of rope, not too close, but sharing the same view. The only sounds are the gentle lapping of water and the ship's low hum.",
+         "grows": "The player's autonomy is expressed by choosing to sit, and the bond grows as they realize their presence is enough.",
+         "bond": "Establishing a baseline of comfortable, non-demanding co-existence."
+        },
+        {
+         "at": "middle",
+         "text": "A familiar pressure to fill the silence rises in the player's chest, and then, for the first time, fades. The quiet isn't empty; it's shared, held between the three of them like a warm blanket.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "middle → end",
+         "text": "The player lets out a breath they didn't realize they were holding, their shoulders dropping. The quiet feels like a complete conversation.",
+         "grows": "The player's autonomy solidifies in accepting the silence, and the bond deepens into a shared, unspoken understanding.",
+         "bond": "Moving from co-existence to a nascent, quiet companionship."
+        },
+        {
+         "at": "end",
+         "text": "The Deckhand gives a soft nod and heads below. The Manifest-keeper follows a moment later, leaving the player alone with the moon on the water, feeling settled and seen.",
+         "grows": "",
+         "bond": ""
+        }
+       ],
+       "review": {
+        "verdict": "yes",
+        "flag": "The beat sequence establishes the core loop: player's quiet choice is met with quiet acceptance, building a bond without demand."
+       }
       }
      },
      "rising-wind": {
@@ -1400,6 +1438,44 @@
        "whyWon": "Wins on forward-yield (Rule 2). The sharp contrast between the Manifest-keeper's usual precision and their brief moment of disarray makes the 'fragile request' exceptionally powerful and character-revealing.",
        "dynamic": "A crack in the composure. The player witnesses the usually unflappable character become momentarily overwhelmed, making the act of helping feel significant and trust-building.",
        "quirk": "When a gust blows through, a perfectly stacked sheaf of papers flutters apart. The Manifest-keeper's hands hover, unsure which to grab first, a moment of pure system failure before they ask for help."
+      },
+      "content": {
+       "beats": [
+        {
+         "at": "begin",
+         "text": "The ship begins to pitch as the wind rises. From the shelter of the wheelhouse doorway, the player watches the Pilot's hands, calm and certain on the helm, a point of stability against the iron-grey sky.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "begin → middle",
+         "text": "The Manifest-keeper, usually a picture of composure, braces themselves in the same doorway. Their knuckles are white where they grip the frame, a sheaf of loose papers threatening to escape their satchel with every gust.",
+         "grows": "Player's autonomy is in observing and feeling grounded by the Pilot; the bond is pre-emptively built on the feeling of safety the crew provides.",
+         "bond": "Moving from observing competence to being seen as a source of potential support."
+        },
+        {
+         "at": "middle",
+         "text": "As a stronger gust hits, the papers flutter wildly. The Manifest-keeper turns to the player, their voice low and strained, \"Could you... hold these? Just for a moment.\"",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "middle → end",
+         "text": "The player takes the papers without a word, tucking them securely inside their own coat. The Manifest-keeper's shoulders slump in visible relief, the shared vulnerability in the small space feeling significant.",
+         "grows": "The player's autonomy is enacted by fulfilling the request; the bond deepens through the shared vulnerability and mutual trust.",
+         "bond": "Solidifying the player's role as a safe, supportive presence within the passenger community."
+        },
+        {
+         "at": "end",
+         "text": "After securing their satchel, the Manifest-keeper takes the papers back, their fingers brushing the player's in a silent thank you. They offer a look of profound, quiet gratitude before finding a seat, leaving the player feeling capable and trusted.",
+         "grows": "",
+         "bond": ""
+        }
+       ],
+       "review": {
+        "verdict": "yes",
+        "flag": "Player autonomy shifts from passive observation to active, simple support, deepening the bond through a moment of earned trust."
+       }
       }
      },
      "the-storm": {
@@ -1619,6 +1695,44 @@
        "whyWon": "Wins on forward-yield (Rule 2) and tie-breaks on range (Rule 3). The Cook's breakdown is deeply human and provides a different flavor of vulnerability than the Manifest-keeper's, preventing dynamic redundancy across scenes.",
        "dynamic": "The caregiver overwhelmed. The player sees the person responsible for homely comfort lose their own, creating a powerful opportunity to offer silent support back, fulfilling the arc of holding space.",
        "quirk": "A large wave hits, sending a carefully arranged stack of bowls crashing to the floor. The Cook, who has been stoic, just stares at the mess before letting out a choked sob, one hand covering their mouth."
+      },
+      "content": {
+       "beats": [
+        {
+         "at": "begin",
+         "text": "The ship groans as the storm hits its peak. The Deckhand finds the player and wordlessly leads them to a lamp-lit nook below deck, pressing a heavy brass compass and a soft cloth into their hands—a grounding task.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "begin → middle",
+         "text": "The player begins polishing, the repetitive, circular motion a small anchor. The Cook is huddled nearby, trying to read, but their hands are trembling slightly.",
+         "grows": "Player's autonomy is in accepting the grounding task; the bond with the Deckhand grows through this simple, shared ritual of calm.",
+         "bond": "Establishing a pocket of safety and shared purpose amidst external chaos."
+        },
+        {
+         "at": "middle",
+         "text": "A violent wave slams against the hull, sending a deep shudder through the ship. The Cook lets out a single, choked sob, their face buried in their hands, their composure finally broken.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "middle → end",
+         "text": "The player pauses their polishing but doesn't speak or move toward the Cook. They simply remain present, their quiet, steady existence a testament that the Cook is not alone in the phosphorescent dark.",
+         "grows": "Player's autonomy is demonstrated by *not* acting, by holding space instead of fixing; the bond with the other passenger is forged in profound, silent support.",
+         "bond": "Deepening the player's role from companion to a true, unwavering anchor for others."
+        },
+        {
+         "at": "end",
+         "text": "After a long moment, the Cook's shaking subsides. They lift their head, their face streaked with tears, and give the player a look of deep, exhausted relief. The player offers a small, slow nod, the silent exchange a complete arc of support.",
+         "grows": "",
+         "bond": ""
+        }
+       ],
+       "review": {
+        "verdict": "yes",
+        "flag": "Demonstrates advanced autonomy by *not* acting, solidifying the bond through silent, unwavering presence—the essence of 'Surrender as support'."
+       }
       }
      },
      "settling-sea": {
@@ -1829,6 +1943,44 @@
        "whyWon": "Wins on forward-yield (Rule 2). The dynamic of the precise Manifest-keeper joining the earthy Cook in physical labor creates a powerful, unusual pairing. Their shared pause feels earned and bridges their very different energies.",
        "dynamic": "Precision meets presence. The Manifest-keeper's quiet efficiency and the Cook's rhythmic chopping create a companionable silence. The shared pause is a moment of mutual respect for different ways of restoring order.",
        "quirk": "While helping restock a shelf, the Manifest-keeper perfectly aligns a row of tins. They place the last one just so at the exact moment the Cook's knife comes to a rest. They catch each other's eye in the quiet."
+      },
+      "content": {
+       "beats": [
+        {
+         "at": "begin",
+         "text": "The sea is settling into a long, rolling swell under a bruised sky. In the warm galley, the Cook wordlessly slides a cutting board and a small knife across the counter—an invitation to help restore order.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "begin → middle",
+         "text": "The player accepts, falling into a shared, steady rhythm: the soft thud of the Cook's cleaver, the lighter tap of the player's knife. The Manifest-keeper sits at a nearby table, meticulously sorting salvaged tea tins, another quiet act of recovery.",
+         "grows": "Autonomy is in accepting the task and finding a rhythm; the bond with the Cook forms through non-verbal cooperation.",
+         "bond": "Establishing a collaborative rhythm, a feeling of being useful without pressure."
+        },
+        {
+         "at": "middle",
+         "text": "Simultaneously, as if on an unspoken cue, both the player's and the Cook's knives fall still. The only sound is the gentle creak of the ship, the air thick with the shared weight of the night just passed.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "middle → end",
+         "text": "The player meets the Cook's gaze. The exhaustion, the relief, and the simple fact of having made it through are all present in that shared, silver-lit moment.",
+         "grows": "The player's autonomy is in recognizing and holding the emotional weight of the shared pause; the bond deepens into a shared experience of survival.",
+         "bond": "Moving from collaborators to comrades who have weathered the same storm."
+        },
+        {
+         "at": "end",
+         "text": "The Cook gives a small, weary smile that reaches their eyes. They take a deep breath and resume chopping, the rhythm now a little lighter. The player joins in, feeling not just helpful, but part of the recovery.",
+         "grows": "",
+         "bond": ""
+        }
+       ],
+       "review": {
+        "verdict": "yes",
+        "flag": "The shared, synchronized pause is a powerful diegetic beat that transforms a simple task into a moment of deep, comradely connection."
+       }
       }
      },
      "first-light": {
@@ -2046,6 +2198,44 @@
        "whyWon": "Wins on forward-yield (Rule 2). The 'handoff' is the emotional climax. Making it a one-on-one interaction gives the moment maximum weight and intimacy, honoring the iyashikei value of the meaningful pause ('ma').",
        "dynamic": "The quiet acknowledgment. With no one else present, the Manifest-keeper's simple act of offering the stone becomes a profound, intimate acknowledgment of the journey, the silence full of shared understanding.",
        "quirk": "Having just closed their ledger with a soft click, the Manifest-keeper's usual precision is now in the deliberate, careful way they present the stone, held in their open palm as if it contains the full weight of the journey."
+      },
+      "content": {
+       "beats": [
+        {
+         "at": "begin",
+         "text": "The sky is the soft grey of charcoal and peach. At the stern, the player finds the Manifest-keeper watching the silver wake, holding a small, dark stone.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "begin → middle",
+         "text": "The player stops at a respectful distance. They watch as the Manifest-keeper holds the stone for a moment, as if imparting a weight into it, before gently releasing it into the churning water—a ritual of letting go.",
+         "grows": "The player's autonomy is in witnessing and understanding the ritual's meaning; the bond with the Manifest-keeper is at its peak.",
+         "bond": "Moving from witnessing another's release to being invited into the closure."
+        },
+        {
+         "at": "middle",
+         "text": "The Manifest-keeper turns, their expression serene. They meet the player's eyes and hold out their open palm. Resting on it is another stone, smooth and cool. It is not a request, but an offering.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "middle → end",
+         "text": "The player understands. This isn't a keepsake of the journey, but a tool for their own. It's the capacity for release, made tangible.",
+         "grows": "Autonomy is in accepting the gift and its meaning; the bond is solidified into a lasting memory, a support that continues after parting.",
+         "bond": "Concluding the journey with a transfer of care, empowering the player for their own path ahead."
+        },
+        {
+         "at": "end",
+         "text": "The player accepts the stone, its weight solid and grounding in their palm. The Manifest-keeper gives a final, warm, and knowing smile before turning to look toward the approaching shore, leaving the player equipped for their own goodbyes.",
+         "grows": "",
+         "bond": ""
+        }
+       ],
+       "review": {
+        "verdict": "yes",
+        "flag": "The final beat successfully transforms the bond into a tool for the player's future autonomy, fulfilling the 'anti-dependency' promise."
+       }
       }
      }
     },

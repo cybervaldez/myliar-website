@@ -1072,6 +1072,44 @@
        "whyWon": "Wins on rule (1) and (2). The arc is 'quiet inheritance'; the strongest dynamic is internal, with the focal (Keeper-before) as a felt presence. Adding another character would dilute this foundational moment of solitude.",
        "dynamic": "Private Communion",
        "quirk": "The player notices their own hand, now doing this work, and sees it as a continuation of the hand that wrote the logbook."
+      },
+      "content": {
+       "beats": [
+        {
+         "at": "begin",
+         "text": "You open the worn leather logbook to the next clean page. Tucked inside is a single pressed violet, its color faded to the soft grey of twilight.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "begin → middle",
+         "text": "You touch the flower's delicate, paper-thin petal. You alone decide its meaning—a forgotten bookmark, a memento, a deliberate, quiet welcome.",
+         "grows": "The player's autonomy in interpreting the meaning of this anonymous, intimate gift.",
+         "bond": "Establishing the Keeper-before as a felt, gentle presence rather than a historical footnote."
+        },
+        {
+         "at": "middle",
+         "text": "You realize this logbook is not just a record of weather, but of solitude. This is a role passed from one quiet soul to another across time.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "middle → end",
+         "text": "Looking from the book to the great, unlit lamp, you choose to light it not just as a duty, but as an answer. You are taking up the other end of this unspoken conversation.",
+         "grows": "The player's choice to consciously accept this inherited role, defining the start of their own vigil.",
+         "bond": "Solidifying the bond with the Light as the shared object of devotion connecting the player to their predecessor."
+        },
+        {
+         "at": "end",
+         "text": "You gently close the logbook, the violet now marking your own first page. The vigil has been passed. It is now yours to keep.",
+         "grows": "",
+         "bond": ""
+        }
+       ],
+       "review": {
+        "verdict": "yes",
+        "flag": "The player's internal choice (autonomy) directly forges the bond with the past/future keepers (relationship)."
+       }
       }
      },
      "the-dark-settles": {
@@ -1288,6 +1326,44 @@
        "whyWon": "Wins on rule (2) forward-yield and (3) range. It introduces the 'solidarity' theme that pays off in Scene 4, and its 'distant witness' dynamic is a unique texture that contrasts powerfully with the focal (the Light's) physical immediacy.",
        "dynamic": "Distant Witness",
        "quirk": "Amid the storm's chaos, the Voice's brief, calm humming on sign-off is a small, defiant piece of human order."
+      },
+      "content": {
+       "beats": [
+        {
+         "at": "begin",
+         "text": "The radio crackles a storm warning as the wind begins to keen. You turn to the lamp and begin your practiced ritual of care.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "begin → middle",
+         "text": "Your hands move with a quiet, growing competence—polishing the brass, checking the fuel. You find your own rhythm, a steadying cadence against the rising wind.",
+         "grows": "The player's competence in performing the stewardship tasks, finding their own grounding rhythm.",
+         "bond": "Deepening the bond with the Light as a partner in holding steady against the turmoil."
+        },
+        {
+         "at": "middle",
+         "text": "A powerful gust hits the tower, and the thick lantern glass shudders in its frame, a sudden, physical test of the shelter you maintain.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "middle → end",
+         "text": "You place a hand on the lamp's warm housing, feeling its solidity. You choose a single, quiet thought to hold in your mind, a personal anchor against the storm's voice.",
+         "grows": "The player's choice of what specific thought or truth serves as their anchor, personalizing their source of strength.",
+         "bond": "The Light transforms from a machine being tended to a symbol of the player's own inner fortitude."
+        },
+        {
+         "at": "end",
+         "text": "The lamp burns unwavering, its clean, steady light a silent answer to the gale. You feel its warmth as the physical shape of your own resolve.",
+         "grows": "",
+         "bond": ""
+        }
+       ],
+       "review": {
+        "verdict": "yes",
+        "flag": "Player's growing physical competence enables a deeper, more symbolic internal bond with the Light."
+       }
       }
      },
      "the-fog-comes-in": {
@@ -1496,6 +1572,44 @@
        "whyWon": "Wins on rule (1). The arc is 'the deep listening' to an *inner* voice. The §8.13 floor is essential here; any external presence, even the logbook, would violate the scene's core premise of autonomous self-discovery.",
        "dynamic": "Unveiled Interiority",
        "quirk": "In the absolute quiet, the player hears the sound of their own heartbeat, and mistakes it for a moment for something else."
+      },
+      "content": {
+       "beats": [
+        {
+         "at": "begin",
+         "text": "The fog grows absolute, erasing the sea and sky. The world is silenced, and the lamp's beam becomes a soft, rhythmic pulse of light within the room.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "begin → middle",
+         "text": "You sit in the profound quiet, no longer feeling the need to fill it. You simply watch the light sweep, its slow, steady rhythm a companion in the stillness.",
+         "grows": "The player's growing comfort with unstructured silence, allowing their own thoughts to surface without prompting.",
+         "bond": "The Light's role shifts from a functional beacon to a quiet, rhythmic companion for introspection."
+        },
+        {
+         "at": "middle",
+         "text": "In the muffled peace, a thought you haven't heard in years—a memory, a question, a gentle regret—rises to the surface, clear and distinct.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "middle → end",
+         "text": "You don't push the thought away or analyze it; you simply let it be. You decide how to hold it, giving it space in the quiet room you share with the pulsing light.",
+         "grows": "The player's autonomy in deciding how to hold or respond to what they have 'heard' in the silence.",
+         "bond": "The player and the Light share a secret intimacy, alone together in the enclosed, foggy world."
+        },
+        {
+         "at": "end",
+         "text": "The fog holds, and you remain seated in the muffled stillness, feeling uniquely present with yourself and the newfound clarity you've been given.",
+         "grows": "",
+         "bond": ""
+        }
+       ],
+       "review": {
+        "verdict": "yes",
+        "flag": "The player's capacity for self-reflection (autonomy) is nurtured by the Light's quiet presence (bond)."
+       }
       }
      },
      "the-fog-thins": {
@@ -1704,6 +1818,44 @@
        "whyWon": "Wins on rule (2) quality. With the Voice as focal, interacting with your own Light is the most active and poignant dynamic. It's not just seeing, but participating—your Light is your 'voice' in the silent call-and-response.",
        "dynamic": "Silent Conversation",
        "quirk": "As the distant beam sweeps past, you instinctively polish a smudge on your own lens, a gesture of reciprocity and pride."
+      },
+      "content": {
+       "beats": [
+        {
+         "at": "begin",
+         "text": "The fog begins to shred into ribbons of grey. Through a gap, a faint, rhythmic pulse of light appears on the horizon—another lighthouse.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "begin → middle",
+         "text": "You watch its steady flash, and the feeling of isolation recedes. You choose to see it not as a distant object, but as a colleague, another keeper on watch.",
+         "grows": "The player's shift in self-perception from being isolated to being part of a pair.",
+         "bond": "Establishing the Voice (the other keeper) as a tangible, real peer, ending profound isolation."
+        },
+        {
+         "at": "middle",
+         "text": "For a moment, the distant beam sweeps directly across your own lantern room, a silent, fleeting acknowledgment that you are seen in return.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "middle → end",
+         "text": "You look out into the haze and imagine other, unseen lights further down the coast. You are not just a pair, but a link in a chain, a star in a constellation of care.",
+         "grows": "The player's autonomy in imagining the scale and nature of this wider, unseen network of care.",
+         "bond": "Expanding the connection from one peer to an entire unseen fellowship, deepening the meaning of the vigil."
+        },
+        {
+         "at": "end",
+         "text": "Your own small lamp feels different now—not a solitary point against the dark, but one of many, holding a shared line against the night.",
+         "grows": "",
+         "bond": ""
+        }
+       ],
+       "review": {
+        "verdict": "yes",
+        "flag": "Player autonomy expands perception from 'I' to 'we', which in turn deepens the bond with the wider world."
+       }
       }
      },
      "first-light": {
@@ -1912,6 +2064,44 @@
        "whyWon": "Wins on rule (2), strongest dynamic. The arc is about leaving a testament. The Keeper-before (via the logbook) is the physical embodiment of past testaments, making them the perfect and most resonant foil for the player's decision.",
        "dynamic": "Amending the Record",
        "quirk": "Instead of data, the player adds a small, imperfect drawing of a knot of their own invention next to the Keeper-before's perfect ones."
+      },
+      "content": {
+       "beats": [
+        {
+         "at": "begin",
+         "text": "In the first pale light of dawn, you perform the final ritual: extinguishing the lamp. You open the logbook to record the night's passage.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "begin → middle",
+         "text": "You re-read the brief, personal note left by the keeper before you. You decide your own entry will be more than just wind speed and visibility; it will be a testament.",
+         "grows": "The player's autonomy to move beyond rote duty (recording facts) to meaningful, personal expression.",
+         "bond": "Reflecting on the Keeper-before's entries, understanding the person behind the script."
+        },
+        {
+         "at": "middle",
+         "text": "Your pen hovers over the page. You choose not to record the storm, but to find a few true words for the feeling of seeing the other light in the fog.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "middle → end",
+         "text": "You select a single, precise phrase, a quiet offering of your inner world. It is a message left not for an inspector, but for the next keeper who will sit here.",
+         "grows": "The player's choice of the specific feeling or insight to leave behind, defining their personal legacy.",
+         "bond": "Establishing a bond with the future Visitor (the next keeper) through this intimate, asynchronous communication."
+        },
+        {
+         "at": "end",
+         "text": "You close the book on your entry. It is a small gift of companionship, left for a stranger you will never meet, completing the circle that began with a pressed flower.",
+         "grows": "",
+         "bond": ""
+        }
+       ],
+       "review": {
+        "verdict": "yes",
+        "flag": "Player's autonomous expression becomes the very mechanism for bonding with the future, leaving them more able."
+       }
       }
      }
     },

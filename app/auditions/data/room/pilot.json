@@ -1103,6 +1103,44 @@
        "whyWon": "Wins on forward-yield (Rule 2). Theo's presence makes the Caretaker's internal reflection on the 'shed skin' arc tangible and visible, providing a powerful, direct illustration of the scene's core theme.",
        "dynamic": "The Gentle Witness & The Unmasking Performer.",
        "quirk": "Theo enters, still buzzing, but as he sinks into the chair, he lets out a long, un-self-conscious sigh, and his entire posture shifts from 'on' to 'off'."
+      },
+      "content": {
+       "beats": [
+        {
+         "at": "begin",
+         "text": "The Caretaker watches the last sunbeam of the day illuminate the worn armchair by the window. They see not an empty seat, but a place of quiet unburdening.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "begin → middle",
+         "text": "They remember students first arriving, clutching their bags like shields. They've learned the room itself does the heavy lifting; their job is just to open the door.",
+         "grows": "Recognizing the room as a tool for self-regulation, not just a physical space.",
+         "bond": "The Caretaker's bond with the purpose of the room deepens through observation."
+        },
+        {
+         "at": "middle",
+         "text": "A clear memory surfaces: Theo, usually a whirlwind of jokes, sinking into that chair weeks ago. The visible release in his shoulders as a sigh he didn't know he was holding finally escaped.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "middle → end",
+         "text": "It wasn't about a single thing they said or did. The permission to be quiet, to not perform, was granted by the room itself.",
+         "grows": "Internalizing the permission to not perform, solidifying the room's core value.",
+         "bond": "The Caretaker solidifies their role as a guardian of this feeling, not just a keeper of the room."
+        },
+        {
+         "at": "end",
+         "text": "They plump the cushion on the armchair, a small act of maintenance. A quiet satisfaction settles in being the guardian of this silent, vital space.",
+         "grows": "",
+         "bond": ""
+        }
+       ],
+       "review": {
+        "verdict": "yes",
+        "flag": "Successfully externalizes the bond onto the space itself, reinforcing the anti-dependency goal."
+       }
       }
      },
      "the-room-fills": {
@@ -1322,6 +1360,44 @@
        "whyWon": "Clears the floor (Rule 1). The scene's defined environmental turning point is literally Wren's action. The dynamic between Dee's quiet invitation and Wren's hesitant participation is the absolute core of the 'belonging through parallel action' arc.",
        "dynamic": "The Steady Hand & The Reaching Hand.",
        "quirk": "Headphones still on but music off, Wren carefully selects a specific shade of teal, turning it over in their fingers before uncapping it—a small, deliberate act of joining in."
+      },
+      "content": {
+       "beats": [
+        {
+         "at": "begin",
+         "text": "Dee senses the tense quiet in the room and wordlessly slides a basket of colorful fineliner pens into the center of the table.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "begin → middle",
+         "text": "Without making eye contact, Dee takes a pen for herself and begins to doodle on a scrap of paper. It's an offering, not an instruction.",
+         "grows": "Learning that contribution can be non-verbal and still valuable.",
+         "bond": "Dee offers a low-stakes invitation; Wren tests its sincerity by considering it."
+        },
+        {
+         "at": "middle",
+         "text": "Across the table, Wren, who has been withdrawn with her hood up, slowly reaches out and selects a single deep blue pen. The small click as she uncaps it is sharp in the silence.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "middle → end",
+         "text": "Another student follows her lead, then a third. A silent agreement passes between them as they all bend over their own pages.",
+         "grows": "Discovering the comfort and connection of parallel activity and shared focus.",
+         "bond": "The group's focus coalesces on the shared task, creating a temporary, unified identity without a word."
+        },
+        {
+         "at": "end",
+         "text": "The tension dissolves, replaced by the soft, collective scratching of pens on paper. The room is still quiet, but now it's a shared, comfortable quiet.",
+         "grows": "",
+         "bond": ""
+        }
+       ],
+       "review": {
+        "verdict": "yes",
+        "flag": "Excellent use of a shared object (pens) to mediate connection without demanding intimacy."
+       }
       }
      },
      "a-rough-one": {
@@ -1539,6 +1615,44 @@
        "whyWon": "Wins on forward-yield (Rule 2). As a peer, Dee's model of quiet care allows Theo's realization to be an organic moment of social learning, rather than a correction from an adult, which honors the genre's 'avoid adult-savior' convention.",
        "dynamic": "The Quiet Carer & The Reassessing Comedian.",
        "quirk": "Theo opens his mouth, joke ready, but stops when he sees Dee just quietly pushing her own unopened water bottle across the table toward the person having a rough time. He closes his mouth, the joke gone."
+      },
+      "content": {
+       "beats": [
+        {
+         "at": "begin",
+         "text": "Theo is mid-joke, animated and loud, when he spots a student enter, rain-soaked and heavy, and slump into a chair.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "begin → middle",
+         "text": "Just as he's about to try and cheer them up, he sees Dee move quietly to the side table, pour a steaming mug of tea, and place it beside the student without a word.",
+         "grows": "Learning to read the room and recognize different, quieter forms of care.",
+         "bond": "Theo witnesses a form of care from Dee that is alien to his own social style."
+        },
+        {
+         "at": "middle",
+         "text": "The punchline dies on his lips. He suddenly feels his own boisterous energy as an intrusion, a demand for a reaction the student can't give.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "middle → end",
+         "text": "He watches Dee return to her seat, her small, complete act of care asking for nothing in return. He realizes he doesn't know how to do that.",
+         "grows": "Gaining the autonomy to choose silence over performance as a valid, even superior, social contribution.",
+         "bond": "Theo's perception of Dee shifts from a quiet peer to someone socially adept in a way he isn't."
+        },
+        {
+         "at": "end",
+         "text": "Theo turns back to his sketchbook, his silence no longer awkward but intentional. He adds his quiet to the room's, a newfound respect for holding space.",
+         "grows": "",
+         "bond": ""
+        }
+       ],
+       "review": {
+        "verdict": "yes",
+        "flag": "Clearly shows growth in social-emotional autonomy by choosing a less performative action."
+       }
       }
      },
      "it-settles": {
@@ -1756,6 +1870,44 @@
        "whyWon": "Clears the floor (Rule 1). The environmental turning point explicitly names the sound of Theo's pencil. His quiet presence is the ultimate payoff for his arc from the previous scene and the most powerful validation for Wren's need for a non-performative space.",
        "dynamic": "The Focused Peer & The Settled Artist.",
        "quirk": "Completely absorbed, Theo lets out a small, frustrated huff of air and erases something vigorously—a sound of personal effort, not public performance, that makes the room feel safe."
+      },
+      "content": {
+       "beats": [
+        {
+         "at": "begin",
+         "text": "Wren sits curled in a corner chair, headphones on, a fortress against the world. She braces for the inevitable, gentle probing of 'Are you okay?'",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "begin → middle",
+         "text": "She broadcasts her mood like a warning, a test. She waits for someone to try and 'fix' it, to make her perform wellness for their comfort.",
+         "grows": "Learning that you can bring your authentic, messy self into a space and still be accepted.",
+         "bond": "Wren tests the group's promise of safety by being visibly withdrawn and is met with gentle space."
+        },
+        {
+         "at": "middle",
+         "text": "Several minutes pass. The only sounds are the hum of the city outside and the steady, rhythmic scratch of Theo's pencil on paper across the room.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "middle → end",
+         "text": "The lack of intrusion is a revelation. The quiet isn't ignoring her; it's allowing her. The choice to stay withdrawn or to emerge is entirely hers.",
+         "grows": "Gaining the autonomy to choose when and how to re-engage after a period of quiet retreat.",
+         "bond": "The group (personified by Theo's quiet work) passes the test, deepening Wren's trust in the space."
+        },
+        {
+         "at": "end",
+         "text": "Slowly, Wren pulls one headphone off her ear. The ambient sound of the room flows in, and with it, she lets out a breath she didn't realize she was holding.",
+         "grows": "",
+         "bond": ""
+        }
+       ],
+       "review": {
+        "verdict": "yes",
+        "flag": "Perfectly captures the 'grows-with-you' core: safety enables autonomy, autonomy deepens trust."
+       }
       }
      },
      "the-walk-out": {
@@ -1973,6 +2125,44 @@
        "whyWon": "Wins on forward-yield (Rule 2). As 'the artist,' Wren's presence is essential for the Caretaker's turning point. This choice provides a powerful, validating bookend for both characters, directly serving the 'acknowledged change' arc.",
        "dynamic": "The Quiet Validator & The Confident Creator.",
        "quirk": "As they pack up, Wren pauses, slides their sketchbook into their bag, but leaves one loose sheet on the table. They catch the Caretaker's eye with a small, confident look before they leave."
+      },
+      "content": {
+       "beats": [
+        {
+         "at": "begin",
+         "text": "After the last student leaves, the Caretaker finds a half-finished drawing left on the table, a bright spot of color in the quiet room.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "begin → middle",
+         "text": "They pick it up, recognizing Wren's style immediately. They remember her first tentative sketches from months ago, how faint and apologetic the lines were.",
+         "grows": "Learning to see and value evidence of growth in small, everyday artifacts.",
+         "bond": "The Caretaker reflects on the subtle changes they've witnessed in the students over time."
+        },
+        {
+         "at": "middle",
+         "text": "In this drawing, the lines are bold, the colors unapologetic. There is a confidence in the work that takes the Caretaker's breath away for a moment.",
+         "grows": "",
+         "bond": ""
+        },
+        {
+         "at": "middle → end",
+         "text": "This isn't just a forgotten drawing; it's evidence. Instead of putting it in the lost and found, they decide to honor it, placing it carefully on the mantelpiece.",
+         "grows": "Taking an active, autonomous role in preserving and validating another person's progress.",
+         "bond": "The Caretaker's bond with the students is expressed through a protective gesture that will be received tomorrow."
+        },
+        {
+         "at": "end",
+         "text": "The Caretaker takes a small, smooth river stone from a dish and places it on the drawing's corner. A quiet anchor, a promise that this work is seen and held.",
+         "grows": "",
+         "bond": ""
+        }
+       ],
+       "review": {
+        "verdict": "yes",
+        "flag": "The asynchronous gesture (the stone) is a powerful, non-clingy expression of care and validation."
+       }
       }
      }
     },

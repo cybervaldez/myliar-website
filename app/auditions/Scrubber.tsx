@@ -713,7 +713,7 @@ export function BranchLinks({ campaign, branches, active }: { campaign: string; 
 }
 
 // THE WEATHER-MOMENT BRANCH — one scene honed: its palette (dialed cozy→intense), the tone dial, the cast.
-export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; arc?: { winner: string; whyWon?: string; candidates: { arc: string; floor?: string; floor_note?: string; yield?: string; picked?: boolean }[]; variance?: string[] }; checkpoints?: { begin: string; middle: { type: string; turn: string; alt?: string }; end: string }; between?: { span: string; grows?: string; relationship?: string }[]; supportingCast?: { winner: string; whyWon?: string; dynamic?: string; quirk?: string; candidates: { name: string; dynamic?: string; quirk?: string; fit?: string; picked?: boolean }[] }; gatedBy?: string; paletteUI?: { prompts?: { objects?: string[]; characters?: string[]; items?: string[] }; prose?: { objectSeeds?: { dominant?: string[]; accent?: string[] }; diction?: { cool?: string[]; warm?: string[] }; rule?: string } } };
+export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; arc?: { winner: string; whyWon?: string; candidates: { arc: string; floor?: string; floor_note?: string; yield?: string; picked?: boolean }[]; variance?: string[] }; checkpoints?: { begin: string; middle: { type: string; turn: string; alt?: string }; end: string }; between?: { span: string; grows?: string; relationship?: string }[]; supportingCast?: { winner: string; whyWon?: string; dynamic?: string; quirk?: string; candidates: { name: string; dynamic?: string; quirk?: string; fit?: string; picked?: boolean }[] }; content?: { beats: { at: string; text: string; grows?: string; bond?: string }[]; review?: { verdict?: string; flag?: string } }; gatedBy?: string; paletteUI?: { prompts?: { objects?: string[]; characters?: string[]; items?: string[] }; prose?: { objectSeeds?: { dominant?: string[]; accent?: string[] }; diction?: { cool?: string[]; warm?: string[] }; rule?: string } } };
 export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: string }) {
   const h = b.honing;
   return (
@@ -788,6 +788,31 @@ export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: str
             {b.supportingCast.dynamic && <div style={{ fontSize: 11, color: soft, marginTop: 3 }}><span style={{ color: margin }}>dynamic with the focal:</span> {b.supportingCast.dynamic}</div>}
             {b.supportingCast.quirk && <div style={{ fontSize: 10.5, color: soft, marginTop: 2, fontStyle: "italic" }}>↳ quirk: {b.supportingCast.quirk}</div>}
           </div>
+        </>
+      )}
+      {b.content && b.content.beats && b.content.beats.length > 0 && (
+        <>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginBottom: 6, flexWrap: "wrap" }}>
+            <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest }}>▸ THE CONTENT — the beats that fill the skeleton <span style={{ color: margin, fontWeight: 400, fontSize: 10 }}>(the grows-with-you, written in)</span></div>
+            {b.content.review?.verdict && <span style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, color: b.content.review.verdict === "yes" ? forest : "var(--spot-red)", border: `1px solid ${b.content.review.verdict === "yes" ? forest : "var(--spot-red)"}`, borderRadius: 3, padding: "1px 7px" }}>↪ review: {b.content.review.verdict}</span>}
+          </div>
+          <div style={{ display: "grid", gap: 7, marginBottom: 6 }}>
+            {b.content.beats.map((bt, i) => {
+              const gap = bt.at.includes("→") || bt.at.includes("&rarr;");
+              return (
+                <div key={i} style={{ borderLeft: `2px solid ${gap ? forest : "var(--ink-soft)"}`, paddingLeft: 10 }}>
+                  <span style={{ fontFamily: "var(--theme-body)", fontSize: 8.5, fontWeight: 700, letterSpacing: ".06em", color: gap ? forest : margin, textTransform: "uppercase" }}>{bt.at}</span>
+                  <div style={{ fontSize: 12, color: ink, lineHeight: 1.5, marginTop: 2 }}>{bt.text}</div>
+                  {gap && (bt.grows || bt.bond) && (
+                    <div style={{ fontSize: 9.5, color: margin, marginTop: 3, lineHeight: 1.5 }}>
+                      {bt.grows ? <span>↑ <span style={{ color: soft }}>grows:</span> {bt.grows}</span> : null}{bt.grows && bt.bond ? <br /> : null}{bt.bond ? <span>♥ <span style={{ color: soft }}>bond:</span> {bt.bond}</span> : null}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+          {b.content.review?.flag && <div style={{ fontSize: 9.5, color: soft, fontStyle: "italic", marginBottom: 16 }}>↳ {b.content.review.flag}</div>}
         </>
       )}
       <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 3 }}>▸ THE PALETTE — {b.label}, dialed cozy → intense</div>
