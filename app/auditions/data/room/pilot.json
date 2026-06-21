@@ -1884,82 +1884,63 @@
        "runnerUpGem": "Its pure, cool desaturation was the most direct visual representation of 'settling'."
       },
       "arc": {
+       "winner": "making space",
+       "whyWon": "↻ RE-POINTED FOR RANGE — Re-pointed from wistful reception to gentle, active inclusion. (was «the quiet alignment»)",
        "candidates": [
         {
-         "arc": "the quiet alignment",
+         "arc": "making space",
          "floor": "clear",
-         "floor_note": "This is a perfect description of the premise in action.",
-         "yield": "The core 'kept, not chosen' theme enacted: learning one's presence is enough, without any need to perform.",
+         "yield": "Re-pointed from wistful reception to gentle, active inclusion.",
          "picked": true
         },
         {
-         "arc": "the offered comfort",
+         "arc": "the quiet alignment",
          "floor": "clear",
-         "floor_note": "Contradicts the premise, where the comfort comes from the *lack* of an explicit gesture.",
-         "yield": "An arc about receiving direct care, while the premise is about the grace of indirect care (being left alone).",
-         "picked": false
-        },
-        {
-         "arc": "the shared discovery",
-         "floor": "clear",
-         "floor_note": "Contradicts the premise, which is about the grace of non-engagement, not active engagement.",
-         "yield": "Focuses on active bonding, while the premise celebrates passive, ambient belonging.",
+         "yield": "the repetitive original (quiet shared presence)",
          "picked": false
         }
        ],
-       "winner": "the quiet alignment",
-       "why_won": "Wins on forward-yield; it is a perfect thematic and narrative match for the premise.",
        "variance": []
       },
       "checkpoints": {
        "begin": {
-        "text": "Shoulders hunched and headphones on, Wren sits apart, bracing for the inevitable questions about what's wrong.",
-        "open": "What specific memory or fear is fueling Wren's defensive posture and expectation of being questioned?",
+        "text": "Wren sits curled in a corner chair, headphones on, a fortress against the world.",
+        "open": "The player sees Wren's self-imposed isolation, a familiar sight.",
         "rigidity": "locked",
-        "rigidityWhy": "it establishes Wren's internal state and the tension the scene needs to resolve.",
-        "alts": [
-         "Wren enters and immediately finds the furthest corner, putting their headphones on as a clear 'do not disturb' sign.",
-         "Wren sits with their back to most of the room, hoodie up, a clear physical barrier against interaction."
-        ]
+        "rigidityWhy": "This is the original scene's premise and the emotional problem to be addressed; it must be the starting point.",
+        "alts": []
        },
        "middle": {
-        "type": "environmental",
-        "turn": "Several minutes pass, and the only sounds are the soft scratch of Theo's pencil and the rustle of a page.",
-        "open": "As the minutes pass, how does the lack of intrusion begin to challenge Wren's initial defensive assumptions?",
+        "type": "social",
+        "turn": "The player sees a new, visibly nervous student enter and decides to bridge the gap, not just for themselves, but to connect the newcomer with the quiet space Wren occupies.",
+        "open": "How does the player make the invitation? Is it verbal, a gesture, an offering of an object (a book, a sketchbook, a snack)?",
         "rigidity": "loose",
-        "rigidityWhy": "the specific ambient sounds or lack thereof can be varied to create different textures of quiet.",
+        "rigidityWhy": "The player's specific method of initiation is the core of their agency in this scene; it must be their choice.",
         "alts": [
          {
-          "type": "environmental",
-          "turn": "The smell of tea brewing or the sight of someone else calmly reading a book provides a sense of normalcy that slowly disarms Wren."
-         },
-         {
           "type": "internal",
-          "turn": "Wren's internal monologue of bracing for questions slowly runs out of steam, replaced by a growing curiosity about the quiet."
+          "turn": "The player, feeling the weight of the room, decides to create a small zone of warmth and activity near Wren, drawing others in organically rather than by direct invitation."
          }
         ]
        },
        "end": {
-        "text": "Wren slowly pulls one headphone off, letting the quiet, ambient sounds of the room in as her held breath releases.",
-        "open": "What specific sound does Wren focus on first that confirms it's safe to lower their guard?",
+        "text": "The small circle of quiet activity settles, the newcomer visibly relaxing as Wren subtly joins in, the space feeling warmer and more open than before.",
+        "open": "The scene ends with the player having successfully modeled the group's ethos, leaving the door open for the newcomer to find their own place in future sessions.",
         "rigidity": "locked",
-        "rigidityWhy": "it's the crucial turning point showing Wren choosing to connect with the space, fulfilling the arc.",
-        "alts": [
-         "Wren lowers the volume on their headphones enough to let the room's ambient sounds blend with their music.",
-         "Wren looks up from their phone for the first time, visually taking in the calm activity of the room."
-        ]
+        "rigidityWhy": "The anti-dependency principle requires the resolution to be about opening the space for others, not creating a new dependency on the player.",
+        "alts": []
        }
       },
       "between": [
        {
         "span": "begin → middle",
-        "grows": "Learning that you can bring your authentic, messy self into a space and still be accepted.",
-        "relationship": "Wren tests the group's promise of safety by being visibly withdrawn and is met with gentle space."
+        "grows": "Player autonomy grows from passive observation (noticing Wren's isolation) to active social initiation (choosing to act on behalf of a nervous newcomer). They are no longer just a recipient of the group's comfort, but a creator of it.",
+        "relationship": "The player demonstrates an understanding of the group's unspoken 'kept' principle, shifting their relationship with the space from being a member to being a custodian."
        },
        {
         "span": "middle → end",
-        "grows": "Gaining the autonomy to choose when and how to re-engage after a period of quiet retreat.",
-        "relationship": "The group (personified by Theo's quiet work) passes the test, deepening Wren's trust in the space."
+        "grows": "The player's chosen action is validated as it successfully changes the room's emotional temperature. Their autonomy is confirmed by seeing the positive, gentle outcome of their initiative, fostering confidence in their social instincts.",
+        "relationship": "The bond with the established members (Wren, Theo) deepens through a moment of shared, unspoken approval. It’s a peer-level acknowledgment of the player's kindness and social awareness, a bond built on shared values in action."
        }
       ],
       "supportingCast": {
@@ -1995,39 +1976,39 @@
        "beats": [
         {
          "at": "begin",
-         "text": "Wren sits curled in a corner chair, headphones on, a fortress against the world. She braces for the inevitable, gentle probing of 'Are you okay?'",
-         "grows": "",
-         "bond": ""
+         "text": "The room has its usual late-afternoon hum, but Wren is a pocket of silence in the corner armchair, headphones on, knees drawn to her chest. She's not sad, just… sealed off. A fortress of one."
         },
         {
          "at": "begin → middle",
-         "text": "She broadcasts her mood like a warning, a test. She waits for someone to try and 'fix' it, to make her perform wellness for their comfort.",
-         "grows": "Learning that you can bring your authentic, messy self into a space and still be accepted.",
-         "bond": "Wren tests the group's promise of safety by being visibly withdrawn and is met with gentle space."
+         "text": "The door opens and a new student, Casey, hovers on the threshold, clutching their bag like a shield. They scan the room, their posture radiating 'first day' anxiety. Theo is across the room, helping someone with a project. Casey looks ready to bolt."
         },
         {
          "at": "middle",
-         "text": "Several minutes pass. The only sounds are the hum of the city outside and the steady, rhythmic scratch of Theo's pencil on paper across the room.",
-         "grows": "",
-         "bond": ""
+         "text": "The player catches Casey's eye. Instead of just waving them over, the player picks up a spare sketchbook and a small tin of charcoal pencils. They walk toward the empty bit of floor near Wren's chair, sit down, and pat the space beside them. With a small, encouraging smile at Casey, they say, just loud enough to be heard, 'Hey. There's room here. You can just draw, you don't have to talk.'",
+         "grows": "The player initiates a specific, low-pressure social invitation, demonstrating agency and empathy.",
+         "bond": "The gesture implicitly respects Wren's silence while simultaneously expanding the circle of warmth."
         },
         {
          "at": "middle → end",
-         "text": "The lack of intrusion is a revelation. The quiet isn't ignoring her; it's allowing her. The choice to stay withdrawn or to emerge is entirely hers.",
-         "grows": "Gaining the autonomy to choose when and how to re-engage after a period of quiet retreat.",
-         "bond": "The group (personified by Theo's quiet work) passes the test, deepening Wren's trust in the space."
+         "text": "Casey gives a grateful, wobbly smile and crosses the room to sit, taking the offered sketchbook. The tension in their shoulders eases. After a moment, Wren slowly slides the headphones off one ear, observing the quiet sketching. She doesn't speak, but the fortress wall now has a door."
         },
         {
          "at": "end",
-         "text": "Slowly, Wren pulls one headphone off her ear. The ambient sound of the room flows in, and with it, she lets out a breath she didn't realize she was holding.",
-         "grows": "",
-         "bond": ""
+         "text": "From across the room, Theo meets the player's eyes and gives a slow, warm nod of approval. A moment later, Wren wordlessly nudges her own high-quality eraser across the floor toward Casey. Casey looks up, surprised, and gets a small, shy smile from Wren. A quiet, shared warmth settles over the corner, a comfortable silence that feels like company, not isolation.",
+         "grows": "The player's action is shown to have a positive ripple effect, empowering both the newcomer and the isolated regular.",
+         "bond": "The non-verbal acknowledgements from both Theo and Wren cement the player's action as a successful embodiment of the group's ethos, deepening the bond through shared, gentle action."
         }
        ],
        "review": {
         "verdict": "yes",
-        "flag": "Perfectly captures the 'grows-with-you' core: safety enables autonomy, autonomy deepens trust."
+        "flag": "This revision successfully injects significant player agency and genuine warmth. It transforms a passive scene into an active one, fulfills the 'seed' request perfectly, and introduces a new emotional move ('active, gentle inclusion') without breaking the established calm, cozy lane."
        }
+      },
+      "widened": {
+       "from": "the quiet alignment",
+       "to": "making space",
+       "register": "Re-pointed from wistful reception to gentle, active inclusion.",
+       "why": "This scene's premise, 'Wren sits curled in a corner chair... a fortress against the world,' makes it the most passive and receptive by design. Its arc, «the quiet alignment», is the closest to the repetitive 'quiet shared presence' move. This makes it the ideal candidate to re-point toward player-initiated action, as the contrast will be strongest and it addresses the core note about low agency most directly."
       }
      },
      "the-walk-out": {

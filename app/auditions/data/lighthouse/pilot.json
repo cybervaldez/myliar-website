@@ -1565,82 +1565,63 @@
        "runnerUpGem": "The 'wet slate' atmosphere and unique phosphorescent accent are incredibly evocative of a cold, coastal fog."
       },
       "arc": {
+       "winner": "the remembered hearth",
+       "whyWon": "↻ RE-POINTED FOR RANGE — Re-pointed from wistful melancholy toward gentle, self-generated warmth and quiet agency. (was «the deep listening»)",
        "candidates": [
         {
-         "arc": "the deep listening",
+         "arc": "the remembered hearth",
          "floor": "clear",
-         "floor_note": "Directly addresses the sensory deprivation of the premise by turning focus inward.",
-         "yield": "High yield; allows the player to autonomously discover what rises from their own internal silence.",
+         "yield": "Re-pointed from wistful melancholy toward gentle, self-generated warmth and quiet agency.",
          "picked": true
         },
         {
-         "arc": "the witnessed self",
+         "arc": "the deep listening",
          "floor": "clear",
-         "floor_note": "A strong thematic fit for the solitude and self-observation in the premise.",
-         "yield": "High yield; focuses on a mature, resonant beat of non-judgmental self-acceptance.",
-         "picked": false
-        },
-        {
-         "arc": "the resonant pulse",
-         "floor": "clear",
-         "floor_note": "Connects the internal state directly to the physical presence of the Light.",
-         "yield": "High yield; forges a powerful bond with the Light as a physical, rhythmic presence, like a heartbeat.",
+         "yield": "the repetitive original (quiet shared presence)",
          "picked": false
         }
        ],
-       "winner": "the deep listening",
-       "why_won": "Won on a range tie-break; its focus on what rises from silence is the most direct and distinct response to the premise of an erased world.",
        "variance": []
       },
       "checkpoints": {
        "begin": {
-        "text": "The fog becomes absolute, silencing the world and turning the lamp's beam into a soft, rhythmic pulse within the room.",
-        "open": "What will emerge from the self when all external distractions are stripped away?",
+        "text": "The fog grows absolute, erasing the sea and sky. The world is silenced, and the lantern room becomes an island in a sea of white.",
+        "open": "The only sound is the rhythmic, heavy turn of the lens mechanism. The only sight, the soft pulse of the beam as it sweeps into the blankness, returning a moment later.",
         "rigidity": "locked",
-        "rigidityWhy": "the sensory deprivation is the trigger for the entire scene's internal journey.",
-        "alts": [
-         "The foghorn begins its low, mournful call, replacing the sounds of the sea with a single, repeating note.",
-         "The fog doesn't silence the world, but muffles it, turning familiar sounds strange and distant."
-        ]
+        "rigidityWhy": "Establishes the core premise of the scene: absolute isolation and the sensory deprivation of the fog, which is the necessary setup for the player's internal turn.",
+        "alts": []
        },
        "middle": {
         "type": "internal",
-        "turn": "In the profound quiet, a specific, long-unheard inner voice—a memory, a feeling, a question—becomes clear.",
-        "open": "Is this emerging voice a welcome clarity or an uncomfortable truth?",
+        "turn": "The rhythmic sweep of the light, softened and diffused by the fog, triggers a specific, personal memory—not of the sea, but of something else warm and rhythmic. The player is prompted to respond to the encroaching cold and isolation with a small, self-directed act of comfort.",
+        "open": "What does the pulse of light remind you of? What small ritual do you enact to create your own warmth against the chill?",
         "rigidity": "loose",
-        "rigidityWhy": "the content of the internal revelation is deeply personal to the player's journey.",
+        "rigidityWhy": "This is the pivot to player agency. The memory can be personalized and the ritual chosen, but the core move is from passive observation to active self-care, fulfilling the brief.",
         "alts": [
          {
           "type": "internal",
-          "turn": "Instead of a voice, a profound sense of peace settles, a feeling of being perfectly in place, without need for words."
-         },
-         {
-          "type": "environmental",
-          "turn": "A faint, unidentifiable sound from within the tower—a creak, a drip—becomes the sole focus, a tiny mystery in the quiet."
+          "turn": "Instead of a memory, the deep silence prompts an awareness of the body—the chill in the air, the stiffness in one's posture. The player is prompted to perform a small act of physical grounding, like deliberate stretching or making a hot drink."
          }
         ]
        },
        "end": {
-        "text": "You are left sitting with this newfound internal clarity, feeling present with yourself in the muffled stillness.",
-        "open": "How does this clarity change the way I inhabit this silence, and this room?",
+        "text": "Mug in hand, you watch the steam curl against the cold glass. Outside, the fog remains. Inside, a small, quiet warmth you made yourself.",
+        "open": "The light continues its sweep. The fog does not yield. But for now, this is enough. The watch continues.",
         "rigidity": "locked",
-        "rigidityWhy": "it concludes the arc of deep listening with a state of being, not an action.",
-        "alts": [
-         "You feel the need to move, to walk the circular room, processing the clarity through quiet motion.",
-         "You are left with a question, not an answer, but feel a sense of peace in simply holding it."
-        ]
+        "rigidityWhy": "Resolves the scene's micro-arc (creating warmth) while returning to the core reality of the vigil. Reinforces the anti-dependency principle: the player has met their own need, not had it resolved by an external force.",
+        "alts": []
        }
       },
       "between": [
        {
         "span": "begin → middle",
-        "grows": "The player's growing comfort with unstructured silence, allowing their own thoughts to surface without prompting.",
-        "relationship": "The Light's role shifts from a functional beacon to a quiet, rhythmic companion for introspection."
+        "grows": "Player autonomy grows by shifting from passively receiving the environmental mood (isolation, silence) to actively initiating a response. The player chooses to counter the external cold with an internal warmth, prompted by a personal memory.",
+        "relationship": "The bond is with the self and one's own past. By enacting a ritual tied to a warm memory, the player deepens their relationship with their own resilience and history, framing solitude as a space for self-tending, not just melancholy."
        },
        {
         "span": "middle → end",
-        "grows": "The player's autonomy in deciding how to hold or respond to what they have 'heard' in the silence.",
-        "relationship": "The player and the Light share a secret intimacy, alone together in the enclosed, foggy world."
+        "grows": "Autonomy is solidified. The player has successfully altered their own internal state without changing the external circumstances, demonstrating self-sufficiency. They don't need the fog to lift to feel better; they can create their own comfort.",
+        "relationship": "The bond with the self is affirmed. The final beat—a private, wry smile at the steam on the glass—is a moment of shared understanding with oneself. It's a light, humorous complicity against the vast, indifferent weather."
        }
       ],
       "supportingCast": {
@@ -1667,39 +1648,41 @@
        "beats": [
         {
          "at": "begin",
-         "text": "The fog grows absolute, erasing the sea and sky. The world is silenced, and the lamp's beam becomes a soft, rhythmic pulse of light within the room.",
-         "grows": "",
-         "bond": ""
+         "text": "The fog presses in, muffling the world until only the groan of the lens and the soft sweep of the light remain. The air in the lantern room grows cold."
         },
         {
          "at": "begin → middle",
-         "text": "You sit in the profound quiet, no longer feeling the need to fill it. You simply watch the light sweep, its slow, steady rhythm a companion in the stillness.",
-         "grows": "The player's growing comfort with unstructured silence, allowing their own thoughts to surface without prompting.",
-         "bond": "The Light's role shifts from a functional beacon to a quiet, rhythmic companion for introspection."
+         "text": "Watching the beam dissolve into the whiteness, you're reminded of something else. Not the sharp, searching light of the tower, but the slow, breathing pulse of embers in a fireplace, long ago. The memory is not sad; it is simply warm.",
+         "grows": "The player connects an external stimulus to an internal, positive memory, creating the motivation for an agentic act.",
+         "bond": null
         },
         {
          "at": "middle",
-         "text": "In the muffled peace, a thought you haven't heard in years—a memory, a question, a gentle regret—rises to the surface, clear and distinct.",
-         "grows": "",
-         "bond": ""
+         "text": "On impulse, you leave the window, the floorboards cool underfoot. You move to the small electric kettle, the click of the switch startlingly loud in the quiet. You choose a familiar mug, wait for the whistle, and pour the steaming water over a tea bag, watching the color bloom.",
+         "grows": "The player initiates a concrete, multi-step action, taking control of their immediate environment and sensory experience.",
+         "bond": null
         },
         {
          "at": "middle → end",
-         "text": "You don't push the thought away or analyze it; you simply let it be. You decide how to hold it, giving it space in the quiet room you share with the pulsing light.",
-         "grows": "The player's autonomy in deciding how to hold or respond to what they have 'heard' in the silence.",
-         "bond": "The player and the Light share a secret intimacy, alone together in the enclosed, foggy world."
+         "text": "Returning to the window, you cradle the warm ceramic in both hands. You lift it, and the steam fogs the glass from the inside, a fleeting twin to the great fog outside. A small, wry smile touches your lips.",
+         "grows": null,
+         "bond": "A moment of lightness and connection with the self. The player is not just enduring the vigil but finding a moment of gentle, humorous perspective within it."
         },
         {
          "at": "end",
-         "text": "The fog holds, and you remain seated in the muffled stillness, feeling uniquely present with yourself and the newfound clarity you've been given.",
-         "grows": "",
-         "bond": ""
+         "text": "The tea is hot, the silence is deep. The fog holds the world at bay, but here, in your hands, is a small, steady warmth. The light continues its slow, sweeping pulse. The watch continues."
         }
        ],
        "review": {
         "verdict": "yes",
-        "flag": "The player's capacity for self-reflection (autonomy) is nurtured by the Light's quiet presence (bond)."
+        "flag": "Successfully introduces warmth and player agency within the established quiet, contemplative lane. The player-initiated act of making tea is a concrete, cozy gesture that provides a different emotional texture from 'quiet shared presence.' The wry smile offers a moment of lightness without breaking the elegiac tone. It remains anti-dependency by focusing on self-soothing."
        }
+      },
+      "widened": {
+       "from": "the deep listening",
+       "to": "the remembered hearth",
+       "register": "Re-pointed from wistful melancholy toward gentle, self-generated warmth and quiet agency.",
+       "why": "This is one of two 'solo' scenes, making it the most likely to repeat the 'quiet shared presence' move of the others. Its premise — being passively enveloped by fog — presents the lowest intrinsic player agency, making it the ideal candidate for a rewrite that pivots on a player-initiated gesture."
       }
      },
      "the-fog-thins": {
