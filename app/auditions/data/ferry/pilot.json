@@ -1254,9 +1254,12 @@
       },
       "interaction": {
        "engine": "QUIET-ROLL",
+       "family": "none",
+       "gate": "—",
        "gesture": "—",
-       "cg": "The Manifest-keeper, a still silhouette against the brassy twilight, subtly relaxes their posture, mirroring the player's internal ease.",
-       "motion": "A slow, almost imperceptible swell on the dark water."
+       "graduates": "—",
+       "cg": "The Manifest-keeper's still silhouette against the brass and twilight sky, a moment of profound, shared stillness.",
+       "motion": "The slow, almost imperceptible swell of a calm sea against the hull."
       },
       "rel": {
        "relTier": {
@@ -1560,9 +1563,12 @@
       },
       "interaction": {
        "engine": "ENSEMBLE",
-       "gesture": "The player gently helps the passenger brace a rattling cabin door against the rising wind.",
-       "cg": "The passenger's face, illuminated by a swinging iron lamp, softens with gratitude as the player's hand meets theirs on the doorframe.",
-       "motion": "The ship begins a rhythmic, insistent pitch and roll as the wind picks up."
+       "family": "living",
+       "gate": "REL/achievement-gated · stasis-on-away · push-not-pull",
+       "gesture": "The player helps a fellow passenger secure a loose latch on a rattling window shutter.",
+       "graduates": "The passenger later nods in thanks; the shared moment solidifies a quiet bond, no further action needed.",
+       "cg": "The passenger's gloved hand rests briefly on the player's as they both hold the iron latch against the overcast sky.",
+       "motion": "The ship begins a rhythmic, steady pitch and roll as the wind rises."
       },
       "rel": {
        "relTier": {
@@ -1867,10 +1873,13 @@
        }
       },
       "interaction": {
-       "engine": "TEND",
-       "gesture": "The player carefully trims and refills the swaying forecastle lamp, its steady light a small anchor in the storm.",
-       "cg": "A close-up on a nearby passenger's face, briefly illuminated by the newly-brightened lamp, a single phosphorescent tear catching the light.",
-       "motion": "The violent, chaotic lurch and crash of the ship in the peak of the storm."
+       "engine": "SCRAMBLE",
+       "family": "contest",
+       "gate": "chaotic-pick only (§C-tested)",
+       "gesture": "As the ship lurches violently, the player quickly steadies a lantern that slides across a table.",
+       "graduates": "The lantern is later secured properly; the player's quick action is acknowledged with a grateful look, retiring the need for vigilance.",
+       "cg": "A single drop of ink-dark water streaks a porthole, refracting the ghostly phosphor-green light of a breaking wave.",
+       "motion": "The violent, unpredictable lurching and groaning of the ship in the heart of the storm."
       },
       "rel": {
        "relTier": {
@@ -2153,10 +2162,13 @@
        "why": "The 'shared exhaustion' arc is the most passive and melancholy, a clear example of the repetitive 'quiet shared presence / being-seen' emotional move. The player is acted upon (found by the scene in the warm galley), offering the lowest agency of the five. Its post-storm placement is ideal for a shift from endurance to gentle, active observation and warmth."
       },
       "interaction": {
-       "engine": "SCRAMBLE",
-       "gesture": "The player quietly gathers and arranges the scattered tins and utensils on the galley shelves.",
-       "cg": "Through the galley porthole, the ship's silver wake pulses with soft light from bioluminescence against the bruised sky.",
-       "motion": "A deep, slow, and weary rocking as the sea begins to settle."
+       "engine": "TEND",
+       "family": "living",
+       "gate": "REL/achievement-gated · stasis-on-away · push-not-pull",
+       "gesture": "The player quietly makes and pours a cup of hot tea, leaving it on the table for the exhausted Cook.",
+       "graduates": "The gesture becomes a shared ritual; the player later finds the tea things left out for them, the need for initiation gone.",
+       "cg": "Through the galley porthole, a silver trail of bioluminescence pulses in the ship's bruised-sky wake.",
+       "motion": "The storm's violence subsides into a deep, tired, rolling swell."
       },
       "rel": {
        "relTier": {
@@ -2459,10 +2471,13 @@
        }
       },
       "interaction": {
-       "engine": "FLOW",
-       "gesture": "The player rhythmically polishes a small, smooth stone found on the deck, the repetitive motion a calming focus.",
-       "cg": "The Manifest-keeper's hand extends, holding a similar stone, their charcoal silhouette framed against the first peach-colored light.",
-       "motion": "A gentle, steady forward glide as the ship approaches its destination."
+       "engine": "QUIET-ROLL",
+       "family": "none",
+       "gate": "—",
+       "gesture": "—",
+       "graduates": "—",
+       "cg": "The Manifest-keeper's weathered hand holding out a small, charcoal-dark stone against the soft peach of the dawn sky.",
+       "motion": "The sea is now calm, with only a gentle lapping against the hull."
       },
       "rel": {
        "relTier": {
@@ -2914,37 +2929,52 @@
       {
        "scene": "calm water",
        "engine": "QUIET-ROLL",
+       "family": "none",
+       "gate": "—",
        "gesture": "—",
-       "cg": "The Manifest-keeper, a still silhouette against the brassy twilight, subtly relaxes their posture, mirroring the player's internal ease.",
-       "motion": "A slow, almost imperceptible swell on the dark water."
+       "graduates": "—",
+       "cg": "The Manifest-keeper's still silhouette against the brass and twilight sky, a moment of profound, shared stillness.",
+       "motion": "The slow, almost imperceptible swell of a calm sea against the hull."
       },
       {
        "scene": "rising wind",
        "engine": "ENSEMBLE",
-       "gesture": "The player gently helps the passenger brace a rattling cabin door against the rising wind.",
-       "cg": "The passenger's face, illuminated by a swinging iron lamp, softens with gratitude as the player's hand meets theirs on the doorframe.",
-       "motion": "The ship begins a rhythmic, insistent pitch and roll as the wind picks up."
+       "family": "living",
+       "gate": "REL/achievement-gated · stasis-on-away · push-not-pull",
+       "gesture": "The player helps a fellow passenger secure a loose latch on a rattling window shutter.",
+       "graduates": "The passenger later nods in thanks; the shared moment solidifies a quiet bond, no further action needed.",
+       "cg": "The passenger's gloved hand rests briefly on the player's as they both hold the iron latch against the overcast sky.",
+       "motion": "The ship begins a rhythmic, steady pitch and roll as the wind rises."
       },
       {
        "scene": "the storm",
-       "engine": "TEND",
-       "gesture": "The player carefully trims and refills the swaying forecastle lamp, its steady light a small anchor in the storm.",
-       "cg": "A close-up on a nearby passenger's face, briefly illuminated by the newly-brightened lamp, a single phosphorescent tear catching the light.",
-       "motion": "The violent, chaotic lurch and crash of the ship in the peak of the storm."
+       "engine": "SCRAMBLE",
+       "family": "contest",
+       "gate": "chaotic-pick only (§C-tested)",
+       "gesture": "As the ship lurches violently, the player quickly steadies a lantern that slides across a table.",
+       "graduates": "The lantern is later secured properly; the player's quick action is acknowledged with a grateful look, retiring the need for vigilance.",
+       "cg": "A single drop of ink-dark water streaks a porthole, refracting the ghostly phosphor-green light of a breaking wave.",
+       "motion": "The violent, unpredictable lurching and groaning of the ship in the heart of the storm."
       },
       {
        "scene": "settling sea",
-       "engine": "SCRAMBLE",
-       "gesture": "The player quietly gathers and arranges the scattered tins and utensils on the galley shelves.",
-       "cg": "Through the galley porthole, the ship's silver wake pulses with soft light from bioluminescence against the bruised sky.",
-       "motion": "A deep, slow, and weary rocking as the sea begins to settle."
+       "engine": "TEND",
+       "family": "living",
+       "gate": "REL/achievement-gated · stasis-on-away · push-not-pull",
+       "gesture": "The player quietly makes and pours a cup of hot tea, leaving it on the table for the exhausted Cook.",
+       "graduates": "The gesture becomes a shared ritual; the player later finds the tea things left out for them, the need for initiation gone.",
+       "cg": "Through the galley porthole, a silver trail of bioluminescence pulses in the ship's bruised-sky wake.",
+       "motion": "The storm's violence subsides into a deep, tired, rolling swell."
       },
       {
        "scene": "first light",
-       "engine": "FLOW",
-       "gesture": "The player rhythmically polishes a small, smooth stone found on the deck, the repetitive motion a calming focus.",
-       "cg": "The Manifest-keeper's hand extends, holding a similar stone, their charcoal silhouette framed against the first peach-colored light.",
-       "motion": "A gentle, steady forward glide as the ship approaches its destination."
+       "engine": "QUIET-ROLL",
+       "family": "none",
+       "gate": "—",
+       "gesture": "—",
+       "graduates": "—",
+       "cg": "The Manifest-keeper's weathered hand holding out a small, charcoal-dark stone against the soft peach of the dawn sky.",
+       "motion": "The sea is now calm, with only a gentle lapping against the hull."
       }
      ],
      "range": {
@@ -2952,7 +2982,7 @@
       "density": "balanced",
       "enough": "yes",
       "gaps": "none",
-      "note": "The allocation provides strong mechanical and visual pacing, escalating interaction from pure observation to gentle, rhythmic action."
+      "note": "The allocation creates a strong gameplay arc that mirrors the emotional one: from stillness, to shared action, to chaos, to quiet care, and back to stillness."
      },
      "flags": [],
      "gatedBy": {

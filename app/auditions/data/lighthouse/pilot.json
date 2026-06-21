@@ -1143,9 +1143,12 @@
       },
       "interaction": {
        "engine": "TEND",
-       "gesture": "Gently striking a match and cupping the flame to the great lamp's wick.",
-       "cg": "Close on the keeper's hand, holding the pressed flower, the logbook open beside the newly lit, warm glow of the lamp.",
-       "motion": "A gentle, almost imperceptible breeze stirring dust motes in the lantern room."
+       "family": "living",
+       "gate": "REL/achievement-gated · stasis-on-away · push-not-pull",
+       "gesture": "Gently trimming the lamp's wick and polishing the lens with a soft, circular motion.",
+       "graduates": "The gesture becomes a single, fluid action, then a background thought as the logbook becomes the focus.",
+       "cg": "A close-up on the player's hand, aged but steady, holding a single pressed flower against the fresh page of the logbook.",
+       "motion": "The slow drift of dust motes in the still air of the lantern room."
       },
       "rel": {
        "relTier": {
@@ -1448,9 +1451,12 @@
       },
       "interaction": {
        "engine": "FLOW",
-       "gesture": "Polishing the lens's brass housing in a steady, rhythmic motion as the wind howls outside.",
-       "cg": "The reflection of the keeper's determined face in the polished brass as a powerful gust of wind visibly flexes the lantern room glass.",
-       "motion": "Rain beginning to lash against the glass, driven by a strengthening, keening wind."
+       "family": "contest",
+       "gate": "chaotic-pick only (§C-tested)",
+       "gesture": "Rhythmically adjusting the lamp's ventilator to the beat of the rising wind, keeping the flame steady.",
+       "graduates": "The rhythm becomes second nature; the visual cues become more subtle, retiring once the storm's peak passes.",
+       "cg": "The massive Fresnel lens seen from below, glowing brass and iron, as a sheet of rain hits the glass outside.",
+       "motion": "The violent, percussive shudder of the lantern room glass as the wind howls."
       },
       "rel": {
        "relTier": {
@@ -1727,10 +1733,13 @@
        "why": "This is one of two 'solo' scenes, making it the most likely to repeat the 'quiet shared presence' move of the others. Its premise — being passively enveloped by fog — presents the lowest intrinsic player agency, making it the ideal candidate for a rewrite that pivots on a player-initiated gesture."
       },
       "interaction": {
-       "engine": "ENSEMBLE",
-       "gesture": "Setting a single cup and saucer on a small table, making a deliberate space for quiet reflection.",
-       "cg": "Looking out through the fog-softened light, the interior of the lantern room is reflected back, overlaying a ghostly, warm memory of a childhood room.",
-       "motion": "Thick, silent fog pressing against the glass, blurring the world into soft, shifting shapes."
+       "engine": "QUIET-ROLL",
+       "family": "none",
+       "gate": "—",
+       "gesture": "—",
+       "graduates": "—",
+       "cg": "The player’s hands wrapped around a steaming mug, its warmth creating a small circle of condensation on the cold windowpane, the fog a soft white wall beyond.",
+       "motion": "The slow, silent crawl of thick fog pressing against the glass, blurring the world outside."
       },
       "rel": {
        "relTier": {
@@ -2024,10 +2033,13 @@
        }
       },
       "interaction": {
-       "engine": "QUIET-ROLL",
-       "gesture": "—",
-       "cg": "Through a tear in the fog, the distant, sweeping beam of another lighthouse illuminates your own tower for a brief, silent moment.",
-       "motion": "The fog shredding and pulling apart in slow, rolling ribbons, revealing and obscuring patches of the dark sea and sky."
+       "engine": "ENSEMBLE",
+       "family": "living",
+       "gate": "REL/achievement-gated · stasis-on-away · push-not-pull",
+       "gesture": "Responding to the distant light with a slow, deliberate flash of your own hand-lamp, a single shared signal.",
+       "graduates": "The gesture becomes a shared ritual, a silent conversation that requires no input, understood as part of the watch.",
+       "cg": "A single, distant pulse of amethyst light pierces a ribbon of thinning fog, perfectly framed in the lantern room window.",
+       "motion": "The fog shredding and pulling apart in slow, ghostly ribbons, revealing patches of dark sea and sky."
       },
       "rel": {
        "relTier": {
@@ -2321,10 +2333,13 @@
        }
       },
       "interaction": {
-       "engine": "SCRAMBLE",
-       "gesture": "Arranging a few chosen words on the logbook page, moving them before committing ink to paper.",
-       "cg": "The keeper's hand pauses over the logbook, the pen held ready, as the first rays of dawn illuminate the extinguished lamp's intricate, cold brass.",
-       "motion": "The soft, slow creep of dawn light across the floor, the shadows shortening and changing color."
+       "engine": "QUIET-ROLL",
+       "family": "none",
+       "gate": "—",
+       "gesture": "—",
+       "graduates": "—",
+       "cg": "The extinguished lamp, its brass catching the first golden ray of dawn, with the open logbook resting beside it.",
+       "motion": "The first, pale light of dawn slowly creeping across the floor of the lantern room."
       },
       "rel": {
        "relTier": {
@@ -2702,37 +2717,52 @@
       {
        "scene": "lighting the lamp",
        "engine": "TEND",
-       "gesture": "Gently striking a match and cupping the flame to the great lamp's wick.",
-       "cg": "Close on the keeper's hand, holding the pressed flower, the logbook open beside the newly lit, warm glow of the lamp.",
-       "motion": "A gentle, almost imperceptible breeze stirring dust motes in the lantern room."
+       "family": "living",
+       "gate": "REL/achievement-gated · stasis-on-away · push-not-pull",
+       "gesture": "Gently trimming the lamp's wick and polishing the lens with a soft, circular motion.",
+       "graduates": "The gesture becomes a single, fluid action, then a background thought as the logbook becomes the focus.",
+       "cg": "A close-up on the player's hand, aged but steady, holding a single pressed flower against the fresh page of the logbook.",
+       "motion": "The slow drift of dust motes in the still air of the lantern room."
       },
       {
        "scene": "the dark settles",
        "engine": "FLOW",
-       "gesture": "Polishing the lens's brass housing in a steady, rhythmic motion as the wind howls outside.",
-       "cg": "The reflection of the keeper's determined face in the polished brass as a powerful gust of wind visibly flexes the lantern room glass.",
-       "motion": "Rain beginning to lash against the glass, driven by a strengthening, keening wind."
+       "family": "contest",
+       "gate": "chaotic-pick only (§C-tested)",
+       "gesture": "Rhythmically adjusting the lamp's ventilator to the beat of the rising wind, keeping the flame steady.",
+       "graduates": "The rhythm becomes second nature; the visual cues become more subtle, retiring once the storm's peak passes.",
+       "cg": "The massive Fresnel lens seen from below, glowing brass and iron, as a sheet of rain hits the glass outside.",
+       "motion": "The violent, percussive shudder of the lantern room glass as the wind howls."
       },
       {
        "scene": "the fog comes in",
-       "engine": "ENSEMBLE",
-       "gesture": "Setting a single cup and saucer on a small table, making a deliberate space for quiet reflection.",
-       "cg": "Looking out through the fog-softened light, the interior of the lantern room is reflected back, overlaying a ghostly, warm memory of a childhood room.",
-       "motion": "Thick, silent fog pressing against the glass, blurring the world into soft, shifting shapes."
+       "engine": "QUIET-ROLL",
+       "family": "none",
+       "gate": "—",
+       "gesture": "—",
+       "graduates": "—",
+       "cg": "The player’s hands wrapped around a steaming mug, its warmth creating a small circle of condensation on the cold windowpane, the fog a soft white wall beyond.",
+       "motion": "The slow, silent crawl of thick fog pressing against the glass, blurring the world outside."
       },
       {
        "scene": "the fog thins",
-       "engine": "QUIET-ROLL",
-       "gesture": "—",
-       "cg": "Through a tear in the fog, the distant, sweeping beam of another lighthouse illuminates your own tower for a brief, silent moment.",
-       "motion": "The fog shredding and pulling apart in slow, rolling ribbons, revealing and obscuring patches of the dark sea and sky."
+       "engine": "ENSEMBLE",
+       "family": "living",
+       "gate": "REL/achievement-gated · stasis-on-away · push-not-pull",
+       "gesture": "Responding to the distant light with a slow, deliberate flash of your own hand-lamp, a single shared signal.",
+       "graduates": "The gesture becomes a shared ritual, a silent conversation that requires no input, understood as part of the watch.",
+       "cg": "A single, distant pulse of amethyst light pierces a ribbon of thinning fog, perfectly framed in the lantern room window.",
+       "motion": "The fog shredding and pulling apart in slow, ghostly ribbons, revealing patches of dark sea and sky."
       },
       {
        "scene": "first light",
-       "engine": "SCRAMBLE",
-       "gesture": "Arranging a few chosen words on the logbook page, moving them before committing ink to paper.",
-       "cg": "The keeper's hand pauses over the logbook, the pen held ready, as the first rays of dawn illuminate the extinguished lamp's intricate, cold brass.",
-       "motion": "The soft, slow creep of dawn light across the floor, the shadows shortening and changing color."
+       "engine": "QUIET-ROLL",
+       "family": "none",
+       "gate": "—",
+       "gesture": "—",
+       "graduates": "—",
+       "cg": "The extinguished lamp, its brass catching the first golden ray of dawn, with the open logbook resting beside it.",
+       "motion": "The first, pale light of dawn slowly creeping across the floor of the lantern room."
       }
      ],
      "range": {
@@ -2740,7 +2770,7 @@
       "density": "balanced",
       "enough": "yes",
       "gaps": "none",
-      "note": "The allocation provides strong variety, with each Calm Engine used once, creating a balanced rhythm of interaction and quiet observation that serves the narrative arc."
+      "note": "The allocation provides a strong arc: a gentle TEND, a tense FLOW, a quiet middle, a moment of connection, and a reflective end."
      },
      "flags": [],
      "gatedBy": {

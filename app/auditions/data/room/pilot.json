@@ -1173,10 +1173,13 @@
        }
       },
       "interaction": {
-       "engine": "TEND",
-       "gesture": "Gently wiping dust motes from the windowsill, caught in the final sunbeam.",
-       "cg": "The empty armchair bathed in a warm, golden sunbeam, the impression of someone just having left still visible in the cushions.",
-       "motion": "Dust motes dancing slowly in the slanted evening light from the window."
+       "engine": "QUIET-ROLL",
+       "family": "none",
+       "gate": "—",
+       "gesture": "—",
+       "graduates": "—",
+       "cg": "A student, posture finally slackened, asleep in the armchair as the last sunbeam illuminates the floating dust around them.",
+       "motion": "Dust motes dancing in the single, sharp sunbeam cutting through the golden haze."
       },
       "rel": {
        "relTier": {
@@ -1482,9 +1485,12 @@
       },
       "interaction": {
        "engine": "ENSEMBLE",
-       "gesture": "Sliding the basket of colorful pens across the table towards the group, an open invitation.",
-       "cg": "An overhead shot of multiple hands reaching for pens, with Wren's hesitant hand just touching a specific, bright color.",
-       "motion": "The subtle shift of shadows across the table as evening draws in outside."
+       "family": "living",
+       "gate": "REL/achievement-gated · stasis-on-away · push-not-pull",
+       "gesture": "Gently sliding the shared basket of pens to the center of the table.",
+       "graduates": "The gesture becomes quicker, more familiar; eventually, the basket is simply always there, a silent, shared understanding.",
+       "cg": "An overhead shot of multiple hands, including a hesitant Wren's, selecting colors from the basket—a web of quiet, shared creation.",
+       "motion": "The slow, almost imperceptible creep of shadows across the table as the afternoon deepens."
       },
       "rel": {
        "relTier": {
@@ -1787,10 +1793,13 @@
        }
       },
       "interaction": {
-       "engine": "QUIET-ROLL",
-       "gesture": "—",
-       "cg": "The reflection of the rain-soaked student in Theo's eyes as his smile fades, the vibrant room muted in the reflection.",
-       "motion": "Rain running in rivulets down the large windowpane, blurring the world outside."
+       "engine": "TEND",
+       "family": "living",
+       "gate": "REL/achievement-gated · stasis-on-away · push-not-pull",
+       "gesture": "Slowly pouring hot water into a teapot, a careful, steadying motion to avoid splashing.",
+       "graduates": "The sequence becomes smoother, more intuitive; eventually, just placing a mug on the table is enough to calm the room.",
+       "cg": "A close-up on the rain-soaked student's hands wrapped around a warm mug, steam curling up to frame their relieved expression.",
+       "motion": "Rain running in rivulets down the large windowpane, blurring the outside world."
       },
       "rel": {
        "relTier": {
@@ -2075,9 +2084,12 @@
       },
       "interaction": {
        "engine": "SCRAMBLE",
-       "gesture": "Gently arranging a scattered pile of zines on the table, creating a neat, welcoming space between Wren and the newcomer.",
-       "cg": "A low-angle shot from the newcomer's POV, looking past the newly arranged zines to see Wren offer a small, shy smile.",
-       "motion": "The distant, rhythmic blinking of city lights seen through the window."
+       "family": "contest",
+       "gate": "chaotic-pick only (§C-tested)",
+       "gesture": "Sorting through a flurry of anxious internal thoughts to find the simple, kind opening line.",
+       "graduates": "Fewer anxious thoughts appear, the kind one is easier to find; eventually, it's a single, confident choice without the internal noise.",
+       "cg": "A three-shot: the new student looking lost, Wren looking up from their corner, and the player's character offering a small, open gesture of welcome.",
+       "motion": "The slow, rhythmic pulse of the sleeping city's lights turning on one by one outside the window."
       },
       "rel": {
        "relTier": {
@@ -2381,9 +2393,12 @@
       },
       "interaction": {
        "engine": "FLOW",
-       "gesture": "Wiping down the table in a slow, circular rhythm, the cloth moving closer and closer to the abandoned drawing.",
-       "cg": "A close-up on the drawing, showing confident, expressive lines, with the Caretaker's hand paused just beside it.",
-       "motion": "The shimmering reflection of streetlights on the wet pavement outside the door."
+       "family": "contest",
+       "gate": "chaotic-pick only (§C-tested)",
+       "gesture": "Polishing the main table in a slow, steady rhythm, clearing the day's clutter to reveal what's beneath.",
+       "graduates": "The rhythm becomes more intuitive, requiring less focus; eventually, it's a single, satisfying swipe that reveals the art.",
+       "cg": "The Caretaker's hand hovering just above a left-behind drawing, its confident lines stark against the dark wood reflecting wet streetlights.",
+       "motion": "The hypnotic swipe of passing car headlights across the floor and walls."
       },
       "rel": {
        "relTier": {
@@ -2756,38 +2771,53 @@
      "map": [
       {
        "scene": "the last bell",
-       "engine": "TEND",
-       "gesture": "Gently wiping dust motes from the windowsill, caught in the final sunbeam.",
-       "cg": "The empty armchair bathed in a warm, golden sunbeam, the impression of someone just having left still visible in the cushions.",
-       "motion": "Dust motes dancing slowly in the slanted evening light from the window."
+       "engine": "QUIET-ROLL",
+       "family": "none",
+       "gate": "—",
+       "gesture": "—",
+       "graduates": "—",
+       "cg": "A student, posture finally slackened, asleep in the armchair as the last sunbeam illuminates the floating dust around them.",
+       "motion": "Dust motes dancing in the single, sharp sunbeam cutting through the golden haze."
       },
       {
        "scene": "the room fills",
        "engine": "ENSEMBLE",
-       "gesture": "Sliding the basket of colorful pens across the table towards the group, an open invitation.",
-       "cg": "An overhead shot of multiple hands reaching for pens, with Wren's hesitant hand just touching a specific, bright color.",
-       "motion": "The subtle shift of shadows across the table as evening draws in outside."
+       "family": "living",
+       "gate": "REL/achievement-gated · stasis-on-away · push-not-pull",
+       "gesture": "Gently sliding the shared basket of pens to the center of the table.",
+       "graduates": "The gesture becomes quicker, more familiar; eventually, the basket is simply always there, a silent, shared understanding.",
+       "cg": "An overhead shot of multiple hands, including a hesitant Wren's, selecting colors from the basket—a web of quiet, shared creation.",
+       "motion": "The slow, almost imperceptible creep of shadows across the table as the afternoon deepens."
       },
       {
        "scene": "a rough one",
-       "engine": "QUIET-ROLL",
-       "gesture": "—",
-       "cg": "The reflection of the rain-soaked student in Theo's eyes as his smile fades, the vibrant room muted in the reflection.",
-       "motion": "Rain running in rivulets down the large windowpane, blurring the world outside."
+       "engine": "TEND",
+       "family": "living",
+       "gate": "REL/achievement-gated · stasis-on-away · push-not-pull",
+       "gesture": "Slowly pouring hot water into a teapot, a careful, steadying motion to avoid splashing.",
+       "graduates": "The sequence becomes smoother, more intuitive; eventually, just placing a mug on the table is enough to calm the room.",
+       "cg": "A close-up on the rain-soaked student's hands wrapped around a warm mug, steam curling up to frame their relieved expression.",
+       "motion": "Rain running in rivulets down the large windowpane, blurring the outside world."
       },
       {
        "scene": "it settles",
        "engine": "SCRAMBLE",
-       "gesture": "Gently arranging a scattered pile of zines on the table, creating a neat, welcoming space between Wren and the newcomer.",
-       "cg": "A low-angle shot from the newcomer's POV, looking past the newly arranged zines to see Wren offer a small, shy smile.",
-       "motion": "The distant, rhythmic blinking of city lights seen through the window."
+       "family": "contest",
+       "gate": "chaotic-pick only (§C-tested)",
+       "gesture": "Sorting through a flurry of anxious internal thoughts to find the simple, kind opening line.",
+       "graduates": "Fewer anxious thoughts appear, the kind one is easier to find; eventually, it's a single, confident choice without the internal noise.",
+       "cg": "A three-shot: the new student looking lost, Wren looking up from their corner, and the player's character offering a small, open gesture of welcome.",
+       "motion": "The slow, rhythmic pulse of the sleeping city's lights turning on one by one outside the window."
       },
       {
        "scene": "the walk out",
        "engine": "FLOW",
-       "gesture": "Wiping down the table in a slow, circular rhythm, the cloth moving closer and closer to the abandoned drawing.",
-       "cg": "A close-up on the drawing, showing confident, expressive lines, with the Caretaker's hand paused just beside it.",
-       "motion": "The shimmering reflection of streetlights on the wet pavement outside the door."
+       "family": "contest",
+       "gate": "chaotic-pick only (§C-tested)",
+       "gesture": "Polishing the main table in a slow, steady rhythm, clearing the day's clutter to reveal what's beneath.",
+       "graduates": "The rhythm becomes more intuitive, requiring less focus; eventually, it's a single, satisfying swipe that reveals the art.",
+       "cg": "The Caretaker's hand hovering just above a left-behind drawing, its confident lines stark against the dark wood reflecting wet streetlights.",
+       "motion": "The hypnotic swipe of passing car headlights across the floor and walls."
       }
      ],
      "range": {
@@ -2795,7 +2825,7 @@
       "density": "balanced",
       "enough": "yes",
       "gaps": "none",
-      "note": "The one-to-one mapping of the five calm engines to the five scenes creates strong mechanical and thematic distinction."
+      "note": "The allocation provides strong mechanical and visual variety, using the full engine palette while ensuring each interaction feels earned and diegetic."
      },
      "flags": [],
      "gatedBy": {
