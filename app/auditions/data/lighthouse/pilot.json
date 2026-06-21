@@ -1052,7 +1052,27 @@
         "grows": "The player's choice to consciously accept this inherited role, defining the start of their own vigil.",
         "relationship": "Solidifying the bond with the Light as the shared object of devotion connecting the player to their predecessor."
        }
-      ]
+      ],
+      "supportingCast": {
+       "candidates": [
+        {
+         "name": "the Light",
+         "dynamic": "The player is physically communing with the legacy of the Keeper-before by tending to the Light.",
+         "quirk": "The first time the lamp is lit, its 'breathing' rhythm feels alien, a presence to get used to.",
+         "fit": "viable"
+        },
+        {
+         "name": "solo — focal alone",
+         "dynamic": "An entirely internal moment of accepting the mantle, with only the Keeper-before's imagined presence.",
+         "quirk": "N/A",
+         "fit": "strong"
+        }
+       ],
+       "winner": "solo — focal alone",
+       "whyWon": "Wins on rule (1) and (2). The arc is 'quiet inheritance'; the strongest dynamic is internal, with the focal (Keeper-before) as a felt presence. Adding another character would dilute this foundational moment of solitude.",
+       "dynamic": "Private Communion",
+       "quirk": "The player notices their own hand, now doing this work, and sees it as a continuation of the hand that wrote the logbook."
+      }
      },
      "the-dark-settles": {
       "castPick": "the Light — as the storm rises, the lamp becomes the focal point of all action, and the player's role as its steward is defined by calm, competent care against the chaos.",
@@ -1242,7 +1262,33 @@
         "grows": "The player's choice of what specific thought or truth serves as their anchor, personalizing their source of strength.",
         "relationship": "The Light transforms from a machine being tended to a symbol of the player's own inner fortitude."
        }
-      ]
+      ],
+      "supportingCast": {
+       "candidates": [
+        {
+         "name": "the Voice",
+         "dynamic": "A distant human check-in during a physical test, contrasting the storm's immediacy with remote solidarity.",
+         "quirk": "The Voice's signal crackles with static from the storm, their calm tone a stark counterpoint to the wind's howl.",
+         "fit": "strong"
+        },
+        {
+         "name": "the Keeper-before",
+         "dynamic": "Reading a logbook entry about a past storm, feeling a connection across time to a shared trial.",
+         "quirk": "The Keeper-before's entry on a similar night ends with a drawing of a 'sheet bend' knot, for holding fast.",
+         "fit": "viable"
+        },
+        {
+         "name": "solo — focal alone",
+         "dynamic": "The player and the Light against the elements; a pure moment of stewardship and reliance.",
+         "quirk": "N/A",
+         "fit": "strong"
+        }
+       ],
+       "winner": "the Voice",
+       "whyWon": "Wins on rule (2) forward-yield and (3) range. It introduces the 'solidarity' theme that pays off in Scene 4, and its 'distant witness' dynamic is a unique texture that contrasts powerfully with the focal (the Light's) physical immediacy.",
+       "dynamic": "Distant Witness",
+       "quirk": "Amid the storm's chaos, the Voice's brief, calm humming on sign-off is a small, defiant piece of human order."
+      }
      },
      "the-fog-comes-in": {
       "castPick": "the Light — with its beam swallowed by the fog, the lamp's function turns inward, becoming a metronome for the keeper's own consciousness in the void.",
@@ -1430,7 +1476,27 @@
         "grows": "The player's autonomy in deciding how to hold or respond to what they have 'heard' in the silence.",
         "relationship": "The player and the Light share a secret intimacy, alone together in the enclosed, foggy world."
        }
-      ]
+      ],
+      "supportingCast": {
+       "candidates": [
+        {
+         "name": "the Keeper-before",
+         "dynamic": "In the muffling quiet, the player finds a logbook entry that seems to speak directly to their own inner state.",
+         "quirk": "A logbook entry from a foggy day has no weather data, just a single drawn knot: the 'endless knot'.",
+         "fit": "viable"
+        },
+        {
+         "name": "solo — focal alone",
+         "dynamic": "The profound silence of the fog allows a long-buried internal thought or memory to surface unimpeded.",
+         "quirk": "N/A",
+         "fit": "strong"
+        }
+       ],
+       "winner": "solo — focal alone",
+       "whyWon": "Wins on rule (1). The arc is 'the deep listening' to an *inner* voice. The §8.13 floor is essential here; any external presence, even the logbook, would violate the scene's core premise of autonomous self-discovery.",
+       "dynamic": "Unveiled Interiority",
+       "quirk": "In the absolute quiet, the player hears the sound of their own heartbeat, and mistakes it for a moment for something else."
+      }
      },
      "the-fog-thins": {
       "castPick": "the Voice — the distant light acts as a silent 'voice,' a visual affirmation of another's presence, fulfilling the same need for connection as the radio.",
@@ -1618,7 +1684,27 @@
         "grows": "The player's autonomy in imagining the scale and nature of this wider, unseen network of care.",
         "relationship": "Expanding the connection from one peer to an entire unseen fellowship, deepening the meaning of the vigil."
        }
-      ]
+      ],
+      "supportingCast": {
+       "candidates": [
+        {
+         "name": "the Light",
+         "dynamic": "Tending your own Light becomes your side of a silent conversation when you see the other beam.",
+         "quirk": "The rhythmic 'catch' of your own lamp's breath seems to sync up for a moment with the sweep of the distant beam.",
+         "fit": "strong"
+        },
+        {
+         "name": "the Keeper-before",
+         "dynamic": "The logbook provides context, a name or story for the other light, turning an observation into a connection.",
+         "quirk": "The Keeper-before has charted the timing of the other light's sweep, naming it 'The Dancer'.",
+         "fit": "viable"
+        }
+       ],
+       "winner": "the Light",
+       "whyWon": "Wins on rule (2) quality. With the Voice as focal, interacting with your own Light is the most active and poignant dynamic. It's not just seeing, but participating—your Light is your 'voice' in the silent call-and-response.",
+       "dynamic": "Silent Conversation",
+       "quirk": "As the distant beam sweeps past, you instinctively polish a smudge on your own lens, a gesture of reciprocity and pride."
+      }
      },
      "first-light": {
       "castPick": "the Visitor — the rising sun acts as the ultimate, daily visitor, arriving to relieve the lamp of its duty and reconnect the tower to the larger world.",
@@ -1806,7 +1892,27 @@
         "grows": "The player's choice of the specific feeling or insight to leave behind, defining their personal legacy.",
         "relationship": "Establishing a bond with the future Visitor (the next keeper) through this intimate, asynchronous communication."
        }
-      ]
+      ],
+      "supportingCast": {
+       "candidates": [
+        {
+         "name": "the Keeper-before",
+         "dynamic": "The player's choice of what to write is in direct dialogue with the style of the entries before theirs.",
+         "quirk": "The final entry from the Keeper-before is purely factual, leaving a stark, open space for the player to fill differently.",
+         "fit": "strong"
+        },
+        {
+         "name": "the Light",
+         "dynamic": "The decision is made as the lamp is extinguished, the duty passing from the Light to the logbook.",
+         "quirk": "The 'breathing' sound of the mechanism ceases, and the resulting silence prompts the new kind of testimony.",
+         "fit": "viable"
+        }
+       ],
+       "winner": "the Keeper-before",
+       "whyWon": "Wins on rule (2), strongest dynamic. The arc is about leaving a testament. The Keeper-before (via the logbook) is the physical embodiment of past testaments, making them the perfect and most resonant foil for the player's decision.",
+       "dynamic": "Amending the Record",
+       "quirk": "Instead of data, the player adds a small, imperfect drawing of a knot of their own invention next to the Keeper-before's perfect ones."
+      }
      }
     },
     "paletteUI": {
@@ -2116,6 +2222,52 @@
      ],
      "spread": "The arcs move from receiving a legacy (inheritance), to internal fortification (anchor), to a peak of solitary introspection (witnessed self), into distant communion (silent salute), and finally toward creating a legacy (forged link).",
      "note": "The balance is healthy, covering internal states, historical connection, and communion-at-a-distance; while direct interpersonal arcs are absent, this is a deliberate choice that reinforces the campaign's core theme of generative solitude."
+    },
+    "ensemble": {
+     "crew": [
+      {
+       "name": "the Light",
+       "energy": "The Anchor. A constant, non-human presence; the physical embodiment of the duty and the shelter it provides.",
+       "quirk": "The lens mechanism has a soft, rhythmic 'catch' in its rotation, a sound like a slow, sleeping breath, that only becomes apparent in perfect stillness.",
+       "foil": "the Voice"
+      },
+      {
+       "name": "the Voice",
+       "energy": "The Echo. A link to the living world, a reminder of shared humanity across distance; ephemeral and disembodied.",
+       "quirk": "Before signing off, they hum two bars of a half-familiar folk tune, a different one each time, never mentioning it.",
+       "foil": "the Keeper-before"
+      },
+      {
+       "name": "the Keeper-before",
+       "energy": "The Ghost. The weight and comfort of legacy; a silent, constant conversation with the past through their traces.",
+       "quirk": "In the margins of the log, next to weather reports, are tiny, exquisite ink drawings of different knots, with no explanation.",
+       "foil": "the Visitor"
+      },
+      {
+       "name": "the Visitor",
+       "energy": "The Mirror. A brief, grounding intrusion of the outside world, reflecting the player's own changes back at them.",
+       "quirk": "They speak very little, but always meet your gaze for a moment too long when they hand you a parcel, as if trying to read the solitude on you.",
+       "foil": "the Light"
+      }
+     ],
+     "pairs": [
+      {
+       "a": "the Light",
+       "b": "the Voice",
+       "dynamic": "Physical Presence vs. Abstract Connection"
+      },
+      {
+       "a": "the Keeper-before",
+       "b": "the Visitor",
+       "dynamic": "Unchanging Past vs. Fleeting Present"
+      },
+      {
+       "a": "the Voice",
+       "b": "the Keeper-before",
+       "dynamic": "The Living Word vs. The Written Trace"
+      }
+     ],
+     "verdict": "Excellent dynamics. The four energies are distinct and complementary—Anchor, Echo, Ghost, Mirror—creating a balanced quartet of internal and external foils without redundant emotional weight."
     }
    },
    "throughline": "Holding a fixed point against the drift of time and tide; a vigil as devotion.",

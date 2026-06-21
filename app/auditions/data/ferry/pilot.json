@@ -1154,7 +1154,36 @@
         "grows": "The player's autonomy solidifies in accepting the silence, and the bond deepens into a shared, unspoken understanding.",
         "relationship": "Moving from co-existence to a nascent, quiet companionship."
        }
-      ]
+      ],
+      "supportingCast": {
+       "candidates": [
+        {
+         "name": "The Deckhand",
+         "dynamic": "A shared, surrendered quiet, modeling the scene's arc.",
+         "quirk": "Leaning against the bulkhead, eyes closed, a picture of calm surrender to the boat's rhythm.",
+         "fit": "strong",
+         "picked": true
+        },
+        {
+         "name": "The Pilot",
+         "dynamic": "A shared, professional watchfulness.",
+         "quirk": "Standing at a window, looking out, their hand resting near their wooden bird charm.",
+         "fit": "strong",
+         "picked": false
+        },
+        {
+         "name": "solo — focal alone",
+         "dynamic": "Pure focus on the Manifest-keeper's solitary precision.",
+         "quirk": "N/A",
+         "fit": "viable",
+         "picked": false
+        }
+       ],
+       "winner": "The Deckhand",
+       "whyWon": "Wins on forward-yield (Rule 2). The Deckhand's quiet, surrendered posture provides a perfect external mirror for the player's internal arc of letting go, directly serving the 'grows-with-you' theme from the start.",
+       "dynamic": "Mirrored stillness. The Deckhand's relaxed presence gives the player non-verbal permission to simply be, transforming the Manifest-keeper's focused silence into a shared state of peace.",
+       "quirk": "The Deckhand leans against the ship's wall, eyes closed, and for a moment, rests a hand flat against the wood, as if feeling the ship's heartbeat—a gesture of deep, trusting connection."
+      }
      },
      "rising-wind": {
       "castPick": "The Pilot — their steady, cool competence is the focus, reassuring the player not with words but with small, expert actions that meet the rising sea.",
@@ -1342,7 +1371,36 @@
         "grows": "The player's autonomy is enacted by fulfilling the request; the bond deepens through the shared vulnerability and mutual trust.",
         "relationship": "Solidifying the player's role as a safe, supportive presence within the passenger community."
        }
-      ]
+      ],
+      "supportingCast": {
+       "candidates": [
+        {
+         "name": "The Manifest-keeper",
+         "dynamic": "A powerful break in composure, making the request feel significant.",
+         "quirk": "A gust scatters their perfectly ordered papers, causing a flicker of genuine helplessness.",
+         "fit": "strong",
+         "picked": true
+        },
+        {
+         "name": "The Cook",
+         "dynamic": "A grounded, practical moment of need.",
+         "quirk": "Juggling a few potatoes, one almost slips, prompting a flustered but warm request for help.",
+         "fit": "strong",
+         "picked": false
+        },
+        {
+         "name": "The Deckhand",
+         "dynamic": "An open, unembarrassed request for a hand.",
+         "quirk": "While securing a line, they can't quite reach a knot and turn to the player with a simple smile.",
+         "fit": "viable",
+         "picked": false
+        }
+       ],
+       "winner": "The Manifest-keeper",
+       "whyWon": "Wins on forward-yield (Rule 2). The sharp contrast between the Manifest-keeper's usual precision and their brief moment of disarray makes the 'fragile request' exceptionally powerful and character-revealing.",
+       "dynamic": "A crack in the composure. The player witnesses the usually unflappable character become momentarily overwhelmed, making the act of helping feel significant and trust-building.",
+       "quirk": "When a gust blows through, a perfectly stacked sheaf of papers flutters apart. The Manifest-keeper's hands hover, unsure which to grab first, a moment of pure system failure before they ask for help."
+      }
      },
      "the-storm": {
       "castPick": "The Deckhand — their role as a grounding, warm presence is essential here, transforming a potentially terrifying moment into an experience of being held and supported.",
@@ -1532,7 +1590,36 @@
         "grows": "Player's autonomy is demonstrated by *not* acting, by holding space instead of fixing; the bond with the other passenger is forged in profound, silent support.",
         "relationship": "Deepening the player's role from companion to a true, unwavering anchor for others."
        }
-      ]
+      ],
+      "supportingCast": {
+       "candidates": [
+        {
+         "name": "The Cook",
+         "dynamic": "The caregiver's resilience finally breaks, creating a poignant role-reversal.",
+         "quirk": "After a stack of bowls crashes, they stare at the mess and let out a single, choked sob.",
+         "fit": "strong",
+         "picked": true
+        },
+        {
+         "name": "The Manifest-keeper",
+         "dynamic": "The weight of maintaining order becomes too much.",
+         "quirk": "After failing to lift a heavy, fallen crate, they sink down beside it and quietly cry.",
+         "fit": "strong",
+         "picked": false
+        },
+        {
+         "name": "The Pilot",
+         "dynamic": "The strain behind the steel is revealed.",
+         "quirk": "Steps away from the helm for a brief moment, head in hands, letting out a shuddering breath.",
+         "fit": "off",
+         "picked": false
+        }
+       ],
+       "winner": "The Cook",
+       "whyWon": "Wins on forward-yield (Rule 2) and tie-breaks on range (Rule 3). The Cook's breakdown is deeply human and provides a different flavor of vulnerability than the Manifest-keeper's, preventing dynamic redundancy across scenes.",
+       "dynamic": "The caregiver overwhelmed. The player sees the person responsible for homely comfort lose their own, creating a powerful opportunity to offer silent support back, fulfilling the arc of holding space.",
+       "quirk": "A large wave hits, sending a carefully arranged stack of bowls crashing to the floor. The Cook, who has been stoic, just stares at the mess before letting out a choked sob, one hand covering their mouth."
+      }
      },
      "settling-sea": {
       "castPick": "The Cook — embodying homely warmth and restoration, their simple offer of shared work in the galley is the perfect ritual for marking the return to calm.",
@@ -1713,7 +1800,36 @@
         "grows": "The player's autonomy is in recognizing and holding the emotional weight of the shared pause; the bond deepens into a shared experience of survival.",
         "relationship": "Moving from collaborators to comrades who have weathered the same storm."
        }
-      ]
+      ],
+      "supportingCast": {
+       "candidates": [
+        {
+         "name": "The Manifest-keeper",
+         "dynamic": "A surprising and powerful pairing of precision and earthy labor.",
+         "quirk": "Meticulously sorting spilled supplies, their quiet efficiency creates a bubble of calm.",
+         "fit": "strong",
+         "picked": true
+        },
+        {
+         "name": "The Deckhand",
+         "dynamic": "A natural, warm pairing of shared, gentle work.",
+         "quirk": "Wiping down surfaces with a slow, thorough rhythm that matches the Cook's chopping.",
+         "fit": "strong",
+         "picked": false
+        },
+        {
+         "name": "The Pilot",
+         "dynamic": "A quiet observer finding vicarious relief.",
+         "quirk": "Leaning in the galley doorway, their weary posture slowly relaxing as they watch the others work.",
+         "fit": "viable",
+         "picked": false
+        }
+       ],
+       "winner": "The Manifest-keeper",
+       "whyWon": "Wins on forward-yield (Rule 2). The dynamic of the precise Manifest-keeper joining the earthy Cook in physical labor creates a powerful, unusual pairing. Their shared pause feels earned and bridges their very different energies.",
+       "dynamic": "Precision meets presence. The Manifest-keeper's quiet efficiency and the Cook's rhythmic chopping create a companionable silence. The shared pause is a moment of mutual respect for different ways of restoring order.",
+       "quirk": "While helping restock a shelf, the Manifest-keeper perfectly aligns a row of tins. They place the last one just so at the exact moment the Cook's knife comes to a rest. They catch each other's eye in the quiet."
+      }
      },
      "first-light": {
       "castPick": "The Manifest-keeper — having started as an observer of burdens, their final act as a celebrant of release brings their personal journey to a quiet, poignant close.",
@@ -1901,7 +2017,36 @@
         "grows": "Autonomy is in accepting the gift and its meaning; the bond is solidified into a lasting memory, a support that continues after parting.",
         "relationship": "Concluding the journey with a transfer of care, empowering the player for their own path ahead."
        }
-      ]
+      ],
+      "supportingCast": {
+       "candidates": [
+        {
+         "name": "solo — focal alone",
+         "dynamic": "A private, intimate compact between the player and the focal.",
+         "quirk": "N/A",
+         "fit": "strong",
+         "picked": true
+        },
+        {
+         "name": "The Pilot",
+         "dynamic": "A respectful witness, framing the journey's end.",
+         "quirk": "Standing by the helm watching the port approach, giving a small nod of acknowledgment.",
+         "fit": "viable",
+         "picked": false
+        },
+        {
+         "name": "The Deckhand",
+         "dynamic": "A warm, personal send-off that risks crowding the moment.",
+         "quirk": "Catching the player's eye after the gift and offering a slow, genuine smile.",
+         "fit": "viable",
+         "picked": false
+        }
+       ],
+       "winner": "solo — focal alone",
+       "whyWon": "Wins on forward-yield (Rule 2). The 'handoff' is the emotional climax. Making it a one-on-one interaction gives the moment maximum weight and intimacy, honoring the iyashikei value of the meaningful pause ('ma').",
+       "dynamic": "The quiet acknowledgment. With no one else present, the Manifest-keeper's simple act of offering the stone becomes a profound, intimate acknowledgment of the journey, the silence full of shared understanding.",
+       "quirk": "Having just closed their ledger with a soft click, the Manifest-keeper's usual precision is now in the deliberate, careful way they present the stone, held in their open palm as if it contains the full weight of the journey."
+      }
      }
     },
     "coverage": {
@@ -2285,6 +2430,52 @@
      ],
      "spread": "The arcs range from quiet interior witness ('the remembered burden') to active relational support ('the quiet mending'), and from non-verbal gestures ('the handoff') to pivotal confessions ('the unburdening').",
      "note": "The balance is healthy, covering internal, relational, giving, and receiving dynamics. The 'active' arcs are deliberately small-scale and metaphorical, which fits the 'witness' focus but could be a point of future expansion if more player agency is desired."
+    },
+    "ensemble": {
+     "crew": [
+      {
+       "name": "The Cook",
+       "energy": "Imperfect, homely warmth",
+       "quirk": "Hums old, melancholic sea shanties slightly off-key while working, a sound of pure concentration.",
+       "foil": "The Manifest-keeper (warm chaos vs. cool order)"
+      },
+      {
+       "name": "The Pilot",
+       "energy": "Unflappable, steady cool",
+       "quirk": "Polishes a small, smooth, wooden bird charm with their thumb before taking the helm for the night.",
+       "foil": "The Deckhand (impersonal duty vs. personal comfort)"
+      },
+      {
+       "name": "The Manifest-keeper",
+       "energy": "Contained, quiet precision",
+       "quirk": "Subconsciously aligns nearby objects—a cup, a pen, a book—into perfect parallels and right angles.",
+       "foil": "The Cook (contained precision vs. expressive warmth)"
+      },
+      {
+       "name": "The Deckhand",
+       "energy": "Embodied, gentle reassurance",
+       "quirk": "Often rests a hand on the ship’s railings and bulkheads, a quiet, tactile gesture of listening or gratitude.",
+       "foil": "The Pilot (tactile presence vs. distant focus)"
+      }
+     ],
+     "pairs": [
+      {
+       "a": "The Cook",
+       "b": "The Manifest-keeper",
+       "dynamic": "The heart and the head of the ship; expressive warmth grounding contained intellect."
+      },
+      {
+       "a": "The Pilot",
+       "b": "The Deckhand",
+       "dynamic": "The two anchors of the journey; one holds the course, the other holds the passenger."
+      },
+      {
+       "a": "The Deckhand",
+       "b": "The Manifest-keeper",
+       "dynamic": "Different forms of quiet; one of open, physical empathy, the other of reserved, detailed observation."
+      }
+     ],
+     "verdict": "A well-balanced quartet of quietude, each offering a distinct, non-redundant form of support. The core tension between the Cook's warmth and the Manifest-keeper's precision provides a strong central dynamic."
     }
    }
   }

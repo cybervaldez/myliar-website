@@ -1074,7 +1074,36 @@
         "grows": "Internalizing the permission to not perform, solidifying the room's core value.",
         "relationship": "The Caretaker solidifies their role as a guardian of this feeling, not just a keeper of the room."
        }
-      ]
+      ],
+      "supportingCast": {
+       "candidates": [
+        {
+         "name": "Theo",
+         "dynamic": "The Gentle Witness sees the Unmasking Performer.",
+         "quirk": "The moment Theo's shoulders, held high and tight from school, finally drop with a long, un-performed sigh.",
+         "fit": "strong",
+         "picked": true
+        },
+        {
+         "name": "Wren",
+         "dynamic": "Two quiet observers sharing a space without demand.",
+         "quirk": "Wren begins sketching the empty chair, focusing on the impression left in the cushion.",
+         "fit": "viable",
+         "picked": false
+        },
+        {
+         "name": "Solo — focal alone",
+         "dynamic": "The quiet reflection of the keeper of the space.",
+         "quirk": "N/A",
+         "fit": "strong",
+         "picked": false
+        }
+       ],
+       "winner": "Theo",
+       "whyWon": "Wins on forward-yield (Rule 2). Theo's presence makes the Caretaker's internal reflection on the 'shed skin' arc tangible and visible, providing a powerful, direct illustration of the scene's core theme.",
+       "dynamic": "The Gentle Witness & The Unmasking Performer.",
+       "quirk": "Theo enters, still buzzing, but as he sinks into the chair, he lets out a long, un-self-conscious sigh, and his entire posture shifts from 'on' to 'off'."
+      }
      },
      "the-room-fills": {
       "castPick": "Dee — as the group's established anchor, her role as 'participant' in a 'gentle-task' is a proactive, not passive, act of welcome.",
@@ -1264,7 +1293,36 @@
         "grows": "Discovering the comfort and connection of parallel activity and shared focus.",
         "relationship": "The group's focus coalesces on the shared task, creating a temporary, unified identity without a word."
        }
-      ]
+      ],
+      "supportingCast": {
+       "candidates": [
+        {
+         "name": "Wren",
+         "dynamic": "The Steady Hand offers space for the Reaching Hand.",
+         "quirk": "Wren's hand hovers over the basket of colored pencils for a full ten seconds before they commit, selecting a specific, non-primary color.",
+         "fit": "strong",
+         "picked": true
+        },
+        {
+         "name": "The Caretaker",
+         "dynamic": "The Peer Anchor and the Adult Anchor.",
+         "quirk": "The Caretaker quietly refills the water pitcher, a background act of care that supports the space.",
+         "fit": "viable",
+         "picked": false
+        },
+        {
+         "name": "Theo",
+         "dynamic": "The Warm Welcome and the Loud Arrival.",
+         "quirk": "Theo tries to make a grand joke about the art supplies, an energy that slightly misses the quiet mood.",
+         "fit": "off",
+         "picked": false
+        }
+       ],
+       "winner": "Wren",
+       "whyWon": "Clears the floor (Rule 1). The scene's defined environmental turning point is literally Wren's action. The dynamic between Dee's quiet invitation and Wren's hesitant participation is the absolute core of the 'belonging through parallel action' arc.",
+       "dynamic": "The Steady Hand & The Reaching Hand.",
+       "quirk": "Headphones still on but music off, Wren carefully selects a specific shade of teal, turning it over in their fingers before uncapping it—a small, deliberate act of joining in."
+      }
      },
      "a-rough-one": {
       "castPick": "Theo — using the 'mask-wearer' as the 'witness' creates a powerful internal conflict, as he sees a vulnerability he fears in himself being met with acceptance, not judgment.",
@@ -1452,7 +1510,36 @@
         "grows": "Gaining the autonomy to choose silence over performance as a valid, even superior, social contribution.",
         "relationship": "Theo's perception of Dee shifts from a quiet peer to someone socially adept in a way he isn't."
        }
-      ]
+      ],
+      "supportingCast": {
+       "candidates": [
+        {
+         "name": "Dee",
+         "dynamic": "The Quiet Carer's action halts the Reassessing Comedian's impulse.",
+         "quirk": "Dee wordlessly slides the box of tissues two inches closer to the player, an act of practical care that says everything.",
+         "fit": "strong",
+         "picked": true
+        },
+        {
+         "name": "Wren",
+         "dynamic": "The Silent Witness's stillness teaches the Silenced Performer.",
+         "quirk": "Wren simply continues to sketch, their calm focus a powerful counter-signal to Theo's urge to fill the silence.",
+         "fit": "strong",
+         "picked": false
+        },
+        {
+         "name": "The Caretaker",
+         "dynamic": "The Teen Performer and the Adult Gaze.",
+         "quirk": "A knowing, gentle look from the Caretaker is all it takes to make Theo reconsider.",
+         "fit": "viable",
+         "picked": false
+        }
+       ],
+       "winner": "Dee",
+       "whyWon": "Wins on forward-yield (Rule 2). As a peer, Dee's model of quiet care allows Theo's realization to be an organic moment of social learning, rather than a correction from an adult, which honors the genre's 'avoid adult-savior' convention.",
+       "dynamic": "The Quiet Carer & The Reassessing Comedian.",
+       "quirk": "Theo opens his mouth, joke ready, but stops when he sees Dee just quietly pushing her own unopened water bottle across the table toward the person having a rough time. He closes his mouth, the joke gone."
+      }
      },
      "it-settles": {
       "castPick": "Wren — as the quietest member, making her the 'recipient-of-care' through 'shared-silence' validates her way of being and demonstrates that support doesn't require words.",
@@ -1640,7 +1727,36 @@
         "grows": "Gaining the autonomy to choose when and how to re-engage after a period of quiet retreat.",
         "relationship": "The group (personified by Theo's quiet work) passes the test, deepening Wren's trust in the space."
        }
-      ]
+      ],
+      "supportingCast": {
+       "candidates": [
+        {
+         "name": "Theo",
+         "dynamic": "The Performer at Rest allows the Observer at Peace.",
+         "quirk": "Theo is so focused on his work, he's unconsciously chewing on the end of his pencil, a small, un-self-conscious gesture.",
+         "fit": "strong",
+         "picked": true
+        },
+        {
+         "name": "Dee",
+         "dynamic": "A shared, steady quiet between two settled peers.",
+         "quirk": "Dee turns a page in her book so slowly and carefully that it makes almost no sound.",
+         "fit": "viable",
+         "picked": false
+        },
+        {
+         "name": "Solo — focal alone",
+         "dynamic": "The Artist finds their focus in the quiet of the room.",
+         "quirk": "N/A",
+         "fit": "strong",
+         "picked": false
+        }
+       ],
+       "winner": "Theo",
+       "whyWon": "Clears the floor (Rule 1). The environmental turning point explicitly names the sound of Theo's pencil. His quiet presence is the ultimate payoff for his arc from the previous scene and the most powerful validation for Wren's need for a non-performative space.",
+       "dynamic": "The Focused Peer & The Settled Artist.",
+       "quirk": "Completely absorbed, Theo lets out a small, frustrated huff of air and erases something vigorously—a sound of personal effort, not public performance, that makes the room feel safe."
+      }
      },
      "the-walk-out": {
       "castPick": "The Caretaker — bookending the sequence with them as a 'reflector' reinforces the room's stability; their 'ritual-gesture' is the physical embodiment of the space's promise to return.",
@@ -1828,7 +1944,36 @@
         "grows": "Taking an active, autonomous role in preserving and validating another person's progress.",
         "relationship": "The Caretaker's bond with the students is expressed through a protective gesture that will be received tomorrow."
        }
-      ]
+      ],
+      "supportingCast": {
+       "candidates": [
+        {
+         "name": "Wren",
+         "dynamic": "The Quiet Validator acknowledges the Confident Creator.",
+         "quirk": "Wren deliberately leaves a single, finished drawing on the table—a gift and a statement—before giving the Caretaker a small, direct nod.",
+         "fit": "strong",
+         "picked": true
+        },
+        {
+         "name": "Theo",
+         "dynamic": "The Witness sees the Grown-Up Kid.",
+         "quirk": "On the way out, Theo gives the Caretaker a genuine, non-joking thumbs-up of thanks.",
+         "fit": "viable",
+         "picked": false
+        },
+        {
+         "name": "Solo — focal alone",
+         "dynamic": "The Keeper of the Space reflects on the changes.",
+         "quirk": "The Caretaker finds a pencil nub worn down to the wood and smiles.",
+         "fit": "viable",
+         "picked": false
+        }
+       ],
+       "winner": "Wren",
+       "whyWon": "Wins on forward-yield (Rule 2). As 'the artist,' Wren's presence is essential for the Caretaker's turning point. This choice provides a powerful, validating bookend for both characters, directly serving the 'acknowledged change' arc.",
+       "dynamic": "The Quiet Validator & The Confident Creator.",
+       "quirk": "As they pack up, Wren pauses, slides their sketchbook into their bag, but leaves one loose sheet on the table. They catch the Caretaker's eye with a small, confident look before they leave."
+      }
      }
     },
     "paletteUI": {
@@ -2134,6 +2279,52 @@
      ],
      "spread": "The arcs span from quiet, internal preparation and renewal to active, relational moments of play, gentle protection, and explicit care.",
      "note": "A healthy balance of internal and relational arcs, though the 'active play' element could be slightly more pronounced in the early-to-mid sections."
+    },
+    "ensemble": {
+     "crew": [
+      {
+       "name": "The Caretaker",
+       "energy": "The Quiet Anchor",
+       "quirk": "Always straightens the one perpetually crooked picture frame on the wall upon entering and leaving the room.",
+       "foil": "Theo — The Caretaker's non-demanding stillness provides the space for Theo's performative energy to finally settle."
+      },
+      {
+       "name": "Dee",
+       "energy": "The Gentle Initiator",
+       "quirk": "Always has a small, smooth, grey stone she quietly turns over and over in her palm when she's thinking.",
+       "foil": "Wren — Dee's steady, welcoming presence acts as a gentle gravity, slowly drawing the more withdrawn Wren into the group's orbit."
+      },
+      {
+       "name": "Theo",
+       "energy": "The Affectionate Deflector",
+       "quirk": "Has a specific, rapid-fire series of finger-taps on the table he does right before launching a joke, a tiny tell for his nervousness.",
+       "foil": "Wren — Theo's need to fill the silence is a direct contrast to Wren's comfort within it, forcing him to learn a new mode of interaction."
+      },
+      {
+       "name": "Wren",
+       "energy": "The Silent Noticer",
+       "quirk": "Never draws faces, only people's hands and shoes, capturing their character through what they do and where they stand.",
+       "foil": "Theo — Wren's quiet, intense observation acts as a mirror, eventually making Theo aware of the 'mask' he's wearing."
+      }
+     ],
+     "pairs": [
+      {
+       "a": "Theo",
+       "b": "Wren",
+       "dynamic": "Performance vs. Observation: The loud energy that learns the value of quiet from the one who embodies it."
+      },
+      {
+       "a": "Dee",
+       "b": "Wren",
+       "dynamic": "Invitation vs. Hesitation: The steady, quiet welcomer creating a safe harbor for the hesitant newcomer to emerge."
+      },
+      {
+       "a": "The Caretaker",
+       "b": "Theo",
+       "dynamic": "The Witness vs. The Performer: The adult whose calm presence offers unspoken permission for the teen to drop the act."
+      }
+     ],
+     "verdict": "A well-balanced ensemble with distinct, non-redundant energies built on clear contrasts; the core dynamic between Theo's performance and the group's quiet acceptance is the engine."
     }
    },
    "throughline": "belonging you don't audition for — the chair's yours before you've proven anything; you're kept, not chosen",
