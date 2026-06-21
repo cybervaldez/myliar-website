@@ -1275,6 +1275,17 @@
        },
        "cgTaxon": "meeting",
        "rewardRung": "none"
+      },
+      "sensory": {
+       "music": {
+        "register": "still + sparse",
+        "instruments": "Warm Rhodes piano, a single held cello note",
+        "soundbed": "Gentle lapping of water against the hull, distant foghorn"
+       },
+       "object": {
+        "prop": "Heavy ceramic mug",
+        "role": "A source of grounding warmth held in the player's hands. A moment of personal comfort, not a keepsake."
+       }
       }
      },
      "rising-wind": {
@@ -1584,6 +1595,17 @@
        },
        "cgTaxon": "pivot",
        "rewardRung": "MUTUAL"
+      },
+      "sensory": {
+       "music": {
+        "register": "low swell",
+        "instruments": "Plucked koto strings, the intermittent chime of a brass bell",
+        "soundbed": "Rising wind whistling through rigging, the rhythmic rattle of a loose shutter"
+       },
+       "object": {
+        "prop": "Brass window latch",
+        "role": "A point of shared, quiet collaboration. The cold metal warms slightly under the player's touch. A potential memento of a small, helpful act."
+       }
       }
      },
      "the-storm": {
@@ -1895,6 +1917,17 @@
        },
        "cgTaxon": "wall",
        "rewardRung": "DO"
+      },
+      "sensory": {
+       "music": {
+        "register": "weighted presence",
+        "instruments": "A single, deep taiko drum hit (like a heartbeat), sustained glass harmonica tones",
+        "soundbed": "The groan of the ship's timbers, rain lashing against glass, muffled roar of the sea"
+       },
+       "object": {
+        "prop": "Oil lantern",
+        "role": "A small, steady source of light the player protects. The gesture is one of vigil, not of fighting. A potential keepsake representing holding steady."
+       }
       }
      },
      "settling-sea": {
@@ -2184,6 +2217,17 @@
        },
        "cgTaxon": "none",
        "rewardRung": "KEEP"
+      },
+      "sensory": {
+       "music": {
+        "register": "weary calm",
+        "instruments": "Solo viola melody over sparse, high-register piano chords",
+        "soundbed": "Water dripping from the eaves, the low hum of the engine, the gentle hiss of a kettle"
+       },
+       "object": {
+        "prop": "Porcelain teapot",
+        "role": "A vessel for a quiet offering of care. The warmth is given away. The memory is the act, not the object."
+       }
       }
      },
      "first-light": {
@@ -2493,6 +2537,17 @@
        },
        "cgTaxon": "graduation",
        "rewardRung": "KNOW"
+      },
+      "sensory": {
+       "music": {
+        "register": "warm first light",
+        "instruments": "Simple acoustic guitar melody, a single held clarinet note",
+        "soundbed": "The first calls of sea birds, the quiet hum of the ferry approaching the dock"
+       },
+       "object": {
+        "prop": "Small, smooth sea stone",
+        "role": "A gift received from a fellow passenger before disembarking. A tangible memory of the journey. The primary keepsake left at graduation."
+       }
       }
      }
     },
@@ -2996,6 +3051,116 @@
      "everyNote": "yes",
      "cgSpread": "yes, includes both a wall and a graduation CG",
      "note": "The engine connection is healthy; notes track the player's growth and deepen the core gift across the full relational arc."
+    },
+    "floors": [
+     {
+      "floor": "Note-factory (§3.1)",
+      "status": "pass",
+      "detail": "5/5 scenes produce a note"
+     },
+     {
+      "floor": "The Wall (Relapse-Unlock)",
+      "status": "pass",
+      "detail": "1 vulnerability CG — the storm (The Deckhand)"
+     },
+     {
+      "floor": "Graduation (Vacated Frame)",
+      "status": "pass",
+      "detail": "first light (The Manifest-keeper)"
+     },
+     {
+      "floor": "CG-taxonomy spread",
+      "status": "pass",
+      "detail": "meeting · wall · pivot · graduation all present"
+     },
+     {
+      "floor": "REL ladder coverage",
+      "status": "pass",
+      "detail": "bands: low · mid · high (spans early→deep)"
+     },
+     {
+      "floor": "Engine family balance (cozy)",
+      "status": "pass",
+      "detail": "2 living · 1 contest · 2 quiet-roll"
+     },
+     {
+      "floor": "Reward stack (KNOW/DO/KEEP/MUTUAL)",
+      "status": "pass",
+      "detail": "delivered: MUTUAL · DO · KEEP · KNOW"
+     }
+    ],
+    "sensory": {
+     "map": [
+      {
+       "scene": "calm water",
+       "music": {
+        "register": "still + sparse",
+        "instruments": "Warm Rhodes piano, a single held cello note",
+        "soundbed": "Gentle lapping of water against the hull, distant foghorn"
+       },
+       "object": {
+        "prop": "Heavy ceramic mug",
+        "role": "A source of grounding warmth held in the player's hands. A moment of personal comfort, not a keepsake."
+       }
+      },
+      {
+       "scene": "rising wind",
+       "music": {
+        "register": "low swell",
+        "instruments": "Plucked koto strings, the intermittent chime of a brass bell",
+        "soundbed": "Rising wind whistling through rigging, the rhythmic rattle of a loose shutter"
+       },
+       "object": {
+        "prop": "Brass window latch",
+        "role": "A point of shared, quiet collaboration. The cold metal warms slightly under the player's touch. A potential memento of a small, helpful act."
+       }
+      },
+      {
+       "scene": "the storm",
+       "music": {
+        "register": "weighted presence",
+        "instruments": "A single, deep taiko drum hit (like a heartbeat), sustained glass harmonica tones",
+        "soundbed": "The groan of the ship's timbers, rain lashing against glass, muffled roar of the sea"
+       },
+       "object": {
+        "prop": "Oil lantern",
+        "role": "A small, steady source of light the player protects. The gesture is one of vigil, not of fighting. A potential keepsake representing holding steady."
+       }
+      },
+      {
+       "scene": "settling sea",
+       "music": {
+        "register": "weary calm",
+        "instruments": "Solo viola melody over sparse, high-register piano chords",
+        "soundbed": "Water dripping from the eaves, the low hum of the engine, the gentle hiss of a kettle"
+       },
+       "object": {
+        "prop": "Porcelain teapot",
+        "role": "A vessel for a quiet offering of care. The warmth is given away. The memory is the act, not the object."
+       }
+      },
+      {
+       "scene": "first light",
+       "music": {
+        "register": "warm first light",
+        "instruments": "Simple acoustic guitar melody, a single held clarinet note",
+        "soundbed": "The first calls of sea birds, the quiet hum of the ferry approaching the dock"
+       },
+       "object": {
+        "prop": "Small, smooth sea stone",
+        "role": "A gift received from a fellow passenger before disembarking. A tangible memory of the journey. The primary keepsake left at graduation."
+       }
+      }
+     ],
+     "musicRange": {
+      "variety": "strong",
+      "arc": "From sparse stillness through a weighted, percussive peak to a warm, melodic renewal.",
+      "note": "The soundtrack supports the emotional arc without overwhelming, using silence and diegetic sound as key components."
+     },
+     "objectRange": {
+      "distinct": "yes",
+      "note": "Each object is tied to a unique, tangible gesture, progressing from personal comfort to shared action and finally to a received gift."
+     }
     }
    }
   }

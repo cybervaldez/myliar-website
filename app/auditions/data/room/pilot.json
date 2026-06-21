@@ -1195,6 +1195,17 @@
        },
        "cgTaxon": "meeting",
        "rewardRung": "none"
+      },
+      "sensory": {
+       "music": {
+        "register": "Warm + still",
+        "instruments": "Solo felt piano, distant ambient synth pad",
+        "soundbed": "The distant echo of a final school bell, the low hum of an empty hallway."
+       },
+       "object": {
+        "prop": "A single, smooth worry stone, left on the empty table.",
+        "role": "A grounding object found in the quiet aftermath. A potential keepsake representing the start of something new."
+       }
       }
      },
      "the-room-fills": {
@@ -1506,6 +1517,17 @@
        },
        "cgTaxon": "pivot",
        "rewardRung": "MUTUAL"
+      },
+      "sensory": {
+       "music": {
+        "register": "Gathering + gentle",
+        "instruments": "Layered acoustic guitar plucking, a soft cello line enters",
+        "soundbed": "The soft scrape of chairs, quiet murmurs of arrival, the rustle of paper."
+       },
+       "object": {
+        "prop": "A well-worn wicker basket of shared pens.",
+        "role": "Represents the shared space and collaborative effort. It’s a tool of the group, not a personal keepsake."
+       }
       }
      },
      "a-rough-one": {
@@ -1815,6 +1837,17 @@
        },
        "cgTaxon": "wall",
        "rewardRung": "KEEP"
+      },
+      "sensory": {
+       "music": {
+        "register": "Introspective + tense",
+        "instruments": "Close-mic'd piano with reverb, the sound of a bow scraping a single cello string",
+        "soundbed": "Steady rain against the windowpane, the gentle hiss of steam as the teapot is filled."
+       },
+       "object": {
+        "prop": "A heavy ceramic teapot, warm to the touch.",
+        "role": "A tool for a steadying ritual, deflecting a difficult moment through a shared, gentle action. Not a keepsake, but a memory of care."
+       }
       }
      },
      "it-settles": {
@@ -2105,6 +2138,17 @@
        },
        "cgTaxon": "pivot",
        "rewardRung": "DO"
+      },
+      "sensory": {
+       "music": {
+        "register": "Breathing + calm",
+        "instruments": "A simple, repeating synth melody, soft electric piano chords",
+        "soundbed": "Distant city hum, the soft click of a lamp being switched on, a deep sigh."
+       },
+       "object": {
+        "prop": "A blank postcard with a faded image on the front.",
+        "role": "A canvas for the unwritten message, representing the internal effort to 'make space' for connection. Could be kept as a memento of a difficult conversation broached."
+       }
       }
      },
      "the-walk-out": {
@@ -2414,6 +2458,17 @@
        },
        "cgTaxon": "graduation",
        "rewardRung": "none"
+      },
+      "sensory": {
+       "music": {
+        "register": "Hopeful + clear",
+        "instruments": "The solo felt piano from scene 1, now joined by a simple, warm string quartet",
+        "soundbed": "The sound of a soft cloth on wood, distant traffic on wet roads, the jingle of keys."
+       },
+       "object": {
+        "prop": "A small, carved wooden bird, left behind on the polished table.",
+        "role": "The final keepsake, left by a mentor. It represents acknowledged growth and the gift of being seen. The graduation memento."
+       }
       }
      }
     },
@@ -2839,6 +2894,116 @@
      "everyNote": "yes",
      "cgSpread": "yes",
      "note": "The engine connection is healthy; notes consistently deepen the core gift and escalate with player autonomy."
+    },
+    "floors": [
+     {
+      "floor": "Note-factory (§3.1)",
+      "status": "pass",
+      "detail": "5/5 scenes produce a note"
+     },
+     {
+      "floor": "The Wall (Relapse-Unlock)",
+      "status": "pass",
+      "detail": "1 vulnerability CG — a rough one (Theo)"
+     },
+     {
+      "floor": "Graduation (Vacated Frame)",
+      "status": "pass",
+      "detail": "the walk out (The Caretaker)"
+     },
+     {
+      "floor": "CG-taxonomy spread",
+      "status": "pass",
+      "detail": "meeting · wall · pivot · graduation all present"
+     },
+     {
+      "floor": "REL ladder coverage",
+      "status": "pass",
+      "detail": "bands: low · mid · high (spans early→deep)"
+     },
+     {
+      "floor": "Engine family balance (cozy)",
+      "status": "pass",
+      "detail": "2 living · 2 contest · 1 quiet-roll"
+     },
+     {
+      "floor": "Reward stack (KNOW/DO/KEEP/MUTUAL)",
+      "status": "pass",
+      "detail": "delivered: MUTUAL · KEEP · DO"
+     }
+    ],
+    "sensory": {
+     "map": [
+      {
+       "scene": "the last bell",
+       "music": {
+        "register": "Warm + still",
+        "instruments": "Solo felt piano, distant ambient synth pad",
+        "soundbed": "The distant echo of a final school bell, the low hum of an empty hallway."
+       },
+       "object": {
+        "prop": "A single, smooth worry stone, left on the empty table.",
+        "role": "A grounding object found in the quiet aftermath. A potential keepsake representing the start of something new."
+       }
+      },
+      {
+       "scene": "the room fills",
+       "music": {
+        "register": "Gathering + gentle",
+        "instruments": "Layered acoustic guitar plucking, a soft cello line enters",
+        "soundbed": "The soft scrape of chairs, quiet murmurs of arrival, the rustle of paper."
+       },
+       "object": {
+        "prop": "A well-worn wicker basket of shared pens.",
+        "role": "Represents the shared space and collaborative effort. It’s a tool of the group, not a personal keepsake."
+       }
+      },
+      {
+       "scene": "a rough one",
+       "music": {
+        "register": "Introspective + tense",
+        "instruments": "Close-mic'd piano with reverb, the sound of a bow scraping a single cello string",
+        "soundbed": "Steady rain against the windowpane, the gentle hiss of steam as the teapot is filled."
+       },
+       "object": {
+        "prop": "A heavy ceramic teapot, warm to the touch.",
+        "role": "A tool for a steadying ritual, deflecting a difficult moment through a shared, gentle action. Not a keepsake, but a memory of care."
+       }
+      },
+      {
+       "scene": "it settles",
+       "music": {
+        "register": "Breathing + calm",
+        "instruments": "A simple, repeating synth melody, soft electric piano chords",
+        "soundbed": "Distant city hum, the soft click of a lamp being switched on, a deep sigh."
+       },
+       "object": {
+        "prop": "A blank postcard with a faded image on the front.",
+        "role": "A canvas for the unwritten message, representing the internal effort to 'make space' for connection. Could be kept as a memento of a difficult conversation broached."
+       }
+      },
+      {
+       "scene": "the walk out",
+       "music": {
+        "register": "Hopeful + clear",
+        "instruments": "The solo felt piano from scene 1, now joined by a simple, warm string quartet",
+        "soundbed": "The sound of a soft cloth on wood, distant traffic on wet roads, the jingle of keys."
+       },
+       "object": {
+        "prop": "A small, carved wooden bird, left behind on the polished table.",
+        "role": "The final keepsake, left by a mentor. It represents acknowledged growth and the gift of being seen. The graduation memento."
+       }
+      }
+     ],
+     "musicRange": {
+      "variety": "strong",
+      "arc": "Starts sparse and still, builds with gentle layers to an introspective peak, settles into calm, and resolves with hopeful warmth.",
+      "note": "The soundtrack mirrors the emotional weather of each scene, using a core palette of piano and strings to create a cohesive yet dynamic arc."
+     },
+     "objectRange": {
+      "distinct": "yes",
+      "note": "Each object is diegetic and tied to a specific gesture, serving distinct roles from grounding focus to communal tool to a final, deeply personal keepsake."
+     }
     }
    },
    "throughline": "belonging you don't audition for — the chair's yours before you've proven anything; you're kept, not chosen",

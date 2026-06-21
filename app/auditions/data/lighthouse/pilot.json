@@ -1164,6 +1164,17 @@
        },
        "cgTaxon": "meeting",
        "rewardRung": "none"
+      },
+      "sensory": {
+       "music": {
+        "register": "still + sparse",
+        "instruments": "solo piano, a single held clarinet note",
+        "soundbed": "Soft cloth polishing glass, the quiet click of a wick trimmer, distant water lapping."
+       },
+       "object": {
+        "prop": "The brass wick trimmer",
+        "role": "A tool of careful preparation, representing the inherited duty. A potential keepsake."
+       }
       }
      },
      "the-dark-settles": {
@@ -1472,6 +1483,17 @@
        },
        "cgTaxon": "pivot",
        "rewardRung": "KEEP"
+      },
+      "sensory": {
+       "music": {
+        "register": "low swell + rhythmic",
+        "instruments": "low cello drone, a single repeating timpani beat (distant)",
+        "soundbed": "Rising wind against the lantern house, the first patter of rain on the glass."
+       },
+       "object": {
+        "prop": "The lamp's ventilator wheel",
+        "role": "The point of control against the building storm; an anchor for focus, not a keepsake."
+       }
       }
      },
      "the-fog-comes-in": {
@@ -1755,6 +1777,17 @@
        },
        "cgTaxon": "wall",
        "rewardRung": "none"
+      },
+      "sensory": {
+       "music": {
+        "register": "muffled + close",
+        "instruments": "muted string quartet, a faint glass harmonica",
+        "soundbed": "The dense silence of fog, your own quiet breathing, a distant, muffled foghorn."
+       },
+       "object": {
+        "prop": "A heavy, warm ceramic mug",
+        "role": "A grounding source of warmth and comfort against the isolating fog; a moment's solace, not a keepsake."
+       }
       }
      },
      "the-fog-thins": {
@@ -2055,6 +2088,17 @@
        },
        "cgTaxon": "none",
        "rewardRung": "MUTUAL"
+      },
+      "sensory": {
+       "music": {
+        "register": "expectant + clear",
+        "instruments": "solo harp arpeggios, a high, sustained violin note",
+        "soundbed": "The drip of water from the eaves, the click of the hand-lamp's shutter, a distant gull."
+       },
+       "object": {
+        "prop": "The signal hand-lamp",
+        "role": "The instrument of connection, a bridge across the distance. Represents a shared watch, not a personal memento."
+       }
       }
      },
      "first-light": {
@@ -2355,6 +2399,17 @@
        },
        "cgTaxon": "graduation",
        "rewardRung": "KNOW"
+      },
+      "sensory": {
+       "music": {
+        "register": "warm + resolving",
+        "instruments": "a warm string ensemble (violins, viola), a simple oboe melody",
+        "soundbed": "The first birdsong, the gentle lapping of calm water, the final sigh of the extinguished lamp."
+       },
+       "object": {
+        "prop": "The leather-bound logbook",
+        "role": "The record of the vigil, a testament to the time kept. The most significant keepsake, holding the memory of the entire watch."
+       }
       }
      }
     },
@@ -2784,6 +2839,116 @@
      "everyNote": "yes",
      "cgSpread": "yes",
      "note": "The notes progress from external observation to internal understanding, mapping the player's journey from apprentice to peer within the vigil's lineage."
+    },
+    "floors": [
+     {
+      "floor": "Note-factory (§3.1)",
+      "status": "pass",
+      "detail": "5/5 scenes produce a note"
+     },
+     {
+      "floor": "The Wall (Relapse-Unlock)",
+      "status": "pass",
+      "detail": "1 vulnerability CG — the fog comes in (the Light)"
+     },
+     {
+      "floor": "Graduation (Vacated Frame)",
+      "status": "pass",
+      "detail": "first light (the Visitor)"
+     },
+     {
+      "floor": "CG-taxonomy spread",
+      "status": "pass",
+      "detail": "meeting · wall · pivot · graduation all present"
+     },
+     {
+      "floor": "REL ladder coverage",
+      "status": "pass",
+      "detail": "bands: low · mid · high (spans early→deep)"
+     },
+     {
+      "floor": "Engine family balance (cozy)",
+      "status": "pass",
+      "detail": "2 living · 1 contest · 2 quiet-roll"
+     },
+     {
+      "floor": "Reward stack (KNOW/DO/KEEP/MUTUAL)",
+      "status": "pass",
+      "detail": "delivered: KEEP · MUTUAL · KNOW"
+     }
+    ],
+    "sensory": {
+     "map": [
+      {
+       "scene": "lighting the lamp",
+       "music": {
+        "register": "still + sparse",
+        "instruments": "solo piano, a single held clarinet note",
+        "soundbed": "Soft cloth polishing glass, the quiet click of a wick trimmer, distant water lapping."
+       },
+       "object": {
+        "prop": "The brass wick trimmer",
+        "role": "A tool of careful preparation, representing the inherited duty. A potential keepsake."
+       }
+      },
+      {
+       "scene": "the dark settles",
+       "music": {
+        "register": "low swell + rhythmic",
+        "instruments": "low cello drone, a single repeating timpani beat (distant)",
+        "soundbed": "Rising wind against the lantern house, the first patter of rain on the glass."
+       },
+       "object": {
+        "prop": "The lamp's ventilator wheel",
+        "role": "The point of control against the building storm; an anchor for focus, not a keepsake."
+       }
+      },
+      {
+       "scene": "the fog comes in",
+       "music": {
+        "register": "muffled + close",
+        "instruments": "muted string quartet, a faint glass harmonica",
+        "soundbed": "The dense silence of fog, your own quiet breathing, a distant, muffled foghorn."
+       },
+       "object": {
+        "prop": "A heavy, warm ceramic mug",
+        "role": "A grounding source of warmth and comfort against the isolating fog; a moment's solace, not a keepsake."
+       }
+      },
+      {
+       "scene": "the fog thins",
+       "music": {
+        "register": "expectant + clear",
+        "instruments": "solo harp arpeggios, a high, sustained violin note",
+        "soundbed": "The drip of water from the eaves, the click of the hand-lamp's shutter, a distant gull."
+       },
+       "object": {
+        "prop": "The signal hand-lamp",
+        "role": "The instrument of connection, a bridge across the distance. Represents a shared watch, not a personal memento."
+       }
+      },
+      {
+       "scene": "first light",
+       "music": {
+        "register": "warm + resolving",
+        "instruments": "a warm string ensemble (violins, viola), a simple oboe melody",
+        "soundbed": "The first birdsong, the gentle lapping of calm water, the final sigh of the extinguished lamp."
+       },
+       "object": {
+        "prop": "The leather-bound logbook",
+        "role": "The record of the vigil, a testament to the time kept. The most significant keepsake, holding the memory of the entire watch."
+       }
+      }
+     ],
+     "musicRange": {
+      "variety": "strong",
+      "arc": "From a sparse, solitary piano to a warm, resolving string ensemble, mirroring the vigil's emotional journey.",
+      "note": "The instrumentation evolves with the weather and emotional state, ensuring a cohesive yet dynamic score."
+     },
+     "objectRange": {
+      "distinct": "yes",
+      "note": "Each object serves a unique function—preparation, control, comfort, connection, and record—creating a tangible arc."
+     }
     }
    },
    "throughline": "Holding a fixed point against the drift of time and tide; a vigil as devotion.",

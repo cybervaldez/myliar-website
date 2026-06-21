@@ -511,6 +511,8 @@ export type RangeT = {
   branches: { key: string; label: string; spark: string; cells: { tone: string; base: string; accent?: string; ink?: string; label?: string }[] }[];
   honing?: { [key: string]: { castPick?: string; paletteAudition?: { candidates: PaletteCand[]; whyWon?: string; runnerUpGem?: string }; rel?: { relTier?: { band?: string; tier?: string; why?: string }; note?: { text?: string; category?: string; weight?: number; path?: string }; cgTaxon?: string; rewardRung?: string } } };
   relCoverage?: { ladderCoverage?: string; everyNote?: string; cgSpread?: string; note?: string };
+  floors?: { floor: string; status: string; detail: string }[];
+  sensory?: { map: { scene: string; music?: { register?: string; instruments?: string; soundbed?: string }; object?: { prop?: string; role?: string } }[]; musicRange?: { variety?: string; arc?: string; note?: string }; objectRange?: { distinct?: string; note?: string } };
   narrative?: { scene: string; arcs: { arc: string; note?: string }[] }[];
   narrativeSpread?: string;
   ensemble?: { crew: { name: string; energy?: string; quirk?: string; foil?: string }[]; pairs?: { a: string; b: string; dynamic: string }[]; verdict?: string };
@@ -731,6 +733,54 @@ export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
           </div>
         </details>
       )}
+      {/* THE FLOORS — the deterministic hard-check gate (catches dead/missing structure). */}
+      {d.floors && d.floors.length > 0 && (() => {
+        const fails = d.floors.filter((f) => f.status === "fail").length, warns = d.floors.filter((f) => f.status === "warn").length;
+        return (
+          <details className="aud-cov" style={{ border: `2px solid ${fails ? "var(--spot-red)" : "var(--ink-soft)"}`, marginBottom: 12 }}>
+            <summary style={{ cursor: "pointer", listStyle: "none", fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".04em", color: fails ? "var(--spot-red)" : forest, padding: "9px 13px", display: "flex", justifyContent: "space-between", gap: 10 }}>
+              <span>{fails ? "❌" : warns ? "⚠️" : "✅"} THE FLOORS — the hard checks {fails ? `(${fails} fail)` : warns ? `(${warns} warn)` : "(all pass)"}</span>
+              <span style={{ color: margin, whiteSpace: "nowrap" }}>⌄ open</span>
+            </summary>
+            <div style={{ padding: "2px 13px 12px", fontSize: 11, color: ink, lineHeight: 1.5, display: "grid", gap: 4 }}>
+              {d.floors.map((f, i) => (
+                <div key={i} style={{ display: "flex", gap: 7, alignItems: "baseline" }}>
+                  <span style={{ flex: "0 0 auto" }}>{f.status === "pass" ? "✅" : f.status === "warn" ? "⚠️" : "❌"}</span>
+                  <span style={{ fontWeight: 700, color: f.status === "fail" ? "var(--spot-red)" : f.status === "warn" ? amber : forest, flex: "0 0 auto" }}>{f.floor}</span>
+                  <span style={{ color: soft, fontSize: 10.5 }}>{f.detail}</span>
+                </div>
+              ))}
+            </div>
+          </details>
+        );
+      })()}
+      {/* THE SENSORY RANGE — music (the audio twin of the palette) + the signature object, spread top-down. */}
+      {d.sensory && (d.sensory.map?.length ?? 0) > 0 && (
+        <details className="aud-cov" style={{ border: `2px solid var(--ink-soft)`, marginBottom: 12 }}>
+          <summary style={{ cursor: "pointer", listStyle: "none", fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".04em", color: forest, padding: "9px 13px", display: "flex", justifyContent: "space-between", gap: 10 }}>
+            <span>🎵🪡 THE SENSORY RANGE — the soundtrack arc + the signature objects (carried into each scene)</span>
+            <span style={{ color: margin, whiteSpace: "nowrap" }}>⌄ open</span>
+          </summary>
+          <div style={{ padding: "2px 13px 12px", fontSize: 11, color: ink, lineHeight: 1.5 }}>
+            <div style={{ fontSize: 10.5, color: soft, marginBottom: 8 }}>music is the AUDIO twin of the palette (sparse · derived from the weather); the OBJECT is the diegetic thing the hand returns to (some become mementos/keepsakes). Spread so the 5 form a soundtrack arc + each scene anchors to a distinct object.</div>
+            {d.sensory.musicRange?.arc && <div style={{ fontSize: 10, color: margin, marginBottom: 8 }}>🎼 <span style={{ color: soft }}>soundtrack arc:</span> {d.sensory.musicRange.arc}</div>}
+            <div style={{ display: "grid", gridTemplateColumns: "minmax(70px,auto) 1.1fr 1fr", gap: "5px 10px", fontSize: 10.5 }}>
+              {["SCENE", "🎵 MUSIC", "🪡 OBJECT"].map((hd) => <div key={hd} style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".05em", color: margin }}>{hd}</div>)}
+              {d.sensory.map.map((m) => (
+                <Fragment key={m.scene}>
+                  <div style={{ fontWeight: 700, color: forest, textTransform: "capitalize" }}>{m.scene}</div>
+                  <div><b style={{ color: ink }}>{m.music?.register}</b>{m.music?.instruments ? <span style={{ color: margin }}> · {m.music.instruments}</span> : null}{m.music?.soundbed ? <div style={{ fontSize: 9.5, color: soft, fontStyle: "italic" }}>↳ {m.music.soundbed}</div> : null}</div>
+                  <div><b style={{ color: ink }}>{m.object?.prop}</b>{m.object?.role ? <div style={{ fontSize: 9.5, color: soft }}>{m.object.role}</div> : null}</div>
+                </Fragment>
+              ))}
+            </div>
+            <div style={{ fontSize: 9.5, color: soft, fontStyle: "italic", marginTop: 7, borderTop: `1px solid var(--ink-soft)`, paddingTop: 6, display: "flex", gap: 12, flexWrap: "wrap" }}>
+              {d.sensory.musicRange?.note && <span>🎵 {d.sensory.musicRange.note}</span>}
+              {d.sensory.objectRange?.note && <span>🪡 {d.sensory.objectRange.note}</span>}
+            </div>
+          </div>
+        </details>
+      )}
         </div>
         <aside className="aud-context">
           <div style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 8 }}>▣ BUILD-CONTEXT <span style={{ color: margin, fontWeight: 400, fontStyle: "italic" }}>— for the AI building this</span></div>
@@ -779,7 +829,7 @@ export function BranchLinks({ campaign, branches, active }: { campaign: string; 
 }
 
 // THE WEATHER-MOMENT BRANCH — one scene honed: its palette (dialed cozy→intense), the tone dial, the cast.
-export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; arc?: { winner: string; whyWon?: string; candidates: { arc: string; floor?: string; floor_note?: string; yield?: string; picked?: boolean }[]; variance?: string[] }; checkpoints?: { begin: { text: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: string[] }; middle: { type: string; turn: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: { type?: string; turn: string }[] }; end: { text: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: string[] } }; between?: { span: string; grows?: string; relationship?: string }[]; supportingCast?: { winner: string; whyWon?: string; dynamic?: string; quirk?: string; candidates: { name: string; dynamic?: string; quirk?: string; fit?: string; picked?: boolean }[] }; content?: { beats: { at: string; text: string; grows?: string; bond?: string }[]; review?: { verdict?: string; flag?: string } }; interaction?: { engine?: string; family?: string; gate?: string; gesture?: string; graduates?: string; cg?: string; motion?: string }; rel?: { relTier?: { band?: string; tier?: string; why?: string }; note?: { text?: string; category?: string; weight?: number; path?: string }; cgTaxon?: string; rewardRung?: string }; gatedBy?: string; paletteUI?: { prompts?: { objects?: string[]; characters?: string[]; items?: string[] }; prose?: { objectSeeds?: { dominant?: string[]; accent?: string[] }; diction?: { cool?: string[]; warm?: string[] }; rule?: string } } };
+export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; arc?: { winner: string; whyWon?: string; candidates: { arc: string; floor?: string; floor_note?: string; yield?: string; picked?: boolean }[]; variance?: string[] }; checkpoints?: { begin: { text: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: string[] }; middle: { type: string; turn: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: { type?: string; turn: string }[] }; end: { text: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: string[] } }; between?: { span: string; grows?: string; relationship?: string }[]; supportingCast?: { winner: string; whyWon?: string; dynamic?: string; quirk?: string; candidates: { name: string; dynamic?: string; quirk?: string; fit?: string; picked?: boolean }[] }; content?: { beats: { at: string; text: string; grows?: string; bond?: string }[]; review?: { verdict?: string; flag?: string } }; interaction?: { engine?: string; family?: string; gate?: string; gesture?: string; graduates?: string; cg?: string; motion?: string }; rel?: { relTier?: { band?: string; tier?: string; why?: string }; note?: { text?: string; category?: string; weight?: number; path?: string }; cgTaxon?: string; rewardRung?: string }; sensory?: { music?: { register?: string; instruments?: string; soundbed?: string }; object?: { prop?: string; role?: string } }; gatedBy?: string; paletteUI?: { prompts?: { objects?: string[]; characters?: string[]; items?: string[] }; prose?: { objectSeeds?: { dominant?: string[]; accent?: string[] }; diction?: { cool?: string[]; warm?: string[] }; rule?: string } } };
 export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: string }) {
   const h = b.honing;
   const cp = b.checkpoints;
@@ -924,6 +974,28 @@ export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: str
             {b.interaction.graduates && b.interaction.graduates !== "—" && <div style={{ fontSize: 9.5, color: margin, marginTop: 2 }}><span style={{ color: soft }}>↗ graduates:</span> {b.interaction.graduates}</div>}
             {b.interaction.cg && <div style={{ fontSize: 11, color: soft, marginTop: 3 }}><span style={{ color: margin }}>🎞 CG (the peak):</span> {b.interaction.cg}</div>}
             {b.interaction.motion && <div style={{ fontSize: 10.5, color: soft, fontStyle: "italic", marginTop: 2 }}>↳ motion: {b.interaction.motion}</div>}
+          </div>
+        </>
+      )}
+      {b.sensory && (b.sensory.music?.register || b.sensory.object?.prop) && (
+        <>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>▸ MUSIC + OBJECT <span style={{ color: margin, fontWeight: 400, fontSize: 10 }}>(allocated at the hub for range · honed here)</span></div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 16 }}>
+            {b.sensory.music?.register && (
+              <div style={{ border: `1.5px solid var(--ink-soft)`, background: paper, padding: "8px 11px" }}>
+                <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".06em", color: forest }}>🎵 MUSIC</div>
+                <div style={{ fontSize: 12, color: ink, marginTop: 3 }}><b>{b.sensory.music.register}</b></div>
+                {b.sensory.music.instruments && <div style={{ fontSize: 10.5, color: soft, marginTop: 1 }}>{b.sensory.music.instruments}</div>}
+                {b.sensory.music.soundbed && <div style={{ fontSize: 10, color: margin, fontStyle: "italic", marginTop: 2 }}>↳ {b.sensory.music.soundbed}</div>}
+              </div>
+            )}
+            {b.sensory.object?.prop && (
+              <div style={{ border: `1.5px solid var(--ink-soft)`, background: paper, padding: "8px 11px" }}>
+                <div style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".06em", color: forest }}>🪡 SIGNATURE OBJECT</div>
+                <div style={{ fontSize: 12, color: ink, marginTop: 3 }}><b>{b.sensory.object.prop}</b></div>
+                {b.sensory.object.role && <div style={{ fontSize: 10.5, color: soft, marginTop: 1 }}>{b.sensory.object.role}</div>}
+              </div>
+            )}
           </div>
         </>
       )}
