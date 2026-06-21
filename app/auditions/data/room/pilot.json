@@ -1171,6 +1171,12 @@
         "verdict": "yes",
         "flag": "Successfully externalizes the bond onto the space itself, reinforcing the anti-dependency goal."
        }
+      },
+      "interaction": {
+       "engine": "TEND",
+       "gesture": "Gently wiping dust motes from the windowsill, caught in the final sunbeam.",
+       "cg": "The empty armchair bathed in a warm, golden sunbeam, the impression of someone just having left still visible in the cushions.",
+       "motion": "Dust motes dancing slowly in the slanted evening light from the window."
       }
      },
      "the-room-fills": {
@@ -1458,6 +1464,12 @@
         "verdict": "yes",
         "flag": "Excellent use of a shared object (pens) to mediate connection without demanding intimacy."
        }
+      },
+      "interaction": {
+       "engine": "ENSEMBLE",
+       "gesture": "Sliding the basket of colorful pens across the table towards the group, an open invitation.",
+       "cg": "An overhead shot of multiple hands reaching for pens, with Wren's hesitant hand just touching a specific, bright color.",
+       "motion": "The subtle shift of shadows across the table as evening draws in outside."
       }
      },
      "a-rough-one": {
@@ -1743,6 +1755,12 @@
         "verdict": "yes",
         "flag": "Clearly shows growth in social-emotional autonomy by choosing a less performative action."
        }
+      },
+      "interaction": {
+       "engine": "QUIET-ROLL",
+       "gesture": "—",
+       "cg": "The reflection of the rain-soaked student in Theo's eyes as his smile fades, the vibrant room muted in the reflection.",
+       "motion": "Rain running in rivulets down the large windowpane, blurring the world outside."
       }
      },
      "it-settles": {
@@ -2009,6 +2027,12 @@
        "to": "making space",
        "register": "Re-pointed from wistful reception to gentle, active inclusion.",
        "why": "This scene's premise, 'Wren sits curled in a corner chair... a fortress against the world,' makes it the most passive and receptive by design. Its arc, «the quiet alignment», is the closest to the repetitive 'quiet shared presence' move. This makes it the ideal candidate to re-point toward player-initiated action, as the contrast will be strongest and it addresses the core note about low agency most directly."
+      },
+      "interaction": {
+       "engine": "SCRAMBLE",
+       "gesture": "Gently arranging a scattered pile of zines on the table, creating a neat, welcoming space between Wren and the newcomer.",
+       "cg": "A low-angle shot from the newcomer's POV, looking past the newly arranged zines to see Wren offer a small, shy smile.",
+       "motion": "The distant, rhythmic blinking of city lights seen through the window."
       }
      },
      "the-walk-out": {
@@ -2294,6 +2318,12 @@
         "verdict": "yes",
         "flag": "The asynchronous gesture (the stone) is a powerful, non-clingy expression of care and validation."
        }
+      },
+      "interaction": {
+       "engine": "FLOW",
+       "gesture": "Wiping down the table in a slow, circular rhythm, the cloth moving closer and closer to the abandoned drawing.",
+       "cg": "A close-up on the drawing, showing confident, expressive lines, with the Caretaker's hand paused just beside it.",
+       "motion": "The shimmering reflection of streetlights on the wet pavement outside the door."
       }
      }
     },
@@ -2646,6 +2676,58 @@
       }
      ],
      "verdict": "A well-balanced ensemble with distinct, non-redundant energies built on clear contrasts; the core dynamic between Theo's performance and the group's quiet acceptance is the engine."
+    },
+    "interaction": {
+     "map": [
+      {
+       "scene": "the last bell",
+       "engine": "TEND",
+       "gesture": "Gently wiping dust motes from the windowsill, caught in the final sunbeam.",
+       "cg": "The empty armchair bathed in a warm, golden sunbeam, the impression of someone just having left still visible in the cushions.",
+       "motion": "Dust motes dancing slowly in the slanted evening light from the window."
+      },
+      {
+       "scene": "the room fills",
+       "engine": "ENSEMBLE",
+       "gesture": "Sliding the basket of colorful pens across the table towards the group, an open invitation.",
+       "cg": "An overhead shot of multiple hands reaching for pens, with Wren's hesitant hand just touching a specific, bright color.",
+       "motion": "The subtle shift of shadows across the table as evening draws in outside."
+      },
+      {
+       "scene": "a rough one",
+       "engine": "QUIET-ROLL",
+       "gesture": "—",
+       "cg": "The reflection of the rain-soaked student in Theo's eyes as his smile fades, the vibrant room muted in the reflection.",
+       "motion": "Rain running in rivulets down the large windowpane, blurring the world outside."
+      },
+      {
+       "scene": "it settles",
+       "engine": "SCRAMBLE",
+       "gesture": "Gently arranging a scattered pile of zines on the table, creating a neat, welcoming space between Wren and the newcomer.",
+       "cg": "A low-angle shot from the newcomer's POV, looking past the newly arranged zines to see Wren offer a small, shy smile.",
+       "motion": "The distant, rhythmic blinking of city lights seen through the window."
+      },
+      {
+       "scene": "the walk out",
+       "engine": "FLOW",
+       "gesture": "Wiping down the table in a slow, circular rhythm, the cloth moving closer and closer to the abandoned drawing.",
+       "cg": "A close-up on the drawing, showing confident, expressive lines, with the Caretaker's hand paused just beside it.",
+       "motion": "The shimmering reflection of streetlights on the wet pavement outside the door."
+      }
+     ],
+     "range": {
+      "variety": "strong",
+      "density": "balanced",
+      "enough": "yes",
+      "gaps": "none",
+      "note": "The one-to-one mapping of the five calm engines to the five scenes creates strong mechanical and thematic distinction."
+     },
+     "flags": [],
+     "gatedBy": {
+      "age": "13–17 teen",
+      "genre": "contemporary YA slice-of-life (the after-school found-family)",
+      "culture": "Western (Anglo-contemporary)"
+     }
     }
    },
    "throughline": "belonging you don't audition for — the chair's yours before you've proven anything; you're kept, not chosen",

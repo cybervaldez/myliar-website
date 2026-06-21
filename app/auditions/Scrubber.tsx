@@ -513,6 +513,7 @@ export type RangeT = {
   narrative?: { scene: string; arcs: { arc: string; note?: string }[] }[];
   narrativeSpread?: string;
   ensemble?: { crew: { name: string; energy?: string; quirk?: string; foil?: string }[]; pairs?: { a: string; b: string; dynamic: string }[]; verdict?: string };
+  interaction?: { map: { scene: string; engine?: string; gesture?: string; cg?: string; motion?: string }[]; range?: { variety?: string; density?: string; enough?: string; gaps?: string; note?: string }; flags?: { scene: string; issue: string; resolution: string }[] };
 };
 export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
   const red = "var(--spot-red)";
@@ -665,6 +666,40 @@ export function SceneRange({ d, campaign }: { d: RangeT; campaign: string }) {
           </div>
         </details>
       )}
+      {/* THE GAMEPLAY + VISUAL RANGE — top-down coverage (like the coverage map): distinct calm engines + a
+          CG peak + motion per scene, spread so the range keeps someone going. Honed per scene. */}
+      {d.interaction && (d.interaction.map?.length ?? 0) > 0 && (
+        <details className="aud-cov" style={{ border: `2px solid var(--ink-soft)`, marginBottom: 12 }}>
+          <summary style={{ cursor: "pointer", listStyle: "none", fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".04em", color: forest, padding: "9px 13px", display: "flex", justifyContent: "space-between", gap: 10 }}>
+            <span>🕹 THE GAMEPLAY + VISUAL RANGE — calm engines + visual peaks, spread (carried into each scene)</span>
+            <span style={{ color: margin, whiteSpace: "nowrap" }}>⌄ open</span>
+          </summary>
+          <div style={{ padding: "2px 13px 12px", fontSize: 11, color: ink, lineHeight: 1.5 }}>
+            <div style={{ fontSize: 10.5, color: soft, marginBottom: 9 }}>like the coverage map, the interaction + visual elements are allocated TOP-DOWN so the 5 scenes have enough VARIETY to keep someone going — never five of the same. Each scene hones its own. (Calm-lane: no battle / score / gacha; QUIET-ROLL = no minigame, a valid + needed beat.)</div>
+            {d.interaction.range && (
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "5px 9px", marginBottom: 9, alignItems: "center" }}>
+                {([["variety", d.interaction.range.variety], ["density", d.interaction.range.density], ["enough", d.interaction.range.enough]] as const).map(([k, v]) => v ? (
+                  <span key={k} style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, border: `1.5px solid ${["strong", "balanced", "yes"].includes(v) ? forest : amber}`, color: ["strong", "balanced", "yes"].includes(v) ? forest : amber, borderRadius: 10, padding: "1px 8px" }}>{k} {v}</span>
+                ) : null)}
+                {d.interaction.range.note && <span style={{ color: soft, fontStyle: "italic", fontSize: 10 }}>— {d.interaction.range.note}</span>}
+              </div>
+            )}
+            <div style={{ display: "grid", gridTemplateColumns: "minmax(70px,auto) auto 1fr", gap: "5px 10px", fontSize: 10.5 }}>
+              {["SCENE", "ENGINE", "THE GESTURE · 🎞 CG"].map((h) => <div key={h} style={{ fontFamily: "var(--theme-body)", fontSize: 9, fontWeight: 700, letterSpacing: ".05em", color: margin }}>{h}</div>)}
+              {d.interaction.map.map((m) => (
+                <Fragment key={m.scene}>
+                  <div style={{ fontWeight: 700, color: forest, textTransform: "capitalize" }}>{m.scene}</div>
+                  <div><span style={{ fontFamily: "var(--theme-body)", fontSize: 8.5, fontWeight: 700, color: m.engine === "QUIET-ROLL" ? margin : forest, border: `1px solid ${m.engine === "QUIET-ROLL" ? "var(--ink-soft)" : forest}`, borderRadius: 3, padding: "0 5px", whiteSpace: "nowrap" }}>{m.engine}</span></div>
+                  <div>{m.gesture && m.gesture !== "—" ? m.gesture : <span style={{ color: margin, fontStyle: "italic" }}>pure perception + choice</span>}{m.cg && <div style={{ fontSize: 9.5, color: margin, marginTop: 1 }}>🎞 {m.cg}</div>}</div>
+                </Fragment>
+              ))}
+            </div>
+            {d.interaction.flags && d.interaction.flags.length > 0 && d.interaction.flags.map((f, i) => (
+              <div key={i} style={{ fontSize: 9.5, color: amber, marginTop: 6, borderLeft: `2px solid ${amber}`, paddingLeft: 7, lineHeight: 1.45 }}>⚑ {f.scene}: {f.issue} <span style={{ color: forest }}>→ {f.resolution}</span></div>
+            ))}
+          </div>
+        </details>
+      )}
         </div>
         <aside className="aud-context">
           <div style={{ fontFamily: "var(--theme-body)", fontSize: 9.5, fontWeight: 700, letterSpacing: ".06em", color: forest, marginBottom: 8 }}>▣ BUILD-CONTEXT <span style={{ color: margin, fontWeight: 400, fontStyle: "italic" }}>— for the AI building this</span></div>
@@ -713,7 +748,7 @@ export function BranchLinks({ campaign, branches, active }: { campaign: string; 
 }
 
 // THE WEATHER-MOMENT BRANCH — one scene honed: its palette (dialed cozy→intense), the tone dial, the cast.
-export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; arc?: { winner: string; whyWon?: string; candidates: { arc: string; floor?: string; floor_note?: string; yield?: string; picked?: boolean }[]; variance?: string[] }; checkpoints?: { begin: { text: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: string[] }; middle: { type: string; turn: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: { type?: string; turn: string }[] }; end: { text: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: string[] } }; between?: { span: string; grows?: string; relationship?: string }[]; supportingCast?: { winner: string; whyWon?: string; dynamic?: string; quirk?: string; candidates: { name: string; dynamic?: string; quirk?: string; fit?: string; picked?: boolean }[] }; content?: { beats: { at: string; text: string; grows?: string; bond?: string }[]; review?: { verdict?: string; flag?: string } }; gatedBy?: string; paletteUI?: { prompts?: { objects?: string[]; characters?: string[]; items?: string[] }; prose?: { objectSeeds?: { dominant?: string[]; accent?: string[] }; diction?: { cool?: string[]; warm?: string[] }; rule?: string } } };
+export type SceneBranchView = { key: string; label: string; spark: string; cells: { tone: string; base: string; ink: string; accent: string; label: string }[]; characters: Character[]; toneText: { label: string; text: string }[]; premise?: string; honing?: { castPick?: string; supporting?: string; premiseHoned?: string; review?: string }; expertsGate?: { name: string; role: string }[]; slot?: { cast: string; role: string; structure: string }; siblingClaims?: { cast: string[]; role: string[]; structure: string[] }; conflict?: { dimension: string; resolution: string }; castAudition?: AuditionCand[]; whyWon?: string; arc?: { winner: string; whyWon?: string; candidates: { arc: string; floor?: string; floor_note?: string; yield?: string; picked?: boolean }[]; variance?: string[] }; checkpoints?: { begin: { text: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: string[] }; middle: { type: string; turn: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: { type?: string; turn: string }[] }; end: { text: string; open?: string; rigidity?: string; rigidityWhy?: string; alts?: string[] } }; between?: { span: string; grows?: string; relationship?: string }[]; supportingCast?: { winner: string; whyWon?: string; dynamic?: string; quirk?: string; candidates: { name: string; dynamic?: string; quirk?: string; fit?: string; picked?: boolean }[] }; content?: { beats: { at: string; text: string; grows?: string; bond?: string }[]; review?: { verdict?: string; flag?: string } }; interaction?: { engine?: string; gesture?: string; cg?: string; motion?: string }; gatedBy?: string; paletteUI?: { prompts?: { objects?: string[]; characters?: string[]; items?: string[] }; prose?: { objectSeeds?: { dominant?: string[]; accent?: string[] }; diction?: { cool?: string[]; warm?: string[] }; rule?: string } } };
 export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: string }) {
   const h = b.honing;
   const cp = b.checkpoints;
@@ -827,6 +862,16 @@ export function SceneBranch({ b, campaign }: { b: SceneBranchView; campaign: str
             })}
           </div>
           {b.content.review?.flag && <div style={{ fontSize: 9.5, color: soft, fontStyle: "italic", marginBottom: 16 }}>↳ {b.content.review.flag}</div>}
+        </>
+      )}
+      {b.interaction && (b.interaction.engine || b.interaction.cg) && (
+        <>
+          <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 6 }}>▸ THE GAMEPLAY + VISUAL <span style={{ color: margin, fontWeight: 400, fontSize: 10 }}>(allocated at the hub for range · honed here)</span></div>
+          <div style={{ border: `2px solid ${forest}`, background: shade, padding: "9px 12px", marginBottom: 16, fontSize: 12, color: ink, lineHeight: 1.5 }}>
+            {b.interaction.engine && <div style={{ marginBottom: 4 }}><span style={{ fontFamily: "var(--theme-body)", fontSize: 8.5, fontWeight: 700, color: b.interaction.engine === "QUIET-ROLL" ? margin : forest, border: `1px solid ${b.interaction.engine === "QUIET-ROLL" ? "var(--ink-soft)" : forest}`, borderRadius: 3, padding: "1px 6px" }}>{b.interaction.engine}</span> {b.interaction.gesture && b.interaction.gesture !== "—" ? <span>{b.interaction.gesture}</span> : <span style={{ color: margin, fontStyle: "italic" }}>pure perception + choice (no minigame)</span>}</div>}
+            {b.interaction.cg && <div style={{ fontSize: 11, color: soft, marginTop: 3 }}><span style={{ color: margin }}>🎞 CG (the peak):</span> {b.interaction.cg}</div>}
+            {b.interaction.motion && <div style={{ fontSize: 10.5, color: soft, fontStyle: "italic", marginTop: 2 }}>↳ motion: {b.interaction.motion}</div>}
+          </div>
         </>
       )}
       <div style={{ fontFamily: "var(--theme-body)", fontSize: 12, fontWeight: 700, letterSpacing: ".05em", color: forest, marginBottom: 3 }}>▸ THE PALETTE — {b.label}, dialed cozy → intense</div>

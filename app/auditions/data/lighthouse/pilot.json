@@ -1140,6 +1140,12 @@
         "verdict": "yes",
         "flag": "The player's internal choice (autonomy) directly forges the bond with the past/future keepers (relationship)."
        }
+      },
+      "interaction": {
+       "engine": "TEND",
+       "gesture": "Gently striking a match and cupping the flame to the great lamp's wick.",
+       "cg": "Close on the keeper's hand, holding the pressed flower, the logbook open beside the newly lit, warm glow of the lamp.",
+       "motion": "A gentle, almost imperceptible breeze stirring dust motes in the lantern room."
       }
      },
      "the-dark-settles": {
@@ -1424,6 +1430,12 @@
         "verdict": "yes",
         "flag": "Player's growing physical competence enables a deeper, more symbolic internal bond with the Light."
        }
+      },
+      "interaction": {
+       "engine": "FLOW",
+       "gesture": "Polishing the lens's brass housing in a steady, rhythmic motion as the wind howls outside.",
+       "cg": "The reflection of the keeper's determined face in the polished brass as a powerful gust of wind visibly flexes the lantern room glass.",
+       "motion": "Rain beginning to lash against the glass, driven by a strengthening, keening wind."
       }
      },
      "the-fog-comes-in": {
@@ -1683,6 +1695,12 @@
        "to": "the remembered hearth",
        "register": "Re-pointed from wistful melancholy toward gentle, self-generated warmth and quiet agency.",
        "why": "This is one of two 'solo' scenes, making it the most likely to repeat the 'quiet shared presence' move of the others. Its premise — being passively enveloped by fog — presents the lowest intrinsic player agency, making it the ideal candidate for a rewrite that pivots on a player-initiated gesture."
+      },
+      "interaction": {
+       "engine": "ENSEMBLE",
+       "gesture": "Setting a single cup and saucer on a small table, making a deliberate space for quiet reflection.",
+       "cg": "Looking out through the fog-softened light, the interior of the lantern room is reflected back, overlaying a ghostly, warm memory of a childhood room.",
+       "motion": "Thick, silent fog pressing against the glass, blurring the world into soft, shifting shapes."
       }
      },
      "the-fog-thins": {
@@ -1959,6 +1977,12 @@
         "verdict": "yes",
         "flag": "Player autonomy expands perception from 'I' to 'we', which in turn deepens the bond with the wider world."
        }
+      },
+      "interaction": {
+       "engine": "QUIET-ROLL",
+       "gesture": "—",
+       "cg": "Through a tear in the fog, the distant, sweeping beam of another lighthouse illuminates your own tower for a brief, silent moment.",
+       "motion": "The fog shredding and pulling apart in slow, rolling ribbons, revealing and obscuring patches of the dark sea and sky."
       }
      },
      "first-light": {
@@ -2235,6 +2259,12 @@
         "verdict": "yes",
         "flag": "Player's autonomous expression becomes the very mechanism for bonding with the future, leaving them more able."
        }
+      },
+      "interaction": {
+       "engine": "SCRAMBLE",
+       "gesture": "Arranging a few chosen words on the logbook page, moving them before committing ink to paper.",
+       "cg": "The keeper's hand pauses over the logbook, the pen held ready, as the first rays of dawn illuminate the extinguished lamp's intricate, cold brass.",
+       "motion": "The soft, slow creep of dawn light across the floor, the shadows shortening and changing color."
       }
      }
     },
@@ -2591,6 +2621,58 @@
       }
      ],
      "verdict": "Excellent dynamics. The four energies are distinct and complementary—Anchor, Echo, Ghost, Mirror—creating a balanced quartet of internal and external foils without redundant emotional weight."
+    },
+    "interaction": {
+     "map": [
+      {
+       "scene": "lighting the lamp",
+       "engine": "TEND",
+       "gesture": "Gently striking a match and cupping the flame to the great lamp's wick.",
+       "cg": "Close on the keeper's hand, holding the pressed flower, the logbook open beside the newly lit, warm glow of the lamp.",
+       "motion": "A gentle, almost imperceptible breeze stirring dust motes in the lantern room."
+      },
+      {
+       "scene": "the dark settles",
+       "engine": "FLOW",
+       "gesture": "Polishing the lens's brass housing in a steady, rhythmic motion as the wind howls outside.",
+       "cg": "The reflection of the keeper's determined face in the polished brass as a powerful gust of wind visibly flexes the lantern room glass.",
+       "motion": "Rain beginning to lash against the glass, driven by a strengthening, keening wind."
+      },
+      {
+       "scene": "the fog comes in",
+       "engine": "ENSEMBLE",
+       "gesture": "Setting a single cup and saucer on a small table, making a deliberate space for quiet reflection.",
+       "cg": "Looking out through the fog-softened light, the interior of the lantern room is reflected back, overlaying a ghostly, warm memory of a childhood room.",
+       "motion": "Thick, silent fog pressing against the glass, blurring the world into soft, shifting shapes."
+      },
+      {
+       "scene": "the fog thins",
+       "engine": "QUIET-ROLL",
+       "gesture": "—",
+       "cg": "Through a tear in the fog, the distant, sweeping beam of another lighthouse illuminates your own tower for a brief, silent moment.",
+       "motion": "The fog shredding and pulling apart in slow, rolling ribbons, revealing and obscuring patches of the dark sea and sky."
+      },
+      {
+       "scene": "first light",
+       "engine": "SCRAMBLE",
+       "gesture": "Arranging a few chosen words on the logbook page, moving them before committing ink to paper.",
+       "cg": "The keeper's hand pauses over the logbook, the pen held ready, as the first rays of dawn illuminate the extinguished lamp's intricate, cold brass.",
+       "motion": "The soft, slow creep of dawn light across the floor, the shadows shortening and changing color."
+      }
+     ],
+     "range": {
+      "variety": "strong",
+      "density": "balanced",
+      "enough": "yes",
+      "gaps": "none",
+      "note": "The allocation provides strong variety, with each Calm Engine used once, creating a balanced rhythm of interaction and quiet observation that serves the narrative arc."
+     },
+     "flags": [],
+     "gatedBy": {
+      "age": "40–68 mature adult",
+      "genre": "literary elegiac (the quiet, contemplative lone-keeper)",
+      "culture": "Western — literary-elegiac (restrained)"
+     }
     }
    },
    "throughline": "Holding a fixed point against the drift of time and tide; a vigil as devotion.",
