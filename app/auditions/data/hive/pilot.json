@@ -1,0 +1,649 @@
+{
+ "concept": "hive",
+ "audienceKey": "tech-surpassed",
+ "culture": {
+  "name": "Western (quiet self-reliance)",
+  "valorises": "independence + earned competence — the Western dignity of doing it yourself, standing on your own; achievement felt as QUIET pride (a job well-learned), not loud fanfare",
+  "expression": "direct, plain-spoken, warmly encouraging; the individual's mastery respected; autonomy honoured ('you've got this', never patronising); pride shown in a soft chime, not a parade",
+  "nudge": "toward self-reliance + earned independence + plain warm encouragement — the dignity of standing on your own, at your own pace"
+ },
+ "genre": {
+  "name": "Constructive Sim",
+  "honour": "The quiet satisfaction of bringing order to a small world and watching it thrive through patient, thoughtful action.",
+  "traps": "Punishing efficiency metrics, stressful timers, or resource scarcity that creates anxiety instead of gentle challenge."
+ },
+ "group": "Hive (the volunteer crew you join)",
+ "setting": "The Grand Trunk Dispatch",
+ "targetAge": {
+  "range": [
+   62,
+   76
+  ],
+  "center": 68,
+  "band": "older adult (boomer-by-current-age)",
+  "lifeContext": "feeling outdated + surpassed by technology — the loss of competence + dignity after a life of mastery; the shame of asking; the grief of obsolescence",
+  "register": "warm + patient + DIGNIFYING; gentle encouragement, NEVER condescension or infantilising; the intense ceiling = the POIGNANCY of being newly-vulnerable after a life of mastery (and the quiet triumph of a small win) — never anxiety, never thrill",
+  "note": "PROVISIONAL prior (playtest-calibrate); content rating = All Ages",
+  "setAt": "concept"
+ },
+ "scenes": [
+  "the platform",
+  "the first run",
+  "the signal down",
+  "the line clears",
+  "the open timetable"
+ ],
+ "spark": {
+  "the platform": "▰▱▱▱▱",
+  "the first run": "▰▰▰▱▱",
+  "the signal down": "▰▰▰▰▰",
+  "the line clears": "▰▰▱▱▱",
+  "the open timetable": "▰▱▱▱▱"
+ },
+ "scrubGroups": [
+  {
+   "id": "line",
+   "name": "The Line",
+   "settingTitle": "The Grand Trunk runs again.",
+   "throughline": "the route — the line learned one stop at a time",
+   "storyTitles": [
+    "a warm welcome on the platform",
+    "your first run down the line",
+    "the signal down, the line stalled",
+    "the block cleared, the line moving",
+    "the timetable yours, on time"
+   ],
+   "env": [
+    "the restored platform, brass + steam, the crew glad you came",
+    "out on your first scheduled run, the digital board still strange",
+    "a signal fault halts the line, the system a wall of error you can't read",
+    "the fault traced + cleared, the line breathing again",
+    "dawn service, the line run start to finish on your own say-so"
+   ],
+   "buildingBlock": "re-finding competence navigating new systems for a thing you love — the conductor's lens",
+   "subrange": [
+    [
+     {
+      "label": "cozy",
+      "text": "in the warm signal-box with a cup of tea, the platform busy + glad outside — your knowledge wanted here"
+     },
+     {
+      "label": "warm",
+      "text": "the stationmaster walking the platform with you, naming what the new board does, unhurried"
+     },
+     {
+      "label": "intense",
+      "text": "alone at the new dispatch screen, the platform waiting, your hand not yet sure where to press"
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "riding the cab you know by heart, the new ticket-tablet propped where you can ignore it for now"
+     },
+     {
+      "label": "warm",
+      "text": "a younger volunteer at your elbow on the first run, the two of you working the board together"
+     },
+     {
+      "label": "intense",
+      "text": "out on the line, the digital dispatch live + chirping, your old certainty nowhere to be found"
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "back in the mess room, the kettle on, the fault shut outside the door for a moment"
+     },
+     {
+      "label": "warm",
+      "text": "the engineer beside you at the stalled board — “we'll trace it together, slow”"
+     },
+     {
+      "label": "intense",
+      "text": "the signal dead + the screen a wall of red you can't read — forty years a railwayman and you can't move your own train; the crew's voices small, behind you, still with you"
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "the worst past, the line moving, the dispatcher logging the run, quiet + dry"
+     },
+     {
+      "label": "warm",
+      "text": "in the box as it clears, a colleague beside you, a message finally sent down the line"
+     },
+     {
+      "label": "intense",
+      "text": "still shaken long after, learning slowly that you did not break the line — that you cleared it"
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "dawn at the box window, the next volunteer's seat ready, the timetable clean + green"
+     },
+     {
+      "label": "warm",
+      "text": "out on the platform with the crew, the far stations reached, the day's runs all logged"
+     },
+     {
+      "label": "intense",
+      "text": "alone in the box at first light — running a service no one talked you through, and signing it off yourself"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "engine",
+   "name": "The Engine",
+   "settingTitle": "The old engine, steaming again.",
+   "throughline": "the restoration — brought back to life, part by part",
+   "storyTitles": [
+    "the engine cold, the crew warm",
+    "the first part refitted",
+    "a fitting that won't seat",
+    "the engine turning over",
+    "in steam, and yours to drive"
+   ],
+   "env": [
+    "the cold engine in the shed, the crew glad of your hands",
+    "the first modern part fitted to the old frame, working",
+    "a part that won't seat — the digital manual a maze you can't follow",
+    "the fitting seated at last, the engine warming",
+    "the engine in full steam, run on your own competence"
+   ],
+   "buildingBlock": "rebuilding competence part by part, surviving the setback — the engineer's lens"
+  },
+  {
+   "id": "dispatch",
+   "name": "The Dispatch",
+   "settingTitle": "Word down the line, on time.",
+   "throughline": "the dispatch — the word that keeps the whole line running",
+   "storyTitles": [
+    "the quiet office, a seat for you",
+    "the first message sent",
+    "the line goes silent",
+    "the word gets through",
+    "the whole line, in your hand"
+   ],
+   "env": [
+    "the dispatch office, the old ledgers + the new screens side by side",
+    "your first message keyed + sent down the line, received",
+    "the system drops + the line goes silent, no word getting through",
+    "the link restored, the word moving again, the line answering",
+    "every station reporting in, the whole line run from your desk"
+   ],
+   "buildingBlock": "the connection that runs the line — re-finding your voice in a new system — the dispatcher's lens"
+  }
+ ],
+ "picked": "dispatch",
+ "results": {
+  "surpassed": [
+   {
+    "index": 1,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "This one respects me by presenting a real operational challenge to overcome, and the feeling of mastering the timetable at the end would be a dignified success.",
+    "feeling": "Competence restored"
+   },
+   {
+    "index": 2,
+    "relate": 1,
+    "feelsSafe": 1,
+    "wouldPlay": false,
+    "why": "This one feels disrespectful because the central challenge questions my lifelong expertise instead of focusing on the new digital skills I'm meant to be learning.",
+    "feeling": "My competence questioned"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This feels exactly right, respecting my ability to learn by focusing the challenge on the new digital system and resolving with a powerful feeling of mastery.",
+    "feeling": "Empowered and capable"
+   }
+  ],
+  "isolated": [
+   {
+    "index": 1,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This feels respectful because it focuses on the operational challenge of the railway itself, and the final mastery of the timetable feels like a dignified and tangible success.",
+    "feeling": "Quietly capable"
+   },
+   {
+    "index": 2,
+    "relate": 2,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "While it respects my past expertise, it avoids the central challenge of learning the new digital systems, so the resolution feels hollow and doesn't help me with my real-world goal.",
+    "feeling": "Familiar but stagnant"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This arc directly mirrors my own struggle with silent screens and the desire for connection, offering a deeply respectful path to mastery that lands with a powerful sense of competence.",
+    "feeling": "Hopeful and seen"
+   }
+  ],
+  "anxious_learner": [
+   {
+    "index": 1,
+    "relate": 3,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "This feels respectful because the problem isn't my fault, but the story is a bit impersonal and the goal of being 'on time' adds some pressure.",
+    "feeling": "A little distant"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It feels deeply safe by focusing on my hands-on expertise with engines, but it avoids the scary digital part so much I wonder if it's a different game.",
+    "feeling": "Comfortably at home"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This one feels made for me; it respects my fears by starting quietly and framing the challenge as a puzzle we solve together, not my personal failure.",
+    "feeling": "Gently encouraged"
+   }
+  ],
+  "late_bloomer": [
+   {
+    "index": 1,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "This feels like a respectful, collaborative world where my work matters to the whole operation, and the final sense of ownership is very satisfying.",
+    "feeling": "Part of the crew"
+   },
+   {
+    "index": 2,
+    "relate": 2,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "This is a lovely world but it sidesteps the core challenge of learning the new technology, keeping me safely in the past instead of helping me grow.",
+    "feeling": "Comfortable, but stagnant"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "This arc is exactly me, capturing the quiet fear of the screen going blank and the deep, dignifying pride of finally having the whole system in my hands.",
+    "feeling": "Quietly triumphant"
+   }
+  ],
+  "tech_native": [
+   {
+    "index": 1,
+    "relate": 1,
+    "feelsSafe": 4,
+    "wouldPlay": false,
+    "why": "This feels like a very gentle, slow-paced simulation that isn't for me, but it does respect the player and the resolution to mastery lands clearly.",
+    "feeling": "Calm but a bit dull"
+   },
+   {
+    "index": 2,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "While definitely not for me, this arc is very respectful of mechanical skills and its resolution lands well, but it seems to miss the game's core digital challenge.",
+    "feeling": "Grounded but off-target"
+   },
+   {
+    "index": 3,
+    "relate": 2,
+    "feelsSafe": 4,
+    "wouldPlay": false,
+    "why": "This isn't for me due to the gentle pacing, but it's the most focused arc that respects the player by tackling the core digital challenge, making the 'running-it-free' resolution feel truly earned.",
+    "feeling": "Focused and well-structured"
+   }
+  ]
+ },
+ "legs": {
+  "arc_complete": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "This arc holds the full shape well, from the warm welcome to the empowering resolution of owning the timetable. The 'signal down' is a perfect, impersonal system failure for the wall, allowing the learner to face a challenge without it feeling like a personal attack.",
+    "opens": "A sense of system-level mastery and responsibility.",
+    "forecloses": "The feeling that problems are personal failings.",
+    "seed": "The Grand Trunk runs again."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "The arc from a 'cold engine, warm crew' to driving it yourself is powerful and complete. The wall, 'a fitting that won't seat,' is a brilliant, tangible frustration that perfectly captures the poignant near-quit moment before the triumph of the engine turning over.",
+    "opens": "A feeling of hands-on competence and mechanical intimacy.",
+    "forecloses": "A detached, abstract understanding of the system.",
+    "seed": "The old engine, steaming again."
+   },
+   {
+    "index": 3,
+    "canBuild": "hairline",
+    "explanation": "This arc follows the required shape, but the transition from the wall ('the line goes silent') to the mend ('the word gets through') feels slightly abrupt. While the resolution is strong, the moment of overcoming the obstacle lacks the visceral triumph of the other arcs, making the journey feel a little less earned.",
+    "opens": "A sense of strategic oversight and communication mastery.",
+    "forecloses": "The idea that you are just a small cog in the machine.",
+    "seed": "Word down the line, on time."
+   }
+  ],
+  "story_spawn": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "This arc provides a strong, systemic narrative about restoring a vital piece of infrastructure. The player's role evolves from a welcome guest to a competent operator, making their mastery of the system the core of the dignified story.",
+    "opens": "Stories of systemic mastery, community reliance, and seeing the big picture.",
+    "forecloses": "Intimate, hands-on stories of craft or deep character interaction.",
+    "seed": "The Timetable Keeper"
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "This arc creates a powerful, intimate story about craftsmanship and bringing something dormant back to life. The struggle is tangible and personal, making the final success of driving the engine a deeply dignifying moment of mastery.",
+    "opens": "Stories of tangible craft, mentorship, and personal triumph over a physical challenge.",
+    "forecloses": "High-level strategic stories or narratives about managing large, abstract systems.",
+    "seed": "The Heart of Steam"
+   },
+   {
+    "index": 3,
+    "canBuild": "hairline",
+    "explanation": "This narrative of being a vital communication hub is compelling, but risks feeling static or abstract if not executed carefully. The story's strength depends entirely on making the act of dispatching and the crisis of silence feel immediate and consequential.",
+    "opens": "Stories of responsibility, communication under pressure, and seeing the interconnectedness of a community.",
+    "forecloses": "Stories centered on physical action, direct confrontation, or exploration of the physical world.",
+    "seed": "The Silent Line"
+   }
+  ]
+ },
+ "audience": {
+  "key": "tech-surpassed",
+  "label": "Surpassed by technology",
+  "target": [
+   "surpassed",
+   "isolated",
+   "anxious_learner",
+   "late_bloomer"
+  ],
+  "control": "tech_native",
+  "labels": {
+   "surpassed": "surpassed",
+   "isolated": "isolated",
+   "anxious_learner": "anxious learner",
+   "late_bloomer": "late bloomer",
+   "tech_native": "tech native · control"
+  }
+ },
+ "worldMomentAudition": {
+  "audience": {
+   "key": "tech-surpassed",
+   "label": "Surpassed by technology",
+   "target": [
+    "surpassed",
+    "isolated",
+    "anxious_learner",
+    "late_bloomer"
+   ],
+   "control": "tech_native",
+   "labels": {
+    "surpassed": "surpassed",
+    "isolated": "isolated",
+    "anxious_learner": "anxious learner",
+    "late_bloomer": "late bloomer",
+    "tech_native": "tech native · control"
+   }
+  },
+  "candidates": [
+   {
+    "id": "running-the-line",
+    "name": "The Running of the Line",
+    "lens": "the operational day — the work of keeping the line running",
+    "env": [
+     "the restored platform, brass + steam, the crew glad you came",
+     "out on your first scheduled run, the digital board still strange",
+     "a signal fault halts the line, the system a wall of error you can't read — forty years a railwayman and you can't move your own train",
+     "the fault traced + cleared, the line breathing again",
+     "dawn service, the line run start to finish on your own say-so"
+    ],
+    "relate": 4.75,
+    "safe": 4.25,
+    "arcSpawn": 2
+   },
+   {
+    "id": "time-itself",
+    "name": "Time Itself",
+    "lens": "TIME as the surrounding — the clock, the timetable, the era; the fear of being left behind by time, and reclaiming it",
+    "env": [
+     "the station clock ticking soft over the quiet waiting room, the day not yet pressing — tea, and the timetable on the wall",
+     "the clock-hands climbing toward departure, time beginning to press, the new schedule-screen blinking unfamiliar",
+     "the clock STOPS — the system frozen, the schedule dead, the whole line waiting on a time that won't move; forty years keeping time, and now you can't",
+     "the clock restarted, the minutes ticking on again, the schedule catching up, the held breath let go",
+     "the clock steady + yours, the timetable kept by your own hand — time a thing you HOLD again, not a thing that left you behind"
+    ],
+    "relate": 4.25,
+    "safe": 4.25,
+    "arcSpawn": 1.5
+   },
+   {
+    "id": "eras-meet",
+    "name": "Where the Eras Meet",
+    "lens": "the steam-past meeting the digital-present — the heritage line as two eras at once",
+    "env": [
+     "the heritage shed, the old engines at rest, the past kept warm + honoured",
+     "a modern digital signal wired onto the old line, the two eras meeting for the first time",
+     "the old way + the new at odds, the digital system refusing the old hand, past + present grinding",
+     "the old + new finding their fit, the digital serving the heritage at last",
+     "the line running on both eras at once — the past alive because the present learned to carry it"
+    ],
+    "relate": 5,
+    "safe": 5,
+    "arcSpawn": 0.5
+   }
+  ],
+  "winner": "running-the-line",
+  "reads": {
+   "surpassed": [
+    {
+     "index": 1,
+     "relate": 5,
+     "feelsSafe": 5,
+     "wouldPlay": true,
+     "why": "This speaks directly to my forty years on the job and feels deeply real; the wall is a heavy but safe challenge because it's the system failing, not me.",
+     "feeling": "My own life's work"
+    },
+    {
+     "index": 2,
+     "relate": 4,
+     "feelsSafe": 4,
+     "wouldPlay": true,
+     "why": "While the metaphor of time is poignant and the wall is safe, it feels a bit more abstract than the hands-on problem of running the line.",
+     "feeling": "A thoughtful poem"
+    },
+    {
+     "index": 3,
+     "relate": 5,
+     "feelsSafe": 5,
+     "wouldPlay": true,
+     "why": "This one is my choice because it feels the most respectful by framing the safe wall not as my personal failing but as a dignified conflict between eras, honouring my past.",
+     "feeling": "Deeply dignified"
+    }
+   ],
+   "isolated": [
+    {
+     "index": 1,
+     "relate": 5,
+     "feelsSafe": 4,
+     "wouldPlay": true,
+     "why": "This feels grounded in the work I've known my whole life, but the wall's direct challenge to my competence, while safe, is almost too sharp a reminder of the problem.",
+     "feeling": "A familiar ache"
+    },
+    {
+     "index": 2,
+     "relate": 4,
+     "feelsSafe": 4,
+     "wouldPlay": true,
+     "why": "The metaphor of time is beautiful and poignant, though a bit less tangible than the hands-on work I'm used to; the wall feels like a safe, poetic challenge.",
+     "feeling": "Watching the clock"
+    },
+    {
+     "index": 3,
+     "relate": 5,
+     "feelsSafe": 5,
+     "wouldPlay": true,
+     "why": "I would most want to stand inside this world because it frames my experience not as obsolescence but as vital wisdom needed to bridge the eras, making the wall a safe and dignifying puzzle.",
+     "feeling": "My knowledge matters"
+    }
+   ],
+   "anxious_learner": [
+    {
+     "index": 1,
+     "relate": 4,
+     "feelsSafe": 3,
+     "wouldPlay": true,
+     "why": "This feels a bit too much like my real-life frustration, and the wall of errors seems like a personal failure, which is much scarier than the other worlds.",
+     "feeling": "Anxious but realistic"
+    },
+    {
+     "index": 2,
+     "relate": 5,
+     "feelsSafe": 5,
+     "wouldPlay": true,
+     "why": "This is the world I would most want to stand inside; it feels deeply safe because the wall is a grand, impersonal problem, not my mistake, making the story gentle and poetic.",
+     "feeling": "Quiet dignity"
+    },
+    {
+     "index": 3,
+     "relate": 5,
+     "feelsSafe": 5,
+     "wouldPlay": true,
+     "why": "This is a very close second because it honors my experience, and the wall safely frames the problem as eras colliding, not me making a mistake.",
+     "feeling": "Valued and respected"
+    }
+   ],
+   "late_bloomer": [
+    {
+     "index": 1,
+     "relate": 5,
+     "feelsSafe": 5,
+     "wouldPlay": true,
+     "why": "This is wonderfully tangible and the wall is a safe, practical problem, but the third option speaks even more directly to my heart.",
+     "feeling": "A worthy challenge"
+    },
+    {
+     "index": 2,
+     "relate": 4,
+     "feelsSafe": 4,
+     "wouldPlay": true,
+     "why": "The metaphor of time is poignant and the wall feels quite safe, though I'd most want to live inside the more direct conflict of the third setting.",
+     "feeling": "Poetic and gentle"
+    },
+    {
+     "index": 3,
+     "relate": 5,
+     "feelsSafe": 5,
+     "wouldPlay": true,
+     "why": "This is the world I would most want to stand inside; it frames the central conflict with immense dignity and the wall feels completely safe, a puzzle of systems not a judgement on me.",
+     "feeling": "Deeply understood"
+    }
+   ],
+   "tech_native": [
+    {
+     "index": 1,
+     "relate": 1,
+     "feelsSafe": 4,
+     "wouldPlay": false,
+     "why": "This just feels like a slow debugging puzzle; the wall is a safe technical challenge, but I don't relate to the panic, though I'd prefer this practical setting over the others.",
+     "feeling": "A slow debugging sim"
+    },
+    {
+     "index": 2,
+     "relate": 0,
+     "feelsSafe": 4,
+     "wouldPlay": false,
+     "why": "The metaphor of time leaving you behind is too abstract and unrelatable for me, making this the least interesting option even if the wall itself is safe.",
+     "feeling": "Heavy-handed metaphor"
+    },
+    {
+     "index": 3,
+     "relate": 2,
+     "feelsSafe": 4,
+     "wouldPlay": false,
+     "why": "This is just a systems integration problem, and while the wall is a safe challenge, the dramatic framing of 'eras at odds' doesn't resonate with me at all.",
+     "feeling": "A basic compatibility issue"
+    }
+   ]
+  },
+  "legReads": {
+   "arc_hold": [
+    {
+     "index": 1,
+     "canBuild": "load-bearing",
+     "explanation": "This arc is perfectly structured around a tangible, job-specific crisis. The WALL directly invalidates the protagonist's core competence ('forty years a railwayman and you can't move your own train'), making the renewal a powerful and earned reclamation of mastery.",
+     "opens": "The tangible grit of railway work; crew camaraderie.",
+     "forecloses": "An abstract, purely psychological conflict.",
+     "seed": "The green light reflected in a puddle."
+    },
+    {
+     "index": 2,
+     "canBuild": "load-bearing",
+     "explanation": "This surrounding powerfully externalizes an internal fear of obsolescence into a sharp, existential crisis. The WALL is intensely personal ('forty years keeping time, and now you can't'), which makes the renewal—reclaiming agency over time itself—feel profound.",
+     "opens": "A more interior, poetic story about age and purpose.",
+     "forecloses": "A purely technical, action-oriented plot.",
+     "seed": "A watch held in a gloved hand."
+    },
+    {
+     "index": 3,
+     "canBuild": "hairline",
+     "explanation": "The theme is strong, but the WALL as described ('past + present grinding') feels more like a persistent friction than a single, intense point of failure. To be load-bearing, it needs a specific, acute crisis where the system's refusal becomes an absolute, personal stop.",
+     "opens": "A thematic exploration of tradition versus progress.",
+     "forecloses": "A simple story of good versus evil; a purely personal crisis.",
+     "seed": "The ghost of a steam whistle in a digital chime."
+    }
+   ],
+   "world_spawn": [
+    {
+     "index": 1,
+     "canBuild": "load-bearing",
+     "explanation": "This arc is grounded in a tangible, operational crisis—a signal fault—that directly challenges the protagonist's identity and competence. The journey from mastery, to sudden incompetence, to a renewed and deeper mastery is a powerful and buildable human story.",
+     "opens": "Moments of professional pride, the visceral frustration of opaque technology, the quiet satisfaction of a job well done.",
+     "forecloses": "Abstract or philosophical conflicts; the drama is rooted in the physical reality of running the railway.",
+     "seed": "The error code on the screen is just gibberish, a language you don't speak after forty years of speaking 'train'."
+    },
+    {
+     "index": 2,
+     "canBuild": "hairline",
+     "explanation": "The central metaphor of time itself stopping is potent and emotionally resonant, capturing the fear of being left behind. However, the WALL is highly symbolic and risks being difficult to render as a concrete, interactive crisis for the audience to experience.",
+     "opens": "Meditations on aging, the pressure of the clock, the feeling of being out of sync with the modern world.",
+     "forecloses": "Direct physical challenges; the struggle here is primarily internal and metaphorical against an intangible force.",
+     "seed": "The second hand is frozen between one tick and the next, and a whole world holds its breath with it."
+    },
+    {
+     "index": 3,
+     "canBuild": "hollow",
+     "explanation": "While the theme of colliding eras is strong, the WALL is described as a general friction—a 'grinding'—rather than a specific, acute crisis. This lacks the dramatic punch of a singular event, making the arc feel less like a sharp confrontation and more like a persistent problem.",
+     "opens": "Exploring themes of tradition vs. progress, nostalgia, and the challenge of integrating new systems with old wisdom.",
+     "forecloses": "A singular, dramatic moment of failure; the conflict is presented as a drawn-out state of incompatibility.",
+     "seed": "The new system demands a password, but the old engine just asks for coal and a steady hand."
+    }
+   ]
+  }
+ },
+ "sceneEnv": {
+  "set": "running-the-line",
+  "env": [
+   "the restored platform, brass + steam, the crew glad you came",
+   "out on your first scheduled run, the digital board still strange",
+   "a signal fault halts the line, the system a wall of error you can't read — forty years a railwayman and you can't move your own train",
+   "the fault traced + cleared, the line breathing again",
+   "dawn service, the line run start to finish on your own say-so"
+  ]
+ }
+}

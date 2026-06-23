@@ -2,6 +2,20 @@
 // dialed cozy→intense, the tone dial, the cast to polish). A "scene" is a weather-moment (§8.13); the
 // TONE is the dial WITHIN it. Branched from the Scenes audition hub. Next 16: params async. NOT canon.
 import { SceneBranch, type SceneBranchView } from "../../../Scrubber";
+import { DayPlanGraph, type DayPlanT } from "../../../DayPlanGraph";
+import { CastProgressMap, type CastArcT } from "../../../CastProgressMap";
+import { DirectionMap, type DoorArcT } from "../../../DirectionMap";
+import { ChatbotMap, type ChatbotT } from "../../../ChatbotMap";
+import { ChatbotArc, type ChatbotArcT } from "../../../ChatbotArc";
+import { VisualReveal, type VisualCastT, type VisualAnchorT, type EnsembleHarmonyT } from "../../../VisualReveal";
+import { ShadowLane, type ShadowLaneT, type BpmCarrierT } from "../../../ShadowLane";
+import { WorldClock, type WorldClockT } from "../../../WorldClock";
+import { type OpeningT } from "../../../FrontDoor";
+import { DayCoverage } from "../../../DayCoverage";
+import { MechanicsCoverage } from "../../../MechanicsCoverage";
+import { StatsCoverage, type StatsCoverageT, type EconomyCheckT } from "../../../StatsCoverage";
+import { ItemCoverage, type ItemCoverageT } from "../../../ItemCoverage";
+import { type DayOutlineT } from "../../../DayOutline";
 import { CAMPAIGNS, campaignsWithScenes, sceneBranchesFor, sceneBranch, stepNo } from "../../../registry";
 
 export function generateStaticParams() {
@@ -31,6 +45,7 @@ export default async function SceneBranchPage({ params }: { params: Promise<{ ca
   const toneText = g?.subrange?.[idx] ?? [];
   const premise = g?.scenes?.premises?.find((x) => x.scene.toLowerCase() === b.label.toLowerCase())?.premise;
   const honing = g?.scenes?.honing?.[b.key];
+  const honedKeys = Object.keys((honing as { honed?: Record<string, unknown> } | undefined)?.honed ?? {});
   const expertsGate = g?.scenes?.expertsGate;
   const cov = g?.scenes?.coverage;
   const slot = honing?.slot ?? cov?.map?.find((m) => m.scene.toLowerCase() === b.label.toLowerCase());
@@ -54,9 +69,60 @@ export default async function SceneBranchPage({ params }: { params: Promise<{ ca
       <h1 style={{ fontSize: 24, margin: "0 0 2px", color: "var(--ink)", textTransform: "capitalize" }}>{b.label} <span style={{ fontFamily: "monospace", fontSize: 14, color: "var(--margin-ink)" }}>{b.spark}</span></h1>
       <div style={{ fontSize: 12, color: "var(--ink-soft)", marginBottom: 16 }}>a weather-moment of <a href={`/auditions/${campaign}/scenes`} style={link}>{c.label}</a> — honed individually, the tone dialed within.</div>
       <SceneBranch b={view} campaign={campaign} />
+      {(() => {
+        const pre = (honing as { prelude?: { tagline?: string; angle?: string } } | undefined)?.prelude;
+        if (!pre?.tagline) return null;
+        const href = `/auditions/${campaign}/scenes/${b.key}/prelude`;
+        return (
+          <a href={href} style={{ display: "block", border: "1.5px solid var(--forest)", background: "var(--paper-shade)", padding: "9px 13px", marginBottom: 10, marginTop: 14, textDecoration: "none" }}>
+            <div style={{ fontSize: 8.5, fontWeight: 700, letterSpacing: ".08em", color: "var(--margin-ink)", textTransform: "uppercase" }}>① the prelude — the book cover (browse / sell)</div>
+            <div style={{ fontSize: 13.5, color: "var(--forest)", fontWeight: 700, fontStyle: "italic", margin: "2px 0" }}>&ldquo;{pre.tagline}&rdquo;</div>
+            <div style={{ fontSize: 9.5, color: "var(--forest)", fontWeight: 700 }}>▶ read the prelude + the audition →</div>
+          </a>
+        );
+      })()}
+      {(() => {
+        const openings = ((honing as { honed?: Record<string, { openings?: OpeningT[] }> } | undefined)?.honed?.["1"]?.openings) ?? [];
+        if (!openings.length) return null;
+        const leads = openings.map((o) => o.lead).filter(Boolean).join(" · ");
+        return (
+          <a href={`/auditions/${campaign}/scenes/${b.key}/front-door`} style={{ display: "block", border: "1.5px solid var(--forest)", background: "var(--paper-shade)", padding: "9px 13px", marginBottom: 14, textDecoration: "none" }}>
+            <div style={{ fontSize: 8.5, fontWeight: 700, letterSpacing: ".08em", color: "var(--margin-ink)", textTransform: "uppercase" }}>② the front door — the pick (a separate stage)</div>
+            <div style={{ fontSize: 12.5, color: "var(--ink)", fontWeight: 700, margin: "2px 0" }}>choose who you meet first: <span style={{ color: "var(--forest)" }}>{leads}</span></div>
+            <div style={{ fontSize: 9.5, color: "var(--forest)", fontWeight: 700 }}>▶ open the front door + the convergence model →</div>
+          </a>
+        );
+      })()}
+      {(honing as { dayPlan?: DayPlanT } | undefined)?.dayPlan && <DayPlanGraph plan={(honing as unknown as { dayPlan: DayPlanT }).dayPlan} campaign={campaign} door={b.key} honedDays={honedKeys} hideDayList />}
+      {(() => { const ol = (honing as { dayOutline?: Record<string, DayOutlineT> } | undefined)?.dayOutline; return ol && Object.keys(ol).length ? <DayCoverage outline={ol} campaign={campaign} door={b.key} honedDays={honedKeys} /> : null; })()}
+      {(() => { const mc = (honing as { mechanicsCheck?: { rows?: { mechanic: string; scope: string; status: string; where: string }[]; gaps?: number; ok?: number; na?: number } } | undefined)?.mechanicsCheck; return mc?.rows?.length ? <MechanicsCoverage check={mc} /> : null; })()}
+      {(() => { const sv = (honing as { statsCoverage?: StatsCoverageT; economyCheck?: EconomyCheckT } | undefined); return sv?.statsCoverage?.axes?.length ? <StatsCoverage cov={sv.statsCoverage} check={sv.economyCheck} /> : null; })()}
+      {(() => { const ic = (honing as { itemCoverage?: ItemCoverageT } | undefined)?.itemCoverage; return (ic?.items?.length || ic?.matrix?.length) ? <ItemCoverage cov={ic} /> : null; })()}
+      {(honing as { doorArc?: DoorArcT } | undefined)?.doorArc && <DirectionMap arc={(honing as unknown as { doorArc: DoorArcT }).doorArc} focal={pickName} />}
+      {(() => { const pa = (g?.scenes as { progressArcs?: { map: CastArcT[]; range?: string } } | undefined)?.progressArcs; return pa?.map?.length ? <CastProgressMap arcs={pa.map} focal={pickName} range={pa.range} /> : null; })()}
+      {(() => {
+        const na = (g?.scenes as { chatbots?: { namingAnchor?: { anchor?: string; rule?: string; names?: { handle?: string; name?: string; ambiguous?: boolean; resonance?: string }[] } } } | undefined)?.chatbots?.namingAnchor;
+        if (!na?.names?.length) return null;
+        return (
+          <div style={{ border: "1px solid var(--ink-soft)", background: "var(--paper-shade)", padding: "8px 12px", marginTop: 18 }}>
+            <div style={{ fontSize: 11.5, color: "var(--ink)", fontWeight: 700 }}>🏷 THE CAST NAMES <span style={{ fontSize: 9.5, color: "var(--margin-ink)", fontWeight: 400 }}>— the name humanizes; the handle carries the metaphor</span></div>
+            {na.rule && <div style={{ fontSize: 9.5, color: "var(--margin-ink)", fontStyle: "italic", margin: "1px 0 4px" }}>{na.rule}</div>}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "3px 16px", fontSize: 10.5, color: "var(--ink-soft)" }}>
+              {na.names.map((n, i) => <span key={i}><b style={{ color: "var(--forest)" }}>{n.name}</b>{n.ambiguous ? <span style={{ fontSize: 8, color: "var(--margin-ink)" }}> ⚥</span> : null} <span style={{ color: "var(--margin-ink)" }}>— {n.handle}{n.resonance && !/^none/i.test(n.resonance) ? ` · ${n.resonance}` : ""}</span></span>)}
+            </div>
+          </div>
+        );
+      })()}
+      {(() => { const cb = (g?.scenes as { chatbots?: { map: ChatbotT[]; range?: string } } | undefined)?.chatbots; return cb?.map?.length ? <ChatbotMap bots={cb.map} focal={pickName} range={cb.range} /> : null; })()}
+      {(() => { const ca = (honing as { chatbotArc?: ChatbotArcT } | undefined)?.chatbotArc; return (ca?.focal?.microArc?.length || ca?.cast?.length) ? <ChatbotArc arc={ca} /> : null; })()}
+      {(() => { const cbs = (g?.scenes as { chatbots?: { map?: VisualCastT[]; visualAnchor?: VisualAnchorT; ensembleHarmony?: EnsembleHarmonyT } } | undefined)?.chatbots; return cbs?.map?.some((c) => c.vitals) ? <VisualReveal cast={cbs.map} anchor={cbs.visualAnchor} harmony={cbs.ensembleHarmony} /> : null; })()}
+      {(() => { const wc = (honing as { worldClock?: WorldClockT } | undefined)?.worldClock; return wc?.crossing?.length ? <WorldClock clock={wc} /> : null; })()}
+      {(() => { const sl = (honing as { shadowLane?: ShadowLaneT; bpmCarrier?: BpmCarrierT } | undefined); return (sl?.shadowLane || sl?.bpmCarrier) ? <ShadowLane lane={sl.shadowLane} bpm={sl.bpmCarrier} /> : null; })()}
       <div style={{ display: "flex", justifyContent: "space-between", borderTop: "1px solid var(--ink-soft)", paddingTop: 12, marginTop: 20, fontSize: 13 }}>
         {prev ? <a href={`/auditions/${campaign}/scenes/${prev.key}`} style={link}>← {prev.label}</a> : <a href={`/auditions/${campaign}/scenes`} style={link}>← the hub</a>}
-        {next ? <a href={`/auditions/${campaign}/scenes/${next.key}`} style={link}>{next.label} →</a> : <span style={{ color: "var(--margin-ink)" }}>last moment</span>}
+        {(honing as { prelude?: { tagline?: string } } | undefined)?.prelude?.tagline
+          ? <a href={`/auditions/${campaign}/scenes/${b.key}/prelude`} style={link}>▶ the prelude →</a>
+          : next ? <a href={`/auditions/${campaign}/scenes/${next.key}`} style={link}>{next.label} →</a> : <span style={{ color: "var(--margin-ink)" }}>last moment</span>}
       </div>
     </main>
   );

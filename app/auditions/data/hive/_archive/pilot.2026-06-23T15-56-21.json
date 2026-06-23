@@ -1,0 +1,385 @@
+{
+ "concept": "hive",
+ "audienceKey": "tech-surpassed",
+ "culture": {
+  "name": "Western (quiet self-reliance)",
+  "valorises": "independence + earned competence — the Western dignity of doing it yourself, standing on your own; achievement felt as QUIET pride (a job well-learned), not loud fanfare",
+  "expression": "direct, plain-spoken, warmly encouraging; the individual's mastery respected; autonomy honoured ('you've got this', never patronising); pride shown in a soft chime, not a parade",
+  "nudge": "toward self-reliance + earned independence + plain warm encouragement — the dignity of standing on your own, at your own pace"
+ },
+ "genre": {
+  "name": "Constructive Sim",
+  "honour": "The quiet satisfaction of bringing order to a small world and watching it thrive through patient, thoughtful action.",
+  "traps": "Punishing efficiency metrics, stressful timers, or resource scarcity that creates anxiety instead of gentle challenge."
+ },
+ "group": "Hive (the volunteer crew you join)",
+ "setting": "The Grand Trunk Dispatch",
+ "targetAge": {
+  "range": [
+   62,
+   76
+  ],
+  "center": 68,
+  "band": "older adult (boomer-by-current-age)",
+  "lifeContext": "feeling outdated + surpassed by technology — the loss of competence + dignity after a life of mastery; the shame of asking; the grief of obsolescence",
+  "register": "warm + patient + DIGNIFYING; gentle encouragement, NEVER condescension or infantilising; the intense ceiling = the POIGNANCY of being newly-vulnerable after a life of mastery (and the quiet triumph of a small win) — never anxiety, never thrill",
+  "note": "PROVISIONAL prior (playtest-calibrate); content rating = All Ages",
+  "setAt": "concept"
+ },
+ "scenes": [
+  "the platform",
+  "the first run",
+  "the signal down",
+  "the line clears",
+  "the open timetable"
+ ],
+ "spark": {
+  "the platform": "▰▱▱▱▱",
+  "the first run": "▰▰▰▱▱",
+  "the signal down": "▰▰▰▰▰",
+  "the line clears": "▰▰▱▱▱",
+  "the open timetable": "▰▱▱▱▱"
+ },
+ "scrubGroups": [
+  {
+   "id": "line",
+   "name": "The Line",
+   "settingTitle": "The Grand Trunk runs again.",
+   "throughline": "the route — the line learned one stop at a time",
+   "storyTitles": [
+    "a warm welcome on the platform",
+    "your first run down the line",
+    "the signal down, the line stalled",
+    "the block cleared, the line moving",
+    "the timetable yours, on time"
+   ],
+   "env": [
+    "the restored platform, brass + steam, the crew glad you came",
+    "out on your first scheduled run, the digital board still strange",
+    "a signal fault halts the line, the system a wall of error you can't read",
+    "the fault traced + cleared, the line breathing again",
+    "dawn service, the line run start to finish on your own say-so"
+   ],
+   "buildingBlock": "re-finding competence navigating new systems for a thing you love — the conductor's lens",
+   "subrange": [
+    [
+     {
+      "label": "cozy",
+      "text": "in the warm signal-box with a cup of tea, the platform busy + glad outside — your knowledge wanted here"
+     },
+     {
+      "label": "warm",
+      "text": "the stationmaster walking the platform with you, naming what the new board does, unhurried"
+     },
+     {
+      "label": "intense",
+      "text": "alone at the new dispatch screen, the platform waiting, your hand not yet sure where to press"
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "riding the cab you know by heart, the new ticket-tablet propped where you can ignore it for now"
+     },
+     {
+      "label": "warm",
+      "text": "a younger volunteer at your elbow on the first run, the two of you working the board together"
+     },
+     {
+      "label": "intense",
+      "text": "out on the line, the digital dispatch live + chirping, your old certainty nowhere to be found"
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "back in the mess room, the kettle on, the fault shut outside the door for a moment"
+     },
+     {
+      "label": "warm",
+      "text": "the engineer beside you at the stalled board — “we'll trace it together, slow”"
+     },
+     {
+      "label": "intense",
+      "text": "the signal dead + the screen a wall of red you can't read — forty years a railwayman and you can't move your own train; the crew's voices small, behind you, still with you"
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "the worst past, the line moving, the dispatcher logging the run, quiet + dry"
+     },
+     {
+      "label": "warm",
+      "text": "in the box as it clears, a colleague beside you, a message finally sent down the line"
+     },
+     {
+      "label": "intense",
+      "text": "still shaken long after, learning slowly that you did not break the line — that you cleared it"
+     }
+    ],
+    [
+     {
+      "label": "cozy",
+      "text": "dawn at the box window, the next volunteer's seat ready, the timetable clean + green"
+     },
+     {
+      "label": "warm",
+      "text": "out on the platform with the crew, the far stations reached, the day's runs all logged"
+     },
+     {
+      "label": "intense",
+      "text": "alone in the box at first light — running a service no one talked you through, and signing it off yourself"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "engine",
+   "name": "The Engine",
+   "settingTitle": "The old engine, steaming again.",
+   "throughline": "the restoration — brought back to life, part by part",
+   "storyTitles": [
+    "the engine cold, the crew warm",
+    "the first part refitted",
+    "a fitting that won't seat",
+    "the engine turning over",
+    "in steam, and yours to drive"
+   ],
+   "env": [
+    "the cold engine in the shed, the crew glad of your hands",
+    "the first modern part fitted to the old frame, working",
+    "a part that won't seat — the digital manual a maze you can't follow",
+    "the fitting seated at last, the engine warming",
+    "the engine in full steam, run on your own competence"
+   ],
+   "buildingBlock": "rebuilding competence part by part, surviving the setback — the engineer's lens"
+  },
+  {
+   "id": "dispatch",
+   "name": "The Dispatch",
+   "settingTitle": "Word down the line, on time.",
+   "throughline": "the dispatch — the word that keeps the whole line running",
+   "storyTitles": [
+    "the quiet office, a seat for you",
+    "the first message sent",
+    "the line goes silent",
+    "the word gets through",
+    "the whole line, in your hand"
+   ],
+   "env": [
+    "the dispatch office, the old ledgers + the new screens side by side",
+    "your first message keyed + sent down the line, received",
+    "the system drops + the line goes silent, no word getting through",
+    "the link restored, the word moving again, the line answering",
+    "every station reporting in, the whole line run from your desk"
+   ],
+   "buildingBlock": "the connection that runs the line — re-finding your voice in a new system — the dispatcher's lens"
+  }
+ ],
+ "picked": "dispatch",
+ "results": {
+  "surpassed": [
+   {
+    "index": 1,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "This one respects me by presenting a real operational challenge to overcome, and the feeling of mastering the timetable at the end would be a dignified success.",
+    "feeling": "Competence restored"
+   },
+   {
+    "index": 2,
+    "relate": 1,
+    "feelsSafe": 1,
+    "wouldPlay": false,
+    "why": "This one feels disrespectful because the central challenge questions my lifelong expertise instead of focusing on the new digital skills I'm meant to be learning.",
+    "feeling": "My competence questioned"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This feels exactly right, respecting my ability to learn by focusing the challenge on the new digital system and resolving with a powerful feeling of mastery.",
+    "feeling": "Empowered and capable"
+   }
+  ],
+  "isolated": [
+   {
+    "index": 1,
+    "relate": 4,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This feels respectful because it focuses on the operational challenge of the railway itself, and the final mastery of the timetable feels like a dignified and tangible success.",
+    "feeling": "Quietly capable"
+   },
+   {
+    "index": 2,
+    "relate": 2,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "While it respects my past expertise, it avoids the central challenge of learning the new digital systems, so the resolution feels hollow and doesn't help me with my real-world goal.",
+    "feeling": "Familiar but stagnant"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This arc directly mirrors my own struggle with silent screens and the desire for connection, offering a deeply respectful path to mastery that lands with a powerful sense of competence.",
+    "feeling": "Hopeful and seen"
+   }
+  ],
+  "anxious_learner": [
+   {
+    "index": 1,
+    "relate": 3,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "This feels respectful because the problem isn't my fault, but the story is a bit impersonal and the goal of being 'on time' adds some pressure.",
+    "feeling": "A little distant"
+   },
+   {
+    "index": 2,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "It feels deeply safe by focusing on my hands-on expertise with engines, but it avoids the scary digital part so much I wonder if it's a different game.",
+    "feeling": "Comfortably at home"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 5,
+    "wouldPlay": true,
+    "why": "This one feels made for me; it respects my fears by starting quietly and framing the challenge as a puzzle we solve together, not my personal failure.",
+    "feeling": "Gently encouraged"
+   }
+  ],
+  "late_bloomer": [
+   {
+    "index": 1,
+    "relate": 4,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "This feels like a respectful, collaborative world where my work matters to the whole operation, and the final sense of ownership is very satisfying.",
+    "feeling": "Part of the crew"
+   },
+   {
+    "index": 2,
+    "relate": 2,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "This is a lovely world but it sidesteps the core challenge of learning the new technology, keeping me safely in the past instead of helping me grow.",
+    "feeling": "Comfortable, but stagnant"
+   },
+   {
+    "index": 3,
+    "relate": 5,
+    "feelsSafe": 4,
+    "wouldPlay": true,
+    "why": "This arc is exactly me, capturing the quiet fear of the screen going blank and the deep, dignifying pride of finally having the whole system in my hands.",
+    "feeling": "Quietly triumphant"
+   }
+  ],
+  "tech_native": [
+   {
+    "index": 1,
+    "relate": 1,
+    "feelsSafe": 4,
+    "wouldPlay": false,
+    "why": "This feels like a very gentle, slow-paced simulation that isn't for me, but it does respect the player and the resolution to mastery lands clearly.",
+    "feeling": "Calm but a bit dull"
+   },
+   {
+    "index": 2,
+    "relate": 0,
+    "feelsSafe": 5,
+    "wouldPlay": false,
+    "why": "While definitely not for me, this arc is very respectful of mechanical skills and its resolution lands well, but it seems to miss the game's core digital challenge.",
+    "feeling": "Grounded but off-target"
+   },
+   {
+    "index": 3,
+    "relate": 2,
+    "feelsSafe": 4,
+    "wouldPlay": false,
+    "why": "This isn't for me due to the gentle pacing, but it's the most focused arc that respects the player by tackling the core digital challenge, making the 'running-it-free' resolution feel truly earned.",
+    "feeling": "Focused and well-structured"
+   }
+  ]
+ },
+ "legs": {
+  "arc_complete": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "This arc holds the full shape well, from the warm welcome to the empowering resolution of owning the timetable. The 'signal down' is a perfect, impersonal system failure for the wall, allowing the learner to face a challenge without it feeling like a personal attack.",
+    "opens": "A sense of system-level mastery and responsibility.",
+    "forecloses": "The feeling that problems are personal failings.",
+    "seed": "The Grand Trunk runs again."
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "The arc from a 'cold engine, warm crew' to driving it yourself is powerful and complete. The wall, 'a fitting that won't seat,' is a brilliant, tangible frustration that perfectly captures the poignant near-quit moment before the triumph of the engine turning over.",
+    "opens": "A feeling of hands-on competence and mechanical intimacy.",
+    "forecloses": "A detached, abstract understanding of the system.",
+    "seed": "The old engine, steaming again."
+   },
+   {
+    "index": 3,
+    "canBuild": "hairline",
+    "explanation": "This arc follows the required shape, but the transition from the wall ('the line goes silent') to the mend ('the word gets through') feels slightly abrupt. While the resolution is strong, the moment of overcoming the obstacle lacks the visceral triumph of the other arcs, making the journey feel a little less earned.",
+    "opens": "A sense of strategic oversight and communication mastery.",
+    "forecloses": "The idea that you are just a small cog in the machine.",
+    "seed": "Word down the line, on time."
+   }
+  ],
+  "story_spawn": [
+   {
+    "index": 1,
+    "canBuild": "load-bearing",
+    "explanation": "This arc provides a strong, systemic narrative about restoring a vital piece of infrastructure. The player's role evolves from a welcome guest to a competent operator, making their mastery of the system the core of the dignified story.",
+    "opens": "Stories of systemic mastery, community reliance, and seeing the big picture.",
+    "forecloses": "Intimate, hands-on stories of craft or deep character interaction.",
+    "seed": "The Timetable Keeper"
+   },
+   {
+    "index": 2,
+    "canBuild": "load-bearing",
+    "explanation": "This arc creates a powerful, intimate story about craftsmanship and bringing something dormant back to life. The struggle is tangible and personal, making the final success of driving the engine a deeply dignifying moment of mastery.",
+    "opens": "Stories of tangible craft, mentorship, and personal triumph over a physical challenge.",
+    "forecloses": "High-level strategic stories or narratives about managing large, abstract systems.",
+    "seed": "The Heart of Steam"
+   },
+   {
+    "index": 3,
+    "canBuild": "hairline",
+    "explanation": "This narrative of being a vital communication hub is compelling, but risks feeling static or abstract if not executed carefully. The story's strength depends entirely on making the act of dispatching and the crisis of silence feel immediate and consequential.",
+    "opens": "Stories of responsibility, communication under pressure, and seeing the interconnectedness of a community.",
+    "forecloses": "Stories centered on physical action, direct confrontation, or exploration of the physical world.",
+    "seed": "The Silent Line"
+   }
+  ]
+ },
+ "audience": {
+  "key": "tech-surpassed",
+  "label": "Surpassed by technology",
+  "target": [
+   "surpassed",
+   "isolated",
+   "anxious_learner",
+   "late_bloomer"
+  ],
+  "control": "tech_native",
+  "labels": {
+   "surpassed": "surpassed",
+   "isolated": "isolated",
+   "anxious_learner": "anxious learner",
+   "late_bloomer": "late bloomer",
+   "tech_native": "tech native · control"
+  }
+ }
+}

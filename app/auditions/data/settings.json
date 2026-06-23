@@ -5,28 +5,65 @@
    "title": "The Night Ferry",
    "line": "The kettle's always on.",
    "world": "A small night ferry that crosses the same dark strait, every night, and always comes back. A crew of four; the crossing is the one hour nobody can ask anything more of you. Night, water, lamps, a kettle — a world that holds whether the strait is glass-calm or running heavy.",
-   "nativeAge": "adult → mature (burnout / limited-time) — WIDE range, cozy↔depth; centers adult, reaches both"
+   "nativeAge": "adult → mature (burnout / limited-time) — WIDE range, cozy↔depth; centers adult, reaches both",
+   "audience": "worn-down"
   },
   {
    "id": "lighthouse",
    "title": "The Lighthouse Coast",
    "line": "The light holds.",
    "world": "A lone white-stone lighthouse on a mossy islet in rolling fog. A fixed point you tend — the lamp, the glass, the long watch. A coast that holds whether the night is still or the fog rolls in thick.",
-   "nativeAge": "mature adult — solitude / the long watch / depth-intense (an INTENSE-keyed setting)"
+   "nativeAge": "mature adult — solitude / the long watch / depth-intense (an INTENSE-keyed setting)",
+   "audience": "worn-down"
   },
   {
    "id": "cloudhouse",
    "title": "The Sky Station",
    "line": "Your seat is kept.",
    "world": "A soft-lit sky station moored above sleeping hills. You read one patch of sky and make one small mark, and a rough little constellation is allowed to count. A station that holds whether the night is clear or the weather turns.",
-   "nativeAge": "younger → broad — light / whimsical cozy; the most age-accessible"
+   "nativeAge": "younger → broad — light / whimsical cozy; the most age-accessible",
+   "audience": "worn-down"
   },
   {
    "id": "room",
    "title": "The Open Room",
    "line": "The seat's already yours.",
    "world": "The Open Room — a school room (the old AV room) a quiet caretaker keeps unlocked after the last bell, for the kids who don't have anywhere else to be yet. String lights, a worn couch, a kettle nobody owns. A bounded hour before lock-up; a small rotating crew of regulars; and one chair by the window that's somehow always free when you come in.",
-   "nativeAge": "13–17 teen"
+   "nativeAge": "13–17 teen",
+   "audience": "worn-down"
+  },
+  {
+   "id": "botanical-research-outpost",
+   "title": "The Evergreen Archive",
+   "line": "Your wisdom, new roots.",
+   "world": "A state-of-the-art botanical research outpost in a remote, beautiful location. As a visiting expert, your lifetime of knowledge is invaluable for cataloging rare flora, but the station's advanced digital systems require learning new tools to contribute.",
+   "nativeAge": "older adult ~62–76 (boomer-by-current-age); the cardinal floor is DIGNITY (never condescend / infantilise)",
+   "audience": "tech-surpassed",
+   "picked": false,
+   "relate": 3.25,
+   "safe": 4
+  },
+  {
+   "id": "heritage-railway-revival",
+   "title": "The Grand Trunk Dispatch",
+   "line": "All aboard for a new line.",
+   "world": "A lovingly restored heritage railway where you volunteer your expertise to keep the steam engines running. The challenge isn't just the mechanics of the past, but mastering the modern digital dispatch, ticketing, and communication systems needed to bring this history to life.",
+   "nativeAge": "older adult ~62–76 (boomer-by-current-age); the cardinal floor is DIGNITY (never condescend / infantilise)",
+   "audience": "tech-surpassed",
+   "picked": true,
+   "relate": 5,
+   "safe": 4.75
+  },
+  {
+   "id": "community-broadcast-hub",
+   "title": "Radio Larkspur",
+   "line": "Your story, on the air.",
+   "world": "A warm, independent community radio station where your life experience is the headline story. You're invited to host your own show, but first you must learn the digital tools of modern broadcasting—from audio editing to online promotion—to share your voice with the world.",
+   "nativeAge": "older adult ~62–76 (boomer-by-current-age); the cardinal floor is DIGNITY (never condescend / infantilise)",
+   "audience": "tech-surpassed",
+   "picked": false,
+   "relate": 2,
+   "safe": 2.75
   }
  ],
  "results": {
@@ -326,5 +363,262 @@
     "explanation": "Its reliability, comfort, and personal invitation (the chair) make it a highly dwelleable space."
    }
   ]
+ },
+ "audienceGroups": {
+  "worn-down": {
+   "label": "The worn-down",
+   "audience": "anxiety · low self-worth · ADHD-pattern overwhelm — a worn-out nervous system that needs bounded, gentle, safe, unpunishing things (dialed across ages: adult burnout · mature depth · teen belonging)",
+   "ageNote": "WIDE — adult→mature core, teen reachable; the struggle is constant, the age dials the register"
+  },
+  "tech-surpassed": {
+   "label": "Surpassed by technology",
+   "audience": "feeling outdated + surpassed by technology — the loss of competence + dignity after a life of mastery; the shame of asking; the grief of obsolescence — older adults who must be met as CAPABLE ADULTS, never beginners",
+   "ageNote": "older adult ~62–76 (boomer-by-current-age); the cardinal floor is DIGNITY (never condescend / infantilise)",
+   "seed": null,
+   "settingsAudition": {
+    "winner": "heritage-railway-revival",
+    "candidates": [
+     {
+      "id": "botanical-research-outpost",
+      "title": "The Evergreen Archive",
+      "relate": 3.25,
+      "safe": 4,
+      "spawn": 2
+     },
+     {
+      "id": "heritage-railway-revival",
+      "title": "The Grand Trunk Dispatch",
+      "relate": 5,
+      "safe": 4.75,
+      "spawn": 2
+     },
+     {
+      "id": "community-broadcast-hub",
+      "title": "Radio Larkspur",
+      "relate": 2,
+      "safe": 2.75,
+      "spawn": 1
+     }
+    ]
+   },
+   "group": "Hive — a community/club of late-learners (a found-family of older people learning technology together) that the player JOINS; it lives INSIDE the winning setting, it is NOT the setting",
+   "genre": {
+    "pick": {
+     "name": "Constructive Sim",
+     "honour": "The quiet satisfaction of bringing order to a small world and watching it thrive through patient, thoughtful action.",
+     "traps": "Punishing efficiency metrics, stressful timers, or resource scarcity that creates anxiety instead of gentle challenge.",
+     "pick_why": "This genre directly addresses the core conflict: bridging the gap between past mastery (steam engines) and new challenges (digital systems). The act of building and managing the railway provides a tangible, rewarding feedback loop for learning, transforming the 'shame of asking' into the 'satisfaction of mastering.' It reframes learning a new system not as a sign of obsolescence, but as the next logical step in applying a lifetime of competence to a new, complex problem, allowing the player to feel capable and essential."
+    },
+    "candidates": [
+     {
+      "name": "Constructive Sim",
+      "honour": "The quiet satisfaction of bringing order to a small world and watching it thrive through patient, thoughtful action.",
+      "traps": "Punishing efficiency metrics, stressful timers, or resource scarcity that creates anxiety instead of gentle challenge.",
+      "why": "It translates a lifetime of experience in managing complex projects (careers, homes, families) into a gentle, rewarding digital loop."
+     },
+     {
+      "name": "Reflective Mystery",
+      "honour": "The pleasure of solving puzzles through careful observation, deduction, and applying life wisdom, not reflexes.",
+      "traps": "Illogical puzzle solutions, red herrings that feel cheap, or a hint system that feels patronizing or gives away the answer too easily.",
+      "why": "It values wisdom over speed, rewarding the player's ability to see patterns and understand human nature to unravel a compelling story."
+     },
+     {
+      "name": "Connective Story Game",
+      "honour": "The deep reward of nurturing a community by listening, connecting characters, and guiding relationships toward poignant, meaningful outcomes.",
+      "traps": "One-dimensional characters, meaningless dialogue choices, or social dynamics that create anxiety rather than gentle engagement.",
+      "why": "It centers the gameplay on emotional intelligence and empathy—skills deepened by life experience—making the player a respected community elder."
+     }
+    ]
+   },
+   "culture": {
+    "pick": {
+     "name": "Western (quiet self-reliance)",
+     "valorises": "independence + earned competence — the Western dignity of doing it yourself, standing on your own; achievement felt as QUIET pride (a job well-learned), not loud fanfare",
+     "expression": "direct, plain-spoken, warmly encouraging; the individual's mastery respected; autonomy honoured ('you've got this', never patronising); pride shown in a soft chime, not a parade",
+     "nudge": "toward self-reliance + earned independence + plain warm encouragement — the dignity of standing on your own, at your own pace",
+     "pick_why": "LOCKED by the owner (Western) — not re-auditioned"
+    },
+    "candidates": null,
+    "locked": true
+   },
+   "audienceMeta": {
+    "key": "tech-surpassed",
+    "label": "Surpassed by technology",
+    "target": [
+     "surpassed",
+     "isolated",
+     "anxious_learner",
+     "late_bloomer"
+    ],
+    "control": "tech_native",
+    "labels": {
+     "surpassed": "surpassed",
+     "isolated": "isolated",
+     "anxious_learner": "anxious learner",
+     "late_bloomer": "late bloomer",
+     "tech_native": "tech native · control"
+    }
+   },
+   "reads": {
+    "surpassed": [
+     {
+      "index": 1,
+      "relate": 4,
+      "feelsSafe": 5,
+      "wouldPlay": true,
+      "why": "It positions my knowledge as invaluable from the very beginning, making the new technology feel like a supportive tool rather than a test of my worth.",
+      "feeling": "Respected and essential"
+     },
+     {
+      "index": 2,
+      "relate": 5,
+      "feelsSafe": 4,
+      "wouldPlay": true,
+      "why": "This speaks directly to a lifetime of hands-on skill and honors that legacy by making the new digital work a practical way to keep the past alive.",
+      "feeling": "Purposeful and grounded"
+     },
+     {
+      "index": 3,
+      "relate": 3,
+      "feelsSafe": 3,
+      "wouldPlay": true,
+      "why": "While I appreciate that my story is seen as valuable, the technical skills of broadcasting and promotion feel like a whole new, intimidating profession.",
+      "feeling": "Intrigued but hesitant"
+     }
+    ],
+    "isolated": [
+     {
+      "index": 1,
+      "relate": 4,
+      "feelsSafe": 5,
+      "wouldPlay": true,
+      "why": "Being treated as an invaluable expert from the start gives me the dignity and confidence I need to tackle learning new systems.",
+      "feeling": "Valued and capable"
+     },
+     {
+      "index": 2,
+      "relate": 5,
+      "feelsSafe": 4,
+      "wouldPlay": true,
+      "why": "This connects directly to a hands-on world I understand, making the new technology feel like a practical tool rather than an obstacle.",
+      "feeling": "Grounded and purposeful"
+     },
+     {
+      "index": 3,
+      "relate": 2,
+      "feelsSafe": 2,
+      "wouldPlay": false,
+      "why": "The pressure of performing for a public audience feels too exposing when I'm just trying to quietly reconnect with my own family.",
+      "feeling": "Anxious and exposed"
+     }
+    ],
+    "anxious_learner": [
+     {
+      "index": 1,
+      "relate": 4,
+      "feelsSafe": 4,
+      "wouldPlay": true,
+      "why": "I feel respected as an expert whose wisdom is needed, which makes me feel safe enough to try learning the new digital tools.",
+      "feeling": "Valued and capable"
+     },
+     {
+      "index": 2,
+      "relate": 5,
+      "feelsSafe": 3,
+      "wouldPlay": false,
+      "why": "While I relate to the theme of old mechanics, the pressure of a live railway with dispatch and ticketing makes me too afraid of making a mistake with the new technology.",
+      "feeling": "Anxious pressure"
+     },
+     {
+      "index": 3,
+      "relate": 5,
+      "feelsSafe": 5,
+      "wouldPlay": true,
+      "why": "The setting feels incredibly welcoming and safe, valuing my life story above all else, which gives me the confidence to learn the technical parts.",
+      "feeling": "Welcomed and heard"
+     }
+    ],
+    "late_bloomer": [
+     {
+      "index": 1,
+      "relate": 4,
+      "feelsSafe": 5,
+      "wouldPlay": true,
+      "why": "It positions me as a respected expert from the start, making technology a new tool to apply my existing mastery rather than a deficit to be corrected.",
+      "feeling": "Respected and capable"
+     },
+     {
+      "index": 2,
+      "relate": 5,
+      "feelsSafe": 4,
+      "wouldPlay": true,
+      "why": "The volunteer setting centered on a shared passion creates a warm, peer-based environment to bridge the gap between my mechanical expertise and the new digital tools.",
+      "feeling": "Purposeful and valued"
+     },
+     {
+      "index": 3,
+      "relate": 5,
+      "feelsSafe": 5,
+      "wouldPlay": true,
+      "why": "It centers the inherent value of my life experience itself, making the technology simply a megaphone for a story they already want to hear.",
+      "feeling": "Seen and heard"
+     }
+    ],
+    "tech_native": [
+     {
+      "index": 1,
+      "relate": 1,
+      "feelsSafe": 2,
+      "wouldPlay": false,
+      "why": "The central conflict of learning new digital tools isn't a challenge for me, and the 'lifetime of knowledge' role feels unrelatable.",
+      "feeling": "Not my problem"
+     },
+     {
+      "index": 2,
+      "relate": 1,
+      "feelsSafe": 2,
+      "wouldPlay": false,
+      "why": "I find the idea of learning a modern ticketing system to be a trivial task, not the basis for a compelling game.",
+      "feeling": "Condescendingly simple"
+     },
+     {
+      "index": 3,
+      "relate": 2,
+      "feelsSafe": 3,
+      "wouldPlay": false,
+      "why": "This is the most interesting activity, but it's still framed around a learning curve that I don't have, which removes the core challenge.",
+      "feeling": "Aimed at someone else"
+     }
+    ]
+   },
+   "legReads": {
+    "story_spawn": [
+     {
+      "index": 1,
+      "canBuild": "load-bearing",
+      "explanation": "This setting frames the learner's existing wisdom as invaluable and essential, making the challenge of learning new digital tools a dignified hurdle to sharing that expertise. It's a story of adaptation and continued contribution, not obsolescence.",
+      "opens": "Mentorship, ecological discovery, and bridging generational knowledge gaps.",
+      "forecloses": "Being irrelevant or left behind by technology.",
+      "seed": "Digital lens on a lifetime's learning."
+     },
+     {
+      "index": 2,
+      "canBuild": "load-bearing",
+      "explanation": "This setting beautifully contrasts tangible, historical expertise with the intangible digital world needed to make it accessible. The learner is not a student but a vital steward of history, whose new skills directly serve a passionate purpose.",
+      "opens": "Community, preservation, and connecting past and future.",
+      "forecloses": "Meaningless digital busywork or forced obsolescence.",
+      "seed": "Old iron, new signals."
+     },
+     {
+      "index": 3,
+      "canBuild": "load-bearing",
+      "explanation": "This setting places the highest possible value on the learner's intrinsic worth—their own life story. The technology is purely a microphone to amplify a voice that the world is explicitly invited to hear, making the learning process empowering.",
+      "opens": "Self-discovery, community connection, and finding a public voice.",
+      "forecloses": "The learner's voice being silenced or deemed unimportant.",
+      "seed": "Your frequency, amplified."
+     }
+    ]
+   }
+  }
  }
 }

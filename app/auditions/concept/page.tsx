@@ -7,7 +7,7 @@ import { SLATE, SLATE_STATUS, INTRO, PRIMERS, CAMPAIGNS, stepDataFor } from "../
 
 export const metadata = { title: "The Slate — every concept (the idea bank)", description: "The master concept ledger: picks + the bank, status-tagged, so future concepts never duplicate a taken setting." };
 
-const sd = stepDataFor("ferry", "concept")!; // concept resolves to the shared SLATE regardless of campaign
+const sd = stepDataFor("ferry", "concept", { allAudiences: true })!; // the MASTER ledger shows ALL audience groups (badged); a campaign's own concept step shows only its group
 
 export default function SlatePage() {
   return (

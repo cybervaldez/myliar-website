@@ -3,7 +3,7 @@
 // solved this same step — the idea bank), then this step's candidates (⭐ build-value · scorecard ·
 // the audience WHY · the legs' forward notes), then prev/next nav. §8.10/§8.17: no pick — strengths
 // reinforce, gems fix.
-import { type Item, type StepData, type Read, type SourceStudy, TARGET, PLABEL, starStr, reason, avg, spread, legKeys, getLeg, legMean, star } from "./score";
+import { type Item, type StepData, type Read, type SourceStudy, starStr, reason, avg, spread, legKeys, getLeg, legMean, star, targetOf, labelsOf, controlOf } from "./score";
 import { AuditionPeek } from "./Scrubber";
 
 type Nav = { href: string; label: string } | null;
@@ -71,9 +71,9 @@ export default function StepBoard({ stepLabel, intro, whyPicked, primer, prepend
         </div>
       )}
       {shown.map((it) => {
-        const i = it.idx, sr = spread(data, i, "relate"), ss = spread(data, i, "feelsSafe"), lm = legMean(data, i), thr = get("thrill_seeker", i), repelHeld = !thr?.wouldPlay;
+        const i = it.idx, sr = spread(data, i, "relate"), ss = spread(data, i, "feelsSafe"), lm = legMean(data, i), thr = get(controlOf(data), i), repelHeld = !thr?.wouldPlay;
         const nLB = LEGK.filter((e) => getLeg(data, e, i)?.canBuild === "load-bearing").length;
-        const nGem = (LEGK.length - nLB) + TARGET.filter((p) => (get(p, i)?.feelsSafe ?? 5) < 4 || (get(p, i)?.relate ?? 5) < 3).length + (repelHeld ? 0 : 1);
+        const nGem = (LEGK.length - nLB) + targetOf(data).filter((p) => (get(p, i)?.feelsSafe ?? 5) < 4 || (get(p, i)?.relate ?? 5) < 3).length + (repelHeld ? 0 : 1);
         return (
           <section key={it.key} style={{ border: `2px solid var(--ink-soft)`, background: paper, marginBottom: 16, padding: "14px 16px" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
@@ -95,9 +95,9 @@ export default function StepBoard({ stepLabel, intro, whyPicked, primer, prepend
             <p style={{ fontSize: it.mono ? 11 : 12.5, color: ink, margin: "8px 0", lineHeight: it.mono ? 1.35 : 1.6, whiteSpace: it.mono ? "pre" : "pre-line", fontFamily: it.mono ? "ui-monospace, Menlo, monospace" : undefined, overflowX: it.mono ? "auto" : undefined }}>{it.body}</p>
             <div style={{ borderTop: `1px solid var(--ink-soft)`, paddingTop: 8, fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em", color: margin, fontFamily: "var(--theme-body)" }}>↘ THE AUDIENCE · WHY</div>
             <div style={{ marginTop: 5, display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: "7px 14px" }}>
-              {TARGET.map((p) => { const r = get(p, i); if (!r) return null; return (
+              {targetOf(data).map((p) => { const r = get(p, i); if (!r) return null; return (
                 <div key={p} style={{ fontSize: 11, color: soft, lineHeight: 1.45, borderLeft: `2px solid var(--ink-soft)`, paddingLeft: 8 }}>
-                  <div><b style={{ color: margin }}>{PLABEL[p]}</b> <span style={{ color: ink, fontWeight: 700 }}>r{r.relate}/s{r.feelsSafe}</span></div>
+                  <div><b style={{ color: margin }}>{labelsOf(data)[p] ?? p}</b> <span style={{ color: ink, fontWeight: 700 }}>r{r.relate}/s{r.feelsSafe}</span></div>
                   <div style={{ color: ink }}>{reason(r as Read)}</div>
                 </div> ); })}
             </div>

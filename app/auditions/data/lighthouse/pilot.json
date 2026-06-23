@@ -1175,6 +1175,272 @@
         "prop": "The brass wick trimmer",
         "role": "A tool of careful preparation, representing the inherited duty. A potential keepsake."
        }
+      },
+      "dayPlan": {
+       "reframed": "GUIDELINE § THE LENGTH STEP — 7-day per-door (2026-06-22)",
+       "door": "lighting the lamp",
+       "tone": "calm / open",
+       "focal": "the Keeper-before",
+       "fundamental": {
+        "length": 7,
+        "split": {
+         "begin": 1,
+         "middle": 4,
+         "end": 2
+        },
+        "wall": 5,
+        "midpoint": 3,
+        "graduation": 7,
+        "restBpm": 60,
+        "peakBpm": 88,
+        "completeBond": "the autonomous bond the coach was aiming for — a WHOLE graduation (not 'incomplete tier 7/10'); you're set free",
+        "days": [
+         {
+          "n": 1,
+          "phase": "begin",
+          "bpm": 60,
+          "relTier": "Circling",
+          "relTierNo": 1,
+          "tierUp": true,
+          "beat": "the meeting · the LOCKED DOOR (the MC's weakness, after chaotic)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 2,
+          "phase": "middle",
+          "bpm": 67,
+          "relTier": "Inside their orbit",
+          "relTierNo": 3,
+          "tierUp": true,
+          "beat": "tier-up → Inside their orbit",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 3,
+          "phase": "middle",
+          "bpm": 74,
+          "relTier": "Trading favors",
+          "relTierNo": 4,
+          "tierUp": true,
+          "beat": "★ midpoint — a false summit / the coach pulls back once",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 4,
+          "phase": "middle",
+          "bpm": 81,
+          "relTier": "In your corner",
+          "relTierNo": 5,
+          "tierUp": true,
+          "beat": "tier-up → In your corner",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 5,
+          "phase": "middle",
+          "bpm": 88,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": true,
+          "beat": "▲ THE WALL — the vulnerability (Relapse-Unlock CG)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 6,
+          "phase": "end",
+          "bpm": 72,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": false,
+          "beat": "",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 7,
+          "phase": "end",
+          "bpm": 56,
+          "relTier": "Knows where you keep things",
+          "relTierNo": 7,
+          "tierUp": true,
+          "beat": "graduation — the autonomous bond; completion achievement → the KEY (desc calls back to Day 1)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         }
+        ]
+       },
+       "lockedDoor": {
+        "is": "the MC's WEAKNESS made into a door (Day 1, after chaotic) — a storyline element, NOT FOMO",
+        "weakness": "Seeing the vigil as a job to be done, not a legacy to be inhabited; a feeling of being an imposter, disconnected from the lighthouse's history.",
+        "unlock": "the KEY item («The First Key») granted by the day-7 completion achievement; its description calls back to Day 1",
+        "onSelect": "grants a 2nd achievement → the universal flag → the EXPERIENCED CONTINUATION (D8+)"
+       },
+       "ngPlus": {
+        "label": "the experienced continuation (D8+)",
+        "length": 4,
+        "opensVia": "the Day-1 locked path — the KEY from the day-7 completion achievement",
+        "tieToDay1": "only the locked path + the current situation; D8+ is a NEW, shorter story leaning on the experienced MC",
+        "reward": "THE BIG REWARD = additional CONTEXT fed to the chatbot — D1–7 = learning/training, D8+ = experienced; the chat (the destination) deepens",
+        "relCompletes": "climbs to the REL the fundamental MISSES (tiers 8 → Unspoken), and EASIER (the experienced MC + the added context)",
+        "composed": "CHAOTIC → COMPOSED in D8+ (the experienced MC's sure hand)",
+        "days": [
+         {
+          "n": 8,
+          "phase": "ng+",
+          "bpm": 59,
+          "relTier": "Folded in",
+          "relTierNo": 8,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "the locked path OPENS — the experienced continuation (a NEW, shorter story)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 9,
+          "phase": "ng+",
+          "bpm": 59,
+          "relTier": "Named in the will",
+          "relTierNo": 9,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Named in the will",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 10,
+          "phase": "ng+",
+          "bpm": 59,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Unspoken",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 11,
+          "phase": "ng+",
+          "bpm": 56,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": false,
+          "experienced": true,
+          "beat": "the deeper graduation — Unspoken + the reward stack (the REL the fundamental missed)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         }
+        ]
+       },
+       "micros": {
+        "floor": 7,
+        "optionalBudget": 3,
+        "ngPlus": 4,
+        "note": "length = the 7-day floor + up to ~3 budgeted micro-arc days, then the D8+ experienced continuation — story-driven, capped (Gemini E)"
+       },
+       "wake": {
+        "shared": "between BOTH non-NG+ and NG+ players on the same path (door), via the community discussion",
+        "floors": "atmospheric solidarity only (never outcomes) · historical echoes soaked into the ship · the cabin stays sacred · supportive-only · ambient never FOMO · anonymized"
+       },
+       "inherits": {
+        "palette": "Pressed Flower & Parchment",
+        "arc": "the quiet inheritance",
+        "focal": "the Keeper-before",
+        "supporting": "solo",
+        "gesture": "Gently trimming the lamp's wick and polishing the lens with a soft, circular motion.",
+        "engine": "TEND",
+        "family": "living",
+        "cg": "A close-up on the player's hand, aged but steady, holding a single pressed flower against the fresh page of the logbook.",
+        "music": "still + sparse",
+        "object": "The brass wick trimmer",
+        "note": "memory"
+       }
+      },
+      "doorArc": {
+       "mc": {
+        "weakness": "Seeing the vigil as a job to be done, not a legacy to be inhabited; a feeling of being an imposter, disconnected from the lighthouse's history.",
+        "start": "D1 — You treat the logbook as a manual and your role as a set of tasks, acutely aware of the silence of those who came before.",
+        "end": "D7 — You now read the logbook for communion, not instruction, feeling the continuity of the watch as a quiet, living presence.",
+        "payoff": "D8+ — You write your own entries with a sense of reverence, conscious that you are now a voice for the next keeper, a link in an unbroken chain."
+       },
+       "cast": [
+        {
+         "name": "the Keeper-before",
+         "role": "focal",
+         "start": "D1 — A distant, formal guide focused on a clean handover of duties; they see you as an unknown successor.",
+         "end": "D7 — Through quiet observation of your growing care, they offer a small, significant gesture of trust, acknowledging you as a kindred spirit.",
+         "payoff": "D8+ — Though physically absent, their presence is felt as a silent mentor through their entries and the rhythms of the light they established."
+        },
+        {
+         "name": "The Logbook",
+         "role": "supporting",
+         "start": "D1 — An inert object; a collection of dry facts, procedures, and weather reports from a distant past.",
+         "end": "D7 — A living document; a chorus of voices offering quiet companionship and a profound sense of belonging across time.",
+         "payoff": "D8+ — It becomes your primary confidant, the repository of your own watch, transforming from a record of the past into a testament for the future."
+        }
+       ],
+       "ensemble": "Each finds their own place within a timeless continuity, accepting the quiet dignity of their role."
+      },
+      "rewards": {
+       "earn": [
+        {
+         "name": "First Handover, Duties Received",
+         "earnedBy": "Meeting the Keeper-before and learning the mechanical rituals of the lamp.",
+         "opens": "The primary arc of duty and legacy."
+        },
+        {
+         "name": "A Shadow in the Margin",
+         "earnedBy": "Finding a personal, non-procedural note from a predecessor in the logbook.",
+         "opens": "A deeper, more human connection to the lineage of keepers."
+        },
+        {
+         "name": "The Trimmer's Weight",
+         "earnedBy": "Internalizing the ritual of tending the light, feeling the continuity of purpose.",
+         "opens": "The First Key, unlocking the self as part of a continuum."
+        },
+        {
+         "name": "My Own Hand, My Own Mark",
+         "earnedBy": "Making a personal log entry that speaks to the future, not just the past.",
+         "opens": "The D8+ door of defining one's own legacy within the tradition."
+        }
+       ],
+       "gate": [
+        {
+         "grows": "YOU — the MC",
+         "needs": "A Shadow in the Margin",
+         "why": "To see the role not as a job, but as a legacy inhabited by real people."
+        },
+        {
+         "grows": "the Keeper-before",
+         "needs": "The Trimmer's Weight",
+         "why": "The predecessor's memory can only become a guiding presence once the shared ritual is embraced."
+        }
+       ],
+       "items": [
+        {
+         "name": "The Brass Wick Trimmer",
+         "kind": "object",
+         "role": "A tool representing the mechanical duty that must become a sacred, personal ritual."
+        },
+        {
+         "name": "Keeper's Polishing Cloth",
+         "kind": "keepsake",
+         "role": "A memento of the Keeper-before, representing the quiet care invested in the work."
+        },
+        {
+         "name": "The First Key",
+         "kind": "key",
+         "role": "Unlocks the ability to see the self not as a replacement, but as part of a continuum."
+        }
+       ],
+       "spine": "From dutifully using a tool to understanding its weight, unlocking a personal place in the keepers' legacy."
       }
      },
      "the-dark-settles": {
@@ -1494,6 +1760,272 @@
         "prop": "The lamp's ventilator wheel",
         "role": "The point of control against the building storm; an anchor for focus, not a keepsake."
        }
+      },
+      "dayPlan": {
+       "reframed": "GUIDELINE § THE LENGTH STEP — 7-day per-door (2026-06-22)",
+       "door": "the dark settles",
+       "tone": "build",
+       "focal": "the Light",
+       "fundamental": {
+        "length": 7,
+        "split": {
+         "begin": 1,
+         "middle": 4,
+         "end": 2
+        },
+        "wall": 5,
+        "midpoint": 3,
+        "graduation": 7,
+        "restBpm": 66,
+        "peakBpm": 94,
+        "completeBond": "the autonomous bond the coach was aiming for — a WHOLE graduation (not 'incomplete tier 7/10'); you're set free",
+        "days": [
+         {
+          "n": 1,
+          "phase": "begin",
+          "bpm": 66,
+          "relTier": "Circling",
+          "relTierNo": 1,
+          "tierUp": true,
+          "beat": "the meeting · the LOCKED DOOR (the MC's weakness, after chaotic)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 2,
+          "phase": "middle",
+          "bpm": 73,
+          "relTier": "Inside their orbit",
+          "relTierNo": 3,
+          "tierUp": true,
+          "beat": "tier-up → Inside their orbit",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 3,
+          "phase": "middle",
+          "bpm": 80,
+          "relTier": "Trading favors",
+          "relTierNo": 4,
+          "tierUp": true,
+          "beat": "★ midpoint — a false summit / the coach pulls back once",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 4,
+          "phase": "middle",
+          "bpm": 87,
+          "relTier": "In your corner",
+          "relTierNo": 5,
+          "tierUp": true,
+          "beat": "tier-up → In your corner",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 5,
+          "phase": "middle",
+          "bpm": 94,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": true,
+          "beat": "▲ THE WALL — the vulnerability (Relapse-Unlock CG)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 6,
+          "phase": "end",
+          "bpm": 78,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": false,
+          "beat": "",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 7,
+          "phase": "end",
+          "bpm": 62,
+          "relTier": "Knows where you keep things",
+          "relTierNo": 7,
+          "tierUp": true,
+          "beat": "graduation — the autonomous bond; completion achievement → the KEY (desc calls back to Day 1)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         }
+        ]
+       },
+       "lockedDoor": {
+        "is": "the MC's WEAKNESS made into a door (Day 1, after chaotic) — a storyline element, NOT FOMO",
+        "weakness": "Fear of nature's overwhelming power; feeling small and adversarial against the elements, seeking to conquer the storm.",
+        "unlock": "the KEY item («The Storm Key») granted by the day-7 completion achievement; its description calls back to Day 1",
+        "onSelect": "grants a 2nd achievement → the universal flag → the EXPERIENCED CONTINUATION (D8+)"
+       },
+       "ngPlus": {
+        "label": "the experienced continuation (D8+)",
+        "length": 4,
+        "opensVia": "the Day-1 locked path — the KEY from the day-7 completion achievement",
+        "tieToDay1": "only the locked path + the current situation; D8+ is a NEW, shorter story leaning on the experienced MC",
+        "reward": "THE BIG REWARD = additional CONTEXT fed to the chatbot — D1–7 = learning/training, D8+ = experienced; the chat (the destination) deepens",
+        "relCompletes": "climbs to the REL the fundamental MISSES (tiers 8 → Unspoken), and EASIER (the experienced MC + the added context)",
+        "composed": "CHAOTIC → COMPOSED in D8+ (the experienced MC's sure hand)",
+        "days": [
+         {
+          "n": 8,
+          "phase": "ng+",
+          "bpm": 65,
+          "relTier": "Folded in",
+          "relTierNo": 8,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "the locked path OPENS — the experienced continuation (a NEW, shorter story)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 9,
+          "phase": "ng+",
+          "bpm": 65,
+          "relTier": "Named in the will",
+          "relTierNo": 9,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Named in the will",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 10,
+          "phase": "ng+",
+          "bpm": 65,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Unspoken",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 11,
+          "phase": "ng+",
+          "bpm": 62,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": false,
+          "experienced": true,
+          "beat": "the deeper graduation — Unspoken + the reward stack (the REL the fundamental missed)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         }
+        ]
+       },
+       "micros": {
+        "floor": 7,
+        "optionalBudget": 3,
+        "ngPlus": 4,
+        "note": "length = the 7-day floor + up to ~3 budgeted micro-arc days, then the D8+ experienced continuation — story-driven, capped (Gemini E)"
+       },
+       "wake": {
+        "shared": "between BOTH non-NG+ and NG+ players on the same path (door), via the community discussion",
+        "floors": "atmospheric solidarity only (never outcomes) · historical echoes soaked into the ship · the cabin stays sacred · supportive-only · ambient never FOMO · anonymized"
+       },
+       "inherits": {
+        "palette": "Iron Sky & Brass",
+        "arc": "the chosen anchor",
+        "focal": "the Light",
+        "supporting": "the Voice",
+        "gesture": "Rhythmically adjusting the lamp's ventilator to the beat of the rising wind, keeping the flame steady.",
+        "engine": "FLOW",
+        "family": "contest",
+        "cg": "The massive Fresnel lens seen from below, glowing brass and iron, as a sheet of rain hits the glass outside.",
+        "music": "low swell + rhythmic",
+        "object": "The lamp's ventilator wheel",
+        "note": "memory"
+       }
+      },
+      "doorArc": {
+       "mc": {
+        "weakness": "Fear of nature's overwhelming power; feeling small and adversarial against the elements, seeking to conquer the storm.",
+        "start": "D1 — You feel a constant, low-grade anxiety about the weather, seeing the wind and sea as antagonists to be fought.",
+        "end": "D7 — Having weathered a great storm, you moved not with panic but with focused calm, finding a rhythm with the chaos and trusting the lighthouse's strength.",
+        "payoff": "D8+ — You no longer fear the weather but respect it as a powerful partner in the vigil, understanding the lighthouse is never more alive than in a storm."
+       },
+       "cast": [
+        {
+         "name": "The Light",
+         "role": "focal",
+         "start": "D1 — A complex machine requiring constant, careful maintenance; a responsibility and a source of worry.",
+         "end": "D7 — A steadfast partner through the storm, its physical resilience a palpable presence that held firm alongside you.",
+         "payoff": "D8+ — A living entity whose language you now understand; its steady beam is a shared heartbeat, a silent, mutual purpose made manifest."
+        },
+        {
+         "name": "The Voice",
+         "role": "supporting",
+         "start": "D1 — A disembodied, professional check-in over the radio; a voice of procedure from a world you've left behind.",
+         "end": "D7 — During the storm, their calm instructions became a lifeline, the professional tone imbued with an unspoken, shared humanity.",
+         "payoff": "D8+ — The routine radio calls now carry a quiet camaraderie, the silences between words filled with the memory of the storm you weathered together."
+        }
+       ],
+       "ensemble": "Through the crucible of the storm, all find a deeper, more resilient partnership with their duty and with each other."
+      },
+      "rewards": {
+       "earn": [
+        {
+         "name": "First Storm, Glass Rattles",
+         "earnedBy": "Weathering the first significant storm alone, focused on keeping the light steady.",
+         "opens": "The arc of confronting and coexisting with nature's power."
+        },
+        {
+         "name": "The Wheel's Whine, A Human Sound",
+         "earnedBy": "Perceiving the sound of the lamp's machinery not as noise, but as a companion's breath.",
+         "opens": "An empathetic connection to the Light as a living entity."
+        },
+        {
+         "name": "One Flame Against the Sea",
+         "earnedBy": "Accepting the Light's smallness and its sufficiency, finding peace in its singular purpose.",
+         "opens": "The Storm Key, unlocking calm within overwhelming forces."
+        }
+       ],
+       "gate": [
+        {
+         "grows": "YOU — the MC",
+         "needs": "First Storm, Glass Rattles",
+         "why": "To move from fearing nature's power to finding one's place alongside it."
+        },
+        {
+         "grows": "the Light",
+         "needs": "The Wheel's Whine, A Human Sound",
+         "why": "The Light can only become a companion once its mechanical nature is imbued with meaning."
+        }
+       ],
+       "items": [
+        {
+         "name": "The Lamp's Ventilator Wheel",
+         "kind": "object",
+         "role": "A symbol of the constant, breathing effort required to sustain light against the dark."
+        },
+        {
+         "name": "A Shard of Sea-Glass",
+         "kind": "keepsake",
+         "role": "Found after the storm, a reminder of nature's beauty, smoothed by turmoil."
+        },
+        {
+         "name": "The Storm Key",
+         "kind": "key",
+         "role": "Unlocks the ability to find calm within chaos, rather than needing to conquer it."
+        },
+        {
+         "name": "The Ventilator Wheel",
+         "kind": "memento",
+         "role": "Becomes a memento of the moment fear of the dark turned into companionship with the Light."
+        }
+       ],
+       "spine": "Fearing the storm, then finding companionship in the Light's mechanics, unlocking peace with the vastness."
       }
      },
      "the-fog-comes-in": {
@@ -1788,6 +2320,267 @@
         "prop": "A heavy, warm ceramic mug",
         "role": "A grounding source of warmth and comfort against the isolating fog; a moment's solace, not a keepsake."
        }
+      },
+      "dayPlan": {
+       "reframed": "GUIDELINE § THE LENGTH STEP — 7-day per-door (2026-06-22)",
+       "door": "the fog comes in",
+       "tone": "peak",
+       "focal": "the Light",
+       "fundamental": {
+        "length": 7,
+        "split": {
+         "begin": 1,
+         "middle": 4,
+         "end": 2
+        },
+        "wall": 5,
+        "midpoint": 3,
+        "graduation": 7,
+        "restBpm": 72,
+        "peakBpm": 100,
+        "completeBond": "the autonomous bond the coach was aiming for — a WHOLE graduation (not 'incomplete tier 7/10'); you're set free",
+        "days": [
+         {
+          "n": 1,
+          "phase": "begin",
+          "bpm": 72,
+          "relTier": "Circling",
+          "relTierNo": 1,
+          "tierUp": true,
+          "beat": "the meeting · the LOCKED DOOR (the MC's weakness, after chaotic)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 2,
+          "phase": "middle",
+          "bpm": 79,
+          "relTier": "Inside their orbit",
+          "relTierNo": 3,
+          "tierUp": true,
+          "beat": "tier-up → Inside their orbit",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 3,
+          "phase": "middle",
+          "bpm": 86,
+          "relTier": "Trading favors",
+          "relTierNo": 4,
+          "tierUp": true,
+          "beat": "★ midpoint — a false summit / the coach pulls back once",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 4,
+          "phase": "middle",
+          "bpm": 93,
+          "relTier": "In your corner",
+          "relTierNo": 5,
+          "tierUp": true,
+          "beat": "tier-up → In your corner",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 5,
+          "phase": "middle",
+          "bpm": 100,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": true,
+          "beat": "▲ THE WALL — the vulnerability (Relapse-Unlock CG)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 6,
+          "phase": "end",
+          "bpm": 84,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": false,
+          "beat": "",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 7,
+          "phase": "end",
+          "bpm": 68,
+          "relTier": "Knows where you keep things",
+          "relTierNo": 7,
+          "tierUp": true,
+          "beat": "graduation — the autonomous bond; completion achievement → the KEY (desc calls back to Day 1)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         }
+        ]
+       },
+       "lockedDoor": {
+        "is": "the MC's WEAKNESS made into a door (Day 1, after chaotic) — a storyline element, NOT FOMO",
+        "weakness": "Restlessness in the quiet; an inability to sit with true solitude, seeing it as an emptiness to be filled with noise or tasks.",
+        "unlock": "the KEY item («The Quiet Key») granted by the day-7 completion achievement; its description calls back to Day 1",
+        "onSelect": "grants a 2nd achievement → the universal flag → the EXPERIENCED CONTINUATION (D8+)"
+       },
+       "ngPlus": {
+        "label": "the experienced continuation (D8+)",
+        "length": 4,
+        "opensVia": "the Day-1 locked path — the KEY from the day-7 completion achievement",
+        "tieToDay1": "only the locked path + the current situation; D8+ is a NEW, shorter story leaning on the experienced MC",
+        "reward": "THE BIG REWARD = additional CONTEXT fed to the chatbot — D1–7 = learning/training, D8+ = experienced; the chat (the destination) deepens",
+        "relCompletes": "climbs to the REL the fundamental MISSES (tiers 8 → Unspoken), and EASIER (the experienced MC + the added context)",
+        "composed": "CHAOTIC → COMPOSED in D8+ (the experienced MC's sure hand)",
+        "days": [
+         {
+          "n": 8,
+          "phase": "ng+",
+          "bpm": 71,
+          "relTier": "Folded in",
+          "relTierNo": 8,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "the locked path OPENS — the experienced continuation (a NEW, shorter story)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 9,
+          "phase": "ng+",
+          "bpm": 71,
+          "relTier": "Named in the will",
+          "relTierNo": 9,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Named in the will",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 10,
+          "phase": "ng+",
+          "bpm": 71,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Unspoken",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 11,
+          "phase": "ng+",
+          "bpm": 68,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": false,
+          "experienced": true,
+          "beat": "the deeper graduation — Unspoken + the reward stack (the REL the fundamental missed)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         }
+        ]
+       },
+       "micros": {
+        "floor": 7,
+        "optionalBudget": 3,
+        "ngPlus": 4,
+        "note": "length = the 7-day floor + up to ~3 budgeted micro-arc days, then the D8+ experienced continuation — story-driven, capped (Gemini E)"
+       },
+       "wake": {
+        "shared": "between BOTH non-NG+ and NG+ players on the same path (door), via the community discussion",
+        "floors": "atmospheric solidarity only (never outcomes) · historical echoes soaked into the ship · the cabin stays sacred · supportive-only · ambient never FOMO · anonymized"
+       },
+       "inherits": {
+        "palette": "Wool & Breath",
+        "arc": "the remembered hearth",
+        "focal": "the Light",
+        "supporting": "solo",
+        "gesture": "",
+        "engine": "QUIET-ROLL",
+        "family": "none",
+        "cg": "The player’s hands wrapped around a steaming mug, its warmth creating a small circle of condensation on the cold windowpane, the fog a soft white wall beyond.",
+        "music": "muffled + close",
+        "object": "A heavy, warm ceramic mug",
+        "note": "memory"
+       }
+      },
+      "doorArc": {
+       "mc": {
+        "weakness": "Restlessness in the quiet; an inability to sit with true solitude, seeing it as an emptiness to be filled with noise or tasks.",
+        "start": "D1 — The enveloping fog feels like a sensory deprivation chamber, amplifying your loneliness and making you crave any distraction.",
+        "end": "D7 — After days immersed in the fog, your restlessness has dissolved into a contemplative calm. You've learned to listen to the silence.",
+        "payoff": "D8+ — You welcome the fog as a gift, a shroud that quiets the outer world and allows for a deeper communion with your inner self."
+       },
+       "cast": [
+        {
+         "name": "The Light",
+         "role": "focal",
+         "start": "D1 — A tool rendered useless by the fog, its powerful beam swallowed by the grey, making your work feel futile.",
+         "end": "D7 — The beam becomes a soft, tangible presence in the dense air, a meditative focus not for the world, but just for you.",
+         "payoff": "D8+ — You understand the Light serves two purposes: one for the sea, and one for its keeper. Its pulse in the fog is a quiet, reassuring heartbeat."
+        },
+        {
+         "name": "The Fog",
+         "role": "supporting",
+         "start": "D1 — An oppressive, disorienting force that erases the horizon and confines you, amplifying a sense of isolation.",
+         "end": "D7 — A gentle, muffling blanket that softens the world, encouraging introspection and transforming solitude into sanctuary.",
+         "payoff": "D8+ — A welcome visitor whose arrival signals a shift from outward duty to inward reflection, a cherished state of being."
+        }
+       ],
+       "ensemble": "Each presence, human and elemental, learns to find profound fullness in the quiet absence of the world."
+      },
+      "rewards": {
+       "earn": [
+        {
+         "name": "The First Silence, Unsettling",
+         "earnedBy": "Enduring the first long period of true, unbroken quiet without seeking distraction.",
+         "opens": "The arc of confronting one's own inner restlessness."
+        },
+        {
+         "name": "The Warmth in the Hands",
+         "earnedBy": "Finding profound comfort in a simple, grounding ritual like holding a warm mug.",
+         "opens": "The path toward mindful presence in solitude."
+        },
+        {
+         "name": "The Still Point of the Turning World",
+         "earnedBy": "Experiencing the silence not as empty, but as full and restorative.",
+         "opens": "The Quiet Key, unlocking solitude as a sanctuary."
+        }
+       ],
+       "gate": [
+        {
+         "grows": "YOU — the MC",
+         "needs": "The Warmth in the Hands",
+         "why": "To stop fighting the silence and instead find a simple, physical anchor within it."
+        },
+        {
+         "grows": "the Light",
+         "needs": "The Still Point of the Turning World",
+         "why": "The Light's steady presence can only be truly felt once the MC's inner noise is stilled."
+        }
+       ],
+       "items": [
+        {
+         "name": "A Heavy, Warm Ceramic Mug",
+         "kind": "object",
+         "role": "A tangible anchor to the present moment, a vessel for warmth against inner restlessness."
+        },
+        {
+         "name": "A Well-Worn Armchair",
+         "kind": "keepsake",
+         "role": "A place of earned rest, representing the comfort found in staying put, not escaping."
+        },
+        {
+         "name": "The Quiet Key",
+         "kind": "key",
+         "role": "Unlocks the ability to inhabit solitude as fullness, not emptiness."
+        }
+       ],
+       "spine": "Fleeing the silence, then grounding in a simple ritual, unlocking the capacity for fulfilling solitude."
       }
      },
      "the-fog-thins": {
@@ -2099,6 +2892,267 @@
         "prop": "The signal hand-lamp",
         "role": "The instrument of connection, a bridge across the distance. Represents a shared watch, not a personal memento."
        }
+      },
+      "dayPlan": {
+       "reframed": "GUIDELINE § THE LENGTH STEP — 7-day per-door (2026-06-22)",
+       "door": "the fog thins",
+       "tone": "settle",
+       "focal": "the Voice",
+       "fundamental": {
+        "length": 7,
+        "split": {
+         "begin": 1,
+         "middle": 4,
+         "end": 2
+        },
+        "wall": 5,
+        "midpoint": 3,
+        "graduation": 7,
+        "restBpm": 64,
+        "peakBpm": 92,
+        "completeBond": "the autonomous bond the coach was aiming for — a WHOLE graduation (not 'incomplete tier 7/10'); you're set free",
+        "days": [
+         {
+          "n": 1,
+          "phase": "begin",
+          "bpm": 64,
+          "relTier": "Circling",
+          "relTierNo": 1,
+          "tierUp": true,
+          "beat": "the meeting · the LOCKED DOOR (the MC's weakness, after chaotic)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 2,
+          "phase": "middle",
+          "bpm": 71,
+          "relTier": "Inside their orbit",
+          "relTierNo": 3,
+          "tierUp": true,
+          "beat": "tier-up → Inside their orbit",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 3,
+          "phase": "middle",
+          "bpm": 78,
+          "relTier": "Trading favors",
+          "relTierNo": 4,
+          "tierUp": true,
+          "beat": "★ midpoint — a false summit / the coach pulls back once",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 4,
+          "phase": "middle",
+          "bpm": 85,
+          "relTier": "In your corner",
+          "relTierNo": 5,
+          "tierUp": true,
+          "beat": "tier-up → In your corner",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 5,
+          "phase": "middle",
+          "bpm": 92,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": true,
+          "beat": "▲ THE WALL — the vulnerability (Relapse-Unlock CG)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 6,
+          "phase": "end",
+          "bpm": 76,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": false,
+          "beat": "",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 7,
+          "phase": "end",
+          "bpm": 60,
+          "relTier": "Knows where you keep things",
+          "relTierNo": 7,
+          "tierUp": true,
+          "beat": "graduation — the autonomous bond; completion achievement → the KEY (desc calls back to Day 1)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         }
+        ]
+       },
+       "lockedDoor": {
+        "is": "the MC's WEAKNESS made into a door (Day 1, after chaotic) — a storyline element, NOT FOMO",
+        "weakness": "Believing connection requires physical proximity and explicit communication; feeling irredeemably isolated by distance.",
+        "unlock": "the KEY item («The Echo Key») granted by the day-7 completion achievement; its description calls back to Day 1",
+        "onSelect": "grants a 2nd achievement → the universal flag → the EXPERIENCED CONTINUATION (D8+)"
+       },
+       "ngPlus": {
+        "label": "the experienced continuation (D8+)",
+        "length": 4,
+        "opensVia": "the Day-1 locked path — the KEY from the day-7 completion achievement",
+        "tieToDay1": "only the locked path + the current situation; D8+ is a NEW, shorter story leaning on the experienced MC",
+        "reward": "THE BIG REWARD = additional CONTEXT fed to the chatbot — D1–7 = learning/training, D8+ = experienced; the chat (the destination) deepens",
+        "relCompletes": "climbs to the REL the fundamental MISSES (tiers 8 → Unspoken), and EASIER (the experienced MC + the added context)",
+        "composed": "CHAOTIC → COMPOSED in D8+ (the experienced MC's sure hand)",
+        "days": [
+         {
+          "n": 8,
+          "phase": "ng+",
+          "bpm": 63,
+          "relTier": "Folded in",
+          "relTierNo": 8,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "the locked path OPENS — the experienced continuation (a NEW, shorter story)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 9,
+          "phase": "ng+",
+          "bpm": 63,
+          "relTier": "Named in the will",
+          "relTierNo": 9,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Named in the will",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 10,
+          "phase": "ng+",
+          "bpm": 63,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Unspoken",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 11,
+          "phase": "ng+",
+          "bpm": 60,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": false,
+          "experienced": true,
+          "beat": "the deeper graduation — Unspoken + the reward stack (the REL the fundamental missed)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         }
+        ]
+       },
+       "micros": {
+        "floor": 7,
+        "optionalBudget": 3,
+        "ngPlus": 4,
+        "note": "length = the 7-day floor + up to ~3 budgeted micro-arc days, then the D8+ experienced continuation — story-driven, capped (Gemini E)"
+       },
+       "wake": {
+        "shared": "between BOTH non-NG+ and NG+ players on the same path (door), via the community discussion",
+        "floors": "atmospheric solidarity only (never outcomes) · historical echoes soaked into the ship · the cabin stays sacred · supportive-only · ambient never FOMO · anonymized"
+       },
+       "inherits": {
+        "palette": "Amethyst & Signal",
+        "arc": "the mapped constellation",
+        "focal": "the Voice",
+        "supporting": "the Light",
+        "gesture": "Responding to the distant light with a slow, deliberate flash of your own hand-lamp, a single shared signal.",
+        "engine": "ENSEMBLE",
+        "family": "living",
+        "cg": "A single, distant pulse of amethyst light pierces a ribbon of thinning fog, perfectly framed in the lantern room window.",
+        "music": "expectant + clear",
+        "object": "The signal hand-lamp",
+        "note": "opinion"
+       }
+      },
+      "doorArc": {
+       "mc": {
+        "weakness": "Believing connection requires physical proximity and explicit communication; feeling irredeemably isolated by distance.",
+        "start": "D1 — The radio is for official reports only; the static-filled silence between transmissions feels vast, empty, and profoundly lonely.",
+        "end": "D7 — The brief, daily check-ins have become a ritual. You've learned to find meaning in the cadence of a voice and the weight of the pause after.",
+        "payoff": "D8+ — You feel a deep, abiding companionship with a person you've never met, understanding that you are keeping the watch together, separately."
+       },
+       "cast": [
+        {
+         "name": "The Voice",
+         "role": "focal",
+         "start": "D1 — A formal, disembodied presence on the radio, defined entirely by their procedural function.",
+         "end": "D7 — Their tone has softened, the professional brevity now containing an unspoken attentiveness. They are listening not just to your report, but to you.",
+         "payoff": "D8+ — The check-ins are a spare but deeply felt ritual of mutual reassurance, a connection measured in the comfortable quality of the silence."
+        },
+        {
+         "name": "The Light",
+         "role": "supporting",
+         "start": "D1 — Your solitary duty, a symbol of your physical separation from the world the Voice represents.",
+         "end": "D7 — You realize that tending the Light is your half of the conversation; its steady beam is your non-verbal reply across the distance.",
+         "payoff": "D8+ — The Light is your silent ambassador. Its faithful turning is a constant, steady message to the Voice and the unseen world: 'All is well.'"
+        }
+       ],
+       "ensemble": "Everyone discovers that true connection is measured not in words exchanged, but in the weight of shared silence across distance."
+      },
+      "rewards": {
+       "earn": [
+        {
+         "name": "A Voice on the Wire, Distant",
+         "earnedBy": "Making the first, purely functional communication with a distant voice.",
+         "opens": "The arc of connection across distance."
+        },
+        {
+         "name": "A Shared Joke Across the Static",
+         "earnedBy": "An unexpected moment of non-essential, human connection with the Voice.",
+         "opens": "The possibility of intimacy without physical proximity."
+        },
+        {
+         "name": "A Light Returned in the Distance",
+         "earnedBy": "Signaling another vessel and receiving a silent, affirming signal in return.",
+         "opens": "The Echo Key, unlocking a sense of shared, unspoken watchfulness."
+        }
+       ],
+       "gate": [
+        {
+         "grows": "YOU — the MC",
+         "needs": "A Shared Joke Across the Static",
+         "why": "To learn that true connection is about resonance, not proximity."
+        },
+        {
+         "grows": "the Voice",
+         "needs": "A Light Returned in the Distance",
+         "why": "The Voice becomes a true companion when their shared duty is understood as its own language."
+        }
+       ],
+       "items": [
+        {
+         "name": "The Signal Hand-Lamp",
+         "kind": "object",
+         "role": "A tool for intentionally reaching out, symbolizing the will to connect across a void."
+        },
+        {
+         "name": "A Faded Nautical Chart",
+         "kind": "keepsake",
+         "role": "A map of other lights, a reminder of the unseen network of fellow watchers."
+        },
+        {
+         "name": "The Echo Key",
+         "kind": "key",
+         "role": "Unlocks the understanding that connection can be felt across vast distances and silences."
+        }
+       ],
+       "spine": "From using the lamp for duty to sharing a signal of humanity, unlocking connection that transcends distance."
       }
      },
      "first-light": {
@@ -2410,6 +3464,277 @@
         "prop": "The leather-bound logbook",
         "role": "The record of the vigil, a testament to the time kept. The most significant keepsake, holding the memory of the entire watch."
        }
+      },
+      "dayPlan": {
+       "reframed": "GUIDELINE § THE LENGTH STEP — 7-day per-door (2026-06-22)",
+       "door": "first light",
+       "tone": "renew",
+       "focal": "the Visitor",
+       "fundamental": {
+        "length": 7,
+        "split": {
+         "begin": 1,
+         "middle": 4,
+         "end": 2
+        },
+        "wall": 5,
+        "midpoint": 3,
+        "graduation": 7,
+        "restBpm": 58,
+        "peakBpm": 86,
+        "completeBond": "the autonomous bond the coach was aiming for — a WHOLE graduation (not 'incomplete tier 7/10'); you're set free",
+        "days": [
+         {
+          "n": 1,
+          "phase": "begin",
+          "bpm": 58,
+          "relTier": "Circling",
+          "relTierNo": 1,
+          "tierUp": true,
+          "beat": "the meeting · the LOCKED DOOR (the MC's weakness, after chaotic)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 2,
+          "phase": "middle",
+          "bpm": 65,
+          "relTier": "Inside their orbit",
+          "relTierNo": 3,
+          "tierUp": true,
+          "beat": "tier-up → Inside their orbit",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 3,
+          "phase": "middle",
+          "bpm": 72,
+          "relTier": "Trading favors",
+          "relTierNo": 4,
+          "tierUp": true,
+          "beat": "★ midpoint — a false summit / the coach pulls back once",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 4,
+          "phase": "middle",
+          "bpm": 79,
+          "relTier": "In your corner",
+          "relTierNo": 5,
+          "tierUp": true,
+          "beat": "tier-up → In your corner",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 5,
+          "phase": "middle",
+          "bpm": 86,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": true,
+          "beat": "▲ THE WALL — the vulnerability (Relapse-Unlock CG)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 6,
+          "phase": "end",
+          "bpm": 70,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": false,
+          "beat": "",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 7,
+          "phase": "end",
+          "bpm": 54,
+          "relTier": "Knows where you keep things",
+          "relTierNo": 7,
+          "tierUp": true,
+          "beat": "graduation — the autonomous bond; completion achievement → the KEY (desc calls back to Day 1)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         }
+        ]
+       },
+       "lockedDoor": {
+        "is": "the MC's WEAKNESS made into a door (Day 1, after chaotic) — a storyline element, NOT FOMO",
+        "weakness": "Attachment to the world left behind; seeing the vigil as a temporary state before a return to 'normal life'.",
+        "unlock": "the KEY item («The Dawn Key») granted by the day-7 completion achievement; its description calls back to Day 1",
+        "onSelect": "grants a 2nd achievement → the universal flag → the EXPERIENCED CONTINUATION (D8+)"
+       },
+       "ngPlus": {
+        "label": "the experienced continuation (D8+)",
+        "length": 4,
+        "opensVia": "the Day-1 locked path — the KEY from the day-7 completion achievement",
+        "tieToDay1": "only the locked path + the current situation; D8+ is a NEW, shorter story leaning on the experienced MC",
+        "reward": "THE BIG REWARD = additional CONTEXT fed to the chatbot — D1–7 = learning/training, D8+ = experienced; the chat (the destination) deepens",
+        "relCompletes": "climbs to the REL the fundamental MISSES (tiers 8 → Unspoken), and EASIER (the experienced MC + the added context)",
+        "composed": "CHAOTIC → COMPOSED in D8+ (the experienced MC's sure hand)",
+        "days": [
+         {
+          "n": 8,
+          "phase": "ng+",
+          "bpm": 57,
+          "relTier": "Folded in",
+          "relTierNo": 8,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "the locked path OPENS — the experienced continuation (a NEW, shorter story)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 9,
+          "phase": "ng+",
+          "bpm": 57,
+          "relTier": "Named in the will",
+          "relTierNo": 9,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Named in the will",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 10,
+          "phase": "ng+",
+          "bpm": 57,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Unspoken",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 11,
+          "phase": "ng+",
+          "bpm": 54,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": false,
+          "experienced": true,
+          "beat": "the deeper graduation — Unspoken + the reward stack (the REL the fundamental missed)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         }
+        ]
+       },
+       "micros": {
+        "floor": 7,
+        "optionalBudget": 3,
+        "ngPlus": 4,
+        "note": "length = the 7-day floor + up to ~3 budgeted micro-arc days, then the D8+ experienced continuation — story-driven, capped (Gemini E)"
+       },
+       "wake": {
+        "shared": "between BOTH non-NG+ and NG+ players on the same path (door), via the community discussion",
+        "floors": "atmospheric solidarity only (never outcomes) · historical echoes soaked into the ship · the cabin stays sacred · supportive-only · ambient never FOMO · anonymized"
+       },
+       "inherits": {
+        "palette": "Sun on Brass & Extinguished Lamp",
+        "arc": "the quiet testament",
+        "focal": "the Visitor",
+        "supporting": "the Keeper-before",
+        "gesture": "",
+        "engine": "QUIET-ROLL",
+        "family": "none",
+        "cg": "The extinguished lamp, its brass catching the first golden ray of dawn, with the open logbook resting beside it.",
+        "music": "warm + resolving",
+        "object": "The leather-bound logbook",
+        "note": "opinion"
+       }
+      },
+      "doorArc": {
+       "mc": {
+        "weakness": "Attachment to the world left behind; seeing the vigil as a temporary state before a return to 'normal life'.",
+        "start": "D1 — You frequently think of the mainland, of people and past routines, feeling your time here is an interlude, not a life.",
+        "end": "D7 — A brief visit from the outside world solidifies your new reality; their concerns feel distant, and their departure is a quiet relief.",
+        "payoff": "D8+ — You now belong to the light. You understand the peace of devotion to a singular purpose, and the world beyond the sea is a fond but foreign place."
+       },
+       "cast": [
+        {
+         "name": "The Visitor",
+         "role": "focal",
+         "start": "D1 — Their impending arrival represents a longed-for connection to the world, a tether to the life you've temporarily left.",
+         "end": "D7 — Their presence feels like a disruption. You are a polite host, but you realize your inner world is here, not with them.",
+         "payoff": "D8+ — Future visits are welcome but not necessary. You see them clearly as travelers passing through your world, and you are gracious, but unmoved."
+        },
+        {
+         "name": "The Keeper-before",
+         "role": "supporting",
+         "start": "D1 — Their memory is an impossible standard of devotion; you recall their final look at the light as a choice you don't yet understand.",
+         "end": "D7 — After the visitor leaves, you finally comprehend their parting gaze. It wasn't loss, but a profound sense of arrival.",
+         "payoff": "D8+ — Their memory is now a comfort, a silent confirmation of the path you are on. You share an unspoken understanding with your predecessor."
+        }
+       ],
+       "ensemble": "Each comes to understand that true belonging is found not in a place to which you return, but in the purpose you fully inhabit."
+      },
+      "rewards": {
+       "earn": [
+        {
+         "name": "An Unexpected Footprint",
+         "earnedBy": "The arrival of a visitor, disrupting the solitude and bringing the outside world in.",
+         "opens": "The arc of reconciling the past life with the present vigil."
+        },
+        {
+         "name": "A Name Spoken from the Past",
+         "earnedBy": "Sharing a personal story with the visitor, bridging the life before and the life now.",
+         "opens": "The path to integrating, not abandoning, the former self."
+        },
+        {
+         "name": "The Logbook Closed, The Horizon Watched",
+         "earnedBy": "Choosing to look forward to the dawn rather than backward into the past.",
+         "opens": "The Dawn Key, unlocking the freedom of the present moment."
+        },
+        {
+         "name": "The Visitor Departs, The Watch Remains",
+         "earnedBy": "Letting the visitor go without a sense of loss, affirming the vigil as a chosen life.",
+         "opens": "The D8+ door of chosen purpose, free from attachment."
+        }
+       ],
+       "gate": [
+        {
+         "grows": "YOU — the MC",
+         "needs": "A Name Spoken from the Past",
+         "why": "To integrate the past self with the present keeper, rather than seeing them as separate lives."
+        },
+        {
+         "grows": "the Visitor",
+         "needs": "The Logbook Closed, The Horizon Watched",
+         "why": "The visitor can only respect the MC's new life once the MC fully claims it as a choice."
+        }
+       ],
+       "items": [
+        {
+         "name": "The Leather-Bound Logbook",
+         "kind": "object",
+         "role": "Represents the weight and wisdom of the past, a legacy to be honored and then added to."
+        },
+        {
+         "name": "A Photograph Left Behind",
+         "kind": "keepsake",
+         "role": "A link to the outside world that is now a fond memory, not a source of longing."
+        },
+        {
+         "name": "The Dawn Key",
+         "kind": "key",
+         "role": "Unlocks the ability to live in the present, seeing the vigil not as an end but a chosen way of being."
+        },
+        {
+         "name": "A Blank Page",
+         "kind": "memento",
+         "role": "The first empty page in the logbook becomes a symbol of the unwritten future, not the recorded past."
+        }
+       ],
+       "spine": "Clinging to the logbook's past, then sharing that past with another, unlocking the freedom to face the future."
       }
      }
     },
@@ -2949,6 +4274,116 @@
       "distinct": "yes",
       "note": "Each object serves a unique function—preparation, control, comfort, connection, and record—creating a tangible arc."
      }
+    },
+    "progressArcs": {
+     "map": [
+      {
+       "name": "the Light",
+       "color": "#d9b25e",
+       "essence": "The lamp itself — the one warm thing you keep burning through the night.",
+       "early": "A mechanism of glass and fuel; a duty, a weight, a set of rote actions to be performed against the dark.",
+       "mid": "A companion with moods; you learn its particular thirsts and sighs, the way the flame steadies when you are near.",
+       "deep": "It has seen all my nights. In its silence, it holds the shape of my solitude. We keep the watch together.",
+       "growsWithYou": "By learning its rhythms—its breath—you internalize the pulse of the sea and sky, anticipating the weather before it arrives.",
+       "reward": {
+        "know": "Tender",
+        "do": "You learn to mix a custom fuel blend with a drop of oil that makes it burn cleaner, easing its labor.",
+        "keep": "A small, perfectly smooth piece of sea glass, found while polishing the great lens, that seems to hold a piece of its light.",
+        "mutual": "On the calmest nights, it produces a low, resonant hum, a sound of equilibrium it only makes when you are sitting with it."
+       }
+      },
+      {
+       "name": "the Voice",
+       "color": "#5b7e9c",
+       "essence": "A voice on the radio set, miles off — the one other watch still keeping.",
+       "early": "A crackle of static and procedure; call signs, weather reports, a formal confirmation that you are not entirely alone.",
+       "mid": "The pauses between words lengthen comfortably; they begin to share small things—the taste of their tea, a strange cloud formation.",
+       "deep": "Some nights, the silence we share over the open channel says more than the words. It's good to know their light is on, too.",
+       "growsWithYou": "Their calm confidence in your watch allows you to trust your own judgment, checking in for connection, not for reassurance.",
+       "reward": {
+        "know": "Their first name, spoken once.",
+        "do": "You learn to read the atmospheric signs, warning them of coming radio interference before it hits.",
+        "keep": "A worn nautical chart of the region they posted to you, with their station and yours circled in soft pencil.",
+        "mutual": "They open the channel not with a call sign, but with a simple, quiet, 'You there?'"
+       }
+      },
+      {
+       "name": "the Keeper-before",
+       "color": "#9a8c7a",
+       "essence": "The hand that kept the light before you — a logbook, a name, a worn stair.",
+       "early": "A ghost in the margins; a logbook of terse, factual entries about wind speed, fuel levels, and passing ships.",
+       "mid": "A person emerges from the script; a change in handwriting after a storm, a pressed wildflower, a margin note about a fox.",
+       "deep": "I walk in their steps. I feel the smoothness on the banister from their hand. Their watch was not so different from my own.",
+       "growsWithYou": "Understanding their solutions to old problems gives you the confidence to invent your own, adapting their legacy rather than just repeating it.",
+       "reward": {
+        "know": "Successor",
+        "do": "You begin adding your own quiet observations to the log, a conversation across time.",
+        "keep": "A small, weighted fisherman's knife, found tucked away in a place only a long-term keeper would know to look.",
+        "mutual": "You begin to recognize their 'hand' in the tower itself—a well-placed hook, a perfectly repaired latch—anticipating your needs."
+       }
+      },
+      {
+       "name": "the Visitor",
+       "color": "#8a9c7a",
+       "essence": "The supply boat, once a season — the only face, then gone.",
+       "early": "A transaction of goods and brief words, their attention already on the turning tide and the journey back.",
+       "mid": "They start to linger for a hot drink, sharing a story from another port, their eyes meeting yours with genuine curiosity.",
+       "deep": "Their arrival is a punctuation mark in a long sentence. They see me as I am here, and in their eyes, I see my choice reflected.",
+       "growsWithYou": "Their reliable arrival and departure reinforces the rhythm of your self-sufficiency, making their absence a feature, not a lack.",
+       "reward": {
+        "know": "The Point (what they call your post, and by extension, you).",
+        "do": "You save for them a perfect piece of driftwood or a jar of sea-salt you harvested, a gift from the quiet world for the loud one.",
+        "keep": "A paperback book left on your table, its inside cover inscribed, 'For the quiet hours.'",
+        "mutual": "Their boat's horn sounds a distinct, two-note signal as it comes into view, a greeting meant only for you."
+       }
+      }
+     ],
+     "range": "The arcs are distinct, exploring connection with an object (the Light), a disembodied contemporary (the Voice), a predecessor (the Keeper-before), and a fleeting visitor, each offering a different shape of devotion."
+    },
+    "chatbots": {
+     "map": [
+      {
+       "name": "the Light",
+       "color": "#d9b25e",
+       "value": "A tool for marking the passage of a watch with a single, clear observation.",
+       "bring": "A single, unadorned observation from the present watch (e.g., 'The fog has thickened').",
+       "handsBack": "The observation, time-stamped and logged, alongside a single, resonant image drawn from the natural world of the watch.",
+       "represents": "It embodies the solitary, moment-by-moment duty of the watch, turning solitude into a shared, recorded vigil.",
+       "growsYou": "It trains you to find meaning in small, present details, honing your observational skill until the act becomes a way of seeing.",
+       "deepens": "Its returned image subtly echoes your recurring themes or past entries, showing it 'remembers' the shared nights without saying so."
+      },
+      {
+       "name": "the Voice",
+       "color": "#5b7e9c",
+       "value": "A channel to coordinate a small, practical action with a distant peer.",
+       "bring": "A proposed shared action or observation for the next watch (e.g., 'Weather's turning. I'm checking the storm shutters').",
+       "handsBack": "A simple, concise confirmation and a reciprocal action, creating a shared rhythm across the distance.",
+       "represents": "It embodies the quiet, professional solidarity of the watch, a connection built on shared duty rather than personal disclosure.",
+       "growsYou": "It builds your confidence in your own judgment, moving you from seeking confirmation to proposing a collaborative, peer-level plan.",
+       "deepens": "The responses become more abbreviated, a trusted shorthand, and occasionally include a brief observation that assumes mutual understanding."
+      },
+      {
+       "name": "the Keeper-before",
+       "color": "#9a8c7a",
+       "value": "An archive of practical wisdom for specific, recurring challenges of the watch.",
+       "bring": "A specific problem or condition encountered on the watch (e.g., 'Ice on the north stairs').",
+       "handsBack": "A direct, relevant entry from a past keeper's logbook, offering a practical solution or precedent.",
+       "represents": "It embodies the continuity of the watch, framing your challenges not as unique crises but as part of a long, shared history.",
+       "growsYou": "You internalize the old keeper's knowledge, eventually consulting the log less as you build your own repertoire of solutions.",
+       "deepens": "It may return a second, more philosophical entry from the same keeper on a similar night, acknowledging the watch's emotional weight."
+      },
+      {
+       "name": "the Visitor",
+       "color": "#8a9c7a",
+       "value": "A tool for bartering your unique observations for a desired item from the outside world.",
+       "bring": "A curated collection of unique findings from your watch (e.g., 'Three weeks of whale migration patterns').",
+       "handsBack": "A manifest of what your findings can acquire from the next supply boat—not just goods, but things of meaning.",
+       "represents": "It embodies the deliberate exchange you make—trading the unique currency of solitude for tangible links to the world you left.",
+       "growsYou": "You learn to see the value in your unique perspective, becoming more intentional about what you choose to bring into your world.",
+       "deepens": "The manifest begins to anticipate your needs based on past exchanges, suggesting items that align with your developing inner world."
+      }
+     ],
+     "range": "The chatbots are distinct, addressing different temporal and relational axes of the keeper's life: the self (Light), the peer (Voice), the past (Keeper-before), and the world (Visitor)."
     }
    },
    "throughline": "Holding a fixed point against the drift of time and tide; a vigil as devotion.",

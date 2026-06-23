@@ -1,7 +1,7 @@
 // /auditions — THE BOARD. Campaign-primary: the master SLATE (the idea bank) on top, then a thread
 // per story (its steps as chips). Two readings from one source: read a row = one story's pipeline;
 // open the slate or a step's cross-story reference = the idea bank across stories. NOT canon.
-import { CAMPAIGNS, STEP_DEFS, SLATE, SLATE_STATUS, campaignKeys, hasStep, stepDataFor, stepNo, isSeed } from "./registry";
+import { CAMPAIGNS, STEP_DEFS, SLATE, SLATE_STATUS, campaignKeys, hasStep, stepDataFor, stepNo, isSeed, audienceKeyFor, AUDIENCE_GROUPS } from "./registry";
 import { star, starStr, topOf } from "./score";
 
 export const metadata = { title: "Auditions — the board", description: "The audition board: the concept slate + a thread per story, experts carried forward." };
@@ -9,6 +9,8 @@ export const metadata = { title: "Auditions — the board", description: "The au
 const ink = "var(--ink)", soft = "var(--ink-soft)", paper = "var(--paper)", shade = "var(--paper-shade)", forest = "var(--forest)", margin = "var(--margin-ink)", red = "var(--spot-red)", amber = "#c08a2e";
 
 const statusCounts = Object.values(SLATE_STATUS).reduce((m: Record<string, number>, s) => ((m[s] = (m[s] ?? 0) + 1), m), {});
+// the campaigns ordered so same-AUDIENCE ones are contiguous (worn-down first, then the rest) → grouped on the board
+const ORDERED = [...campaignKeys()].sort((a, b) => Object.keys(AUDIENCE_GROUPS).indexOf(audienceKeyFor(a)) - Object.keys(AUDIENCE_GROUPS).indexOf(audienceKeyFor(b)));
 
 function chips(campaign: string) {
   const seed = isSeed(campaign);
@@ -62,11 +64,21 @@ export default function Board() {
         <div style={{ fontSize: 11.5, color: soft, marginTop: 3 }}>the master concept ledger — the idea bank every story is born from. open →</div>
       </a>
 
-      <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".1em", color: ink, margin: "0 0 10px" }}>THE STORIES — each row is a pipeline (↓ experts carried forward)</div>
-      {campaignKeys().map((campaign) => {
+      <div style={{ fontFamily: "var(--theme-body)", fontSize: 11, fontWeight: 700, letterSpacing: ".1em", color: ink, margin: "0 0 10px" }}>THE STORIES — grouped by who they're FOR (each row is a pipeline, ↓ experts carried forward)</div>
+      {ORDERED.map((campaign, i, arr) => {
         const c = CAMPAIGNS[campaign];
+        const ak = audienceKeyFor(campaign);
+        const grp = AUDIENCE_GROUPS[ak] ?? AUDIENCE_GROUPS["worn-down"];
+        const firstOfGroup = !arr.slice(0, i).some((k) => audienceKeyFor(k) === ak);
         return (
-          <div key={campaign} style={{ border: `2px solid var(--ink-soft)`, background: paper, padding: "13px 16px", marginBottom: 14 }}>
+          <div key={campaign}>
+            {firstOfGroup && (
+              <div style={{ borderTop: i ? `2px solid ${forest}` : "none", marginTop: i ? 26 : 0, paddingTop: i ? 14 : 0, marginBottom: 12 }}>
+                <div style={{ fontFamily: "var(--theme-display)", fontSize: 24, color: forest, lineHeight: 1.05 }}>{grp.title}</div>
+                <div style={{ fontSize: 11, color: margin, marginTop: 3 }}>{grp.sub}</div>
+              </div>
+            )}
+            <div style={{ border: `2px solid var(--ink-soft)`, background: paper, padding: "13px 16px", marginBottom: 14 }}>
             <a href={`/auditions/${campaign}`} style={{ textDecoration: "none" }}>
               <span style={{ fontFamily: "var(--theme-display)", fontSize: 19, color: ink }}>{c.label}</span>
               <span style={{ fontSize: 11, color: forest, marginLeft: 8 }}>spine →</span>
@@ -86,6 +98,7 @@ export default function Board() {
                 </span>
               ))}
               <span style={{ border: `1.5px dashed var(--ink-soft)`, color: margin, fontSize: 10.5, padding: "3px 8px", fontStyle: "italic" }}>each moment spawns its own story (destination · struggle · cast · motif) — built on demand</span>
+            </div>
             </div>
           </div>
         );

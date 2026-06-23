@@ -1206,6 +1206,282 @@
         "prop": "A single, smooth worry stone, left on the empty table.",
         "role": "A grounding object found in the quiet aftermath. A potential keepsake representing the start of something new."
        }
+      },
+      "dayPlan": {
+       "reframed": "GUIDELINE § THE LENGTH STEP — 7-day per-door (2026-06-22)",
+       "door": "the last bell",
+       "tone": "calm / open",
+       "focal": "The Caretaker",
+       "fundamental": {
+        "length": 7,
+        "split": {
+         "begin": 1,
+         "middle": 4,
+         "end": 2
+        },
+        "wall": 5,
+        "midpoint": 3,
+        "graduation": 7,
+        "restBpm": 60,
+        "peakBpm": 88,
+        "completeBond": "the autonomous bond the coach was aiming for — a WHOLE graduation (not 'incomplete tier 7/10'); you're set free",
+        "days": [
+         {
+          "n": 1,
+          "phase": "begin",
+          "bpm": 60,
+          "relTier": "Circling",
+          "relTierNo": 1,
+          "tierUp": true,
+          "beat": "the meeting · the LOCKED DOOR (the MC's weakness, after chaotic)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 2,
+          "phase": "middle",
+          "bpm": 67,
+          "relTier": "Inside their orbit",
+          "relTierNo": 3,
+          "tierUp": true,
+          "beat": "tier-up → Inside their orbit",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 3,
+          "phase": "middle",
+          "bpm": 74,
+          "relTier": "Trading favors",
+          "relTierNo": 4,
+          "tierUp": true,
+          "beat": "★ midpoint — a false summit / the coach pulls back once",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 4,
+          "phase": "middle",
+          "bpm": 81,
+          "relTier": "In your corner",
+          "relTierNo": 5,
+          "tierUp": true,
+          "beat": "tier-up → In your corner",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 5,
+          "phase": "middle",
+          "bpm": 88,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": true,
+          "beat": "▲ THE WALL — the vulnerability (Relapse-Unlock CG)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 6,
+          "phase": "end",
+          "bpm": 72,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": false,
+          "beat": "",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 7,
+          "phase": "end",
+          "bpm": 56,
+          "relTier": "Knows where you keep things",
+          "relTierNo": 7,
+          "tierUp": true,
+          "beat": "graduation — the autonomous bond; completion achievement → the KEY (desc calls back to Day 1)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         }
+        ]
+       },
+       "lockedDoor": {
+        "is": "the MC's WEAKNESS made into a door (Day 1, after chaotic) — a storyline element, NOT FOMO",
+        "weakness": "The fear of overstaying your welcome; needing explicit permission to take up space.",
+        "unlock": "the KEY item («Polished Silver Key») granted by the day-7 completion achievement; its description calls back to Day 1",
+        "onSelect": "grants a 2nd achievement → the universal flag → the EXPERIENCED CONTINUATION (D8+)"
+       },
+       "ngPlus": {
+        "label": "the experienced continuation (D8+)",
+        "length": 4,
+        "opensVia": "the Day-1 locked path — the KEY from the day-7 completion achievement",
+        "tieToDay1": "only the locked path + the current situation; D8+ is a NEW, shorter story leaning on the experienced MC",
+        "reward": "THE BIG REWARD = additional CONTEXT fed to the chatbot — D1–7 = learning/training, D8+ = experienced; the chat (the destination) deepens",
+        "relCompletes": "climbs to the REL the fundamental MISSES (tiers 8 → Unspoken), and EASIER (the experienced MC + the added context)",
+        "composed": "CHAOTIC → COMPOSED in D8+ (the experienced MC's sure hand)",
+        "days": [
+         {
+          "n": 8,
+          "phase": "ng+",
+          "bpm": 59,
+          "relTier": "Folded in",
+          "relTierNo": 8,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "the locked path OPENS — the experienced continuation (a NEW, shorter story)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 9,
+          "phase": "ng+",
+          "bpm": 59,
+          "relTier": "Named in the will",
+          "relTierNo": 9,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Named in the will",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 10,
+          "phase": "ng+",
+          "bpm": 59,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Unspoken",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 11,
+          "phase": "ng+",
+          "bpm": 56,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": false,
+          "experienced": true,
+          "beat": "the deeper graduation — Unspoken + the reward stack (the REL the fundamental missed)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         }
+        ]
+       },
+       "micros": {
+        "floor": 7,
+        "optionalBudget": 3,
+        "ngPlus": 4,
+        "note": "length = the 7-day floor + up to ~3 budgeted micro-arc days, then the D8+ experienced continuation — story-driven, capped (Gemini E)"
+       },
+       "wake": {
+        "shared": "between BOTH non-NG+ and NG+ players on the same path (door), via the community discussion",
+        "floors": "atmospheric solidarity only (never outcomes) · historical echoes soaked into the ship · the cabin stays sacred · supportive-only · ambient never FOMO · anonymized"
+       },
+       "inherits": {
+        "palette": "Golden Haze",
+        "arc": "the shed skin",
+        "focal": "The Caretaker",
+        "supporting": "Theo",
+        "gesture": "",
+        "engine": "QUIET-ROLL",
+        "family": "none",
+        "cg": "A student, posture finally slackened, asleep in the armchair as the last sunbeam illuminates the floating dust around them.",
+        "music": "Warm + still",
+        "object": "A single, smooth worry stone, left on the empty table.",
+        "note": "memory"
+       }
+      },
+      "doorArc": {
+       "mc": {
+        "weakness": "The fear of overstaying your welcome; needing explicit permission to take up space.",
+        "start": "D1 — You hover by the exit, anxious about being in the way, leaving the moment you feel like an inconvenience.",
+        "end": "D7 — You stay after everyone leaves, finding a quiet corner to decompress, trusting your presence is wanted, not just tolerated.",
+        "payoff": "D8+ — You comfortably inhabit the space, sometimes helping with a small closing-up task without being asked, feeling a sense of shared ownership."
+       },
+       "cast": [
+        {
+         "name": "The Caretaker",
+         "role": "focal",
+         "start": "D1 — Views you with a kind but professional distance, as another student passing through.",
+         "end": "D7 — Recognizes you as a fixture of the room. Their non-verbal welcome is warmer, more familiar.",
+         "payoff": "D8+ — An unspoken bond forms. They see you not just as a student, but as part of the room's quiet life, anticipating your arrival."
+        },
+        {
+         "name": "Theo",
+         "role": "supporting",
+         "start": "D1 — Preoccupied and self-contained, he barely registers your hesitant presence.",
+         "end": "D7 — He now offers you a nod of recognition as he leaves, acknowledging you as part of the regular landscape.",
+         "payoff": "D8+ — He sees you as a stable presence and might initiate a brief, direct conversation, trusting you as part of the inner circle."
+        }
+       ],
+       "ensemble": "Everyone settles into a shared ownership of the quiet moments, understanding that belonging is something you inhabit, not something you're granted."
+      },
+      "rewards": {
+       "earn": [
+        {
+         "name": "First Entry, After Hours",
+         "earnedBy": "Lingering in the space after everyone else has left, accepting the Caretaker's quiet invitation to stay.",
+         "opens": "The path to deeper, one-on-one conversations with the Caretaker and Theo."
+        },
+        {
+         "name": "A Quiet Confidence",
+         "earnedBy": "Sharing a small, personal worry with the Caretaker without being prompted, trusting the space to hold it.",
+         "opens": "A new level of trust with Theo, who begins to share his own vulnerabilities."
+        },
+        {
+         "name": "Last Light, Shared Duty",
+         "earnedBy": "Instinctively staying to help the Caretaker with closing duties, moving from guest to trusted occupant.",
+         "opens": "The 'Polished Silver Key' item, signifying earned belonging."
+        },
+        {
+         "name": "The Welcome Assumed",
+         "earnedBy": "Returning to the space alone, simply to be there, fully confident in your right to belong without an invitation.",
+         "opens": "The final resolution of this arc's weakness."
+        }
+       ],
+       "gate": [
+        {
+         "grows": "YOU — the MC",
+         "needs": "First Entry, After Hours",
+         "why": "To overcome the fear of intrusion and begin to claim a place in the quiet moments."
+        },
+        {
+         "grows": "Theo",
+         "needs": "A Quiet Confidence",
+         "why": "He sees you as someone who understands unspoken weights, allowing him to lower his own guard."
+        },
+        {
+         "grows": "The Caretaker",
+         "needs": "Last Light, Shared Duty",
+         "why": "They recognize you as a steward of the space, not just a visitor, deepening their trust."
+        }
+       ],
+       "items": [
+        {
+         "name": "A single, smooth worry stone",
+         "kind": "object",
+         "role": "A physical anchor for the MC's anxiety about taking up space and time."
+        },
+        {
+         "name": "Polished Silver Key",
+         "kind": "key",
+         "role": "Unlocks the ability to enter the space freely, symbolizing that belonging is now internal, not granted."
+        },
+        {
+         "name": "The Caretaker's Whistle",
+         "kind": "keepsake",
+         "role": "A gift of shared responsibility, signifying the Caretaker's trust in you to watch over the space."
+        },
+        {
+         "name": "Worry stone, worn to glass",
+         "kind": "memento",
+         "role": "The original stone, its purpose outgrown, now a reminder of a past fear."
+        }
+       ],
+       "spine": "Earning trust through quiet presence unlocks the key to belonging, transforming a worry stone from a crutch into a memory."
       }
      },
      "the-room-fills": {
@@ -1528,6 +1804,282 @@
         "prop": "A well-worn wicker basket of shared pens.",
         "role": "Represents the shared space and collaborative effort. It’s a tool of the group, not a personal keepsake."
        }
+      },
+      "dayPlan": {
+       "reframed": "GUIDELINE § THE LENGTH STEP — 7-day per-door (2026-06-22)",
+       "door": "the room fills",
+       "tone": "build",
+       "focal": "Dee",
+       "fundamental": {
+        "length": 7,
+        "split": {
+         "begin": 1,
+         "middle": 4,
+         "end": 2
+        },
+        "wall": 5,
+        "midpoint": 3,
+        "graduation": 7,
+        "restBpm": 66,
+        "peakBpm": 94,
+        "completeBond": "the autonomous bond the coach was aiming for — a WHOLE graduation (not 'incomplete tier 7/10'); you're set free",
+        "days": [
+         {
+          "n": 1,
+          "phase": "begin",
+          "bpm": 66,
+          "relTier": "Circling",
+          "relTierNo": 1,
+          "tierUp": true,
+          "beat": "the meeting · the LOCKED DOOR (the MC's weakness, after chaotic)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 2,
+          "phase": "middle",
+          "bpm": 73,
+          "relTier": "Inside their orbit",
+          "relTierNo": 3,
+          "tierUp": true,
+          "beat": "tier-up → Inside their orbit",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 3,
+          "phase": "middle",
+          "bpm": 80,
+          "relTier": "Trading favors",
+          "relTierNo": 4,
+          "tierUp": true,
+          "beat": "★ midpoint — a false summit / the coach pulls back once",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 4,
+          "phase": "middle",
+          "bpm": 87,
+          "relTier": "In your corner",
+          "relTierNo": 5,
+          "tierUp": true,
+          "beat": "tier-up → In your corner",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 5,
+          "phase": "middle",
+          "bpm": 94,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": true,
+          "beat": "▲ THE WALL — the vulnerability (Relapse-Unlock CG)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 6,
+          "phase": "end",
+          "bpm": 78,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": false,
+          "beat": "",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 7,
+          "phase": "end",
+          "bpm": 62,
+          "relTier": "Knows where you keep things",
+          "relTierNo": 7,
+          "tierUp": true,
+          "beat": "graduation — the autonomous bond; completion achievement → the KEY (desc calls back to Day 1)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         }
+        ]
+       },
+       "lockedDoor": {
+        "is": "the MC's WEAKNESS made into a door (Day 1, after chaotic) — a storyline element, NOT FOMO",
+        "weakness": "The inability to accept direct gestures of inclusion; feeling you don't deserve a place saved for you.",
+        "unlock": "the KEY item («Engraved Fountain Pen») granted by the day-7 completion achievement; its description calls back to Day 1",
+        "onSelect": "grants a 2nd achievement → the universal flag → the EXPERIENCED CONTINUATION (D8+)"
+       },
+       "ngPlus": {
+        "label": "the experienced continuation (D8+)",
+        "length": 4,
+        "opensVia": "the Day-1 locked path — the KEY from the day-7 completion achievement",
+        "tieToDay1": "only the locked path + the current situation; D8+ is a NEW, shorter story leaning on the experienced MC",
+        "reward": "THE BIG REWARD = additional CONTEXT fed to the chatbot — D1–7 = learning/training, D8+ = experienced; the chat (the destination) deepens",
+        "relCompletes": "climbs to the REL the fundamental MISSES (tiers 8 → Unspoken), and EASIER (the experienced MC + the added context)",
+        "composed": "CHAOTIC → COMPOSED in D8+ (the experienced MC's sure hand)",
+        "days": [
+         {
+          "n": 8,
+          "phase": "ng+",
+          "bpm": 65,
+          "relTier": "Folded in",
+          "relTierNo": 8,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "the locked path OPENS — the experienced continuation (a NEW, shorter story)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 9,
+          "phase": "ng+",
+          "bpm": 65,
+          "relTier": "Named in the will",
+          "relTierNo": 9,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Named in the will",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 10,
+          "phase": "ng+",
+          "bpm": 65,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Unspoken",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 11,
+          "phase": "ng+",
+          "bpm": 62,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": false,
+          "experienced": true,
+          "beat": "the deeper graduation — Unspoken + the reward stack (the REL the fundamental missed)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         }
+        ]
+       },
+       "micros": {
+        "floor": 7,
+        "optionalBudget": 3,
+        "ngPlus": 4,
+        "note": "length = the 7-day floor + up to ~3 budgeted micro-arc days, then the D8+ experienced continuation — story-driven, capped (Gemini E)"
+       },
+       "wake": {
+        "shared": "between BOTH non-NG+ and NG+ players on the same path (door), via the community discussion",
+        "floors": "atmospheric solidarity only (never outcomes) · historical echoes soaked into the ship · the cabin stays sacred · supportive-only · ambient never FOMO · anonymized"
+       },
+       "inherits": {
+        "palette": "Gathering Shadows",
+        "arc": "the shared project",
+        "focal": "Dee",
+        "supporting": "Wren",
+        "gesture": "Gently sliding the shared basket of pens to the center of the table.",
+        "engine": "ENSEMBLE",
+        "family": "living",
+        "cg": "An overhead shot of multiple hands, including a hesitant Wren's, selecting colors from the basket—a web of quiet, shared creation.",
+        "music": "Gathering + gentle",
+        "object": "A well-worn wicker basket of shared pens.",
+        "note": "memory"
+       }
+      },
+      "doorArc": {
+       "mc": {
+        "weakness": "The inability to accept direct gestures of inclusion; feeling you don't deserve a place saved for you.",
+        "start": "D1 — You see an open seat next to others but assume it's for someone else, choosing to sit alone on the periphery.",
+        "end": "D7 — When Dee pats the seat beside her, you meet her eyes, smile, and take it, trusting the invitation is genuine.",
+        "payoff": "D8+ — You instinctively look for your friends upon arrival and have started saving a seat for them in return, paying the welcome forward."
+       },
+       "cast": [
+        {
+         "name": "Dee",
+         "role": "focal",
+         "start": "D1 — She notices your isolation and offers small, implicit invitations that you don't yet feel able to accept.",
+         "end": "D7 — She learns your needs and makes her welcome explicit and warm, directly calling you over to the seat she's saved.",
+         "payoff": "D8+ — Her inclusion of you is now effortless and assumed. The seat-saving is a cherished, unspoken ritual that solidifies your bond."
+        },
+        {
+         "name": "Wren",
+         "role": "supporting",
+         "start": "D1 — She quietly observes your self-imposed isolation with a flicker of understanding but doesn't intervene.",
+         "end": "D7 — She sees you join Dee and offers a small, genuine smile; your inclusion makes the space feel more whole to her.",
+         "payoff": "D8+ — Seeing you as a trusted member of the group, she now includes you in her quiet orbit, occasionally sharing a drawing or a rare comment."
+        }
+       ],
+       "ensemble": "The group learns to create and accept space for each other, turning implicit welcome into a reliable, spoken and unspoken, social safety net."
+      },
+      "rewards": {
+       "earn": [
+        {
+         "name": "The Borrowed Ink",
+         "earnedBy": "Accepting a pen from Dee's shared basket without deflecting or feeling like a burden.",
+         "opens": "The pathway to participating in, rather than just observing, group activities."
+        },
+        {
+         "name": "A Mark Contributed",
+         "earnedBy": "Placing one of your own pens into the shared basket, making a small, tangible gesture of joining.",
+         "opens": "Collaborative story moments with Wren, who sees you as a contributor."
+        },
+        {
+         "name": "The Circle Drawn",
+         "earnedBy": "Initiating a group project or gathering, actively inviting others in instead of waiting for an invitation.",
+         "opens": "The 'Engraved Fountain Pen' item, symbolizing your accepted place."
+        },
+        {
+         "name": "The Gift Received",
+         "earnedBy": "Gracefully accepting a significant, personal gift from the group without feeling the need to 'earn' it.",
+         "opens": "The final resolution of this arc's weakness."
+        }
+       ],
+       "gate": [
+        {
+         "grows": "YOU — the MC",
+         "needs": "The Borrowed Ink",
+         "why": "To break the habit of refusing help and accept that inclusion can be unconditional."
+        },
+        {
+         "grows": "Dee",
+         "needs": "A Mark Contributed",
+         "why": "She sees your gesture as genuine investment in the group, moving you from visitor to member."
+        },
+        {
+         "grows": "Wren",
+         "needs": "The Circle Drawn",
+         "why": "She trusts your social leadership, seeing you as someone who builds community, not just joins it."
+        }
+       ],
+       "items": [
+        {
+         "name": "A well-worn wicker basket of shared pens",
+         "kind": "object",
+         "role": "Represents the communal resources the MC feels unworthy of using."
+        },
+        {
+         "name": "Engraved Fountain Pen",
+         "kind": "key",
+         "role": "Unlocks the ability to accept generosity freely, a symbol of your inherent worth within the group."
+        },
+        {
+         "name": "Dee's Sketchbook",
+         "kind": "keepsake",
+         "role": "A book filled with sketches of the group, with a prominent place for you, given at graduation."
+        },
+        {
+         "name": "The First Borrowed Pen",
+         "kind": "memento",
+         "role": "The simple pen that started it all, kept as a reminder of the first step toward community."
+        }
+       ],
+       "spine": "Accepting a small offering unlocks the confidence to contribute, earning a key to true community."
       }
      },
      "a-rough-one": {
@@ -1848,6 +2400,282 @@
         "prop": "A heavy ceramic teapot, warm to the touch.",
         "role": "A tool for a steadying ritual, deflecting a difficult moment through a shared, gentle action. Not a keepsake, but a memory of care."
        }
+      },
+      "dayPlan": {
+       "reframed": "GUIDELINE § THE LENGTH STEP — 7-day per-door (2026-06-22)",
+       "door": "a rough one",
+       "tone": "peak",
+       "focal": "Theo",
+       "fundamental": {
+        "length": 7,
+        "split": {
+         "begin": 1,
+         "middle": 4,
+         "end": 2
+        },
+        "wall": 5,
+        "midpoint": 3,
+        "graduation": 7,
+        "restBpm": 72,
+        "peakBpm": 100,
+        "completeBond": "the autonomous bond the coach was aiming for — a WHOLE graduation (not 'incomplete tier 7/10'); you're set free",
+        "days": [
+         {
+          "n": 1,
+          "phase": "begin",
+          "bpm": 72,
+          "relTier": "Circling",
+          "relTierNo": 1,
+          "tierUp": true,
+          "beat": "the meeting · the LOCKED DOOR (the MC's weakness, after chaotic)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 2,
+          "phase": "middle",
+          "bpm": 79,
+          "relTier": "Inside their orbit",
+          "relTierNo": 3,
+          "tierUp": true,
+          "beat": "tier-up → Inside their orbit",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 3,
+          "phase": "middle",
+          "bpm": 86,
+          "relTier": "Trading favors",
+          "relTierNo": 4,
+          "tierUp": true,
+          "beat": "★ midpoint — a false summit / the coach pulls back once",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 4,
+          "phase": "middle",
+          "bpm": 93,
+          "relTier": "In your corner",
+          "relTierNo": 5,
+          "tierUp": true,
+          "beat": "tier-up → In your corner",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 5,
+          "phase": "middle",
+          "bpm": 100,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": true,
+          "beat": "▲ THE WALL — the vulnerability (Relapse-Unlock CG)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 6,
+          "phase": "end",
+          "bpm": 84,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": false,
+          "beat": "",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 7,
+          "phase": "end",
+          "bpm": 68,
+          "relTier": "Knows where you keep things",
+          "relTierNo": 7,
+          "tierUp": true,
+          "beat": "graduation — the autonomous bond; completion achievement → the KEY (desc calls back to Day 1)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         }
+        ]
+       },
+       "lockedDoor": {
+        "is": "the MC's WEAKNESS made into a door (Day 1, after chaotic) — a storyline element, NOT FOMO",
+        "weakness": "The compulsion to perform wellness; hiding any sign of struggle for fear of being a burden.",
+        "unlock": "the KEY item («A Chipped Mug») granted by the day-7 completion achievement; its description calls back to Day 1",
+        "onSelect": "grants a 2nd achievement → the universal flag → the EXPERIENCED CONTINUATION (D8+)"
+       },
+       "ngPlus": {
+        "label": "the experienced continuation (D8+)",
+        "length": 4,
+        "opensVia": "the Day-1 locked path — the KEY from the day-7 completion achievement",
+        "tieToDay1": "only the locked path + the current situation; D8+ is a NEW, shorter story leaning on the experienced MC",
+        "reward": "THE BIG REWARD = additional CONTEXT fed to the chatbot — D1–7 = learning/training, D8+ = experienced; the chat (the destination) deepens",
+        "relCompletes": "climbs to the REL the fundamental MISSES (tiers 8 → Unspoken), and EASIER (the experienced MC + the added context)",
+        "composed": "CHAOTIC → COMPOSED in D8+ (the experienced MC's sure hand)",
+        "days": [
+         {
+          "n": 8,
+          "phase": "ng+",
+          "bpm": 71,
+          "relTier": "Folded in",
+          "relTierNo": 8,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "the locked path OPENS — the experienced continuation (a NEW, shorter story)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 9,
+          "phase": "ng+",
+          "bpm": 71,
+          "relTier": "Named in the will",
+          "relTierNo": 9,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Named in the will",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 10,
+          "phase": "ng+",
+          "bpm": 71,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Unspoken",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 11,
+          "phase": "ng+",
+          "bpm": 68,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": false,
+          "experienced": true,
+          "beat": "the deeper graduation — Unspoken + the reward stack (the REL the fundamental missed)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         }
+        ]
+       },
+       "micros": {
+        "floor": 7,
+        "optionalBudget": 3,
+        "ngPlus": 4,
+        "note": "length = the 7-day floor + up to ~3 budgeted micro-arc days, then the D8+ experienced continuation — story-driven, capped (Gemini E)"
+       },
+       "wake": {
+        "shared": "between BOTH non-NG+ and NG+ players on the same path (door), via the community discussion",
+        "floors": "atmospheric solidarity only (never outcomes) · historical echoes soaked into the ship · the cabin stays sacred · supportive-only · ambient never FOMO · anonymized"
+       },
+       "inherits": {
+        "palette": "Rainy Window",
+        "arc": "the gentle deflection",
+        "focal": "Theo",
+        "supporting": "Dee",
+        "gesture": "Slowly pouring hot water into a teapot, a careful, steadying motion to avoid splashing.",
+        "engine": "TEND",
+        "family": "living",
+        "cg": "A close-up on the rain-soaked student's hands wrapped around a warm mug, steam curling up to frame their relieved expression.",
+        "music": "Introspective + tense",
+        "object": "A heavy ceramic teapot, warm to the touch.",
+        "note": "opinion"
+       }
+      },
+      "doorArc": {
+       "mc": {
+        "weakness": "The compulsion to perform wellness; hiding any sign of struggle for fear of being a burden.",
+        "start": "D1 — You arrive after a terrible day but force a smile, insisting you're 'fine' and keeping everyone at arm's length.",
+        "end": "D7 — You walk in visibly exhausted, drop your bag, and slump into a chair without pretending, letting the room's quiet hold your mood.",
+        "payoff": "D8+ — You can now voice your feelings in small ways ('Ugh, brutal day') and accept quiet solidarity, knowing your presence is welcome, mess and all."
+       },
+       "cast": [
+        {
+         "name": "Theo",
+         "role": "focal",
+         "start": "D1 — He senses your forced cheerfulness is a defense, so he gives you space, keeping his interactions light.",
+         "end": "D7 — He sees you drop the mask and offers a simple, affirming nod — a silent gesture of 'I get it, and it's okay.'",
+         "payoff": "D8+ — He now feels safe enough to be vulnerable around you, occasionally sharing his own frustrations and trusting your shared understanding."
+        },
+        {
+         "name": "Dee",
+         "role": "supporting",
+         "start": "D1 — Her attempts to cheer you up are deflected by your 'I'm fine' wall; she misreads your need for space as a need for cheering.",
+         "end": "D7 — She sees your authentic mood and learns to offer a quieter, more attuned form of support, like a gentle smile instead of a joke.",
+         "payoff": "D8+ — Her emotional intelligence deepened, she now knows how to just sit with someone in their mood, offering presence over platitudes."
+        }
+       ],
+       "ensemble": "Everyone learns that the found family is strong enough to hold space for bad days, making vulnerability a source of connection, not a social risk."
+      },
+      "rewards": {
+       "earn": [
+        {
+         "name": "The First Crack in the Armor",
+         "earnedBy": "Admitting to Theo, even in a small way, that you are having a hard day.",
+         "opens": "A path where Theo offers quiet, non-fix-it support instead of advice."
+        },
+        {
+         "name": "A Moment's Respite",
+         "earnedBy": "Allowing someone to care for you (e.g., make you tea) without feeling the need to perform gratitude or wellness.",
+         "opens": "Deeper, non-verbal connection with Dee, who offers comfort through shared creativity."
+        },
+        {
+         "name": "The Shared Weight",
+         "earnedBy": "Actively seeking out a friend when you're struggling, trusting them to see you in your mess.",
+         "opens": "The 'A Chipped Mug' item, symbolizing the beauty in imperfection."
+        },
+        {
+         "name": "The Warmth Offered",
+         "earnedBy": "Recognizing another's struggle and offering them the same quiet presence you once received.",
+         "opens": "The final resolution of this arc's weakness."
+        }
+       ],
+       "gate": [
+        {
+         "grows": "YOU — the MC",
+         "needs": "The First Crack in the Armor",
+         "why": "To stop performing wellness and allow your friends to see your authentic self."
+        },
+        {
+         "grows": "Theo",
+         "needs": "A Moment's Respite",
+         "why": "He learns that his quiet presence is a powerful form of care, not just his solutions."
+        },
+        {
+         "grows": "Dee",
+         "needs": "The Shared Weight",
+         "why": "She fully trusts that your friendship is strong enough to handle vulnerability."
+        }
+       ],
+       "items": [
+        {
+         "name": "A heavy ceramic teapot",
+         "kind": "object",
+         "role": "Symbolizes the available warmth and comfort the MC feels they must be 'well' enough to deserve."
+        },
+        {
+         "name": "A Chipped Mug",
+         "kind": "key",
+         "role": "Unlocks the acceptance of your own imperfection and the right to be cared for, flaws and all."
+        },
+        {
+         "name": "Theo's Favorite Tea Blend",
+         "kind": "keepsake",
+         "role": "A personal gift that says 'I see you and am here for you,' a reminder of shared vulnerability."
+        },
+        {
+         "name": "A single, dried tea leaf",
+         "kind": "memento",
+         "role": "A token from the first time you accepted comfort without pretending to be fine."
+        }
+       ],
+       "spine": "Admitting a need for help unlocks the ability to receive care, earning a key that accepts imperfection."
       }
      },
      "it-settles": {
@@ -2149,6 +2977,282 @@
         "prop": "A blank postcard with a faded image on the front.",
         "role": "A canvas for the unwritten message, representing the internal effort to 'make space' for connection. Could be kept as a memento of a difficult conversation broached."
        }
+      },
+      "dayPlan": {
+       "reframed": "GUIDELINE § THE LENGTH STEP — 7-day per-door (2026-06-22)",
+       "door": "it settles",
+       "tone": "settle",
+       "focal": "Wren",
+       "fundamental": {
+        "length": 7,
+        "split": {
+         "begin": 1,
+         "middle": 4,
+         "end": 2
+        },
+        "wall": 5,
+        "midpoint": 3,
+        "graduation": 7,
+        "restBpm": 64,
+        "peakBpm": 92,
+        "completeBond": "the autonomous bond the coach was aiming for — a WHOLE graduation (not 'incomplete tier 7/10'); you're set free",
+        "days": [
+         {
+          "n": 1,
+          "phase": "begin",
+          "bpm": 64,
+          "relTier": "Circling",
+          "relTierNo": 1,
+          "tierUp": true,
+          "beat": "the meeting · the LOCKED DOOR (the MC's weakness, after chaotic)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 2,
+          "phase": "middle",
+          "bpm": 71,
+          "relTier": "Inside their orbit",
+          "relTierNo": 3,
+          "tierUp": true,
+          "beat": "tier-up → Inside their orbit",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 3,
+          "phase": "middle",
+          "bpm": 78,
+          "relTier": "Trading favors",
+          "relTierNo": 4,
+          "tierUp": true,
+          "beat": "★ midpoint — a false summit / the coach pulls back once",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 4,
+          "phase": "middle",
+          "bpm": 85,
+          "relTier": "In your corner",
+          "relTierNo": 5,
+          "tierUp": true,
+          "beat": "tier-up → In your corner",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 5,
+          "phase": "middle",
+          "bpm": 92,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": true,
+          "beat": "▲ THE WALL — the vulnerability (Relapse-Unlock CG)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 6,
+          "phase": "end",
+          "bpm": 76,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": false,
+          "beat": "",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 7,
+          "phase": "end",
+          "bpm": 60,
+          "relTier": "Knows where you keep things",
+          "relTierNo": 7,
+          "tierUp": true,
+          "beat": "graduation — the autonomous bond; completion achievement → the KEY (desc calls back to Day 1)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         }
+        ]
+       },
+       "lockedDoor": {
+        "is": "the MC's WEAKNESS made into a door (Day 1, after chaotic) — a storyline element, NOT FOMO",
+        "weakness": "Clumsy, over-verbal attempts at care; turning support into an intrusion by asking too many questions.",
+        "unlock": "the KEY item («A Set of Listening Stones») granted by the day-7 completion achievement; its description calls back to Day 1",
+        "onSelect": "grants a 2nd achievement → the universal flag → the EXPERIENCED CONTINUATION (D8+)"
+       },
+       "ngPlus": {
+        "label": "the experienced continuation (D8+)",
+        "length": 4,
+        "opensVia": "the Day-1 locked path — the KEY from the day-7 completion achievement",
+        "tieToDay1": "only the locked path + the current situation; D8+ is a NEW, shorter story leaning on the experienced MC",
+        "reward": "THE BIG REWARD = additional CONTEXT fed to the chatbot — D1–7 = learning/training, D8+ = experienced; the chat (the destination) deepens",
+        "relCompletes": "climbs to the REL the fundamental MISSES (tiers 8 → Unspoken), and EASIER (the experienced MC + the added context)",
+        "composed": "CHAOTIC → COMPOSED in D8+ (the experienced MC's sure hand)",
+        "days": [
+         {
+          "n": 8,
+          "phase": "ng+",
+          "bpm": 63,
+          "relTier": "Folded in",
+          "relTierNo": 8,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "the locked path OPENS — the experienced continuation (a NEW, shorter story)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 9,
+          "phase": "ng+",
+          "bpm": 63,
+          "relTier": "Named in the will",
+          "relTierNo": 9,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Named in the will",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 10,
+          "phase": "ng+",
+          "bpm": 63,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Unspoken",
+          "noteOwed": true,
+          "noteCat": "memory"
+         },
+         {
+          "n": 11,
+          "phase": "ng+",
+          "bpm": 60,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": false,
+          "experienced": true,
+          "beat": "the deeper graduation — Unspoken + the reward stack (the REL the fundamental missed)",
+          "noteOwed": true,
+          "noteCat": "memory"
+         }
+        ]
+       },
+       "micros": {
+        "floor": 7,
+        "optionalBudget": 3,
+        "ngPlus": 4,
+        "note": "length = the 7-day floor + up to ~3 budgeted micro-arc days, then the D8+ experienced continuation — story-driven, capped (Gemini E)"
+       },
+       "wake": {
+        "shared": "between BOTH non-NG+ and NG+ players on the same path (door), via the community discussion",
+        "floors": "atmospheric solidarity only (never outcomes) · historical echoes soaked into the ship · the cabin stays sacred · supportive-only · ambient never FOMO · anonymized"
+       },
+       "inherits": {
+        "palette": "Sleeping City",
+        "arc": "making space",
+        "focal": "Wren",
+        "supporting": "Theo",
+        "gesture": "Sorting through a flurry of anxious internal thoughts to find the simple, kind opening line.",
+        "engine": "SCRAMBLE",
+        "family": "contest",
+        "cg": "A three-shot: the new student looking lost, Wren looking up from their corner, and the player's character offering a small, open gesture of welcome.",
+        "music": "Breathing + calm",
+        "object": "A blank postcard with a faded image on the front.",
+        "note": "memory"
+       }
+      },
+      "doorArc": {
+       "mc": {
+        "weakness": "Clumsy, over-verbal attempts at care; turning support into an intrusion by asking too many questions.",
+        "start": "D1 — You notice someone is down and immediately try to 'fix' it with a barrage of questions, making them withdraw further.",
+        "end": "D7 — You see Wren is withdrawn, so you quietly slide a box of biscuits closer to her without a word, then give her space.",
+        "payoff": "D8+ — You are now fluent in the group's non-verbal language, offering intuitive, unobtrusive support that deepens trust."
+       },
+       "cast": [
+        {
+         "name": "Wren",
+         "role": "focal",
+         "start": "D1 — She retreats from your well-meaning but overwhelming questions, viewing you as someone who doesn't understand her need for quiet.",
+         "end": "D7 — She receives your silent gesture of care and feels seen and respected. She gives you a rare, small, but deeply felt smile.",
+         "payoff": "D8+ — She now trusts you implicitly and might initiate quiet, shared activities, knowing you won't demand a big reaction."
+        },
+        {
+         "name": "Theo",
+         "role": "supporting",
+         "start": "D1 — He watches your interaction with Wren and feels protective of her, seeing your approach as well-intentioned but clumsy.",
+         "end": "D7 — He sees your quiet gesture and recognizes you are learning the group's language. He visibly relaxes, accepting you as a safe presence.",
+         "payoff": "D8+ — He now includes you in his own non-verbal communications, like catching your eye to share a silent, amused look across the room."
+        }
+       ],
+       "ensemble": "The group becomes a space where care is shown, not just declared, building a deep trust that allows everyone to be supported without being put on the spot."
+      },
+      "rewards": {
+       "earn": [
+        {
+         "name": "The Unspoken Space",
+         "earnedBy": "Choosing to sit in comfortable silence with a withdrawn Wren, resisting the urge to fill the quiet with words.",
+         "opens": "The ability to understand Wren's non-verbal cues and needs."
+        },
+        {
+         "name": "A Quiet Offering",
+         "earnedBy": "Making a small, non-verbal gesture of care—like sharing a snack—that Wren accepts without words.",
+         "opens": "Theo's trust in your emotional intelligence and ability to support others gently."
+        },
+        {
+         "name": "The Message Sent",
+         "earnedBy": "Writing a single, perfect sentence on a postcard for Wren that offers support without being intrusive.",
+         "opens": "The 'Set of Listening Stones' item, symbolizing your newfound skill."
+        },
+        {
+         "name": "The Held Silence",
+         "earnedBy": "Sensing a friend needs space and providing it, becoming a source of calm for the group.",
+         "opens": "The final resolution of this arc's weakness."
+        }
+       ],
+       "gate": [
+        {
+         "grows": "YOU — the MC",
+         "needs": "The Unspoken Space",
+         "why": "To learn that presence can be more powerful than words and that care doesn't have to be verbal."
+        },
+        {
+         "grows": "Wren",
+         "needs": "A Quiet Offering",
+         "why": "She learns your presence is safe and non-demanding, allowing her to be vulnerable around you."
+        },
+        {
+         "grows": "Theo",
+         "needs": "The Message Sent",
+         "why": "He sees you've mastered a subtle, powerful form of empathy and trusts you in delicate situations."
+        }
+       ],
+       "items": [
+        {
+         "name": "A blank postcard",
+         "kind": "object",
+         "role": "Represents the pressure to find the 'right words' and the fear of saying the wrong thing."
+        },
+        {
+         "name": "A Set of Listening Stones",
+         "kind": "key",
+         "role": "Unlocks the skill of supporting through listening, symbolizing a shift from speaking to hearing."
+        },
+        {
+         "name": "Wren's Locket",
+         "kind": "keepsake",
+         "role": "A gift of profound trust from Wren, shared only with those she feels truly understand her."
+        },
+        {
+         "name": "The Written Postcard",
+         "kind": "memento",
+         "role": "The card with the one perfect sentence, a reminder that the right support can be simple and quiet."
+        }
+       ],
+       "spine": "Learning to hold space for others unlocks a quieter way of caring, earning a key forged in listening."
       }
      },
      "the-walk-out": {
@@ -2469,6 +3573,282 @@
         "prop": "A small, carved wooden bird, left behind on the polished table.",
         "role": "The final keepsake, left by a mentor. It represents acknowledged growth and the gift of being seen. The graduation memento."
        }
+      },
+      "dayPlan": {
+       "reframed": "GUIDELINE § THE LENGTH STEP — 7-day per-door (2026-06-22)",
+       "door": "the walk out",
+       "tone": "renew",
+       "focal": "The Caretaker",
+       "fundamental": {
+        "length": 7,
+        "split": {
+         "begin": 1,
+         "middle": 4,
+         "end": 2
+        },
+        "wall": 5,
+        "midpoint": 3,
+        "graduation": 7,
+        "restBpm": 58,
+        "peakBpm": 86,
+        "completeBond": "the autonomous bond the coach was aiming for — a WHOLE graduation (not 'incomplete tier 7/10'); you're set free",
+        "days": [
+         {
+          "n": 1,
+          "phase": "begin",
+          "bpm": 58,
+          "relTier": "Circling",
+          "relTierNo": 1,
+          "tierUp": true,
+          "beat": "the meeting · the LOCKED DOOR (the MC's weakness, after chaotic)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 2,
+          "phase": "middle",
+          "bpm": 65,
+          "relTier": "Inside their orbit",
+          "relTierNo": 3,
+          "tierUp": true,
+          "beat": "tier-up → Inside their orbit",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 3,
+          "phase": "middle",
+          "bpm": 72,
+          "relTier": "Trading favors",
+          "relTierNo": 4,
+          "tierUp": true,
+          "beat": "★ midpoint — a false summit / the coach pulls back once",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 4,
+          "phase": "middle",
+          "bpm": 79,
+          "relTier": "In your corner",
+          "relTierNo": 5,
+          "tierUp": true,
+          "beat": "tier-up → In your corner",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 5,
+          "phase": "middle",
+          "bpm": 86,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": true,
+          "beat": "▲ THE WALL — the vulnerability (Relapse-Unlock CG)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 6,
+          "phase": "end",
+          "bpm": 70,
+          "relTier": "Saved a seat for you",
+          "relTierNo": 6,
+          "tierUp": false,
+          "beat": "",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 7,
+          "phase": "end",
+          "bpm": 54,
+          "relTier": "Knows where you keep things",
+          "relTierNo": 7,
+          "tierUp": true,
+          "beat": "graduation — the autonomous bond; completion achievement → the KEY (desc calls back to Day 1)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         }
+        ]
+       },
+       "lockedDoor": {
+        "is": "the MC's WEAKNESS made into a door (Day 1, after chaotic) — a storyline element, NOT FOMO",
+        "weakness": "Taking the space and its keeper for granted; leaving without acknowledging the effort that makes the sanctuary possible.",
+        "unlock": "the KEY item («A Gardener's Trowel») granted by the day-7 completion achievement; its description calls back to Day 1",
+        "onSelect": "grants a 2nd achievement → the universal flag → the EXPERIENCED CONTINUATION (D8+)"
+       },
+       "ngPlus": {
+        "label": "the experienced continuation (D8+)",
+        "length": 4,
+        "opensVia": "the Day-1 locked path — the KEY from the day-7 completion achievement",
+        "tieToDay1": "only the locked path + the current situation; D8+ is a NEW, shorter story leaning on the experienced MC",
+        "reward": "THE BIG REWARD = additional CONTEXT fed to the chatbot — D1–7 = learning/training, D8+ = experienced; the chat (the destination) deepens",
+        "relCompletes": "climbs to the REL the fundamental MISSES (tiers 8 → Unspoken), and EASIER (the experienced MC + the added context)",
+        "composed": "CHAOTIC → COMPOSED in D8+ (the experienced MC's sure hand)",
+        "days": [
+         {
+          "n": 8,
+          "phase": "ng+",
+          "bpm": 57,
+          "relTier": "Folded in",
+          "relTierNo": 8,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "the locked path OPENS — the experienced continuation (a NEW, shorter story)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 9,
+          "phase": "ng+",
+          "bpm": 57,
+          "relTier": "Named in the will",
+          "relTierNo": 9,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Named in the will",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 10,
+          "phase": "ng+",
+          "bpm": 57,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": true,
+          "experienced": true,
+          "beat": "experienced · tier-up → Unspoken",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         },
+         {
+          "n": 11,
+          "phase": "ng+",
+          "bpm": 54,
+          "relTier": "Unspoken",
+          "relTierNo": 10,
+          "tierUp": false,
+          "experienced": true,
+          "beat": "the deeper graduation — Unspoken + the reward stack (the REL the fundamental missed)",
+          "noteOwed": true,
+          "noteCat": "opinion"
+         }
+        ]
+       },
+       "micros": {
+        "floor": 7,
+        "optionalBudget": 3,
+        "ngPlus": 4,
+        "note": "length = the 7-day floor + up to ~3 budgeted micro-arc days, then the D8+ experienced continuation — story-driven, capped (Gemini E)"
+       },
+       "wake": {
+        "shared": "between BOTH non-NG+ and NG+ players on the same path (door), via the community discussion",
+        "floors": "atmospheric solidarity only (never outcomes) · historical echoes soaked into the ship · the cabin stays sacred · supportive-only · ambient never FOMO · anonymized"
+       },
+       "inherits": {
+        "palette": "Wet Pavement",
+        "arc": "the acknowledged change",
+        "focal": "The Caretaker",
+        "supporting": "Wren",
+        "gesture": "Polishing the main table in a slow, steady rhythm, clearing the day's clutter to reveal what's beneath.",
+        "engine": "FLOW",
+        "family": "contest",
+        "cg": "The Caretaker's hand hovering just above a left-behind drawing, its confident lines stark against the dark wood reflecting wet streetlights.",
+        "music": "Hopeful + clear",
+        "object": "A small, carved wooden bird, left behind on the polished table.",
+        "note": "opinion"
+       }
+      },
+      "doorArc": {
+       "mc": {
+        "weakness": "Taking the space and its keeper for granted; leaving without acknowledging the effort that makes the sanctuary possible.",
+        "start": "D1 — You pack up and leave with the crowd, focused on what's next, without a word or a look back at the room or the Caretaker.",
+        "end": "D7 — As you leave, you are the last one out. You pause, meet the Caretaker's eyes, and offer a simple, heartfelt 'Thank you.'",
+        "payoff": "D8+ — Your goodbye is a warm, personal ritual. You notice and appreciate the little things, showing you truly see the space and the person who holds it."
+       },
+       "cast": [
+        {
+         "name": "The Caretaker",
+         "role": "focal",
+         "start": "D1 — Sees you as one of many anonymous students. Their care for the room is their job; it's not personal.",
+         "end": "D7 — Your direct, genuine thanks makes them feel seen and valued, transforming the interaction from professional to personal.",
+         "payoff": "D8+ — A reciprocal, warm relationship forms. They greet you by name and might save a small item for you, a sign of your mutual appreciation."
+        },
+        {
+         "name": "Wren",
+         "role": "supporting",
+         "start": "D1 — She notices your lack of acknowledgment for the space and may privately see it as a form of carelessness.",
+         "end": "D7 — She overhears your thank you to the Caretaker and her respect for you grows, seeing that you also value the foundations of your sanctuary.",
+         "payoff": "D8+ — Recognizing you as a kindred spirit in appreciating the space, she sometimes walks out with you, sharing a moment of quiet gratitude."
+        }
+       ],
+       "ensemble": "By learning to see and thank the keeper of their sanctuary, the group collectively matures, recognizing that their found family exists through intention and care."
+      },
+      "rewards": {
+       "earn": [
+        {
+         "name": "The Custodian's Nod",
+         "earnedBy": "Staying behind unasked to tidy one small part of the room, earning a subtle nod from the Caretaker.",
+         "opens": "A new awareness of the invisible labor that maintains the space."
+        },
+        {
+         "name": "The Name Learned",
+         "earnedBy": "Asking the Caretaker about themselves, seeing them as a person with a history, not just a role.",
+         "opens": "Wren's respect, as she sees you value the foundations of the community."
+        },
+        {
+         "name": "The Mark of Gratitude",
+         "earnedBy": "Contributing something lasting to the space—fixing a wobbly chair, donating a book—leaving it better.",
+         "opens": "The 'A Gardener's Trowel' item, a tool for nurturing the space."
+        },
+        {
+         "name": "The Watch Inherited",
+         "earnedBy": "Guiding a newcomer, explaining the unspoken rules of respect for the space and its keeper.",
+         "opens": "The final resolution of this arc's weakness."
+        }
+       ],
+       "gate": [
+        {
+         "grows": "YOU — the MC",
+         "needs": "The Custodian's Nod",
+         "why": "To shift from being a passive consumer of the space to an active participant in its care."
+        },
+        {
+         "grows": "The Caretaker",
+         "needs": "The Name Learned",
+         "why": "They see you as someone who values people, not just places, and begin to share their own stories."
+        },
+        {
+         "grows": "Wren",
+         "needs": "The Mark of Gratitude",
+         "why": "She recognizes you as a true peer who understands that community requires contribution."
+        }
+       ],
+       "items": [
+        {
+         "name": "A small, carved wooden bird",
+         "kind": "object",
+         "role": "Represents the unnoticed details and quiet labor that the MC initially takes for granted."
+        },
+        {
+         "name": "A Gardener's Trowel",
+         "kind": "key",
+         "role": "Unlocks the role of steward, symbolizing the power to nurture and give back to the community."
+        },
+        {
+         "name": "The Caretaker's Own Carving",
+         "kind": "keepsake",
+         "role": "A unique wooden bird, carved and gifted by the Caretaker as a mark of shared guardianship."
+        },
+        {
+         "name": "A single wood shaving",
+         "kind": "memento",
+         "role": "Kept from your act of contribution, a tangible reminder of the shift from taking to giving."
+        }
+       ],
+       "spine": "Acknowledging unseen work unlocks a sense of responsibility, earning a key to true stewardship."
       }
      }
     },
@@ -3004,6 +4384,116 @@
       "distinct": "yes",
       "note": "Each object is diegetic and tied to a specific gesture, serving distinct roles from grounding focus to communal tool to a final, deeply personal keepsake."
      }
+    },
+    "progressArcs": {
+     "map": [
+      {
+       "name": "the Caretaker",
+       "color": "#d99a4e",
+       "essence": "Keeps the old room unlocked after the bell — never grades, just there.",
+       "early": "A quiet, constant presence who offers a simple nod of acknowledgement as you enter the room.",
+       "mid": "Begins leaving out a specific snack they noticed you like, or a book on a topic you mentioned, without comment.",
+       "deep": "A note left for you: 'You belong here. This space is a little more itself because you're in it. Don't ever doubt that.'",
+       "growsWithYou": "They teach you how to find and create your own quiet spaces, showing you that safety is something you can build for yourself.",
+       "reward": {
+        "know": "Steward",
+        "do": "You start tidying up with them, not out of obligation, but as a shared, quiet ritual.",
+        "keep": "Their personal, worn-out key to the room.",
+        "mutual": "Texts you a photo of something that reminded them of you, asking how your day was."
+       }
+      },
+      {
+       "name": "Dee",
+       "color": "#3fb8a0",
+       "essence": "Been coming longest; saves your seat, starts the thing beside you.",
+       "early": "A reliable, friendly face who pats the empty chair next to them, making the first move to include you.",
+       "mid": "Starts asking for your opinion on the project, genuinely valuing your input and making it a shared effort.",
+       "deep": "A note in your textbook: 'It's not about starting the thing anymore. It's just... better, starting it with you. You make the quiet parts feel full.'",
+       "growsWithYou": "By consistently creating a space for you, she teaches you the confidence to claim your own space in new situations.",
+       "reward": {
+        "know": "My person",
+        "do": "You start saving a seat for her, anticipating her arrival and having her favorite drink ready.",
+        "keep": "A friendship bracelet woven with the colors of a private joke between you two.",
+        "mutual": "Sends you a 'thinking of you' meme or a link to a song, just because."
+       }
+      },
+      {
+       "name": "Theo",
+       "color": "#e0664f",
+       "essence": "Loud, funny, performing okay — the mask you recognise.",
+       "early": "The group's entertainer, always ready with a joke or a loud story, but conversations rarely go deep.",
+       "mid": "The jokes become softer, more personal; he tests out new, unfinished material on you, watching your reaction more than the group's.",
+       "deep": "A note on a script: 'With everyone else, I feel like I'm 'on.' With you, I can just... be. Thanks for seeing the guy behind the punchline.'",
+       "growsWithYou": "He shows you that vulnerability isn't weakness, encouraging you to share your own unfinished, imperfect work without fear of judgment.",
+       "reward": {
+        "know": "First audience",
+        "do": "You become the person he checks in with before a big presentation, not for jokes, but for a quiet moment of reassurance.",
+        "keep": "The first draft of a comedy set, scribbled on a napkin, with a note that says 'You heard it first.'",
+        "mutual": "Calls you, not to perform, but just to sit in silence on the phone while you both do your own thing."
+       }
+      },
+      {
+       "name": "Wren",
+       "color": "#8a78c0",
+       "essence": "Headphones, sketchbook; says little, sees everything.",
+       "early": "A silent presence in the corner, who occasionally looks up from her sketchbook to watch the group with a small, private smile.",
+       "mid": "She wordlessly shows you a drawing in her sketchbook—a small, perfect detail of the room, or a kind caricature of another group member.",
+       "deep": "A drawing of you with a note on the back: 'Most people just look. You see. I feel like you get what I'm trying to say without me having to say it.'",
+       "growsWithYou": "She teaches you a new way of seeing the world, helping you notice the small, beautiful details and find meaning in quiet observation.",
+       "reward": {
+        "know": "Muse",
+        "do": "You point out small details or moments for her to draw, becoming a collaborator in her observation.",
+        "keep": "A small, framed sketch of you, not posed, but captured in a moment of quiet contentment.",
+        "mutual": "Taps your arm and points to something beautiful or strange, sharing a silent observation with just a look."
+       }
+      }
+     ],
+     "range": "The arcs offer distinct shapes of belonging: from the quiet stewardship of a mentor, to peer partnership, to finding authenticity behind a performance, to a shared, silent attunement."
+    },
+    "chatbots": {
+     "map": [
+      {
+       "name": "the Caretaker",
+       "color": "#d99a4e",
+       "value": "A private, non-judgmental space to hold and untangle the overwhelming 'shoulds' of your day.",
+       "bring": "A jumbled brain-dump of tasks, worries, and 'I haven't started' feelings.",
+       "handsBack": "A single, gentle, first-step question for just one of those things, making the mountain feel like a path.",
+       "represents": "The unlocked room itself—a safe space to arrive, exactly as you are, before you're ready to begin.",
+       "growsYou": "Builds the habit of self-compassionately breaking down overwhelm, turning 'I can't' into 'what's one small thing?'.",
+       "deepens": "Starts with generic prompts, later uses your shared history to ask specific, knowing questions about recurring stressors."
+      },
+      {
+       "name": "Dee",
+       "color": "#3fb8a0",
+       "value": "A 'parallel play' partner to help you get over the hump of starting any task.",
+       "bring": "The name of the task you're avoiding and a block of time you can give it.",
+       "handsBack": "A shared timer and a quiet, encouraging presence for that block of time, starting the work alongside you.",
+       "represents": "The act of someone saving you a seat, making the silence feel shared instead of empty.",
+       "growsYou": "Internalizes the rhythm of starting, making it easier to initiate tasks alone by recalling the feeling of shared focus.",
+       "deepens": "Moves from simple timers to remembering your work patterns and referencing past 'wins' to build momentum."
+      },
+      {
+       "name": "Theo",
+       "color": "#e0664f",
+       "value": "A low-stakes 'rehearsal room' to practice tricky conversations or presentations before they happen for real.",
+       "bring": "The scenario you're nervous about and who it's with (e.g., 'ask my teacher for an extension').",
+       "handsBack": "A simple script of branching conversational prompts to roleplay the scene, helping you find your own words.",
+       "represents": "The safe backstage moment of running lines with a friend, where you can mess up without consequence.",
+       "growsYou": "Develops confidence and a toolkit for navigating social and academic challenges, reducing performance anxiety.",
+       "deepens": "Initially offers generic scenarios; later, it remembers the people in your life and tailors its prompts to their known personalities."
+      },
+      {
+       "name": "Wren",
+       "color": "#8a78c0",
+       "value": "A visual pattern-finder that helps connect scattered thoughts and feelings into a clear, coherent picture.",
+       "bring": "A collection of small, disconnected observations, feelings, or moments from your day.",
+       "handsBack": "A simple mind-map or 'constellation' image that visually links your inputs, revealing an underlying theme.",
+       "represents": "The sketchbook page that clarifies a complex idea—it doesn't tell you the answer, it shows you the shape of your own thoughts.",
+       "growsYou": "Teaches you to self-reflect and identify your own emotional or situational patterns, building metacognitive awareness.",
+       "deepens": "At first, it just connects the dots you provide; later, it recognizes recurring patterns from your history and gently highlights them."
+      }
+     ],
+     "range": "Yes, the chatbots are distinct, mapping to internal regulation (Caretaker), activation (Dee), social rehearsal (Theo), and metacognition (Wren), covering a core range of teen needs without functional overlap."
     }
    },
    "throughline": "belonging you don't audition for — the chair's yours before you've proven anything; you're kept, not chosen",

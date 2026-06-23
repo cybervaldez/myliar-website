@@ -1,0 +1,16 @@
+{
+ "concept": "hive",
+ "audienceKey": "tech-surpassed",
+ "culture": {
+  "name": "Western (quiet self-reliance)",
+  "valorises": "independence + earned competence — the Western dignity of doing it yourself, standing on your own; achievement felt as QUIET pride (a job well-learned), not loud fanfare",
+  "expression": "direct, plain-spoken, warmly encouraging; the individual's mastery respected; autonomy honoured ('you've got this', never patronising); pride shown in a soft chime, not a parade",
+  "nudge": "toward self-reliance + earned independence + plain warm encouragement — the dignity of standing on your own, at your own pace"
+ },
+ "genre": {
+  "name": "Constructive Sim",
+  "honour": "The quiet satisfaction of bringing order to a small world and watching it thrive through patient, thoughtful action.",
+  "traps": "Punishing efficiency metrics, stressful timers, or resource scarcity that creates anxiety instead of gentle challenge."
+ },
+ "group": "Hive — a community/club of late-learners (a found-family of older people learning technology together) that the player JOINS; it lives INSIDE the winning setting, it is NOT the setting"
+}

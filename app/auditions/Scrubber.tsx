@@ -28,7 +28,7 @@ function snoise(x: number, seed: number): number {
 const clamp = (v: number, lo: number, hi: number) => (v < lo ? lo : v > hi ? hi : v);
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
-type Variant = "strait" | "crossing" | "water";
+type Variant = "strait" | "crossing" | "water" | "generic" | "loco" | "gantry" | "board" | "window" | "lamproom";
 
 // THE §8.13 DYNAMIC-RANGE ARC — EXACT dr bands. It RISES to the storm-peak plateau (INTENSE 40-60)
 // then RESOLVES (AFTERMATH the storm passing → RENEWAL a renewed calm). The peak is the MIDDLE, not
@@ -42,7 +42,169 @@ function arc(dr: number): number {
 // the 5 §8.13 phases the dial steps through (drives the two-part title + the day-cycle)
 const phaseOf = (dr: number) => Math.min(4, Math.floor(dr * 5));
 
+// THE GENERIC ARC — a world-agnostic §8.13 curve (rise → peak → resolve) for NON-maritime worlds (the Hive etc.),
+// so a non-ferry campaign NEVER renders the ferry's boat (context-pollution fix, owner 2026-06-23). The dial ◆ rides it.
+function genericArt(dr: number): string[] {
+  const grid: string[][] = [];
+  for (let r = 0; r < ROWS; r++) grid.push(new Array(COLS).fill(" "));
+  const crest = "▁▂▃▄▅▆▇█";
+  for (let x = 0; x < COLS; x++) {
+    const h = arc(x / (COLS - 1));
+    const top = Math.round((ROWS - 1) * (1 - h));
+    for (let y = top + 1; y < ROWS; y++) grid[y][x] = "░";
+    grid[top][x] = crest[Math.min(7, Math.max(0, Math.floor(h * 8)))];
+  }
+  const mx = Math.round(dr * (COLS - 1)), mh = arc(dr), my = Math.round((ROWS - 1) * (1 - mh));
+  for (let y = 0; y < ROWS; y++) if (grid[y][mx] === " ") grid[y][mx] = "·";
+  grid[my][mx] = "◆";
+  return grid.map((r) => r.join(""));
+}
+
+// THE RAIL ART — a side-view steam locomotive on the line for «The Grand Trunk Dispatch» (the railway world).
+// Arc-responsive (§8.13): the SIGNAL is clear (○) at the calm ends + DANGER (●) at the WALL; the funnel PLUME
+// billows with the intensity; the line opens (→) at the renewal. Authored in the ANSI/ASCII tradition, panel-vetted.
+function railArt(dr: number): string[] {
+  const ph = phaseOf(dr);                                       // 0 cozy · 1 build · 2 WALL · 3 mend · 4 renewal
+  const grid: string[][] = [];
+  for (let r = 0; r < ROWS; r++) grid.push(new Array(COLS).fill(" "));
+  const put = (x: number, y: number, ch: string | null | undefined) => { if (x >= 0 && x < COLS && y >= 0 && y < ROWS && ch != null) grid[y][x] = ch; };
+  const stamp = (x0: number, y0: number, rows: string[]) => rows.forEach((r, dy) => [...r].forEach((ch, dx) => { if (ch !== " ") put(x0 + dx, y0 + dy, ch); }));
+
+  // distant hills (fill the canvas, ground the scene — panel: "use the whole canvas")
+  const hill = "▁▁▂▃▂▁▁▁▁▂▃▄▃▂▁▁▁▁▁▂▃▂▁▁▁▁▂▃▄▅▄▃▂▁▁▁▂▁";
+  for (let x = 0; x < COLS; x++) put(x, 5, hill[x % hill.length]);
+  if (ph === 4) stamp(32, 0, ["\\ /", "─☀─", "/ \\"]);          // a sun at renewal (kills the PowerPoint arrow)
+
+  // the rail + sleepers — VIBRATE at the wall (panel: "the scene must feel like it's shaking apart")
+  for (let x = 0; x < COLS; x++) { put(x, 10, ph === 2 ? "≈" : "═"); if (x % 4 === 2) put(x, 11, ph === 2 ? "╳" : "╨"); }
+
+  // the loco moves MONOTONICALLY forward (panel: a consistent L→R journey; at the wall it FIGHTS forward, not back)
+  const locoX = [3, 5, 7, 9, 12][ph];
+  stamp(locoX, 6, [                                             // line-weights unified; cowcatcher anchored (╢◣)
+    "  ___    ║",
+    " |·°·|═══╩══════════╗",
+    " |___|═══╤═══□══□═══╢◣",
+    "  (O)═══(o)═════(o)═╝",
+  ]);
+  if (ph === 2) { put(locoX + 1, 9, "O"); put(locoX + 7, 9, "O"); put(locoX + 14, 9, "O"); }  // wheels STRAIN
+
+  // the SMOKE — a choking dithered cloud at the WALL · trailing-back momentum at renewal · gentle plume otherwise
+  const fx = locoX + 9;
+  if (ph === 2) stamp(fx - 4, 0, ["  ░▒▒░  ", " ░▒▓▓▒░ ", "░▒▓██▓▒░", " ▒▓██▓▒ ", "  ▓██▓  "]);
+  else if (ph === 4) { "Oo=≈─".split("").forEach((c, i) => put(fx - i, 4, c)); put(locoX - 2, 8, "─"); put(locoX - 3, 8, "═"); }  // a cohesive receding trail = momentum
+  else { const n = 1 + Math.round(arc(dr) * 3); for (let i = 0; i < n; i++) { const y = 4 - i; if (y < 1) break; put(fx - Math.round(i * 0.5), y, "·∘oO"[Math.min(3, Math.round(arc(dr) * 3))]); } }
+
+  // the signal — DANGER (●) at the wall, CLEAR (○) at the calm ends
+  const gx = 34;
+  put(gx, 7, "╓"); put(gx, 8, "║"); put(gx, 9, "║");
+  put(gx - 1, 6, "["); put(gx + 1, 6, "]"); put(gx, 6, ph === 2 ? "●" : "○");
+  return grid.map((r) => r.join(""));
+}
+
+// THE DEPARTURE BOARD — the AUDITION WINNER (Σ20, 5/5/5/5) for the railway range: the digital dispatch board IS
+// the system the player is mastering, so the art mirrors the gameplay — ON TIME at the calm ends, glitching into
+// ▓▒ERROR▒▓ + a frozen clock at THE WALL, recovering, then clean at renewal. (railArt above = the audition runner-up.)
+function boardArt(dr: number): string[] {
+  const ph = phaseOf(dr);
+  const grid: string[][] = [];
+  for (let r = 0; r < ROWS; r++) grid.push(new Array(COLS).fill(" "));
+  const put = (x: number, y: number, ch: string | null | undefined) => { if (x >= 0 && x < COLS && y >= 0 && y < ROWS && ch != null) grid[y][x] = ch; };
+  const L = 2, R = 35, inner = R - L - 1;                       // a 33-wide board, centred in 38
+  const border = (y: number, l: string, m: string, r: string) => { put(L, y, l); put(R, y, r); for (let x = L + 1; x < R; x++) put(x, y, m); };
+  const line = (y: number, s: string) => { put(L, y, "║"); put(R, y, "║"); [...s.padEnd(inner).slice(0, inner)].forEach((ch, i) => put(L + 1 + i, y, ch)); };
+  const clock = ["11:54", "11:57", "--:--", "12:01", "12:06"][ph];
+  const rows = [
+    [" 11:58  NORTHGATE      ON TIME", " 12:04  WESTERLY       ON TIME", " 12:11  THE COAST      ON TIME", " 12:20  HOLLOWMERE     ON TIME"],
+    [" 11:58  NORTHGATE      BOARDING", " 12:04  WESTERLY       ON TIME", " 12:11  THE COAST      + 3 MIN", " 12:20  HOLLOWMERE     ON TIME"],
+    [" ░░░░  ▒▓ E R R O R ▓▒   HELD", " --:--  ▓█▒█▓░█▒▓█░▒█    — — —", " ??:??  WESTERL_ ░▒▓   SIGNAL?", " ░▒▓  NO  DATA ▓▒░    NO DATA"],
+    [" 12:02  NORTHGATE      DEPARTED", " 12:08  WESTERLY       ON TIME", " 12:11  THE COAST      DELAYED", " 12:20  HOLLOWMERE     ON TIME"],
+    [" 11:58  NORTHGATE      DEPARTED", " 12:04  WESTERLY       DEPARTED", " 12:11  THE COAST      BOARDING", " 12:20  HOLLOWMERE     ON TIME"],
+  ][ph];
+  border(1, "╔", "═", "╗");
+  put(L, 2, "║"); put(R, 2, "║");
+  [..." GRAND TRUNK · DEPARTURES"].forEach((ch, i) => put(L + 1 + i, 2, ch));
+  [...clock].forEach((ch, i) => put(R - 6 + i, 2, ch));
+  border(3, "╟", "─", "╢");
+  rows.forEach((s, ri) => line(4 + ri, s));
+  border(8, "╚", "═", "╝");
+  const sub = ["every road running, on the minute", "a delay creeps onto the board", "the board frozen — the whole line waits", "the system coming back, road by road", "the board clean — the line is yours"][ph];
+  [...("  " + sub)].forEach((ch, i) => put(i, 10, ch));
+  if (ph === 2) { const cr = "░▒▓"; ([[6, 0], [15, 0], [29, 0], [3, 9], [33, 9], [21, 9]] as [number, number][]).forEach(([x, y], k) => put(x, y, cr[k % 3])); }  // glitch crackle leaking the box
+  return grid.map((r) => r.join(""));
+}
+
+// THE SIGNAL GANTRY — the LINE range's art: a gantry of four signals over the roads (the dispatcher's whole-line
+// view); CLEAR (○) at the calm ends → all HELD (●) at the WALL with the track vibrating → clearing at renewal.
+function gantryArt(dr: number): string[] {
+  const ph = phaseOf(dr);
+  const grid: string[][] = [];
+  for (let r = 0; r < ROWS; r++) grid.push(new Array(COLS).fill(" "));
+  const put = (x: number, y: number, ch: string | null | undefined) => { if (x >= 0 && x < COLS && y >= 0 && y < ROWS && ch != null) grid[y][x] = ch; };
+  const lamps = [["○", "○", "○", "○"], ["○", "○", "◐", "○"], ["●", "●", "●", "●"], ["●", "○", "◐", "○"], ["○", "○", "○", "○"]][ph];
+  const roadsX = [8, 16, 24, 32];   // evenly spaced (8 apart) — machine-like symmetry across the four roads
+  put(3, 1, "╒"); put(34, 1, "╕"); for (let x = 4; x < 34; x++) put(x, 1, "═");
+  put(3, 2, "│"); put(34, 2, "│"); roadsX.forEach((rx, i) => { put(rx - 1, 2, "("); put(rx, 2, lamps[i]); put(rx + 1, 2, ")"); });
+  put(3, 3, "╘"); put(34, 3, "╛"); for (let x = 4; x < 34; x++) put(x, 3, "═"); roadsX.forEach((rx) => put(rx, 3, "╤"));
+  for (let y = 4; y < 7; y++) roadsX.forEach((rx) => put(rx, y, ph === 2 ? "┊" : "│"));
+  for (let x = 0; x < COLS; x++) { put(x, 7, ph === 2 ? "≈" : "═"); put(x, 8, ph === 2 ? "≈" : "═"); }
+  roadsX.forEach((rx) => put(rx, 7, "╧"));
+  roadsX.forEach((rx) => put(rx, 9, ph === 2 ? "╳" : "╨"));
+  const sub = ["the four roads — line clear, all green", "a caution shows on the third road", "every signal HELD — the whole line stopped", "the roads clearing, one by one", "all clear — the line is running"][ph];
+  [...("  " + sub)].forEach((ch, i) => put(i, 11, ch));
+  return grid.map((r) => r.join(""));
+}
+
+// THE LIT WINDOW — «The Open Room» audition winner: a dark school, one kept room still lit, the warmth SPREADING
+// at renewal; the dark deepest at the WALL where the one window holds. (Teen belonging — «kept, not chosen».)
+function litWindowArt(dr: number): string[] {
+  const ph = phaseOf(dr);
+  const grid: string[][] = [];
+  for (let r = 0; r < ROWS; r++) grid.push(new Array(COLS).fill(" "));
+  const put = (x: number, y: number, ch: string | null | undefined) => { if (x >= 0 && x < COLS && y >= 0 && y < ROWS && ch != null) grid[y][x] = ch; };
+  const lit = [[2], [2], [2], [1, 2, 3], [0, 1, 2, 3, 4]][ph];          // which of 5 windows glow (centre = the kept room, always)
+  const colX = [5, 11, 17, 23, 29];
+  const sN = [3, 2, 1, 3, 5][ph], sx = [7, 14, 20, 27, 32];             // stars: fewest at the wall
+  for (let i = 0; i < sN; i++) put(sx[i], 1, "·");
+  put(31, 0, ph === 2 ? "·" : "☽");
+  for (let x = 2; x < 36; x++) put(x, 3, "▁");                          // roofline
+  for (let y = 4; y <= 7; y++) { put(2, y, "┃"); put(35, y, "┃"); }    // walls
+  [3, 9, 15, 21, 27, 33].forEach((dx) => { for (let y = 4; y <= 7; y++) put(dx, y, "│"); });   // mullions
+  colX.forEach((cx, i) => { const ch = lit.includes(i) ? "▓" : ph === 2 ? "░" : "▢"; for (let y = 4; y <= 6; y++) for (let dx = 0; dx < 3; dx++) put(cx + dx, y, ch); });
+  put(2, 8, "┣"); put(35, 8, "┫"); for (let x = 3; x < 35; x++) put(x, 8, "━");
+  put(17, 8, "┳"); put(16, 9, "▕"); put(17, 9, " "); put(18, 9, "▏");  // the propped door under the kept window
+  const sub = ["the school dark — one room kept lit", "the halls empty; that room still on", "all dark but the room that's kept", "another window warms — not alone now", "lit room by room — the night is over"][ph];
+  [...("  " + sub)].forEach((ch, i) => put(i, 11, ch));
+  return grid.map((r) => r.join(""));
+}
+
+// THE LAMP-ROOM — «The Lighthouse Coast» audition winner: the great lens you keep turning; light streaming out
+// at the calm ends → the lamp DIMMING + the rays breaking at the WALL (you keep it turning by hand) → full again.
+function lampRoomArt(dr: number): string[] {
+  const ph = phaseOf(dr);
+  const grid: string[][] = [];
+  for (let r = 0; r < ROWS; r++) grid.push(new Array(COLS).fill(" "));
+  const put = (x: number, y: number, ch: string | null | undefined) => { if (x >= 0 && x < COLS && y >= 0 && y < ROWS && ch != null) grid[y][x] = ch; };
+  const stamp = (x0: number, y0: number, rows: string[]) => rows.forEach((r, dy) => [...r].forEach((ch, dx) => { if (ch !== " ") put(x0 + dx, y0 + dy, ch); }));
+  const lens = [["░▒▓██▓▒░"], ["░▒▓█▓▒░"], [" ░▒█▒░ "], ["░▒▓█▓▒░"], ["░▒▓██▓▒░"]][ph][0];   // dims at the wall
+  stamp(14, 2, ["╱▔▔▔▔▔▔▔▔▔▔╲", "│          │", "│          │", "│          │", "╲▁▁▁▁▁▁▁▁▁▁╱"]);   // the glass dome
+  [...lens].forEach((ch, i) => put(16 + i, 4, ch));                     // the lens, centred in the dome
+  const ray = ph === 2 ? "· ·" : "═══";                                 // the beams break at the wall
+  put(13, 4, ph === 2 ? "·" : "─"); put(12, 4, ph === 2 ? " " : "─"); [...ray].forEach((c, i) => put(9 + i, 4, c));
+  put(26, 4, ph === 2 ? "·" : "─"); put(27, 4, ph === 2 ? " " : "─"); [...ray].forEach((c, i) => put(28 + i, 4, c));
+  put(17, 7, "║"); put(22, 7, "║"); put(17, 8, "║"); put(22, 8, "║");   // the tower top
+  for (let x = 0; x < COLS; x++) put(x, 9, "░");                        // the rocks
+  const sub = ["the light, steady, out to sea", "the long dark, the beam holding", "the lamp falters — turn it by hand", "the light catching, sweep by sweep", "full beam — the watch kept to dawn"][ph];
+  [...("  " + sub)].forEach((ch, i) => put(i, 11, ch));
+  return grid.map((r) => r.join(""));
+}
+
 function art(variant: Variant, dr: number): string[] {
+  if (variant === "generic") return genericArt(dr);
+  if (variant === "board") return boardArt(dr);        // DISPATCH range → the departure board (audition winner)
+  if (variant === "loco") return railArt(dr);          // ENGINE range → the steam loco
+  if (variant === "gantry") return gantryArt(dr);      // LINE range → the signal gantry
+  if (variant === "window") return litWindowArt(dr);   // OPEN ROOM → the kept lit window
+  if (variant === "lamproom") return lampRoomArt(dr);  // LIGHTHOUSE → the lamp-room
   const intensity = arc(dr);
   const SEA_Y = variant === "water" ? 5 : 7;            // DARK WATER = high horizon → a vast deep
   const fcx = variant === "crossing" ? 12 : 18;        // CROSSING boat sits left (still travelling)
@@ -181,7 +343,11 @@ function art(variant: Variant, dr: number): string[] {
 
 type Group = { id: string; name: string; settingTitle: string; storyTitles: string[]; throughline: string; env: string[]; buildingBlock: string; verdict?: string; metaphor?: string; audienceServe?: string; subrange?: { cozy: string; intense: string }[]; relate: number; safe: number; top?: boolean; picked?: boolean };
 
-const VARIANT_OF = (id: string): Variant => (id === "strait" ? "strait" : id === "water" ? "water" : "crossing");
+// EACH RANGE CANDIDATE gets its OWN art so the visual differentiates the ranges + can sway the pick (owner): the
+// maritime worlds → their ferry variant; the railway ranges → board (dispatch) · loco (engine) · gantry (line).
+// (TODO carry-over: ideally the world-art kind rides the campaign data, not the group id — see GUIDELINE Step 0.)
+const ROOM_IDS = ["seat", "bell", "circle"], LIGHT_IDS = ["watch", "threshold", "logbook"];
+const VARIANT_OF = (id: string): Variant => (id === "strait" ? "strait" : id === "water" ? "water" : id === "crossing" ? "crossing" : id === "dispatch" ? "board" : id === "engine" ? "loco" : id === "line" ? "gantry" : ROOM_IDS.includes(id) ? "window" : LIGHT_IDS.includes(id) ? "lamproom" : "generic");
 // the §8.13 arc gauge per phase (rises to the storm-peak, then resolves) — mirrors pilot.json SPARK
 const BAR = ["▰▱▱▱▱", "▰▰▰▱▱", "▰▰▰▰▰", "▰▰▱▱▱", "▰▱▱▱▱"];
 
@@ -297,7 +463,7 @@ export function StoryBuild({ story, scenes }: { story: StoryT; scenes: string[] 
           <div style={{ display: "flex", height: 11, border: `1.5px solid ${ink}` }}>
             {scenes.map((_, i) => (
               <div key={i} style={{ flex: 1, borderRight: i < N - 1 ? `1px solid ${ink}` : "none",
-                background: i === seg ? `linear-gradient(90deg, ${forest}, var(--spot-red))` : shade,
+                background: i === seg ? `linear-gradient(90deg, ${forest} 0%, ${amber} 50%, var(--spot-red) 100%)` : shade,
                 opacity: i === seg ? 1 : i < seg ? 0.75 : 0.4 }} />
             ))}
           </div>

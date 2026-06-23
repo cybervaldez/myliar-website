@@ -8,6 +8,7 @@ import slate from "./data/settings.json";
 import ferryPilot from "./data/ferry/pilot.json";
 import roomPilot from "./data/room/pilot.json";
 import lighthousePilot from "./data/lighthouse/pilot.json";
+import hivePilot from "./data/hive/pilot.json";
 
 // THE HOOK-ENGINE PIPELINE (§8.14): the CONCEPT is the SETTING (the shared world/ground — a hook-
 // engine), the PILOT is the set of MOMENTS (tonal story-doors, light-cohesive); each moment spawns
@@ -31,11 +32,11 @@ export const stepNo = (k: string) => "①②③④⑤⑥"[STEP_DEFS.findIndex((s
 // THE SLATE — the master SETTING ledger (every setting/world auditioned). Cross-campaign by nature:
 // settings are the grouping ground; a picked setting becomes a campaign that spawns its stories.
 export const SLATE = slate as unknown as { settings: { id: string; title: string; line: string; world: string; nativeAge?: string }[] } & StepData;
-export const SLATE_STATUS: Record<string, string> = { ferry: "building", lighthouse: "available", cloudhouse: "available", room: "available" };
+export const SLATE_STATUS: Record<string, string> = { ferry: "building", lighthouse: "available", cloudhouse: "available", room: "available", hive: "demo" };
 
 // per-step normalizers → Item[]. concept = the SETTINGS slate; pilot = the MOMENTS (story-doors).
 const NORM: Record<string, (d: { [k: string]: unknown }) => Item[]> = {
-  concept: (d) => (d as unknown as typeof SLATE).settings.map((s, k) => ({ key: s.id, idx: k + 1, title: s.title, sub: s.nativeAge ? `${s.line}  ·  🎯 ${s.nativeAge}` : s.line, body: s.world })),
+  concept: (d) => (d as unknown as typeof SLATE).settings.map((s, k) => { const aud = (s as { audience?: string }).audience; const t = aud ? (AUDIENCE_GROUPS[aud]?.title || aud) : ""; return { key: s.id, idx: k + 1, title: s.title, sub: `${t ? `〔${t}〕 ` : ""}${s.nativeAge ? `${s.line}  ·  🎯 ${s.nativeAge}` : s.line}`, body: s.world }; }),
   // the pilot is SCRUB GROUPS — each rendered as the SCENE arc (the scrubber): one row per scene (the
   // surrounding WEATHER, the stage) + its arc bar (calm → the storm → first light). NOT the story's tone.
   pilot: (d) => {
@@ -144,7 +145,7 @@ export const whyPicked = (campaign: string, step: string): { text?: string; pend
 
 type Carried = { step: string; lines: string[] }[];
 export const CAMPAIGNS: Record<string, {
-  label: string; pick: string; blurb: string;
+  label: string; pick: string; blurb: string; demo?: boolean;
   steps: Record<string, StepData>;
   carried: Record<string, Carried>;
   sourceStudy?: Record<string, SourceStudy>;
@@ -244,6 +245,20 @@ export const CAMPAIGNS: Record<string, {
       ] }],
     },
   },
+  // A DIFFERENT DEMO (not the ferry/lighthouse/room slate) — the reproducibility test taken to the extreme:
+  // a tonally-OPPOSITE campaign run through the SAME pipeline. `demo: true` splits it onto its own board section.
+  hive: {
+    label: "The Hive", pick: "hive", demo: true,
+    blurb: "A DIFFERENT DEMO — older adults who feel surpassed by tech, a warm learning-hub, assessment-as-play. The reproducibility test at the extreme: a tonally-OPPOSITE campaign spun up through the SAME pipeline + guidelines. «the dignity of the late forager».",
+    steps: { pilot: hivePilot as unknown as StepData, story: hivePilot as unknown as StepData, scenes: hivePilot as unknown as StepData },
+    carried: {
+      pilot: [{ step: "① THE SETTING — the Hive", lines: [
+        "the reproducibility demo: a brand-new AUDIENCE (older non-tech, ~62–76) + GENRE (gentle-competence) run through the SAME fleet-scored range audition — the audience panel is now a PARAMETER (fleet.mjs)",
+        "↳ won range: «The Meadow» (relate 4.8 · safe 5.0); the panel flagged the Comb (a punishing collapse) + the Flight (a passive mend) on the DIGNITY / agency axis",
+        "↳ carry the CARDINAL FLOOR — never condescend / infantilise; the world LEARNS the player (assessment-as-play, never a fail-state) before it teaches; the goal is to need the Hive LESS",
+      ] }],
+    },
+  },
 };
 
 export const isSeed = (campaign: string) => !!CAMPAIGNS[campaign] && !CAMPAIGNS[campaign].steps.pilot;
@@ -251,9 +266,26 @@ export const campaignKeys = () => Object.keys(CAMPAIGNS);
 export const hasStep = (campaign: string, step: string) => step === "concept" ? !!SLATE_STATUS[CAMPAIGNS[campaign]?.pick] : !!CAMPAIGNS[campaign]?.steps[step];
 
 // the data + normalized items for one campaign × step (concept resolves to the shared SLATE)
-export function stepDataFor(campaign: string, step: string): { data: StepData; items: Item[]; isSlate: boolean } | null {
+// THE HARD RULE: target audience GROUPS concepts (audiences.mjs). A campaign's concept/slate step shows ONLY its
+// own audience group — never the other groups (that mixing was the context pollution). Master slate passes allAudiences.
+export const audienceKeyFor = (campaign: string): string => (CAMPAIGNS[campaign]?.steps?.pilot as unknown as { audienceKey?: string })?.audienceKey ?? "worn-down";
+// the auditions GROUP by target audience, each titled "For those that…" (a short, human read of who it's for).
+export const AUDIENCE_GROUPS: Record<string, { title: string; sub: string }> = {
+  "worn-down": { title: "For those that carry too much", sub: "anxiety · low self-worth · the unfinished — the worn-down, dialed across ages (adult · teen · mature)" },
+  "tech-surpassed": { title: "For those that got left behind", sub: "older adults the new world moved past — the wound is lost competence, not ignorance" },
+};
+export const audienceTitleFor = (campaign: string) => AUDIENCE_GROUPS[audienceKeyFor(campaign)] ?? AUDIENCE_GROUPS["worn-down"];
+export function stepDataFor(campaign: string, step: string, opts?: { allAudiences?: boolean }): { data: StepData; items: Item[]; isSlate: boolean } | null {
   if (!CAMPAIGNS[campaign]) return null;
-  if (step === "concept") return { data: SLATE, items: NORM.concept(SLATE as unknown as { [k: string]: unknown }), isSlate: true };
+  if (step === "concept") {
+    const ak = opts?.allAudiences ? null : audienceKeyFor(campaign);
+    const all = SLATE as unknown as { settings: { audience?: string }[]; audienceGroups?: Record<string, { audienceMeta?: unknown; reads?: unknown; legReads?: unknown }> };
+    // CARRY OVER: a campaign's concept step is reviewed by ITS audience's panel + reads (from the slate audition),
+    // not the shared ferry-era results. Falls back to the shared SLATE for the master ledger / un-audited groups.
+    const grp = ak ? all.audienceGroups?.[ak] : null;
+    const filtered = ak ? ({ ...SLATE, settings: all.settings.filter((s) => (s.audience || "worn-down") === ak), ...(grp?.reads ? { results: grp.reads, legs: grp.legReads ?? {}, audience: grp.audienceMeta } : {}) } as unknown as typeof SLATE) : SLATE;
+    return { data: filtered as unknown as StepData, items: NORM.concept(filtered as unknown as { [k: string]: unknown }), isSlate: true };
+  }
   const d = CAMPAIGNS[campaign].steps[step];
   if (!d || !NORM[step]) return null;
   return { data: d, items: NORM[step](d as unknown as { [k: string]: unknown }), isSlate: false };
@@ -271,6 +303,30 @@ export function sceneBranchesFor(campaign: string): SceneBranchT[] {
 }
 export function sceneBranch(campaign: string, key: string): SceneBranchT | null {
   return sceneBranchesFor(campaign).find((b) => b.key === key) ?? null;
+}
+// the day-count (fundamental + NG+) of a scene-door, for the nav rail's day sublinks
+export function daysFor(campaign: string, sceneKey: string): number {
+  const p = CAMPAIGNS[campaign]?.steps.scenes as unknown as { picked?: string; scrubGroups?: { id: string; scenes?: { honing?: Record<string, { dayPlan?: { fundamental?: { length?: number }; ngPlus?: { length?: number } } }> } }[] } | undefined;
+  const g = p?.scrubGroups?.find((x) => x.id === p?.picked);
+  const dp = g?.scenes?.honing?.[sceneKey]?.dayPlan;
+  return dp ? (dp.fundamental?.length ?? 0) + (dp.ngPlus?.length ?? 0) : 0;
+}
+// the prelude (the book cover / browse copy) exists once it's auditioned
+export function hasPrelude(campaign: string, sceneKey: string): boolean {
+  const p = CAMPAIGNS[campaign]?.steps.scenes as unknown as { picked?: string; scrubGroups?: { id: string; scenes?: { honing?: Record<string, { prelude?: { tagline?: string } }> } }[] } | undefined;
+  const g = p?.scrubGroups?.find((x) => x.id === p?.picked);
+  return !!g?.scenes?.honing?.[sceneKey]?.prelude?.tagline;
+}
+// the PREQUEL — the optional cast-companion book (campaign-level); a menu entry, not a forced pre-step of any prelude
+export function hasPrequel(campaign: string): boolean {
+  const p = CAMPAIGNS[campaign]?.steps.scenes as unknown as { picked?: string; scrubGroups?: { id: string; scenes?: { prequel?: { chapters?: unknown[] } } }[] } | undefined;
+  return !!p?.scrubGroups?.find((x) => x.id === p?.picked)?.scenes?.prequel?.chapters?.length;
+}
+// the front door (the character pick) exists once Day-1 openings are authored
+export function hasFrontDoor(campaign: string, sceneKey: string): boolean {
+  const p = CAMPAIGNS[campaign]?.steps.scenes as unknown as { picked?: string; scrubGroups?: { id: string; scenes?: { honing?: Record<string, { honed?: { "1"?: { openings?: unknown[] } } }> } }[] } | undefined;
+  const g = p?.scrubGroups?.find((x) => x.id === p?.picked);
+  return !!g?.scenes?.honing?.[sceneKey]?.honed?.["1"]?.openings?.length;
 }
 // every campaign that has the Scenes step (for the branch routes' static params)
 export const campaignsWithScenes = () => campaignKeys().filter((c) => hasStep(c, "scenes"));
